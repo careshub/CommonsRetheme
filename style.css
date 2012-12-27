@@ -1,0 +1,109 @@
+/*
+Theme Name:     Community Commons (Twenty Twelve)
+Description:    Dev!
+Author:         David Cavins, WordPress and bbPress teams
+Template:       twentytwelve
+Version:        0.1
+Tags:		bbpress, responsive, mobile, forum
+*/
+@import url("../twentytwelve/style.css");
+/*
+Theme Name:     Community Commons (Twenty Twelve)
+Description:    Dev!
+Author:         David Cavins, WordPress and bbPress teams
+Template:       twentytwelve
+Version:        0.1
+Tags:		bbpress, responsive, mobile, forum
+*/
+.primary-navigation {
+  margin-top: 0;
+  background-color: #666666;
+  overflow: auto;
+  color: #ffffff;
+}
+.primary-navigation a {
+  display: inline-block;
+  text-decoration: none;
+}
+.primary-navigation .links {
+  float: left;
+  margin-left: 12px;
+}
+.primary-navigation .brand {
+  float: left;
+  display: inline-block;
+  margin: 0 .5em;
+}
+.primary-navigation .brand a {
+  background: url(img/cc_logomark-30x30.png) no-repeat left center;
+  font-size: 13px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding-left: 40px;
+  color: #ffffff;
+  line-height: 2.4;
+  text-transform: uppercase;
+}
+.primary-navigation li {
+  margin: 0;
+}
+.primary-navigation li a {
+  color: #ffffff;
+  margin: 0 1em;
+  line-height: 3.2;
+}
+.primary-navigation .menu-item-13 {
+  border-top: solid 6px #f7b718;
+}
+.primary-navigation .menu-item-13.current-menu-item {
+  background-color: #f7b718;
+}
+.primary-navigation .menu-item-14 {
+  border-top: solid 6px #df5927;
+}
+.primary-navigation .nav-meta {
+  float: right;
+}
+.primary-navigation .nav-meta li {
+  float: right;
+  position: relative;
+}
+.primary-navigation .nav-meta li a {
+  color: #ffffff;
+  margin: 0 1em;
+  line-height: 3.2;
+}
+.primary-navigation .nav-meta .bp-notifications {
+  clear: none;
+}
+.primary-navigation .nav-meta .bp-notifications span {
+  display: inline;
+  background-color: #dddddd;
+  border-radius: 10px;
+  color: #008eaa;
+  padding: 2px 7px;
+}
+.primary-navigation .nav-meta .bp-notifications .bp-notification-list {
+  margin: 26px 0 0 -1px;
+  padding: 0;
+  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  display: none;
+  position: absolute;
+  float: none;
+  right: 0;
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: #dfdfdf;
+  z-index: 999;
+  width: 300px;
+}
+.primary-navigation .nav-meta .bp-notifications .bp-notification-list a {
+  color: #008eaa;
+  line-height: 26px;
+}
+.primary-navigation .nav-meta li.bp-notifications:hover .bp-notification-list {
+  display: inline-block;
+  right: 0;
+}
