@@ -32,8 +32,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<div>
-	<nav id="site-navigation" class="primary-navigation" role="navigation">
+	<div id="site-navigation" class="primary-navigation" role="navigation">
 		<!-- <h1 class="brand">Community Commons</h1> -->
 		<h3 class="menu-toggle"><?php _e( 'Menu', 'twentytwelve' ); ?></h3>
 		<a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentytwelve' ); ?>"><?php _e( 'Skip to content', 'twentytwelve' ); ?></a>
@@ -63,22 +62,21 @@
 
 				?>
 			</ul>
-			<ul class="nav-meta">
+			<ul class="secondary">
 				<li><a href="#">Search</a></li>
 				<li>
 				<?php if (is_user_logged_in()) { //show user info if logged in
 					echo bp_core_get_userlink( bp_loggedin_user_id() ); 
-        			//bp_loggedin_user_avatar();  
+        			//bp_loggedin_user_avatar('width=24&height=24');  
         		} else { //show login link if not logged in ?>
 
         		<a href="<?php echo wp_login_url( $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?>
         		<?php } ?>
         		</li>
-				<?php //notifications_counter(); ?>
+				<?php notifications_counter(); ?>
 			</ul>
-
+			<div class="clear"></div>
 		</div>
-	</nav><!-- #site-navigation -->
 
 	<!-- <div class="navbar">
 	    <div class="navbar-inner">
@@ -90,8 +88,7 @@
 		    </ul>
 	    </div>
     </div> -->
-
-	</div>
+	</div><!-- #site-navigation -->
 
 	<div id="page" class="hfeed site">
 	

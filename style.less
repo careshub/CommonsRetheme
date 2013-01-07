@@ -11,7 +11,7 @@ Tags:		bbpress, responsive, mobile, forum
 // LESS Mixins  
 .font-size(@sizeValue){
   @remValue: @sizeValue;
-  @pxValue: (@sizeValue * 10);
+  @pxValue: (@sizeValue * 12);
   font-size: ~"@{pxValue}px"; 
   font-size: ~"@{remValue}rem";
 }
@@ -24,25 +24,34 @@ Tags:		bbpress, responsive, mobile, forum
 @driftwood:#827772;
 @graydark:#666;
 @graymid:#DDD;
-
+@black:#211F1F;
 
 
 .primary-navigation {
+	text-transform: none;
 	margin-top:0;
 	background-color: @graydark;
-	overflow: auto;
 	color:@white;
+	//float: left;
+	width: 100%;
+	//overflow: auto;
+	//display: block;
+	//overflow: hidden;
+	//height: 51px;
+	display: inline-block;
+	//position: fixed;
+	z-index: 100;
 	a{ display: inline-block;
     	text-decoration: none;
     }
     	
 		
-	.links { float:left; margin-left: 12px;}
+	.links { float:left; 
+		margin-left: 12px;}
 	.brand {
 		float: left;
 		display: inline-block;
-		
-		margin: 0 .5em;
+		margin: 4px 0 0 7px;
     	
 		a { //home menu item
 		background: url(img/cc_logomark-30x30.png) no-repeat left center;
@@ -56,42 +65,56 @@ Tags:		bbpress, responsive, mobile, forum
 		}
 	}
 	li {
+		float: left;
 		margin:0;
 		//border-right: solid 1px #333;
-		a {
+		&.current-menu-item{ font-weight: 700; }
+		a, span {
 			color: @white;
 			margin:0 1em;
 			line-height: 3.2;
+			text-transform: none;
 		}
 	}
 	.menu-item-13 { //Members nav link
 		border-top: solid 6px @ccyellow;
-	}
-	.menu-item-13.current-menu-item {
+		&.current-menu-item {
 			background-color: @ccyellow;
 		}
-	.menu-item-14 { //Members nav link
-		border-top: solid 6px @ccred;
 	}
-	.nav-meta {
+	.menu-item-14 { //Groups nav link
+		border-top: solid 6px @ccred;
+		&.current-menu-item {
+			background-color: @ccred;
+		}
+	}
+	.secondary {
 		float: right;
+		margin: 4px 7px 0 0;
 		li {
 			float:right;
 			position: relative;
 			a {
 			color: @white;
 			margin:0 1em;
-			line-height: 3.2;
+			line-height: 3;
 		}
 	}
 	.bp-notifications {
 		clear:none;
 			span { 
 			display: inline;
+			line-height: 3;
 			background-color: @graymid;
-			border-radius: 10px;
-			color: @ccblue;
-			padding: 2px 7px;
+			border-radius: 50%;
+			color: @black;
+			padding: 0 6px;
+			border:solid 1px @white;
+			&.alert {
+				background-color: @ccgreen;
+				color:@white;
+				
+				}
 			}
 			.bp-notification-list {
 			margin: 26px 0 0 -1px;
@@ -115,13 +138,24 @@ Tags:		bbpress, responsive, mobile, forum
 			
 
 		}
-		li.bp-notifications:hover .bp-notification-list {
+		li {
+			.font-size(1.1);
+			&.bp-notifications:hover .bp-notification-list {
 			display: inline-block;
-			right:0;
+			right:12px;
+			top:12px;
 			}
-
+		}	
 		}
 
 	
-
+//even/odd row coloring
+.alt {
+	// &:nth-child(odd) {
+	// background-color: lighten(@graymid, 15%);
+	// }
+	&:hover {	
+		background-color: desaturate(lighten(@ccblue, 55%), 50%);
+	}
+}
 }

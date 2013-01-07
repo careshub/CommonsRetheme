@@ -40,7 +40,7 @@ function change_toolbar() {
 	}
 }
 
-add_action('wp_before_admin_bar_render', 'change_toolbar');
+//add_action('wp_before_admin_bar_render', 'change_toolbar');
 
 
 
