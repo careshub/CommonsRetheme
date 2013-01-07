@@ -79,30 +79,8 @@ function notifications_counter() {
 
 }
 
-function echo_print_list($notifications,$count){
-    echo '<ul class="bp-notification-list">';
-        
-	if ( $notifications ) {
-	$counter = 0;
-	for ( $i = 0; $i < $count; $i++ ) {
-	$alt = ( 0 == $counter % 2 ) ? ' class="alt"' : ''; ?>
-
-	<li<?php echo $alt ?>><?php echo $notifications[$i] ?></li>
-
-	<?php $counter++;
-	}
-	} else { ?>
-
-	<li><?php _e( 'You don\'t have any new notifications.', 'bpdnw' ); ?></li>
-
-	<?php
-	}
-
-	echo '</ul>';
-}
-
 function print_list($notifications,$count){
-    $output = '<ul class="bp-notification-list">';
+    $output = '<div class="pop-sub-wrapper"><ul class="bp-notification-list">';
         
 	if ( $notifications ) {
 		$counter = 0;
@@ -119,7 +97,7 @@ function print_list($notifications,$count){
 
 	}
 
-	$output .= '</ul>';
+	$output .= '</ul></div>';
 	return $output;
 }
 

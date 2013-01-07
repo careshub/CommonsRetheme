@@ -18,7 +18,7 @@ Tags:		bbpress, responsive, mobile, forum
 .primary-navigation {
   text-transform: none;
   margin-top: 0;
-  background-color: #666666;
+  background-color: #211f1f;
   color: #ffffff;
   width: 100%;
   display: inline-block;
@@ -73,9 +73,12 @@ Tags:		bbpress, responsive, mobile, forum
 .primary-navigation .menu-item-14.current-menu-item {
   background-color: #df5927;
 }
+.primary-navigation .menu-item-14 .pop-sub-menu {
+  min-width: 100%;
+}
 .primary-navigation .secondary {
   float: right;
-  margin: 4px 7px 0 0;
+  margin: 9px 7px 0 0;
 }
 .primary-navigation .secondary li {
   float: right;
@@ -103,8 +106,8 @@ Tags:		bbpress, responsive, mobile, forum
   color: #ffffff;
 }
 .primary-navigation .secondary .bp-notifications .bp-notification-list {
-  margin: 26px 0 0 -1px;
-  padding: 0;
+  margin: 12px 0 0 -1px;
+  padding: 6px 0;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   background: #fff;
@@ -116,21 +119,30 @@ Tags:		bbpress, responsive, mobile, forum
   border-style: solid;
   border-color: #dfdfdf;
   z-index: 999;
-  width: 300px;
 }
 .primary-navigation .secondary .bp-notifications .bp-notification-list a {
   color: #008eaa;
   line-height: 26px;
 }
 .primary-navigation .secondary li {
-  font-size: 13.200000000000001px;
-  font-size: 1.1rem;
+  font-size: 10.8px;
+  font-size: 0.9rem;
+}
+.primary-navigation .secondary li.bp-notifications:hover {
+  background-color: #ffffff;
 }
 .primary-navigation .secondary li.bp-notifications:hover .bp-notification-list {
   display: inline-block;
-  right: 12px;
+  right: -1px;
   top: 12px;
+  min-width: 600%;
 }
 .primary-navigation .alt:hover {
   background-color: #d2ebf0;
+}
+#item-nav {
+  width: 25%;
+}
+#buddypress div.item-list-tabs ul li {
+  float: none;
 }

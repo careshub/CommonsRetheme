@@ -30,7 +30,7 @@ Tags:		bbpress, responsive, mobile, forum
 .primary-navigation {
 	text-transform: none;
 	margin-top:0;
-	background-color: @graydark;
+	background-color: @black;
 	color:@white;
 	//float: left;
 	width: 100%;
@@ -87,10 +87,13 @@ Tags:		bbpress, responsive, mobile, forum
 		&.current-menu-item {
 			background-color: @ccred;
 		}
+	.pop-sub-menu {
+			min-width: 100%;
+		}
 	}
 	.secondary {
 		float: right;
-		margin: 4px 7px 0 0;
+		margin: 9px 7px 0 0;
 		li {
 			float:right;
 			position: relative;
@@ -117,8 +120,8 @@ Tags:		bbpress, responsive, mobile, forum
 				}
 			}
 			.bp-notification-list {
-			margin: 26px 0 0 -1px;
-			padding: 0;
+			margin: 12px 0 0 -1px;
+			padding: 6px 0;
 			-webkit-box-shadow: 0 4px 4px rgba(0,0,0,0.2);
 			box-shadow: 0 4px 4px rgba(0,0,0,0.2);
 			background: #fff;
@@ -130,7 +133,7 @@ Tags:		bbpress, responsive, mobile, forum
 			border-style: solid;
 			border-color: #dfdfdf;
 			z-index: 999;
-			width: 300px;
+			
 			a { color:@ccblue; 
 				line-height: 26px;
 				}
@@ -139,11 +142,13 @@ Tags:		bbpress, responsive, mobile, forum
 
 		}
 		li {
-			.font-size(1.1);
+			.font-size(.9);
+			&.bp-notifications:hover { background-color: @white;}
 			&.bp-notifications:hover .bp-notification-list {
 			display: inline-block;
-			right:12px;
+			right:-1px;
 			top:12px;
+			min-width: 600%;
 			}
 		}	
 		}
@@ -158,4 +163,16 @@ Tags:		bbpress, responsive, mobile, forum
 		background-color: desaturate(lighten(@ccblue, 55%), 50%);
 	}
 }
+}
+
+//Registration page 
+//over-ride the float:right on the registration submit button
+//#signup_form.standard-form div.submit { float: left;}
+
+
+//BuddyPress pages
+//use vertical nav list
+#item-nav {width: 25%;}
+#buddypress div.item-list-tabs ul li {
+  float: none;
 }

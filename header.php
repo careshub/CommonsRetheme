@@ -33,8 +33,8 @@
 
 <body <?php body_class(); ?>>
 	<div id="site-navigation" class="primary-navigation" role="navigation">
-		<!-- <h1 class="brand">Community Commons</h1> -->
-		<h3 class="menu-toggle"><?php _e( 'Menu', 'twentytwelve' ); ?></h3>
+		<!-- <h1 class="brand">Community Commons</h1>
+		<h3 class="menu-toggle"><?php _e( 'Menu', 'twentytwelve' ); ?></h3> -->
 		<a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentytwelve' ); ?>"><?php _e( 'Skip to content', 'twentytwelve' ); ?></a>
 			<div class="brand"><a href="/" title="Home" >Community Commons</a></div>
 			<ul class="links">
@@ -69,8 +69,7 @@
 					echo bp_core_get_userlink( bp_loggedin_user_id() ); 
         			//bp_loggedin_user_avatar('width=24&height=24');  
         		} else { //show login link if not logged in ?>
-
-        		<a href="<?php echo wp_login_url( $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?>
+	        		<a href="<?php echo wp_login_url( $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?></a>
         		<?php } ?>
         		</li>
 				<?php notifications_counter(); ?>
