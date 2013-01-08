@@ -1,41 +1,9 @@
-/*
-Theme Name:     Community Commons (Twenty Twelve)
-Description:    Dev!
-Author:         David Cavins, WordPress and bbPress teams
-Template:       twentytwelve
-Version:        0.1
-Tags:		bbpress, responsive, mobile, forum
-*/
-@import url("../twentytwelve/style.css");
+/**
+ * The following are CSS styles extrapolated from the bp-default theme.
+ * Use these styles as a guideline. You will probably need to adjust some
+ * declarations so they will gel with your WP theme.
+ */
 
-// LESS Mixins  
-.font-size(@sizeValue){
-  @remValue: @sizeValue;
-  @pxValue: (@sizeValue * 12);
-  font-size: ~"@{pxValue}px"; 
-  font-size: ~"@{remValue}rem";
-}
-
-.border-radius(@radius){
-    -webkit-border-radius: @radius;
-    -moz-border-radius: @radius;
-    border-radius: @radius;
-}
-
-
-@ccblue:#008EAA;
-@ccgreen:#869B3C;
-@ccyellow:#F7B718;
-@ccred:#DF5927;
-@white:#FFF;
-@driftwood:#827772;
-@graydark:#666;
-@graymid:#DDD;
-@graylight:#EAEAEA;
-@black:#211F1F;
-
-
-//Buddypress Styles
 /*--------------------------------------------------------------
 1 - Activity
 --------------------------------------------------------------*/
@@ -1019,12 +987,14 @@ span.user-nicename {
 }
 span.activity,
 div#message p {
-	border: 1px solid @ccyellow;
-	.border-radius(3px);
+	border: 1px solid #e1ca82;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 	font-weight: normal;
 	margin-top: 3px;
 	text-decoration: none;
-	background: lighten(@ccyellow, 26%);
+	background: #ffeaa6;
 	background-image: -webkit-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255, 255, 255, .5)), color-stop(100%,rgba(255, 255, 255, 0))); /* Chrome,Safari4+ */
 	background-image: -moz-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
@@ -1036,7 +1006,7 @@ div#item-header {
 	overflow: hidden;
 }
 div#item-header div#item-header-content {
-	//margin-left: 170px;
+	margin-left: 170px;
 }
 div#item-header h2 {
 	font-size: 28px;
@@ -1176,38 +1146,36 @@ ul.item-list li h5 span.small {
 	font-weight: normal;
 }
 div.item-list-tabs {
-	//background: #eaeaea;
-	//clear: left;
-	//margin: 25px -19px 20px -19px;
-	//overflow: hidden;
-	ul {
-		width: 100%;
-		li {
-		//float: left;
-		//list-style-type: none;
-		//margin: 5px 0 0 5px;
-		width: 100%;
-		a {
-			text-decoration: none;
-			height: 20px;
-			}
-		}
-	}
+	background: #eaeaea;
+	clear: left;
+	margin: 25px -19px 20px -19px;
+	overflow: hidden;
+}
+div.item-list-tabs ul li a {
+	text-decoration: none;
+	height: 20px;
+}
+div.item-list-tabs ul {
+	width: 100%;
+}
+div.item-list-tabs ul li {
+	float: left;
+	list-style-type: none;
+	margin: 5px 0 0 5px;
 }
 div.item-list-tabs#subnav ul li {
-	margin: 0 1em 0 0;
-	width:auto;
-	float: left;
-	&.last{
-		float: right;
-		//margin-top: 4px;
-	}
+	margin-top: 0;
+}
+div.item-list-tabs ul li:first-child {
+	margin-left: 20px;
 }
 div.item-list-tabs ul li.last {
 	float: right;
 	margin: 7px 20px 0 0;
 }
-
+div.item-list-tabs#subnav ul li.last {
+	margin-top: 4px;
+}
 div.item-list-tabs ul li.last select {
 	max-width: 175px;
 }
@@ -1218,10 +1186,10 @@ div.item-list-tabs ul li span {
 	text-decoration: none;
 }
 div.item-list-tabs ul li a span {
-	background: @ccgreen;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
-	border-radius: 50%;
+	background: #1fb3dd;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 	color: #fff;
 	display: inline;
 	font-size: 90%;
@@ -1230,8 +1198,14 @@ div.item-list-tabs ul li a span {
 }
 div.item-list-tabs ul li.selected a,
 div.item-list-tabs ul li.current a {
-	background-color: @graymid;
-	//color: #555;
+	background-color: #fff;
+	-moz-border-radius-topleft: 3px;
+	-webkit-border-top-left-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	-webkit-border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	color: #555;
 	font-weight: bold;
 }
 div.item-list-tabs ul li.selected a span,
@@ -1256,9 +1230,9 @@ div.item-list-tabs#object-nav {
 	margin-top: 0;
 }
 div.item-list-tabs#subnav {
-	background: @white;
-	border-bottom: 1px solid @graylight;
-	//margin: -15px -19px 15px -19px;
+	background: #fff;
+	border-bottom: 1px solid #eaeaea;
+	margin: -15px -19px 15px -19px;
 	min-height: 35px;
 	overflow: hidden;
 }
@@ -1341,12 +1315,12 @@ div#message-thread div.message-options {
 10 - Pagination
 --------------------------------------------------------------*/
 .padder div.pagination {
-	background: @graylight;
+	background: #f4f4f4;
 	border: none;
-	color: @graydark;
-	//font-size: 11px;
+	color: #888;
+	font-size: 11px;
 	height: 19px;
-	//margin: -20px -19px 0px -19px;
+	margin: -20px -19px 0px -19px;
 	padding: 8px 20px;
 	position: relative;
 }
@@ -1373,445 +1347,3 @@ div#message-thread div.message-options {
 .padder .paged #nav-above {
 	display: block;
 }
-
-/***
- * Navigation tabs
- */
-div.item-list-tabs {
-	margin: 15px 0;
-	padding: 5px 0;
-	border-bottom: 1px solid #ddd;
-	overflow: hidden;
-	clear: both;
-}
-
-div.item-list-tabs ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	line-height: 200%;
-}
-	div.item-list-tabs ul li {
-		float: left;
-		margin-right: 5px;
-	}
-		div.item-list-tabs#subnav ul li a {
-			border: none;
-			padding: 0;
-		}
-
-	div.item-list-tabs ul li.last { float: right; }
-
-/***
- * Object Lists (groups/members/forums/blogs)
- */
-
-ul.item-list {
-	margin: 20px 0;
-	padding: 0;
-	list-style: none;
-}
-	ul.item-list li { 
-		position: relative;
-		clear: left;
-	}
-	ul.item-list div.item-avatar {
-		float: left;
-	}
-
-	ul.item-list div.item {
-		margin-left: 65px;
-	}
-
-	ul.item-list div.action {
-		position: absolute;
-		top: 0;
-		right: 15px;
-		text-align: right;
-	}
-
-
-/***
- * Content Object Headers
- */
-
-div#item-header {
-	padding-bottom: 15px;
-	overflow: hidden;
-}
-	div#item-header div#item-header-avatar {
-		float: left;
-		margin-right: 15px;
-	}
-
-	div#item-header div#item-header-content {
-		float: left;
-	}
-
-/***
- * Activity Stream Post Form
- */
-
-form#whats-new-form {
-	overflow: hidden;
-	padding-bottom: 20px;
-}
-	form#whats-new-form #whats-new-avatar {
-		float: left;
-	}
-
-	form#whats-new-form h5 {
-		clear: none;
-		margin-left: 76px;
-	}
-
-	form#whats-new-form #whats-new-content {
-		margin-left: 54px;
-		padding-left: 22px;
-	}
-
-	form#whats-new-form #whats-new-textarea {
-		padding: 8px;
-		border: 1px inset #ccc;
-		margin-bottom: 10px;
-	}
-	form#whats-new-form textarea {
-		width: 100%;
-		height: 60px;
-		font-size: 14px;
-		font-family: inherit;
-		color: #555;
-		border: none;
-		margin: 0;
-		padding: 0;
-	}
-
-	form#whats-new-form #whats-new-submit {
-		float: right;
-		margin: 0;
-	}
-
-/***
- * Activity Stream Post Form
- */
-
-ul.activity-list {
-	margin: 0;
-	padding: 0;
-}
-
-ul.activity-list li {
-	overflow: hidden;
-	padding: 20px 0;
-}
-	ul.activity-list li img.avatar {
-		float: left;
-		width: 60px;
-		height: 60px;
-	}
-
-	ul.activity-list li div.activity-content {
-		margin-left: 75px;
-	}
-
-	ul.activity-list li div.activity-comments {
-		margin: 15px 0 0 38px;
-	}
-		ul.activity-list li div.activity-comments ul li {
-			padding: 5px 0;
-		}
-
-		ul.activity-list li div.activity-comments img.avatar {
-			width: 25px;
-			height: 25px;
-		}
-
-		ul.activity-list li div.acomment-content, ul.activity-list li div.acomment-meta {
-			margin-left: 35px;
-		}
-
-	ul.activity-list li div.activity-inreplyto {
-		margin: 15px 0 0 75px;
-		font-size: 11px;
-	}
-
-/***
- * Input Forms
- */
-
-/* Activity comment forms */
-
-form.ac-form { display: none; } /* JS will show this */
-
-div.activity-comments form {
-	display: none;
-	margin: 10px 0 10px 33px;
-	padding: 8px;
-}
-
-	div.activity-comments div#message {
-		margin-top: 15px;
-		margin-bottom: 0;
-	}
-
-	div.activity-comments form.loading {
-		background-image: url( ../images/ajax-loader.gif );
-		background-position: 2% 95%;
-		background-repeat: no-repeat;
-	}
-
-	div.activity-comments form .ac-textarea {
-		padding: 8px;
-		border: 1px inset #ccc;
-		margin-bottom: 10px;
-	}
-		div.activity-comments form textarea {
-			width: 100%;
-			height: 60px;
-			border: none;
-			padding: 0;
-		}
-			div.activity-comments form input {
-				margin-top: 5px;
-			}
-
-	div.activity-comments form div.ac-reply-avatar {
-		float: left;
-	}
-
-	div.activity-comments form div.ac-reply-content {
-		margin-left: 25px;
-		padding-left: 15px;
-	}
-
-/* Standard Input Forms */
-
-form.standard-form label, form.standard-form span.label {
-	display: block;
-	margin: 15px 0 5px 0;
-}
-	form.standard-form div.checkbox label,
-	form.standard-form div.radio label {
-		font-weight: normal;
-		margin: 5px 0 0 0;
-	}
-
-	form.standard-form textarea {
-		width: 75%;
-		height: 120px;
-	}
-
-/* Send Invites Form */
-form#send-invite-form {
-	margin-top: 20px;
-}
-	div#invite-list {
-		height: 400px;
-		overflow: scroll;
-		padding: 5px;
-		width: 160px;
-		margin: 10px 0;
-	}
-
-/* Directory search forms */
-
-form.dir-form div.dir-search {
-	float: right;
-	width: 45%;
-	margin: 0 0 25px 0;
-}
-
-.primary-navigation {
-	text-transform: none;
-	margin-top:0;
-	background-color: @black;
-	color:@white;
-	//float: left;
-	width: 100%;
-	//overflow: auto;
-	//display: block;
-	//overflow: hidden;
-	//height: 51px;
-	display: inline-block;
-	//position: fixed;
-	z-index: 100;
-	a{ display: inline-block;
-    	text-decoration: none;
-    }
-    	
-		
-	.links { float:left; 
-		margin-left: 12px;}
-	.brand {
-		float: left;
-		display: inline-block;
-		margin: 4px 0 0 7px;
-    	
-		a { //home menu item
-		background: url(img/cc_logomark-30x30.png) no-repeat left center;
-		.font-size(1.3);
-		font-weight: 700;
-		//margin-left: 40px;
-		padding-left: 40px;
-		color:@white;
-		line-height: 2.4;
-    	text-transform: uppercase;
-		}
-	}
-	li {
-		float: left;
-		margin:0;
-		//border-right: solid 1px #333;
-		&.current-menu-item{ font-weight: 700; }
-		a, span {
-			color: @white;
-			padding:0 1em;
-			line-height: 3.2;
-			text-transform: none;
-			&:hover{background-color: @graydark;}
-		}
-	}
-	.menu-item-13 { //Members nav link
-		border-top: solid 6px @ccyellow;
-		&.current-menu-item {
-			background-color: @ccyellow;
-		}
-	}
-	.menu-item-14 { //Groups nav link
-		border-top: solid 6px @ccred;
-		&.current-menu-item {
-			background-color: @ccred;
-		}
-	.pop-sub-menu {
-			min-width: 100%;
-		}
-	}
-	.secondary {
-		float: right;
-		margin: 9px 7px 0 0;
-		li {
-			float:right;
-			position: relative;
-			a {
-			color: @white;
-			margin:0 1em;
-			line-height: 3;
-		}
-	}
-	.bp-notifications {
-		clear:none;
-			span { 
-			display: inline;
-			line-height: 3;
-			background-color: @graymid;
-			.border-radius(50%);
-			color: @black;
-			padding: 0 6px;
-			border:solid 1px @white;
-			&.alert {
-				background-color: @ccgreen;
-				color:@white;
-				
-				}
-			}
-			.bp-notification-list {
-			margin: 12px 0 0 -1px;
-			padding: 6px 0;
-			-webkit-box-shadow: 0 4px 4px rgba(0,0,0,0.2);
-			box-shadow: 0 4px 4px rgba(0,0,0,0.2);
-			background: #fff;
-			display: none;
-			position: absolute;
-			float: none;
-			right:0;
-			border-width: 0 1px 1px 1px;
-			border-style: solid;
-			border-color: #dfdfdf;
-			z-index: 999;
-			
-			a { color:@ccblue; 
-				line-height: 26px;
-				}
-			}
-			
-
-		}
-		li {
-			.font-size(.9);
-			&.bp-notifications:hover { background-color: @white;}
-			&.bp-notifications:hover .bp-notification-list {
-			display: inline-block;
-			right:-1px;
-			top:12px;
-			min-width: 600%;
-			}
-		}	
-		}
-
-	
-//even/odd row coloring
-.alt {
-	// &:nth-child(odd) {
-	// background-color: lighten(@graymid, 15%);
-	// }
-	&:hover {	
-		background-color: desaturate(lighten(@ccblue, 55%), 50%);
-	}
-}
-}
-
-//Registration page 
-//over-ride the float:right on the registration submit button
-//#signup_form.standard-form div.submit { float: left;}
-
-
-//BuddyPress pages
-//use vertical nav list
-.padder {
-	margin:2em 0;
-}
-#item-header {
-	width: 100%; 
-	float: left;
-	margin-bottom: 2em;
-	border: 1px solid #CCC;
-	#item-actions {
-		float: right;
-			border: 1px solid #CCC;
-
-	}
-	#item-header-avatar {
-		float: left;
-		border: 1px solid #CCC;
-		width: 20%;
-		img {
-			display: block;
-			margin: 0 auto;
-		}
-	}
-	#item-header-content {
-		float: left;
-		margin-left: 2em;
-		border: 1px solid #CCC;
-
-	}
-}
-#item-nav {
-	width: 20%; 
-	float: left;
-		border: 1px solid #CCC;
-
-}
-#item-body {
-	width: 77.5%;
-	padding-left: 2%;
-	float: left;
-	border: 1px solid #CCC;
-
-}
-#buddypress div.item-list-tabs ul li {
-  float: none;
-}
-
-//GROUPS
-.groups .site-content {width: 100%;}
