@@ -11,7 +11,7 @@ Tags:		bbpress, responsive, mobile, forum
 // LESS Mixins  
 .font-size(@sizeValue){
   @remValue: @sizeValue;
-  @pxValue: (@sizeValue * 12);
+  @pxValue: (@sizeValue * 15);
   font-size: ~"@{pxValue}px"; 
   font-size: ~"@{remValue}rem";
 }
@@ -34,6 +34,10 @@ Tags:		bbpress, responsive, mobile, forum
 @graylight:#EAEAEA;
 @black:#211F1F;
 
+//Parent theme overrides
+body {
+	color: @black;
+}
 
 //Buddypress Styles
 /*--------------------------------------------------------------
@@ -1620,7 +1624,8 @@ form.dir-form div.dir-search {
 	width: 45%;
 	margin: 0 0 25px 0;
 }
-
+/* Main navigation
+*******************/
 .primary-navigation {
 	text-transform: none;
 	margin-top:0;
@@ -1668,7 +1673,9 @@ form.dir-form div.dir-search {
 			padding:0 1em;
 			line-height: 3.2;
 			text-transform: none;
-			&:hover{background-color: @graydark;}
+			&:hover{
+				//background-color: @graydark;
+			}
 		}
 	}
 	.menu-item-13 { //Members nav link
@@ -1694,7 +1701,7 @@ form.dir-form div.dir-search {
 			position: relative;
 			a {
 			color: @white;
-			margin:0 1em;
+			//margin:0 1em;
 			line-height: 3;
 		}
 	}
@@ -1707,15 +1714,16 @@ form.dir-form div.dir-search {
 			.border-radius(50%);
 			color: @black;
 			padding: 0 6px;
-			border:solid 1px @white;
+			margin:0 8px;
+			//border:solid 1px @white;
 			&.alert {
-				background-color: @ccgreen;
+				background-color: @ccblue;
 				color:@white;
 				
 				}
 			}
 			.bp-notification-list {
-			margin: 12px 0 0 -1px;
+			margin: 26px 0 0 -1px;
 			padding: 6px 0;
 			-webkit-box-shadow: 0 4px 4px rgba(0,0,0,0.2);
 			box-shadow: 0 4px 4px rgba(0,0,0,0.2);
@@ -1743,10 +1751,95 @@ form.dir-form div.dir-search {
 			display: inline-block;
 			right:-1px;
 			top:12px;
-			min-width: 600%;
+			min-width: 800%;
+			a { margin:0;}
 			}
 		}	
 		}
+	}
+//IE fixes
+.ie8 .primary-navigation .secondary .bp-notifications .bp-notification-list {
+			margin-top:12px;
+}
+
+/**
+ * Search
+ */
+#cc-primary-search #cc-navbar-search {
+	height: 32px;
+	padding: 0 2px;
+	.cc-nav-input {
+		//font: 13px/24px sans-serif;
+		height: 32px;
+		width: 30px;
+		border: none;
+		padding: 0 3px 0 26px;
+		margin: 0;
+		color: @black;
+		//text-shadow: #444 0px -1px 0px;
+		background-color: rgba( 255, 255, 255, 0 );
+		background-image: url(img/searchx18.png);
+		background-position: 4px 8px;
+		background-repeat: no-repeat;
+		outline: none;
+		cursor: pointer;
+
+		-webkit-border-radius: 3px;
+		border-radius: 3px;
+
+		-webkit-box-shadow: none;
+		box-shadow: none;
+
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		box-sizing: border-box;
+
+		-webkit-transition-duration: 400ms;
+		-webkit-transition-property: width, background;
+		-webkit-transition-timing-function: ease;
+		-moz-transition-duration: 400ms;
+		-moz-transition-property: width, background;
+		-moz-transition-timing-function: ease;
+		-o-transition-duration: 400ms;
+		-o-transition-property: width, background;
+		-o-transition-timing-function: ease;
+		transition-duration: 400ms;
+		transition-property: width, background;
+		transition-timing-function: ease;
+		&:focus {
+			color: @graydark;
+			//text-shadow: 0 1px 0 #fff;
+			width: 200px;
+			background-color: rgba( 255, 255, 255, 0.9 );
+			cursor: text;
+		}
+	}
+	.cc-navbar-search-button {
+		display: none;
+	}
+}
+.ie7 #cc-primary-search #cc-navbar-search .cc-nav-input {
+	margin-top: 1px;
+	width: 150px;
+	line-height: 32px;
+}
+.ie8 #cc-primary-search #cc-navbar-search .cc-nav-input {
+	background-color: @black;
+	line-height: 32px;
+	&:focus {
+		background-color: @white;
+	}
+}
+
+/* Two rules to ensure browser recognition */
+#cc-primary-search #cc-navbar-search .cc-nav-input:-webkit-input-placeholder {
+	//color: #ddd;
+}
+
+#cc-primary-search #cc-navbar-search .cc-nav-input:-moz-placeholder {
+	//color: #ddd;
+}
 
 	
 //even/odd row coloring
@@ -1758,7 +1851,7 @@ form.dir-form div.dir-search {
 		background-color: desaturate(lighten(@ccblue, 55%), 50%);
 	}
 }
-}
+
 
 //Registration page 
 //over-ride the float:right on the registration submit button
@@ -1807,10 +1900,32 @@ form.dir-form div.dir-search {
 	padding-left: 2%;
 	float: left;
 	border: 1px solid #CCC;
+}
+#colophon {
+	max-width:100%;
+	background-color: @graymid;
+	overflow: auto;
+	.footer-nav {
+		width: 100%;
+		overflow: auto;
+		.font-size(1);
+		margin-bottom: 1em;
+		li {
+			float: left;
+			margin-right: 1em;
+		}
 
+	}
+}
+.page-width {
+	max-width: 68.5714rem;
+	padding: 0 2.85714rem;
+	margin:0 auto;
+	overflow: auto;
+	//border: 1px solid #FFF;
 }
 #buddypress div.item-list-tabs ul li {
-  float: none;
+ // float: none;
 }
 
 //GROUPS

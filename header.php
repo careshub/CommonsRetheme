@@ -63,7 +63,14 @@
 				?>
 			</ul>
 			<ul class="secondary">
-				<li><a href="#">Search</a></li>
+				<li id="cc-primary-search" class="expanding-search">
+					<div class="" tabindex="-1">
+					<form id="cc-navbar-search" method="get" action="<?php home_url('/'); ?>">
+					<input id="cc-navbar-search-text" class="cc-nav-input" type="text" maxlength="150" value="" name="s">
+					<input class="cc-navbar-search-button" type="submit" value="Search">
+					</form>
+					</div>
+				</li>
 				<li>
 				<?php if (is_user_logged_in()) { //show user info if logged in
 					echo bp_core_get_userlink( bp_loggedin_user_id() ); 

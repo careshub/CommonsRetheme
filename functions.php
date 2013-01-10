@@ -101,3 +101,25 @@ function print_list($notifications,$count){
 	return $output;
 }
 
+/**
+ * Register widgetized area and update sidebar with default widgets
+ */
+ 
+function ccommons_widgets_init() {
+    
+register_sidebar( array (
+        'name' => __( 'footer-nav', 'ccommons' ),
+        'id' => 'footer-nav',
+        'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+        'after_widget' => "</nav>",
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+        'description' => __( 'Footer Navigation Links', 'ccommons' )
+    ) );
+      
+}
+//add_action( 'init', 'ccommons_widgets_init' );
+
+if ( function_exists( 'register_nav_menu' ) ) {
+	register_nav_menu( 'footer-nav', 'Footer Navigation' );
+}
