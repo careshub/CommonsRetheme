@@ -12,7 +12,7 @@
 <?php if ( bp_is_my_profile() ) : ?>
 
 	<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
-		<ul>
+		<ul class="nav-tabs">
 
 			<?php bp_get_options_nav(); ?>
 

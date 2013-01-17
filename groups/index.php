@@ -18,7 +18,7 @@ get_header( 'buddypress' ); ?>
 
 		<form action="" method="post" id="groups-directory-form" class="dir-form">
 
-			<h3><?php _e( 'Groups Directory', 'buddypress' ); ?><?php if ( is_user_logged_in() && bp_user_can_create_groups() ) : ?> &nbsp;<a class="button" href="<?php echo trailingslashit( bp_get_root_domain() . '/' . bp_get_groups_root_slug() . '/create' ); ?>"><?php _e( 'Create a Group', 'buddypress' ); ?></a><?php endif; ?></h3>
+			<h1 class="view-title"><?php _e( 'Groups Directory', 'buddypress' ); ?><?php if ( is_user_logged_in() && bp_user_can_create_groups() ) : ?> &nbsp;<a class="button" href="<?php echo trailingslashit( bp_get_root_domain() . '/' . bp_get_groups_root_slug() . '/create' ); ?>"><?php _e( 'Create a Group', 'buddypress' ); ?></a><?php endif; ?></h1>
 
 			<?php do_action( 'bp_before_directory_groups_content' ); ?>
 
@@ -31,7 +31,7 @@ get_header( 'buddypress' ); ?>
 			<?php do_action( 'template_notices' ); ?>
 
 			<div class="item-list-tabs" role="navigation">
-				<ul>
+				<ul class="nav-tabs">
 					<li class="selected" id="groups-all"><a href="<?php echo trailingslashit( bp_get_root_domain() . '/' . bp_get_groups_root_slug() ); ?>"><?php printf( __( 'All Groups <span>%s</span>', 'buddypress' ), bp_get_total_group_count() ); ?></a></li>
 
 					<?php if ( is_user_logged_in() && bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ) : ?>
@@ -87,6 +87,12 @@ get_header( 'buddypress' ); ?>
 
 	<?php do_action( 'bp_after_directory_groups_page' ); ?>
 
-<?php //get_sidebar( 'buddypress' ); ?>
+<?php 
+// $class_string = get_body_class();
+// if (!in_array("full-width",$class_string)) {
+// get_sidebar( 'buddypress' ); 
+// } 
+get_sidebar( 'groups' );
+?>
 <?php get_footer( 'buddypress' ); ?>
 

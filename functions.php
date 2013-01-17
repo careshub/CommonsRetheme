@@ -107,19 +107,87 @@ function print_list($notifications,$count){
  
 function ccommons_widgets_init() {
     
+// register_sidebar( array (
+//         'name' => __( 'footer-nav', 'ccommons' ),
+//         'id' => 'footer-nav',
+//         'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+//         'after_widget' => "</nav>",
+//         'before_title' => '<h3 class="widget-title">',
+//         'after_title' => '</h3>',
+//         'description' => __( 'Footer Navigation Links', 'ccommons' )
+//     ) );
+
 register_sidebar( array (
-        'name' => __( 'footer-nav', 'ccommons' ),
-        'id' => 'footer-nav',
+        'name' => __( 'Groups sidebar', 'ccommons' ),
+        'id' => 'groups-sidebar',
         'before_widget' => '<nav id="%1$s" class="widget %2$s">',
         'after_widget' => "</nav>",
         'before_title' => '<h3 class="widget-title">',
         'after_title' => '</h3>',
-        'description' => __( 'Footer Navigation Links', 'ccommons' )
+        'description' => __( 'Group page sub nav sidebar', 'ccommons' )
+    ) );
+
+register_sidebar( array (
+        'name' => __( 'Single group sidebar', 'ccommons' ),
+        'id' => 'groups-single-sidebar',
+        'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+        'after_widget' => "</nav>",
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+        'description' => __( 'Single group page sub nav sidebar', 'ccommons' )
+    ) );
+
+register_sidebar( array (
+        'name' => __( 'Members sidebar', 'ccommons' ),
+        'id' => 'members-sidebar',
+        'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+        'after_widget' => "</nav>",
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+        'description' => __( 'Members page sub nav sidebar', 'ccommons' )
+    ) );
+
+register_sidebar( array (
+        'name' => __( 'Single Member sidebar', 'ccommons' ),
+        'id' => 'members-single-sidebar',
+        'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+        'after_widget' => "</nav>",
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+        'description' => __( 'Individual member page sub nav sidebar', 'ccommons' )
     ) );
       
 }
-//add_action( 'init', 'ccommons_widgets_init' );
+add_action( 'init', 'ccommons_widgets_init' );
 
 if ( function_exists( 'register_nav_menu' ) ) {
 	register_nav_menu( 'footer-nav', 'Footer Navigation' );
 }
+
+// Filters Nav Menu output by adding 'menu-item-{page slug}' to menu li classes
+function add_slug_class_to_menu_item($output){
+	$ps = get_option('permalink_structure');
+	if(!empty($ps)){
+		$idstr = preg_match_all('/<li id="menu-item-(\d+)/', $output, $matches);
+		foreach($matches[1] as $mid){
+			$id = get_post_meta($mid, '_menu_item_object_id', true);
+			$slug = basename(get_permalink($id));
+			$output = preg_replace('/menu-item-'.$mid.'">/', 'menu-item-'.$mid.' menu-item-'.$slug.'">', $output, 1);
+		}
+	}
+	return $output;
+}
+add_filter('wp_nav_menu', 'add_slug_class_to_menu_item');
+
+// Filter classes added to body tag to add "buddypress" if BuddyPress is active
+function add_buddypress_to_body_tag_classes($classes) {
+	// add 'class-name' to the $classes array
+	if ( function_exists( 'bp_is_blog_page' ) ) {	
+		if ( !bp_is_blog_page() ) {
+			$classes[] = 'buddypress';
+		}
+	}
+	// return the $classes array
+	return $classes;
+}
+add_filter('body_class','add_buddypress_to_body_tag_classes');

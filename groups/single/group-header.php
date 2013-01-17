@@ -29,13 +29,13 @@ do_action( 'bp_before_group_header' );
 
 </div><!-- #item-actions -->
 
-<div id="item-header-avatar">
+<!-- <div id="item-header-avatar">
 	<a href="<?php bp_group_permalink(); ?>" title="<?php bp_group_name(); ?>">
 
 		<?php bp_group_avatar(); ?>
 
 	</a>
-</div><!-- #item-header-avatar -->
+</div> --><!-- #item-header-avatar -->
 
 <div id="item-header-content">
 	<h2><a href="<?php bp_group_permalink(); ?>" title="<?php bp_group_name(); ?>"><?php bp_group_name(); ?></a></h2>

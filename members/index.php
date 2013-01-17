@@ -29,7 +29,7 @@ get_header( 'buddypress' ); ?>
 			</div><!-- #members-dir-search -->
 
 			<div class="item-list-tabs" role="navigation">
-				<ul>
+				<ul class="nav-tabs">
 					<li class="selected" id="members-all"><a href="<?php echo trailingslashit( bp_get_root_domain() . '/' . bp_get_members_root_slug() ); ?>"><?php printf( __( 'All Members <span>%s</span>', 'buddypress' ), bp_get_total_member_count() ); ?></a></li>
 
 					<?php if ( is_user_logged_in() && bp_is_active( 'friends' ) && bp_get_total_friend_count( bp_loggedin_user_id() ) ) : ?>
@@ -89,5 +89,5 @@ get_header( 'buddypress' ); ?>
 
 	<?php do_action( 'bp_after_directory_members_page' ); ?>
 
-<?php get_sidebar( 'buddypress' ); ?>
+<?php get_sidebar( 'members' ); ?>
 <?php get_footer( 'buddypress' ); ?>

@@ -20,7 +20,7 @@ get_header( 'buddypress' ); ?>
 
 			</div><!-- #item-header -->
 
-			<div id="item-nav">
+			<!-- <div id="item-nav">
 				<div class="item-list-tabs no-ajax" id="object-nav" role="navigation">
 					<ul>
 
@@ -30,7 +30,7 @@ get_header( 'buddypress' ); ?>
 
 					</ul>
 				</div>
-			</div><!-- #item-nav -->
+			</div> --><!-- #item-nav -->
 
 			<div id="item-body">
 
@@ -75,5 +75,5 @@ get_header( 'buddypress' ); ?>
 		</div><!-- .padder -->
 	</div><!-- #content -->
 
-<?php get_sidebar( 'buddypress' ); ?>
+<?php get_sidebar( 'members-single' ); ?>
 <?php get_footer( 'buddypress' ); ?>
