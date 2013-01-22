@@ -21,7 +21,7 @@ Tags:		bbpress, responsive, mobile, forum
     -moz-border-radius: @radius;
     border-radius: @radius;
 }
-.border-radius-variable(@topleft: 5px, @topright: 5px, @bottomleft: 5px, @bottomright: 5px) {
+.border-radius-variable(@topleft: 5px, @topright: 5px, @bottomright: 5px, @bottomleft: 5px) {
     -webkit-border-radius: @topleft @topright @bottomright @bottomleft;
     -moz-border-radius: @topleft @topright @bottomright @bottomleft;
     border-radius: @topleft @topright @bottomright @bottomleft;
@@ -29,6 +29,12 @@ Tags:		bbpress, responsive, mobile, forum
 
 .outliner(){
 	//border: 1px solid #FAB;
+}
+
+.drop-shadow(@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+	-webkit-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+	-moz-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+	box-shadow:		@x @y @blur @spread rgba(0, 0, 0, @alpha);
 }
 
 
@@ -81,7 +87,7 @@ form#whats-new-form #whats-new-content {
 }
 form#whats-new-form textarea {
 	background: #fff;
-	border: 1px inset #ccc;
+	border: 1px solid #ccc;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
@@ -254,6 +260,7 @@ body.activity-permalink .activity-content blockquote {
 }
 .activity-inner > p {
 	word-wrap: break-word;
+	line-height: 1.5;
 }
 .activity-inner > .activity-inner {
 	margin: 0 !important;
@@ -491,6 +498,9 @@ div.activity-comments form div.ac-reply-content {
 /*--------------------------------------------------------------
 3 - Directories - Members, Groups, Blogs, Forums
 --------------------------------------------------------------*/
+form.dir-form {
+	margin-bottom: 2em;
+}
 div.dir-search {
 	float: right;
 	margin: -39px 0 0 0;
@@ -561,11 +571,11 @@ ul.button-nav li.current a {
 .standard-form select,
 .standard-form input[type=password],
 .dir-search input[type=text] {
-	border: 1px inset #ccc;
+	//border: 1px inset #ccc;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
-	color: #888;
+	color: @graydark;
 	font: inherit;
 	font-size: 14px;
 	padding: 6px;
@@ -584,7 +594,7 @@ ul.button-nav li.current a {
 }
 .standard-form div.checkbox label,
 .standard-form div.radio label {
-	color: #888;
+	color: @black;
 	font-size: 14px;
 	font-weight: normal;
 	margin: 5px 0 0 0;
@@ -1071,7 +1081,7 @@ div#item-header span.activity,
 div#item-header h2 span.highlight {
 	font-size: 11px;
 	font-weight: normal;
-	line-height: 170%;
+	//line-height: 170%;
 	margin-bottom: 7px;
 	vertical-align: middle;
 }
@@ -1096,10 +1106,13 @@ div#item-header h2 span.highlight span {
 }
 div#item-header div#item-meta {
 	font-size: 14px;
-	color: #aaa;
+	color: @graydark;
 	overflow: hidden;
 	margin: 15px 0 5px 0;
 	padding-bottom: 10px;
+	p {
+		line-height: 1.5;
+	}
 }
 div#item-header div#item-actions {
 	float: right;
@@ -1109,6 +1122,7 @@ div#item-header div#item-actions {
 }
 div#item-header div#item-actions h3 {
 	font-size: 12px;
+	color: @graydark;
 	margin: 0 0 5px 0;
 }
 div#item-header ul {
@@ -1208,7 +1222,7 @@ div.item-list-tabs {
 	}
 }
 div.item-list-tabs#subnav {
-	border-bottom: 1px solid @graymid;
+	//border-bottom: 1px solid @graymid;
 	ul li {
 		// margin: 0 1em 0 0;
 		//width:auto;
@@ -1232,6 +1246,7 @@ div.item-list-tabs ul li span {
 	display: block;
 	padding: 5px 10px;
 	text-decoration: none;
+	line-height: 20px;
 }
 div.item-list-tabs ul li a span {
 	background: @ccgreen;
@@ -1276,7 +1291,7 @@ div.item-list-tabs#subnav {
 	//border-bottom: 1px solid @graylight;
 	//margin: -15px -19px 15px -19px;
 	margin-left: 8px;
-	min-height: 35px;
+	//min-height: 35px;
 	overflow: hidden;
 }
 div.item-list-tabs ul li.feed a {
@@ -1358,14 +1373,22 @@ div#message-thread div.message-options {
 10 - Pagination
 --------------------------------------------------------------*/
 .padder div.pagination {
-	background: @graylight;
+	//background: @graylight;
 	border: none;
-	color: @graydark;
+	color: lighten(@graydark,12);
 	//font-size: 11px;
 	height: 19px;
 	//margin: -20px -19px 0px -19px;
-	padding: 8px 20px;
+	padding: 6px 20px;
 	position: relative;
+	.font-size(.9);
+	font-style: italic;
+}
+#pag-top {
+	border-bottom: 1px solid @graylight;
+}
+#pag-bottom {
+	//border-top: 1px solid @graylight;
 }
 .padder div.pagination .pag-count {
 	float: left;
@@ -1454,7 +1477,7 @@ ul.item-list {
  */
 
 div#item-header {
-	padding-bottom: 15px;
+	padding-bottom: 10px;
 	overflow: hidden;
 }
 	div#item-header div#item-header-avatar {
@@ -1490,7 +1513,8 @@ form#whats-new-form {
 
 	form#whats-new-form #whats-new-textarea {
 		padding: 8px;
-		border: 1px inset #ccc;
+		border: 1px solid #ccc;
+		.border-radius(3px);
 		margin-bottom: 10px;
 	}
 	form#whats-new-form textarea {
@@ -1606,7 +1630,7 @@ div.activity-comments form {
 
 form.standard-form label, form.standard-form span.label {
 	display: block;
-	margin: 15px 0 5px 0;
+	margin: 35px 0 5px 0;
 }
 	form.standard-form div.checkbox label,
 	form.standard-form div.radio label {
@@ -1634,9 +1658,9 @@ form#send-invite-form {
 /* Directory search forms */
 
 form.dir-form div.dir-search {
-	float: right;
-	width: 45%;
-	margin: 0 0 25px 0;
+	//float: right;
+	//width: 45%;
+	//margin: 0 0 25px 0;
 }
 /* Main navigation
 *******************/
@@ -1902,7 +1926,22 @@ form.dir-form div.dir-search {
 				margin-left: -3.5em;
 				//margin: 0 1.5em;
 				&.selected {
-					background-color: lighten(@ccblue, 62);
+					background-color: #FFF;
+					.border-radius-variable(4px, 0, 0, 4px);
+					margin-right: -1px;
+					background-color: #FFFFFF;
+				    border-color: #CCCCCC #FFFFFF #CCCCCC @ccgreen;
+				    border-radius: 4px 0 0 4px;
+				    border-style: solid;
+				    border-width: 1px;
+				    margin-right: -1px;
+				    //padding-left: 5.3em;
+				    .drop-shadow(-2px, 1px, 2px, 0, 0.1);
+				    font-weight: 700;
+				    a {
+				    	color: @graydark;
+				    	span {font-weight: 400;}	
+				    }
 				}
 				a { text-decoration: none; }
 				span { 
@@ -1983,8 +2022,10 @@ form.dir-form div.dir-search {
 	}
 }
 // override 2012 .site defs
-.site {
-	overflow: visible;
+body {
+	.site {
+		overflow: visible;
+	}
 }
 .page-width {
 	max-width: 68.5714rem;
@@ -2005,6 +2046,10 @@ form.dir-form div.dir-search {
 		width: 75.4%;
 		//padding-left: 2%;
 		//border-left: 1px solid #CCC;
+		#item-body p {
+			line-height: 1.71429;
+		    margin: 0 0 1.71429rem;
+		}
 	}
 }
 
@@ -2037,7 +2082,7 @@ form.dir-form div.dir-search {
   line-height: 14px;
 }
 .nav-tabs {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid @graymid;
 }
 .nav-tabs > li {
   margin-bottom: -1px;
@@ -2052,7 +2097,7 @@ form.dir-form div.dir-search {
   border-radius: 4px 4px 0 0;
 }
 .nav-tabs > li > a:hover {
-  border-color: #eeeeee #eeeeee #dddddd;
+  border-color: @graylight @graylight @graymid;
 }
 .nav-tabs > .selected > a,
 .nav-tabs > .current > a,
@@ -2063,4 +2108,11 @@ form.dir-form div.dir-search {
   border: 1px solid @graymid;
   border-bottom-color: transparent;
   cursor: default;
+}
+
+//Headers
+#content {
+	h1, h2, h3, h4, h5, h6 {
+		margin: 1em 0;
+	}
 }

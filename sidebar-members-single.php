@@ -21,7 +21,7 @@
 
 			</div><!-- #item-buttons -->
 
-				<?php /* Show Quick Menu for own Profile page */ if ( bp_is_my_profile() ) : ?>
+			<!-- 	<?php /* Show Quick Menu for own Profile page */ if ( bp_is_my_profile() ) : ?>
 		    <div id="profile-nav-menu">
 		        <?php $userLink = bp_get_loggedin_user_link();?>
 		        <ul>
@@ -39,7 +39,7 @@
 		            </li>
 		        </ul>
 		    </div>  
-			<?php endif; ?>
+			<?php endif; ?> -->
 		</div>
 		<!-- Profile Tabs -->
 		<div class="sidebar-activity-tabs no-ajax" id="object-nav" role="navigation">

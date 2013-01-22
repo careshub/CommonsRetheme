@@ -58,6 +58,7 @@ wp_enqueue_style( 'custom_childtheme_stylesheet' );
 
 
 function notifications_counter() {
+	if (function_exists(bp_is_active)) {
 	global $bp;
 
 	//Do nothing if the user isn't logged in
@@ -76,13 +77,14 @@ function notifications_counter() {
 	$output .='</li>';
 
 	echo $output;
+	}
 
 }
 
 function print_list($notifications,$count){
     $output = '<div class="pop-sub-wrapper"><ul class="bp-notification-list">';
         
-	if ( $notifications ) {
+	if ( $count !== 0 ) {
 		$counter = 0;
 		for ( $i = 0; $i < $count; $i++ ) {
 		$alt = ( 0 == $counter % 2 ) ? ' class="alt"' : '';
