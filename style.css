@@ -522,7 +522,7 @@ ul.button-nav li.current a {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  color: #666666;
+  color: #454545;
   font: inherit;
   font-size: 14px;
   padding: 6px;
@@ -583,11 +583,6 @@ div#signup-avatar img {
 }
 .standard-form#send-reply textarea {
   width: 97.5%;
-}
-.standard-form p.description {
-  color: #888;
-  font-size: 11px;
-  margin: 5px 0;
 }
 .standard-form div.submit {
   clear: both;
@@ -681,14 +676,18 @@ div.generic-button a,
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  color: #777;
+  color: #008eaa;
   cursor: pointer;
-  font: normal 12px/20px Arial, Tahoma, Verdana, sans-serif;
+  font-size: 13.5px;
+  font-size: 0.9rem;
   outline: none;
-  padding: 4px 10px;
+  padding: .3em .6em;
   text-align: center;
   text-decoration: none;
   line-height: 14px;
+}
+ul.button-nav li a {
+  padding: 4px 10px;
 }
 button:hover,
 a.button:hover,
@@ -1121,7 +1120,7 @@ div#item-header h2 span.highlight span {
 }
 div#item-header div#item-meta {
   font-size: 14px;
-  color: #666666;
+  color: #454545;
   overflow: hidden;
   margin: 15px 0 5px 0;
   padding-bottom: 10px;
@@ -1137,7 +1136,7 @@ div#item-header div#item-actions {
 }
 div#item-header div#item-actions h3 {
   font-size: 12px;
-  color: #666666;
+  color: #454545;
   margin: 0 0 5px 0;
 }
 div#item-header ul {
@@ -1170,7 +1169,7 @@ ul.item-list {
   width: 100%;
 }
 ul.item-list li {
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid #dedede;
   padding: 15px 0;
   position: relative;
 }
@@ -1211,6 +1210,9 @@ ul.item-list li div.meta {
   color: #888;
   font-size: 11px;
   margin-top: 10px;
+}
+ul.item-list li h5 {
+  clear: none;
 }
 ul.item-list li h5 span.small {
   float: right;
@@ -1359,7 +1361,7 @@ div#message-thread div.message-options {
 --------------------------------------------------------------*/
 .padder div.pagination {
   border: none;
-  color: #858585;
+  color: #646464;
   height: 19px;
   padding: 6px 20px;
   position: relative;
@@ -1368,7 +1370,7 @@ div#message-thread div.message-options {
   font-style: italic;
 }
 #pag-top {
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid #dedede;
 }
 .padder div.pagination .pag-count {
   float: left;
@@ -1397,7 +1399,6 @@ div#message-thread div.message-options {
  * Navigation tabs
  */
 div.item-list-tabs {
-  margin: 15px 0;
   padding: 5px 0;
   clear: both;
 }
@@ -1626,6 +1627,15 @@ div#invite-list {
 }
 .primary-navigation li.current-menu-item {
   font-weight: 700;
+  margin-bottom: -8px;
+  padding-bottom: 8px;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+  -webkit-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 .primary-navigation li a,
 .primary-navigation li span {
@@ -1667,7 +1677,7 @@ div#invite-list {
 .primary-navigation .secondary .bp-notifications span {
   display: inline;
   line-height: 3;
-  background-color: #dddddd;
+  background-color: #aaaaaa;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -1759,7 +1769,7 @@ div#invite-list {
   transition-timing-function: ease;
 }
 #cc-primary-search #cc-navbar-search .cc-nav-input:focus {
-  color: #666666;
+  color: #454545;
   width: 200px;
   background-color: rgba(255, 255, 255, 0.9);
   cursor: text;
@@ -1780,9 +1790,6 @@ div#invite-list {
   background-color: #ffffff;
 }
 /* Two rules to ensure browser recognition */
-.alt:hover {
-  background-color: #d2ebf0;
-}
 .padder {
   margin: 2em 0;
   float: left;
@@ -1794,17 +1801,17 @@ div#invite-list {
 .buddypress #secondary {
   float: left;
   width: 22%;
-  border-right: 1px solid #dddddd;
+  border-right: 1px solid #aaaaaa;
 }
 .buddypress #secondary .sidebar-activity-tabs {
   margin-top: 2em;
+  border-bottom: 1px solid #dedede;
 }
 .buddypress #secondary .sidebar-activity-tabs ul {
   margin: 0 0 2em 0;
   padding: 0;
 }
 .buddypress #secondary .sidebar-activity-tabs ul li {
-  padding: .8em 1.5em .8em 6em;
   margin-left: -3.5em;
 }
 .buddypress #secondary .sidebar-activity-tabs ul li.selected {
@@ -1812,7 +1819,7 @@ div#invite-list {
   -webkit-border-radius: 4px 0 0 4px;
   -moz-border-radius: 4px 0 0 4px;
   background-color: #FFFFFF;
-  border-color: #cccccc #ffffff #cccccc #869b3c;
+  border-color: #aaaaaa #ffffff #aaaaaa #aaaaaa;
   border-radius: 4px 0 0 4px;
   border-style: solid;
   border-width: 1px;
@@ -1823,17 +1830,19 @@ div#invite-list {
   font-weight: 700;
 }
 .buddypress #secondary .sidebar-activity-tabs ul li.selected a {
-  color: #666666;
+  color: #454545;
 }
 .buddypress #secondary .sidebar-activity-tabs ul li.selected a span {
   font-weight: 400;
 }
 .buddypress #secondary .sidebar-activity-tabs ul li a {
   text-decoration: none;
+  display: block;
+  padding: 1em 1.5em 1em 6em;
 }
 .buddypress #secondary .sidebar-activity-tabs ul li span {
   display: inline;
-  background-color: #dddddd;
+  background-color: #aaaaaa;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -1844,6 +1853,9 @@ div#invite-list {
 .buddypress #secondary .sidebar-activity-tabs ul li span.alert {
   background-color: #00b0d3;
   color: #ffffff;
+}
+.buddypress #secondary .widget {
+  margin-top: 1.5em;
 }
 #item-header {
   width: 100%;
@@ -1868,7 +1880,7 @@ div#invite-list {
 }
 #colophon {
   max-width: 100%;
-  background-color: #dddddd;
+  background-color: #aaaaaa;
   overflow: auto;
 }
 #colophon .footer-nav {
@@ -1882,14 +1894,31 @@ div#invite-list {
   float: left;
   margin-right: 1em;
 }
+.buddypress #content #item-body .field-visibility-settings-notoggle,
+.buddypress #content #item-body .field-visibility-settings-toggle,
+.buddypress #content #item-body .standard-form .description {
+  font-size: 13.5px;
+  font-size: 0.9rem;
+  color: #454545;
+  font-style: italic;
+  margin: .3em 0;
+}
 body .site {
   overflow: visible;
+}
+a {
+  color: #008eaa;
 }
 .page-width {
   max-width: 68.5714rem;
   padding: 0 2.85714rem;
   margin: 0 auto;
   overflow: auto;
+}
+caption,
+th,
+td {
+  padding: 4px 6px;
 }
 .buddypress .site-content {
   width: 100%;
@@ -1898,9 +1927,27 @@ body .site {
   float: right;
   width: 75.4%;
 }
-.buddypress #content #item-body p {
+.buddypress #content #item-body p,
+.buddypress #content .main-column p,
+.buddypress #content .page p {
   line-height: 1.71429;
   margin: 0 0 1.71429rem;
+}
+.buddypress #content h2 {
+  font-size: 22.5px;
+  font-size: 1.5rem;
+}
+.buddypress #content h3 {
+  font-size: 19.5px;
+  font-size: 1.3rem;
+}
+.buddypress #content h4 {
+  font-size: 16.5px;
+  font-size: 1.1rem;
+}
+.buddypress #content h5 {
+  font-size: 15px;
+  font-size: 1rem;
 }
 .nav-tabs,
 .nav-pills {
@@ -1930,7 +1977,7 @@ body .site {
   line-height: 14px;
 }
 .nav-tabs {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #aaaaaa;
 }
 .nav-tabs > li {
   margin-bottom: -1px;
@@ -1945,15 +1992,15 @@ body .site {
   border-radius: 4px 4px 0 0;
 }
 .nav-tabs > li > a:hover {
-  border-color: #eaeaea #eaeaea #dddddd;
+  border-color: #dedede #dedede #aaaaaa;
 }
 .nav-tabs > .selected > a,
 .nav-tabs > .current > a,
 .nav-tabs > .selected > a:hover,
 .nav-tabs > .current > a:hover {
-  color: #666666;
+  color: #454545;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
+  border: 1px solid #aaaaaa;
   border-bottom-color: transparent;
   cursor: default;
 }
