@@ -166,7 +166,8 @@ if ( function_exists( 'register_nav_menu' ) ) {
 	register_nav_menu( 'footer-nav', 'Footer Navigation' );
 }
 
-// Filters Nav Menu output by adding 'menu-item-{page slug}' to menu li classes
+/* Filters Nav Menu output by adding 'menu-item-{page slug}' to menu li classes
+***********/
 function add_slug_class_to_menu_item($output){
 	$ps = get_option('permalink_structure');
 	if(!empty($ps)){
@@ -181,7 +182,8 @@ function add_slug_class_to_menu_item($output){
 }
 add_filter('wp_nav_menu', 'add_slug_class_to_menu_item');
 
-// Filter classes added to body tag to add "buddypress" if BuddyPress is active
+/* Filter classes added to body tag to add "buddypress" if BuddyPress is active
+***************/
 function add_buddypress_to_body_tag_classes($classes) {
 	// add 'class-name' to the $classes array
 	if ( function_exists( 'bp_is_blog_page' ) ) {	
@@ -195,7 +197,8 @@ function add_buddypress_to_body_tag_classes($classes) {
 add_filter('body_class','add_buddypress_to_body_tag_classes');
 
 
-//Remove Gravatars for testing on localhost
+/*Remove Gravatars for testing on localhost
+*/
 function bp_remove_gravatar ($image, $params, $item_id, $avatar_dir, $css_id, $html_width, $html_height, $avatar_folder_url, $avatar_folder_dir) {
     //$default = get_stylesheet_directory_uri() .'/_inc/images/bp_default_avatar.jpg';
     $default = '/wp-content/plugins/buddypress/bp-core/images/mystery-man.jpg';
@@ -223,3 +226,40 @@ function bp_remove_signup_gravatar ($image) {
     }
 }
 add_filter('bp_get_signup_avatar', 'bp_remove_signup_gravatar', 1, 1 );
+
+/* Login window changes - adding CC logo and link 
+***************/
+function cc_custom_login_logo() {
+    echo "
+    <style>
+    body.login #login h1 a {
+        background: url('".get_stylesheet_directory_uri()."/img/ccommons-logo-login.png') no-repeat scroll center top transparent !important;
+        height: 90px;
+        width: 323px;
+    }
+    </style>
+    ";
+}
+add_action('login_head', 'cc_custom_login_logo');
+
+function change_wp_login_url() {
+    return get_bloginfo('url');  // OR ECHO YOUR OWN URL
+}
+function change_wp_login_title() {
+    return get_option('blogname'); // OR ECHO YOUR OWN ALT TEXT
+}
+add_filter('login_headerurl', 'change_wp_login_url');
+add_filter('login_headertitle', 'change_wp_login_title');
+
+/* Javascript library enqueues
+**************/
+function localscroll_js_load(){
+
+wp_register_script('scrollTo', get_stylesheet_directory_uri().'/js/jquery.scrollTo-1.4.2-min.js">', array('jquery'), '1.4.2' ); 
+wp_enqueue_script('scrollTo'); 
+wp_register_script('localScroll', get_stylesheet_directory_uri().'/js/jquery.localscroll-1.2.7-min.js">', array('jquery', 'scrollTo'), '1.2.7' );  
+wp_enqueue_script('localScroll'); 
+
+}
+add_action('wp_enqueue_scripts', 'localscroll_js_load');
+

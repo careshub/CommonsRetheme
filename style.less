@@ -11,7 +11,7 @@ Tags:		bbpress, responsive, mobile, forum
 // LESS Mixins  
 .font-size(@sizeValue){
   @remValue: @sizeValue;
-  @pxValue: (@sizeValue * 15);
+  @pxValue: (@sizeValue * 14);
   font-size: ~"@{pxValue}px"; 
   font-size: ~"@{remValue}rem";
 }
@@ -37,6 +37,26 @@ Tags:		bbpress, responsive, mobile, forum
 	box-shadow:		@x @y @blur @spread rgba(0, 0, 0, @alpha);
 }
 
+.inner-shadow(@x: 0, @y: 0px, @blur: 3px, @spread: 0, @alpha: 0.25) {
+	-webkit-box-shadow: inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+	-moz-box-shadow:    inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+	box-shadow:         inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+.inner-glow(@x: 0, @y: 0px, @blur: 3px, @spread: 0, @color: @ccblue) {
+	-webkit-box-shadow: inset @x @y @blur @spread @color;
+	-moz-box-shadow:    inset @x @y @blur @spread @color;
+	box-shadow:         inset @x @y @blur @spread @color;
+}
+.gradient(@startColor: #eee, @endColor: white) {
+	background-color: @startColor; /* Old browsers */
+	background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, @startColor, @endColor); /* Chrome10+,Safari5.1+ */
+	background: -moz-linear-gradient(top, @startColor, @endColor); /* FF3.6+ */
+	background: -ms-linear-gradient(top, @startColor, @endColor); /* IE10+ */
+	background: -o-linear-gradient(top, @startColor, @endColor); /* Opera 11.10+ */
+	background: linear-gradient(to bottom,  @startColor, @endColor); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@startColor', endColorstr='@endColor',GradientType=0 ); /* IE6-9 */
+}
 
 @ccblue:#008EAA;
 @ccgreen:#869B3C;
@@ -97,6 +117,7 @@ form#whats-new-form textarea {
 	height: 20px;
 	padding: 6px;
 	width: 98%;
+	.inner-shadow();
 }
 form#whats-new-form #whats-new-options select {
 	max-width: 200px;
@@ -506,8 +527,9 @@ div.dir-search {
 	margin: -39px 0 0 0;
 }
 div.dir-search input[type=text] {
-	font-size: 12px;
-	padding: 1px 3px;
+	.font-size(.85);
+	font-style: italic;
+	//padding: 1px 3px;
 }
 
 
@@ -723,10 +745,13 @@ div.generic-button a,
 	//font: normal 12px/20px Arial, Tahoma, Verdana, sans-serif;
 	.font-size(.9);
 	outline: none;
-	padding: .3em .6em;
+	//padding: .3em .6em;
 	text-align: center;
 	text-decoration: none;
 	line-height: 14px;
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
 }
 ul.button-nav li a {padding: 4px 10px;}
 button:hover,
@@ -752,6 +777,7 @@ div.generic-button a:hover,
 	outline: none;
 	text-decoration: none;
 }
+
 
 /*--------------------------------------------------------------
 6 - Ajax Loading
@@ -1672,7 +1698,7 @@ form.dir-form div.dir-search {
 .primary-navigation {
 	text-transform: none;
 	margin-top:0;
-	background-color: @black;
+	background-color: lighten(@black, 5);
 	color:@white;
 	//float: left;
 	width: 100%;
@@ -1683,6 +1709,7 @@ form.dir-form div.dir-search {
 	display: inline-block;
 	//position: fixed;
 	z-index: 100;
+	//.gradient(lighten(@black, 10), @black);
 	a{ display: inline-block;
     	text-decoration: none;
     }
@@ -1693,11 +1720,11 @@ form.dir-form div.dir-search {
 	.brand {
 		float: left;
 		display: inline-block;
-		margin: 4px 0 0 7px;
+		margin: 5px 0 0 7px;
     	
 		a { //home menu item
 		background: url(img/cc_logomark-30x30.png) no-repeat left center;
-		.font-size(1.3);
+		.font-size(1.2);
 		font-weight: 700;
 		//margin-left: 40px;
 		padding-left: 40px;
@@ -1864,6 +1891,7 @@ form.dir-form div.dir-search {
 			width: 200px;
 			background-color: rgba( 255, 255, 255, 0.9 );
 			cursor: text;
+			.inner-glow();
 		}
 	}
 	.cc-navbar-search-button {
@@ -2032,20 +2060,42 @@ form.dir-form div.dir-search {
 }
 #colophon {
 	max-width:100%;
-	background-color: @graymid;
+	background-color: @graylight;
 	overflow: auto;
 	.footer-nav {
 		width: 100%;
 		overflow: auto;
 		.font-size(1);
 		margin-bottom: 1em;
+		padding-bottom: 1em;
+		border-bottom: 1px solid @graymid;
 		li {
 			float: left;
 			margin-right: 1em;
 		}
+		.menu a {
+		font-weight: 700;
+		text-transform: uppercase;
+		text-decoration: none;
+	}
 
 	}
+	.alignright {
+		border-left: 1px solid @graymid;
+		padding-left: 2%;
+		div {
+			margin-bottom: 1.2em;
+		}
+	}
 }
+//override top stroke
+footer[role="contentinfo"] {
+	border-top: 8px solid @ccblue;
+	a {
+		color:@ccblue;
+	}
+}
+
 //BuddyPress signup and profile pages
 .buddypress #content #item-body {
 	.field-visibility-settings-notoggle, .field-visibility-settings-toggle, .standard-form .description {
@@ -2063,6 +2113,12 @@ body {
 }
 a {
 	color: @ccblue;
+}
+input, textarea { 
+	.inner-shadow(); 
+	&:focus{
+		.inner-glow(); 
+	}
 }
 .page-width {
 	max-width: 68.5714rem;
@@ -2100,11 +2156,23 @@ caption, th, td {
 			.font-size(1.1);
 		}
 		h5 {
-			.font-size(1.0);
+			// .font-size(1.0);
+			// color: #636363;
+		 //    //font-size: 0.785714rem;
+		 //    font-weight: bold;
+		 //    line-height: 2.18182;
+		 //    text-transform: uppercase;
 		}
 	}
 }
-
+h5 {
+			.font-size(0.9);
+			color: @graydark;
+		    //font-size: 0.785714rem;
+		    font-weight: 700;
+		    line-height: 2.18182;
+		    text-transform: uppercase;
+		}
 // Twitter Bootstrap nav tabs
 .nav-tabs,
 .nav-pills {

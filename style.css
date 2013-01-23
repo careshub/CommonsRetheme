@@ -52,6 +52,9 @@ form#whats-new-form textarea {
   height: 20px;
   padding: 6px;
   width: 98%;
+  -webkit-box-shadow: inset 0 0px 3px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: inset 0 0px 3px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0px 3px 0 rgba(0, 0, 0, 0.25);
 }
 form#whats-new-form #whats-new-options select {
   max-width: 200px;
@@ -458,8 +461,9 @@ div.dir-search {
   margin: -39px 0 0 0;
 }
 div.dir-search input[type=text] {
-  font-size: 12px;
-  padding: 1px 3px;
+  font-size: 11.9px;
+  font-size: 0.85rem;
+  font-style: italic;
 }
 /*--------------------------------------------------------------
 4 - Errors / Success Messages
@@ -678,13 +682,15 @@ div.generic-button a,
   border-radius: 3px;
   color: #008eaa;
   cursor: pointer;
-  font-size: 13.5px;
+  font-size: 12.6px;
   font-size: 0.9rem;
   outline: none;
-  padding: .3em .6em;
   text-align: center;
   text-decoration: none;
   line-height: 14px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 ul.button-nav li a {
   padding: 4px 10px;
@@ -1365,7 +1371,7 @@ div#message-thread div.message-options {
   height: 19px;
   padding: 6px 20px;
   position: relative;
-  font-size: 13.5px;
+  font-size: 12.6px;
   font-size: 0.9rem;
   font-style: italic;
 }
@@ -1592,7 +1598,7 @@ div#invite-list {
 .primary-navigation {
   text-transform: none;
   margin-top: 0;
-  background-color: #211f1f;
+  background-color: #2e2b2b;
   color: #ffffff;
   width: 100%;
   display: inline-block;
@@ -1609,12 +1615,12 @@ div#invite-list {
 .primary-navigation .brand {
   float: left;
   display: inline-block;
-  margin: 4px 0 0 7px;
+  margin: 5px 0 0 7px;
 }
 .primary-navigation .brand a {
   background: url(img/cc_logomark-30x30.png) no-repeat left center;
-  font-size: 19.5px;
-  font-size: 1.3rem;
+  font-size: 16.8px;
+  font-size: 1.2rem;
   font-weight: 700;
   padding-left: 40px;
   color: #ffffff;
@@ -1709,7 +1715,7 @@ div#invite-list {
   line-height: 26px;
 }
 .primary-navigation .secondary li {
-  font-size: 13.5px;
+  font-size: 12.6px;
   font-size: 0.9rem;
 }
 .primary-navigation .secondary li.bp-notifications:hover {
@@ -1773,6 +1779,9 @@ div#invite-list {
   width: 200px;
   background-color: rgba(255, 255, 255, 0.9);
   cursor: text;
+  -webkit-box-shadow: inset 0 0px 3px 0 #008eaa;
+  -moz-box-shadow: inset 0 0px 3px 0 #008eaa;
+  box-shadow: inset 0 0px 3px 0 #008eaa;
 }
 #cc-primary-search #cc-navbar-search .cc-navbar-search-button {
   display: none;
@@ -1880,24 +1889,44 @@ div#invite-list {
 }
 #colophon {
   max-width: 100%;
-  background-color: #aaaaaa;
+  background-color: #dedede;
   overflow: auto;
 }
 #colophon .footer-nav {
   width: 100%;
   overflow: auto;
-  font-size: 15px;
+  font-size: 14px;
   font-size: 1rem;
   margin-bottom: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #aaaaaa;
 }
 #colophon .footer-nav li {
   float: left;
   margin-right: 1em;
 }
+#colophon .footer-nav .menu a {
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+#colophon .alignright {
+  border-left: 1px solid #aaaaaa;
+  padding-left: 2%;
+}
+#colophon .alignright div {
+  margin-bottom: 1.2em;
+}
+footer[role="contentinfo"] {
+  border-top: 8px solid #008eaa;
+}
+footer[role="contentinfo"] a {
+  color: #008eaa;
+}
 .buddypress #content #item-body .field-visibility-settings-notoggle,
 .buddypress #content #item-body .field-visibility-settings-toggle,
 .buddypress #content #item-body .standard-form .description {
-  font-size: 13.5px;
+  font-size: 12.6px;
   font-size: 0.9rem;
   color: #454545;
   font-style: italic;
@@ -1908,6 +1937,18 @@ body .site {
 }
 a {
   color: #008eaa;
+}
+input,
+textarea {
+  -webkit-box-shadow: inset 0 0px 3px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: inset 0 0px 3px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0px 3px 0 rgba(0, 0, 0, 0.25);
+}
+input:focus,
+textarea:focus {
+  -webkit-box-shadow: inset 0 0px 3px 0 #008eaa;
+  -moz-box-shadow: inset 0 0px 3px 0 #008eaa;
+  box-shadow: inset 0 0px 3px 0 #008eaa;
 }
 .page-width {
   max-width: 68.5714rem;
@@ -1934,20 +1975,24 @@ td {
   margin: 0 0 1.71429rem;
 }
 .buddypress #content h2 {
-  font-size: 22.5px;
+  font-size: 21px;
   font-size: 1.5rem;
 }
 .buddypress #content h3 {
-  font-size: 19.5px;
+  font-size: 18.2px;
   font-size: 1.3rem;
 }
 .buddypress #content h4 {
-  font-size: 16.5px;
+  font-size: 15.400000000000002px;
   font-size: 1.1rem;
 }
-.buddypress #content h5 {
-  font-size: 15px;
-  font-size: 1rem;
+h5 {
+  font-size: 12.6px;
+  font-size: 0.9rem;
+  color: #454545;
+  font-weight: 700;
+  line-height: 2.18182;
+  text-transform: uppercase;
 }
 .nav-tabs,
 .nav-pills {
