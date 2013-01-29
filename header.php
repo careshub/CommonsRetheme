@@ -69,7 +69,7 @@
 				<li id="cc-primary-search" class="expanding-search">
 					<div class="" tabindex="-1">
 					<form id="cc-navbar-search" method="get" action="<?php echo home_url('/'); ?>">
-					<input id="cc-navbar-search-text" class="cc-nav-input" type="text" maxlength="150" value="" name="s">
+					<input id="cc-navbar-search-text" class="cc-nav-input searchx18" type="text" maxlength="150" value="" name="s">
 					<input class="cc-navbar-search-button" type="submit" value="Search">
 					</form>
 					</div>

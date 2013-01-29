@@ -681,16 +681,11 @@ div.generic-button a,
   -webkit-border-radius: 3px;
   border-radius: 3px;
   color: #008eaa;
-  cursor: pointer;
   font-size: 12.6px;
   font-size: 0.9rem;
-  outline: none;
+  padding: .3em .6em;
   text-align: center;
   text-decoration: none;
-  line-height: 14px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
 ul.button-nav li a {
   padding: 4px 10px;
@@ -1748,9 +1743,7 @@ div#invite-list {
   margin: 0;
   color: #211f1f;
   background-color: rgba(255, 255, 255, 0);
-  background-image: url(img/searchx18.png);
-  background-position: 4px 8px;
-  background-repeat: no-repeat;
+  background-position: 4px -342px;
   outline: none;
   cursor: pointer;
   -webkit-border-radius: 3px;
@@ -1824,10 +1817,9 @@ div#invite-list {
   margin-left: -3.5em;
 }
 .buddypress #secondary .sidebar-activity-tabs ul li.selected {
-  background-color: #FFF;
   -webkit-border-radius: 4px 0 0 4px;
   -moz-border-radius: 4px 0 0 4px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-color: #aaaaaa #ffffff #aaaaaa #aaaaaa;
   border-radius: 4px 0 0 4px;
   border-style: solid;
@@ -1841,21 +1833,19 @@ div#invite-list {
 .buddypress #secondary .sidebar-activity-tabs ul li.selected a {
   color: #454545;
 }
-.buddypress #secondary .sidebar-activity-tabs ul li.selected a span {
-  font-weight: 400;
-}
 .buddypress #secondary .sidebar-activity-tabs ul li a {
   text-decoration: none;
   display: block;
   padding: 1em 1.5em 1em 6em;
 }
 .buddypress #secondary .sidebar-activity-tabs ul li span {
+  font-weight: 400;
   display: inline;
   background-color: #aaaaaa;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  color: #211f1f;
+  color: #ffffff;
   padding: 0 6px;
   margin: 0 8px;
 }
@@ -2056,4 +2046,129 @@ h5 {
 #content h5,
 #content h6 {
   margin: 1em 0;
+}
+.sharrre .box {
+  background: #fff;
+  /* Old browsers */
+
+  background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #ededed));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(top, #ffffff 0%, #ededed 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #ffffff 0%, #ededed 100%);
+  /* Opera11.10+ */
+
+  background: -ms-linear-gradient(top, #ffffff 0%, #ededed 100%);
+  /* IE10+ */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0);
+  /* IE6-9 */
+
+  background: linear-gradient(top, #ffffff 0%, #ededed 100%);
+  /* W3C */
+
+  border: 1px solid #ccc;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  color: #008eaa;
+  font-size: 12.6px;
+  font-size: 0.9rem;
+  padding: .3em .6em;
+  text-align: center;
+  text-decoration: none;
+  width: 92px;
+  display: inline-block;
+  position: relative;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+.sharrre .box .sharrre-buttons {
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  bottom: 30px;
+  right: 0;
+  z-index: 500;
+  list-style-type: none;
+  margin: 0;
+  border: 1px solid transparent;
+}
+.sharrre .box .sharrre-buttons li a {
+  display: inline-block;
+  text-align: left;
+  width: 74px;
+  line-height: 2;
+  padding: 0 0 0 32px;
+  margin: 2px 0;
+}
+.sharrre .left {
+  line-height: 22px;
+  display: block;
+  white-space: nowrap;
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3);
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.sharrre .box:hover .sharrre-buttons {
+  height: auto;
+  border: 1px solid #008eaa;
+  background-color: #ffffff;
+}
+.iconx60 {
+  display: inline-block;
+  width: 60px;
+  height: auto;
+}
+.iconx30 {
+  display: inline-block;
+  width: 30px;
+  height: auto;
+}
+.facebookx30,
+.gplusx30,
+.twitterx30,
+.facebookx60,
+.searchx18,
+.twitterx60 {
+  background: url(img/sprites.png) no-repeat;
+}
+.facebookx30 {
+  background-position: 0 0;
+  width: 30px;
+  height: 30px;
+}
+.gplusx30 {
+  background-position: 0 -50px;
+  width: 30px;
+  height: 30px;
+}
+.twitterx30 {
+  background-position: 0 -100px;
+  width: 30px;
+  height: 30px;
+}
+.facebookx60 {
+  background-position: 0 -150px;
+  width: 60px;
+  height: 60px;
+}
+.searchx18 {
+  background-position: 0 -350px;
+  width: 18px;
+  height: 18px;
+}
+.twitterx60 {
+  background-position: 0 -250px;
+  width: 60px;
+  height: 60px;
 }

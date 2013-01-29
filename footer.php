@@ -59,13 +59,40 @@
 				<input class="newsletter-opt-in-button" type="submit" value="Submit">
 				</form>
 	    	</div>
-		    <a href="http://www.facebook.com/CommunityCommons"><img title="Facebook" alt="Facebook" src="<?php echo get_stylesheet_directory_uri(); ?>/img/facebookx60.png"></a>&nbsp;
-		    <a href="https://twitter.com/communitycommon"><img title="Twitter" alt="Twitter" src="<?php echo get_stylesheet_directory_uri(); ?>/img/twitterx60.png"></a>
+		    <a href="http://www.facebook.com/CommunityCommons" class="facebookx60 iconx60 alignleft"></a>
+		    <a href="https://twitter.com/communitycommon" class="twitterx60 iconx60 alignleft"></a>
 		</div>        
 		</div><!-- .site-info -->
 	</div> <!-- .page width -->
 </footer><!-- #colophon -->
 
 <?php wp_footer(); ?>
+<script type="text/javascript">
+jQuery('.sharrre').sharrre({
+	share: {
+		twitter: true,
+		facebook: true,
+		googlePlus: true
+	},
+	template: '<div class="box"><div class="left">Share</div><ul class="sharrre-buttons"><li><a href="#" class="facebook"><span class="facebookx30 iconx30 alignleft"></span>facebook</a></li><li><a href="#" class="twitter">twitter</a></li><li><a href="#" class="googleplus">Google +1</a></li></ul></div>',
+	enableHover: false,
+	enableTracking: true,
+	render: function(api, options){
+		jQuery(api.element).on('click', '.twitter', function() {
+		api.openPopup('twitter');
+		});
+		jQuery(api.element).on('click', '.facebook', function() {
+		api.openPopup('facebook');
+		});
+		jQuery(api.element).on('click', '.googleplus', function() {
+		api.openPopup('googlePlus');
+		});
+	}
+  // enableHover: true, 
+  // enableCounter: true, //this display the link used to activate the popup        
+});
+</script>
+
+</div>
 </body>
 </html>

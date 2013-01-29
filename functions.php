@@ -263,3 +263,12 @@ wp_enqueue_script('localScroll');
 }
 add_action('wp_enqueue_scripts', 'localscroll_js_load');
 
+function sharrre_js_load(){
+
+wp_register_script('sharrre', get_stylesheet_directory_uri().'/js/jquery.sharrre-1.3.4.min.js">', array('jquery'), '1.3.4' ); 
+wp_enqueue_script('sharrre'); 
+
+
+}
+add_action('wp_enqueue_scripts', 'sharrre_js_load');
+
