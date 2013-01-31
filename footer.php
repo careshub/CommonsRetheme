@@ -74,7 +74,7 @@ jQuery('.sharrre').sharrre({
 		facebook: true,
 		googlePlus: true
 	},
-	template: '<div class="box"><div class="left">Share</div><ul class="sharrre-buttons"><li><a href="#" class="facebook"><span class="facebookx30 iconx30 alignleft"></span>facebook</a></li><li><a href="#" class="twitter">twitter</a></li><li><a href="#" class="googleplus">Google +1</a></li></ul></div>',
+	template: '<div class="box"><div class="left">Share</div><ul class="sharrre-buttons"><li><a href="#" class="facebook"><span class="facebookx24"></span>facebook</a></li><li><a href="#" class="twitter"><span class="twitterx24"></span>twitter</a></li><li><a href="#" class="googleplus"><span class="gplusx24"></span>Google +1</a></li></ul></div>',
 	enableHover: false,
 	enableTracking: true,
 	render: function(api, options){

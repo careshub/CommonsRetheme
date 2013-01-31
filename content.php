@@ -60,6 +60,6 @@
 					</div><!-- .author-description -->
 				</div><!-- .author-info -->
 			<?php endif; ?>
+		<div id="share-buttons-<?php the_ID(); ?>" class="sharrre alignright" data-url="<?php echo bcg_get_post_permalink($post);?>" data-text="<?php the_title(); ?> on Community Commons" data-title="share"></div>
 		</footer><!-- .entry-meta -->
-		<div id="demo1" class="sharrre" data-url="<?php echo bcg_get_post_permalink($post);?>" data-text="<?php the_title(); ?> on Community Commons" data-title="share"></div>
 	</article><!-- #post -->
