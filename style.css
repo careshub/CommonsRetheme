@@ -1960,7 +1960,9 @@ textarea:focus {
   box-shadow: inset 0 0px 3px 0 #008eaa;
 }
 .page-width {
+  max-width: 960px;
   max-width: 68.5714rem;
+  padding: 0 40px;
   padding: 0 2.85714rem;
   margin: 0 auto;
   overflow: auto;
@@ -1981,6 +1983,7 @@ td {
 .buddypress #content .main-column p,
 .buddypress #content .page p {
   line-height: 1.71429;
+  margin: 0 0 24px;
   margin: 0 0 1.71429rem;
 }
 .buddypress #content h2 {
