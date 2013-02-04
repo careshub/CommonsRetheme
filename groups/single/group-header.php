@@ -15,6 +15,8 @@ do_action( 'bp_before_group_header' );
 </div> --><!-- #item-header-avatar -->
 
 <div id="item-header-content">
+	<p class="group-breadcrumbs"><?php if (function_exists(bp_group_hierarchy_breadcrumbs))  { bp_group_hierarchy_breadcrumbs(); } ?></p>
+
 	<div id="item-actions">
 
 	<?php if ( bp_group_is_visible() ) : ?>

@@ -272,6 +272,15 @@ wp_enqueue_script('sharrre');
 }
 add_action('wp_enqueue_scripts', 'sharrre_js_load');
 
+function buddypress_js_load(){
+
+wp_register_script('buddypress', plugins_url( '/buddypress/bp-templates/bp-legacy/js/buddypress.js' , 'buddypress' ), array('jquery'), '1.3.4' ); 
+wp_enqueue_script('buddypress'); 
+
+
+}
+//add_action('wp_enqueue_scripts', 'buddypress_js_load');
+
 /* SEARCH - replaces standard WordPress search with a unified results page
 *************/
 
