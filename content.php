@@ -42,6 +42,7 @@
 		<?php endif; ?>
 
 		<footer class="entry-meta">
+			<div id="share-buttons-<?php the_ID(); ?>" class="sharrre alignright" data-url="<?php echo get_permalink($post);?>" data-text="<?php the_title(); ?> on Community Commons" data-title="share"></div>
 			<?php twentytwelve_entry_meta(); ?>
 			<?php edit_post_link( __( 'Edit', 'twentytwelve' ), '<span class="edit-link">', '</span>' ); ?>
 			<?php if ( is_singular() && get_the_author_meta( 'description' ) && is_multi_author() ) : // If a user has filled out their description and this is a multi-author blog, show a bio on their entries. ?>
@@ -60,6 +61,5 @@
 					</div><!-- .author-description -->
 				</div><!-- .author-info -->
 			<?php endif; ?>
-		<div id="share-buttons-<?php the_ID(); ?>" class="sharrre alignright" data-url="<?php echo bcg_get_post_permalink($post);?>" data-text="<?php the_title(); ?> on Community Commons" data-title="share"></div>
 		</footer><!-- .entry-meta -->
 	</article><!-- #post -->

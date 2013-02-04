@@ -4,7 +4,18 @@ do_action( 'bp_before_group_header' );
 
 ?>
 
-<div id="item-actions">
+
+
+<!-- <div id="item-header-avatar">
+	<a href="<?php bp_group_permalink(); ?>" title="<?php bp_group_name(); ?>">
+
+		<?php bp_group_avatar(); ?>
+
+	</a>
+</div> --><!-- #item-header-avatar -->
+
+<div id="item-header-content">
+	<div id="item-actions">
 
 	<?php if ( bp_group_is_visible() ) : ?>
 
@@ -28,16 +39,6 @@ do_action( 'bp_before_group_header' );
 	endif; ?>
 
 </div><!-- #item-actions -->
-
-<!-- <div id="item-header-avatar">
-	<a href="<?php bp_group_permalink(); ?>" title="<?php bp_group_name(); ?>">
-
-		<?php bp_group_avatar(); ?>
-
-	</a>
-</div> --><!-- #item-header-avatar -->
-
-<div id="item-header-content">
 	<h2><a href="<?php bp_group_permalink(); ?>" title="<?php bp_group_name(); ?>"><?php bp_group_name(); ?></a></h2>
 	<span class="highlight"><?php bp_group_type(); ?></span> <span class="activity"><?php printf( __( 'active %s', 'buddypress' ), bp_get_group_last_active() ); ?></span>
 
