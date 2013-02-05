@@ -58,7 +58,7 @@ wp_enqueue_style( 'custom_childtheme_stylesheet' );
 
 
 function notifications_counter() {
-	if (function_exists(bp_is_active)) {
+	if (function_exists('bp_is_active')) {
 	global $bp;
 
 	//Do nothing if the user isn't logged in
