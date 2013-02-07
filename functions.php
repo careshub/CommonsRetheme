@@ -284,6 +284,8 @@ wp_enqueue_script('buddypress');
 /* SEARCH - replaces standard WordPress search with a unified results page
 *************/
 
+// TODO wrap this in a buddypress safe way
+
 //redirect to new search page
 
 function fb_change_search_url_rewrite() {
