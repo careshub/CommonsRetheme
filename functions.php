@@ -463,3 +463,23 @@ function bpmag_show_forums_search(){
 /* End SEARCH code
 ********************/
 
+/**
+ * BuddyPress replaces the space with '-' , but the user doesn't know
+ * We remove the attached function to stop BP from circumventing the space in username
+ */
+add_action('bp_init','bpdev_remove_bp_pre_user_login_action');
+function bpdev_remove_bp_pre_user_login_action(){
+ remove_action( 'pre_user_login', 'bp_core_strip_username_spaces' );
+}
+ 
+//add a filter to invalidate a username with spaces
+add_filter('validate_username','bpdev_restrict_space_in_username',10,2);
+function bpdev_restrict_space_in_username($valid,$user_name){
+ //check if there is an space
+ if ( preg_match('/\s/',$user_name) ) {
+   return false;//if yes, then we say it is an error
+  } else {
+   return $valid;//otherwise return the actual validity
+  }
+}
+

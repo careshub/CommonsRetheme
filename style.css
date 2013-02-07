@@ -69,11 +69,9 @@ form#whats-new-form #whats-new-submit {
   height: 0;
 }
 #whats-new:focus {
-  border-color: rgba(31, 179, 221, 0.9) !important;
-  outline-color: rgba(31, 179, 221, 0.9);
-  box-shadow: 0 0 7px rgba(31, 179, 221, 0.7);
-  -moz-box-shadow: 0 0 7px rgba(31, 179, 221, 0.7);
-  -webkit-box-shadow: 0 0 7px rgba(31, 179, 221, 0.7);
+  -webkit-box-shadow: inset 0 0px 3px 0 #008eaa;
+  -moz-box-shadow: inset 0 0px 3px 0 #008eaa;
+  box-shadow: inset 0 0px 3px 0 #008eaa;
 }
 /*--------------------------------------------------------------
 1.1 - Activity Listing
@@ -129,10 +127,10 @@ body.activity-permalink li.mini .activity-meta {
   margin-top: 4px;
 }
 .activity-list li .activity-inreplyto {
-  background: url(../buddypress/bp-themes/bp-default/_inc/images/replyto_arrow.gif) 7px 0 no-repeat;
+  background: url(../../plugins/buddypress/bp-themes/bp-default/_inc/images/replyto_arrow.gif) 7px 0 no-repeat;
   color: #888;
-  font-size: 11px;
-  margin-left: 5px;
+  font-size: 11.200000000000001px;
+  font-size: 0.8rem;
   margin-top: 5px;
   padding-left: 25px;
 }
@@ -160,25 +158,29 @@ body.activity-permalink .activity-list li .activity-content {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  font-size: 16px;
-  line-height: 150%;
+  font-size: 14px;
+  font-size: 1rem;
   min-height: 35px;
   margin-left: 185px;
   margin-right: 0;
   padding: 15px;
 }
 body.activity-permalink .activity-list li .activity-header > p {
-  background: url(../buddypress/bp-themes/bp-default/_inc/images/activity_arrow.gif) top left no-repeat;
+  background: url(../../plugins/buddypress/bp-themes/bp-default/_inc/images/activity_arrow.gif) top left no-repeat;
   height: 35px;
   margin-bottom: 0;
   margin-left: -35px;
   padding: 5px 0 0 35px;
 }
-.activity-list .activity-content .activity-header,
-.activity-list .activity-content .comment-header {
-  color: #888;
-  font-size: 11px;
-  line-height: 220%;
+.buddypress #content #item-body .activity-list .activity-content .activity-header,
+.buddypress #content #item-body .activity-list .activity-content .comment-header {
+  color: #454545;
+  font-size: 11.200000000000001px;
+  font-size: 0.8rem;
+}
+.buddypress #content #item-body .activity-list .activity-content .activity-header p,
+.buddypress #content #item-body .activity-list .activity-content .comment-header p {
+  margin: 0;
 }
 .activity-header {
   margin-right: 20px;
@@ -201,7 +203,7 @@ span.highlight {
 }
 .activity-list .activity-content .activity-inner,
 .activity-list .activity-content blockquote {
-  margin: 10px 10px 5px 0;
+  margin: 10px 10px -15px 0;
   overflow: hidden;
 }
 .activity-list li.new_forum_post .activity-content .activity-inner,
@@ -218,6 +220,8 @@ body.activity-permalink .activity-content blockquote {
 .activity-inner > p {
   word-wrap: break-word;
   line-height: 1.5;
+  font-size: 13.299999999999999px;
+  font-size: 0.95rem;
 }
 .activity-inner > .activity-inner {
   margin: 0 !important;
@@ -414,8 +418,8 @@ div.activity-comments form textarea {
   font-family: inherit;
   font-size: 11px;
   height: 60px;
-  padding: 0;
-  width: 100%;
+  padding: 1%;
+  width: 97.9%;
 }
 div.activity-comments form input {
   margin-top: 5px;
@@ -642,7 +646,6 @@ div#invite-list {
   margin: 0 0 10px;
   overflow: auto;
   padding: 5px;
-  width: 160px;
 }
 button,
 a.button,
@@ -727,6 +730,18 @@ div.generic-button a:hover,
   outline: none;
   text-decoration: none;
 }
+#send-invite-form .left-menu,
+#group-create-body .left-menu {
+  float: left;
+  width: 27%;
+}
+#send-invite-form .main-column,
+#group-create-body .main-column {
+  float: left;
+  margin-left: 3%;
+  margin-top: 10px;
+  width: 70%;
+}
 /*--------------------------------------------------------------
 6.6 - Ajax Loading
 --------------------------------------------------------------*/
@@ -735,32 +750,36 @@ input.loading {
   -webkit-animation: loader-pulsate 0.5s infinite ease-in-out alternate;
   -moz-animation: loader-pulsate 0.5s infinite ease-in-out alternate;
   border-color: #aaa;
-  -moz-box-shadow: 0 0 6px #ccc;
-  -webkit-box-shadow: 0 0 6px #ccc;
-  box-shadow: 0 0 6px #ccc;
+  -webkit-box-shadow: 0 0px 3px 0 #008eaa;
+  -moz-box-shadow: 0 0px 3px 0 #008eaa;
+  box-shadow: 0 0px 3px 0 #008eaa;
 }
 @-webkit-keyframes loader-pulsate {
   from {
     border-color: #aaa;
-    -webkit-box-shadow: 0 0 6px #ccc;
-    box-shadow: 0 0 6px #ccc;
+    -webkit-box-shadow: 0 0px 3px 0 #008eaa;
+    -moz-box-shadow: 0 0px 3px 0 #008eaa;
+    box-shadow: 0 0px 3px 0 #008eaa;
   }
   to {
     border-color: #ccc;
-    -webkit-box-shadow: 0 0 6px #f8f8f8;
-    box-shadow: 0 0 6px #f8f8f8;
+    -webkit-box-shadow: 0 0 3px 0 #00cef6;
+    -moz-box-shadow: 0 0 3px 0 #00cef6;
+    box-shadow: 0 0 3px 0 #00cef6;
   }
 }
 @-moz-keyframes loader-pulsate {
   from {
     border-color: #aaa;
-    -moz-box-shadow: 0 0 6px #ccc;
-    box-shadow: 0 0 6px #ccc;
+    -webkit-box-shadow: 0 0px 3px 0 #008eaa;
+    -moz-box-shadow: 0 0px 3px 0 #008eaa;
+    box-shadow: 0 0px 3px 0 #008eaa;
   }
   to {
     border-color: #ccc;
-    -moz-box-shadow: 0 0 6px #f8f8f8;
-    box-shadow: 0 0 6px #f8f8f8;
+    -webkit-box-shadow: 0 0 3px 0 #00cef6;
+    -moz-box-shadow: 0 0 3px 0 #00cef6;
+    box-shadow: 0 0 3px 0 #00cef6;
   }
 }
 a.loading:hover,
@@ -1085,14 +1104,15 @@ div#item-header h2 span.highlight span {
   vertical-align: middle;
 }
 div#item-header div#item-meta {
-  font-size: 14px;
+  font-size: 13.299999999999999px;
+  font-size: 0.95rem;
   color: #454545;
   overflow: hidden;
   margin: 15px 0 5px 0;
   padding-bottom: 10px;
 }
 div#item-header div#item-meta p {
-  line-height: 1.5;
+  line-height: 1.7;
 }
 div#item-header div#item-actions {
   float: right;
@@ -1152,17 +1172,21 @@ ul.item-list li img.avatar {
 ul.item-list li div.item-title,
 ul.item-list li h4 {
   font-weight: normal;
-  font-size: 14px;
+  font-size: 15.959999999999999px;
+  font-size: 1.14rem;
   margin: 0;
   width: 75%;
+  clear: none;
 }
 ul.item-list li div.item-title span {
   color: #999;
   font-size: 12px;
 }
 ul.item-list li div.item-desc {
-  color: #888;
-  font-size: 11px;
+  color: #454545;
+  font-size: 11.200000000000001px;
+  font-size: 0.8rem;
+  line-height: 1.4;
   margin-top: 10px;
 }
 ul.item-list li div.action {
@@ -1434,22 +1458,19 @@ form#whats-new-form #whats-new-content {
   padding-left: 22px;
 }
 form#whats-new-form #whats-new-textarea {
-  padding: 8px;
-  border: 1px solid #ccc;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
   margin-bottom: 10px;
 }
 form#whats-new-form textarea {
-  width: 100%;
+  width: 97.6%;
   height: 60px;
-  font-size: 14px;
+  border: 1px solid #ccc;
+  font-size: 12.6px;
+  font-size: 0.9rem;
   font-family: inherit;
   color: #555;
   border: none;
   margin: 0;
-  padding: 0;
+  padding: 1%;
 }
 form#whats-new-form #whats-new-submit {
   float: right;
@@ -1486,10 +1507,6 @@ ul.activity-list li div.acomment-content,
 ul.activity-list li div.acomment-meta {
   margin-left: 35px;
 }
-ul.activity-list li div.activity-inreplyto {
-  margin: 15px 0 0 75px;
-  font-size: 11px;
-}
 /***
  * Input Forms
  */
@@ -1517,12 +1534,6 @@ div.activity-comments form .ac-textarea {
   border: 1px inset #ccc;
   margin-bottom: 10px;
 }
-div.activity-comments form textarea {
-  width: 100%;
-  height: 60px;
-  border: none;
-  padding: 0;
-}
 div.activity-comments form input {
   margin-top: 5px;
 }
@@ -1549,16 +1560,6 @@ form.standard-form textarea {
   height: 120px;
 }
 /* Send Invites Form */
-form#send-invite-form {
-  margin-top: 20px;
-}
-div#invite-list {
-  height: 400px;
-  overflow: scroll;
-  padding: 5px;
-  width: 160px;
-  margin: 10px 0;
-}
 /* Directory search forms */
 /* Main navigation
 *******************/
@@ -1665,8 +1666,9 @@ div#invite-list {
 .primary-navigation .secondary .bp-notifications .bp-notification-list {
   margin: 26px 0 0 -1px;
   padding: 6px 0;
-  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
   background: #fff;
   display: none;
   position: absolute;
@@ -1808,7 +1810,7 @@ div#invite-list {
 .buddypress #secondary .sidebar-activity-tabs ul li a {
   text-decoration: none;
   display: block;
-  padding: 1em 1.5em 1em 6em;
+  padding: 1em 1.5em 1em 3.6em;
 }
 .buddypress #secondary .sidebar-activity-tabs ul li span {
   font-weight: 400;
