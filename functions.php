@@ -483,3 +483,19 @@ function bpdev_restrict_space_in_username($valid,$user_name){
   }
 }
 
+// Undo some bad styling in the buddypress media plugin:
+
+function add_this_script_footer(){ ?>
+
+  <script type="text/javascript">
+  jQuery(document).ready(function($) {
+  $(".bpfb_toolbar_container a").addClass("button");
+  $("#bpfb_addDocuments").hide();
+  
+  });
+  </script> 
+
+<?php } 
+
+//add_action('wp_footer', 'add_this_script_footer'); ?>
+

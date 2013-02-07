@@ -72,3 +72,10 @@
 	<?php do_action( 'bp_after_activity_post_form' ); ?>
 
 </form><!-- #whats-new-form -->
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+	$(".bpfb_toolbar_container a").addClass("button");
+	$("#bpfb_addDocuments").hide();
+
+	});
+</script>

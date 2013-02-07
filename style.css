@@ -1235,9 +1235,9 @@ div.item-list-tabs ul li span {
 }
 div.item-list-tabs ul li a span {
   background: #869b3c;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
   color: #fff;
   display: inline;
   font-size: 90%;
@@ -1652,9 +1652,9 @@ form.standard-form textarea {
   display: inline;
   line-height: 3;
   background-color: #aaaaaa;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
   color: #211f1f;
   padding: 0 6px;
   margin: 0 8px;
@@ -1816,9 +1816,9 @@ form.standard-form textarea {
   font-weight: 400;
   display: inline;
   background-color: #aaaaaa;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
   color: #ffffff;
   padding: 0 6px;
   margin: 0 8px;
