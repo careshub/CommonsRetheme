@@ -15,7 +15,7 @@ do_action( 'bp_before_group_header' );
 </div> --><!-- #item-header-avatar -->
 
 <div id="item-header-content">
-	<p class="group-breadcrumbs"><em>Group Hierarcy:</em> <?php if (function_exists('bp_group_hierarchy_get_breadcrumbs'))  { echo bp_group_hierarchy_get_breadcrumbs('&ensp;&gt;&ensp;', false); } ?></p>
+	<p class="group-breadcrumbs"><em>Group Tree:</em> <?php if (function_exists('bp_group_hierarchy_get_breadcrumbs'))  { echo bp_group_hierarchy_get_breadcrumbs('&ensp;&gt;&ensp;', false); } ?></p>
 
 	<div id="item-actions">
 

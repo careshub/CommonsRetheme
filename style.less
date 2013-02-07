@@ -1124,7 +1124,7 @@ div#item-header h2 a {
 }
 div#item-header img.avatar {
 	float: left;
-	margin: 0 15px 19px 0;
+	margin: 0 15px 19px 2px;
 }
 div#item-header h2 {
 	margin-bottom: 5px;
@@ -1219,7 +1219,7 @@ ul.single-line li {
 }
 ul.item-list li img.avatar {
 	float: left;
-	margin: 0 10px 0 0;
+	margin: 0 10px 0 2px;
 }
 ul.item-list li div.item-title,
 ul.item-list li h4 {
@@ -1402,7 +1402,7 @@ div#message-thread p#message-recipients {
 }
 div#message-thread img.avatar {
 	float: left;
-	margin: 0 10px 0 0;
+	margin: 0 10px 0 2px;
 	vertical-align: middle;
 }
 div#message-thread strong {
@@ -2192,6 +2192,11 @@ input, textarea {
 }
 caption, th, td {
  padding: 4px 6px;
+}
+img.avatar {
+	.border-radius(3px);
+	.drop-shadow(0, 1px, 2px, 0, 0.25);
+	margin:2px;
 }
 
 //GROUPS
