@@ -1879,6 +1879,10 @@ form.standard-form textarea {
 #colophon .alignright div {
   margin-bottom: 1.2em;
 }
+.widget-area {
+  margin: 24px 0;
+  margin: 1.714285714rem 0;
+}
 footer[role="contentinfo"] {
   border-top: 8px solid #008eaa;
 }
@@ -1991,8 +1995,8 @@ h5 {
   text-transform: uppercase;
 }
 .group_home_page {
-  border-top: 1px solid #dedede;
-  padding-top: 12px;
+  border-top: 2px solid #dedede;
+  padding-top: 24px;
 }
 .nav-tabs,
 .nav-pills {

@@ -89,7 +89,7 @@ jQuery('.sharrre').sharrre({
 		});
 	}
   // enableHover: true, 
-  // enableCounter: true, //this display the link used to activate the popup        
+  // enableCounter: false //this display the link used to activate the popup        
 });
 </script>
 

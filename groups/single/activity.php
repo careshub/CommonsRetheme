@@ -34,7 +34,8 @@
 
 <div class="activity single-group" role="main">
 
-	<?php if ( cc_group_custom_meta('group_use_tag_activity') ) {
+	<?php 
+	if ( function_exists('cc_group_custom_meta') && cc_group_custom_meta('group_use_tag_activity') ) {
 		//if this group is set to show aggregated activity, get the tag for this group
 
 	} else {  //Show the default activity loop
