@@ -33,7 +33,13 @@
 <?php do_action( 'bp_before_group_activity_content' ); ?>
 
 <div class="activity single-group" role="main">
-	<?php locate_template( array( 'activity/activity-loop.php' ), true ); ?>
+
+	<?php if ( cc_group_custom_meta('group_use_tag_activity') ) {
+		//if this group is set to show aggregated activity, get the tag for this group
+
+	} else {  //Show the default activity loop
+		locate_template( array( 'activity/activity-loop.php' ), true ); 
+	}?>
 </div><!-- .activity.single-group -->
 
 <?php do_action( 'bp_after_group_activity_content' ); ?>
