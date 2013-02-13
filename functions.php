@@ -707,3 +707,59 @@ function save_group_home_meta( $post_id, $post ) {
   //   delete_post_meta( $post_id, $meta_key, $meta_value );
 
 }
+
+//Filtering for groups that share an aggregated activity
+
+function my_query_filter_new ( $query_string ) {
+  $query_string .= '&per_page=5';
+  return $query_string;
+}
+//add_filter( 'bp_ajax_querystring', 'my_query_filter_new' );
+//add_filter('bp_dtheme_ajax_querystring', 'aggregated_group_activity', 10, 7);
+function aggregated_group_activity($qs, $object, $object_filter, $object_scope, $object_page, $object_search_terms, $object_extras){
+  global $bp;
+
+    // if( $object != 'group' )
+    //   return $qs;
+
+    //See if this group uses an aggregated activity stream
+    // $groups = groups_get_user_groups( $user_id );
+    $aggregated_activity = groups_get_groupmeta( bp_get_group_id(), 'aggregated_group_activity' );
+    $towrite = 'Aggregated: ';
+    $towrite .= print_r($aggregated_activity, TRUE);
+    $fp = fopen('aggregation.txt', 'a');
+    fwrite($fp, $towrite);
+    fclose($fp);
+
+
+    if ( function_exists('cc_group_custom_meta') && ( cc_group_custom_meta('group_use_tag_activity') == 'on' ) && !empty($aggregated_activity) ) {
+    
+    // Find the groups that share this tag
+    $groups = $wpdb->get_results( "SELECT * FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'aggregated_group_activity' AND meta_value LIKE '%%{$aggregated_activity}%%' " );
+
+      foreach ( $groups as $group )
+        if ( empty( $groups ) )
+          return false;
+
+        $primary_id = implode( ',', (array) $groups );
+        if( empty($qs) && !empty($primary_id) )
+          $qs="primary_id=".$primary_id;
+
+      }
+
+    // if(empty($qs)&&!empty($_REQUEST['s']))
+    //   $qs="search_terms=".$_REQUEST['s'];
+
+    return $qs;
+
+// if ( bp_is_active( 'groups' ) ) {
+//             $groups = groups_get_user_groups( $user_id );
+//             if ( empty( $groups['groups'] ) )
+//               return false;
+
+//             $object = $bp->groups->id;
+//             $primary_id = implode( ',', (array) $groups['groups'] );
+
+//             $user_id = 0;
+//           }
+}

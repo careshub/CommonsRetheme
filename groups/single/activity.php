@@ -33,14 +33,25 @@
 <?php do_action( 'bp_before_group_activity_content' ); ?>
 
 <div class="activity single-group" role="main">
-
+	
 	<?php 
-	if ( function_exists('cc_group_custom_meta') && cc_group_custom_meta('group_use_tag_activity') ) {
-		//if this group is set to show aggregated activity, get the tag for this group
+	//Check if this group has a tag set for aggregating activity
+	// $activity_tag = groups_get_groupmeta( bp_get_group_id(), 'gtags_group_tags' );
+	// if ( !empty($activity_tag) ) { 
+	// 	//We can only use one tag to generate the aggregated activity list, so we grab the first tag.
+	// 	$all_tags = explode(", ", $activity_tag);
+	// 	$activity_tag = $all_tags[0];
+	// }
+	//print_r($activity_tag);
+		
+	// if ( function_exists('cc_group_custom_meta') && ( cc_group_custom_meta('group_use_tag_activity') == 'on' ) && !empty($activity_tag) ) {
+	// 	// This group is set to use aggregated activity and has a tag assigned to it. GO!
+	// 	echo do_shortcode('[group_tag_activity tag=' . $activity_tag . ' show=10]');
 
-	} else {  //Show the default activity loop
+	// } else {  //Show the default activity loop
 		locate_template( array( 'activity/activity-loop.php' ), true ); 
-	}?>
+	// }
+	?>
 </div><!-- .activity.single-group -->
 
 <?php do_action( 'bp_after_group_activity_content' ); ?>
