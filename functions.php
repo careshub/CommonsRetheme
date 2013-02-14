@@ -506,8 +506,10 @@ function add_group_activity_tab() {
   // Only check if we're on a group page
   if( bp_is_group() ) { 
 
-  // Only change the tab if the group has a custom front page, so check for an associated post
-    $group_id = $bp->groups->current_group->id;
+  // Only add the "Home" tab if the group has a custom front page, so check for an associated post. 
+  // Only add the new "Activity" tab if the group is visible to the user.
+    $group_id = $bp->groups->current_group->id ;
+    $visible = $bp->groups->current_group->is_visible ;
     $args =  array(
        'post_type'   => 'group_home_page',
        'posts_per_page' => '1',
@@ -522,7 +524,7 @@ function add_group_activity_tab() {
     ); 
     $custom_front_query = new WP_Query( $args );
 
-    if( $custom_front_query->have_posts() ) { 
+    if( $custom_front_query->have_posts() && $visible ) { 
       bp_core_new_subnav_item( 
         array( 
           'name' => 'Activity', 
