@@ -77,6 +77,7 @@ jQuery('.sharrre').sharrre({
 	template: '<div class="box"><div class="left">Share</div><ul class="sharrre-buttons"><li><a href="#" class="facebook"><span class="facebookx24"></span>facebook</a></li><li><a href="#" class="twitter"><span class="twitterx24"></span>twitter</a></li><li><a href="#" class="googleplus"><span class="gplusx24"></span>Google +1</a></li></ul></div>',
 	enableHover: false,
 	enableTracking: true,
+	urlCurl: '',
 	render: function(api, options){
 		jQuery(api.element).on('click', '.twitter', function() {
 		api.openPopup('twitter');
