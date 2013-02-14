@@ -115,6 +115,34 @@
 
 						<?php do_action( 'bp_after_group_status_message' );
 
+						//We want to show the custom home page content on private groups, too. This code is duplicated above.
+
+						//Check if this group has a post set to be its custom front page.
+						$group_id = bp_get_group_id();
+						$args =  array(
+						   'post_type'   => 'group_home_page',
+						   'posts_per_page' => '1',
+						   'meta_query'  => array(
+						                       array(
+						                        'key'           => 'group_home_page_association',
+						                        'value'         => $group_id,
+						                        'compare'       => '=',
+						                        'type'          => 'NUMERIC'
+						                        )
+						                    )
+						); 
+						// The Query
+						$custom_front_query = new WP_Query( $args );
+						$GLOBALS['custom-group-front'] = $custom_front_query;
+
+						// Use custom front if one exists
+						$custom_front = locate_template( array( 'groups/single/front.php' ) );
+						// Only use custom front template if the template exists and this group has custom front page content
+						if ( ! empty( $custom_front )  && $custom_front_query->have_posts() )
+							load_template( $custom_front, true );
+						
+
+
 					endif;
 				endif;			
 
