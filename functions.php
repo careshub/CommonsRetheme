@@ -162,8 +162,16 @@ register_sidebar( array (
 }
 add_action( 'init', 'ccommons_widgets_init' );
 
-if ( function_exists( 'register_nav_menu' ) ) {
-	register_nav_menu( 'footer-nav', 'Footer Navigation' );
+if ( function_exists( 'register_nav_menus' ) ) {
+  register_nav_menus( 
+    array( 
+      'footer-nav' => 'Footer Navigation',
+      'salud-nav' => 'Salud America section navigation'
+      ) 
+    );
+
+  // register_nav_menu( 'footer-nav', 'Footer Navigation' );
+  // register_nav_menu( 'salud-nav', 'Salud America section navigation' );
 }
 
 /* Filters Nav Menu output by adding 'menu-item-{page slug}' to menu li classes
@@ -585,7 +593,8 @@ function register_cpt_group_home_page() {
         'query_var' => true,
         'can_export' => true,
         'rewrite' => false,
-        'capability_type' => 'post'
+        'capability_type' => 'group_home',
+        'map_meta_cap'    => true
     );
 
     register_post_type( 'group_home_page', $args );
@@ -709,3 +718,48 @@ function save_group_home_meta( $post_id, $post ) {
   //   delete_post_meta( $post_id, $meta_key, $meta_value );
 
 }
+
+/**
+ * Extends the default WordPress body class to denote:
+ * 1. Adds "salud-america" to pages using the SA template.
+ * 2. Front Page template: thumbnail in use and number of sidebars for
+ *    widget areas.
+ * 3. White or empty background color to change the layout and spacing.
+ * 4. Custom fonts enabled.
+ * 5. Single or multiple authors.
+ *
+ * @since Twenty Twelve 1.0
+ *
+ * @param array Existing class values.
+ * @return array Filtered class values.
+ */
+
+function cc_custom_body_class( $classes ) {
+  $background_color = get_background_color();
+
+  if ( is_page_template( 'page-templates/salud-america.php' ) )
+    $classes[] = 'salud-america';
+
+  return $classes;
+}
+add_filter( 'body_class', 'cc_custom_body_class' );
+
+// if ( is_page( 'salud-america' ) ) {
+//   remove_filter('the_content', 'wptexturize');
+//   remove_filter( 'the_content', 'wpautop' );
+//}
+
+remove_filter('the_content','wpautop');
+
+//decide when you want to apply the auto paragraph
+
+add_filter('the_content','salud_formatting');
+
+function salud_formatting($content){
+  if ( is_page_template( 'page-templates/salud-america.php' ) ) {
+    return $content;//no autop
+  } else {
+   return wpautop($content);
+  }
+}
+

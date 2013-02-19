@@ -1269,6 +1269,8 @@ div.item-list-tabs#object-nav {
 div.item-list-tabs#subnav {
   background: #ffffff;
   overflow: hidden;
+  /*TODO clearfix?*/
+
 }
 div.item-list-tabs ul li.feed a {
   background: url(../buddypress/bp-themes/bp-default/_inc/images/rss.png) center left no-repeat;
@@ -1418,6 +1420,8 @@ ul.item-list div.action {
 div#item-header {
   padding-bottom: 10px;
   overflow: hidden;
+  /*TODO clearfix*/
+
 }
 div#item-header h2 {
   clear: left;
@@ -1772,23 +1776,30 @@ form.standard-form textarea {
 .full-width .padder {
   width: 100%;
 }
-.buddypress #secondary {
+.buddypress #secondary,
+.salud-america #secondary {
   float: left;
   width: 22%;
   border-right: 1px solid #aaaaaa;
 }
-.buddypress #secondary .sidebar-activity-tabs {
+.buddypress #secondary .sidebar-activity-tabs,
+.salud-america #secondary .sidebar-activity-tabs {
   margin-top: 2em;
   border-bottom: 1px solid #dedede;
 }
-.buddypress #secondary .sidebar-activity-tabs ul {
+.buddypress #secondary .sidebar-activity-tabs ul,
+.salud-america #secondary .sidebar-activity-tabs ul {
   margin: 0 0 2em 0;
   padding: 0;
 }
-.buddypress #secondary .sidebar-activity-tabs ul li {
+.buddypress #secondary .sidebar-activity-tabs ul li,
+.salud-america #secondary .sidebar-activity-tabs ul li {
   margin-left: -3.5em;
 }
-.buddypress #secondary .sidebar-activity-tabs ul li.selected {
+.buddypress #secondary .sidebar-activity-tabs ul li.selected,
+.salud-america #secondary .sidebar-activity-tabs ul li.selected,
+.buddypress #secondary .sidebar-activity-tabs ul li.current-menu-item,
+.salud-america #secondary .sidebar-activity-tabs ul li.current-menu-item {
   -webkit-border-radius: 4px 0 0 4px;
   -moz-border-radius: 4px 0 0 4px;
   background-color: #ffffff;
@@ -1802,15 +1813,20 @@ form.standard-form textarea {
   box-shadow: -2px 1px 2px 0 rgba(0, 0, 0, 0.1);
   font-weight: 700;
 }
-.buddypress #secondary .sidebar-activity-tabs ul li.selected a {
+.buddypress #secondary .sidebar-activity-tabs ul li.selected a,
+.salud-america #secondary .sidebar-activity-tabs ul li.selected a,
+.buddypress #secondary .sidebar-activity-tabs ul li.current-menu-item a,
+.salud-america #secondary .sidebar-activity-tabs ul li.current-menu-item a {
   color: #454545;
 }
-.buddypress #secondary .sidebar-activity-tabs ul li a {
+.buddypress #secondary .sidebar-activity-tabs ul li a,
+.salud-america #secondary .sidebar-activity-tabs ul li a {
   text-decoration: none;
   display: block;
   padding: 1em 1.5em 1em 3.6em;
 }
-.buddypress #secondary .sidebar-activity-tabs ul li span {
+.buddypress #secondary .sidebar-activity-tabs ul li span,
+.salud-america #secondary .sidebar-activity-tabs ul li span {
   font-weight: 400;
   display: inline;
   background-color: #aaaaaa;
@@ -1821,11 +1837,13 @@ form.standard-form textarea {
   padding: 0 6px;
   margin: 0 8px;
 }
-.buddypress #secondary .sidebar-activity-tabs ul li span.alert {
+.buddypress #secondary .sidebar-activity-tabs ul li span.alert,
+.salud-america #secondary .sidebar-activity-tabs ul li span.alert {
   background-color: #00b0d3;
   color: #ffffff;
 }
-.buddypress #secondary .widget {
+.buddypress #secondary .widget,
+.salud-america #secondary .widget {
   margin-top: 1.5em;
 }
 #item-header {
@@ -1853,10 +1871,14 @@ form.standard-form textarea {
   max-width: 100%;
   background-color: #dedede;
   overflow: auto;
+  /*TODO clearfix*/
+
 }
 #colophon .footer-nav {
   width: 100%;
   overflow: auto;
+  /*TODO clearfix*/
+
   font-size: 14px;
   font-size: 1rem;
   margin-bottom: 1em;
@@ -1945,6 +1967,8 @@ textarea:focus {
   padding: 0 2.85714rem;
   margin: 0 auto;
   overflow: auto;
+  /*TODO clearfix*/
+
 }
 caption,
 th,
@@ -2107,6 +2131,8 @@ h5 {
 .sharrre .box .sharrre-buttons {
   height: 0;
   overflow: hidden;
+  /*TODO clearfix?*/
+
   position: absolute;
   bottom: 30px;
   right: 0;
@@ -2234,4 +2260,101 @@ h5 {
   background-position: 0 -440px;
   width: 24px;
   height: 24px;
+}
+.column1of2 {
+  width: 48%;
+}
+.column1of2.first {
+  margin-right: 2%;
+}
+.column1of2.last {
+  margin-left: 2%;
+}
+.salud-america .site-content {
+  float: right;
+  width: 74%;
+}
+.salud-america .widget-area {
+  float: left;
+}
+.salud-america #content .salud-banner {
+  border-bottom: 1px solid #df5927;
+  margin-bottom: 2em;
+}
+.salud-america #content .salud-banner h2 {
+  color: #4b8929;
+  font-style: italic;
+  font-size: 28px;
+  font-size: 2rem;
+}
+.salud-america #content .salud-banner h2 span {
+  color: #60b035;
+}
+.salud-america #content .browse-topics h3 {
+  color: #ef4036;
+  font-size: 22.400000000000002px;
+  font-size: 1.6rem;
+}
+.salud-america #content .browse-topics .salud-topic {
+  float: left;
+  margin-bottom: 3%;
+  margin-right: 3%;
+  width: 43%;
+  display: inline-block;
+  text-align: left;
+  padding: .6em;
+}
+.salud-america #content .browse-topics .salud-topic h3 {
+  clear: none;
+  float: left;
+  padding-left: 4%;
+  width: 63%;
+  font-size: 18.2px;
+  font-size: 1.3rem;
+  margin-bottom: 0;
+}
+.salud-america #content .browse-topics .salud-topic p {
+  clear: left;
+  padding-top: 12px;
+  margin-bottom: 0;
+}
+.active-play .icon,
+.advertising .icon,
+.cost-soda .icon,
+.food-neighborhood .icon,
+.places-activity .icon,
+.school-food .icon {
+  background: url(img/salud-sprites.png) no-repeat;
+  display: inline-block;
+  float: left;
+}
+.active-play .icon {
+  background-position: -150px -150px;
+  width: 100px;
+  height: 100px;
+}
+.advertising .icon {
+  background-position: -150px -300px;
+  width: 100px;
+  height: 100px;
+}
+.cost-soda .icon {
+  background-position: -150px 0;
+  width: 100px;
+  height: 100px;
+}
+.food-neighborhood .icon {
+  background-position: 0 -300px;
+  width: 100px;
+  height: 100px;
+}
+.places-activity .icon {
+  background-position: 0 -150px;
+  width: 100px;
+  height: 100px;
+}
+.school-food .icon {
+  background-position: 0 0;
+  width: 100px;
+  height: 100px;
 }
