@@ -4,9 +4,12 @@ Template Name: Salud America
 */
 
 get_header(); ?>
+<div class="salud-header clear">
+	<a href="#" class="logo"><img src="/wp-content/themes/CommonsRetheme/img/SA-logox200.png" class=""></a>
+	<h1>Salud America! <br />Advocacy Program</h1>
+	<h3>Get involved in reducing latino childhood obesity.</h3>
+</div>
 <?php get_sidebar( 'salud-single' ); ?>
-
-
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
 			<div class="padder">

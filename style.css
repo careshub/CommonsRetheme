@@ -10,6 +10,10 @@ Tags:		bbpress, responsive, mobile, forum
 body {
   color: #211f1f;
 }
+img.no-box {
+  border-radius: none !important;
+  box-shadow: none !important;
+}
 /*--------------------------------------------------------------
 1 - Activity
 --------------------------------------------------------------*/
@@ -2276,6 +2280,43 @@ h5 {
 }
 .salud-america .widget-area {
   float: left;
+  margin-top: 3.4em;
+}
+.salud-america .salud-header {
+  width: 100%;
+  position: relative;
+}
+.salud-america .salud-header .logo {
+  position: absolute;
+  top: -24px;
+  left: -24px;
+  display: inline-block;
+  float: left;
+}
+.salud-america .salud-header h1,
+.salud-america .salud-header h3 {
+  float: left;
+  clear: none;
+  margin-left: 2%;
+  padding-left: 19%;
+  font-style: italic;
+}
+.salud-america .salud-header h1 {
+  font-size: 39.199999999999996px;
+  font-size: 2.8rem;
+  color: #ef4036;
+  margin-top: .6em;
+}
+.salud-america .salud-header h3 {
+  font-size: 19.599999999999998px;
+  font-size: 1.4rem;
+  background-color: #f58220;
+  width: 83%;
+  display: block;
+  line-height: 1.8;
+  margin-top: 1em;
+  color: #FFF;
+  font-weight: 400;
 }
 .salud-america #content .salud-banner {
   border-bottom: 1px solid #df5927;
@@ -2284,11 +2325,18 @@ h5 {
 .salud-america #content .salud-banner h2 {
   color: #4b8929;
   font-style: italic;
-  font-size: 28px;
-  font-size: 2rem;
+  font-size: 30.800000000000004px;
+  font-size: 2.2rem;
+  clear: none;
+  display: inline-block;
+  margin-left: 8%;
+  margin-top: -4%;
+  line-height: 1.2;
 }
 .salud-america #content .salud-banner h2 span {
   color: #60b035;
+  font-size: 35px;
+  font-size: 2.5rem;
 }
 .salud-america #content .browse-topics h3 {
   color: #ef4036;
@@ -2304,7 +2352,7 @@ h5 {
   text-align: left;
   padding: .6em;
 }
-.salud-america #content .browse-topics .salud-topic h3 {
+.salud-america #content .browse-topics .salud-topic h4 {
   clear: none;
   float: left;
   padding-left: 4%;

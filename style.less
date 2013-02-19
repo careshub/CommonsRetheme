@@ -78,6 +78,10 @@ Tags:		bbpress, responsive, mobile, forum
 body {
 	color: @black;
 }
+img.no-box {
+	border-radius: none !important;
+	box-shadow: none !important;
+}
 
 //Buddypress Styles
 /*--------------------------------------------------------------
@@ -2505,6 +2509,7 @@ transition:all 0.2s linear;
 //Salud America subsection
 @sagreen:#60b035;
 @sared:#ef4036;
+@saorange:#f58220;
 .column1of2 {
 	width: 48%;
 	&.first {
@@ -2520,7 +2525,45 @@ transition:all 0.2s linear;
 		float: right;
 		width: 74%;
 	}
-	.widget-area { float: left; }
+	.widget-area { 
+		float: left; 
+		margin-top:3.4em;
+
+	}
+	.salud-header{
+		width:100%;
+			position: relative;
+			.logo {
+				position:absolute;
+				top:-24px;
+				left:-24px;
+				display: inline-block;
+				float: left;
+			}
+			h1, h3 {
+				float: left;
+				clear:none;
+				margin-left: 2%;
+			    padding-left: 19%;
+			    font-style: italic;
+			}
+			h1 {
+				.font-size(2.8);
+				color: @sared;
+				margin-top: .6em;
+			}
+			h3 {
+				.font-size(1.4);
+				background-color: @saorange;
+				width:83%;
+				display: block;
+				line-height:1.8;
+				margin-top: 1em;
+				color:#FFF;
+				font-weight: 400;
+			}
+
+		}
 	#content {
 		.salud-banner { 
 			border-bottom:1px solid @ccred;
@@ -2528,8 +2571,16 @@ transition:all 0.2s linear;
 			h2 {
 				color: darken(@sagreen,10);
 				font-style: italic;
-				.font-size(2);
-				span {color:@sagreen;}
+				.font-size(2.2);
+				clear:none;
+				display: inline-block;
+				margin-left: 8%;
+				margin-top: -4%;
+				line-height:1.2;
+				span {
+					color:@sagreen;
+					.font-size(2.5);
+				}
 			}
 		}
 		.browse-topics {
@@ -2545,7 +2596,7 @@ transition:all 0.2s linear;
 			display: inline-block;
 			text-align: left;
 			padding:.6em;
-			h3 {
+			h4 {
 				clear: none;
 			    float: left;
 			    padding-left: 4%;
