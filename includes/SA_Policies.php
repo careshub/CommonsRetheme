@@ -443,12 +443,10 @@ function policy_meta_box() {
     }
     ?>
 <script type="text/javascript">
-  
-var $j = jQuery.noConflict();
-    $j(document).ready(function()
+jQuery(document).ready(function()
     {
-        $j("#dateenacted").datepicker();
-        $j("#dateimplemented").datepicker();
+        jQuery("#dateenacted").datepicker();
+        jQuery("#dateimplemented").datepicker();
     });
 
 function setDiv(x)
@@ -462,14 +460,14 @@ function setDiv(x)
  }
  if (x == 'County') {     
      selcnty.style.display = "block";
-     $j(".state").change(function()
+     jQuery(".state").change(function()
         {
             
             
-            var id=$j(this).val();
+            var id=jQuery(this).val();
             var dataString = 'id=' + id;
 
-            $j.ajax
+            jQuery.ajax
             ({
                 type: "POST",
                 // url: "http://localhost/wordpress/wp-content/plugins/SA_Policies/geography.php",
@@ -482,7 +480,7 @@ function setDiv(x)
                 success: function(x)
                 {       
                     //alert(x);
-                    $j(".cnty").html(x);               
+                    jQuery(".cnty").html(x);               
                 } 
             });
         });
@@ -492,12 +490,12 @@ function setDiv(x)
  }
   if (x == 'City') {     
      selcity.style.display = "block";
-     $j(".state").change(function()
+     jQuery(".state").change(function()
         {
-            var id2=$j(this).val();
+            var id2=jQuery(this).val();
             var dataString2 = 'id2=' + id2;
 
-            $j.ajax
+            jQuery.ajax
             ({
                 type: "POST",
                 // url: "http://localhost/wordpress/wp-content/plugins/SA_Policies/geography.php",
@@ -509,7 +507,7 @@ function setDiv(x)
                 },
                 success: function(x)
                 {          
-                    $j(".city").html(x);               
+                    jQuery(".city").html(x);               
                 } 
             });
         });
