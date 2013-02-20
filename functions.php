@@ -742,17 +742,12 @@ function save_group_home_meta( $post_id, $post ) {
 function cc_custom_body_class( $classes ) {
   $background_color = get_background_color();
 
-  if ( is_page_template( 'page-templates/salud-america.php' ) )
+  if ( is_page_template( 'page-templates/salud-america.php' ) || is_singular('sapolicies') )
     $classes[] = 'salud-america';
 
   return $classes;
 }
 add_filter( 'body_class', 'cc_custom_body_class' );
-
-// if ( is_page( 'salud-america' ) ) {
-//   remove_filter('the_content', 'wptexturize');
-//   remove_filter( 'the_content', 'wpautop' );
-//}
 
 remove_filter('the_content','wpautop');
 

@@ -17,7 +17,7 @@ get_header(); ?>
 			<div class="padder">
 
 			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', 'page-notitle' ); ?>
+				<?php get_template_part( 'content', 'sapolicies' ); ?>
 				<?php comments_template( '', true ); ?>
 			<?php endwhile; // end of the loop. ?>
 
