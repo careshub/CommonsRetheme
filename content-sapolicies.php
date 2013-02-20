@@ -56,7 +56,7 @@ echo "<br />";
 		        break;
 		    case "develop":
 				$percentage = 50;
-		        $progress_label = 'in devlopment';
+		        $progress_label = 'in development';
 		        break;
 		    case "enact":
 				$percentage = 75;
