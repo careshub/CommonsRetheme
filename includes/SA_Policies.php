@@ -156,7 +156,7 @@ function geog_meta_box()
 <?php
 
     if ($geog != '') {
-        //echo '<script type="text/javascript">' . "setDiv('" . $geog . "');" . '</script>';
+        echo '<script type="text/javascript">' . "setDiv('" . $geog . "');" . '</script>';
     }
 
 }
@@ -424,23 +424,23 @@ function policy_meta_box() {
 
 
 <?php       
-    // if ($sapolicy_stage != '') {
-    //     echo '<script type="text/javascript">'
-    //    , "setStage('" . $sapolicy_stage . "');"
-    //    , '</script>';
-    // }
-    // if ($at7 != '') {    
-    //     echo '<script type="text/javascript">'
-    //     , 'var otherAT22 = document.getElementById("otherAT");'
-    //     , 'otherAT22.style.display="block";'
-    //     , '</script>';        
-    // }
-    // if ($otherat7 != '') {    
-    //     echo '<script type="text/javascript">'
-    //     , 'var otherAT23 = document.getElementById("otherAT2");'
-    //     , 'otherAT23.style.display="block";'
-    //     , '</script>';        
-    // }
+    if ($sapolicy_stage != '') {
+        echo '<script type="text/javascript">'
+       , "setStage('" . $sapolicy_stage . "');"
+       , '</script>';
+    }
+    if ($at7 != '') {    
+        echo '<script type="text/javascript">'
+        , 'var otherAT22 = document.getElementById("otherAT");'
+        , 'otherAT22.style.display="block";'
+        , '</script>';        
+    }
+    if ($otherat7 != '') {    
+        echo '<script type="text/javascript">'
+        , 'var otherAT23 = document.getElementById("otherAT2");'
+        , 'otherAT23.style.display="block";'
+        , '</script>';        
+    }
     ?>
 <script type="text/javascript">
 /*
@@ -449,7 +449,7 @@ jQuery(document).ready(function()
         jQuery("#dateenacted").datepicker();
         jQuery("#dateimplemented").datepicker();
     });
-
+*/
 function setDiv(x)
 {
  var selcnty = document.getElementById('selcnty');
@@ -566,7 +566,6 @@ function checkOther2(element) {
         otherAT2.style.display="none";
     }    
 }
-*/
 </script> 
 
 <?php }
