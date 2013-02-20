@@ -1,9 +1,4 @@
-<?php
-/*
-Template Name: Salud America
-*/
-
-get_header(); ?>
+<?php get_header(); ?>
 <div class="salud-header clear">
 	<a href="#" class="logo"><img src="/wp-content/themes/CommonsRetheme/img/SA-logox200.png" class=""></a>
 	<h1>Salud America! <br />Advocacy Program</h1>
