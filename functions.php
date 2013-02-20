@@ -1,4 +1,9 @@
 <?php
+//include code from include folder
+//Definition of the Salud America policy custom post type
+require_once('includes/SA_Policies.php');
+//Definition of the geographies custom taxonomy
+require_once('includes/taxonomy-geography.php');
 
 // Customize WP Toolbar
 function change_toolbar() {  

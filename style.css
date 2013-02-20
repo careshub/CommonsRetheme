@@ -2278,6 +2278,9 @@ h5 {
   float: right;
   width: 74%;
 }
+.salud-america .site-content article {
+  border-bottom: none;
+}
 .salud-america .widget-area {
   float: left;
   margin-top: 3.4em;
@@ -2332,6 +2335,10 @@ h5 {
   float: left;
   padding: 1em 1em 2em 1em;
 }
+.salud-america .salud-footer img {
+  float: left;
+  margin-right: 1.2em;
+}
 .salud-america .salud-footer p {
   line-height: 1.6;
   font-size: 14px;
@@ -2350,8 +2357,9 @@ h5 {
   clear: none;
   display: inline-block;
   margin-left: 8%;
-  margin-top: -4%;
+  margin-top: 6%;
   line-height: 1.2;
+  vertical-align: top;
 }
 .salud-america #content .salud-banner h2 span {
   color: #60b035;

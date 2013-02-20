@@ -9,7 +9,7 @@
  */
 ?>
 		<div id="secondary" class="widget-area" role="complementary">
-			<p> Salud sidebar single </p>
+			<!-- <p> Salud sidebar single </p> -->
 		<!-- <div id="group-navigation">  
 		    <div id="group_sidebar">
 				<div id="item-header-avatar">

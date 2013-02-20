@@ -2524,6 +2524,7 @@ transition:all 0.2s linear;
 	.site-content { 
 		float: right;
 		width: 74%;
+		article {border-bottom:none;}
 	}
 	.widget-area { 
 		float: left; 
@@ -2576,6 +2577,10 @@ transition:all 0.2s linear;
 			border-top:1px solid @saorange;
 			float: left;
 			padding: 1em 1em 2em 1em;
+			img {
+				float: left;
+				margin-right: 1.2em;
+			}
 			p {
 				line-height: 1.6;
 				.font-size(1);
@@ -2594,8 +2599,9 @@ transition:all 0.2s linear;
 				clear:none;
 				display: inline-block;
 				margin-left: 8%;
-				margin-top: -4%;
+				margin-top: 6%;
 				line-height:1.2;
+				vertical-align: top;
 				span {
 					color:@sagreen;
 					.font-size(2.5);
