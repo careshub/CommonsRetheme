@@ -246,63 +246,63 @@ function policy_meta_box() {
     <div id="morestage">
         <div id="prestage" style="display:none">
             <strong>Pre-Policy</strong><br>
-            <input type="checkbox" id="pre1" name="pre1" <?php 
+            <input type="checkbox" id="pre1" name="pre1" value='Describe Problem' <?php 
                 if ($pre1 == true) {
-                    echo "value='Describe Problem' checked";
+                    echo " checked";
                 } 
            ?>                     
                    > Describe Problem<br>
-            <input type="checkbox" id="pre2" name="pre2" <?php 
+            <input type="checkbox" id="pre2" name="pre2" value='Study Causes and Consequences'<?php 
                 if ($pre2 == true) {
-                    echo "value='Study Causes and Consequences' checked";
+                    echo " checked";
                 } 
            ?>                  
                    > Study Causes and Consequences<br>
-            <input type="checkbox" id="pre3" name="pre3" <?php 
+            <input type="checkbox" id="pre3" name="pre3" value='Describe Trend and Spread of Issues'<?php 
                 if ($pre3 == true) {
-                    echo "value='Describe Trend and Spread of Issues' checked";
+                    echo " checked";
                 } 
            ?>                   
                    > Describe Trend and Spread of Issues<br>
         </div>
         <div id="developstage" style="display:none">
             <strong>Develop Policy</strong><br>
-            <input type="checkbox" id="dev1" name="dev1" <?php 
+            <input type="checkbox" id="dev1" name="dev1" value='Promote Awareness'<?php 
                 if ($dev1 == true) {
-                    echo "value='Promote Awareness' checked";
+                    echo " checked";
                 } 
            ?>                     
                    > Promote Awareness<br>
-            <input type="checkbox" id="dev2" name="dev2" <?php 
+            <input type="checkbox" id="dev2" name="dev2" value='Re-frame Issues'<?php 
                 if ($dev2 == true) {
-                    echo "value='Re-frame Issues' checked";
+                    echo " checked";
                 } 
            ?>                   
                    > Re-frame Issues<br>
-            <input type="checkbox" id="dev3" name="dev3" <?php 
+            <input type="checkbox" id="dev3" name="dev3" value='Mobilize Publics'<?php 
                 if ($dev3 == true) {
-                    echo "value='Mobilize Publics' checked";
+                    echo " checked";
                 } 
            ?>                    
                    > Mobilize Publics<br>
         </div>
         <div id="enactstage" style="display:none">
             <strong>Enact Policy</strong><br>
-            <input type="checkbox" id="enact1" name="enact1" <?php 
+            <input type="checkbox" id="enact1" name="enact1" value='Create Advocacy'<?php 
                 if ($enact1 == true) {
-                    echo "value='Create Advocacy' checked";
+                    echo " checked";
                 } 
            ?>                    
                    > Create Advocacy<br>
-            <input type="checkbox" id="enact2" name="enact2" <?php 
+            <input type="checkbox" id="enact2" name="enact2" value='Frame Policy'<?php 
                 if ($enact2 == true) {
-                    echo "value='Frame Policy' checked";
+                    echo " checked";
                 } 
            ?>                    
                    > Frame Policy<br>
-            <input type="checkbox" id="enact3" name="enact3" <?php 
+            <input type="checkbox" id="enact3" name="enact3" value='Pass Policy or Legislation'<?php 
                 if ($enact3 == true) {
-                    echo "value='Pass Policy or Legislation' checked";
+                    echo " checked";
                 } 
            ?>                    
                    > Pass Policy or Legislation<br><br>
@@ -319,19 +319,19 @@ function policy_meta_box() {
         </div>
         <div id="poststage" style="display:none">
             <strong>Post-Policy</strong><br>
-            <input type="checkbox" id="post1" name="post1" <?php 
+            <input type="checkbox" id="post1" name="post1" value='Implement Policy'<?php 
                 if ($post1 == true) {
-                    echo "value='Implement Policy' checked";
+                    echo " checked";
                 } 
            ?>> Implement Policy<br>
-            <input type="checkbox" id="post2" name="post2" <?php 
+            <input type="checkbox" id="post2" name="post2" value='Ensure Access and Equity'<?php 
                 if ($post2 == true) {
-                    echo "value='Ensure Access and Equity' checked";
+                    echo " checked";
                 }
            ?>> Ensure Access and Equity<br>
-            <input type="checkbox" id="post3" name="post3" <?php 
+            <input type="checkbox" id="post3" name="post3" value='Sustain, Change, Abandon'<?php 
                 if ($post3 == true) {
-                    echo "value='Sustain, Change, Abandon' checked";
+                    echo " checked";
                 } 
            ?>> Sustain, Change, Abandon<br>            
         </div>    
@@ -340,78 +340,78 @@ function policy_meta_box() {
 <div style="clear:both"></div>
 <br>
 <strong>Advocacy Target:</strong><br>
-            <input type="checkbox" id="at1" name="at1" <?php 
+            <input type="checkbox" id="at1" name="at1" value='Reduce access to unhealthy competitive foods in school'<?php 
                 if ($at1 == true) {
-                    echo "value='Reduce access to unhealthy competitive foods in school' checked";
+                    echo " checked";
                 } 
            ?>> Reduce access to unhealthy competitive foods in school<br>
-            <input type="checkbox" id="at2" name="at2"<?php 
+            <input type="checkbox" id="at2" name="at2" value='Increase the number of healthy food retail outlets in underserved communities receiving funding from food financing initiatives'<?php 
                 if ($at2 == true) {
-                    echo "value='Increase the number of healthy food retail outlets in underserved communities receiving funding from food financing initiatives' checked";
+                    echo " checked";
                 } 
            ?>> Increase the number of healthy food retail outlets in under-served communities receiving funding from food financing initiatives<br>
-            <input type="checkbox" id="at3" name="at3" <?php 
+            <input type="checkbox" id="at3" name="at3" value='Improve physical activity standards in out-of-school and out-of-class time in under-served communities'<?php 
                 if ($at3 == true) {
-                    echo "value='Improve physical activity standards in out-of-school and out-of-class time in under-served communities' checked";
+                    echo " checked";
                 } 
            ?>> Improve physical activity standards in out-of-school and out-of-class time in under-served communities<br>
-            <input type="checkbox" id="at4" name="at4" <?php 
+            <input type="checkbox" id="at4" name="at4" value='Increase the use of joint use agreements and street-scale improvements in under-served communities'<?php 
                 if ($at4 == true) {
-                    echo "value='Increase the use of joint use agreements and street-scale improvements in under-served communities' checked";
+                    echo " checked";
                 } 
            ?>> Increase the use of joint use agreements and street-scale improvements in under-served communities<br>
-            <input type="checkbox" id="at5" name="at5" <?php 
+            <input type="checkbox" id="at5" name="at5" value='Reducing unhealthy beverage consumption using pricing incentives and disincentives'<?php 
                 if ($at5 == true) {
-                    echo "value='Reducing unhealthy beverage consumption using pricing incentives and disincentives' checked";
+                    echo " checked";
                 } 
            ?>> Reducing unhealthy beverage consumption using pricing incentives and disincentives<br>
-            <input type="checkbox" id="at6" name="at6" <?php 
+            <input type="checkbox" id="at6" name="at6" value='Increase incentives and demand for strengthening industry self-regulation and government regulation of food marketing to kids'<?php 
                 if ($at6 == true) {
-                    echo "value='Increase incentives and demand for strengthening industry self-regulation and government regulation of food marketing to kids' checked";
+                    echo " checked";
                 } 
            ?>> Increase incentives and demand for strengthening industry self-regulation and government regulation of food marketing to kids<br>
-            <input type="checkbox" id="at7" name="at7" <?php 
+            <input type="checkbox" id="at7" name="at7" value='Other'<?php 
                 if ($at7 == true) {
-                    echo "value='Other' checked";
+                    echo " checked";
                 } 
            ?> onchange="checkOther(this)"> Other<br>
             <div id="otherAT" style="display:none;margin-left: 40px;">
                 <strong>Please describe:</strong><br>
                 <textarea id="otherATdesc" name="otherATdesc" rows="5" cols="100"><?php echo $otherATdesc; ?></textarea><br>
                     <strong>Which of these policy areas best describe the advocacy work?:</strong><br>
-                    <input type="checkbox" id="otherat1" name="otherat1" <?php 
+                    <input type="checkbox" id="otherat1" name="otherat1" value='School food environment'<?php 
                 if ($otherat1 == true) {
-                    echo "value='School food environment' checked";
+                    echo " checked";
                 } 
            ?>> School food environment<br>
-                    <input type="checkbox" id="otherat2" name="otherat2" <?php 
+                    <input type="checkbox" id="otherat2" name="otherat2" value='Access to healthy, affordable foods in communities'<?php 
                 if ($otherat2 == true) {
-                    echo "value='Access to healthy, affordable foods in communities' checked";
+                    echo " checked";
                 } 
            ?>> Access to healthy, affordable foods in communities<br>
-                    <input type="checkbox" id="otherat3" name="otherat3" <?php 
+                    <input type="checkbox" id="otherat3" name="otherat3" value='Increase PA in school settings'<?php 
                 if ($otherat3 == true) {
-                    echo "value='Increase PA in school settings' checked";
+                    echo " checked";
                 } 
            ?>> Increase PA in school settings<br>
-                    <input type="checkbox" id="otherat4" name="otherat4" <?php 
+                    <input type="checkbox" id="otherat4" name="otherat4" value='Improve built environment for PA'<?php 
                 if ($otherat4 == true) {
-                    echo "value='Improve built environment for PA' checked";
+                    echo " checked";
                 } 
            ?>> Improve built environment for PA<br>
-                    <input type="checkbox" id="otherat5" name="otherat5" <?php 
+                    <input type="checkbox" id="otherat5" name="otherat5" value='Pricing strategies to promote healthy foods'<?php 
                 if ($otherat5 == true) {
-                    echo "value='Pricing strategies to promote healthy foods' checked";
+                    echo " checked";
                 } 
            ?>> Pricing strategies to promote healthy foods<br>
-                    <input type="checkbox" id="otherat6" name="otherat6" <?php 
+                    <input type="checkbox" id="otherat6" name="otherat6" value='Reduce youths exposure to the marketing of unhealthy foods through regulation, policy, and effective industry self-regulation'<?php 
                 if ($otherat6 == true) {
-                    echo "value='Reduce youths exposure to the marketing of unhealthy foods through regulation, policy, and effective industry self-regulation' checked";
+                    echo " checked";
                 } 
            ?>> Reduce youths exposure to the marketing of unhealthy foods through regulation, policy, and effective industry self-regulation<br>
-                    <input type="checkbox" id="otherat7" name="otherat7" <?php 
+                    <input type="checkbox" id="otherat7" name="otherat7" value='Other'<?php 
                 if ($otherat5 == true) {
-                    echo "value='Other' checked";
+                    echo " checked";
                 } 
            ?> onchange="checkOther2(this)"> Other<br>                
                     <div id="otherAT2" style="display:none;margin-left: 40px;">
