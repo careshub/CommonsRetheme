@@ -598,8 +598,8 @@ function register_cpt_group_home_page() {
         'query_var' => true,
         'can_export' => true,
         'rewrite' => false,
-        'capability_type' => 'group_home',
-        'map_meta_cap'    => true
+        'capability_type' => 'post'//,
+        //'map_meta_cap'    => true
     );
 
     register_post_type( 'group_home_page', $args );
