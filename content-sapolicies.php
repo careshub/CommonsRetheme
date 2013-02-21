@@ -58,6 +58,13 @@ $custom_fields = get_post_custom($post->ID);
 			</header>
 
 			<?php the_content(); ?>
+			<div class="clear"></div>
+
+	<div class="policy-meta">
+		<div class="policy-stats">
+			<img src="img/poverty-atlanta-200x200.png">
+
+		</div>
 
 			<?php
 			//Progress meter
@@ -82,13 +89,13 @@ $custom_fields = get_post_custom($post->ID);
 			}
 			//echo $progress_label . " " . $percentage;
 			?>
-			<div class="clear"></div>
 			<div class="meter-box">
 				<h4>This policy is <?php echo $progress_label; ?>.</h4>
 				<div class="meter">
 					<span style="width: <?php echo $percentage; ?>%"><span></span></span>
 				</div>
-			</div>
+			</div> <!-- end .meter-box -->
+	</div> <!-- end .policy-meta -->
 			
 
 			<?php //wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
