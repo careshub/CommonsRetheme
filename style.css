@@ -14,6 +14,10 @@ img.no-box {
   border-radius: none !important;
   box-shadow: none !important;
 }
+.widget-title {
+  font-size: 16.8px;
+  font-size: 1.2rem;
+}
 /*--------------------------------------------------------------
 1 - Activity
 --------------------------------------------------------------*/
@@ -2376,7 +2380,7 @@ h5 {
   width: 74%;
 }
 .salud-america .site-content article {
-  border-bottom: none;
+  border-bottom: 1px solid #f58220;
 }
 .salud-america .widget-area {
   float: left;
@@ -2491,6 +2495,9 @@ h5 {
   clear: left;
   padding-top: 12px;
   margin-bottom: 0;
+}
+.salud-america #content .policy-search {
+  margin-bottom: 3em;
 }
 .salud-america #content .sapolicies .icon {
   margin-right: 2%;

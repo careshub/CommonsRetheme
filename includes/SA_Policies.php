@@ -31,6 +31,7 @@ function SA_policies_init()
 		'hierarchical' => false,
     'show_in_menu' => true,
     'menu_position' => 25,
+    //'has_archive' => 'sapolicies',
     'supports' => array('title','editor'),
     'capability_type' => 'sapolicies',
     'map_meta_cap'    => true

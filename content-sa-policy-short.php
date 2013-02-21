@@ -6,13 +6,7 @@
  * @subpackage Twenty_Twelve
  * @since Twenty Twelve 1.0
  */
-
-//print_r($post);
-// echo 'META:';
-// print_r($custom_fields); 
-// echo "<br />";
-
-$custom_fields = get_post_custom($post->ID);
+	$custom_fields = get_post_custom($post->ID);
 	//Check target areas, add the correct icon:
 	for ($i = 1; $i <= 6; $i++) {
 		${target.$i} = $custom_fields['at'.$i][0];
@@ -63,6 +57,7 @@ $custom_fields = get_post_custom($post->ID);
 		}
 	//echo $progress_label . " " . $percentage;
 
+
 ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -71,27 +66,39 @@ $custom_fields = get_post_custom($post->ID);
 				<?php if ( isset( $icon_class ) )
 						echo '<div class="' . $icon_class . '"><span class="icon"></span></div>';
 				?>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
+				<h1 class="entry-title">
+				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+				</h1>
 				<?php //echo "<br />"; ?>
 				<p class="location">Anytown, USA</p>
 				<div class="meter-box clear">
 					<p>This policy is <?php echo $progress_label; ?>.
-					<div class="meter nostripes">
+					<!-- <div class="meter">
 						<span style="width: <?php echo $percentage; ?>%"><span></span></span>
-					</div>
+					</div> -->
 				</div> <!-- end .meter-box -->
 				
 			</header>
+			<p>
+			<?php 
+			$excerpt = get_the_excerpt();
 
-			<?php the_content(); ?>
-			<p class="policy-type">This policy is of the type: <a href="#"><?php echo $custom_fields['policytype'][0];?></a></p>
+			if ( isset($excerpt) ) {
+				echo $excerpt;
+			} else {
+				$content = wpautop( get_the_content() ); 
+				echo $content;
+			}
+			?>
+			</p>
+			<!-- <p class="policy-type">This policy is of the type: <a href="#"><?php echo $custom_fields['policytype'][0];?></a></p> -->
 
 			<div class="clear"></div>			
 
 			<?php //wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
-		<footer class="entry-meta">
+		<!-- <footer class="entry-meta">
                     
 			<?php edit_post_link( __( 'Edit', 'twentytwelve' ), '<span class="edit-link">', '</span>' ); ?>
-		</footer><!-- .entry-meta -->
+		</footer> --><!-- .entry-meta -->
 	</article><!-- #post -->

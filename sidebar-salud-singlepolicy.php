@@ -51,13 +51,16 @@
 				?>
 		</div>
 
-		<div class="policy-meta">
+	<div class="policy-meta">
 		<div class="policy-stats">
-			<h3>Poverty rate for the Atlanta region.</h3>
+			<h3 class="widget-title">Regional Snapshot</h3>
+			<p class="caption">Poverty rate for the Atlanta region.</p>
 			<a href="http://www.chna.org/report/map.aspx?bbox=-9463866.3621,3920689.2672,-9342209.9661,4084338.2471&mapid=15">
-				<img src="/wp-content/themes/CommonsRetheme/img/poverty-atlanta-200x200.png">
+				<img src="/wp-content/themes/CommonsRetheme/img/poverty-atlanta-180x180.png">
 			</a>
 			<img src="/wp-content/themes/CommonsRetheme/img/poverty-key.png">
+			<br />
+
 		</div>
 	</div> <!-- end .policy-meta -->
 		<?php //if ( is_active_sidebar( 'groups-single-sidebar' ) ) :

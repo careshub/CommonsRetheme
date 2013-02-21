@@ -762,4 +762,22 @@ function salud_formatting($content){
    return wpautop($content);
   }
 }
+//Add our custom post types to the archives page
+function cc_add_custom_types( $query ) {
+  if( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {
+    $query->set( 'post_type', array(
+     'post',
+     'sapolicies'
+    ));
+    return $query;
+  }
+}
+add_filter( 'pre_get_posts', 'cc_add_custom_types' );
+
+//Add "Read More" to the end of excerpts
+function read_excerpt_more($more) {
+       global $post;
+  return ' <a href="'. get_permalink($post->ID) . '" class="button">[...]</a>';
+}
+add_filter('excerpt_more', 'read_excerpt_more');
 
