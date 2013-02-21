@@ -2502,6 +2502,15 @@ h5 {
   padding-top: 12px;
   margin-bottom: 0;
 }
+.salud-america #content .sapolicies .icon {
+  margin-right: 2%;
+}
+.salud-america #content .sapolicies h1,
+.salud-america #content .sapolicies h4,
+.salud-america #content .sapolicies p {
+  clear: none;
+  margin: 0 0 .5em 0;
+}
 .policy-meter span {
   display: block;
   background-color: #869b3c;

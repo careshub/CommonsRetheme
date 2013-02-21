@@ -6,8 +6,14 @@
  * @subpackage Twenty_Twelve
  * @since Twenty Twelve 1.0
  */
+
+//print_r($post);
+// echo 'META:';
+// print_r($custom_fields); 
+// echo "<br />";
+
 $custom_fields = get_post_custom($post->ID);
-//Check target areas:
+	//Check target areas, add the correct icon:
 	for ($i = 1; $i <= 6; $i++) {
 		${target.$i} = $custom_fields['at'.$i][0];
 		//echo 'Target Area'. $i .': ' . ${target.$i} . '<br/>';
@@ -22,27 +28,34 @@ $custom_fields = get_post_custom($post->ID);
 		    case 3:
 		        $icon_class = "active-play";
 		        break;
+		    case 4:
+		        $icon_class = "places-activity";
+		        break;
+		    case 5:
+		        $icon_class = "cost-soda";
+		        break;
+		    case 6:
+		        $icon_class = "advertising";
+		        break;
 			}
-				echo '<div class="' . $icon_class . '"><span class="icon"></span></div>';
 			}
 	};
-//print_r($post);
-echo 'META:';
-print_r($custom_fields); 
-echo "<br />";
-
 
 ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
 		<div class="entry-content">
-			<h1><?php the_title(); ?></h1>
-			<?php //echo "<br />"; ?>
-			<h4 class="location">Anytown, USA</h4>
-			<?php echo $custom_fields['policytype'][0];?>
-					<?php echo "<br />"; ?>
-			<?php echo "<br />"; ?>
+			<header class="entry-header">
+				<?php if ( isset( $icon_class ) )
+						echo '<div class="' . $icon_class . '"><span class="icon"></span></div>';
+				?>
+				<h1 class="entry-title"><?php the_title(); ?></h1>
+				<?php //echo "<br />"; ?>
+				<p class="location">Anytown, USA</p>
+				<p class="policy-type"><?php echo $custom_fields['policytype'][0];?></p>
+						<?php echo "<br />"; ?>
+				<?php echo "<br />"; ?>
+			</header>
 
 			<?php the_content(); ?>
 
