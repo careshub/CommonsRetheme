@@ -41,62 +41,52 @@ $custom_fields = get_post_custom($post->ID);
 			}
 	};
 
+//Progress meter
+	$progress = $custom_fields['policystage'][0];
+		switch ($progress) {
+	    case "pre":
+	        $percentage = 25;
+	        $progress_label = "in pre-policy";
+	        break;
+	    case "develop":
+			$percentage = 50;
+	        $progress_label = 'in development';
+	        break;
+	    case "enact":
+			$percentage = 75;
+	        $progress_label = 'enacted';
+	       	break;
+	    case "post":
+			$percentage = 75;
+	        $progress_label = 'in post-policy';
+	       	break;
+		}
+	//echo $progress_label . " " . $percentage;
+
 ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<div class="entry-content">
-			<header class="entry-header">
+			<header class="entry-header clear">
 				<?php if ( isset( $icon_class ) )
 						echo '<div class="' . $icon_class . '"><span class="icon"></span></div>';
 				?>
 				<h1 class="entry-title"><?php the_title(); ?></h1>
 				<?php //echo "<br />"; ?>
 				<p class="location">Anytown, USA</p>
-				<p class="policy-type"><?php echo $custom_fields['policytype'][0];?></p>
-						<?php echo "<br />"; ?>
-				<?php echo "<br />"; ?>
+				<div class="meter-box clear">
+					<p>This policy is <?php echo $progress_label; ?>.
+					<div class="meter">
+						<span style="width: <?php echo $percentage; ?>%"><span></span></span>
+					</div>
+				</div> <!-- end .meter-box -->
+				
 			</header>
 
 			<?php the_content(); ?>
-			<div class="clear"></div>
+			<p class="policy-type">This policy is of the type: <a href="#"><?php echo $custom_fields['policytype'][0];?></a></p>
 
-	<div class="policy-meta">
-		<div class="policy-stats">
-			<img src="img/poverty-atlanta-200x200.png">
-
-		</div>
-
-			<?php
-			//Progress meter
-			$progress = $custom_fields['policystage'][0];
-			switch ($progress) {
-		    case "pre":
-		        $percentage = 25;
-		        $progress_label = "in pre-policy";
-		        break;
-		    case "develop":
-				$percentage = 50;
-		        $progress_label = 'in development';
-		        break;
-		    case "enact":
-				$percentage = 75;
-		        $progress_label = 'enacted';
-		       	break;
-		    case "post":
-				$percentage = 75;
-		        $progress_label = 'in post-policy';
-		       	break;
-			}
-			//echo $progress_label . " " . $percentage;
-			?>
-			<div class="meter-box">
-				<h4>This policy is <?php echo $progress_label; ?>.</h4>
-				<div class="meter">
-					<span style="width: <?php echo $percentage; ?>%"><span></span></span>
-				</div>
-			</div> <!-- end .meter-box -->
-	</div> <!-- end .policy-meta -->
-			
+			<div class="clear"></div>			
 
 			<?php //wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->

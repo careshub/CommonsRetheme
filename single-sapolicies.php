@@ -6,7 +6,7 @@
 	<div class="sa-kids-photo"><img src="/wp-content/themes/CommonsRetheme/img/sa-kids-335.png"></div>
 
 </div>
-<?php get_sidebar( 'salud-single' ); ?>
+<?php get_sidebar( 'salud-singlepolicy' ); ?>
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
 			<div class="padder">
