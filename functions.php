@@ -780,4 +780,3 @@ function read_excerpt_more($more) {
   return ' <a href="'. get_permalink($post->ID) . '" class="button">[...]</a>';
 }
 add_filter('excerpt_more', 'read_excerpt_more');
-

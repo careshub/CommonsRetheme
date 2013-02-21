@@ -1712,6 +1712,19 @@ form.standard-form textarea {
 .ie8 .primary-navigation .secondary .bp-notifications .bp-notification-list {
   margin-top: 12px;
 }
+#content .entry-content .attachments-header {
+  margin: 2em 0 .4em 0;
+}
+#content .entry-content .post-attachments {
+  list-style: none;
+  margin-left: 0;
+}
+#content .entry-content .post-attachments .post-attachment {
+  background: url(img/icon-document.png) 0 4px no-repeat;
+  line-height: 28px;
+  margin-left: 14px;
+  padding-left: 28px;
+}
 /**
  * Search
  */
@@ -2207,13 +2220,13 @@ h5 {
   height: 10px;
   /* Can be anything */
 
-  width: 40%;
+  width: 90%;
   position: relative;
   float: left;
-  margin-left: 1em;
-  background: #555;
-  -moz-border-radius: 25px;
+  background: #dedede;
+  border: 1px solid #aaaaaa;
   -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
   border-radius: 25px;
   padding: 5px;
   -webkit-box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
@@ -2223,21 +2236,12 @@ h5 {
 .meter > span {
   display: block;
   height: 100%;
-  -webkit-border-top-right-radius: 8px;
-  -webkit-border-bottom-right-radius: 8px;
-  -moz-border-radius-topright: 8px;
-  -moz-border-radius-bottomright: 8px;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  -webkit-border-top-left-radius: 20px;
-  -webkit-border-bottom-left-radius: 20px;
-  -moz-border-radius-topleft: 20px;
-  -moz-border-radius-bottomleft: 20px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  background-color: #2bc253;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #2bc253), color-stop(1, #54f054));
-  background-image: -moz-linear-gradient(center bottom, #2bc253 37%, #54f054 69%);
+  -webkit-border-radius: 20px 8px 8px 20px;
+  -moz-border-radius: 20px 8px 8px 20px;
+  border-radius: 20px 8px 8px 20px;
+  background-color: #008eaa;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #008eaa), color-stop(1, #00b9dd));
+  background-image: -moz-linear-gradient(center bottom, #008eaa 37%, #00b9dd 69%);
   -webkit-box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3), inset 0 -2px 6px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3), inset 0 -2px 6px rgba(0, 0, 0, 0.4);
   box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3), inset 0 -2px 6px rgba(0, 0, 0, 0.4);
@@ -2294,6 +2298,11 @@ h5 {
   background-image: -moz-linear-gradient(top, #f0a3a3, #f42323);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f0a3a3), color-stop(1, #f42323));
   background-image: -webkit-linear-gradient(#f0a3a3, #f42323);
+}
+.green > span {
+  background-color: #2bc253;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #2bc253), color-stop(1, #54f054));
+  background-image: -moz-linear-gradient(center bottom, #2bc253 37%, #54f054 69%);
 }
 .nostripes > span > span,
 .nostripes > span:after {
@@ -2432,7 +2441,6 @@ h5 {
   font-weight: 400;
 }
 .salud-america .salud-footer {
-  border-top: 1px solid #f58220;
   float: left;
   padding: 1em 1em 2em 1em;
 }
@@ -2497,7 +2505,9 @@ h5 {
   margin-bottom: 0;
 }
 .salud-america #content .policy-search {
+  border-bottom: 1px solid #f58220;
   margin-bottom: 3em;
+  padding-bottom: 3em;
 }
 .salud-america #content .sapolicies .icon {
   margin-right: 2%;
@@ -2521,16 +2531,31 @@ h5 {
 .policy-meta .policy-stats {
   float: left;
 }
-#content .meter-box {
+.policy-meta .policy-stats .stat-group {
+  margin-bottom: 2em;
+}
+.policy-meta .policy-stats .stat-group .stat-title {
+  font-weight: 400;
+  margin-bottom: .4em;
+  font-size: 13.299999999999999px;
+  font-size: 0.95rem;
+}
+#content .entry-header .meter-box {
   overflow: hidden;
   width: 80%;
   float: left;
 }
-#content .meter-box p {
+#content .entry-header .meter-box .meter {
+  width: 40%;
+}
+#content .entry-header .meter-box p {
   font-weight: 400;
   font-style: italic;
   float: left;
   margin: 0 1em 0 0;
+}
+#secondary .policy-stats .meter {
+  width: 80%;
 }
 .active-play .icon,
 .advertising .icon,

@@ -53,13 +53,39 @@
 
 	<div class="policy-meta">
 		<div class="policy-stats">
-			<h3 class="widget-title">Regional Snapshot</h3>
-			<p class="caption">Poverty rate for the Atlanta region.</p>
-			<a href="http://www.chna.org/report/map.aspx?bbox=-9463866.3621,3920689.2672,-9342209.9661,4084338.2471&mapid=15">
-				<img src="/wp-content/themes/CommonsRetheme/img/poverty-atlanta-180x180.png">
-			</a>
-			<img src="/wp-content/themes/CommonsRetheme/img/poverty-key.png">
-			<br />
+			<h3 class="widget-title">Regional Snapshot:<br /> Atlanta</h3>
+			<div class="stat-group clear">
+				<h6 class="stat-title">Poverty rate</h6>
+				<a href="http://www.chna.org/report/map.aspx?bbox=-9463866.3621,3920689.2672,-9342209.9661,4084338.2471&mapid=15">
+					<img src="/wp-content/themes/CommonsRetheme/img/poverty-atlanta-180x180.png">
+				</a>
+				<img src="/wp-content/themes/CommonsRetheme/img/poverty-key.png">
+			</div>
+
+			<div class="stat-group clear">
+			<h6 class="stat-title">Percent Hispanic: 23%</h6>
+				<div class="meter nostripes">
+					<span style="width: 23%"><span></span></span>
+				</div>
+			</div>
+
+			<div class="stat-group clear">
+			<h6 class="stat-title">Obesity rate: 26%</h6>
+				<div class="meter nostripes red">
+					<span style="width: 26%"><span></span></span>
+				</div>
+			</div>
+			<div class="stat-group clear">
+				<h6 class="stat-title">Percent with High School diploma: 54%</h6>
+				<div class="meter nostripes green">
+					<span style="width: 68%"><span></span></span>
+				</div>
+			</div>
+
+
+
+
+			
 
 		</div>
 	</div> <!-- end .policy-meta -->
