@@ -780,3 +780,31 @@ function read_excerpt_more($more) {
   return ' <a href="'. get_permalink($post->ID) . '" class="button">[...]</a>';
 }
 add_filter('excerpt_more', 'read_excerpt_more');
+
+//Show a list of attachments after the post, for sa policies only
+
+add_filter( 'the_content', 'list_attachments_content_filter' );
+function list_attachments_content_filter( $content ) {
+  global $post;
+
+  if ( is_single() && $post->post_type == 'sapolicies' && $post->post_status == 'publish' ) {
+    $attachments = get_posts( array(
+      'post_type' => 'attachment',
+      'posts_per_page' => 0,
+      'post_parent' => $post->ID
+    ) );
+
+    if ( $attachments ) {
+      $content .= '<h5 class="attachments-header">Attachments</h5>';
+      $content .= '<ul class="post-attachments">';
+      foreach ( $attachments as $attachment ) {
+        $class = "post-attachment mime-" . sanitize_title( $attachment->post_mime_type );
+        $title = wp_get_attachment_link( $attachment->ID, false );
+        $content .= '<li class="' . $class . '">' . $title . '</li>';
+      }
+      $content .= '</ul>';
+    }
+  }
+
+  return $content;
+}
