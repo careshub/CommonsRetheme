@@ -473,7 +473,7 @@ function setDiv(x)
             ({
                 type: "POST",
                 // url: "http://localhost/wordpress/wp-content/plugins/SA_Policies/geography.php",
-                url: "../ajax/taxonomy-geography.php",
+                url: "/wp-content/themes/CommonsRetheme/ajax/taxonomy-geography.php",
                 data: dataString,
                 cache: false,               
                 error: function() {
@@ -501,7 +501,7 @@ function setDiv(x)
             ({
                 type: "POST",
                 // url: "http://localhost/wordpress/wp-content/plugins/SA_Policies/geography.php",
-                url: "../ajax/taxonomy-geography.php",
+                url: "/wp-content/themes/CommonsRetheme/ajax/taxonomy-geography.php",
                 data: dataString2,
                 cache: false,               
                 error: function() {
