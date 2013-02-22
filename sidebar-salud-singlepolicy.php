@@ -53,7 +53,7 @@
 
 	<div class="policy-meta">
 		<div class="policy-stats">
-			<h3 class="widget-title">Regional Snapshot:<br /> Atlanta</h3>
+			<h3 class="widget-title">Regional Snapshot:<br /> Anytown</h3>
 			<div class="stat-group clear">
 				<h6 class="stat-title">Poverty rate</h6>
 				<a href="http://www.chna.org/report/map.aspx?bbox=-9463866.3621,3920689.2672,-9342209.9661,4084338.2471&mapid=15">

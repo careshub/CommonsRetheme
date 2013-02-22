@@ -32,7 +32,7 @@ function SA_policies_init()
     'show_in_menu' => true,
     'menu_position' => 25,
     //'has_archive' => 'sapolicies',
-    'supports' => array('title','editor'),
+    'supports' => array('title','editor','comments'),
     'capability_type' => 'sapolicies',
     'map_meta_cap'    => true
 	); 
