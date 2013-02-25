@@ -56,7 +56,8 @@
 			<h3 class="widget-title">Regional Snapshot:<br /> Anytown</h3>
 			<div class="stat-group clear">
 				<h6 class="stat-title">Poverty rate</h6>
-				<a href="http://www.chna.org/report/map.aspx?bbox=-9463866.3621,3920689.2672,-9342209.9661,4084338.2471&mapid=15">
+				
+				<a href="http://datavis.communitycommons.org/viewer/?bbox=-9463866.3621,3920689.2672,-9342209.9661,4084338.2471&mapid=255">
 					<img src="/wp-content/themes/CommonsRetheme/img/poverty-atlanta-180x180.png">
 				</a>
 				<img src="/wp-content/themes/CommonsRetheme/img/poverty-key.png">
