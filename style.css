@@ -1640,7 +1640,13 @@ form.standard-form textarea {
 .primary-navigation .menu-item-groups.current-menu-item {
   background-color: #df5927;
 }
-.primary-navigation .menu-item-groups .pop-sub-menu {
+.primary-navigation .menu-item-data-vis {
+  border-top: solid 6px #008eaa;
+}
+.primary-navigation .menu-item-data-vis.current-menu-item {
+  background-color: #008eaa;
+}
+.primary-navigation .pop-sub-menu {
   min-width: 100%;
 }
 .primary-navigation .secondary {
