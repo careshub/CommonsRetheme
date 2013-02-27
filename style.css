@@ -2112,6 +2112,12 @@ h5 {
 #content h6 {
   margin: 1em 0;
 }
+.column1of3 {
+  float: left;
+  margin: 0 1.5% 3%;
+  width: 30%;
+  text-align: center;
+}
 .sharrre .box {
   background: #fff;
   /* Old browsers */
@@ -2602,4 +2608,12 @@ h5 {
   background-position: 0 0;
   width: 100px;
   height: 100px;
+}
+.rule-above {
+  border-top: 4px double #EDEDED;
+  margin-top: 5.14286rem;
+  padding-top: 1.71429rem;
+}
+.aligncenter {
+  text-align: center;
 }
