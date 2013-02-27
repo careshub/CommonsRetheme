@@ -15,7 +15,7 @@
 				<?php get_template_part( 'content', 'sapolicies' ); ?>
 				<?php comments_template( '', true ); ?>
 			<?php endwhile; // end of the loop. ?>
-
+                            
 		</div><!-- .padder -->
 		</div><!-- #content -->
 		<div class="salud-footer">	
