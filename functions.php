@@ -70,15 +70,15 @@ function notifications_counter() {
 	if ( !is_user_logged_in() )
 		return ;
 
-	$notifications = bp_core_get_notifications_for_user( bp_loggedin_user_id());
+  $user = bp_loggedin_user_id();
+	$notifications = bp_core_get_notifications_for_user( $user );
 	$count = !empty( $notifications ) ? count( $notifications ) : 0;
 	$alert_class = (int) $count > 0 ? 'pending-count alert' : 'count no-alert';
-	$user = bp_loggedin_user_id();
 	$output = '<li class="menupop bp-notifications">' 
-			. '<span class="';
+			   . '<span class="';
 	$output .= $alert_class;
 	$output .= '">' . $count . '</span>';
-	$output .= print_list($notifications,$count);
+	$output .= print_notifications_list($notifications,$count);
 	$output .='</li>';
 
 	echo $output;
@@ -86,7 +86,7 @@ function notifications_counter() {
 
 }
 
-function print_list($notifications,$count){
+function print_notifications_list($notifications,$count){
     $output = '<div class="pop-sub-wrapper"><ul class="bp-notification-list">';
         
 	if ( $count !== 0 ) {
@@ -100,7 +100,7 @@ function print_list($notifications,$count){
 		}
 	} else {
 
-	$output .= '<li>You don&rsquo;t have any new notifications.</li>';
+	$output .= '<li' . $alt . '>You don&rsquo;t have any new notifications.</li>';
 
 	}
 
