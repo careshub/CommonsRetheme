@@ -77,7 +77,7 @@ function notifications_counter() {
 	$output = '<li class="menupop bp-notifications">' 
 			   . '<span class="';
 	$output .= $alert_class;
-	$output .= '">' . $count . '</span>';
+	$output .= '">' . $count . '</span><h5>Notifications:</h5>';
 	$output .= print_notifications_list($notifications,$count);
 	$output .='</li>';
 
@@ -810,4 +810,10 @@ function list_attachments_content_filter( $content ) {
   }
 
   return $content;
+}
+
+// Sets WordPress toolbar to be hidden by default for new user registrations
+add_action("user_register", "set_user_admin_bar_false_by_default", 10, 1);
+function set_user_admin_bar_false_by_default($user_id) {
+    update_user_meta( $user_id, 'show_admin_bar_front', 'false' );
 }

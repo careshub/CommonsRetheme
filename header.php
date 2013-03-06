@@ -38,8 +38,10 @@
 	<div id="site-navigation" class="primary-navigation" role="navigation">
 		<!-- <h1 class="brand">Community Commons</h1>
 		<h3 class="menu-toggle"><?php _e( 'Menu', 'twentytwelve' ); ?></h3> -->
+		<a href="#" class="menu-toggler button" id="menu-toggler">Menu</a>
 		<a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentytwelve' ); ?>"><?php _e( 'Skip to content', 'twentytwelve' ); ?></a>
 			<div class="brand"><a href="/" title="Home" >Community Commons</a></div>
+			<ul class="nav-container">
 			<ul class="links">
 				
 				<?php //wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); 
@@ -74,18 +76,65 @@
 					</form>
 					</div>
 				</li>
-				<li>
-				<?php if (is_user_logged_in()) { //show user info if logged in
-					echo bp_core_get_userlink( bp_loggedin_user_id() ); 
-        			//bp_loggedin_user_avatar('width=24&height=24');  
-        		} else { //show login link if not logged in ?>
-	        		<a href="<?php echo wp_login_url( $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?></a>
-        		<?php } ?>
+				
+				<?php if (is_user_logged_in()) { //show user info if logged in ?>
+					<li class="menupop clear">
+					<?php echo bp_core_get_userlink( bp_loggedin_user_id() ); ?>
+					<div class="pop-sub-wrapper user-quicklinks">
+						<a href="<?php echo bp_loggedin_user_domain(); ?>" title="View my profile" class="avatar"><?php bp_loggedin_user_avatar('width=48&height=48'); ?>
+						</a>
+						<ul>
+							<li>
+								<a href="<?php echo bp_loggedin_user_domain() . 'profile'; ?>" title="View my profile"><?php _e( 'View My Profile', 'buddypress' ) ?></a>
+							</li>
+							<li>
+								<a href="<?php echo wp_logout_url( home_url() ); ?>" title="Log out"><?php _e( 'Log Out', 'buddypress' ) ?></a>
+							</li>
+						</ul>
+					</div>
+					</li>
+        			<?php //bp_loggedin_user_avatar('width=24&height=24');  
+        		} else { //show login and register links if not logged in ?>
+        		<li>
+        			<?php printf( __( '<a href="%s" title="Create an account">Register</a>', 'buddypress' ), site_url( bp_get_signup_slug() . '/' ) ) ?>
         		</li>
+        		<li class="menupop clear">
+	        		<a href="<?php echo wp_login_url( $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?></a>
+        			<div class="pop-sub-wrapper">
+        				<form name="login-form" id="sidebar-login-form" class="standard-form" action="<?php echo site_url( 'wp-login.php', 'login_post' ) ?>" method="post">
+							<label><?php _e( 'Username', 'buddypress' ) ?><br />
+							<input type="text" name="log" id="sidebar-user-login" class="input" value="<?php if ( isset( $user_login) ) echo esc_attr(stripslashes($user_login)); ?>" tabindex="97" /></label>
+
+							<label><?php _e( 'Password', 'buddypress' ) ?><br />
+							<input type="password" name="pwd" id="sidebar-user-pass" class="input" value="" tabindex="98" /></label>
+
+							<p class="forgetmenot"><label><input name="rememberme" type="checkbox" id="sidebar-rememberme" value="forever" tabindex="99" /> <?php _e( 'Remember Me', 'buddypress' ) ?></label></p>
+
+							<?php do_action( 'bp_sidebar_login_form' ) ?>
+							<input type="submit" name="wp-submit" id="sidebar-wp-submit" value="<?php _e( 'Log In', 'buddypress' ); ?>" tabindex="100" />
+							<input type="hidden" name="redirect_to" value="<?php $_SERVER['REQUEST_URI'] ?>" />
+							<input type="hidden" name="testcookie" value="1" />
+						</form>
+        			</div>
+        		</li>
+        		
+
+        		<?php } ?>
+        		
 				<?php notifications_counter(); ?>
 			</ul>
+		</ul><!-- End nav-container -->
 			<div class="clear"></div>
 		</div>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			jQuery('#menu-toggler').click(function(){
+				jQuery(".nav-container").toggle('fast');
+		     return false;
+			});
+		});
+	</script>
+
 
 	<!-- <div class="navbar">
 	    <div class="navbar-inner">
