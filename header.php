@@ -98,8 +98,8 @@
         		<li>
         			<?php printf( __( '<a href="%s" title="Create an account">Register</a>', 'buddypress' ), site_url( bp_get_signup_slug() . '/' ) ) ?>
         		</li>
-        		<li class="menupop clear">
-	        		<a href="<?php echo wp_login_url( $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?></a>
+        		<li id="login-item" class="menupop clear">
+	        		<a class="login-link" href="<?php echo wp_login_url( $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?></a>
         			<div class="pop-sub-wrapper">
         				<form name="login-form" id="sidebar-login-form" class="standard-form" action="<?php echo site_url( 'wp-login.php', 'login_post' ) ?>" method="post">
 							<label><?php _e( 'Username', 'buddypress' ) ?><br />
@@ -129,7 +129,7 @@
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			jQuery('#menu-toggler').click(function(){
-				jQuery(".nav-container").toggle('fast');
+				jQuery(".nav-container").toggleClass('toggled');
 		     return false;
 			});
 		});

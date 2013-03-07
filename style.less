@@ -2807,11 +2807,19 @@ transition:all 0.2s linear;
 
 
 	.nav-container {
-		display: none;
+		display: block;
 		clear: both;
-		
+		height:0;
+		opacity:1;
+		overflow: hidden;
+		// -webkit-transition:all 0.3s ease-out;
+		// -moz-transition:height 0.3s linear;
+		// // -o-transition:all 0.3s ease-out;
+		// transition:all 0.3s linear;
 		&.toggled {
-			display: inline-block;
+			// display: block;
+			height:auto;
+			opacity:1;
 		}
 	}
 	.brand {
@@ -2821,12 +2829,12 @@ transition:all 0.2s linear;
     	
 		a { //home menu item
 		background: url(img/cc_logomark-30x30.png) no-repeat left center;
-		.font-size(1.2);
+		.font-size(1);
 		font-weight: 700;
 		//margin-left: 40px;
 		padding-left: 40px;
 		color:@white;
-		line-height: 2.4;
+		line-height: 2.8;
     	text-transform: uppercase;
 		}
 	}
@@ -2841,12 +2849,15 @@ transition:all 0.2s linear;
 		li {
 			// float: none;
 			width: 100%;
-			margin:12px;
+			margin:0;
 			
 		}
 		a {
 			color:desaturate(lighten(@ccblue,20%),30%);
 			&:hover {color:@white;}
+		}
+		#login-item {
+			.login-link {display: none;}
 		}
 		.user-quicklinks {
 			.avatar {float: left;}
@@ -2857,9 +2868,10 @@ transition:all 0.2s linear;
 			ul {
 				float: left;
 				width: 66%;
-				li{
-					a { width:38%;
+				li{ margin:0;
+					a { width:100%;
 					float: left; 
+					line-height: 2;
 					}
 				}
 			}
@@ -2948,7 +2960,7 @@ transition:all 0.2s linear;
 			width: 100%;
 			color: @white;
 			padding:0 1em;
-			line-height: 3.2;
+			line-height: 2.6;
 			text-transform: none;
 			&:hover{
 				// background-color: @graydark;
@@ -2988,9 +3000,35 @@ transition:all 0.2s linear;
 .ie8 .primary-navigation .secondary .bp-notifications .bp-notification-list {
 			margin-top:12px;
 }
+@media screen and (min-width: 400px) {
+	.primary-navigation {
+	.brand a {
+		.font-size(1.2);
+		line-height: 2.4;
+	}
+	li {
+		span, a {
+			line-height: 3.2;
+		}
+	}
+	.secondary {
+		.user-quicklinks {
+			.avatar {}
+			a {}
+			ul {
+				li{
+					a { width:38%;
+						line-height: 3.2;
+					}
+				}
+			}
+		}
+	}
 
+}
+}
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 700px) {
 /* Main navigation
 *******************/
 .primary-navigation {
@@ -3004,6 +3042,8 @@ transition:all 0.2s linear;
 	.nav-container {
 		clear: none;
 		display:block;
+		overflow: visible;
+
 	}
 	.brand {    	
 		a { //home menu item
@@ -3089,41 +3129,44 @@ transition:all 0.2s linear;
 			h5 {display: none;}
 			li {margin:0;}
 	}//end bp-notifications
-		.menupop{
-		.pop-sub-wrapper {
-			display: none;
-			min-width:20em;
-			margin: 26px 0 0 -1px;
-			padding: 6px 0;
-			// -webkit-box-shadow: 0 4px 4px rgba(0,0,0,0.2);
-			// box-shadow: 0 4px 4px rgba(0,0,0,0.2);
-			.drop-shadow();
-			background: #fff;
-			position: absolute;
-			float: none;
-			right:0;
-			border-width: 0 1px 1px 1px;
-			border-style: solid;
-			border-color: #dfdfdf;
-			z-index: 999;
-			color: @graymid;
-			
-			ul {
-			
-			li {
-				float: left;
-				width:100%;
-				&:hover {	
-					background-color: desaturate(lighten(@ccblue, 60%), 50%);
-				}
+	#login-item {
+			.login-link {display: block;}
+		}
+	.menupop{
+	.pop-sub-wrapper {
+		display: none;
+		min-width:20em;
+		margin: 26px 0 0 -1px;
+		padding: 6px 0;
+		// -webkit-box-shadow: 0 4px 4px rgba(0,0,0,0.2);
+		// box-shadow: 0 4px 4px rgba(0,0,0,0.2);
+		.drop-shadow();
+		background: #fff;
+		position: absolute;
+		float: none;
+		right:0;
+		border-width: 0 1px 1px 1px;
+		border-style: solid;
+		border-color: #dfdfdf;
+		z-index: 999;
+		color: @graymid;
+		
+		ul {
+		
+		li {
+			float: left;
+			width:100%;
+			&:hover {	
+				background-color: desaturate(lighten(@ccblue, 60%), 50%);
 			}
-			
-			a { 
-				color:@ccblue; 
-				line-height: 1.4;
-				padding:2%;
-				width: 95.99%
-				}
+		}
+		
+		a { 
+			color:@ccblue; 
+			line-height: 1.4;
+			padding:2%;
+			width: 95.99%
+			}
 		}
 		}
 		&:hover { background-color: lighten(@black,30%);}
