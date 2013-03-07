@@ -2879,7 +2879,7 @@ transition:all 0.2s linear;
 		.bp-notifications {
 			float: none;
 			clear:both;
-			li {margin:6px;}
+			li {margin-left:12px;}
 			span { 
 				display: none;
 				float: left;
@@ -2898,6 +2898,13 @@ transition:all 0.2s linear;
 			}
 			h5 {
 				color:lighten(@graydark,18%);
+				margin-left: 12px;
+				margin-top: 12px;
+
+			}
+			a{
+				padding:0;
+				line-height: 2;
 			}
 			.pop-sub-wrapper {
 				float: left;
@@ -3126,7 +3133,9 @@ transition:all 0.2s linear;
 			clear:none;
 			float: right;
 			span { display:inline-block; }
-			h5 {display: none;}
+			h5 {
+				display: none;
+			}
 			li {margin:0;}
 	}//end bp-notifications
 	#login-item {

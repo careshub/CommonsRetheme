@@ -2558,7 +2558,7 @@ h5 {
   clear: both;
 }
 .primary-navigation .secondary .bp-notifications li {
-  margin: 6px;
+  margin-left: 12px;
 }
 .primary-navigation .secondary .bp-notifications span {
   display: none;
@@ -2579,6 +2579,12 @@ h5 {
 }
 .primary-navigation .secondary .bp-notifications h5 {
   color: #737373;
+  margin-left: 12px;
+  margin-top: 12px;
+}
+.primary-navigation .secondary .bp-notifications a {
+  padding: 0;
+  line-height: 2;
 }
 .primary-navigation .secondary .bp-notifications .pop-sub-wrapper {
   float: left;
