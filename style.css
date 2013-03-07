@@ -2560,6 +2560,11 @@ h5 {
 .primary-navigation .secondary .bp-notifications li {
   margin-left: 12px;
 }
+.primary-navigation .secondary .bp-notifications li.no-notices {
+  width: 95%;
+  line-height: 2;
+  padding-left: 2%;
+}
 .primary-navigation .secondary .bp-notifications span {
   display: none;
   float: left;
@@ -2776,7 +2781,8 @@ h5 {
   }
   .primary-navigation .secondary .menupop .pop-sub-wrapper ul li {
     float: left;
-    width: 100%;
+    width: 98%;
+    padding-left: 2%;
   }
   .primary-navigation .secondary .menupop .pop-sub-wrapper ul li:hover {
     background-color: #e6f4f7;
@@ -2784,7 +2790,7 @@ h5 {
   .primary-navigation .secondary .menupop .pop-sub-wrapper ul a {
     color: #008eaa;
     line-height: 1.4;
-    padding: 2%;
+    padding: 2% 2% 2% 0;
     width: 95.99%;
   }
   .primary-navigation .secondary .menupop:hover {

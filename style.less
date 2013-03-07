@@ -2879,7 +2879,13 @@ transition:all 0.2s linear;
 		.bp-notifications {
 			float: none;
 			clear:both;
-			li {margin-left:12px;}
+			li {margin-left:12px;
+				&.no-notices {
+					width:95%;
+					line-height: 2;
+					padding-left: 2%;
+				}
+			}
 			span { 
 				display: none;
 				float: left;
@@ -3164,7 +3170,8 @@ transition:all 0.2s linear;
 		
 		li {
 			float: left;
-			width:100%;
+			width:98%;
+			padding-left: 2%;
 			&:hover {	
 				background-color: desaturate(lighten(@ccblue, 60%), 50%);
 			}
@@ -3173,7 +3180,7 @@ transition:all 0.2s linear;
 		a { 
 			color:@ccblue; 
 			line-height: 1.4;
-			padding:2%;
+			padding:2% 2% 2% 0;
 			width: 95.99%
 			}
 		}

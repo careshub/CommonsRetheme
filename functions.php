@@ -92,15 +92,15 @@ function print_notifications_list($notifications,$count){
 	if ( $count !== 0 ) {
 		$counter = 0;
 		for ( $i = 0; $i < $count; $i++ ) {
-		$alt = ( 0 == $counter % 2 ) ? ' class="alt"' : '';
+		$alt = ( 0 == $counter % 2 ) ? ' alt' : '';
 
-		$output .= '<li' . $alt . '>' . $notifications[$i] .'</li>';
+		$output .= '<li class="' . $alt . '">' . $notifications[$i] .'</li>';
 
 		$counter++;
 		}
 	} else {
 
-	$output .= '<li' . $alt . '>You don&rsquo;t have any new notifications.</li>';
+	$output .= '<li class="no-notices ' . $alt . '">You don&rsquo;t have any new notifications.</li>';
 
 	}
 
