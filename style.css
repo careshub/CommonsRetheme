@@ -1227,6 +1227,10 @@ div.item-list-tabs ul li a {
   text-decoration: none;
   height: 20px;
 }
+div.item-list-tabs form {
+  margin-top: 1em;
+  float: right;
+}
 div.item-list-tabs#subnav ul li.last {
   float: right;
   margin-top: 4px;
