@@ -4,6 +4,7 @@ function add_custom_taxonomies() {
 	register_taxonomy('geographies', 'sapolicies', array(
 		// Hierarchical taxonomy (like categories)
 		'hierarchical' => true,
+		// 'show_ui' => false,
 		// This array of options controls the labels displayed in the WordPress Admin UI
 		'labels' => array(
 			'name' => _x( 'Geographies', 'taxonomy general name' ),

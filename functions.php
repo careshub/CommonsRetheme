@@ -4,6 +4,9 @@
 require_once('includes/SA_Policies.php');
 //Definition of the geographies custom taxonomy
 require_once('includes/taxonomy-geography.php');
+//Definition of the Data Vis Tools policy custom post type
+require_once('includes/data_vis_tools.php');
+
 
 // Customize WP Toolbar
 function change_toolbar() {  
@@ -817,3 +820,9 @@ add_action("user_register", "set_user_admin_bar_false_by_default", 10, 1);
 function set_user_admin_bar_false_by_default($user_id) {
     update_user_meta( $user_id, 'show_admin_bar_front', 'false' );
 }
+
+function remove_geographies_taxonomy_meta() {
+  remove_meta_box( 'geographiesdiv', 'sapolicies', 'side' );
+}
+
+add_action( 'admin_menu' , 'remove_geographies_taxonomy_meta' );
