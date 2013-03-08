@@ -23,7 +23,8 @@ get_header(); ?>
 	 	)
  	);
 
-  while ($top_query->have_posts()) : $top_query->the_post();
+  while ( $top_query->have_posts() ) : $top_query->the_post();
+
 	$postcat = get_the_category();
 	echo 'category id: ';
 	print_r( $postcat[0]->term_id );
@@ -33,15 +34,16 @@ get_header(); ?>
   // print_r( $top_query );
 	echo 'post: ' . $post->ID;
 		echo '<br />';
+		// print_r( get_the_tags() );
+		echo "<br />";
+		$tags = get_the_tags();
+		foreach ($tags as $tag) {
+			$tag_array[]=$tag->term_id;
+		}
+		print_r($tag_array);
 
   the_excerpt();
   the_tags();
-  ?>
-
-
-
-
-<?php
 //Add the id of the post we're displaying to an array to exclude from all subsequent queries
   $do_not_duplicate[] = $post->ID;
 
@@ -53,34 +55,53 @@ get_header(); ?>
     <!-- Do stuff... -->
   <?php endwhile; ?>
 
-  <?php $second_query = new WP_Query( 
+  <?php $top_related = new WP_Query( 
 	 	array(
 	 	'post__not_in' => $do_not_duplicate,
+	 	'tag__in' => $tag_array,
 	 	//'category_name' => 'istanbul-stuff',
-	 	'posts_per_page' => 10
+	 	'posts_per_page' => 4
 	 	)
  	);
 ?>
-    <!-- Do other stuff... -->
-  <?php 
-  while ($second_query->have_posts()) : $second_query->the_post();
+<hr>
+<br /> Related Posts by tag: <br />
+<hr>
+ <?php 
+ if ($top_related):
+  while ( $top_related->have_posts() ) : $top_related->the_post();
 // if (in_array($post->ID, $do_not_duplicate)) 
 // 	continue;?> 
 <!-- Do stuff... -->
 <?php 
-$postcat = get_the_category();
-echo 'category id: ';
-	  print_r( $postcat[0]->term_id );
-	  	echo '<br />';
-	echo 'post: ' . $post->ID;
-	echo '<br />';
+	get_template_part( 'content', 'stories-brief' );
+	$do_not_duplicate[] = $post->ID;
 
-  //print_r( $top_query );
-  the_excerpt();
-  the_tags();
-  	echo '<br />';
+  echo "<br />Don't Duplicate:";
+  print_r($do_not_duplicate);
+  	echo '<br /> <br/>';
 
-  endwhile;  ?>
+  endwhile;  
+  endif;
+  ?>
+    <!-- Do other stuff... -->
+  <?php 
+  if ($second_query) :
+  while ( $second_query->have_posts() ) : $second_query->the_post();
+// if (in_array($post->ID, $do_not_duplicate)) 
+// 	continue;?> 
+<!-- Do stuff... -->
+<?php 
+	get_template_part( 'content', 'stories-brief' );
+ $do_not_duplicate[] = $post->ID;
+
+  echo "<br />Don't Duplicate:";
+  print_r($do_not_duplicate);
+  	echo '<br /> <br/>';
+
+  endwhile;  
+  endif;
+  ?>
 
 
   		</div><!-- #content -->

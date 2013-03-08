@@ -2585,7 +2585,7 @@ h5 {
 .primary-navigation .secondary .bp-notifications h5 {
   color: #737373;
   margin-left: 12px;
-  margin-top: 12px;
+  margin-top: 6px;
 }
 .primary-navigation .secondary .bp-notifications a {
   padding: 0;
@@ -2597,7 +2597,7 @@ h5 {
 .primary-navigation .secondary .menupop .pop-sub-wrapper {
   display: block;
   position: relative;
-  margin: 0;
+  margin: 0 0 6px 0;
   padding: 0;
   color: #ffffff;
 }
