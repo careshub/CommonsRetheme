@@ -145,6 +145,8 @@
 			function showLogin() {
 				jQuery("#login-item").addClass('toggled');
 				jQuery("#login-item .pop-sub-wrapper").addClass('toggled');
+				jQuery("#sidebar-user-login").focus();
+
 			}
 
 			//JS to close login form via cancel button
