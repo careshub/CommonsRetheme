@@ -288,6 +288,14 @@ wp_enqueue_script('sharrre');
 }
 add_action('wp_enqueue_scripts', 'sharrre_js_load');
 
+function hoverIntent_js_load(){
+
+wp_register_script('hoverIntent', get_stylesheet_directory_uri().'/js/jquery.hoverIntent.minified.js">', array('jquery'), 'r6' ); 
+wp_enqueue_script('hoverIntent'); 
+
+}
+add_action('wp_enqueue_scripts', 'hoverIntent_js_load');
+
 function buddypress_js_load(){
 
 wp_register_script('buddypress', plugins_url( '/buddypress/bp-templates/bp-legacy/js/buddypress.js' , 'buddypress' ), array('jquery'), '1.3.4' ); 

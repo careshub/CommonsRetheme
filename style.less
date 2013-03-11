@@ -2957,7 +2957,9 @@ transition:all 0.2s linear;
 		// 	a { margin:0;}
 		// 	}	
 		}
+
 	}//end secondary
+
 	ul {width: 100%}
 	li {
 		float: none;
@@ -3008,6 +3010,10 @@ transition:all 0.2s linear;
 			background-color: @ccblue;
 		}
 	}
+}
+#login-item #cancel-login {
+	float:right;
+	display: none;
 }
 //IE fixes
 .ie8 .primary-navigation .secondary .bp-notifications .bp-notification-list {
@@ -3145,8 +3151,30 @@ transition:all 0.2s linear;
 			li {margin:0;}
 	}//end bp-notifications
 	#login-item {
-			.login-link {display: block;}
+		overflow: visible;
+		&.toggled { background-color: lighten(@black,30%); }
+		.login-link {display: block;}
+		.pop-sub-wrapper {
+			display: none;
+			min-width:20em;
+			margin: 0px 0 0 -1px;
+			padding: 6px 0;
+			// -webkit-box-shadow: 0 4px 4px rgba(0,0,0,0.2);
+			// box-shadow: 0 4px 4px rgba(0,0,0,0.2);
+			.drop-shadow();
+			background: #fff;
+			position: absolute;
+			float: none;
+			right:0;
+			border-width: 0 1px 1px 1px;
+			border-style: solid;
+			border-color: #dfdfdf;
+			z-index: 999;
+			color: @graymid;
+			#cancel-login {display: inline-block;}
+			&.toggled {display: inline-block;}
 		}
+	}
 	.menupop{
 	.pop-sub-wrapper {
 		display: none;

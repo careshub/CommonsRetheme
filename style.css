@@ -2650,6 +2650,10 @@ h5 {
 .primary-navigation .menu-item-data-vis.current-menu-item {
   background-color: #008eaa;
 }
+#login-item #cancel-login {
+  float: right;
+  display: none;
+}
 .ie8 .primary-navigation .secondary .bp-notifications .bp-notification-list {
   margin-top: 12px;
 }
@@ -2758,8 +2762,38 @@ h5 {
   .primary-navigation .secondary .bp-notifications li {
     margin: 0;
   }
+  .primary-navigation .secondary #login-item {
+    overflow: visible;
+  }
+  .primary-navigation .secondary #login-item.toggled {
+    background-color: #706969;
+  }
   .primary-navigation .secondary #login-item .login-link {
     display: block;
+  }
+  .primary-navigation .secondary #login-item .pop-sub-wrapper {
+    display: none;
+    min-width: 20em;
+    margin: 0px 0 0 -1px;
+    padding: 6px 0;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+    background: #fff;
+    position: absolute;
+    float: none;
+    right: 0;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: #dfdfdf;
+    z-index: 999;
+    color: #aaaaaa;
+  }
+  .primary-navigation .secondary #login-item .pop-sub-wrapper #cancel-login {
+    display: inline-block;
+  }
+  .primary-navigation .secondary #login-item .pop-sub-wrapper.toggled {
+    display: inline-block;
   }
   .primary-navigation .secondary .menupop .pop-sub-wrapper {
     display: none;

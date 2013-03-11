@@ -98,7 +98,7 @@
         		<li>
         			<?php printf( __( '<a href="%s" title="Create an account">Register</a>', 'buddypress' ), site_url( bp_get_signup_slug() . '/' ) ) ?>
         		</li>
-        		<li id="login-item" class="menupop clear">
+        		<li id="login-item" class="clear">
 	        		<a class="login-link" href="<?php echo wp_login_url( $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?></a>
         			<div class="pop-sub-wrapper">
         				<form name="login-form" id="sidebar-login-form" class="standard-form" action="<?php echo site_url( 'wp-login.php', 'login_post' ) ?>" method="post">
@@ -111,7 +111,7 @@
 							<p class="forgetmenot"><label><input name="rememberme" type="checkbox" id="sidebar-rememberme" value="forever" tabindex="99" /> <?php _e( 'Remember Me', 'buddypress' ) ?></label></p>
 
 							<?php do_action( 'bp_sidebar_login_form' ) ?>
-							<input type="submit" name="wp-submit" id="sidebar-wp-submit" value="<?php _e( 'Log In', 'buddypress' ); ?>" tabindex="100" />
+							<input type="submit" name="wp-submit" id="sidebar-wp-submit" value="<?php _e( 'Log In', 'buddypress' ); ?>" tabindex="100" /> &nbsp;&nbsp;&nbsp;&nbsp; <button id="cancel-login">Cancel</button>
 							<input type="hidden" name="redirect_to" value="<?php $_SERVER['REQUEST_URI'] ?>" />
 							<input type="hidden" name="testcookie" value="1" />
 						</form>
@@ -132,6 +132,29 @@
 				jQuery(".nav-container").toggleClass('toggled');
 		     return false;
 			});
+
+			//JS to show login form on hover
+			var config = {    
+			     over: showLogin, // function = onMouseOver callback (REQUIRED)    
+			     timeout: 500, // number = milliseconds delay before onMouseOut    
+			     out: function(){} // function = onMouseOut callback (REQUIRED)    
+			};
+
+			jQuery("#login-item").hoverIntent( config );
+
+			function showLogin() {
+				jQuery("#login-item").addClass('toggled');
+				jQuery("#login-item .pop-sub-wrapper").addClass('toggled');
+			}
+
+			//JS to close login form via cancel button
+			jQuery('#cancel-login').click(function(){
+				jQuery("#login-item").removeClass('toggled');
+				jQuery("#login-item .pop-sub-wrapper").removeClass('toggled');
+		     return false;
+			});
+
+
 		});
 	</script>
 
