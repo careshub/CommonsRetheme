@@ -2834,7 +2834,3 @@ h5 {
 .ie7 .primary-navigation .secondary .bp-notifications .bp-notification-list {
   margin-top: 12px;
 }
-.ie8 .widget img,
-.ie7 .widget img {
-  width: 100%;
-}
