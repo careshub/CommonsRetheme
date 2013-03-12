@@ -74,7 +74,7 @@ wp_register_style(
 wp_enqueue_style( 'commons_ie_stylesheet' );
 $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lt IE 9' );
 }
-// add_action( 'wp_enqueue_scripts', 'commons_ie_stylesheet_load' );
+add_action( 'wp_enqueue_scripts', 'commons_ie_stylesheet_load' );
 
 
 function notifications_counter() {
