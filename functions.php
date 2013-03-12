@@ -103,7 +103,7 @@ function print_notifications_list($notifications,$count){
 		}
 	} else {
 
-	$output .= '<li class="no-notices ' . $alt . '">You don&rsquo;t have any new notifications.</li>';
+	$output .= '<li class="no-notices">You don&rsquo;t have any new notifications.</li>';
 
 	}
 
