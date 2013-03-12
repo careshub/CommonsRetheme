@@ -61,8 +61,20 @@ wp_register_style(
     );
 wp_enqueue_style( 'custom_childtheme_stylesheet' );
 }
-//No longer required
-//add_action( 'wp_print_styles', 'custom_childtheme_stylesheet_load' );
+// Twenty Twelve parent theme functions call this stylesheet, so we don't need to.
+// add_action( 'wp_print_styles', 'custom_childtheme_stylesheet_load' );
+
+function commons_ie_stylesheet_load(){
+wp_register_style(
+        'commons_ie_stylesheet',
+        get_stylesheet_directory_uri() . '/css/ie.css',
+        false,
+        0.2
+    );
+wp_enqueue_style( 'commons_ie_stylesheet' );
+$wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lt IE 9' );
+}
+// add_action( 'wp_enqueue_scripts', 'commons_ie_stylesheet_load' );
 
 
 function notifications_counter() {
