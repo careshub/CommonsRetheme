@@ -64,6 +64,16 @@ wp_enqueue_style( 'custom_childtheme_stylesheet' );
 // Twenty Twelve parent theme functions call this stylesheet, so we don't need to.
 // add_action( 'wp_print_styles', 'custom_childtheme_stylesheet_load' );
 
+function parent_stylesheet_load(){
+    wp_register_style(
+            '2012_parent_stylesheet',
+            get_template_directory_uri() . '/style.css',
+            false
+        );
+    wp_enqueue_style( '2012_parent_stylesheet' );
+}
+add_action( 'wp_enqueue_scripts', 'parent_stylesheet_load', 1 );
+
 function commons_ie_stylesheet_load(){
     global $wp_styles;
     wp_register_style(
@@ -75,7 +85,7 @@ function commons_ie_stylesheet_load(){
     wp_enqueue_style( 'commons_ie_stylesheet' );
     $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lt IE 9' );
 }
-add_action( 'wp_enqueue_scripts', 'commons_ie_stylesheet_load' );
+add_action( 'wp_enqueue_scripts', 'commons_ie_stylesheet_load', 99 );
 
 
 function notifications_counter() {
