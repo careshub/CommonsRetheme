@@ -2941,6 +2941,45 @@ transition:all 0.2s linear;
 	float:right;
 	display: none;
 }
+// New magazine-style home page
+body.home-page {
+	#primary {
+		width: 100%;
+		// margin-top: 36px; use in 700.less
+		// margin-top: 2.6rem;
+		img { 
+			margin-bottom: 8px;
+			margin-bottom: .6rem;
+		}
+		ul {
+			clear: both; 
+			li {
+				line-height: 2.4;
+			}
+		}
+		#top-story {
+			// background-color: #FAB;
+			margin-bottom: 24px;
+			margin-bottom: 1.7rem;
+			border-bottom: 1px solid @graylight;			
+			h2 {
+				// .font-size(1.4);
+				a { 
+					// text-decoration: none; 
+				}
+				
+			}
+		}
+		.story-block {
+			margin-bottom: 24px;
+			margin-bottom: 1.7rem;
+			border-bottom: 1px solid @graylight;			
+			
+		}
+	}
+}
+
+
 
 //Fix for ESRI mapping environment slider
 .esriLargeSliderVertical {

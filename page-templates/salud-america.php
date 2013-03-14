@@ -50,6 +50,58 @@ get_header(); ?>
 					//comments_template( '', true );
 				endwhile; // end of the loop.
 
+			} elseif (is_page('more-active-play-time')) {
+				//Do the custom query here, I think
+				// echo 'this is that page';
+				//First, display the content of the page before making the custom loop.
+				// $page_content = get_the_content();
+				// if ( !empty( $page_content ) ) {
+					// echo '<p class="page-intro">';
+					// echo $post->post_content;
+					// echo '</p>';
+				// } ?>
+				<?php the_post(); ?>
+
+				<?php get_template_part( 'content', 'page' ); ?>
+                
+                <?php wp_reset_query(); ?>
+				<!-- <div class="policy-search">
+					<form id="sa-policy-search" class="standard-form" method="get" action="/">
+					<h3>Search for Policies</h3>
+					<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Not a functional search yet." name="sa-policy">
+					<input class="sa-policy-search-button" type="submit" value="Search">
+					</form>
+				</div> -->
+				<div>
+					<!-- <div class="active-play"><span class="icon"></span></div> -->
+					<h2>How is your community doing with respect to this topic area?</h2>
+					<div style="width:100%;height:200px;background-color:#CCC;margin-bottom:24px;">form/charts go here</div>
+				</div>
+				<?php //Now we make our loop
+				wp_reset_postdata();
+			  	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+				$args = array(
+					// Change these category SLUGS to suit your use.
+					'post_type' => 'sapolicies', 
+					'paged' => $paged,
+					'meta_query' => array(
+							array(
+								'key' => 'at3',
+								'value' => 'Improve physical activity standards in out-of-school and out-of-class time in under-served communities',
+								'compare' => '=',
+								)
+						),
+				);
+
+				$list_of_policies = new WP_Query( $args ); 
+
+				while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
+					//This template should be the short result
+					get_template_part( 'content', 'sa-policy-short' );
+					//comments_template( '', true );
+				endwhile; // end of the loop.
+
 			} else {
 
 				while ( have_posts() ) : the_post();

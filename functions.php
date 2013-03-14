@@ -793,7 +793,7 @@ remove_filter('the_content','wpautop');
 add_filter('the_content','salud_formatting');
 
 function salud_formatting($content){
-  if ( is_page_template( 'page-templates/salud-america.php' ) ) {
+  if ( is_page( 'salud-america' ) ) {
     return $content;//no autop
   } else {
    return wpautop($content);

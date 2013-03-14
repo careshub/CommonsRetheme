@@ -2645,6 +2645,29 @@ h5 {
   float: right;
   display: none;
 }
+body.home-page #primary {
+  width: 100%;
+}
+body.home-page #primary img {
+  margin-bottom: 8px;
+  margin-bottom: .6rem;
+}
+body.home-page #primary ul {
+  clear: both;
+}
+body.home-page #primary ul li {
+  line-height: 2.4;
+}
+body.home-page #primary #top-story {
+  margin-bottom: 24px;
+  margin-bottom: 1.7rem;
+  border-bottom: 1px solid #dedede;
+}
+body.home-page #primary .story-block {
+  margin-bottom: 24px;
+  margin-bottom: 1.7rem;
+  border-bottom: 1px solid #dedede;
+}
 .esriLargeSliderVertical {
   width: 2%;
 }
