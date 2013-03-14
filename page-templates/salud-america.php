@@ -94,8 +94,9 @@ get_header(); ?>
 						),
 				);
 
-				$list_of_policies = new WP_Query( $args ); 
-
+				$list_of_policies = new WP_Query( $args ); ?>
+				<h2>Policies that address this target area: </h2>
+				<?php
 				while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
 					//This template should be the short result
 					get_template_part( 'content', 'sa-policy-short' );
