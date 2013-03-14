@@ -19,15 +19,19 @@ if ( ($layout_location == 'primary') || ($layout_location == 'secondary') ) {
 ?> 
 	<header class="entry-header">
 		<?php if ($featured_image) { ?>
-		<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php echo $featured_image; ?></a>
+		<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark" class="front<?php echo $layout_location ?>"><?php echo $featured_image; ?></a>
 		<?php } ?>
 		<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 	</header>
 	<div class="entry-content">
 		<?php the_excerpt(); ?>
-		<?php if ( is_sticky() ) { ?>
-		<p>This post is sticky.</p>
-		 <?php } ?>
+		<?php //if ( is_sticky() ) { ?>
+		<!-- <p>This post is sticky.</p> -->
+		 <?php //} 
+		 // echo "<br >Categories: ";
+		 // echo get_the_category_list( ', ');;
+		 ?>
+
 	</div>
 
 <?php //echo '<br>Location: ' . $layout_location;
@@ -36,9 +40,12 @@ if ( ($layout_location == 'primary') || ($layout_location == 'secondary') ) {
 	<li>
 		<a href="<?php the_permalink(); ?>" class="button" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 <?php //echo '<br>Location: ' . $layout_location; ?>
-<?php if ( is_sticky() ) { ?>
-		<p>This post is sticky.</p>
-		 <?php } ?>
+<?php //if ( is_sticky() ) { ?>
+		<!-- <p>This post is sticky.</p> -->
+		 <?php //} 
+		 // echo "<br >Categories: ";
+		 // echo get_the_category_list( ', ');;
+		?>
 	</li>
 <?php
 }

@@ -15,12 +15,14 @@ get_header(); ?>
 			<div class="article">
 
 <?php
+//Set up an array to contain the id of posts we've already used.
+$do_not_duplicate = array();
 
  //First, get the post set to be supersticky
 	$top_query = new WP_Query( 
 	 	array(
 	 	//'post__not_in' => $do_not_duplicate,
-	 	'category_name' => 'top',
+	 	'category_name' => 'top-story',
 	 	'posts_per_page' => 1
 	 	)
  	);
@@ -37,7 +39,7 @@ get_header(); ?>
 			 $postcategories = array();
 				foreach ($postcats as $postcat) {
 					//We don't want to find related posts from the "top" catogory, so we'll just get the other category ids.
-					if ( $postcat->name !== 'top' ) {
+					if ( $postcat->name !== 'top-story' ) {
 						$postcategories[]=$postcat->term_id;
 					}
 				}
@@ -63,23 +65,22 @@ get_header(); ?>
 
 //First, get a list of sticky posts, we'll use this several times, so we'll keep it outside the for loop
 	$sticky = get_option( 'sticky_posts' );
-	echo "<br /> Sticky array: ";
-	print_r($sticky);
+	// echo "<br /> Sticky array: ";
+	// print_r($sticky);
 
 for ($i = 1; $i <= 4; $i++) {
-	echo "<br /> Do-not-duplicate array: ";
-	print_r($do_not_duplicate);
-
+	// echo "<br /> Do-not-duplicate array: ";
+	// print_r($do_not_duplicate);
 	// Remove any posts in our "do_not_duplicate" array from the array of sticky posts
 	$sticky_no_dupes = array_diff($sticky, $do_not_duplicate);
 	// Sort the stickies with the newest ones at the top
 	rsort( $sticky_no_dupes );
-	echo "<br /> Sticky-no-dupes array: ";
-	print_r($sticky_no_dupes);
+	// echo "<br /> Sticky-no-dupes array: ";
+	// print_r($sticky_no_dupes);
 	//Grab only the most recent post in the array
 	$sticky_single = array_slice( $sticky_no_dupes, 0, 1 );
-	echo "<br /> Sticky-single array: ";
-	print_r($sticky_single);
+	// echo "<br /> Sticky-single array: ";
+	// print_r($sticky_single);
 
 	$main_query = new WP_Query( 
 	 	array(
@@ -104,7 +105,7 @@ for ($i = 1; $i <= 4; $i++) {
 			 $postcategories = array();
 				foreach ($postcats as $postcat) {
 					//We don't want to find related posts from the "top" catogory, so we'll just get the other category ids.
-					if ( $postcat->name !== 'top' ) {
+					if ( $postcat->name !== 'top-story' ) {
 						$postcategories[]=$postcat->term_id;
 					}
 				}
@@ -123,6 +124,8 @@ for ($i = 1; $i <= 4; $i++) {
 
 		    //$related_tag = $post->tag ?>
 		<?php endwhile; 
+		// echo '<br/>$postcategories: ';
+		// print_r($postcategories) ;
 		wp_reset_postdata(); ?>
 	<?php endif; //ends if ( ${query.$i} )
 
@@ -130,13 +133,14 @@ for ($i = 1; $i <= 4; $i++) {
 	global $post; // required
 	$args = array(
 	 	'post__not_in' => $do_not_duplicate,
-	 	'cat__in' => $postcategories,
-	 	//'category_name' => 'istanbul-stuff',
+	 	'category__in' => $postcategories,
+	 	// 'category_name' => 'istanbul-stuff',
 	 	'ignore_sticky_posts' => 1,
 	 	'posts_per_page' => 2
 	 	);
 	$related_query = get_posts($args);
 ?>
+			<h3>Related posts</h3>
 			<ul class="related-posts">
 				<?php
 				foreach($related_query as $post) : setup_postdata($post);
