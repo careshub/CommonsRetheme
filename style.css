@@ -2680,6 +2680,14 @@ body.home-page #primary .story-block {
 body.home-page #primary .story-block h3 {
   color: #6b6b6b;
 }
+body.home-page #primary .story-block .related-posts li {
+  margin-bottom: .6em;
+}
+body.home-page #primary .story-block .related-posts li a {
+  display: block;
+  line-height: 1.4;
+  text-align: left;
+}
 .esriLargeSliderVertical {
   width: 2%;
 }
@@ -2887,7 +2895,7 @@ body.home-page #primary .story-block h3 {
     margin-bottom: 2em;
   }
   body.home-page #primary #top-story h2 {
-    width: 36%;
+    width: 36.9%;
     float: left;
     clear: none;
   }
