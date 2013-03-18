@@ -2903,6 +2903,7 @@ body.home-page #primary .story-row:after {
 body.home-page #primary .story-row .story-block {
   border-bottom: none;
   margin-right: 3%;
+  margin-left: 3%;
   width: 44%;
   float: left;
 }

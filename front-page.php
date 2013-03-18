@@ -12,7 +12,6 @@ get_header(); ?>
 
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
-			<div class="article">
 
 <?php
 //Set up an array to contain the id of posts we've already used.
@@ -167,7 +166,6 @@ for ($i = 1; $i <= 4; $i++) {
 
 
   ?>
-
 
   		</div><!-- #content -->
 	</div><!-- #primary -->
