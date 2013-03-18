@@ -2909,6 +2909,30 @@ body.home-page #primary .story-row .story-block {
 body.home-page #primary .story-row .story-block img {
   width: 92%;
 }
+body.home-page #primary #top-story img {
+  width: 60%;
+  float: left;
+  margin-right: 2em;
+  margin-bottom: 2em;
+}
+body.home-page #primary .story-row {
+  border-bottom: none;
+}
+body.home-page #primary .story-row:after {
+  clear: none;
+}
+body.home-page #primary .story-row:before,
+body.home-page #primary .story-row:after {
+  display: table;
+  content: "";
+}
+body.home-page #primary .story-row .story-block {
+  border-bottom: none;
+  margin-right: 2%;
+  margin-left: 2%;
+  width: 21%;
+  float: left;
+}
 .ie8 .primary-navigation .secondary .bp-notifications .bp-notification-list,
 .ie7 .primary-navigation .secondary .bp-notifications .bp-notification-list {
   margin-top: 12px;
