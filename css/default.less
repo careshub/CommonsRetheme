@@ -2960,7 +2960,7 @@ body.home-page {
 		#top-story {
 			// background-color: #FAB;
 			margin-bottom: 24px;
-			margin-bottom: 1.7rem;
+			// margin-bottom: 1.7rem;
 			border-bottom: 1px solid @graylight;			
 			h2 {
 				// .font-size(1.4);
@@ -2971,9 +2971,15 @@ body.home-page {
 			}
 		}
 		.story-block {
-			margin-bottom: 24px;
-			margin-bottom: 1.7rem;
-			border-bottom: 1px solid @graylight;			
+			margin: 24px 0;
+			margin: 1.7rem 0;
+			padding-bottom: 24px;
+			padding-bottom: 1.7rem;
+			border-bottom: 1px solid @graylight;
+			h3 {
+				color: lighten(@graydark, 15);
+				// font-weight: 400;
+			}			
 			
 		}
 	}

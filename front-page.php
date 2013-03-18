@@ -94,7 +94,9 @@ for ($i = 1; $i <= 4; $i++) {
 	if ( $main_query ) : 
 		while ( $main_query->have_posts() ) : $main_query->the_post();
 			$layout_location = 'secondary';
-			if ( in_array($post->ID, $sticky) )
+			if ( $i%2 !== 0 ) {
+				echo '<div class="story-row">';
+			}
 			?>
 		<div id="story-block-<?= $i; ?>" class="story-block" class="clear">
 			<?php
@@ -127,8 +129,8 @@ for ($i = 1; $i <= 4; $i++) {
 		// echo '<br/>$postcategories: ';
 		// print_r($postcategories) ;
 		wp_reset_postdata(); ?>
-	<?php endif; //ends if ( ${query.$i} )
-
+	
+<?php
 // Then, get posts related to the main story
 	global $post; // required
 	$args = array(
@@ -156,7 +158,14 @@ for ($i = 1; $i <= 4; $i++) {
 		</div> <!-- End .story-block -->
 
   <?php 
+  if ( $i%2 == 0 ) {
+				echo '</div> <!-- End .story-row -->';
+			}
+	endif; //ends if ( main_query )
+
 } //ends for loop iteration
+
+
   ?>
 
 

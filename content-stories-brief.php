@@ -10,9 +10,9 @@ global $layout_location;
 
 if ( has_post_thumbnail()) {
  	if ($layout_location == 'primary') {
-	   $featured_image = get_the_post_thumbnail( $post->ID, 'large');
+	   $featured_image = get_the_post_thumbnail( $post->ID, 'feature-front');
 	} elseif ($layout_location == 'secondary') {
-		$featured_image = get_the_post_thumbnail( $post->ID, 'medium');
+		$featured_image = get_the_post_thumbnail( $post->ID, 'feature-front-sub');
 	}
  }
 if ( ($layout_location == 'primary') || ($layout_location == 'secondary') ) {

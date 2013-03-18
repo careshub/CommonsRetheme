@@ -2661,13 +2661,17 @@ body.home-page #primary ul li {
 }
 body.home-page #primary #top-story {
   margin-bottom: 24px;
-  margin-bottom: 1.7rem;
   border-bottom: 1px solid #dedede;
 }
 body.home-page #primary .story-block {
-  margin-bottom: 24px;
-  margin-bottom: 1.7rem;
+  margin: 24px 0;
+  margin: 1.7rem 0;
+  padding-bottom: 24px;
+  padding-bottom: 1.7rem;
   border-bottom: 1px solid #dedede;
+}
+body.home-page #primary .story-block h3 {
+  color: #6b6b6b;
 }
 .esriLargeSliderVertical {
   width: 2%;
@@ -2852,6 +2856,50 @@ body.home-page #primary .story-block {
 }
 .alt:nth-child(odd) {
   background-color: #f1f9fa;
+}
+body.home-page #primary {
+  width: 100%;
+}
+body.home-page #primary ul {
+  clear: both;
+}
+body.home-page #primary ul li {
+  line-height: 2.4;
+}
+body.home-page #primary #top-story {
+  margin-bottom: 0;
+  border-bottom: 1px solid #dedede;
+}
+body.home-page #primary #top-story img {
+  width: 60%;
+  float: left;
+  margin-right: 2em;
+  margin-bottom: 2em;
+}
+body.home-page #primary #top-story h2 {
+  width: 36%;
+  float: left;
+  clear: none;
+}
+body.home-page #primary .story-row {
+  border-bottom: 1px solid #dedede;
+}
+body.home-page #primary .story-row:after {
+  clear: both;
+}
+body.home-page #primary .story-row:before,
+body.home-page #primary .story-row:after {
+  display: table;
+  content: "";
+}
+body.home-page #primary .story-row .story-block {
+  border-bottom: none;
+  margin-right: 3%;
+  width: 44%;
+  float: left;
+}
+body.home-page #primary .story-row .story-block img {
+  width: 92%;
 }
 .ie8 .primary-navigation .secondary .bp-notifications .bp-notification-list,
 .ie7 .primary-navigation .secondary .bp-notifications .bp-notification-list {

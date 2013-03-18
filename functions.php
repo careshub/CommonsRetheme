@@ -857,3 +857,9 @@ function remove_geographies_taxonomy_meta() {
 }
 
 add_action( 'admin_menu' , 'remove_geographies_taxonomy_meta' );
+
+//Add new image sizes for front page
+if ( function_exists( 'add_image_size' ) ) { 
+  add_image_size( 'feature-front', '600', '400' ); //not hard cropped, resized proportionally
+  add_image_size( 'feature-front-sub', '300', '200', true ); // hard cropped
+}
