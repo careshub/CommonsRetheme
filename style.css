@@ -2927,11 +2927,6 @@ body.home-page #primary .story-block .related-posts li a {
     margin-right: 2em;
     margin-bottom: 2em;
   }
-  body.home-page #primary #top-story h2 {
-    width: 36%;
-    float: left;
-    clear: none;
-  }
   body.home-page #primary .story-row {
     border-bottom: none;
   }
