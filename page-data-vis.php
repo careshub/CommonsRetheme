@@ -20,7 +20,7 @@ get_header(); ?>
 		}
 		foreach ($all_cats as $cat_slug) {
 			if ( function_exists('ccdvt_get_tools') )
-			ccdvt_get_tools($cat_slug);
+				ccdvt_get_tools($cat_slug);
 		}
 		
 		?>
