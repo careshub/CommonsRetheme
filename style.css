@@ -2924,7 +2924,6 @@ body.home-page #primary .story-block .related-posts li a {
 @media screen and (min-width: 1000px) {
   body.home-page #primary #top-story img {
     width: 60%;
-    float: left;
     margin-right: 2em;
     margin-bottom: 2em;
   }

@@ -2912,7 +2912,6 @@ body.home-page #primary .story-row .story-block img {
 }
 body.home-page #primary #top-story img {
   width: 60%;
-  float: left;
   margin-right: 2em;
   margin-bottom: 2em;
 }
@@ -2937,4 +2936,7 @@ body.home-page #primary .story-row .story-block {
 .ie8 .primary-navigation .secondary .bp-notifications .bp-notification-list,
 .ie7 .primary-navigation .secondary .bp-notifications .bp-notification-list {
   margin-top: 12px;
+}
+body.home-page #primary #top-story {
+  height: 1%;
 }
