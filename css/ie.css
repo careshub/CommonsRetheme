@@ -2663,23 +2663,45 @@ body.home-page #primary #top-story {
   margin-bottom: 24px;
   border-bottom: 1px solid #dedede;
 }
-body.home-page #primary .story-block {
-  margin: 24px 0;
-  margin: 1.7rem 0;
+body.home-page #primary .quarter-block h3 {
+  color: #6b6b6b;
+}
+body.home-page #primary .quarter-block .related-posts li {
+  margin-bottom: .6em;
+}
+body.home-page #primary .quarter-block .related-posts li a {
+  display: block;
+  line-height: 1.4;
+  text-align: left;
+}
+.quarter-block {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  margin-top: 1.7rem;
+  margin-bottom: 1.7rem;
   padding-bottom: 24px;
   padding-bottom: 1.7rem;
   border-bottom: 1px solid #dedede;
 }
-body.home-page #primary .story-block h3 {
-  color: #6b6b6b;
+.featured-data-vis-tool .section-header {
+  width: 100%;
 }
-body.home-page #primary .story-block .related-posts li {
-  margin-bottom: .6em;
+.featured-data-vis-tool .section-header h1 {
+  font-size: 25.2px;
+  font-size: 1.8rem;
+  font-weight: 400;
 }
-body.home-page #primary .story-block .related-posts li a {
+.featured-data-vis-tool .widget-container {
+  float: left;
+  margin-right: 2%
+		width:65%;
   display: block;
-  line-height: 1.4;
-  text-align: left;
+}
+.featured-data-vis-tool .entry-header,
+.featured-data-vis-tool p {
+  float: left;
+  display: inline-block;
+  width: 40%;
 }
 .esriLargeSliderVertical {
   width: 2%;
@@ -2889,25 +2911,25 @@ body.home-page #primary #top-story h2 {
   float: left;
   clear: none;
 }
-body.home-page #primary .story-row {
+.content-row {
   border-bottom: 1px solid #dedede;
 }
-body.home-page #primary .story-row:after {
+.content-row:after {
   clear: both;
 }
-body.home-page #primary .story-row:before,
-body.home-page #primary .story-row:after {
+.content-row:before,
+.content-row:after {
   display: table;
   content: "";
 }
-body.home-page #primary .story-row .story-block {
+.quarter-block {
   border-bottom: none;
   margin-right: 3%;
   margin-left: 3%;
   width: 44%;
   float: left;
 }
-body.home-page #primary .story-row .story-block img {
+.quarter-block img {
   width: 92%;
 }
 body.home-page #primary #top-story img {
@@ -2915,18 +2937,18 @@ body.home-page #primary #top-story img {
   margin-right: 2em;
   margin-bottom: 2em;
 }
-body.home-page #primary .story-row {
+.content-row {
   border-bottom: none;
 }
-body.home-page #primary .story-row:after {
+.content-row:after {
   clear: none;
 }
-body.home-page #primary .story-row:before,
-body.home-page #primary .story-row:after {
+.content-row:before,
+.content-row:after {
   display: table;
   content: "";
 }
-body.home-page #primary .story-row .story-block {
+.quarter-block {
   border-bottom: none;
   margin-right: 2%;
   margin-left: 2%;

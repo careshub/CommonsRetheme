@@ -5,7 +5,7 @@ require_once('includes/cpt_SA_Policies.php');
 //Definition of the geographies custom taxonomy
 require_once('includes/taxonomy-geography.php');
 //Definition of the Data Vis Tools policy custom post type
-require_once('includes/cpt_data_vis_tools.php');
+// require_once('includes/cpt_data_vis_tools.php');
 
 
 // Customize WP Toolbar
@@ -780,6 +780,9 @@ function cc_custom_body_class( $classes ) {
     $classes[] = 'salud-america';
 
   if ( is_page_template( 'page-templates/full-width-no-title.php' ) )
+    $classes[] = 'full-width';
+
+  if ( is_page( 'data-vis' ) )
     $classes[] = 'full-width';
 
   return $classes;

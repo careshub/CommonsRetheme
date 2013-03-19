@@ -2970,12 +2970,7 @@ body.home-page {
 				
 			}
 		}
-		.story-block {
-			margin: 24px 0;
-			margin: 1.7rem 0;
-			padding-bottom: 24px;
-			padding-bottom: 1.7rem;
-			border-bottom: 1px solid @graylight;
+		.quarter-block {
 			h3 {
 				color: lighten(@graydark, 15);
 				// font-weight: 400;
@@ -2993,8 +2988,38 @@ body.home-page {
 		}
 	}
 }
+// Generalize quarter block
+.quarter-block {
+			margin-top: 24px;
+			margin-bottom: 24px;
+			margin-top: 1.7rem;
+			margin-bottom: 1.7rem;
+			padding-bottom: 24px;
+			padding-bottom: 1.7rem;
+			border-bottom: 1px solid @graylight;
+		}
 
-
+// Data Vis Page
+.featured-data-vis-tool {
+	.section-header {
+		width:100%;
+		h1 {
+			.font-size(1.8);
+			font-weight: 400;
+		}
+	}
+	.widget-container { 
+		float: left; 
+		margin-right: 2%
+		width:65%;
+		display: block;
+	}
+	.entry-header, p { 
+		float:left;
+		display: inline-block;
+		width:40%;
+	}
+}
 
 //Fix for ESRI mapping environment slider
 .esriLargeSliderVertical {

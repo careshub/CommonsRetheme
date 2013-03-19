@@ -94,10 +94,10 @@ for ($i = 1; $i <= 4; $i++) {
 		while ( $main_query->have_posts() ) : $main_query->the_post();
 			$layout_location = 'secondary';
 			if ( $i%2 !== 0 ) {
-				echo '<div class="story-row">';
+				echo '<div class="content-row">';
 			}
 			?>
-		<div id="story-block-<?= $i; ?>" class="story-block" class="clear">
+		<div id="story-block-<?= $i; ?>" class="quarter-block" class="clear">
 			<?php
 			get_template_part( 'content', 'stories-brief' );
 			
@@ -154,11 +154,11 @@ for ($i = 1; $i <= 4; $i++) {
 				endforeach; //ends top-related posts loop
 				?>
 			</ul> <!-- End .related_posts -->
-		</div> <!-- End .story-block -->
+		</div> <!-- End .quarter-block -->
 
   <?php 
   if ( $i%2 == 0 ) {
-				echo '</div> <!-- End .story-row -->';
+				echo '</div> <!-- End .content-row -->';
 			}
 	endif; //ends if ( main_query )
 
