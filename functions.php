@@ -1,7 +1,7 @@
 <?php
 //include code from include folder
 //Definition of the Salud America policy custom post type
-require_once('includes/cpt_SA_Policies.php');
+require_once('includes/SA_Policies.php');
 //Definition of the geographies custom taxonomy
 require_once('includes/taxonomy-geography.php');
 //Definition of the Data Vis Tools policy custom post type
