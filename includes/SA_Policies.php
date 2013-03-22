@@ -492,7 +492,7 @@ function setDiv(t)
                $j.ajax
                ({
                    type: "POST",               
-                   url: "http://localhost/wordpress/wp-content/themes/twentytwelve/ajax/geography.php",
+                   url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/geography.php",
                    data: dataString,
                    cache: false,               
                    error: function() {
