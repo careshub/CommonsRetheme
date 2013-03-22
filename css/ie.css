@@ -692,6 +692,8 @@ div.generic-button a,
   padding: .3em .6em;
   text-align: center;
   text-decoration: none;
+  line-height: 1.6;
+  display: inline-block;
 }
 ul.button-nav li a {
   padding: 4px 10px;
@@ -1148,7 +1150,7 @@ div#item-header ul.avatars img.avatar {
 }
 div#item-header div.generic-button,
 div#item-header a.button {
-  float: left;
+  display: inline-block;
   margin: 10px 10px 0 0;
 }
 div#item-header div#message.info {
@@ -1425,28 +1427,48 @@ ul.item-list div.action {
  * Content Object Headers
  */
 div#item-header {
+  margin: 2em 0;
   padding-bottom: 10px;
   overflow: hidden;
   /*TODO clearfix*/
 
 }
-div#item-header h2 {
-  clear: left;
+div#item-header #item-actions {
+  float: right;
 }
 div#item-header div#item-header-avatar {
   float: left;
-  margin-right: 15px;
+  width: 25%;
+  margin-right: 2em;
 }
-div#item-header div#item-header-content {
+div#item-header div#item-header-avatar img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+div#item-header #item-header-content {
   float: left;
   width: 100%;
 }
-div#item-header div#item-header-content .group-breadcrumbs {
+div#item-header #item-header-content .group-breadcrumbs {
   background-color: #EEEEEE;
   font-size: 11.9px;
   font-size: 0.85rem;
   margin-bottom: 12px;
   padding: 6px;
+}
+div#item-header #item-header-content .noms {
+  float: left;
+}
+div#item-header #item-header-content .noms .user-nicename {
+  float: none;
+}
+div#item-header #item-header-content #item-meta {
+  float: left;
+}
+#item-nav {
+  width: 20%;
+  float: left;
 }
 /***
  * Activity Stream Post Form
@@ -1657,55 +1679,65 @@ form.standard-form textarea {
 }
 .buddypress #secondary,
 .salud-america #secondary {
-  float: left;
-  width: 22%;
-  border-right: 1px solid #aaaaaa;
+  width: 100%;
+  clear: both;
 }
-.buddypress #secondary .sidebar-activity-tabs,
-.salud-america #secondary .sidebar-activity-tabs {
-  margin-top: 2em;
-  border-bottom: 1px solid #dedede;
+.buddypress #secondary .widget,
+.salud-america #secondary .widget {
+  margin-top: 1.5em;
 }
-.buddypress #secondary .sidebar-activity-tabs ul,
-.salud-america #secondary .sidebar-activity-tabs ul {
-  margin: 0 0 2em 0;
-  padding: 0;
+.sidebar-activity-tabs ul li {
+  display: inline-block;
+  margin: 10px 10px 0 0;
 }
-.buddypress #secondary .sidebar-activity-tabs ul li,
-.salud-america #secondary .sidebar-activity-tabs ul li {
-  margin-left: -3.5em;
-}
-.buddypress #secondary .sidebar-activity-tabs ul li.selected,
-.salud-america #secondary .sidebar-activity-tabs ul li.selected,
-.buddypress #secondary .sidebar-activity-tabs ul li.current-menu-item,
-.salud-america #secondary .sidebar-activity-tabs ul li.current-menu-item {
-  -webkit-border-radius: 4px 0 0 4px;
-  -moz-border-radius: 4px 0 0 4px;
-  background-color: #ffffff;
-  border-color: #aaaaaa #ffffff #aaaaaa #aaaaaa;
-  border-radius: 4px 0 0 4px;
-  border-style: solid;
-  border-width: 1px;
-  margin-right: -1px;
-  -webkit-box-shadow: -2px 1px 2px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: -2px 1px 2px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: -2px 1px 2px 0 rgba(0, 0, 0, 0.1);
+.sidebar-activity-tabs ul li.selected,
+.sidebar-activity-tabs ul li.current-menu-item {
   font-weight: 700;
 }
-.buddypress #secondary .sidebar-activity-tabs ul li.selected a,
-.salud-america #secondary .sidebar-activity-tabs ul li.selected a,
-.buddypress #secondary .sidebar-activity-tabs ul li.current-menu-item a,
-.salud-america #secondary .sidebar-activity-tabs ul li.current-menu-item a {
+.sidebar-activity-tabs ul li.selected a,
+.sidebar-activity-tabs ul li.current-menu-item a {
   color: #454545;
 }
-.buddypress #secondary .sidebar-activity-tabs ul li a,
-.salud-america #secondary .sidebar-activity-tabs ul li a {
-  text-decoration: none;
+.sidebar-activity-tabs ul li a {
   display: block;
-  padding: 1em 1.5em 1em 3.6em;
+  line-height: 1.6;
+  padding: .5em;
+  background: #fff;
+  /* Old browsers */
+
+  background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #ededed));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(top, #ffffff 0%, #ededed 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #ffffff 0%, #ededed 100%);
+  /* Opera11.10+ */
+
+  background: -ms-linear-gradient(top, #ffffff 0%, #ededed 100%);
+  /* IE10+ */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0);
+  /* IE6-9 */
+
+  background: linear-gradient(top, #ffffff 0%, #ededed 100%);
+  /* W3C */
+
+  border: 1px solid #ccc;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  color: #008eaa;
+  font-size: 12.6px;
+  font-size: 0.9rem;
+  padding: .3em .6em;
+  text-align: center;
+  text-decoration: none;
 }
-.buddypress #secondary .sidebar-activity-tabs ul li span,
-.salud-america #secondary .sidebar-activity-tabs ul li span {
+.sidebar-activity-tabs ul li span {
   font-weight: 400;
   display: inline;
   background-color: #aaaaaa;
@@ -1716,35 +1748,9 @@ form.standard-form textarea {
   padding: 0 6px;
   margin: 0 8px;
 }
-.buddypress #secondary .sidebar-activity-tabs ul li span.alert,
-.salud-america #secondary .sidebar-activity-tabs ul li span.alert {
+.sidebar-activity-tabs ul li span.alert {
   background-color: #00b0d3;
   color: #ffffff;
-}
-.buddypress #secondary .widget,
-.salud-america #secondary .widget {
-  margin-top: 1.5em;
-}
-#item-header {
-  width: 100%;
-  margin-bottom: 2em;
-}
-#item-header #item-actions {
-  float: right;
-}
-#item-header #item-header-content {
-  float: left;
-}
-#item-header-avatar {
-  float: none;
-}
-#item-header-avatar img {
-  display: block;
-  margin: 0 auto;
-}
-#item-nav {
-  width: 20%;
-  float: left;
 }
 #colophon {
   max-width: 100%;
@@ -1865,10 +1871,6 @@ img.avatar {
 }
 .buddypress .site-content {
   width: 100%;
-}
-.buddypress #content {
-  float: right;
-  width: 75.4%;
 }
 .buddypress #content #item-body p,
 .buddypress #content .main-column p,
