@@ -28,11 +28,15 @@ function SA_policies_init()
 		'show_ui' => true, 
 		'query_var' => true,
 		'rewrite' => true,
-		'capability_type' => 'post',
 		'hierarchical' => false,
-		'menu_position' => null,
-		'supports' => array('title','editor','comments')
-	); 
+    'show_in_menu' => true,
+    'menu_position' => 25,
+    //'has_archive' => 'sapolicies',
+    'supports' => array('title','editor','comments'),
+    'capability_type' => 'sapolicies',
+    'map_meta_cap'    => true
+	);
+	
 	register_post_type('sapolicies',$args);
 }
 
