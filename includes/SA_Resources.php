@@ -69,7 +69,13 @@ function resource_meta_box()
       <option value="Embed">Embed Code</option>  
     </select>   
 	
-	<div id="filediv" style="display:none">
+	<div id="filediv" style="<?php 
+if ($resourcetype === "File") {
+    echo "display:block";
+} else {
+    echo "display:none";
+}
+?>">
 		<br>
 		<strong>Upload file:</strong><br>
 		<input type="file" name="sa_upload_file" value="
@@ -79,7 +85,13 @@ function resource_meta_box()
 			}
 		?>" />
 	</div>
-	<div id="linkdiv" style="display:none">
+	<div id="linkdiv" style="<?php 
+if ($resourcetype === "Link") {
+    echo "display:block";
+} else {
+    echo "display:none";
+}
+?>">
 		<br>
 		<strong>Enter link here:</strong><br>
 		<input type="text" name="sa_link" size="100" value="
@@ -89,7 +101,13 @@ function resource_meta_box()
 			}
 		?>">
 	</div>
-	<div id="embeddiv" style="display:none">
+	<div id="embeddiv" style="<?php 
+if ($resourcetype === "Embed") {
+    echo "display:block";
+} else {
+    echo "display:none";
+}
+?>"">
 		<br>
 		<strong>Enter embed code here:</strong><br>
 		<textarea name="sa_embedcode" rows="4" cols="100" value="
@@ -121,26 +139,24 @@ function resource_meta_box()
 <?php     
 
     $taxonomy="resourcecat";    
-	$myterms = get_terms($taxonomy);
-$cnt = Count($myterms);
-echo "count=" . $cnt . "<br>";
-
-	// if ( $terms ) {
-                // print( '<select name="sa_resourcecategory" id="sa_resourcecategory" class="sa_resourcecategory">' );
-                // if ($resourcecategory != '') {
-                    // $properST = get_term_by('slug',$resourcecategory,'resourcecat');
-                    // printf( '<option value="%s">%s</option>', $properST->slug, $properST->name );
-                // } else {
-                    // print( '<option value="" selected="selected">Select a Category</option>');
-                // }
-		// foreach ( $terms as $term ) {
-		// $mnb =	printf( '<option value="%s">%s</option>', $term->slug, $term->name );
-                // echo $mnb;
-		// }
-		// print( '</select>' );
-	// } else {
-            // print('no terms');
-        // }
+	$terms = get_terms( $taxonomy, array( 'hide_empty' => 0 ) );
+	
+	if ( $terms ) {
+                print( '<select name="sa_resourcecategory" id="sa_resourcecategory" class="sa_resourcecategory">' );
+                if ($resourcecategory != '') {
+                    $properST = get_term_by('slug',$resourcecategory,'resourcecat');
+                    printf( '<option value="%s">%s</option>', $properST->slug, $properST->name );
+                } else {
+                    print( '<option value="" selected="selected">Select a Category</option>');
+                }
+		foreach ( $terms as $term ) {
+		$mnb =	printf( '<option value="%s">%s</option>', $term->slug, $term->name );
+                echo $mnb;
+		}
+		print( '</select>' );
+	} else {
+            print('no terms');
+        }
 
 
 ?>
@@ -185,37 +201,34 @@ function handle_upload_field($post_ID, $post)
     }
 }
 add_action('wp_insert_post', 'handle_upload_field', 10, 2);
-?>
 
-
-<?php 
-// add_action( 'save_post', 'saresource_save' );
-// function saresource_save() { 
+ add_action( 'save_post', 'saresource_save' );
+ function saresource_save() { 
  
-   // global $post;
-    // if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
-      // return;
+   global $post;
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+      return;
 
-    // if ($post->post_type == 'saresources') {
-       // save_event_field("sa_resourcetype");
-       // save_event_field("sa_resourcecategory");       
-       // save_event_field("sa_upload_file");
-       // save_event_field("sa_link");
-       // save_event_field("sa_embedcode");
-       // save_event_field("sa_sharing");	   
+     if ($post->post_type == 'saresources') {
+       save_res_field("sa_resourcetype");
+       save_res_field("sa_resourcecategory");       
+       save_res_field("sa_upload_file");
+       save_res_field("sa_link");
+       save_res_field("sa_embedcode");
+       save_res_field("sa_sharing");	   
 	   
-    // }
-// }
-// function save_event_field($event_field) {
-    // global $post;
-    // if(isset($_POST[$event_field])) {
-        // update_post_meta($post->ID, $event_field, $_POST[$event_field]);
-    // } else{
-        // delete_post_meta($post->ID, $event_field);
-    // }
-// }
+     }
+ }
+ function save_res_field($event_field) {
+    global $post;
+    if(isset($_POST[$event_field])) {
+        update_post_meta($post->ID, $event_field, $_POST[$event_field]);
+    } else{
+        delete_post_meta($post->ID, $event_field);
+    }
+ }
 
-// ?>
+?>
 
 
     
