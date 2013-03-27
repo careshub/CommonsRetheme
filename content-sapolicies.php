@@ -15,7 +15,7 @@
 $custom_fields = get_post_custom($post->ID);
 	//Check target areas, add the correct icon:
 	for ($i = 1; $i <= 6; $i++) {
-		${target.$i} = $custom_fields['at'.$i][0];
+		${target.$i} = $custom_fields['sa_at'.$i][0];
 		//echo 'Target Area'. $i .': ' . ${target.$i} . '<br/>';
 		if ( isset( ${target.$i} ) ) {
 			switch ($i) {
@@ -42,7 +42,7 @@ $custom_fields = get_post_custom($post->ID);
 	};
 
 //Progress meter
-	$progress = $custom_fields['policystage'][0];
+	$progress = $custom_fields['sa_policystage'][0];
 		switch ($progress) {
 	    case "pre":
 	        $percentage = 25;
@@ -84,7 +84,7 @@ $custom_fields = get_post_custom($post->ID);
 			</header>
 
 			<?php the_content(); ?>
-			<p class="policy-type">This policy is of the type: <a href="#"><?php echo $custom_fields['policytype'][0];?></a></p>
+			<p class="policy-type">This policy is of the type: <a href="#"><?php echo $custom_fields['sa_policytype'][0];?></a></p>
 
 			<div class="clear"></div>			
 

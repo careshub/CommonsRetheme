@@ -1134,7 +1134,7 @@ div#item-header ul.avatars img.avatar {
 div#item-header div.generic-button,
 div#item-header a.button {
 	display: inline-block;
-	margin: 10px 10px 0 0;
+	// margin: 10px 10px 0 0;
 }
 div#item-header div#message.info {
 	line-height: 80%;
@@ -1479,7 +1479,7 @@ div#item-header {
 	//width: 77.4%;
 	// width: 100%;
 	//float: right;
-	margin: 2em 0;
+	margin-top: 2em;
 
 	.outliner();
 	padding-bottom: 10px;
@@ -1827,7 +1827,7 @@ form.dir-form div.dir-search {
 //BuddyPress pages
 //use vertical nav list
 .padder {
-	margin:2em 0;
+	margin:1em 0;
 	float:left;
 	width: 100%;
 }
@@ -1840,7 +1840,7 @@ form.dir-form div.dir-search {
 	}
 }
 .buddypress, .salud-america {
-	 #secondary  {
+	 #secondary, #tertiary  {
 		width: 100%;
 		clear: both;
 		.widget {
@@ -1853,8 +1853,8 @@ form.dir-form div.dir-search {
 }
 .sidebar-activity-tabs { //sub navigation on member and group pages
 		// margin-top: 2em;
-		// //padding-bottom:1.5em;
-		// border-bottom: 1px solid @graylight;
+		padding-bottom:1em;
+		border-bottom: 1px solid @graylight;
 		ul {
 			// margin: 0 0 2em 0;
 			// padding: 0;
@@ -1878,6 +1878,14 @@ form.dir-form div.dir-search {
 				    font-weight: 700;
 				    a {
 				    	color: @graydark;
+				    	background: #fff; /* Old browsers */
+						background: -moz-linear-gradient(top, #ffffff 0%, desaturate(lighten(@ccblue, 40),20) 100%); /* FF3.6+ */
+						background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,desaturate(lighten(@ccblue, 40),20))); /* Chrome,Safari4+ */
+						background: -webkit-linear-gradient(top, #ffffff 0%,desaturate(lighten(@ccblue, 40),20) 100%); /* Chrome10+,Safari5.1+ */
+						background: -o-linear-gradient(top, #ffffff 0%,desaturate(lighten(@ccblue, 40),20) 100%); /* Opera11.10+ */
+						background: -ms-linear-gradient(top, #ffffff 0%,desaturate(lighten(@ccblue, 40),20) 100%); /* IE10+ */
+						filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+						background: linear-gradient(top, #ffffff 0%,desaturate(lighten(@ccblue, 40),20) 100%); /* W3C */
 				    }
 				}
 				a { 
@@ -1961,8 +1969,8 @@ form.dir-form div.dir-search {
 	}
 }
 .widget-area {
-	margin: 24px 0;
-	margin: 1.714285714rem 0;
+	margin: 0;
+	// margin: 1.714285714rem 0;
 }
 //override top stroke
 footer[role="contentinfo"] {
