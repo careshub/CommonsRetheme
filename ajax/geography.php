@@ -1,7 +1,7 @@
 <?php
 
 define('WP_USE_THEMES', false);
-require_once($_SERVER['DOCUMENT_ROOT'] . '/wp-blog-header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/wp-load.php');
 
 $selstate = $_POST['selstate'];
 $geog = $_POST['geog'];
