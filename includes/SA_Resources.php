@@ -32,7 +32,9 @@ function SA_resources_init()
 		'capability_type' => 'post',
 		'hierarchical' => false,
 		'menu_position' => null,
-		'supports' => array('title','editor','comments')
+		'supports' => array('title','editor','comments'),
+                'capability_type' => 'saresources',
+                'map_meta_cap'    => true
 	); 
 	register_post_type('saresources',$args);
 }
