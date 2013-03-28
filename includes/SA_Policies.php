@@ -464,7 +464,9 @@ function setDiv(t)
  var selgeog = document.getElementById('selgeog');
  var selstate = document.getElementById('sa_state');
  
- $j(".sa_selectedgeog").prepend("<option value='' selected='true'>Select a " + x + "</option>");
+  if (selstate.value === "") {
+	$j(".sa_selectedgeog").prepend("<option value='' selected='true'>Select a " + x + "</option>");
+ }
  
  if (x !== 'National'){
     rightcolumn.style.display = "block";
@@ -478,15 +480,20 @@ function setDiv(t)
      selgeog.style.display = "block";
  } 
   
-     if (selstate.value !== ""){
+     //if (selstate.value !== ""){
         $j(".sa_state").trigger("change");        
-     }    
-     else {
+     //}    
+     //else {
         $j(".sa_state").change(function()
            {
                var mygeog = t.options[t.selectedIndex].value; 
                var mygeog2 = "sa_selectedgeog";
-               var id=$j(this).val();
+               var id="";
+			   if (selstate.value !== "") {
+				id = selstate.value;				
+			   } else {
+				id = $j(this).val();				
+			   }
                var dataString = 'selstate=' + id + '&geog=' + mygeog;
               
                $j.ajax
@@ -505,7 +512,7 @@ function setDiv(t)
                    } 
                });
            });
-     }
+     //}
 }
 
 function setStage(y) {
