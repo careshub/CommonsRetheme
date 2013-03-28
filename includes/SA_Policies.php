@@ -32,8 +32,9 @@ function SA_policies_init()
     'show_in_menu' => true,
     'menu_position' => 25,
     //'has_archive' => 'sapolicies',
-    'supports' => array('title','editor','comments')
-
+    'supports' => array('title','editor','comments'),
+	'capability_type' => 'sapolicies',
+	'map_meta_cap' => true
 	);
 	
 	register_post_type('sapolicies',$args);
@@ -146,7 +147,7 @@ function geog_meta_box()
     <div id="states">    
         <?php
 	$args5 = array(
-                'parent' => 2,
+                'parent' => 718,
                 'hide_empty' => 0 
                 
 	);
@@ -489,7 +490,7 @@ var $j = jQuery.noConflict();
 						   $j.ajax
 						   ({
 							   type: "POST",               
-							   url: "http://localhost/wordpress/wp-content/themes/twentytwelve/ajax/geography.php",
+							   url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/geography.php",
 							   data: dataString,
 							   cache: false,               
 							   error: function() {
