@@ -32,9 +32,8 @@ function SA_policies_init()
     'show_in_menu' => true,
     'menu_position' => 25,
     //'has_archive' => 'sapolicies',
-    'supports' => array('title','editor','comments'),
-    'capability_type' => 'sapolicies',
-    'map_meta_cap'    => true
+    'supports' => array('title','editor','comments')
+
 	);
 	
 	register_post_type('sapolicies',$args);
@@ -110,7 +109,7 @@ function geog_meta_box()
     $custom = get_post_custom($post->ID);
     $geog = $custom["sa_geog"][0];
     $state = $custom["sa_state"][0];
-    $selectedgeog = $custom["sa_selectedgeog"][0];    
+    $selectedgeog = $custom["sa_finalgeog"][0];    
     
 ?>
 <style type="text/css">
@@ -128,7 +127,7 @@ function geog_meta_box()
         }
     ?>    
     
-    <select id="sa_geog" name="sa_geog" onChange="setDiv(this);">
+    <select id="sa_geog" name="sa_geog">
       <option selected="true" value="<?php echo $geog; ?>"><?php echo $geogdef; ?></option>
       <option value="National">National</option>
       <option value="State">State</option>
@@ -143,17 +142,11 @@ function geog_meta_box()
     
 
 </div>
-<div id="rightcolumn" style="<?php 
-if ($geog !== null) {
-    echo "display:block";
-} else {
-    echo "display:none";
-}
-?>">
+<div id="rightcolumn">
     <div id="states">    
         <?php
 	$args5 = array(
-                'parent' => 718,
+                'parent' => 2,
                 'hide_empty' => 0 
                 
 	);
@@ -182,13 +175,7 @@ if ($geog !== null) {
 
         </div>
         <div id="moregeog">
-            <div id="selgeog" style="<?php
-                 if ($geog !== null) {
-                        echo "display:block";
-                    } else {
-                        echo "display:none";
-                    }            
-                 ?>"> 
+            <div id="selgeog"> 
                 <select name="sa_selectedgeog" id="sa_selectedgeog" class="sa_selectedgeog">
                 <?php
                  if ($geog !== null) {
@@ -197,6 +184,7 @@ if ($geog !== null) {
                  ?>                   
                     
                 </select>
+				<input type="hidden" id="sa_finalgeog" name="sa_finalgeog" />
             </div>            
         </div>
 </div>
@@ -456,64 +444,83 @@ var $j = jQuery.noConflict();
     {
         $j("#sa_dateenacted").datepicker();
         $j("#sa_dateimplemented").datepicker();
-    });
+		
+		var sg = $j('#sa_geog').val()
+		if ($j('#sa_selectedgeog').val() == null) {
+			$j('#sa_selectedgeog').hide();		
+		}
+		if ($j("#sa_state").val()=="") {
+			$j("#sa_state").hide();		
+		}
+		if (sg == 'National') {
+			$j('#sa_selectedgeog').hide();
+		}		
+		if (sg == 'State') {
+			$j('#sa_selectedgeog').hide();
+		}
+		
+		
+		
+		$j("#sa_state,#sa_geog").change(function()
+			   {
+					var sageog = $j("#sa_geog").val();
+					var selstate = $j("#sa_state").val();
+					 
+					 if (sageog == 'National'){	
+						$j("#sa_state,#sa_selectedgeog").val('');							
+						$j("#sa_selectedgeog,#sa_state").hide();
+						$j("#sa_finalgeog").val('United States');	
+					 } else if (sageog == 'State'){
+						$j("#sa_state").show();
+						$j("#sa_selectedgeog").hide();
+						$j("#sa_finalgeog").val(selstate);						
+					 } else { 					   
+						$j("#sa_selectedgeog,#sa_state").show();
+						$j("#sa_finalgeog").val($j("#sa_selectedgeog").val());
+						$j("#sa_finalgeog").val($j("#sa_selectedgeog").val());
+					 } 
+					
+			   	 	if (selstate !== "") {
+						   	
+						  	  
+						   
+						   var dataString = 'selstate=' + selstate + '&geog=' + sageog;
+						
+						   $j.ajax
+						   ({
+							   type: "POST",               
+							   url: "http://localhost/wordpress/wp-content/themes/twentytwelve/ajax/geography.php",
+							   data: dataString,
+							   cache: false,               
+							   error: function() {
+								   alert("I'm hitting an error.");
+							   },
+							   success: function(k)
+							   {       
+								   //alert(k);
+								   $j("#sa_selectedgeog").html(k);         
 
-function setDiv(t)
-{
- var x = t.options[t.selectedIndex].value;
- var selgeog = document.getElementById('selgeog');
- var selstate = document.getElementById('sa_state');
- 
-  if (selstate.value === "") {
-	$j(".sa_selectedgeog").prepend("<option value='' selected='true'>Select a " + x + "</option>");
- }
- 
- if (x !== 'National'){
-    rightcolumn.style.display = "block";
- } else {
-    rightcolumn.style.display = "none"; 
- }
- 
- if (x === 'State') {     
-     selgeog.style.display = "none";
- } else {
-     selgeog.style.display = "block";
- } 
-  
-     //if (selstate.value !== ""){
-        $j(".sa_state").trigger("change");        
-     //}    
-     //else {
-        $j(".sa_state").change(function()
-           {
-               var mygeog = t.options[t.selectedIndex].value; 
-               var mygeog2 = "sa_selectedgeog";
-               var id="";
-			   if (selstate.value !== "") {
-				id = selstate.value;				
-			   } else {
-				id = $j(this).val();				
-			   }
-               var dataString = 'selstate=' + id + '&geog=' + mygeog;
-              
-               $j.ajax
-               ({
-                   type: "POST",               
-                   url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/geography.php",
-                   data: dataString,
-                   cache: false,               
-                   error: function() {
-                       alert("I'm hitting an error.");
-                   },
-                   success: function(k)
-                   {       
-                       //alert(k);
-                       $j("." + mygeog2).html(k);               
-                   } 
-               });
-           });
-     //}
-}
+							   } 
+						   });
+				   }
+				   
+				   
+				   //console.log($j("#sa_finalgeog").val());
+			   });
+			   
+	   $j("#sa_selectedgeog").change(function()
+	   {
+			$j("#sa_finalgeog").val($j("#sa_selectedgeog").val());	
+			//console.log($j("#sa_finalgeog").val());
+	   });
+
+  });
+	
+	
+	
+
+
+
 
 function setStage(y) {
 
@@ -595,7 +602,7 @@ function geog_save() {
     if ($post->post_type == 'sapolicies') {
        save_event_field("sa_geog");
        save_event_field("sa_state");
-       save_event_field("sa_selectedgeog");
+       save_event_field("sa_finalgeog");
     }
 }
 
