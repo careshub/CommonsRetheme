@@ -454,6 +454,7 @@ var $j = jQuery.noConflict();
 			$j("#sa_state").hide();		
 		}
 		if (sg == 'National') {
+			$j("#sa_state").hide();
 			$j('#sa_selectedgeog').hide();
 		}		
 		if (sg == 'State') {
