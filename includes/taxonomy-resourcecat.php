@@ -4,17 +4,17 @@ function add_resourcecat_taxonomy() {
 
 	$labels = array(
 
-			'name' => _x( 'Resource Categories', 'taxonomy general name' ),
-			'singular_name' => _x( 'Resource Category', 'taxonomy singular name' ),
-			'search_items' =>  __( 'Search Resource Categories' ),
-			'all_items' => __( 'All Resource Categories' ),
-			'parent_item' => __( 'Parent Resource Categories' ),
-			'parent_item_colon' => __( 'Parent Resource Category:' ),
-			'edit_item' => __( 'Edit Resource Category' ),
-			'update_item' => __( 'Update Resource Category' ),
-			'add_new_item' => __( 'Add New Resource Category' ),
-			'new_item_name' => __( 'New Resource Category Name' ),
-			'menu_name' => __( 'Resource Categories' )
+			'name' => _x( 'Resource Tags', 'taxonomy general name' ),
+			'singular_name' => _x( 'Resource Tag', 'taxonomy singular name' ),
+			'search_items' =>  __( 'Search Resource Tags' ),
+			'all_items' => __( 'All Resource Tags' ),
+			'parent_item' => __( 'Parent Resource Tags' ),
+			'parent_item_colon' => __( 'Parent Resource Tag:' ),
+			'edit_item' => __( 'Edit Resource Tag' ),
+			'update_item' => __( 'Update Resource Tag' ),
+			'add_new_item' => __( 'Add New Resource Tag' ),
+			'new_item_name' => __( 'New Resource Tag Name' ),
+			'menu_name' => __( 'Resource Tags' )
 		);		
 
 		
