@@ -9,10 +9,11 @@
 
 //print_r($post);
 // echo 'META:';
-// print_r($custom_fields); 
-// echo "<br />";
 
 $custom_fields = get_post_custom($post->ID);
+print_r($custom_fields); 
+echo "<br />";
+
 	//Check target areas, add the correct icon:
 	for ($i = 1; $i <= 6; $i++) {
 		${target.$i} = $custom_fields['sa_at'.$i][0];
@@ -40,6 +41,10 @@ $custom_fields = get_post_custom($post->ID);
 			}
 			}
 	};
+
+//Location
+	$location = $custom_fields['sa_selectedgeog'][0];
+	//
 
 //Progress meter
 	$progress = $custom_fields['sa_policystage'][0];

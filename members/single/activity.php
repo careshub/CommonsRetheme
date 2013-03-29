@@ -10,11 +10,12 @@
 ?>
 
 <div class="item-list-tabs no-ajax" id="subnav" role="navigation">
-	<ul class="nav-tabs">
+	<ul class="nav-tabs clear">
 
 		<?php bp_get_options_nav(); ?>
 
-		<li id="activity-filter-select" class="last">
+	</ul>
+		<div id="activity-filter-select" class="">
 			<label for="activity-filter-by"><?php _e( 'Show:', 'buddypress' ); ?></label>
 			<select id="activity-filter-by">
 				<option value="-1"><?php _e( 'Everything', 'buddypress' ); ?></option>
@@ -55,8 +56,7 @@
 				do_action( 'bp_member_activity_filter_options' ); ?>
 
 			</select>
-		</li>
-	</ul>
+		</div>
 </div><!-- .item-list-tabs -->
 
 <?php do_action( 'bp_before_member_activity_post_form' ); ?>

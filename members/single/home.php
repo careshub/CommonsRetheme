@@ -10,9 +10,9 @@
 get_header( 'buddypress' ); ?>
 	<div id="item-header" role="complementary">
 
-				<?php locate_template( array( 'members/single/member-header.php' ), true ); ?>
+		<?php locate_template( array( 'members/single/member-header.php' ), true ); ?>
 
-			</div><!-- #item-header -->
+	</div><!-- #item-header -->
 	<div id="secondary" class="widget-area" role="complementary">
 		<!-- <div id="profile-sidebar"> -->
 			

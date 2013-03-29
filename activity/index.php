@@ -87,7 +87,6 @@ get_header( 'buddypress' ); ?>
 					<li class="feed"><a href="<?php bp_sitewide_activity_feed_link(); ?>" title="<?php _e( 'RSS Feed', 'buddypress' ); ?>"><?php _e( 'RSS', 'buddypress' ); ?></a></li>
 
 					<?php do_action( 'bp_activity_syndication_options' ); ?>
-
 					<li id="activity-filter-select" class="last">
 						<label for="activity-filter-by"><?php _e( 'Show:', 'buddypress' ); ?></label>
 						<select id="activity-filter-by">
@@ -127,7 +126,9 @@ get_header( 'buddypress' ); ?>
 
 						</select>
 					</li>
+
 				</ul>
+
 			</div><!-- .item-list-tabs -->
 
 			<?php do_action( 'bp_before_directory_activity_list' ); ?>
