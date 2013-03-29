@@ -1907,6 +1907,9 @@ img.avatar {
 .buddypress .site-content {
   width: 100%;
 }
+.buddypress #content {
+  width: 100%;
+}
 .buddypress #content #item-body p,
 .buddypress #content .main-column p,
 .buddypress #content .page p {

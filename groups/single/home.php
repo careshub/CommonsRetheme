@@ -1,7 +1,10 @@
 <?php get_header( 'buddypress' ); ?>
 <?php if ( bp_has_groups() ) : while ( bp_groups() ) : bp_the_group(); ?>
 
-	<div id="item-header" role="complementary">
+
+	<div id="content">
+		<div class="padder">
+			<div id="item-header" role="complementary">
 
 		<?php locate_template( array( 'groups/single/group-header.php' ), true ); ?>
 
@@ -22,10 +25,6 @@
 		</div> 
 		
 	</div> <!-- End #secondary -->
-
-
-	<div id="content">
-		<div class="padder">
 
 			<?php do_action( 'bp_before_group_home_content' ); ?>
 

@@ -12,6 +12,9 @@ get_header(); ?>
 
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
+			<div id="screamer">
+				<h1><?php echo get_bloginfo ( 'description' );  ?></h1>
+			</div>
 
 <?php
 //Set up an array to contain the id of posts we've already used.

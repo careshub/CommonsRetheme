@@ -39,10 +39,7 @@
 		<?php if ( bp_is_active( 'activity' ) ) : ?>
 
 			<div id="latest-update">
-				<p>
-
-				<?php bp_activity_latest_update( bp_displayed_user_id() ); ?>
-				</p>
+				<p><?php bp_activity_latest_update( bp_displayed_user_id() ); ?></p>
 			</div>
 
 		<?php endif; ?>

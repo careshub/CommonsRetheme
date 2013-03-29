@@ -1914,6 +1914,9 @@ img.avatar {
 .buddypress .site-content {
   width: 100%;
 }
+.buddypress #content {
+  width: 100%;
+}
 .buddypress #content #item-body p,
 .buddypress #content .main-column p,
 .buddypress #content .page p {
@@ -2928,8 +2931,11 @@ body.home-page #primary .quarter-block .related-posts li a {
     width: 100%;
   }
   .buddypress #content {
+    width: 100%;
+  }
+  .buddypress #content #item-body {
+    width: 74.5%;
     float: right;
-    width: 75.4%;
   }
   .buddypress #secondary,
   .salud-america #secondary,
