@@ -15,6 +15,7 @@ get_header( 'buddypress' ); ?>
 		<div class="padder">
 
 		<?php do_action( 'bp_before_directory_members' ); ?>
+		<div id="item-body">
 
 		<form action="" method="post" id="members-directory-form" class="dir-form">
 
@@ -83,11 +84,13 @@ get_header( 'buddypress' ); ?>
 		</form><!-- #members-directory-form -->
 
 		<?php do_action( 'bp_after_directory_members' ); ?>
+		</div> <!-- #item-body -->
+		
+		<?php get_sidebar( 'members' ); ?>
 
 		</div><!-- .padder -->
 	</div><!-- #content -->
 
 	<?php do_action( 'bp_after_directory_members_page' ); ?>
 
-<?php get_sidebar( 'members' ); ?>
 <?php get_footer( 'buddypress' ); ?>

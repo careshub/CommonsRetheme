@@ -15,6 +15,7 @@ get_header( 'buddypress' ); ?>
 		<div class="padder">
 
 		<?php do_action( 'bp_before_directory_groups' ); ?>
+		<div id="item-body">
 
 		<form action="" method="post" id="groups-directory-form" class="dir-form">
 
@@ -79,20 +80,23 @@ get_header( 'buddypress' ); ?>
 			<?php do_action( 'bp_after_directory_groups_content' ); ?>
 
 		</form><!-- #groups-directory-form -->
+	</div> <!-- End #item-body -->
 
 		<?php do_action( 'bp_after_directory_groups' ); ?>
-
-		</div><!-- .padder -->
-	</div><!-- #content -->
-
-	<?php do_action( 'bp_after_directory_groups_page' ); ?>
-
-<?php 
+				<?php 
 // $class_string = get_body_class();
 // if (!in_array("full-width",$class_string)) {
 // get_sidebar( 'buddypress' ); 
 // } 
 get_sidebar( 'groups' );
 ?>
+
+		</div><!-- .padder -->
+
+	</div><!-- #content -->
+
+	<?php do_action( 'bp_after_directory_groups_page' ); ?>
+
+
 <?php get_footer( 'buddypress' ); ?>
 

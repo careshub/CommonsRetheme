@@ -782,7 +782,7 @@ function cc_custom_body_class( $classes ) {
   if ( is_page_template( 'page-templates/full-width-no-title.php' ) )
     $classes[] = 'full-width';
 
-  if ( is_page( 'data-vis' ) )
+  if ( is_page( 'maps-data' ) )
     $classes[] = 'full-width';
 
   return $classes;
@@ -863,7 +863,7 @@ add_action( 'admin_menu' , 'remove_geographies_taxonomy_meta' );
 
 //Add new image sizes for front page
 if ( function_exists( 'add_image_size' ) ) { 
-  add_image_size( 'feature-front', '600', '400' ); //not hard cropped, resized proportionally
+  add_image_size( 'feature-front', '600', '300' ); //not hard cropped, resized proportionally
   add_image_size( 'feature-front-sub', '300', '200', true ); // hard cropped
 }
 

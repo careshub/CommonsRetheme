@@ -1,6 +1,6 @@
  <?php
 /**
- * The template for the magazine-style front page.
+ * The template for the topically-oriented maps and data tool overview.
  *
  *
  * @package WordPress
@@ -12,7 +12,13 @@ get_header(); ?>
 
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
-		<?php 
+				<?php the_post(); ?>
+
+				<?php get_template_part( 'content', 'page' ); ?>
+                
+                <?php wp_reset_query(); ?>		
+
+        <?php 
 		$categories = get_categories();
 		$all_cats = array();
 		foreach ($categories as $cat) {

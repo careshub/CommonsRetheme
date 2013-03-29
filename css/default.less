@@ -1973,8 +1973,11 @@ form.dir-form div.dir-search {
 
 	}
 	.alignright {
-		border-left: 1px solid @graymid;
-		padding-left: 2%;
+		border-top: 1px solid @graymid;
+		margin-top: 2em;
+		padding-top: 1em;
+		width:100%;
+		float: left;
 		div {
 			margin-bottom: 1.2em;
 		}
@@ -2110,6 +2113,13 @@ h5 {
 #content {
 	h1, h2, h3, h4, h5, h6 {
 		margin: 1em 0;
+	}
+	#screamer h1 {
+		.font-size(1.2);
+		font-weight: 400;
+		color:lighten(@black, 10);
+		padding-bottom: 1em;
+		border-bottom: 1px solid @graylight;
 	}
 }
 
@@ -2931,7 +2941,7 @@ transition:all 0.2s linear;
 			background-color: @ccred;
 		}
 	}
-	.menu-item-data-vis { //Groups nav link
+	.menu-item-maps-data { //Maps & Data nav link
 		border-left: solid 6px @ccblue;
 		&.current-menu-item {
 			background-color: @ccblue;
