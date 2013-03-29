@@ -1,9 +1,7 @@
 <?php
-
 /*
-Author: Michael Barbaro
+//Author: Michael Barbaro
 */
-
 //Defines the Salud America policy content type
 add_action('init', 'SA_resources_init');
 function SA_resources_init() 
@@ -47,6 +45,7 @@ function SA_resources_init()
 }
 
 
+<<<<<<< HEAD
 
 
 ?>
@@ -59,3 +58,26 @@ function SA_resources_init()
 
 
 
+=======
+ add_action( 'save_post', 'saresource_save' );
+ function saresource_save() { 
+ 
+   global $post;
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+      return;
+
+     if ($post->post_type == 'saresources') {      
+     
+	   save_res_field("sa_sharing");	   
+	   
+     }
+ }
+ function save_res_field($event_field) {
+    global $post;
+    if(isset($_POST[$event_field])) {
+        update_post_meta($post->ID, $event_field, $_POST[$event_field]);
+    } else{
+        delete_post_meta($post->ID, $event_field);
+    }
+ }
+>>>>>>> Fix Headers already sent problem in SA_Resources
