@@ -70,7 +70,15 @@
 				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 				</h1>
 				<?php //echo "<br />"; ?>
-				<p class="location">Anytown, USA</p>
+				<p class="location">
+					<?php 
+					if ($custom_fields['sa_finalgeog'][0]) {
+					echo $custom_fields['sa_finalgeog'][0];	
+					} else {
+						echo 'Location unknown';
+					}
+					?>
+				</p>
 				<div class="meter-box clear">
 					<p>This policy is <?php echo $progress_label; ?>.
 					<!-- <div class="meter">

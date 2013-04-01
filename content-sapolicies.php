@@ -11,8 +11,8 @@
 // echo 'META:';
 
 $custom_fields = get_post_custom($post->ID);
-print_r($custom_fields); 
-echo "<br />";
+// print_r($custom_fields); 
+// echo "<br />";
 
 	//Check target areas, add the correct icon:
 	for ($i = 1; $i <= 6; $i++) {
@@ -78,7 +78,15 @@ echo "<br />";
 				?>
 				<h1 class="entry-title"><?php the_title(); ?></h1>
 				<?php //echo "<br />"; ?>
-				<p class="location">Anytown, USA</p>
+				<p class="location">
+					<?php 
+					if ($custom_fields['sa_finalgeog'][0]) {
+						echo $custom_fields['sa_finalgeog'][0];	
+					} else {
+						echo 'Location unknown';
+					}
+					?>
+				</p>
 				<div class="meter-box clear">
 					<p>This policy is <?php echo $progress_label; ?>.
 					<div class="meter nostripes">
