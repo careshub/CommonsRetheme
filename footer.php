@@ -19,7 +19,6 @@
 			
 		<div class="site-info">
 		<div class="alignleft">
-			<a href="https://ip3.zendesk.com/account/dropboxes/20111391" onClick="script: Zenbox.show(); return false;">Help</a>
 			<?php //Add footer navigation menu 
 				$args = array(
 					'theme_location' => 'footer-nav',
@@ -93,6 +92,17 @@ jQuery('.sharrre').sharrre({
   // enableHover: true, 
   // enableCounter: false //this display the link used to activate the popup        
 });
+</script>
+<script type="text/javascript">
+	jQuery(function() {
+		 jQuery('a[href^="https://ip3.zendesk.com"]').click.click(function(e) {
+		 	if (typeof Zenbox.show == 'function') { 
+	  			Zenbox.show();
+	  			//If Zenbox.show isn't defined the link will still work, so only prevent the click if Zenbox.show is defined.
+	  			return false;
+			}
+			});					
+		});
 </script>
 
 </div>

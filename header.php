@@ -129,6 +129,9 @@
         		<?php } ?>
         		
 				<?php notifications_counter(); ?>
+				<li>
+					<a href="https://ip3.zendesk.com/account/dropboxes/20111391">Help</a>
+				</li>
 			</ul>
 		</ul><!-- End nav-container -->
 			<div class="clear"></div>
