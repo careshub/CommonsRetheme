@@ -2722,7 +2722,7 @@ body.home-page #primary .quarter-block .related-posts li a {
   width: 40%;
 }
 .esriLargeSliderVertical {
-  width: 2%;
+  width: auto;
 }
 .primary-navigation .brand a {
   font-size: 16.8px;
