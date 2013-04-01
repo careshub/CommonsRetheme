@@ -2181,6 +2181,8 @@ h5 {
 }
 .facebookx60,
 .searchx18,
+.userx18,
+.userx21,
 .twitterx60,
 .facebookx24,
 .facebookx30,
@@ -2199,6 +2201,25 @@ h5 {
   background-position: 0 -350px;
   width: 18px;
   height: 18px;
+}
+.userx18 {
+  background-position: 0 -320px;
+  width: 18px;
+  height: 18px;
+}
+.userx21 {
+  background-position: -34px -318px;
+  width: 21px;
+  height: 21px;
+  margin-left: .5em;
+}
+.primary-navigation li span.visible-mini {
+  width: auto;
+  padding: .5em 0;
+  display: inline-block;
+}
+.primary-navigation li.visible-maxi {
+  display: none;
 }
 .twitterx60 {
   background-position: 0 -250px;
@@ -2880,6 +2901,12 @@ body.home-page #primary .quarter-block .related-posts li a {
 }
 .primary-navigation .secondary .menupop:hover .pop-sub-wrapper a {
   margin: 0;
+}
+.primary-navigation li span.visible-mini {
+  display: none;
+}
+.primary-navigation li.visible-maxi {
+  display: block;
 }
 .alt:nth-child(odd) {
   background-color: #f1f9fa;

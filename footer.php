@@ -19,6 +19,7 @@
 			
 		<div class="site-info">
 		<div class="alignleft">
+			<a href="https://ip3.zendesk.com/account/dropboxes/20111391" onClick="script: Zenbox.show(); return false;">Help</a>
 			<?php //Add footer navigation menu 
 				$args = array(
 					'theme_location' => 'footer-nav',

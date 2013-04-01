@@ -79,11 +79,18 @@
 				
 				<?php if (is_user_logged_in()) { //show user info if logged in ?>
 					<li class="menupop clear">
-					<?php echo bp_core_get_userlink( bp_loggedin_user_id() ); ?>
+						<span class="userx21"></span>
+						<span class="visible-mini">
+						<?php echo bp_core_get_userlink( bp_loggedin_user_id() ); ?>
+						</span>
 					<div class="pop-sub-wrapper user-quicklinks">
-						<a href="<?php echo bp_loggedin_user_domain(); ?>" title="View my profile" class="avatar"><?php bp_loggedin_user_avatar('width=48&height=48'); ?>
+						<a href="<?php echo bp_loggedin_user_domain(); ?>" title="View my profile" class="avatar">
+							<?php bp_loggedin_user_avatar('width=48&height=48'); ?>
 						</a>
 						<ul>
+							<li class="visible-maxi">
+								<?php echo bp_core_get_userlink( bp_loggedin_user_id() ); ?>
+							</li>
 							<li>
 								<a href="<?php echo bp_loggedin_user_domain() . 'profile'; ?>" title="View my profile"><?php _e( 'View My Profile', 'buddypress' ) ?></a>
 							</li>
