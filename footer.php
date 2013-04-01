@@ -95,7 +95,7 @@ jQuery('.sharrre').sharrre({
 </script>
 <script type="text/javascript">
 	jQuery(function() {
-		 jQuery('a[href^="https://ip3.zendesk.com"]').click.click(function(e) {
+		 jQuery('a[href^="https://ip3.zendesk.com"]').click(function(e) {
 		 	if (typeof Zenbox.show == 'function') { 
 	  			Zenbox.show();
 	  			//If Zenbox.show isn't defined the link will still work, so only prevent the click if Zenbox.show is defined.
