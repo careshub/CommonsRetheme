@@ -19,10 +19,13 @@ get_header(); ?>
                 <?php wp_reset_query(); ?>		
 
         <?php 
-		$categories = get_categories();
+		$args = array(
+			'taxonomy' => 'data_vis_tool_categories'
+		);
+		$categories = get_categories($args);
 		$all_cats = array();
 		foreach ($categories as $cat) {
-		$all_cats[] = $cat->slug;
+			$all_cats[] = $cat->slug;
 		}
 		foreach ($all_cats as $cat_slug) {
 			if ( function_exists('ccdvt_get_tools') )
