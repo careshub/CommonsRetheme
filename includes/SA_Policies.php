@@ -32,6 +32,7 @@ function SA_policies_init()
     'show_in_menu' => true,
     'menu_position' => 25,
     //'has_archive' => 'sapolicies',
+    // 'supports' => array('title','editor','excerpt','trackbacks','custom-fields','comments','revisions','thumbnail','author','page-attributes',),
     'supports' => array('title','editor','comments'),
   	'capability_type' => 'sapolicies',
   	'map_meta_cap' => true
@@ -94,13 +95,13 @@ add_action( 'admin_init', 'policy_meta_box_add' );
 function policy_meta_box_add()
 {
 	 add_meta_box( 'policy_meta_box', 'Policy Information', 'policy_meta_box', 'SA Policies', 'normal', 'high');
-         add_meta_box( 'geog-meta-box', 'Geography', 'geog_meta_box', 'SA Policies', 'normal', 'high' );   
+  add_meta_box( 'geog-meta-box', 'Geography', 'geog_meta_box', 'SA Policies', 'normal', 'high' );   
          
 }
 add_action( 'admin_menu','remove_metas');
 function remove_metas() {
     remove_meta_box('geographiesdiv','sapolicies','side');
-    remove_meta_box('commentstatusdiv','sapolicies','normal');
+    // remove_meta_box('commentstatusdiv','sapolicies','normal');
     remove_meta_box('trackbacksdiv','sapolicies','normal');
 }
        
