@@ -33,8 +33,8 @@ function SA_policies_init()
     'menu_position' => 25,
     //'has_archive' => 'sapolicies',
     'supports' => array('title','editor','comments'),
-	'capability_type' => 'sapolicies',
-	'map_meta_cap' => true
+  	'capability_type' => 'sapolicies',
+  	'map_meta_cap' => true
 	);
 	
 	register_post_type('sapolicies',$args);

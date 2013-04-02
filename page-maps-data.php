@@ -33,6 +33,7 @@ get_header(); ?>
 		}
 		
 		?>
+		<?php //comments_template(); ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 

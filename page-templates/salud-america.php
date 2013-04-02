@@ -59,26 +59,23 @@ get_header(); ?>
 					// echo '<p class="page-intro">';
 					// echo $post->post_content;
 					// echo '</p>';
-				// } ?>
-				<?php the_post(); ?>
+				// } 
+				while ( have_posts() ) : the_post();
+				?>
 
 				<?php get_template_part( 'content', 'page' ); ?>
 
                 
                 <?php 
                 $page_slug = $post->post_name;
+
+                endwhile; // end of the main page loop. 
+
                 // $parent = $post->post_parent;
-                wp_reset_query(); 
-                ?>
-				<!-- <div class="policy-search">
-					<form id="sa-policy-search" class="standard-form" method="get" action="/">
-					<h3>Search for Policies</h3>
-					<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Not a functional search yet." name="sa-policy">
-					<input class="sa-policy-search-button" type="submit" value="Search">
-					</form>
-				</div> -->
-				<? //echo '$page_slug ' . $page_slug; 
-				//echo '$parent ' . $parent;?>
+                // wp_reset_query(); 
+                //echo '$page_slug ' . $page_slug; 
+				//echo '$parent ' . $parent;
+				?>
 				<div>
 					<!-- <div class="active-play"><span class="icon"></span></div> -->
 					<h2>How is your community doing with respect to this topic area?</h2>
@@ -113,7 +110,6 @@ get_header(); ?>
 			  	}
 
 				$args = array(
-					// Change these category SLUGS to suit your use.
 					'post_type' => 'sapolicies', 
 					'paged' => $paged,
 					'meta_query' => array(
@@ -129,8 +125,8 @@ get_header(); ?>
 				while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
 					//This template should be the short result
 					get_template_part( 'content', 'sa-policy-short' );
-					//comments_template( '', true );
-				endwhile; // end of the loop.
+					// comments_template( '', true );
+				endwhile; // end of the loop.				
 
 			} else {
 
@@ -139,7 +135,13 @@ get_header(); ?>
 					comments_template( '', true );
 				endwhile; // end of the loop. 
 
-			}?>
+			}
+			
+			?>
+			<?php 
+			wp_reset_query();
+			comments_template( '', true );
+			?>
 
 		</div><!-- .padder -->
 		</div><!-- #content -->
