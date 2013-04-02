@@ -51,15 +51,7 @@ get_header(); ?>
 				endwhile; // end of the loop.
 
 			} elseif (is_child(150)) {
-				//Do the custom query here, I think
-				// echo 'this is that page';
-				//First, display the content of the page before making the custom loop.
-				// $page_content = get_the_content();
-				// if ( !empty( $page_content ) ) {
-					// echo '<p class="page-intro">';
-					// echo $post->post_content;
-					// echo '</p>';
-				// } 
+				//The number above is the id of the parent page, is 11911 on the dev server.
 				while ( have_posts() ) : the_post();
 				?>
 
@@ -127,8 +119,10 @@ get_header(); ?>
 					get_template_part( 'content', 'sa-policy-short' );
 					// comments_template( '', true );
 				endwhile; // end of the loop.
-			wp_reset_query();
-			comments_template( '', true );
+				
+				// Add comment form to these subpages.
+				wp_reset_query();
+				comments_template( '', true );
 
 			} else {
 
