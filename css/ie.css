@@ -2990,6 +2990,7 @@ body.home-page #primary #top-story h2 {
   float: left;
   width: 22%;
   border-right: 1px solid #aaaaaa;
+  clear: left;
 }
 .nav-tabs,
 .nav-pills {
@@ -3080,8 +3081,7 @@ body.home-page #primary #top-story h2 {
   background: none;
 }
 .sidebar-activity-tabs ul li a {
-  text-decoration: none;
-  display: block;
+  text-align: left;
   padding: 1em 1.5em 1em 3.6em;
   border: none;
   background: none;
