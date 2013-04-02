@@ -126,7 +126,9 @@ get_header(); ?>
 					//This template should be the short result
 					get_template_part( 'content', 'sa-policy-short' );
 					// comments_template( '', true );
-				endwhile; // end of the loop.				
+				endwhile; // end of the loop.
+			wp_reset_query();
+			comments_template( '', true );
 
 			} else {
 
@@ -138,10 +140,7 @@ get_header(); ?>
 			}
 			
 			?>
-			<?php 
-			wp_reset_query();
-			comments_template( '', true );
-			?>
+
 
 		</div><!-- .padder -->
 		</div><!-- #content -->
