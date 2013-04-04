@@ -2,12 +2,14 @@
 //include code from include folder
 //Definition of the Salud America policy custom post type
 require_once('includes/SA_Policies.php');
+require_once('includes/taxonomy-advocacytarget.php');
 //Definition of the geographies custom taxonomy
 require_once('includes/taxonomy-geography.php');
 //Definition of the Salud America Resources custom post type
 require_once('includes/SA_Resources.php');
 //Definition of the Salud America Resources custom taxonomy
 require_once('includes/taxonomy-resourcecat.php');
+
 //Definition of the Data Vis Tools policy custom post type
 // require_once('includes/cpt_data_vis_tools.php');
 
@@ -862,7 +864,7 @@ function set_user_admin_bar_false_by_default($user_id) {
 function remove_geographies_taxonomy_meta() {
   remove_meta_box( 'geographiesdiv', 'sapolicies', 'side' );
 }
-add_action( 'admin_menu' , 'remove_geographies_taxonomy_meta' );
+// add_action( 'admin_menu' , 'remove_geographies_taxonomy_meta' );
 
 //Add new image sizes for front page
 if ( function_exists( 'add_image_size' ) ) { 

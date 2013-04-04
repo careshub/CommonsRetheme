@@ -5,7 +5,7 @@ function register_taxonomy_advocacy_targets() {
 
     $labels = array( 
         'name' => _x( 'Advocacy Targets', 'advocacy_targets' ),
-        'singular_name' => _x( 'Advocacy Target', 'advocacy_targets' ),
+        'singular_name' => _x( 'Advocacy Target', 'advocacy_target' ),
         'search_items' => _x( 'Search Advocacy Targets', 'advocacy_targets' ),
         'popular_items' => _x( 'Popular Advocacy Targets', 'advocacy_targets' ),
         'all_items' => _x( 'All Advocacy Targets', 'advocacy_targets' ),

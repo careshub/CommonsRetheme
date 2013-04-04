@@ -31,6 +31,7 @@ function SA_policies_init()
 		'hierarchical' => false,
     'show_in_menu' => true,
     'menu_position' => 25,
+    'taxonomies' => array('advocacy_targets'),
     //'has_archive' => 'sapolicies',
     // 'supports' => array('title','editor','excerpt','trackbacks','custom-fields','comments','revisions','thumbnail','author','page-attributes',),
     'supports' => array('title','editor','comments'),

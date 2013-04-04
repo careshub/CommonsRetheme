@@ -6,7 +6,7 @@ Template Name: Salud America
 get_header(); ?>
 <div class="salud-header clear">
 	<a href="#" class="logo"><img src="/wp-content/themes/CommonsRetheme/img/SA-logox200.png" class=""></a>
-	<h1>Salud America! <br />Advocacy Program</h1>
+	<h1>Salud America! <br /> Growing Change</h1>
 	<h3>Get involved in reducing latino childhood obesity.</h3>
 	<div class="sa-kids-photo"><img src="/wp-content/themes/CommonsRetheme/img/sa-kids-335.png"></div>
 
