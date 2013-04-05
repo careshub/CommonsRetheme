@@ -219,12 +219,7 @@ function policy_meta_box() {
     $post3 = $custom["sa_post3"][0];
     $dateenacted = $custom["sa_dateenacted"][0];
     $dateimplemented = $custom["sa_dateimplemented"][0];
-    $at1 = $custom["sa_at1"][0];
-    $at2 = $custom["sa_at2"][0];
-    $at3 = $custom["sa_at3"][0];
-    $at4 = $custom["sa_at4"][0];
-    $at5 = $custom["sa_at5"][0];
-    $at6 = $custom["sa_at6"][0];
+
 
    
         $ptdef="";
@@ -401,39 +396,7 @@ if ($sapolicy_stage === "post") {
     </div>
 </div>
 <div style="clear:both"></div>
-<br>
-<strong>Advocacy Target:</strong><br>
-            <input type="checkbox" id="sa_at1" name="sa_at1" value='Reduce access to unhealthy competitive foods in school'<?php 
-                if ($at1 == true) {
-                    echo " checked";
-                } 
-           ?>> Reduce access to unhealthy competitive foods in school<br>
-            <input type="checkbox" id="sa_at2" name="sa_at2" value='Increase the number of healthy food retail outlets in underserved communities receiving funding from food financing initiatives'<?php 
-                if ($at2 == true) {
-                    echo " checked";
-                } 
-           ?>> Increase the number of healthy food retail outlets in under-served communities receiving funding from food financing initiatives<br>
-            <input type="checkbox" id="sa_at3" name="sa_at3" value='Improve physical activity standards in out-of-school and out-of-class time in under-served communities'<?php 
-                if ($at3 == true) {
-                    echo " checked";
-                } 
-           ?>> Improve physical activity standards in out-of-school and out-of-class time in under-served communities<br>
-            <input type="checkbox" id="sa_at4" name="sa_at4" value='Increase the use of joint use agreements and street-scale improvements in under-served communities'<?php 
-                if ($at4 == true) {
-                    echo " checked";
-                } 
-           ?>> Increase the use of joint use agreements and street-scale improvements in under-served communities<br>
-            <input type="checkbox" id="sa_at5" name="sa_at5" value='Reducing unhealthy beverage consumption using pricing incentives and disincentives'<?php 
-                if ($at5 == true) {
-                    echo " checked";
-                } 
-           ?>> Reducing unhealthy beverage consumption using pricing incentives and disincentives<br>
-            <input type="checkbox" id="sa_at6" name="sa_at6" value='Increase incentives and demand for strengthening industry self-regulation and government regulation of food marketing to kids'<?php 
-                if ($at6 == true) {
-                    echo " checked";
-                } 
-           ?>> Increase incentives and demand for strengthening industry self-regulation and government regulation of food marketing to kids<br>
- 
+
             
 
 
@@ -587,12 +550,7 @@ function sapolicy_save() {
        save_event_field("sa_post3");       
        save_event_field("sa_dateenacted");
        save_event_field("sa_dateimplemented");       
-       save_event_field("sa_at1");
-       save_event_field("sa_at2");
-       save_event_field("sa_at3");
-       save_event_field("sa_at4");
-       save_event_field("sa_at5");
-       save_event_field("sa_at6");
+
 
     }
 }
