@@ -29,7 +29,7 @@ function SA_resources_init()
 		'rewrite' => true,
 		'capability_type' => 'post',
 		'hierarchical' => false,
-		'menu_position' => null,
+		'menu_position' => 23,
 		'has_archive' => 'saresources',
 		'taxonomies' => array('resourcecat'),		
 		'supports' => array('title','editor','comments'),
