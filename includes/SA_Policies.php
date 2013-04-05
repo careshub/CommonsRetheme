@@ -30,7 +30,7 @@ function SA_policies_init()
 		'rewrite' => true,
 		'hierarchical' => false,
     'show_in_menu' => true,
-    'menu_position' => 25,
+    'menu_position' => 22,
     'taxonomies' => array('advocacy_targets'),
     //'has_archive' => 'sapolicies',
     // 'supports' => array('title','editor','excerpt','trackbacks','custom-fields','comments','revisions','thumbnail','author','page-attributes',),
