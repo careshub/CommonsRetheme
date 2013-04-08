@@ -2724,6 +2724,14 @@ body.home-page #primary .quarter-block .related-posts li a {
 .esriLargeSliderVertical {
   width: auto;
 }
+#jumplinks h3 {
+  display: inline-block;
+  margin-right: 1em;
+}
+#jumplinks li {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+}
 .data-vis-tool-group .entry-header h1 {
   font-size: 28px;
   font-size: 2rem;
@@ -2732,6 +2740,7 @@ body.home-page #primary .quarter-block .related-posts li a {
   margin: 1rem;
   font-weight: 700;
   color: #ffffff;
+  line-height: 1.7;
 }
 .data-vis-tool-group .entry-header img {
   width: 100%;

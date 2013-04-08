@@ -104,6 +104,11 @@ jQuery('.sharrre').sharrre({
 			});					
 		});
 </script>
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+	jQuery.localScroll();
+	});
+</script>
 
 </div>
 </body>

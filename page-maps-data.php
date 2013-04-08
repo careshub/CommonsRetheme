@@ -26,7 +26,26 @@ get_header(); ?>
 		$all_cats = array();
 		foreach ($categories as $cat) {
 			$all_cats[] = $cat->slug;
-		}
+		} 
+		//Build a local scroll-powered nav
+		?>
+
+		<ul id="jumplinks">
+			<h3>Jump to a topic:</h3>
+			<?php
+			foreach ($all_cats as $cat_slug) {
+				$cat_object = get_term_by('slug', $cat_slug, 'data_vis_tool_categories');
+				// print_r($cat_object);
+				$section_title = $cat_object->name;
+				?>
+				<li>
+					<a href="#data-vis-tool-group-<?php echo $cat_slug; ?>" title="Scroll to <?php echo $section_title; ?> section" class="button chunky horizontal-list"><?php echo $section_title; ?></a>
+				</li>
+				<?php
+			}		
+			?>
+		</ul>
+		<?php
 		foreach ($all_cats as $cat_slug) {
 			if ( function_exists('ccdvt_get_tools') )
 				ccdvt_get_tools($cat_slug);
