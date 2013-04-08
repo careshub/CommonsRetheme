@@ -2754,15 +2754,10 @@ body.home-page #primary .quarter-block .related-posts li a {
   font-weight: 700;
   color: #ffffff;
   line-height: 1.7;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 .data-vis-tool-group .entry-header img {
   width: 100%;
-}
-#data-vis-tool-group-food .entry-header h1 {
-  color: #df5927;
-}
-#data-vis-tool-group-food #data-vis-header-food {
-  background-color: #df5927;
 }
 #data-vis-tool-group-community-context .entry-header h1 {
   color: #df5927;

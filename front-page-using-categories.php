@@ -24,7 +24,7 @@ $do_not_duplicate = array();
 	$top_query = new WP_Query( 
 	 	array(
 	 	//'post__not_in' => $do_not_duplicate,
-	 	'tag' => 'top-feature',
+	 	'category_name' => 'top-story',
 	 	'posts_per_page' => 1
 	 	)
  	);
@@ -36,13 +36,13 @@ $do_not_duplicate = array();
 			<?php
 			get_template_part( 'content', 'stories-brief' );
 			
-			// Find out which tags this post has, for making the related query
-			 $tags = get_the_tags();
-			 $post_tags = array();
-				foreach ($tags as $tag) {
+			// Find out which categories this post belongs to, for making the related query
+			 $postcats = get_the_category();
+			 $postcategories = array();
+				foreach ($postcats as $postcat) {
 					//We don't want to find related posts from the "top" catogory, so we'll just get the other category ids.
-					if ( $tag->name !== 'top-feature' ) {
-						$post_tags[]=$tag->term_id;
+					if ( $postcat->name !== 'top-story' ) {
+						$postcategories[]=$postcat->term_id;
 					}
 				}
 			
@@ -69,26 +69,12 @@ $do_not_duplicate = array();
 	$sticky = get_option( 'sticky_posts' );
 	// echo "<br /> Sticky array: ";
 	// print_r($sticky);
-//We'll also need a list of all posts with the guest-blog tag, so we don't include them in block 1 or 2
-	// $guest_args = array( 
-			// 'tag' => 'guest-blog',
-			// 'fields' => 'ids' 
-			// );
-
-	$guest_blog_posts = new WP_Query( array( 'tag' => 'guest-blog', 'fields' => 'ids' ) );
-	$guest_blog_array = $guest_blog_posts->posts;
 
 for ($i = 1; $i <= 4; $i++) {
-	// echo 'iteration number: ' . $i ;
 	// echo "<br /> Do-not-duplicate array: ";
 	// print_r($do_not_duplicate);
 	// Remove any posts in our "do_not_duplicate" array from the array of sticky posts
-	if ( $i == 1 || $i == 2 || $i == 3 ) {
-		//Remove the guest blog posts from the first two queries, as well.
-		$sticky_no_dupes = array_diff($sticky, $do_not_duplicate, $guest_blog_array);
-	} else {
-		$sticky_no_dupes = array_diff($sticky, $do_not_duplicate);				
-	}
+	$sticky_no_dupes = array_diff($sticky, $do_not_duplicate);
 	// Sort the stickies with the newest ones at the top
 	rsort( $sticky_no_dupes );
 	// echo "<br /> Sticky-no-dupes array: ";
@@ -97,45 +83,16 @@ for ($i = 1; $i <= 4; $i++) {
 	$sticky_single = array_slice( $sticky_no_dupes, 0, 1 );
 	// echo "<br /> Sticky-single array: ";
 	// print_r($sticky_single);
-	// Set query, 1st & 2nd loops should be headed by recent sticky posts, but not from the guest blog or data groups
-	// Third block should be the data group
-	// Fourth block should be guest blogs
-	switch ($i) {
-		case 1:
-		case 2:			
-			$args = array(
-			 	'post__in' => $sticky_single,
-				'ignore_sticky_posts' => 1,
-			 	'posts_per_page' => 1
-			 	);			
-		break;
-		case 3:
-			$args = array(
-			 	'post__in' => $sticky_single,
-				'ignore_sticky_posts' => 1,
-			 	'posts_per_page' => 1
-			 	);			
-			break;
-		case 4:
-			$args = array(
-			 	'post__in' => $sticky_no_dupes,
-			 	'tag' => 'guest-blog',
-				'ignore_sticky_posts' => 1,
-			 	'posts_per_page' => 1
-			 	);			
-			break;
-		default:
-			$args = array(
-			 	'post__in' => $sticky_single,
-				'ignore_sticky_posts' => 1,
-			 	'posts_per_page' => 1
-			 	);			
-		 	break;
-	}
-	// echo "<br />args: ";
-	// print_r($args);
-	$main_query = new WP_Query( $args );	
-	
+
+	$main_query = new WP_Query( 
+	 	array(
+	 	'post__in' => $sticky_single,
+	 	// 'post__not_in' => $do_not_duplicate,
+	 	//'category_name' => 'top',
+	 	'ignore_sticky_posts' => 1,
+	 	'posts_per_page' => 1
+	 	)
+ 	);
 	if ( $main_query ) : 
 		while ( $main_query->have_posts() ) : $main_query->the_post();
 			$layout_location = 'secondary';
@@ -147,16 +104,13 @@ for ($i = 1; $i <= 4; $i++) {
 			<?php
 			get_template_part( 'content', 'stories-brief' );
 			
-			// Find out which tags this post has, for making the related query
-			 $tags = get_the_tags();
-			 if (!is_array($tags)) {
-			 	$tags = array($tags);
-			 }
-			 $post_tags = array();
-				foreach ($tags as $tag) {
+			// Find out which categories this post belongs to, for making the related query
+			 $postcats = get_the_category();
+			 $postcategories = array();
+				foreach ($postcats as $postcat) {
 					//We don't want to find related posts from the "top" catogory, so we'll just get the other category ids.
-					if ( $tag->name !== 'top-feature' ) {
-						$post_tags[]=$tag->term_id;
+					if ( $postcat->name !== 'top-story' ) {
+						$postcategories[]=$postcat->term_id;
 					}
 				}
 			
@@ -168,8 +122,8 @@ for ($i = 1; $i <= 4; $i++) {
 			// echo "<br /> Don't Duplicate:";
 			// print_r($do_not_duplicate);
 			// echo '<br />';
-			// echo 'tag ids: ';
-			// print_r( $post_tags );
+			// echo 'category id: ';
+			// print_r( $postcategories );
 			// echo '<br />';
 
 		    //$related_tag = $post->tag ?>
@@ -181,49 +135,15 @@ for ($i = 1; $i <= 4; $i++) {
 <?php
 // Then, get posts related to the main story
 	global $post; // required
-	// Set query, 1st & 2nd loops should be headed by recent sticky posts
-	// Third block should be the data group
-	// Fourth block should be guest blogs
-	switch ($i) {
-		case 1:
-		case 2:
-			$args = array(
-				 	'post__not_in' => $do_not_duplicate,
-				 	'tag__in' => $post_tags,
-				 	'ignore_sticky_posts' => 1,
-				 	'posts_per_page' => 2
-				 	);		 	
-			break;
-		case 3:
-			$args = array(
-				 	'post__not_in' => $do_not_duplicate,
-				 	'tag__in' => $post_tags,
-				 	'ignore_sticky_posts' => 1,
-				 	'posts_per_page' => 2
-				 	);		 	
-			break;
-		case 4:
-			$args = array(
-				 	'post__not_in' => $do_not_duplicate,
-					'tag' => 'guest-blog',
-				 	'ignore_sticky_posts' => 1,
-				 	'posts_per_page' => 2
-				 	);
-			break;
-		default:
-			$args = array(
-				 	'post__not_in' => $do_not_duplicate,
-				 	'tag__in' => $post_tags,
-				 	'ignore_sticky_posts' => 1,
-				 	'posts_per_page' => 2
-				 	);		 	
-			break;
-	}
-		
+	$args = array(
+	 	'post__not_in' => $do_not_duplicate,
+	 	'category__in' => $postcategories,
+	 	// 'category_name' => 'istanbul-stuff',
+	 	'ignore_sticky_posts' => 1,
+	 	'posts_per_page' => 2
+	 	);
 	$related_query = get_posts($args);
-
-	
-	?>
+?>
 			<h3>Related posts</h3>
 			<ul class="related-posts">
 				<?php
