@@ -15,6 +15,7 @@ $custom_fields = get_post_custom($post->ID);
 // echo "<br />";
 
 	//Check target areas, add the correct icon:
+	// TODO switch this over to use sa_advocacy_targets term images.
 	for ($i = 1; $i <= 6; $i++) {
 		${target.$i} = $custom_fields['sa_at'.$i][0];
 		//echo 'Target Area'. $i .': ' . ${target.$i} . '<br/>';

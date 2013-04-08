@@ -77,24 +77,24 @@ get_header(); ?>
 				wp_reset_postdata();
 			  	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-			  	switch ($page_slug) {
+			  	switch ($page_slug) { //TODO: move to custom taxonomy, not these deals.
 			  		case 'better-food-in-neighborhoods':
-			  			$sa_target_area = 'sa_at2';
+			  			$sa_target_area = 'better-food-in-neighborhoods';
 			  			break;
 			  		case 'places-for-activity':
-			  			$sa_target_area = 'sa_at4';
+			  			$sa_target_area = 'places-for-activity';
 			  			break;
 			  		case 'better-food-at-school':
-			  			$sa_target_area = 'sa_at1';
+			  			$sa_target_area = 'better-food-at-school';
 			  			break;
 			  		case 'price-of-sugary-drinks':
-			  			$sa_target_area = 'sa_at5';
+			  			$sa_target_area = 'price-of-sugary-drinks';
 			  			break;
 			  		case 'stop-unhealthy-advertising':
-			  			$sa_target_area = 'sa_at6';
+			  			$sa_target_area = 'stop-unhealthy-advertising';
 			  			break;
 			  		case 'more-active-play-time':
-			  			$sa_target_area = 'sa_at3';
+			  			$sa_target_area = 'more-active-play-time';
 			  			break;
 			  		default:
 			  			$sa_target_area = 'sa_at1';
@@ -104,11 +104,7 @@ get_header(); ?>
 				$args = array(
 					'post_type' => 'sapolicies', 
 					'paged' => $paged,
-					'meta_query' => array(
-							array(
-								'key' => $sa_target_area
-								)
-						),
+					'sa_advocacy_targets' => $sa_target_area,
 				);
 
 				$list_of_policies = new WP_Query( $args ); ?>

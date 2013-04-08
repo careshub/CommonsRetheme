@@ -2724,6 +2724,60 @@ body.home-page #primary .quarter-block .related-posts li a {
 .esriLargeSliderVertical {
   width: auto;
 }
+.data-vis-tool-group .entry-header h1 {
+  font-size: 28px;
+  font-size: 2rem;
+}
+.data-vis-tool-group .entry-header p {
+  margin: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+.data-vis-tool-group .entry-header img {
+  width: 100%;
+}
+#data-vis-tool-group-food .entry-header h1 {
+  color: #df5927;
+}
+#data-vis-tool-group-food #data-vis-header-food {
+  background-color: #df5927;
+}
+#data-vis-tool-group-community-context .entry-header h1 {
+  color: #df5927;
+}
+#data-vis-tool-group-community-context #data-vis-header-community-context {
+  background-color: #df5927;
+}
+#data-vis-tool-group-economic .entry-header h1 {
+  color: #df5927;
+}
+#data-vis-tool-group-economic #data-vis-header-economic {
+  background-color: #df5927;
+}
+#data-vis-tool-group-education .entry-header h1 {
+  color: #f7b718;
+}
+#data-vis-tool-group-education #data-vis-header-education {
+  background-color: #f7b718;
+}
+#data-vis-tool-group-environment .entry-header h1 {
+  color: #a3bb4f;
+}
+#data-vis-tool-group-environment #data-vis-header-environment {
+  background-color: #a3bb4f;
+}
+#data-vis-tool-group-food .entry-header h1 {
+  color: #869b3c;
+}
+#data-vis-tool-group-food #data-vis-header-food {
+  background-color: #869b3c;
+}
+#data-vis-tool-group-health .entry-header h1 {
+  color: #008eaa;
+}
+#data-vis-tool-group-health #data-vis-header-health {
+  background-color: #008eaa;
+}
 .primary-navigation .brand a {
   font-size: 16.8px;
   font-size: 1.2rem;
@@ -3102,6 +3156,15 @@ body.home-page #primary #top-story h2 {
 .sidebar-activity-tabs ul li span.alert {
   background-color: #00b0d3;
   color: #ffffff;
+}
+.data-vis-tool-group .entry-header p {
+  float: left;
+  width: 36%;
+  margin: 2%;
+}
+.data-vis-tool-group .entry-header img {
+  float: left;
+  width: 60%;
 }
 body.home-page #primary #top-story img {
   width: 60%;
