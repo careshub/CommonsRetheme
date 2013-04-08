@@ -22,7 +22,7 @@ function add_resourcecat_taxonomy() {
 		'labels' => $labels,
 		'query_var' => true,
 		'rewrite' => true,
-		'hierarchical' => false,
+		'hierarchical' => true,
         'show_ui' => true,		
 		'capabilities' => array(
 						'manage_terms' => 'manage_saresourcecat',
