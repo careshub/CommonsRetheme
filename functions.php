@@ -9,6 +9,8 @@ require_once('includes/taxonomy-geography.php');
 require_once('includes/SA_Resources.php');
 //Definition of the Salud America Resources custom taxonomy
 require_once('includes/taxonomy-resourcecat.php');
+//Definition of the Salud America policy tag custom taxonomy
+require_once('includes/taxonomy-sapolicytag.php');
 
 //Definition of the Data Vis Tools policy custom post type
 // require_once('includes/cpt_data_vis_tools.php');
