@@ -31,7 +31,7 @@ function SA_policies_init()
 		'hierarchical' => false,
     'show_in_menu' => true,
     'menu_position' => 22,
-    'taxonomies' => array('advocacy_targets'),
+    'taxonomies' => array('sa_advocacy_targets'),
     //'has_archive' => 'sapolicies',
     // 'supports' => array('title','editor','excerpt','trackbacks','custom-fields','comments','revisions','thumbnail','author','page-attributes',),
     'supports' => array('title','editor','comments'),
@@ -80,33 +80,33 @@ function my_manage_sapolicies_columns( $column, $post_id ) {
 	}
 }
 
-function columns_register_sortable( $columns ) {
+function sap_columns_register_sortable( $columns ) {
         $columns["type"] = "type";
         $columns["stage"] = "stage";
 	$columns["last_modified"] = "last_modified";
 	return $columns;
 }
-add_filter( "manage_edit-sapolicies_sortable_columns", "columns_register_sortable" );
+add_filter( "manage_edit-sapolicies_sortable_columns", "sap_columns_register_sortable" );
 
 
 
 
 //Building the input form in the WordPress admin area
-add_action( 'admin_init', 'policy_meta_box_add' );
-function policy_meta_box_add()
+add_action( 'admin_init', 'sa_policy_meta_box_add' );
+function sa_policy_meta_box_add()
 {
-	 add_meta_box( 'policy_meta_box', 'Policy Information', 'policy_meta_box', 'SA Policies', 'normal', 'high');
-  add_meta_box( 'geog-meta-box', 'Geography', 'geog_meta_box', 'SA Policies', 'normal', 'high' );   
+	 add_meta_box( 'sa_policy_meta_box', 'Policy Information', 'sa_policy_meta_box', 'SA Policies', 'normal', 'high');
+	 add_meta_box( 'sa_geog_meta_box', 'Geography', 'sa_geog_meta_box', 'SA Policies', 'normal', 'high' );   
          
 }
-add_action( 'admin_menu','remove_metas');
-function remove_metas() {
+add_action( 'admin_menu','sapolicy_remove_metas');
+function sapolicy_remove_metas() {
     remove_meta_box('geographiesdiv','sapolicies','side');
     // remove_meta_box('commentstatusdiv','sapolicies','normal');
     remove_meta_box('trackbacksdiv','sapolicies','normal');
 }
        
-function geog_meta_box()
+function sa_geog_meta_box()
 {
     global $post;
     $custom = get_post_custom($post->ID);
@@ -200,7 +200,7 @@ function geog_meta_box()
 
 }
 
-function policy_meta_box() {  
+function sa_policy_meta_box() {  
     global $post;
     $custom = get_post_custom($post->ID);
     $sapolicy_type = $custom["sa_policytype"][0];
@@ -555,20 +555,20 @@ function sapolicy_save() {
     }
 }
 
-add_action( 'save_post', 'geog_save' );
-function geog_save() {   
+add_action( 'save_post', 'sa_geog_save' );
+function sa_geog_save() {   
    global $post;
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
       return;
 
     if ($post->post_type == 'sapolicies') {
-       save_event_field("sa_geog");
-       save_event_field("sa_state");
-       save_event_field("sa_finalgeog");
+       sapolicy_save_event_field("sa_geog");
+       sapolicy_save_event_field("sa_state");
+       sapolicy_save_event_field("sa_finalgeog");
     }
 }
 
-function save_event_field($event_field) {
+function sapolicy_save_event_field($event_field) {
     global $post;
     if(isset($_POST[$event_field])) {
         update_post_meta($post->ID, $event_field, $_POST[$event_field]);
@@ -577,8 +577,8 @@ function save_event_field($event_field) {
     }
 }
 
-add_action('init', 'enqueue'); 
-function enqueue(){
+add_action('init', 'sapolicy_jquery'); 
+function sapolicy_jquery(){
     wp_enqueue_script('jquery-ui-datepicker');
     wp_enqueue_style('sticky_post-admin-ui-css','http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/base/jquery-ui.css',false,"1.9.0",false);
     }
