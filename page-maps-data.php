@@ -15,6 +15,14 @@ get_header(); ?>
 				<?php the_post(); ?>
 
 				<?php get_template_part( 'content', 'page' ); ?>
+				<ul class="quicklinks">
+					<li>
+						<a href="#" class="button">Start a new map</a>
+					</li>
+					<li>
+						<a href="#" class="button">Start a new report</a>
+					</li>
+				</ul>
                 
                 <?php wp_reset_query(); ?>		
 
@@ -31,7 +39,7 @@ get_header(); ?>
 		?>
 
 		<ul id="jumplinks">
-			<h3>Jump to a topic:</h3>
+			<h3>Scroll to a topic:</h3>
 			<?php
 			foreach ($all_cats as $cat_slug) {
 				$cat_object = get_term_by('slug', $cat_slug, 'data_vis_tool_categories');

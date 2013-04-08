@@ -2731,9 +2731,22 @@ body.home-page #primary .quarter-block .related-posts li a {
 .esriLargeSliderVertical {
   width: auto;
 }
+.maps-data #primary #content article {
+  margin-bottom: 24;
+  margin-bottom: 1.7rem;
+  padding-bottom: 0;
+}
+.maps-data #primary #content .quicklinks {
+  margin-bottom: 24;
+  margin-bottom: 1.7rem;
+}
+.maps-data #primary #content .quicklinks li {
+  margin: 10px 10px 0 0;
+}
 #jumplinks h3 {
   display: inline-block;
   margin-right: 1em;
+  font-weight: 400;
 }
 #jumplinks li {
   display: inline-block;
@@ -3180,6 +3193,17 @@ body.home-page #primary .quarter-block .related-posts li a {
   .sidebar-activity-tabs ul li span.alert {
     background-color: #00b0d3;
     color: #ffffff;
+  }
+  .maps-data #primary #content article {
+    margin-bottom: 24;
+    margin-bottom: 1.7rem;
+    padding-bottom: 0;
+    width: 80%;
+    display: inline-block;
+  }
+  .maps-data #primary #content .quicklinks {
+    float: right;
+    margin-top: 1.5em;
   }
   .data-vis-tool-group .entry-header p {
     float: left;

@@ -790,6 +790,7 @@ function cc_custom_body_class( $classes ) {
 
   if ( is_page( 'maps-data' ) )
     $classes[] = 'full-width';
+    $classes[] = 'maps-data';
 
   return $classes;
 }
