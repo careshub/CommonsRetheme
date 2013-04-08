@@ -31,7 +31,7 @@ function SA_resources_init()
 		'hierarchical' => false,
 		'menu_position' => 23,
 		'has_archive' => 'saresources',
-		'taxonomies' => array('resourcecat'),		
+		'taxonomies' => array('sa_resourcecat'),		
 		'supports' => array('title','editor','comments'),
         'capability_type' => 'saresources',
         'map_meta_cap'    => true
