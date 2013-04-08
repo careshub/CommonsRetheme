@@ -32,7 +32,7 @@ function add_resourcecat_taxonomy() {
 					)		
 	);
 
-    register_taxonomy('resourcecat', 'saresources', $args);
+    register_taxonomy('sa_resourcecat', 'saresources', $args);
 	
 		
 }
