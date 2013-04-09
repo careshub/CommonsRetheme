@@ -1961,10 +1961,11 @@ h5 {
 }
 #content #screamer {
   background-color: #008eaa;
+  margin-bottom: 2em;
 }
 #content #screamer h1 {
-  font-size: 19.599999999999998px;
-  font-size: 1.4rem;
+  font-size: 14px;
+  font-size: 1rem;
   font-weight: 400;
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
@@ -2824,6 +2825,10 @@ body.home-page #primary .quarter-block .related-posts li a {
   .widget-area {
     margin-top: 2em;
   }
+  #content #screamer h1 {
+    font-size: 16.8px;
+    font-size: 1.2rem;
+  }
 }
 @media screen and (min-width: 800px) {
   /* Main navigation
@@ -3211,6 +3216,10 @@ body.home-page #primary .quarter-block .related-posts li a {
   .data-vis-tool-group .entry-header img {
     float: left;
     width: 60%;
+  }
+  #content #screamer h1 {
+    font-size: 19.599999999999998px;
+    font-size: 1.4rem;
   }
 }
 @media screen and (min-width: 1000px) {
