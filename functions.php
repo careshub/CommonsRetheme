@@ -205,7 +205,8 @@ if ( function_exists( 'register_nav_menus' ) ) {
   register_nav_menus( 
     array( 
       'footer-nav' => 'Footer Navigation',
-      'salud-nav' => 'Salud America section navigation'
+      'salud-nav' => 'Salud America section navigation',
+      'help-area' => 'Help Area'
       ) 
     );
 
