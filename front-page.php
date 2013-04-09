@@ -12,7 +12,7 @@ get_header(); ?>
 
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
-			<div id="screamer">
+			<div id="screamer" class="clear">
 				<h1><?php echo get_bloginfo ( 'description' );  ?></h1>
 			</div>
 
@@ -121,7 +121,7 @@ for ($i = 1; $i <= 4; $i++) {
 		case 2:			
 			$args = array(
 			 	'post__in' => $sticky_no_dupes,
-			 	'category_name' => 'features-2',
+			 	'category_name' => 'features',
 				'ignore_sticky_posts' => 1,
 			 	'posts_per_page' => 1
 			 	);			
@@ -199,16 +199,27 @@ for ($i = 1; $i <= 4; $i++) {
 <?php
 // Then, get posts related to the main story
 	global $post; // required
-	// Set query, 1st & 2nd loops should be headed by recent sticky posts
+	// Set query, 1st & 2nd loops should be headed by recent sticky posts and exclude guest-blogs and data, so we'll need to add those posts to the post__not_in array.
+	// $exclude_dupes_guests_data = array_merge($do_not_duplicate, $third_block_array, $guest_blog_array);
+	// echo '<br>$do_not_duplicate: ';
+	// print_r($do_not_duplicate);
+	// echo '<br>$third_block_array: ';
+	// print_r($third_block_array);
+	// echo '<br>$guest_blog_array: ';
+	// print_r($guest_blog_array);
+	// echo '<br>Merged exclude array: ';
+	// print_r($exclude_dupes_guests_data);
+	
 	// Third block should be the data group
 	// Fourth block should be guest blogs
 	switch ($i) {
 		case 1:
 		case 2:
+			$exclude_dupes_guests_data = array_merge($do_not_duplicate, $third_block_array, $guest_blog_array);
 			$args = array(
-				 	'post__not_in' => $do_not_duplicate,
+				 	'post__not_in' => $exclude_dupes_guests_data,
 				 	'tag__in' => $post_tags,
-				 	'category_name' => 'features-2',
+				 	'category_name' => 'features',
 				 	'ignore_sticky_posts' => 1,
 				 	'posts_per_page' => 2
 				 	);		 	

@@ -1952,14 +1952,17 @@ h5 {
 #content h6 {
   margin: 1em 0;
 }
+#content #screamer {
+  background-color: #008eaa;
+}
 #content #screamer h1 {
-  font-size: 16.8px;
-  font-size: 1.2rem;
+  font-size: 19.599999999999998px;
+  font-size: 1.4rem;
   font-weight: 400;
-  color: #3b3838;
-  padding-bottom: 1em;
-  border-bottom: 1px solid #dedede;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   line-height: 1.6;
+  margin: 0.8em 1em;
 }
 .column1of3 {
   float: left;
