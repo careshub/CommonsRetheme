@@ -69,34 +69,50 @@ $do_not_duplicate = array();
 	$sticky = get_option( 'sticky_posts' );
 	// echo "<br /> Sticky array: ";
 	// print_r($sticky);
-//We'll also need a list of all posts with the guest-blog tag, so we don't include them in block 1 or 2
-	// $guest_args = array( 
-			// 'tag' => 'guest-blog',
-			// 'fields' => 'ids' 
-			// );
 
+//We'll also need a list of all posts with the guest-blog or data tag, so we don't include them in block 1 or 2 
+	// NOTE: 'fields' => 'ids' means WP_Query only returns the post ids, for efficiency.
 	$guest_blog_posts = new WP_Query( array( 'tag' => 'guest-blog', 'fields' => 'ids' ) );
 	$guest_blog_array = $guest_blog_posts->posts;
+	$third_block_posts = new WP_Query( array( 'tag' => 'data', 'fields' => 'ids' ) );
+	$third_block_array = $third_block_posts->posts;
 
 for ($i = 1; $i <= 4; $i++) {
 	// echo 'iteration number: ' . $i ;
 	// echo "<br /> Do-not-duplicate array: ";
 	// print_r($do_not_duplicate);
-	// Remove any posts in our "do_not_duplicate" array from the array of sticky posts
-	if ( $i == 1 || $i == 2 || $i == 3 ) {
-		//Remove the guest blog posts from the first two queries, as well.
-		$sticky_no_dupes = array_diff($sticky, $do_not_duplicate, $guest_blog_array);
-	} else {
-		$sticky_no_dupes = array_diff($sticky, $do_not_duplicate);				
+	
+	// Modify the array of sticky posts, depending on which loop we're in.
+	switch ($i) {
+		case 1:
+		case 2:			
+			//Remove guest blog and data posts from the first two blocks.
+			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate, $guest_blog_array, $third_block_array);			
+		break;
+		case 3:
+			// Probably don't want guest blog articles to show up in column three, even if they're tagged data
+			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate, $guest_blog_array);			
+			break;
+		case 4:
+			// Remove duplicates from the guest blog block
+			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate);			
+			break;
+		default:
+			//Remove guest blog and data posts from the first two blocks.
+			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate, $guest_blog_array, $third_block_array);			
+		 	break;
 	}
+	
 	// Sort the stickies with the newest ones at the top
 	rsort( $sticky_no_dupes );
 	// echo "<br /> Sticky-no-dupes array: ";
 	// print_r($sticky_no_dupes);
+	
 	//Grab only the most recent post in the array
 	$sticky_single = array_slice( $sticky_no_dupes, 0, 1 );
 	// echo "<br /> Sticky-single array: ";
 	// print_r($sticky_single);
+	
 	// Set query, 1st & 2nd loops should be headed by recent sticky posts, but not from the guest blog or data groups
 	// Third block should be the data group
 	// Fourth block should be guest blogs
@@ -111,7 +127,8 @@ for ($i = 1; $i <= 4; $i++) {
 		break;
 		case 3:
 			$args = array(
-			 	'post__in' => $sticky_single,
+			 	'post__in' => $sticky_no_dupes,
+			 	'tag' => 'data',
 				'ignore_sticky_posts' => 1,
 			 	'posts_per_page' => 1
 			 	);			
@@ -197,7 +214,7 @@ for ($i = 1; $i <= 4; $i++) {
 		case 3:
 			$args = array(
 				 	'post__not_in' => $do_not_duplicate,
-				 	'tag__in' => $post_tags,
+				 	'tag' => 'data',
 				 	'ignore_sticky_posts' => 1,
 				 	'posts_per_page' => 2
 				 	);		 	
