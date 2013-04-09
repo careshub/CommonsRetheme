@@ -364,7 +364,8 @@ remove_action( 'bp_init', 'bp_core_action_search_site', 7 );
 add_action( 'init', 'bp_buddydev_search', 10 );// custom handler for the search
 function bp_buddydev_search(){
 global $bp;
-    if ( bp_is_current_component(BP_SEARCH_SLUG) )//if this is search page
+
+    if ( function_exists('bp_is_current_component') && bp_is_current_component(BP_SEARCH_SLUG) )//if this is search page
         bp_core_load_template( apply_filters( 'bp_core_template_search_template', 'search-single' ) );//load the single searh template
 }
 
@@ -388,7 +389,7 @@ function bpmag_global_search_queryvar(){
 
 function bpmag_is_advance_search(){
 global $bp;
-if(bp_is_current_component( BP_SEARCH_SLUG))
+if( function_exists('bp_is_current_component') && bp_is_current_component( BP_SEARCH_SLUG))
     return true;
 return false;
 }
@@ -423,8 +424,8 @@ function bpmag_show_groups_search(){
   }
 
 //Hook Groups results to search page
- if(bp_is_active( 'groups' ))
-    add_action('advance-search','bpmag_show_groups_search',15);
+    if( function_exists('bp_is_active') && bp_is_active( 'groups' ))
+        add_action('advance-search','bpmag_show_groups_search',15);
 
  /**activity update search*/
  //Activity search
@@ -441,8 +442,8 @@ function bpmag_show_activity_search(){
   }
 
 //Hook Groups results to search page
- if(bp_is_active( 'activity' ))
-    add_action('advance-search','bpmag_show_activity_search',20);
+    if( function_exists('bp_is_active') && bp_is_active( 'activity' ))
+       add_action('advance-search','bpmag_show_activity_search',20);
 
 /**
  *

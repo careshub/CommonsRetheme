@@ -113,14 +113,15 @@ for ($i = 1; $i <= 4; $i++) {
 	// echo "<br /> Sticky-single array: ";
 	// print_r($sticky_single);
 	
-	// Set query, 1st & 2nd loops should be headed by recent sticky posts, but not from the guest blog or data groups
+	// Set query, 1st & 2nd loops should be headed by recent sticky posts, but not from the guest blog or data groups, also only from the category 'features'.
 	// Third block should be the data group
 	// Fourth block should be guest blogs
 	switch ($i) {
 		case 1:
 		case 2:			
 			$args = array(
-			 	'post__in' => $sticky_single,
+			 	'post__in' => $sticky_no_dupes,
+			 	'category_name' => 'features-2',
 				'ignore_sticky_posts' => 1,
 			 	'posts_per_page' => 1
 			 	);			
@@ -207,6 +208,7 @@ for ($i = 1; $i <= 4; $i++) {
 			$args = array(
 				 	'post__not_in' => $do_not_duplicate,
 				 	'tag__in' => $post_tags,
+				 	'category_name' => 'features-2',
 				 	'ignore_sticky_posts' => 1,
 				 	'posts_per_page' => 2
 				 	);		 	
