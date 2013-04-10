@@ -952,3 +952,26 @@ function is_child($page_id_or_slug) {
             return false; 
     }
 }
+
+function cdcdch_users() {
+	if ( is_page('cdc_dch1') ) {
+        $form_id = 2;        
+        $cdcusers = RGFormsModel::get_leads($form_id, '5', 'ASC');
+		global $current_user;
+		$count = 0;
+		// loop through all the returned results
+        foreach ($cdcusers as $cdcuser) {                
+				if ($current_user->display_name == $cdcuser['5'])
+				{
+					$count = $count + 1;
+				}            
+        }
+		 if ($count > 0) {
+				wp_redirect( 'http://assessment.communitycommons.org/Footprint/Default.aspx?t=DCH' );
+				exit();    
+		 } else {
+			 return "";
+		 }
+	}
+}
+add_action( 'template_redirect', 'cdcdch_users' );
