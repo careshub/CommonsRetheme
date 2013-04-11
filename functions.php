@@ -786,19 +786,6 @@ function cdcdch_users() {
 }
 add_action( 'template_redirect', 'cdcdch_users' );
 
-// function bp_dump() {
-//     global $bp;
- 
-//     foreach ( (array)$bp as $key => $value ) {
-//         echo '<pre>';
-//         echo '<strong>' . $key . ': </strong><br />';
-//         print_r( $value );
-//         echo '</pre>';
-//     }
-//     die;
-// }
-// add_action( 'wp', 'bp_dump' );
-
 //Plugin Q and A FAQs sloppily affects all excerpts everywhere. This removes that, so we can do our own.
 remove_filter( 'excerpt_more', 'qaplus_auto_excerpt_more' );
 remove_filter( 'get_the_excerpt', 'qaplus_custom_excerpt_more' );
