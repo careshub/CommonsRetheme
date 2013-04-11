@@ -12,54 +12,6 @@ require_once('includes/taxonomy-resourcecat.php');
 //Definition of the Salud America policy tag custom taxonomy
 require_once('includes/taxonomy-sapolicytag.php');
 
-//Definition of the Data Vis Tools policy custom post type
-// require_once('includes/cpt_data_vis_tools.php');
-
-
-// Customize WP Toolbar
-function change_toolbar() {  
-	if (! is_admin() ) {
-	global $wp_admin_bar;
-    $wp_admin_bar->remove_node('wp-logo');
-    $wp_admin_bar->remove_node('comments');
-    $wp_admin_bar->remove_node('new-content');
-	$wp_admin_bar->add_node( array(
-		'id' => 'groups_link',
-		'title' => 'Groups',
-		'href' => '/groups/',
-		'meta' => array('class' => 'toolbar_page_links')
-		)
-	);
-	$wp_admin_bar->add_node( array(
-		'id' => 'stories_link',
-		'title' => 'Stories',
-		'href' => '/blog/',
-		'meta' => array('class' => 'toolbar_page_links')
-		)
-	);
-	$wp_admin_bar->add_node( array(
-		'id' => 'data_vis_link',
-		'title' => 'Data Vis',
-		'href' => '/mapping/',
-		'meta' => array('class' => 'toolbar_page_links')
-		)
-	);
-	$wp_admin_bar->add_node( array(
-		'id' => 'members_link',
-		'title' => 'Members',
-		'href' => '/members/',
-		'meta' => array('class' => 'toolbar_page_links')
-		)
-	);
-	
-
-	}
-}
-
-//add_action('wp_before_admin_bar_render', 'change_toolbar');
-
-
-
 function custom_childtheme_stylesheet_load(){
 wp_register_style(
         'custom_childtheme_stylesheet',
@@ -147,16 +99,6 @@ function print_notifications_list($notifications,$count){
  */
  
 function ccommons_widgets_init() {
-    
-// register_sidebar( array (
-//         'name' => __( 'footer-nav', 'ccommons' ),
-//         'id' => 'footer-nav',
-//         'before_widget' => '<nav id="%1$s" class="widget %2$s">',
-//         'after_widget' => "</nav>",
-//         'before_title' => '<h3 class="widget-title">',
-//         'after_title' => '</h3>',
-//         'description' => __( 'Footer Navigation Links', 'ccommons' )
-//     ) );
 
 register_sidebar( array (
         'name' => __( 'Groups sidebar', 'ccommons' ),
@@ -230,21 +172,6 @@ function add_slug_class_to_menu_item($output){
 }
 add_filter('wp_nav_menu', 'add_slug_class_to_menu_item');
 
-/* Filter classes added to body tag to add "buddypress" if BuddyPress is active
-***************/
-function add_buddypress_to_body_tag_classes($classes) {
-	// add 'class-name' to the $classes array
-	if ( function_exists( 'bp_is_blog_page' ) ) {	
-		if ( !bp_is_blog_page() ) {
-			$classes[] = 'buddypress';
-		}
-	}
-	// return the $classes array
-	return $classes;
-}
-add_filter('body_class','add_buddypress_to_body_tag_classes');
-
-
 /*Remove Gravatars for testing on localhost
 */
 function bp_remove_gravatar ($image, $params, $item_id, $avatar_dir, $css_id, $html_width, $html_height, $avatar_folder_url, $avatar_folder_dir) {
@@ -303,35 +230,34 @@ add_filter('login_headertitle', 'change_wp_login_title');
 **************/
 function localscroll_js_load(){
 
-wp_register_script('scrollTo', get_stylesheet_directory_uri().'/js/jquery.scrollTo-1.4.2-min.js">', array('jquery'), '1.4.2' ); 
-wp_enqueue_script('scrollTo'); 
-wp_register_script('localScroll', get_stylesheet_directory_uri().'/js/jquery.localscroll-1.2.7-min.js">', array('jquery', 'scrollTo'), '1.2.7' );  
-wp_enqueue_script('localScroll'); 
+  wp_register_script('scrollTo', get_stylesheet_directory_uri().'/js/jquery.scrollTo-1.4.2-min.js">', array('jquery'), '1.4.2' ); 
+  wp_enqueue_script('scrollTo'); 
+  wp_register_script('localScroll', get_stylesheet_directory_uri().'/js/jquery.localscroll-1.2.7-min.js">', array('jquery', 'scrollTo'), '1.2.7' );  
+  wp_enqueue_script('localScroll'); 
 
 }
 add_action('wp_enqueue_scripts', 'localscroll_js_load');
 
 function sharrre_js_load(){
 
-wp_register_script('sharrre', get_stylesheet_directory_uri().'/js/jquery.sharrre-1.3.4.min.js">', array('jquery'), '1.3.4' ); 
-wp_enqueue_script('sharrre'); 
-
+  wp_register_script('sharrre', get_stylesheet_directory_uri().'/js/jquery.sharrre-1.3.4.min.js">', array('jquery'), '1.3.4' ); 
+  wp_enqueue_script('sharrre'); 
 
 }
 add_action('wp_enqueue_scripts', 'sharrre_js_load');
 
 function hoverIntent_js_load(){
 
-wp_register_script('hoverIntent', get_stylesheet_directory_uri().'/js/jquery.hoverIntent.minified.js">', array('jquery'), 'r6' ); 
-wp_enqueue_script('hoverIntent'); 
+  wp_register_script('hoverIntent', get_stylesheet_directory_uri().'/js/jquery.hoverIntent.minified.js">', array('jquery'), 'r6' ); 
+  wp_enqueue_script('hoverIntent'); 
 
 }
 add_action('wp_enqueue_scripts', 'hoverIntent_js_load');
 
 function buddypress_js_load(){
 
-wp_register_script('buddypress', plugins_url( '/buddypress/bp-templates/bp-legacy/js/buddypress.js' , 'buddypress' ), array('jquery'), '1.3.4' ); 
-wp_enqueue_script('buddypress'); 
+  wp_register_script('buddypress', plugins_url( '/buddypress/bp-templates/bp-legacy/js/buddypress.js' , 'buddypress' ), array('jquery'), '1.3.4' ); 
+  wp_enqueue_script('buddypress'); 
 
 
 }
@@ -683,32 +609,25 @@ function group_home_page_meta_box( $object, $box ) { ?>
 
   <?php wp_nonce_field( basename( __FILE__ ), 'group_home_association_nonce' ); ?>
 <!-- Loop through Group Tree with the addition of checkboxes -->
-<?php if (class_exists('BP_Groups_Hierarchy')) {
-  $tree = BP_Groups_Hierarchy::get_tree();
-  //print_r($tree);
-  $group_associations = get_post_meta( $object->ID, 'group_home_page_association', false); // Use false because we want an array of associations to be returned
-  //print_r($group_associations);
+  <?php if (class_exists('BP_Groups_Hierarchy')) {
+    $tree = BP_Groups_Hierarchy::get_tree();
+    //print_r($tree);
+    $group_associations = get_post_meta( $object->ID, 'group_home_page_association', false); // Use false because we want an array of associations to be returned
+    //print_r($group_associations);
 
-  echo '<ul class="group-tree">';
-  foreach ($tree as $branch) {
-    ?>
-    <li><!-- ID: <?php echo $branch->id ;?> Name: <?php echo $branch->name;?> Parent ID:<?php echo $branch->parent_id ;?> -->
-      <input type="checkbox" id="group-home-page-assoc-<?php echo $branch->id ?>" name="group_home_page_association[]" value="<?php echo $branch->id ?>" <?php checked( in_array( $branch->id , $group_associations ) ); ?> />
-      <label for="group-home-page-assoc-<?php echo $branch->id ?>"><?php echo $branch->name; ?></label>
-    </li>
-    <?php
+    echo '<ul class="group-tree">';
+    foreach ($tree as $branch) {
+      ?>
+      <li><!-- ID: <?php echo $branch->id ;?> Name: <?php echo $branch->name;?> Parent ID:<?php echo $branch->parent_id ;?> -->
+        <input type="checkbox" id="group-home-page-assoc-<?php echo $branch->id ?>" name="group_home_page_association[]" value="<?php echo $branch->id ?>" <?php checked( in_array( $branch->id , $group_associations ) ); ?> />
+        <label for="group-home-page-assoc-<?php echo $branch->id ?>"><?php echo $branch->name; ?></label>
+      </li>
+      <?php
+    }
+    echo '</ul>';
+
   }
-  echo '</ul>';
-
 }
-
-?>
- <!--  <p>
-    <label for="smashing-post-class"><?php _e( "Add a custom CSS class, which will be applied to WordPress' post class.", 'example' ); ?></label>
-    <br />
-    <input class="widefat" type="text" name="smashing-post-class" id="smashing-post-class" value="<?php echo esc_attr( get_post_meta( $object->ID, 'smashing_post_class', true ) ); ?>" size="30" />
-  </p> -->
-<?php }
 
 /* Save the meta box's post metadata. */
 function save_group_home_meta( $post_id, $post ) {
@@ -731,70 +650,34 @@ function save_group_home_meta( $post_id, $post ) {
         }
     }
 
-  // Loop through checkboxes, saving value
-
-
-  /* Get the posted data and sanitize it for use as an HTML class. */
-  //$new_meta_value = ( isset( $_POST['smashing-post-class'] ) ? sanitize_html_class( $_POST['smashing-post-class'] ) : '' );
-  // $new_meta_value = ( isset( $_POST['group_home_page_association'] ) ? sanitize_html_class( $_POST['group_home_page_association'] ) : '' );
-  
-  // /* Get the meta key. */
-  // $meta_key = 'group_home_page_association';
- 
-
-
-        // delete_post_meta( $post_id, $meta_key );
-        // foreach ($_POST[$meta_key] as $metainstance) {
-        //   add_post_meta( $post_id, $meta_key, $metainstance, true );
-          // foreach ($_POST[$meta_key] as $datevalue) {
-          // update_post_meta($post->ID, $meta_key, $datevalue, $datevalue);
-          // }
-
-
-  /* Get the meta value of the custom field key. */
-  // $meta_value = get_post_meta( $post_id, $meta_key, true );
-
-  /* If a new meta value was added and there was no previous value, add it. */
-  // if ( $new_meta_value && '' == $meta_value )
-  //   add_post_meta( $post_id, $meta_key, $new_meta_value, true );
-
-  /* If the new meta value does not match the old value, update it. */
-  // elseif ( $new_meta_value && $new_meta_value != $meta_value )
-  //   update_post_meta( $post_id, $meta_key, $new_meta_value );
-
-  /* If there is no new meta value but an old value exists, delete it. */
-  // elseif ( '' == $new_meta_value && $meta_value )
-  //   delete_post_meta( $post_id, $meta_key, $meta_value );
-
 }
 
 /**
  * Extends the default WordPress body class to denote:
  * 1. Adds "salud-america" to pages using the SA template.
- * 2. Front Page template: thumbnail in use and number of sidebars for
- *    widget areas.
- * 3. White or empty background color to change the layout and spacing.
- * 4. Custom fonts enabled.
- * 5. Single or multiple authors.
+ *
  *
  * @since Twenty Twelve 1.0
  *
  * @param array Existing class values.
  * @return array Filtered class values.
  */
-
+/* Filter classes added to body tag to add "buddypress" if BuddyPress is active
+***************/
 function cc_custom_body_class( $classes ) {
-  //$background_color = get_background_color();
+   
+    if ( function_exists( 'bp_is_blog_page' ) && !bp_is_blog_page() )
+        $classes[] = 'buddypress';
 
-  if ( is_page_template( 'page-templates/salud-america.php' ) || is_singular('sapolicies') )
-    $classes[] = 'salud-america';
+    if ( is_page_template( 'page-templates/salud-america.php' ) || is_page_template( 'page-templates/salud-america-eloi.php' ) || is_singular('sapolicies') )
+        $classes[] = 'salud-america';
 
-  if ( is_page_template( 'page-templates/full-width-no-title.php' ) )
-    $classes[] = 'full-width';
+    if ( is_page_template( 'page-templates/full-width-no-title.php' ) )
+        $classes[] = 'full-width';
 
-  if ( is_page( 'maps-data' ) )
-    $classes[] = 'full-width';
-    $classes[] = 'maps-data';
+    if ( is_page( 'maps-data' ) )
+        $classes[] = 'full-width';
+        $classes[] = 'maps-data';
 
   return $classes;
 }
@@ -824,13 +707,6 @@ function cc_add_custom_types( $query ) {
   }
 }
 add_filter( 'pre_get_posts', 'cc_add_custom_types' );
-
-//Add "Read More" to the end of excerpts
-function read_excerpt_more($more) {
-       global $post;
-  return ' <a href="'. get_permalink($post->ID) . '" class="button">[...]</a>';
-}
-add_filter('excerpt_more', 'read_excerpt_more');
 
 //Show a list of attachments after the post, for sa policies only
 
@@ -866,78 +742,12 @@ function set_user_admin_bar_false_by_default($user_id) {
     update_user_meta( $user_id, 'show_admin_bar_front', 'false' );
 }
 
-function remove_geographies_taxonomy_meta() {
-  remove_meta_box( 'geographiesdiv', 'sapolicies', 'side' );
-}
-// add_action( 'admin_menu' , 'remove_geographies_taxonomy_meta' );
-
 //Add new image sizes for front page
 if ( function_exists( 'add_image_size' ) ) { 
   add_image_size( 'feature-front', '600', '300' ); //not hard cropped, resized proportionally
   add_image_size( 'feature-front-sub', '300', '200', true ); // hard cropped
 }
 
-//Add TinyMCE editor to comments area
-// add_filter( 'comment_form_defaults', 'visual_editor_comment_form_defaults' );
-function visual_editor_comment_form_defaults( $args ) {
-    if ( is_user_logged_in() ) {
-        $mce_plugins = 'inlinepopups, fullscreen, wordpress, wplink, wpdialogs';
-    } else {
-        $mce_plugins = 'fullscreen, wordpress';
-    }
-    ob_start();
-    wp_editor( '', 'comment', array(
-        'media_buttons' => true,
-        'teeny' => true,
-        'textarea_rows' => '7',
-        'tinymce' => array( 'plugins' => $mce_plugins )
-    ) );
-    $args['comment_field'] = ob_get_clean();
-    return $args;
-}
-// add_filter( 'comment_form_defaults', 'rich_text_comment_form' );
-function rich_text_comment_form( $args ) {
-  ob_start();
-  wp_editor( '', 'comment', array(
-    'media_buttons' => true, // show insert/upload button(s) to users with permission
-    'textarea_rows' => '10', // re-size text area
-    'dfw' => false, // replace the default full screen with DFW (WordPress 3.4+)
-    'tinymce' => array(
-          'theme_advanced_buttons1' => 'bold,italic,underline,strikethrough,bullist,numlist,code,blockquote,link,unlink,outdent,indent,|,undo,redo,fullscreen',
-          'theme_advanced_buttons2' => '', // 2nd row, if needed
-          'theme_advanced_buttons3' => '', // 3rd row, if needed
-          'theme_advanced_buttons4' => '' // 4th row, if needed
-        ),
-    'quicktags' => array(
-         'buttons' => 'strong,em,link,block,del,ins,img,ul,ol,li,code,close'
-      )
-  ) );
-  $args['comment_field'] = ob_get_clean();
-  return $args;
-}
-// Allow TinyMCE editor for replies
-// add_filter( 'comment_reply_link', 'cc_tinymce_comments_reply_link' );
-function cc_tinymce_comments_reply_link($link) {
-  return str_replace( 'onclick=', 'data-onclick=', $link );
-}
-// add_action( 'wp_footer', 'cc_tinymce_comments_wp_footer' );
-function cc_tinymce_comments_wp_footer() {
-?>
-<script type="text/javascript">
-  jQuery(function($){
-    $('.comment-reply-link').click(function(e){
-      e.preventDefault();
-      var args = $(this).data('onclick');
-      args = args.replace(/.*(|)/gi, '').replace(/"|s+/g, '');
-      args = args.split(',');
-      tinymce.EditorManager.execCommand('mceRemoveControl', true, 'comment');
-      addComment.moveForm.apply( addComment, args );
-      tinymce.EditorManager.execCommand('mceAddControl', true, 'comment');
-    });
-  });
-</script>
-<?php
-}
 //Function to test whether a page is the child of a specific page
 //Used in the Salud America topical guides section
 function is_child($page_id_or_slug) { 
@@ -975,3 +785,53 @@ function cdcdch_users() {
 	}
 }
 add_action( 'template_redirect', 'cdcdch_users' );
+
+// function bp_dump() {
+//     global $bp;
+ 
+//     foreach ( (array)$bp as $key => $value ) {
+//         echo '<pre>';
+//         echo '<strong>' . $key . ': </strong><br />';
+//         print_r( $value );
+//         echo '</pre>';
+//     }
+//     die;
+// }
+// add_action( 'wp', 'bp_dump' );
+
+//Plugin Q and A FAQs sloppily affects all excerpts everywhere. This removes that, so we can do our own.
+remove_filter( 'excerpt_more', 'qaplus_auto_excerpt_more' );
+remove_filter( 'get_the_excerpt', 'qaplus_custom_excerpt_more' );
+remove_filter( 'excerpt_length', 'qaplus_excerpt_length' );
+
+/**
+ * Returns a "Continue Reading" link for excerpts
+ */
+function twentyeleven_continue_reading_link() {
+  return ' <a href="'. esc_url( get_permalink() ) . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) . '</a>';
+}
+
+/**
+ * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and twentyeleven_continue_reading_link().
+ *
+ * To override this in a child theme, remove the filter and add your own
+ * function tied to the excerpt_more filter hook.
+ */
+function twentyeleven_auto_excerpt_more( $more ) {
+  return ' &hellip;' . twentyeleven_continue_reading_link();
+}
+add_filter( 'excerpt_more', 'twentyeleven_auto_excerpt_more' );
+
+/**
+ * Adds a pretty "Continue Reading" link to custom post excerpts.
+ *
+ * To override this link in a child theme, remove the filter and add your own
+ * function tied to the get_the_excerpt filter hook.
+ */
+function twentyeleven_custom_excerpt_more( $output ) {
+  if ( has_excerpt() && ! is_attachment() ) {
+    $output .= twentyeleven_continue_reading_link();
+  }
+  return $output;
+}
+add_filter( 'get_the_excerpt', 'twentyeleven_custom_excerpt_more' );//Modify "Read More" to the end of excerpts
