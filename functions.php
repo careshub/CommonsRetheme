@@ -44,6 +44,11 @@ function commons_ie_stylesheet_load(){
         );
     wp_enqueue_style( 'commons_ie_stylesheet' );
     $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lt IE 9' );
+    // wp_register_script('modernizr', get_stylesheet_directory_uri().'/includes/modernizr.custom.91496.js">', false, '0.1' );  
+    // wp_enqueue_script('localScroll');
+    // $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lt IE 9' );
+
+
 }
 add_action( 'wp_enqueue_scripts', 'commons_ie_stylesheet_load', 99 );
 
@@ -665,23 +670,31 @@ function save_group_home_meta( $post_id, $post ) {
 /* Filter classes added to body tag to add "buddypress" if BuddyPress is active
 ***************/
 function cc_custom_body_class( $classes ) {
-   
-    if ( function_exists( 'bp_is_blog_page' ) && !bp_is_blog_page() )
+    //First we unset the class "buddypress" that was added in BP 1.7 a little too indiscriminately.
+    if(($key = array_search('buddypress', $classes)) !== false) {
+        unset($classes[$key]);
+      }
+     
+    if ( function_exists( 'bp_is_blog_page' ) && !bp_is_blog_page() ) {
         $classes[] = 'buddypress';
+      }
 
-    if ( is_page_template( 'page-templates/salud-america.php' ) || is_page_template( 'page-templates/salud-america-eloi.php' ) || is_singular('sapolicies') )
+    if ( is_page_template( 'page-templates/salud-america.php' ) || is_page_template( 'page-templates/salud-america-eloi.php' ) || is_singular('sapolicies') ) {
         $classes[] = 'salud-america';
+      }
 
-    if ( is_page_template( 'page-templates/full-width-no-title.php' ) )
+    if ( is_page_template( 'page-templates/full-width-no-title.php' ) ) {
         $classes[] = 'full-width';
+      }
 
-    if ( is_page( 'maps-data' ) )
+    if ( is_page( 'maps-data' ) ) {
         $classes[] = 'full-width';
         $classes[] = 'maps-data';
+      }
 
   return $classes;
 }
-add_filter( 'body_class', 'cc_custom_body_class' );
+add_filter( 'body_class', 'cc_custom_body_class', 88 );
 
 remove_filter('the_content','wpautop');
 

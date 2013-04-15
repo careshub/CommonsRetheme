@@ -2689,7 +2689,7 @@ body.home-page #primary .quarter-block h3 {
   color: #6b6b6b;
 }
 body.home-page #primary .quarter-block .related-posts li {
-  margin-bottom: .6em;
+  margin-bottom: 1em;
 }
 body.home-page #primary .quarter-block .related-posts li a {
   display: block;
