@@ -2753,6 +2753,9 @@ body.home-page #primary .quarter-block .related-posts li a {
   font-size: 28px;
   font-size: 2rem;
 }
+.data-vis-tool-group .entry-header .data-vis-header {
+  zoom: 1;
+}
 .data-vis-tool-group .entry-header p {
   margin: 1rem;
   font-weight: 700;
