@@ -534,22 +534,22 @@ function sapolicy_save() {
       return;
 
     if ($post->post_type == 'sapolicies') {
-       save_event_field("sa_policytype");
-       save_event_field("sa_policystage");       
-       save_event_field("sa_pre1");
-       save_event_field("sa_pre2");
-       save_event_field("sa_pre3");
-       save_event_field("sa_dev1");
-       save_event_field("sa_dev2");
-       save_event_field("sa_dev3");
-       save_event_field("sa_enact1");
-       save_event_field("sa_enact2");
-       save_event_field("sa_enact3");
-       save_event_field("sa_post1");
-       save_event_field("sa_post2");
-       save_event_field("sa_post3");       
-       save_event_field("sa_dateenacted");
-       save_event_field("sa_dateimplemented");       
+       sapolicy_save_event_field("sa_policytype");
+       sapolicy_save_event_field("sa_policystage");       
+       sapolicy_save_event_field("sa_pre1");
+       sapolicy_save_event_field("sa_pre2");
+       sapolicy_save_event_field("sa_pre3");
+       sapolicy_save_event_field("sa_dev1");
+       sapolicy_save_event_field("sa_dev2");
+       sapolicy_save_event_field("sa_dev3");
+       sapolicy_save_event_field("sa_enact1");
+       sapolicy_save_event_field("sa_enact2");
+       sapolicy_save_event_field("sa_enact3");
+       sapolicy_save_event_field("sa_post1");
+       sapolicy_save_event_field("sa_post2");
+       sapolicy_save_event_field("sa_post3");       
+       sapolicy_save_event_field("sa_dateenacted");
+       sapolicy_save_event_field("sa_dateimplemented");       
 
 
     }
