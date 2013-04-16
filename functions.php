@@ -144,7 +144,15 @@ register_sidebar( array (
         'after_title' => '</h3>',
         'description' => __( 'Individual member page sub nav sidebar', 'ccommons' )
     ) );
-      
+register_sidebar( array(
+		'name' => __( 'Geo Search SA Policies Widget Area', 'ccommons' ),
+		'id' => 'sa_geosearch_widget',
+		'description' => __( 'Geo Search SA Policies Widget Area', 'ccommons' ),
+		'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+		'after_widget' => '</nav>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );        
 }
 add_action( 'init', 'ccommons_widgets_init' );
 
