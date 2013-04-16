@@ -96,7 +96,7 @@ add_action( 'admin_init', 'sa_policy_meta_box_add' );
 function sa_policy_meta_box_add()
 {
 	 add_meta_box( 'sa_policy_meta_box', 'Policy Information', 'sa_policy_meta_box', 'SA Policies', 'normal', 'high');
-	 add_meta_box( 'sa_geog_meta_box', 'Geography', 'sa_geog_meta_box', 'SA Policies', 'normal', 'high' );   
+	 add_meta_box( 'sa_geog_meta_box', 'Tag by Administrative Area', 'sa_geog_meta_box', 'SA Policies', 'normal', 'high' );   
          
 }
 add_action( 'admin_menu','sapolicy_remove_metas');
@@ -124,7 +124,7 @@ function sa_geog_meta_box()
         $geogdef="";
         if ($geog == null)
         {
-            $geogdef="---Select a Geography---";
+            $geogdef="---Select an Administrative Area---";
         }else {            
             $geogdef=$geog;
         }
