@@ -49,6 +49,11 @@ get_header(); ?>
 					get_template_part( 'content', 'sa-policy-short' );
 					//comments_template( '', true );
 				endwhile; // end of the loop.
+				
+				// Custom widget Area Start
+				 if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('sa_geosearch_widget') ) : 
+				 endif;
+				// Custom widget Area End
 
 			} elseif (is_child(150)) {
 				//The number above is the id of the parent page, is 11911 on the dev server.
