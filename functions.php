@@ -274,7 +274,7 @@ function buddypress_js_load(){
 
 
 }
-//add_action('wp_enqueue_scripts', 'buddypress_js_load');
+add_action('wp_enqueue_scripts', 'buddypress_js_load');
 
 /* SEARCH - replaces standard WordPress search with a unified results page
 *************/

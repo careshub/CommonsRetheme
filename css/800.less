@@ -321,17 +321,16 @@ body.home-page {
 		clear:none;
 		float:left;
 		width: 22%;
+		// padding-right: 1%; //causes problems for most sidebars.
 		border-right: 1px solid @graymid;
 		clear: left;
 		border-top: none;
 		margin-top: 0;
 		
 		.widget {
-			// margin-top:1.5em;
+			margin-right:12px;
 		}
-		> :first-child { 
-			//margin-top: 0 ;
-		}
+		
 	}
 }
 // Twitter Bootstrap nav tabs
@@ -506,4 +505,43 @@ body.home-page {
 		}
 	}
 }
+
+/***
+ * Content Object Headers
+ */
+
+div#item-header {
+	div#item-actions {
+		float: right;
+		margin: 0 0 15px 15px;
+	}
+	div#item-header-avatar {
+		img {
+		}
+	}
+
+	#item-header-content {
+		.group-breadcrumbs {
+		}
+		.noms {
+			}
+			.user-nicename {}
+		}
+	.highlight, .activity {
+		margin-left: 2em;
+	}
+	#item-meta {
+	}
+}
+//Registration page
+.standard-form #basic-details-section,
+.standard-form #blog-details-section,
+.standard-form #profile-details-section {
+	float: left;
+	width: 48%;
+}
+.standard-form #profile-details-section {
+	float: right;
+}
+
 

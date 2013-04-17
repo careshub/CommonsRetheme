@@ -19,7 +19,17 @@ get_header( 'buddypress' ); ?>
 
 		<form action="" method="post" id="groups-directory-form" class="dir-form">
 
-			<h1 class="view-title"><?php _e( 'Groups Directory', 'buddypress' ); ?><?php if ( is_user_logged_in() && bp_user_can_create_groups() ) : ?> &nbsp;<a class="button" href="<?php echo trailingslashit( bp_get_root_domain() . '/' . bp_get_groups_root_slug() . '/create' ); ?>"><?php _e( 'Create a Group', 'buddypress' ); ?></a><?php endif; ?></h1>
+			<h1 class="view-title"><?php _e( 'Groups Directory', 'buddypress' ); ?>
+				<?php if ( is_user_logged_in() && bp_user_can_create_groups() ) : ?> 
+					&nbsp;<a class="button" href="<?php echo trailingslashit( bp_get_root_domain() . '/' . bp_get_groups_root_slug() . '/create' ); ?>">
+				<?php _e( 'Create a Group', 'buddypress' ); ?></a>
+				
+				<?php elseif ( is_user_logged_in() ):?> 
+				
+					&nbsp;<a class="button" id="request_group_button" href="/request-a-group/">Request a Group</a>
+				
+				<?php endif; ?>
+			</h1>
 
 			<?php do_action( 'bp_before_directory_groups_content' ); ?>
 

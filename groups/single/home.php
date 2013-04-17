@@ -9,7 +9,7 @@
 		<?php locate_template( array( 'groups/single/group-header.php' ), true ); ?>
 
 	</div><!-- #item-header -->
-	<div id="secondary" class="widget-area" role="complementary">
+	<div id="secondary" role="complementary">
 		<div id="group-navigation"> 
 		    <div id="item-buttons">
 

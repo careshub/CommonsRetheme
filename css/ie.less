@@ -16,4 +16,7 @@
 	// .widget img {width:100%;}
 }
 //hasLayout hack for IE7
-body.home-page #primary #top-story { height:1%; }  
+body.home-page #primary #top-story { height:1%; }
+// IE7 hack to fix transparency problem
+.primary-navigation .brand {
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=0 ); /* IE6-9 */}

@@ -153,7 +153,9 @@
 									</div>
 
 								<?php endif; ?>
-								
+
+								<?php do_action( 'bp_custom_profile_edit_fields_pre_visibility' ); ?>
+
 								<?php if ( bp_current_user_can( 'bp_xprofile_change_field_visibility' ) ) : ?>
 									<p class="field-visibility-settings-toggle" id="field-visibility-settings-toggle-<?php bp_the_profile_field_id() ?>">
 										<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'buddypress' ), bp_get_the_profile_field_visibility_level_label() ) ?> <a href="#" class="visibility-toggle-link"><?php _ex( 'Change', 'Change profile field visibility level', 'buddypress' ); ?></a>
@@ -172,9 +174,8 @@
 								<?php else : ?>
 									<p class="field-visibility-settings-notoggle" id="field-visibility-settings-toggle-<?php bp_the_profile_field_id() ?>">
 										<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'buddypress' ), bp_get_the_profile_field_visibility_level_label() ) ?>
-									</p>			
+									</p>
 								<?php endif ?>
-
 
 								<?php do_action( 'bp_custom_profile_edit_fields' ); ?>
 
@@ -275,7 +276,7 @@
 		</div><!-- .padder -->
 	</div><!-- #content -->
 
-	<?php get_sidebar( 'buddypress' ); ?>
+	<?php //get_sidebar( 'buddypress' ); ?>
 
 	<script type="text/javascript">
 		jQuery(document).ready( function() {
@@ -286,6 +287,41 @@
 				jQuery('div#blog-details').fadeOut().toggle();
 			});
 		});
+	</script>
+
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?api=3.6&sensor=false"></script>
+	
+	<script type="text/javascript">
+
+	jQuery(document).ready(function(){
+		$("#field_573").parent(".editfield").hide(); //573
+		$("#field_574").parent(".editfield").hide(); //574
+	});
+
+	jQuery("#field_3, #field_470").focusout(function(e){
+
+		var street_address = $("#field_3").val();
+		var city_state = $("#field_470").val();
+		if (street_address == "" || city_state == "" ) { return; }
+		var address = street_address+" "+city_state;
+
+
+
+	   var geocoder = new google.maps.Geocoder();
+	   geocoder.geocode({ 'address': address }, function (results, status) {
+	       if (status == google.maps.GeocoderStatus.OK) {
+	           var location = results[0].geometry.location;
+	           var latitude = location.lat();
+	           var longitude = location.lng();
+	           //write lat & lon to form fields
+	           $("#field_573").val(latitude);
+				$("#field_574").val(longitude);
+	       } else {
+	           alert("Address search was not successful for the following reason: " + status);
+	       }
+	   });
+	  
+	  });
 	</script>
 
 <?php get_footer( 'buddypress' ); ?>

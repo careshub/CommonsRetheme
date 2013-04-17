@@ -629,14 +629,16 @@ div#signup-avatar img {
 .standard-form #basic-details-section,
 .standard-form #blog-details-section,
 .standard-form #profile-details-section {
-  float: left;
-  width: 48%;
+  float: none;
+  width: 100%;
+  margin-bottom: 4em;
 }
-.standard-form #profile-details-section {
-  float: right;
+form#signup_form .field-visibility-settings fieldset {
+  margin-top: 1em;
 }
-.standard-form #blog-details-section {
-  clear: left;
+form#signup_form .field-visibility-settings fieldset label {
+  margin: 8px 0 5px;
+  font-weight: normal;
 }
 .standard-form input:focus,
 .standard-form textarea:focus,
@@ -1890,6 +1892,9 @@ textarea:focus {
   -moz-box-shadow: inset 0 0px 3px 0 #008eaa;
   box-shadow: inset 0 0px 3px 0 #008eaa;
 }
+.wrapper {
+  padding-bottom: 2em;
+}
 .page-width {
   max-width: 960px;
   max-width: 68.5714rem;
@@ -2774,16 +2779,16 @@ body.home-page #primary .quarter-block .related-posts li a {
   width: 100%;
 }
 #data-vis-tool-group-community-context .entry-header h1 {
-  color: #df5927;
+  color: #f7b718;
 }
 #data-vis-tool-group-community-context #data-vis-header-community-context {
-  background-color: #df5927;
+  background-color: #f7b718;
 }
 #data-vis-tool-group-economic .entry-header h1 {
-  color: #df5927;
+  color: #a3bb4f;
 }
 #data-vis-tool-group-economic #data-vis-header-economic {
-  background-color: #df5927;
+  background-color: #a3bb4f;
 }
 #data-vis-tool-group-education .entry-header h1 {
   color: #f7b718;
@@ -2792,16 +2797,16 @@ body.home-page #primary .quarter-block .related-posts li a {
   background-color: #f7b718;
 }
 #data-vis-tool-group-environment .entry-header h1 {
-  color: #a3bb4f;
+  color: #008eaa;
 }
 #data-vis-tool-group-environment #data-vis-header-environment {
-  background-color: #a3bb4f;
+  background-color: #008eaa;
 }
 #data-vis-tool-group-food .entry-header h1 {
-  color: #869b3c;
+  color: #df5927;
 }
 #data-vis-tool-group-food #data-vis-header-food {
-  background-color: #869b3c;
+  background-color: #df5927;
 }
 #data-vis-tool-group-health-4 .entry-header h1 {
   color: #008eaa;
@@ -3091,6 +3096,12 @@ body.home-page #primary .quarter-block .related-posts li a {
     border-top: none;
     margin-top: 0;
   }
+  .buddypress #secondary .widget,
+  .salud-america #secondary .widget,
+  .buddypress #tertiary .widget,
+  .salud-america #tertiary .widget {
+    margin-right: 12px;
+  }
   .nav-tabs,
   .nav-pills {
     *zoom: 1;
@@ -3233,6 +3244,26 @@ body.home-page #primary .quarter-block .related-posts li a {
   #content #screamer h1 {
     font-size: 19.599999999999998px;
     font-size: 1.4rem;
+  }
+  /***
+   * Content Object Headers
+   */
+  div#item-header div#item-actions {
+    float: right;
+    margin: 0 0 15px 15px;
+  }
+  div#item-header .highlight,
+  div#item-header .activity {
+    margin-left: 2em;
+  }
+  .standard-form #basic-details-section,
+  .standard-form #blog-details-section,
+  .standard-form #profile-details-section {
+    float: left;
+    width: 48%;
+  }
+  .standard-form #profile-details-section {
+    float: right;
   }
 }
 @media screen and (min-width: 1000px) {

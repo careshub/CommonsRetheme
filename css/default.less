@@ -637,15 +637,18 @@ div#signup-avatar img {
 .standard-form #basic-details-section,
 .standard-form #blog-details-section,
 .standard-form #profile-details-section {
-	float: left;
-	width: 48%;
+	float: none;
+	width: 100%;
+	margin-bottom: 4em;
 }
-.standard-form #profile-details-section {
-	float: right;
+form#signup_form .field-visibility-settings fieldset {
+	margin-top: 1em;
+	 label {
+	    margin: 8px 0 5px;
+	    font-weight: normal;
+	}
 }
-.standard-form #blog-details-section {
-	clear: left;
-}
+
 .standard-form input:focus,
 .standard-form textarea:focus,
 .standard-form select:focus {
@@ -2041,6 +2044,9 @@ input, textarea {
 		.inner-glow(); 
 	}
 }
+.wrapper {
+	padding-bottom: 2em;
+}
 .page-width {
 	max-width: 960px;
 	max-width: 68.5714rem;
@@ -3122,18 +3128,18 @@ body.home-page {
 }
 #data-vis-tool-group-community-context {
 	.entry-header h1 {
-		color:@ccred;
+		color:@ccyellow;
 	}
 #data-vis-header-community-context {
-	background-color: @ccred;	
+	background-color: @ccyellow;	
 	}
 }
 #data-vis-tool-group-economic {
 	.entry-header h1 {
-		color:@ccred;
+		color: lighten(@ccgreen,10);
 	}
 #data-vis-header-economic {
-	background-color: @ccred;	
+	background-color: lighten(@ccgreen,10);	
 	}
 }
 #data-vis-tool-group-education {
@@ -3146,18 +3152,18 @@ body.home-page {
 }
 #data-vis-tool-group-environment {
 	.entry-header h1 {
-		color: lighten(@ccgreen,10);
+		color: @ccblue;
 	}
 #data-vis-header-environment {
-	background-color: lighten(@ccgreen,10);	
+	background-color:  @ccblue;	
 	}
 }
 #data-vis-tool-group-food {
 	.entry-header h1 {
-		color:@ccgreen;
+		color:@ccred;
 	}
 #data-vis-header-food {
-	background-color: @ccgreen;	
+	background-color: @ccred;	
 	}
 }
 #data-vis-tool-group-health-4 {
