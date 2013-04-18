@@ -247,29 +247,29 @@ function sa_policy_meta_box() {
 <div id="leftcolumn2">
     <strong>Stage:</strong><br>
 
-    <input type="radio" name="sa_policystage" value="pre" onClick="setStage('pre');"
+    <input type="radio" name="sa_policystage" value="Pre Policy" onClick="setStage('pre');"
            <?php 
-                if ($sapolicy_stage == "pre") {
+                if ($sapolicy_stage == "Pre Policy") {
                     echo " checked";
                 }
            ?>
            > Pre-Policy<br>
-    <input type="radio" name="sa_policystage" value="develop" onClick="setStage('develop');"
+    <input type="radio" name="sa_policystage" value="Develop Policy" onClick="setStage('develop');"
             <?php 
-                if ($sapolicy_stage == "develop") {
+                if ($sapolicy_stage == "Develop Policy") {
                     echo " checked";
                 }
            ?>> Develop Policy<br>
-    <input type="radio" name="sa_policystage" value="enact" onClick="setStage('enact');"
+    <input type="radio" name="sa_policystage" value="Enact Policy" onClick="setStage('enact');"
            <?php 
-                if ($sapolicy_stage == "enact") {
+                if ($sapolicy_stage == "Enact Policy") {
                     echo " checked";
                 }
            ?>           
            > Enact Policy<br>
-    <input type="radio" name="sa_policystage" value="post" onClick="setStage('post');"
+    <input type="radio" name="sa_policystage" value="Post Policy" onClick="setStage('post');"
            <?php 
-                if ($sapolicy_stage == "post") {
+                if ($sapolicy_stage == "Post Policy") {
                     echo " checked";
                 }
            ?>           
