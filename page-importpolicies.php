@@ -27,7 +27,7 @@ get_header(); ?>
 <?php get_footer(); 
 
 function sa_import_policies() {
-    $xmlref = file_get_contents('http://localhost/wordpress/wp-content/themes/twentytwelve/includes/sapolicies.xml');
+    $xmlref = file_get_contents('http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/includes/sapolicies_import.xml');
     $xmlpols =  new SimpleXMLElement($xmlref) ;
     file_put_contents(dirname(__FILE__)."/includes/poloutput_sm.xml", $xmlpols->asXML());
     
