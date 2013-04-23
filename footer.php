@@ -68,32 +68,6 @@
 
 <?php wp_footer(); ?>
 <script type="text/javascript">
-jQuery('.sharrre').sharrre({
-	share: {
-		twitter: true,
-		facebook: true,
-		googlePlus: true
-	},
-	template: '<div class="box"><div class="left">Share</div><ul class="sharrre-buttons"><li><a href="#" class="facebook"><span class="facebookx24"></span>facebook</a></li><li><a href="#" class="twitter"><span class="twitterx24"></span>twitter</a></li><li><a href="#" class="googleplus"><span class="gplusx24"></span>Google +1</a></li></ul></div>',
-	enableHover: false,
-	enableTracking: true,
-	urlCurl: '',
-	render: function(api, options){
-		jQuery(api.element).on('click', '.twitter', function() {
-		api.openPopup('twitter');
-		});
-		jQuery(api.element).on('click', '.facebook', function() {
-		api.openPopup('facebook');
-		});
-		jQuery(api.element).on('click', '.googleplus', function() {
-		api.openPopup('googlePlus');
-		});
-	}
-  // enableHover: true, 
-  // enableCounter: false //this display the link used to activate the popup        
-});
-</script>
-<script type="text/javascript">
 	jQuery(function() {
 		 jQuery('a[href^="https://ip3.zendesk.com"]').click(function(e) {
 		 	if (typeof Zenbox.show == 'function') { 
