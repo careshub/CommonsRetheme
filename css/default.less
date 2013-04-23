@@ -728,6 +728,9 @@ div.generic-button a:hover,
 	outline: none;
 	text-decoration: none;
 }
+#item-buttons .generic-button a {
+	margin: 0 10px 10px 0;
+}
 
 // Specific for invite users pane
 #send-invite-form, #group-create-body {
@@ -1125,7 +1128,7 @@ div#item-header ul {
 div#item-header ul h5,
 div#item-header ul span,
 div#item-header ul hr {
-	display: none;
+	//display: none; //Not sure if this rule is important
 }
 div#item-header ul li {
 	// float: right;
@@ -1613,7 +1616,7 @@ ul.activity-list {
 }
 
 ul.activity-list li {
-	overflow: hidden;
+	overflow: visible; // Needed for share-it button
 	padding: 20px 0;
 }
 	ul.activity-list li img.avatar {
@@ -2152,59 +2155,23 @@ h5 {
 	// }
 }
 //Sharing buttons
- .sharrre .box{
- 	background: #fff; /* Old browsers */
-	background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Opera11.10+ */
-	background: -ms-linear-gradient(top, #ffffff 0%,#ededed 100%); /* IE10+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
-	background: linear-gradient(top, #ffffff 0%,#ededed 100%); /* W3C */
-	border: 1px solid #ccc;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	color: @ccblue;
-	// cursor: pointer;
-	//font: normal 12px/20px Arial, Tahoma, Verdana, sans-serif;
-	.font-size(.9);
-	// outline: none;
-	padding: .3em .6em;
-	text-align: center;
-	text-decoration: none;
-	width:92px;
-	display:inline-block;
-	position:relative;
-	-webkit-transition:all 0.3s linear;
-	-moz-transition:all 0.3s linear;
-	-o-transition:all 0.3s linear;
-	transition:all 0.3s linear;
-	.sharrre-buttons {
-		height:0;
-		//width:106px;
+.share-buttons-below {
+		display: none;
 		overflow: hidden; /*TODO clearfix?*/
-		position: absolute;
-		bottom:30px;
-		right:0;
 		z-index:500;
-		-webkit-transition:all 0.15s linear;
-		-moz-transition:all 0.15s linear;
-		-o-transition:all 0.15s linear;
-		transition:all 0.15s linear;
-		.outliner();
 		list-style-type: none;
 		margin: 0;
 		border: 1px solid transparent;
 		li {
+			padding:0;
+			display: inline-block;
 			a {
-				display: inline-block;
 				text-align: left;
 				width:106px;
 				//height:20px;
-				line-height: 2.8;
+				line-height: 1.8;
 				padding:0;
-				margin: 2px 0;
+				margin: 2px 8px 2px 0;
 				.outliner();
 				//background-color:@graylight;
 				&:hover{
@@ -2212,64 +2179,20 @@ h5 {
 				}
 				span {
 					display: inline-block;
-					margin: 0 8px 0 4px;
+					margin: 0 6px 0 0;
 				    vertical-align: middle;
 				}
 			}
 
 		}
 	}
+ul.item-list li .share-buttons-below li {
+				border-bottom: none;
 }
-.sharrre .left{
-line-height:22px;
-display:block;
-white-space:nowrap;
-text-shadow:0px 1px 1px rgba(255,255,255,0.3);
-//color:#ffffff;
--webkit-transition:all 0.2s linear;
--moz-transition:all 0.2s linear;
--o-transition:all 0.2s linear;
-transition:all 0.2s linear;
+.bp-share-it-button-group {
+	float: left;
 }
-.sharrre .box:hover {
-	//width:92px;
-	.sharrre-buttons {
-		height: auto;
-		border: 1px solid @ccblue;
-		background-color:@white;
-			li {
-				//padding:0px 8px;
-			}
-			&:after {
-			    content: '';
-			    width: 0;
-			    height: 0;
-			    display: block;
 
-			    border-width: 10px;
-			    border-color: transparent #ccc transparent transparent;
-			    border-style: solid;
-
-			    position: absolute;
-			    bottom: -20px;
-			    left: -20px;
-			}
-
-	}
-
-}
-.sharrre.alignright { 
-	margin-left: 24px; 
-	margin-left: 1.714rem;
-	margin-top:4px;
-
-}
-.sharrre.alignleft { 
-	margin-right: 24px; 
-	margin-right: 1.714rem;
-	margin-top:4px;
-
-}
 //meters
 .meter { 
 	height: 10px;  /* Can be anything */
@@ -2428,7 +2351,7 @@ transition:all 0.2s linear;
 	width:30px;
 	height:auto;
 }
-.facebookx60, .searchx18, .userx18, .userx21, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24{
+.facebookx60, .searchx18, .userx18, .userx21, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24, .linkedinx24, .emailx24{
 	background: url(img/sprites.png) no-repeat;
 }
 
@@ -2503,6 +2426,17 @@ transition:all 0.2s linear;
 
 .twitterx24{
 	background-position: 0 -440px ;
+	width: 24px;
+	height: 24px;
+}
+.linkedinx24{
+	background-position: 0 -470px ;
+	width: 24px;
+	height: 24px;
+}
+
+.emailx24{
+	background-position: 0 -500px ;
 	width: 24px;
 	height: 24px;
 }

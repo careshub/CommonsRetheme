@@ -11,11 +11,11 @@
 	</div><!-- #item-header -->
 	<div id="secondary" role="complementary">
 		<div id="group-navigation"> 
-		    <div id="item-buttons">
+		    <!-- <div id="item-buttons">
 
-				<?php do_action( 'bp_group_header_actions' ); ?>
+				<?php //do_action( 'bp_group_header_actions' ); ?>
 
-			</div><!-- #item-buttons -->
+			</div> --><!-- #item-buttons -->
 			<div class="sidebar-activity-tabs no-ajax" id="object-nav" role="navigation">
 				<ul>
 					<?php bp_get_options_nav(); ?>
