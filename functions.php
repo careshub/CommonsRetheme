@@ -16,6 +16,8 @@ require_once('includes/SA_Resources.php');
 require_once('includes/taxonomy-resourcecat.php');
 //Definition of the Salud America policy tag custom taxonomy
 require_once('includes/taxonomy-sapolicytag.php');
+//Shortcode for CDC_DCH Group Home
+require_once('includes/cdc_dch_shortcode.php');
 
 function bp_support_theme_setup() {
   global $bp;
