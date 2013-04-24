@@ -806,7 +806,7 @@ function cc_add_custom_types( $query ) {
     return $query;
   }
 }
-add_filter( 'pre_get_posts', 'cc_add_custom_types' );
+// add_filter( 'pre_get_posts', 'cc_add_custom_types' );
 
 //Show a list of attachments after the post, for sa policies only
 

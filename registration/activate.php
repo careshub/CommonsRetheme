@@ -27,7 +27,7 @@
 
 			<?php else : ?>
 
-				<p><?php _e( 'Please provide a valid activation key.', 'buddypress' ); ?></p>
+				<p><?php _e( 'Please provide a valid activation key. If you&rsquo;re not sure what to do, please try <a href="/wp-login.php">logging in</a>.',  'buddypress' ) ?></p>
 
 				<form action="" method="get" class="standard-form" id="activation-form">
 

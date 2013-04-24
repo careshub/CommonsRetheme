@@ -53,11 +53,8 @@
 				</form>
 			</div>
 	    	<div>
-	    		<form id="newsletter-opt-in" method="get" action="">
 	    		<h5>Subscribe to our newsletter</h5>
-				<input id="newsletter-opt-in-text" class="" type="text" maxlength="150" value="" name="s">
-				<input class="newsletter-opt-in-button" type="submit" value="Submit">
-				</form>
+				<a href="http://visitor.r20.constantcontact.com/d.jsp?llr=dikmfnjab&p=oi&m=1109617158403" title="Subscribe to our newsletter" class="button">Sign up now</a>
 	    	</div>
 		    <a href="http://www.facebook.com/CommunityCommons" class="facebookx60 iconx60 alignleft"></a>
 		    <a href="https://twitter.com/communitycommon" class="twitterx60 iconx60 alignleft"></a>

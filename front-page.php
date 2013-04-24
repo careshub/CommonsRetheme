@@ -56,6 +56,7 @@ $do_not_duplicate = array();
 			// echo '<br />';
 
 		    //$related_tag = $post->tag ?>
+		    <p><a href="/features/" title="Feature article archive">Browse all feature articles.</a></p>
 		</div> <!-- end #top-story -->
 
 		<?php endwhile; 
