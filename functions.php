@@ -126,7 +126,7 @@ function commons_ie_stylesheet_load(){
     global $wp_styles;
     wp_register_style(
             'commons_ie_stylesheet',
-            get_stylesheet_directory_uri() . '/css/ie.css',
+            get_stylesheet_directory_uri() . '/style-ie.css',
             false,
             0.2
         );

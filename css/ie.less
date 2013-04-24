@@ -1,5 +1,3 @@
-@import url("../twentytwelve/style.css");
-
 @import "default";
 
 @import "400"; 
@@ -11,18 +9,12 @@
 //IE fixes
 .ie8, .ie7 {
 	.primary-navigation .secondary .bp-notifications .bp-notification-list {
-			margin-top:12px;
-		}
+		margin-top:12px;
+	}
 	// .widget img {width:100%;}
 }
+.ie7 #cc-primary-search #cc-navbar-search .cc-nav-input {
+	background-color: @white;
+	}
 //hasLayout hack for IE7
 body.home-page #primary #top-story { height:1%; }
-// IE7 hack to fix transparency problem
-.primary-navigation .brand {
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=0 ); /* IE6-9 */}
-.facebookx60, .searchx18, .userx18, .userx21, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24, .linkedinx24, .emailx24{
-	background: url(img/sprites-ie.png) no-repeat;
-}
-.primary-navigation .brand a {
-  background: url(img/cc_logomark-30x30-ie.png) no-repeat left center;
-}
