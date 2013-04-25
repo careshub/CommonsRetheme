@@ -2659,6 +2659,14 @@ body.home-page #primary .quarter-block .related-posts li a {
   padding-bottom: 1.7rem;
   border-bottom: 1px solid #dedede;
 }
+.third-block {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  margin-top: 1.7rem;
+  margin-bottom: 1.7rem;
+  padding-bottom: 24px;
+  padding-bottom: 1.7rem;
+}
 .featured-data-vis-tool .section-header {
   width: 100%;
 }
@@ -2692,7 +2700,20 @@ body.home-page #primary .quarter-block .related-posts li a {
   margin-bottom: 1.7rem;
 }
 .maps-data #primary #content .quicklinks li {
-  margin: 10px 10px 0 0;
+  position: relative;
+  padding-bottom: 0;
+}
+.maps-data #primary #content .quicklinks li a {
+  font-size: 14px;
+  font-size: 1rem;
+  padding-left: 65px;
+  text-align: left;
+}
+.maps-data #primary #content .quicklinks li a span {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 #jumplinks h3 {
   display: inline-block;
@@ -2981,6 +3002,7 @@ body.home-page #primary .quarter-block .related-posts li a {
   }
   .content-row {
     border-bottom: 1px solid #dedede;
+    width: 100%;
   }
   .content-row:after {
     clear: both;
@@ -2989,6 +3011,16 @@ body.home-page #primary .quarter-block .related-posts li a {
   .content-row:after {
     display: table;
     content: "";
+  }
+  .third-block {
+    border-bottom: none;
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 28.9%;
+    float: left;
+  }
+  .third-block img {
+    width: 92%;
   }
   .quarter-block {
     border-bottom: none;
@@ -3167,11 +3199,8 @@ body.home-page #primary .quarter-block .related-posts li a {
     margin-bottom: 24;
     margin-bottom: 1.7rem;
     padding-bottom: 0;
-    width: 80%;
-    display: inline-block;
   }
   .maps-data #primary #content .quicklinks {
-    float: right;
     margin-top: 1.5em;
   }
   .data-vis-tool-group .entry-header p {

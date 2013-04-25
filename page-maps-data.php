@@ -15,12 +15,15 @@ get_header(); ?>
 				<?php the_post(); ?>
 
 				<?php get_template_part( 'content', 'page' ); ?>
-				<ul class="quicklinks">
-					<li>
-						<a href="#" class="button">Start a new map</a>
+				<ul class="quicklinks content-row">
+					<li class="third-block">
+						<a href="http://maps.communitycommons.org" class="button"><span class="twitterx60"></span>Enter the Commons state-of-the-art mapping environment.</a>
 					</li>
-					<li>
-						<a href="#" class="button">Start a new report</a>
+					<li class="third-block">
+						<a href="http://assessment.communitycommons.org" class="button"><span class="twitterx60"></span>Use reporting tools to identify needs and assets in your community.</a>
+					</li>
+					<li class="third-block">
+						<a href="#" class="button"><span class="twitterx60"></span>Access other tools and functionality only found on the Commons.</a>
 					</li>
 				</ul>
                 
@@ -47,7 +50,7 @@ get_header(); ?>
 				$section_title = $cat_object->name;
 				?>
 				<li>
-					<a href="#data-vis-tool-group-<?php echo $cat_slug; ?>" title="Scroll to <?php echo $section_title; ?> section" class="button chunky horizontal-list"><?php echo $section_title; ?></a>
+					<a href="#data-vis-tool-group-<?php echo $cat_slug; ?>" title="Scroll to <?php echo $section_title; ?> section" class="horizontal-list"><?php echo $section_title; ?></a>
 				</li>
 				<?php
 			}		
