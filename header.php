@@ -106,7 +106,7 @@
         			<?php printf( __( '<a href="%s" title="Create an account">Register</a>', 'buddypress' ), site_url( bp_get_signup_slug() . '/' ) ) ?>
         		</li>
         		<li id="login-item" class="clear">
-	        		<a class="login-link" href="<?php echo wp_login_url( $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?></a>
+	        		<a class="login-link" href="<?php echo wp_login_url( ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?></a>
         			<div class="pop-sub-wrapper">
         				<form name="login-form" id="sidebar-login-form" class="standard-form" action="<?php echo site_url( 'wp-login.php', 'login_post' ) ?>" method="post">
 							<label><?php _e( 'Username', 'buddypress' ) ?><br />
@@ -119,7 +119,7 @@
 
 							<?php do_action( 'bp_sidebar_login_form' ) ?>
 							<input type="submit" name="wp-submit" id="sidebar-wp-submit" value="<?php _e( 'Log In', 'buddypress' ); ?>" tabindex="100" /> &nbsp;&nbsp;&nbsp;&nbsp; <button id="cancel-login">Cancel</button>
-							<input type="hidden" name="redirect_to" value="<?php $_SERVER['REQUEST_URI'] ?>" />
+							<input type="hidden" name="redirect_to" value="<?php echo ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ?>" />
 							<input type="hidden" name="testcookie" value="1" />
 						</form>
         			</div>

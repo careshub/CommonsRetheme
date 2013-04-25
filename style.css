@@ -745,6 +745,9 @@ div.generic-button a:hover,
   outline: none;
   text-decoration: none;
 }
+#item-buttons {
+  margin-top: 1em;
+}
 #item-buttons .generic-button a {
   margin: 0 10px 10px 0;
 }
