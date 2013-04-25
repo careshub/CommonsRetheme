@@ -1978,6 +1978,13 @@ h5 {
   line-height: 1.6;
   margin: 0.8em 1em;
 }
+.entry-header .entry-title,
+.archive-header .archive-title {
+  font-size: 20px;
+  font-size: 1.428571429rem;
+  line-height: 1.2;
+  font-weight: normal;
+}
 .column1of3 {
   float: left;
   margin: 0 1.5% 3%;
