@@ -56,7 +56,7 @@ $do_not_duplicate = array();
 			// echo '<br />';
 
 		    //$related_tag = $post->tag ?>
-		    <p><a href="/category/features/" title="Feature article archive">Browse all feature articles.</a></p>
+		    <p><a href="/blog/" title="Article archive">Browse all articles.</a></p>
 		</div> <!-- end #top-story -->
 
 		<?php endwhile; 
@@ -122,7 +122,7 @@ for ($i = 1; $i <= 4; $i++) {
 		case 2:			
 			$args = array(
 			 	'post__in' => $sticky_no_dupes,
-			 	'category_name' => 'features',
+			 	// 'category_name' => 'features',
 				'ignore_sticky_posts' => 1,
 			 	'posts_per_page' => 1
 			 	);			
@@ -220,7 +220,7 @@ for ($i = 1; $i <= 4; $i++) {
 			$args = array(
 				 	'post__not_in' => $exclude_dupes_guests_data,
 				 	'tag__in' => $post_tags,
-				 	'category_name' => 'features',
+				 	// 'category_name' => 'features',
 				 	'ignore_sticky_posts' => 1,
 				 	'posts_per_page' => 2
 				 	);		 	
