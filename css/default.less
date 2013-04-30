@@ -2350,17 +2350,17 @@ ul.item-list li .share-buttons-below li {
 }
 
 //icons
-.iconx60 {
-	display:inline-block;
-	width:60px;
-	height:auto;
-}
-.iconx30 {
-	display:inline-block;
-	width:30px;
-	height:auto;
-}
-.facebookx60, .searchx18, .userx18, .userx21, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24, .linkedinx24, .emailx24{
+// .iconx60 {
+// 	display:inline-block;
+// 	width:60px;
+// 	height:auto;
+// }
+// .iconx30 {
+// 	display:inline-block;
+// 	width:30px;
+// 	height:auto;
+// }
+.facebookx60, .searchx18, .userx18, .userx21, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24, .linkedinx24, .emailx24, .collaborationx24, .mapx24, .reportx24, .collaborationx40, .mapx40, .reportx40{
 	background: url(img/sprites.png) no-repeat;
 }
 
@@ -2388,15 +2388,6 @@ ul.item-list li .share-buttons-below li {
 	height: 21px;
 	margin-left: .5em;
 }
-.primary-navigation li span.visible-mini {
-	width:auto;
-	padding: .5em 0;
-	display: inline-block;
-    }
-.primary-navigation li.visible-maxi {
-	display: none;
-    }
-
 .twitterx60{
 	background-position: 0 -250px ;
 	width: 60px;
@@ -2449,6 +2440,50 @@ ul.item-list li .share-buttons-below li {
 	width: 24px;
 	height: 24px;
 }
+.collaborationx24{
+	background-position: -80px -135px ;
+	width: 24px;
+	height: 24px;
+}
+
+.mapx24{
+	background-position: -80px -50px ;
+	width: 24px;
+	height: 24px;
+}
+
+.reportx24{
+	background-position: -80px -235px ;
+	width: 24px;
+	height: 24px;
+}
+
+.collaborationx40{
+	background-position: -75px -85px ;
+	width: 40px;
+	height: 40px;
+}
+
+.mapx40{
+	background-position: -80px 0;
+	width: 40px;
+	height: 40px;
+}
+
+.reportx40{
+	background-position: -80px -175px ;
+	width: 40px;
+	height: 40px;
+}
+.primary-navigation li span.visible-mini {
+	width:auto;
+	padding: .5em 0;
+	display: inline-block;
+    }
+.primary-navigation li.visible-maxi {
+	display: none;
+    }
+
 //Salud America subsection
 @sagreen:#60b035;
 @sared:#ef4036;
@@ -2993,6 +3028,7 @@ body.home-page {
 			margin-bottom: 1.7rem;
 			padding-bottom: 24px;
 			padding-bottom: 1.7rem;
+			width:100%;
 			// border-bottom: 1px solid @graylight;
 		}
 
@@ -3039,15 +3075,48 @@ body.home-page {
 			padding-bottom: 0;
 			a{
 				.font-size(1);
-				padding-left: 65px;
+				// padding-left: 65px;
 				text-align: left;
+				line-height: 24px;
+				display: inline-block;
+				width: 94%;
 				span {
-					display: inline-block;
-					position: absolute;
-					left:0;
-					top: 0;
+					display: block;
+					float: left;
+					margin-right: 4%;
+					// position: absolute;
+					// left:0;
+					// top: 0;
 					// margin-top: -30px;
+					background: url(img/sprites.png) no-repeat;
+					width: 24px;
+					height: 24px;
+					&.map {
+						background-position: -80px -50px ;
+					}
+					&.report {
+						background-position: -80px -235px ;
+					}
+					&.collaboration {
+						background-position: -80px -135px ;
+					}
+
 				}
+			}
+		}
+	}
+	.data-vis-tool {
+		.entry-header {
+			span {
+				display: block;
+				float: left;
+				margin-right: 12px;
+			}
+			h3 {
+				float: left;
+				clear: none;
+				margin-top: 0;
+				margin-bottom: 0;
 			}
 		}
 	}

@@ -17,13 +17,13 @@ get_header(); ?>
 				<?php get_template_part( 'content', 'page' ); ?>
 				<ul class="quicklinks content-row">
 					<li class="third-block">
-						<a href="http://maps.communitycommons.org" class="button"><span class="twitterx60"></span>Enter the Commons state-of-the-art mapping environment.</a>
+						<a href="http://maps.communitycommons.org" class="button"><span class="map"></span>Make a map</a>
 					</li>
 					<li class="third-block">
-						<a href="http://assessment.communitycommons.org" class="button"><span class="twitterx60"></span>Use reporting tools to identify needs and assets in your community.</a>
+						<a href="http://assessment.communitycommons.org" class="button"><span class="report"></span>Start a report</a>
 					</li>
 					<li class="third-block">
-						<a href="#" class="button"><span class="twitterx60"></span>Access other tools and functionality only found on the Commons.</a>
+						<a href="#" class="button"><span class="collaboration"></span>Collaborate</a>
 					</li>
 				</ul>
                 

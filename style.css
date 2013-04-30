@@ -2115,16 +2115,6 @@ ul.item-list li .share-buttons-below li {
   -webkit-animation: none;
   background-image: none;
 }
-.iconx60 {
-  display: inline-block;
-  width: 60px;
-  height: auto;
-}
-.iconx30 {
-  display: inline-block;
-  width: 30px;
-  height: auto;
-}
 .facebookx60,
 .searchx18,
 .userx18,
@@ -2137,7 +2127,13 @@ ul.item-list li .share-buttons-below li {
 .gplusx24,
 .twitterx24,
 .linkedinx24,
-.emailx24 {
+.emailx24,
+.collaborationx24,
+.mapx24,
+.reportx24,
+.collaborationx40,
+.mapx40,
+.reportx40 {
   background: url(img/sprites.png) no-repeat;
 }
 .facebookx60 {
@@ -2160,14 +2156,6 @@ ul.item-list li .share-buttons-below li {
   width: 21px;
   height: 21px;
   margin-left: .5em;
-}
-.primary-navigation li span.visible-mini {
-  width: auto;
-  padding: .5em 0;
-  display: inline-block;
-}
-.primary-navigation li.visible-maxi {
-  display: none;
 }
 .twitterx60 {
   background-position: 0 -250px;
@@ -2213,6 +2201,44 @@ ul.item-list li .share-buttons-below li {
   background-position: 0 -500px;
   width: 24px;
   height: 24px;
+}
+.collaborationx24 {
+  background-position: -80px -135px;
+  width: 24px;
+  height: 24px;
+}
+.mapx24 {
+  background-position: -80px -50px;
+  width: 24px;
+  height: 24px;
+}
+.reportx24 {
+  background-position: -80px -235px;
+  width: 24px;
+  height: 24px;
+}
+.collaborationx40 {
+  background-position: -75px -85px;
+  width: 40px;
+  height: 40px;
+}
+.mapx40 {
+  background-position: -80px 0;
+  width: 40px;
+  height: 40px;
+}
+.reportx40 {
+  background-position: -80px -175px;
+  width: 40px;
+  height: 40px;
+}
+.primary-navigation li span.visible-mini {
+  width: auto;
+  padding: .5em 0;
+  display: inline-block;
+}
+.primary-navigation li.visible-maxi {
+  display: none;
 }
 .column1of2 {
   width: 48%;
@@ -2666,6 +2692,7 @@ body.home-page #primary .quarter-block .related-posts li a {
   margin-bottom: 1.7rem;
   padding-bottom: 24px;
   padding-bottom: 1.7rem;
+  width: 100%;
 }
 .featured-data-vis-tool .section-header {
   width: 100%;
@@ -2706,14 +2733,38 @@ body.home-page #primary .quarter-block .related-posts li a {
 .maps-data #primary #content .quicklinks li a {
   font-size: 14px;
   font-size: 1rem;
-  padding-left: 65px;
   text-align: left;
+  line-height: 24px;
+  display: inline-block;
+  width: 94%;
 }
 .maps-data #primary #content .quicklinks li a span {
-  display: inline-block;
-  position: absolute;
-  left: 0;
-  top: 0;
+  display: block;
+  float: left;
+  margin-right: 4%;
+  background: url(img/sprites.png) no-repeat;
+  width: 24px;
+  height: 24px;
+}
+.maps-data #primary #content .quicklinks li a span.map {
+  background-position: -80px -50px;
+}
+.maps-data #primary #content .quicklinks li a span.report {
+  background-position: -80px -235px;
+}
+.maps-data #primary #content .quicklinks li a span.collaboration {
+  background-position: -80px -135px;
+}
+.maps-data #primary #content .data-vis-tool .entry-header span {
+  display: block;
+  float: left;
+  margin-right: 12px;
+}
+.maps-data #primary #content .data-vis-tool .entry-header h3 {
+  float: left;
+  clear: none;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 #jumplinks h3 {
   display: inline-block;
@@ -2799,6 +2850,35 @@ body.home-page #primary .quarter-block .related-posts li a {
   #content #screamer h1 {
     font-size: 16.8px;
     font-size: 1.2rem;
+  }
+  .maps-data #primary #content .quicklinks li a {
+    font-size: 16.8px;
+    font-size: 1.2rem;
+    line-height: 40px;
+  }
+  .maps-data #primary #content .quicklinks li a span {
+    background: url(img/sprites.png) no-repeat;
+    width: 40px;
+    height: 40px;
+  }
+  .maps-data #primary #content .quicklinks li a span.map {
+    background-position: -80px 0;
+  }
+  .maps-data #primary #content .quicklinks li a span.report {
+    background-position: -80px -175px;
+  }
+  .maps-data #primary #content .quicklinks li a span.collaboration {
+    background-position: -75px -85px;
+  }
+  .third-block {
+    border-bottom: none;
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 28.9%;
+    float: left;
+  }
+  .third-block img {
+    width: 92%;
   }
 }
 @media screen and (min-width: 800px) {
@@ -3011,16 +3091,6 @@ body.home-page #primary .quarter-block .related-posts li a {
   .content-row:after {
     display: table;
     content: "";
-  }
-  .third-block {
-    border-bottom: none;
-    margin-right: 2%;
-    margin-left: 2%;
-    width: 28.9%;
-    float: left;
-  }
-  .third-block img {
-    width: 92%;
   }
   .quarter-block {
     border-bottom: none;
