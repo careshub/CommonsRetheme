@@ -29,14 +29,14 @@ function SA_policies_init()
 		'query_var' => true,
 		'rewrite' => true,
 		'hierarchical' => false,
-    'show_in_menu' => true,
-    'menu_position' => 22,
-    'taxonomies' => array('sa_advocacy_targets', 'sa_policy_tags'),
-    //'has_archive' => 'sapolicies',
-    // 'supports' => array('title','editor','excerpt','trackbacks','custom-fields','comments','revisions','thumbnail','author','page-attributes',),
-    'supports' => array('title','editor','comments'),
-  	'capability_type' => 'sapolicies',
-  	'map_meta_cap' => true
+                'show_in_menu' => true,
+                'menu_position' => 22,
+                'taxonomies' => array('sa_advocacy_targets', 'sa_policy_tags'),
+                //'has_archive' => 'sapolicies',
+                // 'supports' => array('title','editor','excerpt','trackbacks','custom-fields','comments','revisions','thumbnail','author','page-attributes',),
+                'supports' => array('title','editor','comments'),
+                'capability_type' => 'sapolicies',
+                'map_meta_cap' => true
 	);
 	
 	register_post_type('sapolicies',$args);
@@ -80,32 +80,33 @@ function my_manage_sapolicies_columns( $column, $post_id ) {
 	}
 }
 
-function sap_columns_register_sortable( $columns ) {
+function sa_columns_register_sortable( $columns ) {
         $columns["type"] = "type";
         $columns["stage"] = "stage";
 	$columns["last_modified"] = "last_modified";
 	return $columns;
 }
-add_filter( "manage_edit-sapolicies_sortable_columns", "sap_columns_register_sortable" );
+add_filter( "manage_edit-sapolicies_sortable_columns", "sa_columns_register_sortable" );
 
 
 
 
 //Building the input form in the WordPress admin area
-add_action( 'admin_init', 'sa_policy_meta_box_add' );
-function sa_policy_meta_box_add()
+add_action( 'admin_init', 'sapolicy_meta_box_add' );
+function sapolicy_meta_box_add()
 {
-	 add_meta_box( 'sa_policy_meta_box', 'Policy Information', 'sa_policy_meta_box', 'SA Policies', 'normal', 'high');
-	 add_meta_box( 'sa_geog_meta_box', 'Tag by Administrative Area', 'sa_geog_meta_box', 'SA Policies', 'normal', 'high' );   
+	 add_meta_box( 'sa_policy_meta_box', 'Policy Information', 'policy_meta_box', 'SA Policies', 'normal', 'high');
+         add_meta_box( 'sa_geog-meta-box', 'Geography', 'geog_meta_box', 'SA Policies', 'normal', 'high' );   
          
 }
+//CHANGE FUNCTION NAME
 add_action( 'admin_menu','sapolicy_remove_metas');
 function sapolicy_remove_metas() {
     remove_meta_box('geographiesdiv','sapolicies','side');
-    // remove_meta_box('commentstatusdiv','sapolicies','normal');
-    remove_meta_box('trackbacksdiv','sapolicies','normal');
+    //remove_meta_box('commentstatusdiv','sapolicies','normal');
+    remove_meta_box('trackbacksdiv','sapolicies','normal');    
 }
-       
+    
 function sa_geog_meta_box()
 {
     global $post;
@@ -124,7 +125,7 @@ function sa_geog_meta_box()
         $geogdef="";
         if ($geog == null)
         {
-            $geogdef="---Select an Administrative Area---";
+            $geogdef="---Select a Geography---";
         }else {            
             $geogdef=$geog;
         }
@@ -188,6 +189,8 @@ function sa_geog_meta_box()
                     
                 </select>
 				<input type="hidden" id="sa_finalgeog" name="sa_finalgeog" />
+				<div id="sa_latlongs"></div>
+		
             </div>            
         </div>
 </div>
@@ -219,9 +222,7 @@ function sa_policy_meta_box() {
     $post3 = $custom["sa_post3"][0];
     $dateenacted = $custom["sa_dateenacted"][0];
     $dateimplemented = $custom["sa_dateimplemented"][0];
-
-
-   
+    
         $ptdef="";
         if ($sapolicy_type == null){
             $ptdef="---Select a Policy Type---";
@@ -396,10 +397,6 @@ if ($sapolicy_stage === "post") {
     </div>
 </div>
 <div style="clear:both"></div>
-
-            
-
-
       
 
    
@@ -412,17 +409,16 @@ var $j = jQuery.noConflict();
         $j("#sa_dateimplemented").datepicker();
 		
 		var sg = $j('#sa_geog').val()
-		if ($j('#sa_selectedgeog').val() == null) {
+		if ($j('#sa_selectedgeog').val() === null) {
 			$j('#sa_selectedgeog').hide();		
 		}
-		if ($j("#sa_state").val()=="") {
+		if ($j("#sa_state").val()==="") {
 			$j("#sa_state").hide();		
 		}
-		if (sg == 'National') {
-			$j("#sa_state").hide();
+		if (sg === 'National') {
 			$j('#sa_selectedgeog').hide();
 		}		
-		if (sg == 'State') {
+		if (sg === 'State') {
 			$j('#sa_selectedgeog').hide();
 		}
 		
@@ -433,11 +429,11 @@ var $j = jQuery.noConflict();
 					var sageog = $j("#sa_geog").val();
 					var selstate = $j("#sa_state").val();
 					 
-					 if (sageog == 'National'){	
+					 if (sageog === 'National'){	
 						$j("#sa_state,#sa_selectedgeog").val('');							
 						$j("#sa_selectedgeog,#sa_state").hide();
 						$j("#sa_finalgeog").val('United States');	
-					 } else if (sageog == 'State'){
+					 } else if (sageog === 'State'){
 						$j("#sa_state").show();
 						$j("#sa_selectedgeog").hide();
 						$j("#sa_finalgeog").val(selstate);						
@@ -477,7 +473,36 @@ var $j = jQuery.noConflict();
 			   
 	   $j("#sa_selectedgeog").change(function()
 	   {
-			$j("#sa_finalgeog").val($j("#sa_selectedgeog").val());	
+
+                        $j("#sa_finalgeog").val($j("#sa_selectedgeog").val());	
+               
+			
+					if ($j("#sa_finalgeog").val() !== '') {
+						   	
+						  //	alert($j("#sa_finalgeog").val());
+
+                                                      var dataString2 = 'finalgeog=' + $j("#sa_finalgeog").val() + '&geog=' + $j("#sa_geog").val() + '&state=' + $j("#sa_state").val();  
+                                                   
+						   
+						
+						   $j.ajax
+						   ({
+							   type: "POST",               
+							   url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
+							   data: dataString2,
+							   cache: false,               
+							   error: function() {
+								   alert("I'm hitting an error2.");
+							   },
+							   success: function(p)
+							   {       
+								   //alert(p);
+								   $j("#sa_latlongs").html(p);         
+
+							   } 
+						   });
+				   }
+				   
 			//console.log($j("#sa_finalgeog").val());
 	   });
 
@@ -524,7 +549,12 @@ function setStage(y) {
 
 </script>
 
-<?php }
+<?php 
+
+
+
+
+}
 
 add_action( 'save_post', 'sapolicy_save' );
 function sapolicy_save() { 
@@ -534,22 +564,23 @@ function sapolicy_save() {
       return;
 
     if ($post->post_type == 'sapolicies') {
-       sapolicy_save_event_field("sa_policytype");
-       sapolicy_save_event_field("sa_policystage");       
-       sapolicy_save_event_field("sa_pre1");
-       sapolicy_save_event_field("sa_pre2");
-       sapolicy_save_event_field("sa_pre3");
-       sapolicy_save_event_field("sa_dev1");
-       sapolicy_save_event_field("sa_dev2");
-       sapolicy_save_event_field("sa_dev3");
-       sapolicy_save_event_field("sa_enact1");
-       sapolicy_save_event_field("sa_enact2");
-       sapolicy_save_event_field("sa_enact3");
-       sapolicy_save_event_field("sa_post1");
-       sapolicy_save_event_field("sa_post2");
-       sapolicy_save_event_field("sa_post3");       
-       sapolicy_save_event_field("sa_dateenacted");
-       sapolicy_save_event_field("sa_dateimplemented");       
+       sa_save_event_field("sa_policytype");
+       sa_save_event_field("sa_policystage");       
+       sa_save_event_field("sa_pre1");
+       sa_save_event_field("sa_pre2");
+       sa_save_event_field("sa_pre3");
+       sa_save_event_field("sa_dev1");
+       sa_save_event_field("sa_dev2");
+       sa_save_event_field("sa_dev3");
+       sa_save_event_field("sa_enact1");
+       sa_save_event_field("sa_enact2");
+       sa_save_event_field("sa_enact3");
+       sa_save_event_field("sa_post1");
+       sa_save_event_field("sa_post2");
+       sa_save_event_field("sa_post3");       
+       sa_save_event_field("sa_dateenacted");
+       sa_save_event_field("sa_dateimplemented");       
+ 
 
 
     }
@@ -562,13 +593,24 @@ function sa_geog_save() {
       return;
 
     if ($post->post_type == 'sapolicies') {
-       sapolicy_save_event_field("sa_geog");
-       sapolicy_save_event_field("sa_state");
-       sapolicy_save_event_field("sa_finalgeog");
+
+        
+        sa_save_event_field("sa_latitude");
+        sa_save_event_field("sa_longitude");        
+        
+        
+       sa_save_event_field("sa_geog");
+       sa_save_event_field("sa_state");
+       sa_save_event_field("sa_finalgeog");
+       sa_save_event_field("sa_finalgeog_lat1");
+       sa_save_event_field("sa_finalgeog_long1");
+       sa_save_event_field("sa_finalgeog_lat2");
+       sa_save_event_field("sa_finalgeog_long2");
+	   
     }
 }
 
-function sapolicy_save_event_field($event_field) {
+function sa_save_event_field($event_field) {
     global $post;
     if(isset($_POST[$event_field])) {
         update_post_meta($post->ID, $event_field, $_POST[$event_field]);
@@ -577,8 +619,8 @@ function sapolicy_save_event_field($event_field) {
     }
 }
 
-add_action('init', 'sapolicy_jquery'); 
-function sapolicy_jquery(){
+add_action('init', 'sa_jquery_enqueue'); 
+function sa_jquery_enqueue(){
     wp_enqueue_script('jquery-ui-datepicker');
     wp_enqueue_style('sticky_post-admin-ui-css','http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/base/jquery-ui.css',false,"1.9.0",false);
     }
