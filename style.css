@@ -3331,6 +3331,9 @@ body.home-page #primary .quarter-block .related-posts li a {
     width: 21%;
     float: left;
   }
+  .maps-data #primary #content .data-vis-tool .entry-header h3 {
+    width: 80%;
+  }
 }
 /*ZenBox styles*/
 #zenbox_tab {
