@@ -14,10 +14,10 @@ get_header(); ?>
 			?></h1>
 			<div class="jump-menu">
 				Jump to&emsp;
-				<a href="#members-results">Members</a> 
 				<a href="#groups-results">Groups</a> 
 				<a href="#article-results">News &amp; Features</a> 
 				<a href="#activity-results">Activity Updates</a> 
+				<a href="#members-results">Members</a> 
 				<!-- <a href="#forum-results">Forum Topics</a>  -->
 			</div>
 			
@@ -28,7 +28,7 @@ get_header(); ?>
 		</div><!-- #content -->
 	<!-- </div> --><!-- #primary -->
 
-<?php get_sidebar('search'); ?>
+<?php //get_sidebar('search'); ?>
 <script type="text/javascript">
 jQuery(document).ready(function() {
 jQuery.localScroll();

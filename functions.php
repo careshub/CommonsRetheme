@@ -427,7 +427,7 @@ function bpmag_show_member_search(){
 <?php   
  }
 //Hook Member results to search page
-add_action('advance-search','bpmag_show_member_search',10); //the priority defines where in page this result will show up(the order of member search in other searchs)
+add_action('advance-search','bpmag_show_member_search',65); //the priority defines where in page this result will show up(the order of member search in other searchs)
 
 //Group search
 function bpmag_show_groups_search(){

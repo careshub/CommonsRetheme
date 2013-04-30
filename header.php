@@ -34,7 +34,7 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class('js'); ?>>
 	<div id="site-navigation" class="primary-navigation" role="navigation">
 		<!-- <h1 class="brand">Community Commons</h1>
 		<h3 class="menu-toggle"><?php _e( 'Menu', 'twentytwelve' ); ?></h3> -->
