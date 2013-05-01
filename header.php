@@ -26,7 +26,7 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/img/favicon.ico" type="image/x-icon" />
 <link rel="icon" href="<?php echo get_stylesheet_directory_uri(); ?>/img/favicon.ico" type="image/x-icon" />
-
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <?php // Loads HTML5 JavaScript file to add support for HTML5 elements in older IE versions. ?>
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
@@ -34,7 +34,7 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class('js'); ?>>
+<body <?php body_class('js'); if (is_page('sa-policy-map-search')) { echo 'onload="samap_initialize()" onunload="GUnload()"'; } ?>>
 	<div id="site-navigation" class="primary-navigation" role="navigation">
 		<!-- <h1 class="brand">Community Commons</h1>
 		<h3 class="menu-toggle"><?php _e( 'Menu', 'twentytwelve' ); ?></h3> -->
