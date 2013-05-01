@@ -18,6 +18,8 @@ require_once('includes/taxonomy-resourcecat.php');
 require_once('includes/taxonomy-sapolicytag.php');
 //Shortcode for CDC_DCH Group Home
 require_once('includes/cdc_dch_shortcode.php');
+//Shortcode for SA Policy Map Search
+require_once('includes/sa_policy_map_shortcode.php');
 
 function bp_support_theme_setup() {
   global $bp;
