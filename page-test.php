@@ -50,6 +50,21 @@ get_header(); ?>
 
 		</div><!-- #content -->
 	</div><!-- #primary -->
+	<?php 
+echo "here is it";
+include_once( ABSPATH . WPINC . '/class-IXR.php' );
+include_once( ABSPATH . WPINC . '/class-wp-http-ixr-client.php' );
+
+$client = new WP_HTTP_IXR_CLIENT( 'http://commonsdev.local/xmlrpc.php' );
+$client->debug = true;
+
+$result = $client->query( 'dc.getUserID', array(
+    0,
+    "admin",
+    "admin"
+) );
+
+?>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -19,6 +19,11 @@
 			
 		<div class="site-info">
 		<div class="alignleft">
+			<?php if (is_user_logged_in()) { ?>
+			    <a class="login_button" href="<?php echo wp_logout_url( home_url() ); ?>">Logout</a>
+			<?php } else { ?>
+			    <a class="login_button" id="show_login" href="">Login</a>
+			<?php } ?>
 			<?php //Add footer navigation menu 
 				$args = array(
 					'theme_location' => 'footer-nav',
@@ -77,10 +82,55 @@
 </script>
 <script type="text/javascript">
 	jQuery(document).ready(function() {
-		jQuery.localScroll();
+	jQuery.localScroll();
 	});
+</script>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+     jQuery('#json_click_handler').click(function(){
+          doAjaxRequest();
+     });
+});
+function doAjaxRequest(){
+     // here is where the request will happen
+     jQuery.ajax({
+          url: 'http://commonsdev.local/wp-admin/admin-ajax.php',
+          data:{
+               'action':'do_ajax',
+               'fn':'get_latest_posts',
+               'count':10
+               },
+          dataType: 'JSON',
+          success:function(data){
+                 // our handler function will go here
+                 // this part is very important!
+                 // it's what happens with the JSON data 
+                 // after it is fetched via AJAX!
+                 jQuery('#json_response_box').html(data);
+                             },
+          error: function(errorThrown){
+               alert('error');
+               console.log(errorThrown);
+          }
+           
+ 
+     });
+ 
+}
 </script>
 
 </div>
+<form id="login" action="login" method="post">
+        <h1>Site Login</h1>
+        <p class="status"></p>
+        <label for="username">Username</label>
+        <input id="username" type="text" name="username">
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password">
+        <a class="lost" href="<?php echo wp_lostpassword_url(); ?>">Lost your password?</a>
+        <input class="submit_button" type="submit" value="Login" name="submit">
+        <a class="close" href="">(close)</a>
+        <?php wp_nonce_field( 'ajax-login-nonce', 'security' ); ?>
+</form>
 </body>
 </html>

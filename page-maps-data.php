@@ -23,7 +23,7 @@ get_header(); ?>
 						<a href="http://assessment.communitycommons.org" class="button"><span class="report"></span>Start a report</a>
 					</li>
 					<li class="third-block">
-						<a href="#" class="button"><span class="collaboration"></span>Collaborate</a>
+						<a href="http://maps.communitycommons.org/MOM/" class="button"><span class="collaboration"></span>Collaborate</a>
 					</li>
 				</ul>
                 

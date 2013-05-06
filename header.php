@@ -33,7 +33,6 @@
 <![endif]-->
 <?php wp_head(); ?>
 </head>
-
 <body <?php body_class('js'); if (is_page('sa-policy-map-search')) { echo 'onload="samap_initialize()" onunload="GUnload()"'; } ?>>
 	<div id="site-navigation" class="primary-navigation" role="navigation">
 		<!-- <h1 class="brand">Community Commons</h1>

@@ -386,7 +386,7 @@ add_action( 'init', 'bp_buddydev_search', 10 );// custom handler for the search
 function bp_buddydev_search(){
 global $bp;
 
-    if ( function_exists('bp_is_current_component') && bp_is_current_component(BP_SEARCH_SLUG) )//if this is search page
+    if ( function_exists('bp_is_current_component') && bp_is_current_component('search') )//if this is search page
         bp_core_load_template( apply_filters( 'bp_core_template_search_template', 'search-single' ) );//load the single searh template
 }
 
@@ -410,7 +410,7 @@ function bpmag_global_search_queryvar(){
 
 function bpmag_is_advance_search(){
 global $bp;
-if( function_exists('bp_is_current_component') && bp_is_current_component( BP_SEARCH_SLUG))
+if( function_exists('bp_is_current_component') && bp_is_current_component( 'search' ))
     return true;
 return false;
 }
@@ -592,9 +592,9 @@ function add_this_script_footer(){ ?>
 ***************/
 function cc_custom_body_class( $classes ) {
     //First we unset the class "buddypress" that was added in BP 1.7 a little too indiscriminately.
-    if(($key = array_search('buddypress', $classes)) !== false) {
-        unset($classes[$key]);
-      }
+    // if(($key = array_search('buddypress', $classes)) !== false) {
+    //     unset($classes[$key]);
+    //   }
      
     if ( function_exists( 'bp_is_blog_page' ) && !bp_is_blog_page() ) {
         $classes[] = 'buddypress';
@@ -602,6 +602,9 @@ function cc_custom_body_class( $classes ) {
 
     if ( is_page_template( 'page-templates/salud-america.php' ) || is_page_template( 'page-templates/salud-america-eloi.php' ) || is_singular('sapolicies') ) {
         $classes[] = 'salud-america';
+        if(($key = array_search('full-width', $classes)) !== false) {
+        unset($classes[$key]);
+      }
       }
 
     if ( is_page_template( 'page-templates/full-width-no-title.php' ) ) {
@@ -615,7 +618,7 @@ function cc_custom_body_class( $classes ) {
 
   return $classes;
 }
-add_filter( 'body_class', 'cc_custom_body_class', 88 );
+add_filter( 'body_class', 'cc_custom_body_class', 99 );
 
 remove_filter('the_content','wpautop');
 
@@ -630,6 +633,12 @@ function salud_formatting($content){
    return wpautop($content);
   }
 }
+function salud_excerpt_length($length) {
+  if ( is_page_template( 'page-templates/salud-america-eloi.php' ) )
+    return 15;
+}
+add_filter('excerpt_length', 'salud_excerpt_length', 999);
+
 //Add our custom post types to the archives page
 function cc_add_custom_types( $query ) {
   if( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {
