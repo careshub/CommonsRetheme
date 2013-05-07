@@ -2821,10 +2821,10 @@ body.home-page #primary .quarter-block .related-posts li a {
 #data-vis-tool-group-community-context #data-vis-header-community-context {
   background-color: #f7b718;
 }
-#data-vis-tool-group-economic .entry-header h1 {
+#data-vis-tool-group-economics .entry-header h1 {
   color: #a3bb4f;
 }
-#data-vis-tool-group-economic #data-vis-header-economic {
+#data-vis-tool-group-economics #data-vis-header-economics {
   background-color: #a3bb4f;
 }
 #data-vis-tool-group-education .entry-header h1 {
@@ -2845,10 +2845,10 @@ body.home-page #primary .quarter-block .related-posts li a {
 #data-vis-tool-group-food #data-vis-header-food {
   background-color: #df5927;
 }
-#data-vis-tool-group-health-4 .entry-header h1 {
+#data-vis-tool-group-health-2 .entry-header h1 {
   color: #008eaa;
 }
-#data-vis-tool-group-health-4 #data-vis-header-health-4 {
+#data-vis-tool-group-health-2 #data-vis-header-health-2 {
   background-color: #008eaa;
 }
 @media screen and (min-width: 400px) {

@@ -13,14 +13,17 @@ get_header(); ?>
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
 				<?php the_post(); ?>
+				<div id="screamer" class="clear">
+					<h1><?php echo get_the_content(); ?><h1>
+				</div>
 
-				<?php get_template_part( 'content', 'page' ); ?>
+				<?php //get_template_part( 'content', 'page' ); ?>
 				<ul class="quicklinks content-row">
 					<li class="third-block">
 						<a href="http://maps.communitycommons.org" class="button"><span class="map"></span>Make a map</a>
 					</li>
 					<li class="third-block">
-						<a href="http://assessment.communitycommons.org" class="button"><span class="report"></span>Start a report</a>
+						<a href="http://assessment.communitycommons.org" class="button"><span class="report"></span>Start a CHNA report</a>
 					</li>
 					<li class="third-block">
 						<a href="http://maps.communitycommons.org/MOM/" class="button"><span class="collaboration"></span>Collaborate</a>

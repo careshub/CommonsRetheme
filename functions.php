@@ -616,6 +616,10 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'maps-data';
       }
 
+    if ( is_page( array(8622,'wotn') ) ) {
+        $classes[] = 'wotn';
+      }
+
   return $classes;
 }
 add_filter( 'body_class', 'cc_custom_body_class', 99 );
