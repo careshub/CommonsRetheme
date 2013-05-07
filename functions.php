@@ -776,3 +776,16 @@ global $bp;
 bp_core_remove_subnav_item( $bp->activity->slug, 'mentions' );
 }
 add_action( 'bp_setup_nav', 'ray_remove_mention_nav', 15 );
+
+function bp_dump() {
+    global $bp;
+ 
+    foreach ( (array)$bp as $key => $value ) {
+        echo '<pre>';
+        echo '<strong>' . $key . ': </strong><br />';
+        print_r( $value );
+        echo '</pre>';
+    }
+    die;
+}
+// add_action( 'wp', 'bp_dump' );
