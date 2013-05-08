@@ -2,6 +2,7 @@
 /*
 //Author: Michael Barbaro
 */
+
 //Defines the Salud America policy content type
 add_action('init', 'SA_resources_init');
 function SA_resources_init() 
@@ -20,6 +21,21 @@ function SA_resources_init()
 		'not_found_in_trash' => __('No SA Resources found in trash'), 
 		'parent_item_colon' => ''
 	);
+	// $args = array(
+	// 	'labels' => $resource_labels,
+	// 	'public' => true,
+	// 	'publicly_queryable' => true,
+	// 	'show_ui' => true, 
+	// 	'query_var' => true,
+	// 	'rewrite' => true,
+	// 	'hierarchical' => false,
+	// 	// 'menu_position' => 52,
+	// 	'has_archive' => 'saresources',
+	// 	'taxonomies' => array('sa_resourcecat', 'sa_advocacy_targets'),		
+	// 	'supports' => array('title','editor','comments'),
+ //        'capability_type' => 'saresources',
+ //        'map_meta_cap'    => true
+	// ); 
 	$args = array(
 		'labels' => $resource_labels,
 		'public' => true,
@@ -27,15 +43,18 @@ function SA_resources_init()
 		'show_ui' => true, 
 		'query_var' => true,
 		'rewrite' => true,
-		'capability_type' => 'post',
 		'hierarchical' => false,
-		'menu_position' => 23,
-		'has_archive' => 'saresources',
-		'taxonomies' => array('sa_resourcecat', 'sa_advocacy_targets'),		
-		'supports' => array('title','editor','comments'),
-        'capability_type' => 'saresources',
-        'map_meta_cap'    => true
-	); 
+	    'show_in_menu' => true,
+	    // 'menu_position' => 22,
+	    'taxonomies' => array('sa_advocacy_targets', 'sa_resourcecat'),
+	    //'has_archive' => 'sapolicies',
+	    // 'supports' => array('title','editor','excerpt','trackbacks','custom-fields','comments','revisions','thumbnail','author','page-attributes',),
+	    'supports' => array('title','editor','comments'),
+	  	'capability_type' => 'saresources',
+	  	'map_meta_cap' => true
+		);
+
 	register_post_type('saresources',$args);
+
 
 }

@@ -624,11 +624,9 @@ function cc_custom_body_class( $classes ) {
 }
 add_filter( 'body_class', 'cc_custom_body_class', 99 );
 
-remove_filter('the_content','wpautop');
-
+// remove_filter('the_content','wpautop');
 //decide when you want to apply the auto paragraph
-
-add_filter('the_content','salud_formatting');
+// add_filter('the_content','salud_formatting');
 
 function salud_formatting($content){
   if ( is_page( 'salud-america' ) ) {
@@ -639,7 +637,7 @@ function salud_formatting($content){
 }
 function salud_excerpt_length($length) {
   if ( is_page_template( 'page-templates/salud-america-eloi.php' ) )
-    return 15;
+    return 20;
 }
 add_filter('excerpt_length', 'salud_excerpt_length', 999);
 

@@ -2367,22 +2367,14 @@ ul.item-list li .share-buttons-below li {
   font-size: 22.400000000000002px;
   font-size: 1.6rem;
 }
-.salud-america #content .browse-topics .salud-topic {
-  float: left;
-  margin-bottom: 3%;
-  margin-right: 3%;
-  width: 43%;
-  display: inline-block;
-  text-align: left;
-  padding: .6em;
-}
 .salud-america #content .browse-topics .salud-topic h4 {
   clear: none;
   float: left;
   padding-left: 4%;
-  width: 63%;
+  width: 68%;
   font-size: 18.2px;
   font-size: 1.3rem;
+  margin-top: .5em;
   margin-bottom: 0;
   line-height: 1.4;
 }
@@ -2444,45 +2436,46 @@ ul.item-list li .share-buttons-below li {
 #secondary .policy-stats .meter {
   width: 80%;
 }
-.active-play .icon,
-.advertising .icon,
-.cost-soda .icon,
-.food-neighborhood .icon,
-.places-activity .icon,
-.school-food .icon {
-  background: url(img/salud-sprites.png) no-repeat;
-  display: inline-block;
+.sa-active-playx60,
+.sa-active-spacesx60,
+.sa-better-food-in-neighborhoodsx60,
+.sa-healthier-marketingx60,
+.sa-healthier-school-snacksx60,
+.sa-sugary-drinksx60 {
+  background: url(img/salud_america/sa-sprites.png) no-repeat;
+  display: block;
   float: left;
+  margin-right: 4%;
 }
-.active-play .icon {
-  background-position: -150px -150px;
-  width: 100px;
-  height: 100px;
+.sa-active-playx60 {
+  background-position: 0 -70px;
+  width: 60px;
+  height: 60px;
 }
-.advertising .icon {
-  background-position: -150px -300px;
-  width: 100px;
-  height: 100px;
+.sa-active-spacesx60 {
+  background-position: 0 -140px;
+  width: 60px;
+  height: 60px;
 }
-.cost-soda .icon {
-  background-position: -150px 0;
-  width: 100px;
-  height: 100px;
+.sa-better-food-in-neighborhoodsx60 {
+  background-position: 0 -210px;
+  width: 60px;
+  height: 60px;
 }
-.food-neighborhood .icon {
-  background-position: 0 -300px;
-  width: 100px;
-  height: 100px;
+.sa-healthier-marketingx60 {
+  background-position: 0 -280px;
+  width: 60px;
+  height: 60px;
 }
-.places-activity .icon {
-  background-position: 0 -150px;
-  width: 100px;
-  height: 100px;
+.sa-healthier-school-snacksx60 {
+  background-position: 0 -350px;
+  width: 60px;
+  height: 60px;
 }
-.school-food .icon {
+.sa-sugary-drinksx60 {
   background-position: 0 0;
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
 }
 .rule-above {
   border-top: 4px double #EDEDED;
@@ -2708,6 +2701,15 @@ body.home-page #primary .quarter-block .related-posts li a {
   border-bottom: 1px solid #dedede;
 }
 .third-block {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  margin-top: 1.7rem;
+  margin-bottom: 1.7rem;
+  padding-bottom: 24px;
+  padding-bottom: 1.7rem;
+  width: 100%;
+}
+.half-block {
   margin-top: 24px;
   margin-bottom: 24px;
   margin-top: 1.7rem;
@@ -2949,6 +2951,16 @@ body.home-page #primary .quarter-block .related-posts li a {
   }
   .third-block img {
     width: 92%;
+  }
+  .half-block {
+    border-bottom: none;
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 44.9%;
+    float: left;
+  }
+  .half-block:nth-child(odd) {
+    clear: left;
   }
 }
 @media screen and (min-width: 800px) {
