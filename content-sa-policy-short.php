@@ -7,50 +7,35 @@
  * @since Twenty Twelve 1.0
  */
 	$custom_fields = get_post_custom($post->ID);
-	//Check target areas, add the correct icon:
-	for ($i = 1; $i <= 6; $i++) {
-		${target.$i} = $custom_fields['sa_at'.$i][0];
-		//echo 'Target Area'. $i .': ' . ${target.$i} . '<br/>';
-		if ( isset( ${target.$i} ) ) {
-			switch ($i) {
-		    case 1:
-		        $icon_class = "school-food";
-		        break;
-		    case 2:
-		        $icon_class = "food-neighborhood";
-		        break;
-		    case 3:
-		        $icon_class = "active-play";
-		        break;
-		    case 4:
-		        $icon_class = "places-activity";
-		        break;
-		    case 5:
-		        $icon_class = "cost-soda";
-		        break;
-		    case 6:
-		        $icon_class = "advertising";
-		        break;
-			}
-			}
-	};
+	$terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
+	foreach ( $terms as $term ) {
+		$advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
+		$target_icon[] = $term->slug;
+	}
+	$advocacy_targets = join( ', ', $advocacy_targets );
+	// echo '<pre>';
+	// print_r($post);
+	// print_r($advocacy_targets);
+	// echo $target_icon[0];
+	// print_r($custom_fields);
+	// echo '</pre>';
 
 //Progress meter
 	$progress = $custom_fields['sa_policystage'][0];
 		switch ($progress) {
-	    case "pre":
+	    case "Pre Policy":
 	        $percentage = 25;
 	        $progress_label = "in pre-policy";
 	        break;
-	    case "develop":
+	    case "Develop Policy":
 			$percentage = 50;
 	        $progress_label = 'in development';
 	        break;
-	    case "enact":
+	    case "Enact Policy":
 			$percentage = 75;
 	        $progress_label = 'enacted';
 	       	break;
-	    case "post":
+	    case "Post Policy":
 			$percentage = 75;
 	        $progress_label = 'in post-policy';
 	       	break;
@@ -63,8 +48,8 @@
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<div class="entry-content">
 			<header class="entry-header clear">
-				<?php if ( isset( $icon_class ) )
-						echo '<div class="' . $icon_class . '"><span class="icon"></span></div>';
+				<?php if ( isset( $target_icon ) )
+						echo '<span class="' . $target_icon[0] . 'x60"></span>';
 				?>
 				<h1 class="entry-title">
 				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
@@ -94,8 +79,7 @@
 			if ( isset($excerpt) ) {
 				echo $excerpt;
 			} else {
-				$content = wpautop( get_the_content() ); 
-				echo $content;
+				the_content();
 			}
 			?>
 			</p>

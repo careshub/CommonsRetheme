@@ -174,26 +174,26 @@ get_header(); ?>
 			  	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
 			  	switch ($page_slug) { //TODO: move to custom taxonomy, not these deals.
-			  		case 'better-food-in-neighborhoods':
-			  			$sa_target_area = 'better-food-in-neighborhoods';
+			  		case 'sa-better-food-in-neighborhoods':
+			  			$sa_target_area = 'sa-better-food-in-neighborhoods';
 			  			break;
-			  		case 'places-for-activity':
-			  			$sa_target_area = 'places-for-activity';
+			  		case 'sa-active-spaces':
+			  			$sa_target_area = 'sa-active-spaces';
 			  			break;
-			  		case 'better-food-at-school':
-			  			$sa_target_area = 'better-food-at-school';
+			  		case 'sa-healthier-school-snacks':
+			  			$sa_target_area = 'sa-healthier-school-snacks';
 			  			break;
-			  		case 'price-of-sugary-drinks':
-			  			$sa_target_area = 'price-of-sugary-drinks';
+			  		case 'sa-sugary-drinks':
+			  			$sa_target_area = 'sa-sugary-drinks';
 			  			break;
-			  		case 'stop-unhealthy-advertising':
-			  			$sa_target_area = 'stop-unhealthy-advertising';
+			  		case 'sa-healthier-marketing':
+			  			$sa_target_area = 'sa-healthier-marketing';
 			  			break;
-			  		case 'more-active-play-time':
-			  			$sa_target_area = 'more-active-play-time';
+			  		case 'sa-active-play':
+			  			$sa_target_area = 'sa-active-play';
 			  			break;
 			  		default:
-			  			$sa_target_area = 'better-food-in-neighborhoods';
+			  			$sa_target_area = 'sa-better-food-in-neighborhoods';
 			  			break;
 			  	}
 

@@ -11,58 +11,47 @@
 // echo 'META:';
 
 $custom_fields = get_post_custom($post->ID);
+$terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
+	foreach ( $terms as $term ) {
+		$advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
+		$target_icon[] = $term->slug;
+	}
+	$advocacy_targets = join( ', ', $advocacy_targets );
+
+$tags = get_the_terms( $post->ID, 'sa_policy_tags' );
+	foreach ( $tags as $tag ) {
+		$policy_tags[] = '<a href="' . get_term_link($tag->slug, 'sa_policy_tags') .'">'.$tag->name.'</a>';
+	}
+	$policy_tags = join( ', ', $policy_tags );
+// print_r($tags);
+// echo $policy_tags;
+
+// echo '<pre>';
 // print_r($custom_fields); 
+// echo '</pre>';
+
 // echo "<br />";
 
-	//Check target areas, add the correct icon:
-	// TODO switch this over to use sa_advocacy_targets term images.
-	for ($i = 1; $i <= 6; $i++) {
-		${target.$i} = $custom_fields['sa_at'.$i][0];
-		//echo 'Target Area'. $i .': ' . ${target.$i} . '<br/>';
-		if ( isset( ${target.$i} ) ) {
-			switch ($i) {
-		    case 1:
-		        $icon_class = "school-food";
-		        break;
-		    case 2:
-		        $icon_class = "food-neighborhood";
-		        break;
-		    case 3:
-		        $icon_class = "active-play";
-		        break;
-		    case 4:
-		        $icon_class = "places-activity";
-		        break;
-		    case 5:
-		        $icon_class = "cost-soda";
-		        break;
-		    case 6:
-		        $icon_class = "advertising";
-		        break;
-			}
-			}
-	};
-
 //Location
-	$location = $custom_fields['sa_selectedgeog'][0];
+	$location = $custom_fields['sa_finalgeog'][0];
 	//
 
 //Progress meter
 	$progress = $custom_fields['sa_policystage'][0];
 		switch ($progress) {
-	    case "pre":
+	    case "Pre Policy":
 	        $percentage = 25;
 	        $progress_label = "in pre-policy";
 	        break;
-	    case "develop":
+	    case "Develop Policy":
 			$percentage = 50;
 	        $progress_label = 'in development';
 	        break;
-	    case "enact":
+	    case "Enact Policy":
 			$percentage = 75;
 	        $progress_label = 'enacted';
 	       	break;
-	    case "post":
+	    case "Post Policy":
 			$percentage = 75;
 	        $progress_label = 'in post-policy';
 	       	break;
@@ -74,8 +63,8 @@ $custom_fields = get_post_custom($post->ID);
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<div class="entry-content">
 			<header class="entry-header clear">
-				<?php if ( isset( $icon_class ) )
-						echo '<div class="' . $icon_class . '"><span class="icon"></span></div>';
+				<?php if ( isset( $target_icon ) )
+						echo '<span class="' . $target_icon[0] . 'x60"></span>';
 				?>
 				<h1 class="entry-title"><?php the_title(); ?></h1>
 				<?php //echo "<br />"; ?>
@@ -98,7 +87,21 @@ $custom_fields = get_post_custom($post->ID);
 			</header>
 
 			<?php the_content(); ?>
-			<p class="policy-type">This policy is of the type: <a href="#"><?php echo $custom_fields['sa_policytype'][0];?></a></p>
+			<p class="policy-type">Advocacy targets:
+				<?php //echo $custom_fields['sa_policytype'][0];
+				echo $advocacy_targets;
+				?>
+			</a></p>
+			<p class="policy-type">Tags:
+				<?php //echo $custom_fields['sa_policytype'][0];
+				echo $policy_tags;
+				?>
+			</a></p>
+			<p class="policy-type">This policy is of the type: <a href="#">
+				<?php echo $custom_fields['sa_policytype'][0];
+				// echo $advocacy_targets;
+				?>
+			</a></p>
 
 			<div class="clear"></div>			
 
