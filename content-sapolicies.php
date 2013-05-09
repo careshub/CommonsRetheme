@@ -133,7 +133,11 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 			 	'post__in' => $associated_resources,
 			 	'post_type' => 'saresources'
 			 	);
-			 	$associated_docs = new WP_Query( $args );	
+			 	$associated_docs = new WP_Query( $args );
+
+			 	// echo "<pre>";
+			 	// var_dump($associated_docs);
+			 	// echo "</pre>";	
 	
 				if ( $associated_docs ) : ?>
 
@@ -144,7 +148,7 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 					$assoc_tags = get_the_terms( $post->ID, 'sa_resourcecat' );
 						if ($assoc_tags) {
 							foreach ( $assoc_tags as $assoc_tag ) {
-								$resource_tags[] = '<a href="' . get_term_link($tag->slug, 'sa_resourcecat') .'">'.$tag->name.'</a>';
+								$resource_tags[] = '<a href="' . get_term_link($assoc_tag->slug, 'sa_resourcecat') .'">'.$assoc_tag->name.'</a>';
 							}
 							$resource_tags = join( ', ', $resource_tags );
 						}

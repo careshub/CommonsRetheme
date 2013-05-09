@@ -603,7 +603,12 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'buddypress';
       }
 
-    if ( is_page_template( 'page-templates/salud-america.php' ) || is_page_template( 'page-templates/salud-america-eloi.php' ) || is_singular('sapolicies') ) {
+    if ( 
+      is_page_template( 'page-templates/salud-america.php' ) 
+      || is_page_template( 'page-templates/salud-america-eloi.php' ) 
+      || is_singular('sapolicies')  
+      || is_singular('saresources') 
+      ) {
         $classes[] = 'salud-america';
         if(($key = array_search('full-width', $classes)) !== false) {
         unset($classes[$key]);

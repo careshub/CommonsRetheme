@@ -2024,6 +2024,7 @@ h5 {
 }
 .share-buttons-below li {
   padding: 0;
+  margin: 0;
   display: inline-block;
 }
 .share-buttons-below li a {
