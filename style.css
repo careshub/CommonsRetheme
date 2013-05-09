@@ -2262,15 +2262,6 @@ ul.item-list li .share-buttons-below li {
 .primary-navigation li.visible-maxi {
   display: none;
 }
-.column1of2 {
-  width: 48%;
-}
-.column1of2.first {
-  margin-right: 2%;
-}
-.column1of2.last {
-  margin-left: 2%;
-}
 .salud-america .site-content {
   float: right;
   width: 74%;
@@ -2396,6 +2387,27 @@ ul.item-list li .share-buttons-below li {
 .salud-america #content .sapolicies p {
   clear: none;
   margin: 0 0 .5em 0;
+}
+.salud-america #content .sapolicies .sa-policy-meta {
+  font-size: 12.6px;
+  font-size: 0.9rem;
+}
+.salud-america #content .sapolicies #sa_associated_resources {
+  list-style: none;
+}
+.salud-america #content .sapolicies #sa_associated_resources li {
+  margin: 0 0 .2em 0;
+  padding: 2px 4px;
+}
+.salud-america #content .sapolicies #sa_associated_resources li:nth-child(even) {
+  background-color: #fefaf7;
+}
+.salud-america #content .sapolicies #sa_associated_resources li p {
+  margin: .2em 0;
+}
+.salud-america #content .sapolicies #sa_associated_resources .sa_assoc_resource_title p {
+  font-size: 12.6px;
+  font-size: 0.9rem;
 }
 .policy-meta {
   float: left;

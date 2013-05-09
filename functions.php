@@ -335,27 +335,30 @@ function localscroll_js_load(){
 
   wp_register_script('scrollTo', get_stylesheet_directory_uri().'/js/jquery.scrollTo-1.4.2-min.js">', array('jquery'), '1.4.2' ); 
   wp_enqueue_script('scrollTo'); 
-  wp_register_script('localScroll', get_stylesheet_directory_uri().'/js/jquery.localscroll-1.2.7-min.js">', array('jquery', 'scrollTo'), '1.2.7' );  
+  wp_register_script('localScroll', get_stylesheet_directory_uri().'/js/jquery.localscroll-1.2.7-min.js">', array('jquery', 'scrollTo'), '1.2.7', true );  
   wp_enqueue_script('localScroll'); 
 
 }
 add_action('wp_enqueue_scripts', 'localscroll_js_load');
 
-function sharrre_js_load(){
-
-  wp_register_script('sharrre', get_stylesheet_directory_uri().'/js/jquery.sharrre-1.3.4.min.js">', array('jquery'), '1.3.4' ); 
-  wp_enqueue_script('sharrre'); 
-
-}
-// add_action('wp_enqueue_scripts', 'sharrre_js_load');
-
 function hoverIntent_js_load(){
 
-  wp_register_script('hoverIntent', get_stylesheet_directory_uri().'/js/jquery.hoverIntent.minified.js">', array('jquery'), 'r6' ); 
+  wp_register_script('hoverIntent', get_stylesheet_directory_uri().'/js/jquery.hoverIntent.minified.js">', array('jquery'), 'r6', true ); 
   wp_enqueue_script('hoverIntent'); 
 
 }
 add_action('wp_enqueue_scripts', 'hoverIntent_js_load');
+
+
+function cc_nav_header_js_load(){
+
+  wp_register_script('ccNavHeaderToggle', get_stylesheet_directory_uri().'/js/cc-nav-header-toggle-ck.js">', array('jquery', 'hoverIntent'), '1.0', true  ); 
+  wp_enqueue_script('ccNavHeaderToggle'); 
+
+}
+add_action('wp_enqueue_scripts', 'cc_nav_header_js_load');
+
+
 
 /* SEARCH - replaces standard WordPress search with a unified results page
 *************/

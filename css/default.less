@@ -2513,16 +2513,6 @@ ul.item-list li .share-buttons-below li {
 @sagreen:#60b035;
 @sared:#ef4036;
 @saorange:#f58220;
-.column1of2 {
-	width: 48%;
-	&.first {
-		margin-right: 2%;
-	}
-	&.last {
-		margin-left: 2%;
-	}
-
-}
 .salud-america { 
 	.site-content { 
 		float: right;
@@ -2651,6 +2641,28 @@ ul.item-list li .share-buttons-below li {
 		h1, h4, p { 
 			clear: none; 
 			margin: 0 0 .5em 0;
+		}
+		.sa-policy-meta {
+			.font-size(0.9);
+		}
+		#sa_associated_resources {
+			list-style: none;
+			li{
+				margin: 0 0 .2em 0;
+				padding: 2px 4px;
+				&:nth-child(even) {
+					background-color: desaturate( lighten(@saorange, 44), 15);
+				}
+				p {
+					margin: .2em 0;
+				}
+			}
+			.sa_assoc_resource_title {
+				// .font-size(1.1);
+			}
+			.sa_assoc_resource_title p {
+				.font-size(0.9);
+			}
 		}
 	}
 	}

@@ -6,7 +6,7 @@ Template Name: Salud America
 get_header(); ?>
 <div class="salud-header clear">
 	<a href="#" class="logo"><img src="/wp-content/themes/CommonsRetheme/img/salud_america/SA-logox200.png" class=""></a>
-	<h1>Salud America! <br /> Growing Change</h1>
+	<h1>Salud America! <br />Growing Change</h1>
 	<h3>Get involved in reducing latino childhood obesity.</h3>
 	<div class="sa-kids-photo"><img src="/wp-content/themes/CommonsRetheme/img/salud_america/sa-kids-335.png"></div>
 
@@ -56,49 +56,6 @@ get_header(); ?>
 						</div>
 
 						<?php } // End advocacy target loop ?>
-
-						<!-- <div class="half-block">
-							<a href="/salud-america/sapolicies/better-food-in-neighborhoods/" class="food-neighborhood">
-								<span class="icon"></span>
-								<h4>Better Food in Neighborhoods</h4>
-							</a>
-							<p>SaludableOmaha: Latino Health Movement is creating healthy changes in Latino Schools</p>
-						</div>
-						<div class="half-block">
-							<a href="/salud-america/sapolicies/places-activity/" class="places-activity">
-								<span class="icon"></span>
-								<h4>Places for Activity</h4>
-							</a>
-							<p>SaludableOmaha: Latino Health Movement is creating healthy changes in Latino Schools</p>
-						</div>
-						<div class="half-block">
-							<a href="/salud-america/sapolicies/school-food/" class="fschool-food">
-								<span class="icon"></span>
-								<h4>Better Food at School</h4>
-							</a>
-							<p>SaludableOmaha: Latino Health Movement is creating healthy changes in Latino Schools</p>
-						</div>
-						<div class="half-block">
-							<a href="/salud-america/sapolicies/cost-soda/" class="cost-soda">
-								<span class="icon"></span>
-								<h4>Price of Sugary Drinks</h4>
-							</a>
-							<p>SaludableOmaha: Latino Health Movement is creating healthy changes in Latino Schools</p>
-						</div>
-						<div class="half-block">
-							<a href="/salud-america/sapolicies/advertising/" class="advertising">
-								<span class="icon"></span>
-								<h4>Stop Unhealthy Advertising</h4>
-							</a>
-							<p>SaludableOmaha: Latino Health Movement is creating healthy changes in Latino Schools</p>
-						</div>
-						<div class="half-block">
-							<a href="/salud-america/sapolicies/more-active-play-time/" class="active-play">
-								<span class="icon"></span>
-								<h4>More Active Play Time</h4>
-							</a>
-							<p>SaludableOmaha: Latino Health Movement is creating healthy changes in Latino Schools</p>
-						</div> -->
 
 				</div>
 
@@ -173,38 +130,40 @@ get_header(); ?>
 				wp_reset_postdata();
 			  	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-			  	switch ($page_slug) { //TODO: move to custom taxonomy, not these deals.
-			  		case 'sa-better-food-in-neighborhoods':
-			  			$sa_target_area = 'sa-better-food-in-neighborhoods';
-			  			break;
-			  		case 'sa-active-spaces':
-			  			$sa_target_area = 'sa-active-spaces';
-			  			break;
-			  		case 'sa-healthier-school-snacks':
-			  			$sa_target_area = 'sa-healthier-school-snacks';
-			  			break;
-			  		case 'sa-sugary-drinks':
-			  			$sa_target_area = 'sa-sugary-drinks';
-			  			break;
-			  		case 'sa-healthier-marketing':
-			  			$sa_target_area = 'sa-healthier-marketing';
-			  			break;
-			  		case 'sa-active-play':
-			  			$sa_target_area = 'sa-active-play';
-			  			break;
-			  		default:
-			  			$sa_target_area = 'sa-better-food-in-neighborhoods';
-			  			break;
-			  	}
+			  	// switch ($page_slug) { //TODO: move to custom taxonomy, not these deals.
+			  	// 	case 'sa-better-food-in-neighborhoods':
+			  	// 		$sa_target_area = 'sa-better-food-in-neighborhoods';
+			  	// 		break;
+			  	// 	case 'sa-active-spaces':
+			  	// 		$sa_target_area = 'sa-active-spaces';
+			  	// 		break;
+			  	// 	case 'sa-healthier-school-snacks':
+			  	// 		$sa_target_area = 'sa-healthier-school-snacks';
+			  	// 		break;
+			  	// 	case 'sa-sugary-drinks':
+			  	// 		$sa_target_area = 'sa-sugary-drinks';
+			  	// 		break;
+			  	// 	case 'sa-healthier-marketing':
+			  	// 		$sa_target_area = 'sa-healthier-marketing';
+			  	// 		break;
+			  	// 	case 'sa-active-play':
+			  	// 		$sa_target_area = 'sa-active-play';
+			  	// 		break;
+			  	// 	default:
+			  	// 		$sa_target_area = 'sa-better-food-in-neighborhoods';
+			  	// 		break;
+			  	// }
 
 				$args = array(
 					'post_type' => 'sapolicies', 
 					'paged' => $paged,
-					'sa_advocacy_targets' => $sa_target_area,
+					'sa_advocacy_targets' => $page_slug,
 				);
 
 				$list_of_policies = new WP_Query( $args ); ?>
+
 				<h2>Policies that address this target area: </h2>
+				
 				<?php
 				while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
 					//This template should be the short result

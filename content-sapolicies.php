@@ -86,24 +86,107 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 				
 			</header>
 
+
 			<?php the_content(); ?>
-			<p class="policy-type">Advocacy targets:
-				<?php //echo $custom_fields['sa_policytype'][0];
-				echo $advocacy_targets;
-				?>
+
+			<p class="sa-policy-meta">Advocacy targets:
+				<?php echo $advocacy_targets; ?>
 			</a></p>
-			<p class="policy-type">Tags:
-				<?php //echo $custom_fields['sa_policytype'][0];
-				echo $policy_tags;
-				?>
-			</a></p>
-			<p class="policy-type">This policy is of the type: <a href="#">
+			<?php 
+			if (isset($policy_tags)) { 
+					?>
+				<p class="sa-policy-meta">Tags :
+					<?php echo $policy_tags; ?>
+				</a></p>
+			<?php } ?>
+			<p class="sa-policy-meta">This policy is of the type: <a href="#">
 				<?php echo $custom_fields['sa_policytype'][0];
 				// echo $advocacy_targets;
 				?>
 			</a></p>
 
+			<?php 
+				if ( function_exists('bp_share_post_button') ) { 
+					bp_share_post_button(); 
+				} 
+			?>
+
 			<div class="clear"></div>			
+			<!-- Finding and listing related resources. -->
+			<?php // args
+				
+				$looky = '%"' . $post->ID . '"%';
+				$related_resource_results = $wpdb->get_results( $wpdb->prepare( "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = 'sa_resource_policy' AND meta_value LIKE %s", $looky ) );
+
+				wp_reset_postdata();
+
+				if ($related_resource_results) {
+					//Build a 1-dimensional array of associated post IDs
+					foreach ($related_resource_results as $relation) {
+						$associated_resources[] = $relation->post_id;
+					}
+				// print_r($associated_resources);
+				
+				//Now we have the ids of all the associated resources, we have to figure out how to output them... something like:
+
+				$args = array(
+			 	'post__in' => $associated_resources,
+			 	'post_type' => 'saresources'
+			 	);
+			 	$associated_docs = new WP_Query( $args );	
+	
+				if ( $associated_docs ) : ?>
+
+					<h5>Associated Resources</h5>	
+					<ul id="sa_associated_resources">
+
+					<?php while ( $associated_docs->have_posts() ) : $associated_docs->the_post();
+					$assoc_tags = get_the_terms( $post->ID, 'sa_resourcecat' );
+						if ($assoc_tags) {
+							foreach ( $assoc_tags as $assoc_tag ) {
+								$resource_tags[] = '<a href="' . get_term_link($tag->slug, 'sa_resourcecat') .'">'.$tag->name.'</a>';
+							}
+							$resource_tags = join( ', ', $resource_tags );
+						}
+				?>
+						<li>
+							<p class="sa_assoc_resource_title">
+								<em>
+									<?php 
+									// get_template_part( 'content', 'saresources' );
+									$resource_type = get_field( "sa_resource_type" ) ? get_field( "sa_resource_type" ) : '' ;
+									if ( $resource_type )  { ?>
+										<?php the_field( "sa_resource_type" ); ?>:
+									<?php }	?>
+								</em>
+								<?php if ( $resource_type == 'Link' ) { 
+									$link_url = get_field( 'sa_resource_link' );
+									?>
+									
+									<a href="<?php echo $link_url ; ?>" title="<?php the_title(); ?>" ><?php the_title(); ?></a>
+
+								<?php } else { ?>
+
+									<?php the_title(); ?>
+
+								<?php } ?>
+
+							</p>
+							<div class="sa_assoc_resource_title">
+								<?php the_content(); ?>
+							</div>
+						<?php if (isset($resource_tags)) { ?>
+							<p class="resource-tags">Tags :
+								<?php echo $resource_tags; ?>
+							</a></p>
+						<?php } ?>
+
+						</li>						
+					<?php endwhile; ?>
+						</ul>
+				<?php endif; ?>	
+
+			<?php } // End if ($related_resource_results) check ?>
 
 			<?php //wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
