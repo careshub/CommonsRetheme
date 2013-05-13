@@ -33,24 +33,24 @@ get_header(); ?>
 					<h2><span class="map"></span><a href="http://maps.communitycommons.org">Make a map</a></h2>
 					<ul>
 						<li>
-							<h5>Classic Map Room</h5>
+							<h5>Maproom Classic</h5>
 							<a href="http://maps.communitycommons.org" class="button">Start a map</a>
-							<p>This is a brief description of this tool. But not nearly brief enough.</p>
+							<p>Create a map in the Commons original mapping environment.</p>
 						</li>
 						<li>
-							<h5>Beta Map Room</h5>
+							<h5>Maproom Beta</h5>
 							<a href="http://maps.communitycommons.org" class="button">Try the new tool</a>
-							<p>This is a brief description of this tool.</p>
+							<p>Visit the newly redesigned maproom in currently in Beta. Create a map. Save it. Share it!</p>
 						</li>
 						<li>
 							<h5>Map Gallery</h5>
 							<a href="http://maps.communitycommons.org" class="button">Visit gallery</a>
-							<p>See what other users have created.</p>
+							<p>Browse and open maps created by users of the Commons.</p>
 						</li>
 						<li>
 							<h5>Map of the Movement</h5>
 							<a href="http://maps.communitycommons.org" class="button">Visit the map</a>
-							<p>Find partners in your area.</p>
+							<p>Search for initiatives.</p>
 						</li>
 					</ul>
 				</div>
@@ -58,14 +58,24 @@ get_header(); ?>
 					<h2><span class="report"></span><a href="http://assessment.communitycommons.org">Build a report</a></h2>
 					<ul>
 						<li>
-							<h5>Community Health Needs Assessment (CHNA)</h5>
+							<h5>Community Health Needs Assessment</h5>
+							<a href="http://assessment.communitycommons.org" class="button">CHNA report</a>
+							<p>Identify assets and potential disparities in your county/region related community health and well-being.</p>
+						</li>
+						<li>
+							<h5>Vulnerable population footprint</h5>
 							<a href="http://assessment.communitycommons.org" class="button">Start a report</a>
-							<p>This is a brief description of this tool.</p>
+							<p>Find areas in your community with low educational attainment and high poverty.</p>
+						</li>
+						<li>
+							<h5>Topic-based reports</h5>
+							<a href="http://assessment.communitycommons.org" class="button">Start a report</a>
+							<p>Browse and create data reports covering health, education, economic and other factors.</p>
 						</li>
 						<li>
 							<h5>Other reports</h5>
 							<a href="http://assessment.communitycommons.org" class="button">Start a report</a>
-							<p>This is a brief description of this tool.</p>
+							<p>Browse other data reports.</p>
 						</li>
 					</ul>
 				</div>
