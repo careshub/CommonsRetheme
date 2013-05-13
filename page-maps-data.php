@@ -18,7 +18,7 @@ get_header(); ?>
 				</div>
 
 				<?php //get_template_part( 'content', 'page' ); ?>
-				<ul class="quicklinks content-row">
+				<!-- <ul class="quicklinks content-row">
 					<li class="third-block">
 						<a href="http://maps.communitycommons.org" class="button"><span class="map"></span>Make a map</a>
 					</li>
@@ -28,7 +28,47 @@ get_header(); ?>
 					<li class="third-block">
 						<a href="http://maps.communitycommons.org/MOM/" class="button"><span class="collaboration"></span>Collaborate</a>
 					</li>
-				</ul>
+				</ul> -->
+				<div class="half-block choose-tool">
+					<h2><span class="map"></span><a href="http://maps.communitycommons.org">Make a map</a></h2>
+					<ul>
+						<li>
+							<h5>Classic Map Room</h5>
+							<a href="http://maps.communitycommons.org" class="button">Start a map</a>
+							<p>This is a brief description of this tool. But not nearly brief enough.</p>
+						</li>
+						<li>
+							<h5>Beta Map Room</h5>
+							<a href="http://maps.communitycommons.org" class="button">Try the new tool</a>
+							<p>This is a brief description of this tool.</p>
+						</li>
+						<li>
+							<h5>Map Gallery</h5>
+							<a href="http://maps.communitycommons.org" class="button">Visit gallery</a>
+							<p>See what other users have created.</p>
+						</li>
+						<li>
+							<h5>Map of the Movement</h5>
+							<a href="http://maps.communitycommons.org" class="button">Visit the map</a>
+							<p>Find partners in your area.</p>
+						</li>
+					</ul>
+				</div>
+				<div class="half-block choose-tool">
+					<h2><span class="report"></span><a href="http://assessment.communitycommons.org">Build a report</a></h2>
+					<ul>
+						<li>
+							<h5>Community Health Needs Assessment (CHNA)</h5>
+							<a href="http://assessment.communitycommons.org" class="button">Start a report</a>
+							<p>This is a brief description of this tool.</p>
+						</li>
+						<li>
+							<h5>Other reports</h5>
+							<a href="http://assessment.communitycommons.org" class="button">Start a report</a>
+							<p>This is a brief description of this tool.</p>
+						</li>
+					</ul>
+				</div>
                 
                 <?php wp_reset_query(); ?>		
 
@@ -44,7 +84,8 @@ get_header(); ?>
 		//Build a local scroll-powered nav
 		?>
 
-		<ul id="jumplinks">
+		<ul id="jumplinks" class="clear">
+			<h2>Choose a tool by topic</h2>
 			<h3>Scroll to a topic:</h3>
 			<?php
 			foreach ($all_cats as $cat_slug) {

@@ -2749,6 +2749,15 @@ body.home-page #primary .quarter-block .related-posts li a {
   margin-bottom: 1.7rem;
   padding-bottom: 0;
 }
+.maps-data #primary #content #jumplinks {
+  clear: left;
+}
+.maps-data #primary #content #jumplinks h2 {
+  font-size: 19.599999999999998px;
+  font-size: 1.4rem;
+  font-weight: normal;
+  margin-bottom: .5em;
+}
 .maps-data #primary #content .quicklinks {
   margin-bottom: 24;
   margin-bottom: 1.7rem;
@@ -2780,6 +2789,45 @@ body.home-page #primary .quarter-block .related-posts li a {
   background-position: -80px -235px;
 }
 .maps-data #primary #content .quicklinks li a span.collaboration {
+  background-position: -80px -135px;
+}
+.maps-data #primary #content .choose-tool {
+  border-bottom: 1px solid #008eaa;
+  padding-bottom: 0;
+}
+.maps-data #primary #content .choose-tool h2 {
+  font-size: 19.599999999999998px;
+  font-size: 1.4rem;
+  font-weight: normal;
+}
+.maps-data #primary #content .choose-tool li {
+  margin-bottom: 2em;
+}
+.maps-data #primary #content .choose-tool li a {
+  float: right;
+  margin: 6px 0 0 6px;
+}
+.maps-data #primary #content .choose-tool h5 {
+  display: inline;
+}
+.maps-data #primary #content .choose-tool p {
+  line-height: 1.4;
+}
+.maps-data #primary #content .choose-tool span {
+  display: block;
+  float: left;
+  margin-right: 4%;
+  background: url(img/sprites.png) no-repeat;
+  width: 24px;
+  height: 24px;
+}
+.maps-data #primary #content .choose-tool span.map {
+  background-position: -80px -50px;
+}
+.maps-data #primary #content .choose-tool span.report {
+  background-position: -80px -235px;
+}
+.maps-data #primary #content .choose-tool span.collaboration {
   background-position: -80px -135px;
 }
 .maps-data #primary #content .data-vis-tool .entry-header span {
@@ -2926,6 +2974,10 @@ body.home-page #primary .quarter-block .related-posts li a {
     font-size: 16.8px;
     font-size: 1.2rem;
   }
+  .maps-data #primary #content #jumplinks {
+    border-top: 1px solid #008eaa;
+    padding-top: 12px;
+  }
   .maps-data #primary #content .quicklinks li a {
     font-size: 16.8px;
     font-size: 1.2rem;
@@ -2945,6 +2997,11 @@ body.home-page #primary .quarter-block .related-posts li a {
   .maps-data #primary #content .quicklinks li a span.collaboration {
     background-position: -75px -85px;
   }
+  .maps-data #primary #content .choose-tool {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-top: 0;
+  }
   .third-block {
     border-bottom: none;
     margin-right: 2%;
@@ -2957,12 +3014,12 @@ body.home-page #primary .quarter-block .related-posts li a {
   }
   .half-block {
     border-bottom: none;
-    margin-right: 2%;
-    margin-left: 2%;
-    width: 44.9%;
+    margin-right: 3%;
+    margin-left: 3%;
+    width: 42.9%;
     float: left;
   }
-  .half-block:nth-child(odd) {
+  .half-block:nth-child(even) {
     clear: left;
   }
   .salud-america .salud-header h1,
@@ -3473,6 +3530,30 @@ body.home-page #primary .quarter-block .related-posts li a {
     margin-left: 2%;
     width: 21%;
     float: left;
+  }
+  .maps-data #primary #content .choose-tool {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .maps-data #primary #content .choose-tool h2 {
+    font-size: 22.400000000000002px;
+    font-size: 1.6rem;
+  }
+  .maps-data #primary #content .choose-tool li {
+    margin-left: 58px;
+  }
+  .maps-data #primary #content .choose-tool span {
+    width: 40px;
+    height: 40px;
+  }
+  .maps-data #primary #content .choose-tool span.map {
+    background-position: -80px 0;
+  }
+  .maps-data #primary #content .choose-tool span.report {
+    background-position: -80px -175px;
+  }
+  .maps-data #primary #content .choose-tool span.collaboration {
+    background-position: -75px -85px;
   }
   .maps-data #primary #content .data-vis-tool .entry-header h3 {
     width: 80%;

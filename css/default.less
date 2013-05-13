@@ -3124,6 +3124,14 @@ body.home-page {
 	margin-bottom: 1.7rem;
 	padding-bottom: 0;
 	}
+	#jumplinks {
+		clear:left;
+		h2 {
+			.font-size(1.4);
+			font-weight: normal;
+			margin-bottom: .5em;
+		}
+	}
 	.quicklinks {
 		margin-bottom: 24;
 		margin-bottom: 1.7rem;
@@ -3162,6 +3170,50 @@ body.home-page {
 				}
 			}
 		}
+	}
+	.choose-tool{
+		border-bottom: 1px solid @ccblue;
+		padding-bottom:0;
+		h2 {
+			.font-size(1.4);
+			font-weight: normal;
+		}
+		li {
+			margin-bottom: 2em;
+			a {
+				float:right;
+				margin: 6px 0 0 6px;
+			}
+		}
+		h5 {
+			display: inline;
+		}
+		
+		p {
+			line-height: 1.4;
+		}
+		span {
+					display: block;
+					float: left;
+					margin-right: 4%;
+					// position: absolute;
+					// left:0;
+					// top: 0;
+					// margin-top: -30px;
+					background: url(img/sprites.png) no-repeat;
+					width: 24px;
+					height: 24px;
+					&.map {
+						background-position: -80px -50px ;
+					}
+					&.report {
+						background-position: -80px -235px ;
+					}
+					&.collaboration {
+						background-position: -80px -135px ;
+					}
+
+				}
 	}
 	.data-vis-tool {
 		.entry-header {
