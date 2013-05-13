@@ -636,16 +636,19 @@ add_filter( 'body_class', 'cc_custom_body_class', 99 );
 //decide when you want to apply the auto paragraph
 // add_filter('the_content','salud_formatting');
 
-function salud_formatting($content){
-  if ( is_page( 'salud-america' ) ) {
-    return $content;//no autop
-  } else {
-   return wpautop($content);
-  }
-}
+// function salud_formatting($content){
+//   if ( is_page( 'salud-america' ) ) {
+//     return $content;//no autop
+//   } else {
+//    return wpautop($content);
+//   }
+// }
 function salud_excerpt_length($length) {
-  if ( is_page_template( 'page-templates/salud-america-eloi.php' ) )
+  if ( is_page_template( 'page-templates/salud-america-eloi.php' ) ) {
     return 20;
+  } else {
+    return $length;
+  }
 }
 add_filter('excerpt_length', 'salud_excerpt_length', 999);
 
@@ -739,10 +742,6 @@ function cdcdch_users() {
 }
 add_action( 'template_redirect', 'cdcdch_users' );
 
-//Plugin Q and A FAQs sloppily affects all excerpts everywhere. This removes that, so we can do our own.
-remove_filter( 'excerpt_more', 'qaplus_auto_excerpt_more' );
-remove_filter( 'get_the_excerpt', 'qaplus_custom_excerpt_more' );
-remove_filter( 'excerpt_length', 'qaplus_excerpt_length' );
 
 /**
  * Returns a "Continue Reading" link for excerpts
@@ -758,7 +757,7 @@ function twentyeleven_continue_reading_link() {
  * function tied to the excerpt_more filter hook.
  */
 function twentyeleven_auto_excerpt_more( $more ) {
-  return ' &hellip;' . twentyeleven_continue_reading_link();
+    return ' &hellip;' . twentyeleven_continue_reading_link();
 }
 add_filter( 'excerpt_more', 'twentyeleven_auto_excerpt_more' );
 
