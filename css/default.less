@@ -2516,72 +2516,72 @@ ul.item-list li .share-buttons-below li {
 @saorange:#f58220;
 .salud-america { 
 	.site-content { 
-		float: right;
-		width: 74%;
+		// float: right;
+		width: 100%;
 		article {border-bottom: 1px solid @saorange;}
 	}
 	.widget-area { 
-		float: left; 
-		margin-top:3.4em;
+		// float: left; 
+		// margin-top:3.4em;
 	}
 	.salud-header{
 		width:100%;
-			position: relative;
-			.logo {
-				position:absolute;
-				top:-24px;
-				left:-24px;
-				display: inline-block;
-				float: left;
-				z-index:20;
+		position: relative;
+		.logo {
+			img { 
+				display: none;
 			}
-			.sa-kids-photo {
-				position: absolute;
-				right:-24px;
-				top:-24px;
-				z-index: 1;
-			}
-			h1, h3 {
-				float: left;
-				clear:none;
-				margin-left: 2%;
-			    padding-left: 19%;
-			    font-style: italic;
-			    position: relative;
-			    z-index: 10;
-			}
-			h1 {
-				.font-size(2.8);
-				color: @sared;
-				margin-top: .6em;
-			}
-			h3 {
-				.font-size(1.4);
-				background-color: @saorange;
-				width:83%;
-				display: block;
-				line-height:1.8;
-				margin-top: 1em;
-				color:#FFF;
-				font-weight: 400;
-			}
-
 		}
-		.salud-footer {
-			// border-top:1px solid @saorange;
+		.sa-kids-photo {
+			img { 
+				display: none;
+			}		
+		}
+		h1, h3 {
 			float: left;
-			padding: 1em 1em 2em 1em;
-			img {
-				float: left;
-				margin-right: 1.2em;
-			}
-			p {
-				line-height: 1.6;
-				.font-size(1);
-				font-style: italic;
-			}
-
+			clear:none;
+			// margin-left: 2%;
+		    font-style: italic;
+		    position: relative;
+		    z-index: 10;
 		}
+		h1 {
+			.font-size(2.4);
+			color: @sared;
+			margin-top: .6em;
+			.salud-tagline {
+				.font-size(2);
+			}
+		}
+		h3 {
+			.font-size(1.2);
+			padding: 2%;
+			width: 96%;
+			background-color: @saorange;
+			// width:83%;
+			display: block;
+			line-height:1.4;
+			margin-top: 1em;
+			color:#FFF;
+			font-weight: 400;
+		}
+
+	}
+	.salud-footer {
+		// border-top:1px solid @saorange;
+		float: left;
+		padding: 1em 1em 2em 1em;
+		img {
+			float: left;
+			margin-right: 1.2em;
+		}
+		p {
+			line-height: 1.6;
+			.font-size(1);
+			font-style: italic;
+		}
+
+	}
 	#content {
 		.salud-banner { 
 			border-bottom:1px solid @saorange;

@@ -16,7 +16,7 @@ get_header(); ?>
 				<div class="browse-topics">
 					<div>
 						<form id="sa-policy-search" class="standard-form" method="get" action="/">
-						<h3>Search for Policies</h3>
+						<h3>Search for Changes in Progress</h3>
 						<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Not a functional search yet." name="sa-policy">
 						<input class="sa-policy-search-button" type="submit" value="Search">
 						</form>
