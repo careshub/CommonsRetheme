@@ -2568,17 +2568,19 @@ ul.item-list li .share-buttons-below li {
 
 	}
 	.salud-footer {
-		// border-top:1px solid @saorange;
+		border-top:1px solid @saorange;
 		float: left;
-		padding: 1em 1em 2em 1em;
+		padding: 2.4em 1em 2em 1em;
+		margin-top: 1em;
 		img {
 			float: left;
 			margin-right: 1.2em;
 		}
 		p {
 			line-height: 1.6;
-			.font-size(1);
+			.font-size(.85);
 			font-style: italic;
+			margin-bottom: .8em;
 		}
 
 	}
@@ -2635,7 +2637,11 @@ ul.item-list li .share-buttons-below li {
 	.policy-search {
 		border-bottom: 1px solid @saorange;
 	    margin-bottom: 3em;
-	    padding-bottom: 3em;		
+	    padding-bottom: 3em;
+	    h3 {
+				color:@sared;
+				.font-size(1.6);
+			}	
 	}
 	.sapolicies {
 		.icon { margin-right: 2%; }
@@ -2727,43 +2733,32 @@ ul.item-list li .share-buttons-below li {
 	display: block;
 	float: left;
 	margin-right: 4%;
-					
+	width: 60px;
+	height: 60px;	
 }
 
 .sa-active-playx60{
 	background-position: 0 -70px ;
-	width: 60px;
-	height: 60px;
 }
 
 .sa-active-spacesx60{
 	background-position: 0 -140px ;
-	width: 60px;
-	height: 60px;
 }
 
 .sa-better-food-in-neighborhoodsx60{
 	background-position: 0 -210px ;
-	width: 60px;
-	height: 60px;
 }
 
 .sa-healthier-marketingx60{
 	background-position: 0 -280px ;
-	width: 60px;
-	height: 60px;
 }
 
 .sa-healthier-school-snacksx60{
 	background-position: 0 -350px ;
-	width: 60px;
-	height: 60px;
 }
 
 .sa-sugary-drinksx60{
 	background-position: 0 0;
-	width: 60px;
-	height: 60px;
 }
 
 // Header styles
@@ -3181,12 +3176,15 @@ body.home-page {
 		li {
 			margin-bottom: 2em;
 			a {
-				float:right;
-				margin: 6px 0 0 6px;
+				// float:right;
+				// margin: 6px 0 0 6px;
 			}
 		}
-		h5 {
-			display: inline;
+		h4 {
+			// display: inline;
+			.font-size(1.1);
+			font-weight: normal;
+			margin-bottom: .4em;
 		}
 		
 		p {
@@ -3238,16 +3236,18 @@ body.home-page {
 		// padding-bottom:1em;
 		// border-bottom: 1px solid @graylight;
 			h3 { 
-				display: inline-block;
+				display: inline;
 				margin-right: 1em;
 				font-weight: 400;
+				float: left;
 			}
 			li {
-				display: inline-block;
+				display: block;
+				float:left;
 				// .outliner();
 				// //padding: .8em 1.5em .8em 6em;
 				// margin-left: -3.5em;
-				margin: 10px 10px 0 0;
+				margin: 14px 10px 0 0;
 				}
 }
 .data-vis-tool-group {

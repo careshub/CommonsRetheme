@@ -2310,8 +2310,10 @@ ul.item-list li .share-buttons-below li {
   font-weight: 400;
 }
 .salud-america .salud-footer {
+  border-top: 1px solid #f58220;
   float: left;
-  padding: 1em 1em 2em 1em;
+  padding: 2.4em 1em 2em 1em;
+  margin-top: 1em;
 }
 .salud-america .salud-footer img {
   float: left;
@@ -2319,9 +2321,10 @@ ul.item-list li .share-buttons-below li {
 }
 .salud-america .salud-footer p {
   line-height: 1.6;
-  font-size: 14px;
-  font-size: 1rem;
+  font-size: 11.9px;
+  font-size: 0.85rem;
   font-style: italic;
+  margin-bottom: .8em;
 }
 .salud-america #content .salud-banner {
   border-bottom: 1px solid #f58220;
@@ -2369,6 +2372,11 @@ ul.item-list li .share-buttons-below li {
   border-bottom: 1px solid #f58220;
   margin-bottom: 3em;
   padding-bottom: 3em;
+}
+.salud-america #content .policy-search h3 {
+  color: #ef4036;
+  font-size: 22.400000000000002px;
+  font-size: 1.6rem;
 }
 .salud-america #content .sapolicies .icon {
   margin-right: 2%;
@@ -2449,36 +2457,26 @@ ul.item-list li .share-buttons-below li {
   display: block;
   float: left;
   margin-right: 4%;
+  width: 60px;
+  height: 60px;
 }
 .sa-active-playx60 {
   background-position: 0 -70px;
-  width: 60px;
-  height: 60px;
 }
 .sa-active-spacesx60 {
   background-position: 0 -140px;
-  width: 60px;
-  height: 60px;
 }
 .sa-better-food-in-neighborhoodsx60 {
   background-position: 0 -210px;
-  width: 60px;
-  height: 60px;
 }
 .sa-healthier-marketingx60 {
   background-position: 0 -280px;
-  width: 60px;
-  height: 60px;
 }
 .sa-healthier-school-snacksx60 {
   background-position: 0 -350px;
-  width: 60px;
-  height: 60px;
 }
 .sa-sugary-drinksx60 {
   background-position: 0 0;
-  width: 60px;
-  height: 60px;
 }
 .rule-above {
   border-top: 4px double #EDEDED;
@@ -2803,12 +2801,11 @@ body.home-page #primary .quarter-block .related-posts li a {
 .maps-data #primary #content .choose-tool li {
   margin-bottom: 2em;
 }
-.maps-data #primary #content .choose-tool li a {
-  float: right;
-  margin: 6px 0 0 6px;
-}
-.maps-data #primary #content .choose-tool h5 {
-  display: inline;
+.maps-data #primary #content .choose-tool h4 {
+  font-size: 15.400000000000002px;
+  font-size: 1.1rem;
+  font-weight: normal;
+  margin-bottom: .4em;
 }
 .maps-data #primary #content .choose-tool p {
   line-height: 1.4;
@@ -2843,13 +2840,15 @@ body.home-page #primary .quarter-block .related-posts li a {
   width: 89%;
 }
 #jumplinks h3 {
-  display: inline-block;
+  display: inline;
   margin-right: 1em;
   font-weight: 400;
+  float: left;
 }
 #jumplinks li {
-  display: inline-block;
-  margin: 10px 10px 0 0;
+  display: block;
+  float: left;
+  margin: 14px 10px 0 0;
 }
 .data-vis-tool-group .entry-header h1 {
   font-size: 28px;
@@ -3019,7 +3018,7 @@ body.home-page #primary .quarter-block .related-posts li a {
     width: 42.9%;
     float: left;
   }
-  .half-block:nth-child(even) {
+  .half-block:nth-child(odd) {
     clear: left;
   }
   .salud-america .salud-header h1,
