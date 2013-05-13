@@ -14,7 +14,7 @@ get_header(); ?>
 		<div id="content" role="main">
 				<?php the_post(); ?>
 				<div id="screamer" class="clear">
-					<h1><?php echo get_the_content(); ?><h1>
+					<h1><?php echo get_the_content(); ?></h1>
 				</div>
 
 				<?php //get_template_part( 'content', 'page' ); ?>
