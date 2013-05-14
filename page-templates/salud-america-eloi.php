@@ -323,7 +323,7 @@ get_header(); ?>
 
 				while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
 					//This template should be the short result
-					get_template_part( 'content');
+					get_template_part( 'content','saresources-short');
 					//comments_template( '', true );
 				endwhile; // end of the loop.
 
