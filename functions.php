@@ -333,7 +333,7 @@ add_filter('login_headertitle', 'change_wp_login_title');
 **************/
 function localscroll_js_load(){
 
-  wp_register_script('scrollTo', get_stylesheet_directory_uri().'/js/jquery.scrollTo-1.4.2-min.js">', array('jquery'), '1.4.2' ); 
+  wp_register_script('scrollTo', get_stylesheet_directory_uri().'/js/jquery.scrollTo-1.4.3.1-min.js">', array('jquery'), '1.4.3.1' ); 
   wp_enqueue_script('scrollTo'); 
   wp_register_script('localScroll', get_stylesheet_directory_uri().'/js/jquery.localscroll-1.2.7-min.js">', array('jquery', 'scrollTo'), '1.2.7', true );  
   wp_enqueue_script('localScroll'); 

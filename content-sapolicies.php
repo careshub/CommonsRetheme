@@ -68,17 +68,13 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 				?>
 				<h1 class="entry-title"><?php the_title(); ?></h1>
 				<?php //echo "<br />"; ?>
-				<p class="location">
-					<?php 
-					if ($custom_fields['sa_finalgeog'][0]) {
-						echo $custom_fields['sa_finalgeog'][0];	
-					} else {
-						echo 'Location unknown';
-					}
-					?>
-				</p>
+				<p class="location"><?php //echo $location; 
+						if (function_exists('salud_the_location')) {
+							salud_the_location();
+						}
+					?></p>
 				<div class="meter-box clear">
-					<p>This policy is <?php echo $progress_label; ?>.
+					<p>This policy is <a href="/saresources/policy-stages/" title="More information about policy development"><?php echo $progress_label; ?></a>.
 					<div class="meter nostripes">
 						<span style="width: <?php echo $percentage; ?>%"><span></span></span>
 					</div>
