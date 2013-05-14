@@ -9,60 +9,8 @@ get_header(); ?>
 
 		<div id="content" role="main">
 			<div class="padder">
-			<?php if (is_page('sapolicies')) {
-
-				//Do the custom query here, I think
-				//echo 'this is that page';
-				//First, display the content of the page before making the custom loop.
-				$page_content = get_the_content();
-				if ( !empty( $page_content ) ) {
-					echo '<p class="page-intro">';
-					echo $page_content;
-					echo '</p>';
-				} ?>
-				<div class="policy-search">
-					<form id="sa-policy-search" class="standard-form" method="get" action="/">
-					<h3 style="color: #ef4036;font-size: 1.6rem;">Search for Policies</h3>
-					<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Not a functional search yet." name="sa-policy">
-					<input class="sa-policy-search-button" type="submit" value="Search">
-					</form>
-				</div>        
-                            
-                                
-				<?php //Now we make our loop
-				wp_reset_postdata();
-			  	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
-				$args = array(
-					// Change these category SLUGS to suit your use.
-					'post_type' => 'sapolicies', 
-					'paged' => $paged
-				);
-
-				$list_of_policies = new WP_Query( $args ); 
-				
-				
-
-				while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
-					//This template should be the short result
-					get_template_part( 'content', 'sa-policy-short' );
-					//comments_template( '', true );
-				endwhile; // end of the loop.
-                                
-                                				 // Custom widget Area Start
-				 if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('sa_geosearch_widget') ) : 
-				 endif;
-				// Custom widget Area End
-                            
-
-
-                      } elseif (is_page('salud-americaresearch')) { 
+			<?php if (is_page('salud-americaresearch')) { 
 				//Start addition Eloi
-				//Do the custom query here, I think
-				//echo 'this is that page';
-				//First, display the content of the page before making the custom loop.
-				$page_content = get_the_content();
-				
 				?>
    				<div class="policy-search">
 					<form id="sa-policy-search" class="standard-form" method="get" action="/">
@@ -72,72 +20,61 @@ get_header(); ?>
 					</form>
 				</div>     
                 
-				<?php //Now we make our loop
+				<?php //Display the page content before making the custom loop
 				while ( have_posts() ) : the_post();
 					get_template_part( 'content', 'page-notitle' );
 					comments_template( '', true );              
 				endwhile; // end of the loop. 
 				?>
+          <h3>Latest Research Added</h3>
+          <?php
+          wp_reset_postdata();
 
-                            
-                            &nbsp;
-                            <h3 style="color: #ef4036;font-size: 1.6rem;">Latest Research Added</h3>
-
-                            <?php
-                            wp_reset_postdata();
 			  	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
-                                
-				$args = array(
+          
+          $args = array(
 					// Change these category SLUGS to suit your use.
 					'post_type' => 'saresources',
-                                        'sa_resourcecat'=> 'research',
-                                    	'showposts' => '4',
+          'sa_resourcecat'=> 'research',
+        	'showposts' => '4',
 					'paged' => $paged
-					
 				);
                                 
-  
 				$list_of_policies = new WP_Query( $args );
 				while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
 					//This template should be the short result
 					get_template_part( 'content');
 
 					//comments_template( '', true );
-
-                                        endwhile; // end of the loop.
-                       
-                            
+        endwhile; // end of the loop.              
                         
 			} elseif (is_page('saresourcespage')) {
-				//Do the custom query here, I think
-				//echo 'this is that page';
-				//First, display the content of the page before making the custom loop.
-				$page_content = get_the_content();
-				
-                        ?>
+         //Display the page content before making the custom loop
+          while ( have_posts() ) : the_post();
+            get_template_part( 'content', 'page-notitle' );
+            // comments_template( '', true );              
+          endwhile; // end of the loop. 
+          ?>
    				<div class="policy-search">
-					<form id="sa-policy-search" class="standard-form" method="get" action="/">
-					<h3 style="color: #ef4036;font-size: 1.6rem;">Search for Resources</h3>
-					<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Search for Resources." name="sa-policy">
-					<input class="sa-policy-search-button" type="submit" value="Search">
-					</form>
-				</div>     
-
-
-
+  					<form id="sa-policy-search" class="standard-form" method="get" action="/">
+  					<h3 style="color: #ef4036;font-size: 1.6rem;">Search for Resources</h3>
+  					<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Search for Resources." name="sa-policy">
+  					<input class="sa-policy-search-button" type="submit" value="Search">
+  					</form>
+  				</div>
 
 <?php
-//4 BLOCKS FOR RESOURCES ####################################################                          
-    $resource_cats = array(
-      'report',
-      'toolkit',
-      'webinar-2',
-      'case-study'
-    );
-    ?>
 
-    <h3 style="color: #ef4036;font-size: 1.6rem;">Browse Resources by Type</h3>
+//4 BLOCKS FOR RESOURCES ####################################################                          
+          $resource_cats = array(
+            'report',
+            'toolkit',
+            'webinar-2',
+            'case-study'
+          );
+          ?>
+
+    <h3>Browse Resources by Type</h3>
 
     <?php
     //We'll loop through the entries of the array to build the queries and display the content
@@ -158,80 +95,62 @@ get_header(); ?>
           // The Loop
           if ( $resources_results->have_posts() ) : ?>
 
-          <div class="quarter-block"> 
-          <?php $counter = 0;
-             while ( $resources_results->have_posts() ) : $resources_results->the_post();
-                $counter=$counter+1;
-          if( $counter == 1 ) {
-?>
-                    
+            <div class="quarter-block"> 
+            <?php $counter = 0;
+               while ( $resources_results->have_posts() ) : $resources_results->the_post();
+                  ++$counter;
+            if ( $counter == 1 ) { ?>
 
-          <header class="entry-header">
-            <?php //temporary hack! We'll show the images as taxonomy images
-              switch ($resource_cat) {
-                case 'report':
-                  ?>
-                  <a href="#" title="Permalink to Calls to Action" rel="bookmark" class="frontsecondary"><img width="300" height="200" src="http://dev.communitycommons.org/wp-content/uploads/2013/05/Reports.jpg" class="attachment-feature-front-sub wp-post-image" alt="Screen Shot 2013-04-09 at 9.54.49 AM"></a>
-                  <?php
-                  break;
-                case 'toolkit':
-                  ?>
-                  <a href="#" title="Permalink to Journal Articles" rel="bookmark" class="frontsecondary"><img width="300" height="200" src="http://dev.communitycommons.org/wp-content/uploads/2013/05/Tools.jpg" class="attachment-feature-front-sub wp-post-image" alt="Screen Shot 2013-04-09 at 9.54.49 AM"></a>
-                  <?php
-                  break;
-                case 'webinar-2':
-                  ?>
-                  <a href="#" title="Permalink to News" rel="bookmark" class="frontsecondary"><img width="300" height="200" src="http://dev.communitycommons.org/wp-content/uploads/2013/05/Webinars.jpg" class="attachment-feature-front-sub wp-post-image" alt="Screen Shot 2013-04-09 at 9.54.49 AM"></a>
-                  <?php
-                  break;
-                case 'case-study':
-                  ?>
-                  <a href="#" title="Permalink to Press releases" rel="bookmark" class="frontsecondary"><img width="300" height="200" src="http://dev.communitycommons.org/wp-content/uploads/2013/05/Case_studies.jpg" class="attachment-feature-front-sub wp-post-image" alt="Screen Shot 2013-04-09 at 9.54.49 AM"></a>
-                  <?php
-                  break;
-                default:
-                  # code...
-                  break;
-              }
-            ?>                   
-          <h2 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-         </header>
+            <header class="entry-header">
+              <?php //temporary hack! We'll show the images as taxonomy images
+                switch ($resource_cat) {
+                  case 'report':
+                    ?>
+                    <a href="#" title="Permalink to Calls to Action" rel="bookmark" class="frontsecondary"><img width="300" height="200" src="http://dev.communitycommons.org/wp-content/uploads/2013/05/Reports.jpg" class="attachment-feature-front-sub wp-post-image" alt="Screen Shot 2013-04-09 at 9.54.49 AM"></a>
+                    <?php
+                    break;
+                  case 'toolkit':
+                    ?>
+                    <a href="#" title="Permalink to Journal Articles" rel="bookmark" class="frontsecondary"><img width="300" height="200" src="http://dev.communitycommons.org/wp-content/uploads/2013/05/Tools.jpg" class="attachment-feature-front-sub wp-post-image" alt="Screen Shot 2013-04-09 at 9.54.49 AM"></a>
+                    <?php
+                    break;
+                  case 'webinar-2':
+                    ?>
+                    <a href="#" title="Permalink to News" rel="bookmark" class="frontsecondary"><img width="300" height="200" src="http://dev.communitycommons.org/wp-content/uploads/2013/05/Webinars.jpg" class="attachment-feature-front-sub wp-post-image" alt="Screen Shot 2013-04-09 at 9.54.49 AM"></a>
+                    <?php
+                    break;
+                  case 'case-study':
+                    ?>
+                    <a href="#" title="Permalink to Press releases" rel="bookmark" class="frontsecondary"><img width="300" height="200" src="http://dev.communitycommons.org/wp-content/uploads/2013/05/Case_studies.jpg" class="attachment-feature-front-sub wp-post-image" alt="Screen Shot 2013-04-09 at 9.54.49 AM"></a>
+                    <?php
+                    break;
+                  default:
+                    # code...
+                    break;
+                }
+              ?>                   
+            <h2 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+           </header>                     
+          <div class="entry-content"><?php the_excerpt();?></div> <!-- End .entry-content -->
 
-                                    
-        <div class="entry-content"><?php the_excerpt();?></div> <!-- End .entry-content -->
-
-        <h3>Other Resources</h3>
-            <ul class="related-posts">       
-          <?php } 
-          if ($counter == 2 || $counter == 3) { // output the related posts' titles ?>
-            <li>
-              <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-            </li>   
-          <?php } ?>
-          <?php // Reset Query
-           wp_reset_query();
-           //$counter++;      
-           endwhile; ?>
-           </ul>
-          </div> <!-- End .quarter-block -->
+          <h3>Other Resources</h3>
+              <ul class="related-posts">       
+            <?php } else { // output the related posts' titles for the second and third posts ?>
+              <li>
+                <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+              </li>   
+            <?php } // End   ?>
+            <?php // Reset Query
+             wp_reset_query();      
+             endwhile; ?>
+             </ul>
+            </div> <!-- End .quarter-block -->
           <?php  endif; ?>                             
                                
                                    
 <?php } // Ends foreach for four top blocks?>
-
-
-				<?php //Now we make our loop
-				while ( have_posts() ) : the_post();
-					get_template_part( 'content', 'page-notitle' );
-					//comments_template( '', true );
-				endwhile; // end of the loop. 
-				                                
-                                ?>
-                               
-                            &nbsp;
-                            <h3 style="color: #ef4036;font-size: 1.6rem;">Latest Resources Added</h3>
-				
-                               <?php
+            <h3>Latest Resources Added</h3>
+				<?php
 				wp_reset_postdata();
 			  	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
