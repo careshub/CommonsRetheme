@@ -51,9 +51,9 @@
 				<?php if ( isset( $target_icon ) )
 						echo '<span class="' . $target_icon[0] . 'x60"></span>';
 				?>
-				<h1 class="entry-title">
+				<h2 class="entry-title">
 				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
-				</h1>
+				</h2>
 				<?php //echo "<br />"; ?>
 				<p class="location">
 					<?php 
@@ -72,8 +72,7 @@
 				</div> <!-- end .meter-box -->
 				
 			</header>
-			<p>
-			<?php 
+			<p><?php 
 			$excerpt = get_the_excerpt();
 
 			if ( isset($excerpt) ) {
@@ -81,8 +80,7 @@
 			} else {
 				the_content();
 			}
-			?>
-			</p>
+			?></p>
 			<!-- <p class="policy-type">This policy is of the type: <a href="#"><?php echo $custom_fields['policytype'][0];?></a></p> -->
 
 			<div class="clear"></div>			

@@ -43,7 +43,7 @@ get_header(); ?>
 				$list_of_policies = new WP_Query( $args );
 				while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
 					//This template should be the short result
-					get_template_part( 'content');
+					get_template_part( 'content', 'saresources-short');
 
 					//comments_template( '', true );
         endwhile; // end of the loop.              
@@ -133,7 +133,7 @@ get_header(); ?>
            </header>                     
           <div class="entry-content"><?php the_excerpt();?></div> <!-- End .entry-content -->
 
-          <h3>Other Resources</h3>
+          <h4>Other Resources</h4>
               <ul class="related-posts">       
             <?php } else { // output the related posts' titles for the second and third posts ?>
               <li>
@@ -149,26 +149,26 @@ get_header(); ?>
                                
                                    
 <?php } // Ends foreach for four top blocks?>
-            <h3>Latest Resources Added</h3>
-				<?php
-				wp_reset_postdata();
-			  	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+          <h3>Latest Resources Added</h3>
+    				<?php
+    				wp_reset_postdata();
+    			  	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-				$args = array(
-					// Change these category SLUGS to suit your use.
-					'post_type' => 'saresources',
-					'showposts' => '4',
-                                        'paged' => $paged
-					
-				);
+    				$args = array(
+    					// Change these category SLUGS to suit your use.
+    					'post_type' => 'saresources',
+    					'showposts' => '4',
+                                            'paged' => $paged
+    					
+    				);
 
-				$list_of_policies = new WP_Query( $args ); 
-                              
-				while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
-					//This template should be the short result
-					get_template_part( 'content' );
-					//comments_template( '', true );
-				endwhile; // end of the loop.
+    				$list_of_policies = new WP_Query( $args ); 
+                                  
+    				while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
+    					//This template should be the short result
+    					get_template_part( 'content', 'saresources-short' );
+    					//comments_template( '', true );
+    				endwhile; // end of the loop.
 			
 			}
 			
@@ -264,7 +264,7 @@ get_header(); ?>
                                     
         <div class="entry-content"><?php the_excerpt();?></div> <!-- End .entry-content -->
 
-        <h3>Other Resources</h3>
+        <h4>Other Resources</h4>
             <ul class="related-posts">       
           <?php } 
           if ($counter == 2 || $counter == 3) { // output the related posts' titles ?>
@@ -283,7 +283,7 @@ get_header(); ?>
                                
                                    
 <?php } // Ends foreach for four top blocks?>
-<h3 style="color: #ef4036;font-size: 1.6rem;">Latest Resources Added</h3>
+<h3>Latest Resources Added</h3>
 <?php //Now we make our loop for recent resources
 				wp_reset_postdata();
 			  	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -420,7 +420,7 @@ get_header(); ?>
                                     
         <div class="entry-content"><?php the_excerpt();?></div> <!-- End .entry-content -->
 
-        <h3>Other Resources</h3>
+        <h4>Other Resources</h4>
             <ul class="related-posts">       
           <?php } 
           if ($counter == 2 || $counter == 3) { // output the related posts' titles ?>
@@ -438,7 +438,7 @@ get_header(); ?>
                                
                                    
 <?php } // Ends foreach for three top blocks?>
-<h3 style="color: #ef4036;font-size: 1.6rem;">Latest Resources Added</h3>
+<h3>Latest Resources Added</h3>
 
 
 
@@ -481,7 +481,7 @@ get_header(); ?>
 
 				while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
 					//This template should be the short result
-					get_template_part( 'content');
+					get_template_part( 'content', 'saresources-short');
 					//comments_template( '', true );
 				endwhile; // end of the loop.
 
