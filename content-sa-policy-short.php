@@ -42,7 +42,6 @@
 		}
 	//echo $progress_label . " " . $percentage;
 
-
 ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -56,12 +55,10 @@
 				</h2>
 				<?php //echo "<br />"; ?>
 				<p class="location">
-					<?php 
-					if ($custom_fields['sa_finalgeog'][0]) {
-					echo $custom_fields['sa_finalgeog'][0];	
-					} else {
-						echo 'Location unknown';
-					}
+					<?php //echo $location; 
+						if (function_exists('salud_the_location')) {
+							salud_the_location();
+						}
 					?>
 				</p>
 				<div class="meter-box clear">
