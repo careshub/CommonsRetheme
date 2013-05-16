@@ -774,6 +774,28 @@ function cdcdch_users() {
 }
 add_action( 'template_redirect', 'cdcdch_users' );
 
+//Excerpt behavior modifications
+//We're allowing paragraphs, images and hyperlinks.
+function cc_improved_trim_excerpt($text) {
+        global $post;
+        if ( '' == $text ) {
+                $text = get_the_content('');
+                $text = apply_filters('the_content', $text);
+                $text = str_replace('\]\]\>', ']]&gt;', $text);
+                $text = preg_replace('@<script[^>]*?>.*?</script>@si', '', $text);
+                $text = strip_tags($text, '<p><img><a>');
+                $excerpt_length = 55;
+                $words = explode(' ', $text, $excerpt_length + 1);
+                if (count($words)> $excerpt_length) {
+                        array_pop($words);
+                        array_push($words, '[...]');
+                        $text = implode(' ', $words);
+                }
+        }
+        return $text;
+}
+// remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+// add_filter('get_the_excerpt', 'cc_improved_trim_excerpt');
 
 /**
  * Returns a "Continue Reading" link for excerpts
@@ -826,3 +848,36 @@ function bp_dump() {
     die;
 }
 // add_action( 'wp', 'bp_dump' );
+
+//Add confirm e-mail address on BP registration form
+function registration_add_email_confirm(){ ?>
+    <?php do_action( 'bp_signup_email_confirm_errors' ); ?>
+    <input type="text" name="signup_email_confirm" id="signup_email_confirm" value="<?php
+    echo empty($_POST['signup_email_confirm'])?'':$_POST['signup_email_confirm']; ?>" />
+    <label>Confirm Email <?php _e( '(required)', 'buddypress' ); ?></label>
+    <?php do_action( 'bp_signup_email_second_errors' ); ?>
+<?php }
+add_action('bp_signup_email_errors', 'registration_add_email_confirm',20);
+ 
+function registration_check_email_confirm(){
+    global $bp;
+ 
+    //buddypress check error in signup_email that is the second field, so we unset that error if any and check both email fields
+    unset($bp->signup->errors['signup_email']);
+ 
+    //check if email address is correct and set an error message for the first field if any
+    $account_details = bp_core_validate_user_signup( $_POST['signup_username'], $_POST['signup_email_confirm'] );
+    if ( !empty( $account_details['errors']->errors['user_email'] ) )
+        $bp->signup->errors['signup_email_confirm'] = $account_details['errors']->errors['user_email'][0];
+ 
+    //if first email field is not empty we check the second one
+    if (!empty( $_POST['signup_email_confirm'] ) ){
+        //first field not empty and second field empty
+        if(empty( $_POST['signup_email'] ))
+            $bp->signup->errors['signup_email_second'] = 'Please confirm your address.';
+        //both fields not empty but differents
+        elseif($_POST['signup_email'] != $_POST['signup_email_confirm'] )
+            $bp->signup->errors['signup_email_second'] = 'The addresses you entered do not match.';
+    }
+}
+add_action('bp_signup_validate', 'registration_check_email_confirm');

@@ -50,21 +50,24 @@ get_header(); ?>
 
 		</div><!-- #content -->
 	</div><!-- #primary -->
-	<?php 
-echo "here is it";
-include_once( ABSPATH . WPINC . '/class-IXR.php' );
-include_once( ABSPATH . WPINC . '/class-wp-http-ixr-client.php' );
+	<?php if (function_exists('cc_add_constant_contact')) {
+				// cc_add_constant_contact(1);
+				echo "function_exists!";
+			}
 
-$client = new WP_HTTP_IXR_CLIENT( 'http://commonsdev.local/xmlrpc.php' );
-$client->debug = true;
+	//Check to see if user opted in for e-mails:
+	$email_option = get_user_meta( 6, 'newsletter', TRUE );
+	// $email_me = ( isset( $email_option[0] ) ) ? 1 : 0 ; 
+	// print_r($email_option);
 
-$result = $client->query( 'dc.getUserID', array(
-    0,
-    "admin",
-    "admin"
-) );
+	if ( $email_option == 'agreed' ) {
+		echo '<br>This user wants spam';
+	} else {
+		echo '<br>This user is not interested.';
+	}
+	
 
-?>
+						?>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
