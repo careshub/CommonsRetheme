@@ -9,12 +9,42 @@ function cdc_dch_grouphome()
 	global $current_user;    
 	$cuid = (string)$current_user->ID;
 	$mapurl = "http://maps.communitycommons.org/api/service.svc/json/reset-dch/?id=" . $cuid . "&key=XSbJBeM6ii6JD1irnJZ1ukf4F632Upfj";
-	echo $mapurl . "<br><br>";
+	
 ?>
-<input type="button" onclick="window.location='http://dev.communitycommons.org/cdc_dch1/';" value="Get Started">
-<input type="button" onclick="window.location='<?php $mapurl ?>';" value="Start Over">
+
+<!--<input type="button" onclick="window.location='<?php $mapurl ?>';" value="Start Over">--><br><br>
 
 <?php 
+
+	
+        $form_id = 6;        
+        $cdcusers = RGFormsModel::get_leads($form_id, '45', 'ASC');
+		global $current_user;
+		$count = 0;
+		// loop through all the returned results
+        foreach ($cdcusers as $cdcuser) {                
+				if ($current_user->display_name == $cdcuser['45'])
+				{
+					$count = $count + 1;
+				}            
+        }
+		 if ($count > 0) {
+				?>
+				<input type="button" value="Return to Digital Journey" onclick="window.location='http://dev.communitycommons.org/cdc-dch-v2/';" />
+				<input type="button" value="Return to Footprint Tool" onclick="window.location='http://dev2.communitycommons.org/footprint/default.aspx?t=DCH';" />
+				<input type="button" value="Return to Core Report" onclick="window.location='http://dev2.communitycommons.org/CHNA/SelectArea.aspx?reporttype=core&t=DCH&action=edit';" /><br>
+				
+				<?php
+				//wp_redirect( 'http://assessment.communitycommons.org/Footprint/Default.aspx?t=DCH' );
+				//exit();    
+		 } else {
+		 ?>
+			 <input type="button" onclick="window.location='http://dev.communitycommons.org/cdc-dch-v2/';" value="Get Started on Digital Journey">
+		 <?php	 
+		 }
+	
+
+
 }
 
 add_shortcode( 'cdc_dch_grouphome', 'cdc_dch_grouphome' );
