@@ -68,8 +68,8 @@ function sa_resource_meta_box()
 {
     global $post;
     $custom = get_post_custom($post->ID);
-    $saresource_date = $custom["sa_resourcedate"][0];
-    $saresource_policy = $custom["sa_resourcepolicy"][0];
+    $saresource_date = $custom["saresource_date"][0];
+    $saresource_policy = $custom["saresource_policy"][0];
 
 	$args=array(
 	  'post_type' => 'sapolicies',
@@ -93,13 +93,13 @@ function sa_resource_meta_box()
 	}
 
 	?>
-	<strong>Source Date</strong><br><input type='text' name='sa_resourcedate' id='sa_resourcedate' value='<?php 
+	<strong>Source Date</strong><br><input type='text' name='saresource_date' id='saresource_date' value='<?php 
                 if ($saresource_date != "") {
                     echo $saresource_date;
                 }
            ?>'/><br><br>
 	<strong>Policy</strong><br>
-	<select name='sa_resourcepolicy' id='sa_resourcepolicy'>
+	<select name='saresource_policy' id='saresource_policy'>
 		<option selected="true" value="<?php echo $selval; ?>"><?php echo $seltext; ?></option>
 	<?php
 	if( $my_query->have_posts() ) {
@@ -118,7 +118,7 @@ function sa_resource_meta_box()
 	var $j = jQuery.noConflict();
     $j(document).ready(function()
     {
-        $j("#sa_resourcedate").datepicker();        
+        $j("#saresource_date").datepicker();        
 	});
 	</script>
 	
@@ -133,8 +133,8 @@ function saresource_save() {
       return;
 
     if ($post->post_type == 'saresources') {
-       saresource_save_event_field("sa_resourcedate");
-	   saresource_save_event_field("sa_resourcepolicy");
+       saresource_save_event_field("saresource_date");
+	   saresource_save_event_field("saresource_policy");
 	}
 }
 function saresource_save_event_field($event_field) {
