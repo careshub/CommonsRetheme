@@ -58,3 +58,90 @@ function SA_resources_init()
 
 
 }
+add_action( 'admin_init', 'sa_resources_meta_box_add' );
+function sa_resources_meta_box_add()
+{
+	add_meta_box( 'sa_resource_meta_box', 'Resource Information (optional)', 'sa_resource_meta_box', 'SA Resources', 'normal', 'high' );   
+         
+}
+function sa_resource_meta_box()
+{
+    global $post;
+    $custom = get_post_custom($post->ID);
+    $saresource_date = $custom["sa_resourcedate"][0];
+    $saresource_policy = $custom["sa_resourcepolicy"][0];
+
+	$args=array(
+	  'post_type' => 'sapolicies',
+	  'post_status' => 'publish',
+	  'posts_per_page' => -1,
+	  'caller_get_posts'=> 1,
+	  'orderby' => 'title',
+	  'order' => 'ASC'
+	);
+	$my_query = null;
+	$my_query = new WP_Query($args);
+
+	$seltext="";
+	$selval="";
+	if ($saresource_policy == null){
+		$seltext="---Select a Policy---";
+		$selval="";
+	}else {            
+		$seltext=$saresource_policy;
+		$selval=$saresource_policy;
+	}
+
+	?>
+	<strong>Source Date</strong><br><input type='text' name='sa_resourcedate' id='sa_resourcedate' value='<?php 
+                if ($saresource_date != "") {
+                    echo $saresource_date;
+                }
+           ?>'/><br><br>
+	<strong>Policy</strong><br>
+	<select name='sa_resourcepolicy' id='sa_resourcepolicy'>
+		<option selected="true" value="<?php echo $selval; ?>"><?php echo $seltext; ?></option>
+	<?php
+	if( $my_query->have_posts() ) {
+	  while ($my_query->have_posts()) : $my_query->the_post(); ?>
+		<option value='<?php the_title(); ?>'><?php the_title(); ?></option>
+		<?php
+	  endwhile;
+	}
+	wp_reset_query();	
+	?>
+	
+	</select>
+	
+	<script type="text/javascript">
+
+	var $j = jQuery.noConflict();
+    $j(document).ready(function()
+    {
+        $j("#sa_resourcedate").datepicker();        
+	});
+	</script>
+	
+	
+	<?php
+}
+add_action( 'save_post', 'saresource_save' );
+function saresource_save() { 
+ 
+   global $post;
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+      return;
+
+    if ($post->post_type == 'saresources') {
+       saresource_save_event_field("sa_resourcedate");
+	   saresource_save_event_field("sa_resourcepolicy");
+	}
+}
+function saresource_save_event_field($event_field) {
+    global $post;
+    if(isset($_POST[$event_field])) {
+        update_post_meta($post->ID, $event_field, $_POST[$event_field]);
+    } else{
+        delete_post_meta($post->ID, $event_field);
+    }
+}
