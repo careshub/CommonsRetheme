@@ -614,4 +614,340 @@ function sapolicy_jquery(){
     wp_enqueue_script('jquery-ui-datepicker');
     wp_enqueue_style('sticky_post-admin-ui-css','http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/base/jquery-ui.css',false,"1.9.0",false);
     }
-?>
+
+function sa_searchpolicies() {
+        ?>
+    <div>
+
+	</div>
+	<form action="" method="POST" enctype="multipart/form-data" name="sa_ps">
+			SA Policy Search:<br><input type="text" id="saps" name="saps" value="<?php 
+			if(isset($_POST['saps'])) {
+				echo $_POST['saps']; 
+			}
+			elseif(isset($_GET['qs'])) {
+				
+					echo $_GET['qs'];
+				
+			}
+				?>" />
+
+			<input id="searchsubmit" type="submit" alt="Search" value="Search" />
+	</form>
+<br>
+	
+	<a href="#" id="toggle">+ Advanced Search</a>
+	<br><br>
+    <div id="advancedsearch" style="width:800px;display:none;">
+		<form id="advsearch" action="?qs=<?php echo $_POST['saps'] ?>" method="POST" enctype="multipart/form-data" name="sa_ps2">
+			<div style="float:left;">
+				<h4>Advocacy Targets</h4>
+				<?php 
+				
+				$ATterms = get_terms('sa_advocacy_targets');
+				foreach ($ATterms as $ATterm) {
+					echo "<input type='checkbox' name='sa_advocacy_target[]' value='" . $ATterm->term_id . "' /> " . substr($ATterm->name, 0, 25) . "...<br>";
+				}
+				?>
+			</div>
+			<div style="float:left;padding-left:20px;">
+				<h4>Policy Stages</h4>
+				<input type="checkbox" name="policy_stages[]" value="Pre Policy" /> Pre Policy<br>
+				<input type="checkbox" name="policy_stages[]" value="Develop Policy" /> Develop Policy<br>
+				<input type="checkbox" name="policy_stages[]" value="Enact Policy" /> Enact Policy<br>
+				<input type="checkbox" name="policy_stages[]" value="Post Policy" /> Post Policy
+			</div>
+			<div style="float:left;padding-left:20px;">
+				<h4>Tags</h4>
+				<?php $sat_args = array('orderby' => count, 'order' => DESC, 'number' => 7);
+				$sapolicytags = get_terms('sa_policy_tags', $sat_args);
+				foreach ($sapolicytags as $sapolicytag) {
+					echo "<input type='checkbox' name='sa_sapolicy_tag[]' value='" . $sapolicytag->term_id . "' /> " . $sapolicytag->name . " (" . $sapolicytag->count . ")<br>";
+				}			
+				?>
+			</div>
+			<div><input type="submit" id="updateresults" value="Update Results" /></div>
+		</form>	
+		
+	</div>
+<br>
+	<script type="text/javascript">
+		var $j = jQuery.noConflict();
+		
+		$j(document).ready(function(){
+
+
+		   $j('#advancedsearch').hide();	
+		   $j('#toggle').click(function(){
+				$j('#advancedsearch').slideToggle('slow');
+				if ($j("#toggle").text() == "+ Advanced Search") {
+					$j("#toggle").text("- Advanced Search");
+				}
+				else {
+					$j("#toggle").text("+ Advanced Search");
+				}
+		   });
+
+		});	
+		
+		
+		
+		
+    
+	</script>
+
+<?php
+	global $wpdb; 
+
+	
+	if(isset($_POST['saps']))
+    {		           
+			$saps = $_POST['saps']; 			
+
+		    $query = new WP_Query( array(
+					's' => $saps, 
+					'post_type' => 'sapolicies'));
+			
+		    if($query->have_posts()) : 
+			  while($query->have_posts()) : 
+				 $query->the_post();
+				 ?>
+					<div style='color:#fe9600;font-weight:bold;font-size:13pt;'><a href='<?php the_permalink() ?>'><?php sa_highlight_search_results($saps, the_title()) ?></a></div><br>
+					<div><?php sa_highlight_search_results($saps, the_content()) ?></div><br>
+				 <?php   
+
+			  endwhile;
+		   else: 
+			  echo "No Results";	
+		   endif;	
+	}
+	$advocacy_targets="";
+	$policy_stages="";
+	$sa_tags="";
+	if(isset($_POST['sa_advocacy_target']))
+	 {
+		 $sats = $_POST['sa_advocacy_target'];
+		 foreach ($sats as $sat) {
+			$chk1 .= $sat . ",";
+		 }		 
+		 $chk1=rtrim($chk1, ",");		 
+	 }
+	if(isset($_POST['policy_stages']))
+	 {
+		 $pss = $_POST['policy_stages'];
+		 foreach ($pss as $ps) {
+			$chk2 .= $ps . ",";
+		 }
+		 $chk2=rtrim($chk2, ",");		
+			
+	 }	
+	if(isset($_POST['sa_sapolicy_tag']))
+	 {
+		 $ssts = $_POST['sa_sapolicy_tag'];
+		 foreach ($ssts as $sst) {
+			$chk3 .= $sst . ",";
+		 }
+		 $chk3=rtrim($chk3, ",");		
+	 }
+	 
+	if(isset($_POST['sa_advocacy_target']) || isset($_POST['policy_stages']) || isset($_POST['sa_sapolicy_tag'])) {
+		$filter_args = array(
+					 'post_type' => 'sapolicies',
+					 's' => $_GET['qs'],
+					 'category__in' => array($chk1)
+					 // 'meta_query' => array(
+										// 'key' => 'sa_policystage',
+										// 'value' => array($chk2)
+					 
+					 //)
+					 
+					 );
+						var_dump($filter_args);
+		$query2 = new WP_Query($filter_args);
+		    if($query2->have_posts()) : 
+			  while($query2->have_posts()) : 
+				 $query2->the_post();
+				 ?>
+					<div style='color:#fe9600;font-weight:bold;font-size:13pt;'><a href='<?php the_permalink() ?>'><?php sa_highlight_search_results($saps, the_title()) ?></a></div><br>
+					<div><?php sa_highlight_search_results($saps, the_content()) ?></div><br>
+				 <?php   
+
+			  endwhile;
+		   else: 
+			  echo "No Results";	
+		   endif;						
+	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+}
+
+function sa_highlight_search_results($saps,$text) {
+				
+				$keys2 = explode(" ",$saps);
+				$text2 = preg_replace('/('.implode('|', $keys2) .')/iu', '<strong style="color:#EF403B;">'.$saps.'</strong>', $text);
+				return $text2;
+}
+
+
+
+function sa_location_search()
+{ 
+
+        ?>
+        <form method="POST" action="" name="sa_ls" enctype="multipart/form-data"> 
+            SA Policy Search by Location:<br><input type="text" id="locationtxt" size="65" name="locationtxt" />
+            <input type="submit" name="submit" value="Search"/>
+        </form>
+<br><br>
+<?php
+        if(isset($_POST['locationtxt']))
+    {
+        global $wpdb;    
+        $loc = $_POST['locationtxt'];  
+        $loc2 = str_replace(" ","%20",$loc);
+        $geocode = file_get_contents('http://maps.google.com/maps/api/geocode/json?address=' . $loc2 . '&sensor=false');
+        $output = json_decode($geocode);
+        $lat = $output->results[0]->geometry->location->lat;
+        $lng = $output->results[0]->geometry->location->lng;
+        
+   
+        
+        
+        $query = "SELECT DISTINCT $wpdb->posts.ID, $wpdb->posts.post_title, $wpdb->posts.post_content, wpcflat.meta_value AS latitude, wpcflong.meta_value AS longitude,
+            3959 * 2 * ASIN ( SQRT (POWER(SIN(($lat - wpcflat.meta_value)*pi()/180 / 2),2) + COS($lat * pi()/180) * COS(wpcflat.meta_value *pi()/180) * POWER(SIN(($lng - wpcflong.meta_value) *pi()/180 / 2), 2) ) ) as distance
+        FROM $wpdb->posts
+            LEFT JOIN $wpdb->postmeta as wpcflong ON ($wpdb->posts.ID = wpcflong.post_id)
+            LEFT JOIN $wpdb->postmeta as wpcflat ON ($wpdb->posts.ID = wpcflat.post_id)
+
+        WHERE $wpdb->posts.ID
+        AND wpcflat.meta_key = 'sa_latitude'
+        AND wpcflong.meta_key = 'sa_longitude'
+
+        ORDER BY distance
+        LIMIT 200";
+      
+        //print_r($query);
+        $results = $wpdb->get_results($query);
+         if (!$results) {
+          die("Invalid query: " . $wpdb->show_errors());
+        } else {
+            //var_dump($results);
+            echo "Your search: " . $loc;
+            ?>
+            <div id="contact-content">
+                    <script type="text/javascript">
+                    var markers = [];    
+                    function samap_initialize() {
+
+                        var firstpt = new google.maps.LatLng(<?php echo $lat ?>, <?php echo $lng ?>);
+
+                        var firstLatlng = new google.maps.LatLng(<?php echo $lat ?>, <?php echo $lng ?>);              
+
+                        var firstOptions = {
+                            zoom: 7,
+                            center: firstLatlng,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP 
+                        };
+
+                        var map = new google.maps.Map(document.getElementById("map_sapolicies"), firstOptions);
+
+                        var firstimage = 'http://localhost/wordpress/wp-content/themes/twentytwelve/includes/star-3.png';
+                        var policyimage = 'http://localhost/wordpress/wp-content/themes/twentytwelve/includes/text.png';
+                        
+                        var firstmarker = new google.maps.Marker({
+                            position: firstpt,
+                            map: map,
+                            icon: firstimage,
+                            title: 'Your search location'
+                        });
+
+
+                        <?php 
+                            foreach ($results as $result){
+                                $theTitle = $result->post_title;
+                                $theLat = $result->latitude;
+                                $theLng = $result->longitude;
+                                $pl = get_permalink($result->ID);    
+                                
+                        ?>
+                      
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(<?php echo $theLat . ", " . $theLng ?>),
+                            map: map,
+                            icon: policyimage,
+                            html: "<b><a href='<?php echo $pl; ?>'><?php echo $theTitle; ?></a></b><br>"
+                          });
+                        markers.push(marker);
+                        google.maps.event.addListener(marker, 'click', function () {
+                            infowindow.setContent(this.html);
+                            infowindow.open(map, this);
+                        });
+                            <?php } ?>
+                        
+
+                        var contentString1 = 'Your Search Location:<br><?php echo $loc ?>';
+
+                        var infowindow = new google.maps.InfoWindow({
+                            content: "loading..."
+                        });
+
+                        var infowindow1 = new google.maps.InfoWindow({
+                            content: contentString1
+                        });
+
+                        google.maps.event.addListener(firstmarker, 'click', function() {
+                            infowindow1.open(map,firstmarker);
+                        });
+
+                    }
+                    </script>
+
+                    <div class="map">
+                        <style type="text/css">
+                        #map_sapolicies img {
+                           max-width: none;
+                           border-width:0px;
+                           -webkit-box-shadow: none;
+                           -moz-box-shadow: none;
+                           box-shadow: none;                           
+                        }
+                        </style>
+                        <div id="map_sapolicies" style="width: 600px; height: 600px"></div><br><br>  
+
+                    </div>
+
+                </div>  
+
+
+            <?php
+            
+            foreach ($results as $result){
+                echo "<div style='color:#fe9600;font-weight:bold;font-size:13pt;'><a href='" . get_permalink($result->ID) . "'>" . $result->post_title . "</a></div><br>";
+				echo "<div>" . $result->post_content . "</div><div style='font-style:italic;'>Distance from search center: " . round($result->distance, 2) . " miles</div><br>";			
+            
+
+            }
+            
+            
+            
+            
+        }
+        
+
+
+    }
+}	
+	
