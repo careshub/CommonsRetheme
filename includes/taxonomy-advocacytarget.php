@@ -26,6 +26,12 @@ function register_taxonomy_advocacy_targets() {
         'public' => true,
         'show_in_nav_menus' => true,
         'show_ui' => true,
+        'capabilities' => array(
+                        'manage_terms' => 'edit_sapoliciess',
+                        'delete_terms' => 'edit_sapoliciess',
+                        'edit_terms' => 'edit_sapoliciess',
+                        'assign_terms' => 'edit_sapoliciess'
+                    ),
         'show_tagcloud' => true,
         'show_admin_column' => false,
         'hierarchical' => true,

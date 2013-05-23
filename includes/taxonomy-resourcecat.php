@@ -25,10 +25,10 @@ function add_resourcecat_taxonomy() {
 		'hierarchical' => true,
         'show_ui' => true,		
 		'capabilities' => array(
-						'manage_terms' => 'manage_saresourcecat',
-						'delete_terms' => 'manage_saresourcecat',
-						'edit_terms' => 'manage_saresourcecat',
-						'assign_terms' => 'manage_saresourcecat'
+						'manage_terms' => 'edit_saresourcess',
+						'delete_terms' => 'edit_saresourcess',
+						'edit_terms' => 'edit_saresourcess',
+						'assign_terms' => 'edit_saresourcess'
 					)		
 	);
 
