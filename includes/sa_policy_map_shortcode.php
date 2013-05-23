@@ -1,6 +1,6 @@
 <?php
 
-function sa_location_search()
+function sa_location_search_sc()
 { 
 
         ?>
@@ -161,7 +161,7 @@ function sa_location_search()
 
     }
 }
-add_shortcode( 'SA_location_search', 'sa_location_search' );
+add_shortcode( 'SA_location_search', 'sa_location_search_sc' );
 
 
 

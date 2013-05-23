@@ -1,20 +1,20 @@
 <?php 
-function add_resourcecat_taxonomy() {
+function add_resource_types_taxonomy() {
 	// Add new "Resource Category" taxonomy to Salud America Resources	
 
 	$labels = array(
 
-			'name' => _x( 'Resource Tags', 'taxonomy general name' ),
-			'singular_name' => _x( 'Resource Tag', 'taxonomy singular name' ),
-			'search_items' =>  __( 'Search Resource Tags' ),
-			'all_items' => __( 'All Resource Tags' ),
-			'parent_item' => __( 'Parent Resource Tags' ),
-			'parent_item_colon' => __( 'Parent Resource Tag:' ),
-			'edit_item' => __( 'Edit Resource Tag' ),
-			'update_item' => __( 'Update Resource Tag' ),
-			'add_new_item' => __( 'Add New Resource Tag' ),
-			'new_item_name' => __( 'New Resource Tag Name' ),
-			'menu_name' => __( 'Resource Tags' )
+			'name' => _x( 'Resource Types', 'taxonomy general name' ),
+			'singular_name' => _x( 'Resource Type', 'taxonomy singular name' ),
+			'search_items' =>  __( 'Search Resource Types' ),
+			'all_items' => __( 'All Resource Types' ),
+			'parent_item' => __( 'Parent Resource Types' ),
+			'parent_item_colon' => __( 'Parent Resource Type:' ),
+			'edit_item' => __( 'Edit Resource Type' ),
+			'update_item' => __( 'Update Resource Type' ),
+			'add_new_item' => __( 'Add New Resource Type' ),
+			'new_item_name' => __( 'New Resource Type Name' ),
+			'menu_name' => __( 'Resource Types' )
 		);		
 
 		
@@ -36,4 +36,4 @@ function add_resourcecat_taxonomy() {
 	
 		
 }
-add_action( 'init', 'add_resourcecat_taxonomy', 0 );
+add_action( 'init', 'add_resource_types_taxonomy', 0 );
