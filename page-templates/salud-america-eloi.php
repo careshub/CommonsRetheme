@@ -194,7 +194,7 @@ get_header(); ?>
 <?php  
 //4 BLOCKS FOR WHAT'S GOING ON NOW ####################################################                          
     $resource_cats = array(
-      'call-to-action',
+      'get-involved',
       'journal-article',
       'news',
       'press-release'
