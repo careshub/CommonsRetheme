@@ -21,7 +21,8 @@ $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 	}
 
 $tags = get_the_terms( $post->ID, 'sa_resourcecat' );
-	if (!empty($tags)) {
+	if (!empty($tags)) { 
+            
 		foreach ( $tags as $tag ) {
 			$resource_tags[] = '<a href="' . get_term_link($tag->slug, 'sa_resourcecat') .'">'.$tag->name.'</a>';
 		}

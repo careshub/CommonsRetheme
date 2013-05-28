@@ -233,9 +233,9 @@ get_header(); ?>
           <header class="entry-header">
             <?php //temporary hack! We'll show the images as taxonomy images
               switch ($resource_cat) {
-                case 'call-to-action':
+                case 'get-involved':
                   ?>
-                  <a href="#" title="Permalink to Calls to Action" rel="bookmark" class="frontsecondary"><img width="300" height="200" src="http://dev.communitycommons.org/wp-content/uploads/2013/05/Calls_Action.jpg" class="attachment-feature-front-sub wp-post-image" alt="Screen Shot 2013-04-09 at 9.54.49 AM"></a>
+                  <a href="#" title="Permalink to Calls to Action" rel="bookmark" class="frontsecondary"><img width="300" height="200" src="http://dev.communitycommons.org/wp-content/uploads/2013/05/Get_Involved_2.jpg" class="attachment-feature-front-sub wp-post-image" alt="Screen Shot 2013-04-09 at 9.54.49 AM"></a>
                   <?php
                   break;
                 case 'journal-article':
@@ -302,7 +302,7 @@ get_header(); ?>
 		                                  array(
 			                                 'taxonomy' => 'sa_resourcecat',
 			                                 'field' => 'slug',
-			                                 'terms' => array( 'call-to-action' )
+			                                 'terms' => array( 'get-involved' )
 		                                  ),
                                                   array(
 			                                 'taxonomy' => 'sa_resourcecat',
