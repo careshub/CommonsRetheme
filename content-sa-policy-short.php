@@ -10,7 +10,7 @@
 	$terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 	foreach ( $terms as $term ) {
 		$advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
-		$target_icon[] = $term->slug;
+		$target_icons[] = $term->slug;
 	}
 	$advocacy_targets = join( ', ', $advocacy_targets );
 	// echo '<pre>';
@@ -47,13 +47,16 @@
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<div class="entry-content">
 			<header class="entry-header clear">
-				<?php if ( isset( $target_icon ) )
-						echo '<span class="' . $target_icon[0] . 'x60"></span>';
-				?>
 				<h2 class="entry-title">
 				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 				</h2>
 				<?php //echo "<br />"; ?>
+				<?php if ( isset( $target_icons ) ) {
+						foreach ($target_icons as $target_icon) {
+							echo '<span class="' . $target_icon . 'x30"></span>';
+						}
+					}
+				?>
 				<p class="location"><?php //echo $location; 
 						if (function_exists('salud_the_location')) {
 							salud_the_location();

@@ -145,3 +145,91 @@ function saresource_save_event_field($event_field) {
         delete_post_meta($post->ID, $event_field);
     }
 }
+
+function saresources_get_featured_blocks($resource_cats) {
+	//We'll loop through the entries of the array to build the queries and display the content
+	//Count the dimension of the resource_cats array to determine proper class to apply to top blocks.
+	$count = count($resource_cats);
+	switch ($count) {
+		case ( $count %4 == 0 ) :
+			$block_class = 'quarter-block';
+			break;
+		case ( $count %3 == 0 ) :
+			$block_class = 'third-block';
+			break;
+		default:
+			$block_class = 'half-block';
+			break;
+	}
+
+    foreach ($resource_cats as $resource_cat) {
+
+      // The Query
+
+          $args = array(
+          // Change these category SLUGS to suit your use.
+          'post_type' => 'saresources',
+          'sa_resourcecat' => $resource_cat,
+          'showposts' => '3',
+          );
+          $resources_results = new WP_Query( $args );
+
+          // The Loop
+          if ( $resources_results->have_posts() ) : ?>
+
+              <div class="<?php echo $block_class; ?>"> 
+              <?php $counter = 0;
+                 while ( $resources_results->have_posts() ) : $resources_results->the_post();
+                    ++$counter;
+              if ( $counter == 1 ) { ?>
+
+              <header class="entry-header">
+                <?php 
+                  if ( function_exists('salud_get_taxonomy_images') ) {
+                   echo salud_get_taxonomy_images($resource_cat, 'sa_resourcecat');
+                  }
+                ?>                   
+                <h2 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+              </header>                     
+              <div class="entry-content"><?php the_excerpt();?></div> <!-- End .entry-content -->
+              <?php } ?>
+              <h4>Other Resources</h4>
+                <ul class="related-posts">       
+              <?php if ($counter != 1) { 
+              // output the related posts' titles for the second and third posts ?>
+                    <li>
+                      <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+                    </li>   
+              <?php } // end if $counter is not 1 
+              // Reset Query
+               wp_reset_query();      
+               endwhile; ?>
+                 </ul>
+              </div> <?php echo '<!-- End ' . $block_class . '-->'; ?>
+        <?php  endif; ?>                                                         
+    <?php } // Ends foreach for four top blocks 
+}
+
+function saresources_get_related_resources($resource_cats) {
+	wp_reset_postdata();
+	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	$args = array(
+	'post_type' => 'saresources',
+	'showposts' => '4',
+	'paged' => $paged,
+	'tax_query' => array(
+	                array(
+	                 'taxonomy' => 'sa_resourcecat',
+	                 'field' => 'slug',
+	                 'terms' => $resource_cats
+	                )
+	             )
+	);
+	$list_of_policies = new WP_Query( $args ); 
+
+	while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
+		//This template should be the short result
+		get_template_part( 'content','saresources-short');
+		//comments_template( '', true );
+	endwhile; // end of the loop.
+}

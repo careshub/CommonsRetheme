@@ -162,7 +162,7 @@ for ($i = 1; $i <= 4; $i++) {
 				echo '<div class="content-row">';
 			}
 			?>
-		<div id="story-block-<?= $i; ?>" class="quarter-block" class="clear">
+		<div id="story-block-<?php echo $i; ?>" class="quarter-block" class="clear">
 			<?php
 			get_template_part( 'content', 'stories-brief' );
 			

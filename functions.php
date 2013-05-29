@@ -881,3 +881,61 @@ function registration_check_email_confirm(){
     }
 }
 add_action('bp_signup_validate', 'registration_check_email_confirm');
+
+/*
+// Get taxonomy images
+// Accepts category name and which taxonomy
+// returns <img> string, must be echoed
+*/
+function cc_get_taxonomy_images($category, $taxonomy){
+//Only continue if the $category passed matches a real category slug
+  //Get an array of all categories
+  $args = array(
+    'taxonomy' => $taxonomy
+  );
+  $possible_categories = get_categories($args);
+  $all_cats = array();
+  foreach ($possible_categories as $cat) {
+    $all_possible_cats[] = $cat->slug;
+  }
+  //If the requested category doesn't exist, bail.
+  if ( !in_array($category, $all_possible_cats) )
+    return;
+
+  // Build the section header
+  // $cat_object = get_term_by('slug', $category, $taxonomy);
+  // print_r($cat_object);
+  // $section_title = $cat_object->name;
+  // $section_description = $cat_object->description;
+
+  //Put them all together for the Taxonomy Images plugin
+  $combined_term_args = array(
+    'term_args' => array( 
+                'slug' => $category, 
+            ),
+    'taxonomy' => $taxonomy
+  );
+        
+  $tax_images = apply_filters( 'taxonomy-images-get-terms', '', $combined_term_args );
+  if ($tax_images) {
+   return wp_get_attachment_image( $tax_images[0]->image_id, 'full' );
+ }
+}
+
+/*
+// Get taxonomy images for Salud
+// Accepts category name and which taxonomy
+// Uses cc_get_taxonomy_images()
+// returns <div><img><h2> string, must be echoed
+*/
+function salud_get_taxonomy_images($category, $taxonomy){
+  // Build the section header
+  $cat_object = get_term_by('slug', $category, $taxonomy);
+  $section_title = $cat_object->name;
+  
+  $output .= '<div class="sa-resource-header-icon"><span>' . $section_title . '</span>';
+  $output .= cc_get_taxonomy_images($category, $taxonomy);
+  $output .= '</div>';
+
+  return $output;
+}

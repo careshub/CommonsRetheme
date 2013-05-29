@@ -24,6 +24,9 @@ form#login p.status{
     position: fixed;
     z-index: 998;
 }
+ul li {
+	margin-bottom: 1em;
+}
 
 //Parent theme overrides
 body {
@@ -2385,18 +2388,6 @@ ul.item-list li .share-buttons-below li {
 	-webkit-animation: none;
 	background-image: none;
 }
-
-//icons
-// .iconx60 {
-// 	display:inline-block;
-// 	width:60px;
-// 	height:auto;
-// }
-// .iconx30 {
-// 	display:inline-block;
-// 	width:30px;
-// 	height:auto;
-// }
 .facebookx60, .searchx18, .userx18, .userx21, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24, .linkedinx24, .emailx24, .collaborationx24, .mapx24, .reportx24, .collaborationx40, .mapx40, .reportx40{
 	background: url(img/sprites.png) no-repeat;
 }
@@ -2683,7 +2674,26 @@ ul.item-list li .share-buttons-below li {
 			}
 		}
 	}
+	.sa-resource-header-icon {
+		position: relative;
+		span {
+		  // position: absolute;
+		  color: white;
+		  // bottom: 15px;
+		  // text-align: center;
+		  width: 92%;
+		  // font-weight: bold;
+		  line-height: 2;
+		  .font-size(1.2);
+		  padding-left: 2%;
+		  background-color: @sared;
+		  display: block;
+		}
+		img {
+			display: none;
+		}
 	}
+	} //End #content
 }
 
 .policy-meta {
@@ -2744,33 +2754,68 @@ ul.item-list li .share-buttons-below li {
 	display: block;
 	float: left;
 	margin-right: 4%;
+	height: 60px;
 	width: 60px;
-	height: 60px;	
+}
+
+.sa-active-playx30, .sa-active-spacesx30, .sa-better-food-in-neighborhoodsx30, .sa-healthier-marketingx30, .sa-healthier-school-snacksx30, .sa-sugary-drinksx30{
+	background: url(img/salud_america/sa-sprites.png) no-repeat;
+	display: block;
+	float: left;
+	margin-right: 2%;
+	height: 30px;
+	width: 30px;
 }
 
 .sa-active-playx60{
-	background-position: 0 -70px ;
+	background-position: -140px -70px ;
 }
 
 .sa-active-spacesx60{
-	background-position: 0 -140px ;
+	background-position: -70px -70px ;
 }
 
 .sa-better-food-in-neighborhoodsx60{
-	background-position: 0 -210px ;
+	background-position: 0 -70px ;
 }
 
 .sa-healthier-marketingx60{
-	background-position: 0 -280px ;
+	background-position: -140px 0;
 }
 
 .sa-healthier-school-snacksx60{
-	background-position: 0 -350px ;
+	background-position: -70px 0;
 }
 
 .sa-sugary-drinksx60{
 	background-position: 0 0;
 }
+
+.sa-active-playx30{
+	background-position: -200px -140px ;
+}
+
+.sa-active-spacesx30{
+	background-position: -160px -140px ;
+}
+
+.sa-better-food-in-neighborhoodsx30{
+	background-position: -120px -140px ;
+}
+
+.sa-healthier-marketingx30{
+	background-position: -80px -140px ;
+}
+
+.sa-healthier-school-snacksx30{
+	background-position: -40px -140px ;
+}
+
+.sa-sugary-drinksx30{
+	background-position: 0 -140px ;
+}
+
+
 
 // Header styles
 
