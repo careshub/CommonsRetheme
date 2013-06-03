@@ -31,7 +31,7 @@ function SA_resources_init()
 	// 	'hierarchical' => false,
 	// 	// 'menu_position' => 52,
 	// 	'has_archive' => 'saresources',
-	// 	'taxonomies' => array('sa_resourcecat', 'sa_advocacy_targets'),		
+	// 	'taxonomies' => array('sa_resource_cat', 'sa_advocacy_targets'),		
 	// 	'supports' => array('title','editor','comments'),
  //        'capability_type' => 'saresources',
  //        'map_meta_cap'    => true
@@ -46,7 +46,7 @@ function SA_resources_init()
 		'hierarchical' => false,
 	    'show_in_menu' => true,
 	    // 'menu_position' => 22,
-	    'taxonomies' => array('sa_advocacy_targets', 'sa_resourcecat'),
+	    'taxonomies' => array('sa_advocacy_targets', 'sa_resource_cat'),
 	    //'has_archive' => 'sapolicies',
 	    // 'supports' => array('title','editor','excerpt','trackbacks','custom-fields','comments','revisions','thumbnail','author','page-attributes',),
 	    'supports' => array('title','editor','comments'),
@@ -169,7 +169,7 @@ function saresources_get_featured_blocks($resource_cats) {
           $args = array(
           // Change these category SLUGS to suit your use.
           'post_type' => 'saresources',
-          'sa_resourcecat' => $resource_cat,
+          'sa_resource_cat' => $resource_cat,
           'showposts' => '3',
           );
           $resources_results = new WP_Query( $args );
@@ -186,7 +186,7 @@ function saresources_get_featured_blocks($resource_cats) {
               <header class="entry-header">
                 <?php 
                   if ( function_exists('salud_get_taxonomy_images') ) {
-                   echo salud_get_taxonomy_images($resource_cat, 'sa_resourcecat');
+                   echo salud_get_taxonomy_images($resource_cat, 'sa_resource_cat');
                   }
                 ?>                   
                 <h2 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
@@ -217,7 +217,7 @@ function saresources_get_related_resources($resource_cats) {
 	'paged' => $paged,
 	'tax_query' => array(
 	                array(
-	                 'taxonomy' => 'sa_resourcecat',
+	                 'taxonomy' => 'sa_resource_cat',
 	                 'field' => 'slug',
 	                 'terms' => $resource_cats
 	                )

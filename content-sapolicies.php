@@ -144,10 +144,10 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 					<ul id="sa_associated_resources">
 
 					<?php while ( $associated_docs->have_posts() ) : $associated_docs->the_post();
-					$assoc_tags = get_the_terms( $post->ID, 'sa_resourcecat' );
+					$assoc_tags = get_the_terms( $post->ID, 'sa_resource_cat' );
 						if ($assoc_tags) {
 							foreach ( $assoc_tags as $assoc_tag ) {
-								$resource_tags[] = '<a href="' . get_term_link($assoc_tag->slug, 'sa_resourcecat') .'">'.$assoc_tag->name.'</a>';
+								$resource_tags[] = '<a href="' . get_term_link($assoc_tag->slug, 'sa_resource_cat') .'">'.$assoc_tag->name.'</a>';
 							}
 							$resource_tags = join( ', ', $resource_tags );
 						}

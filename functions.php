@@ -142,6 +142,16 @@ function commons_ie_stylesheet_load(){
 }
 add_action( 'wp_enqueue_scripts', 'commons_ie_stylesheet_load', 99 );
 
+function cc_wp_admin_area_stylesheet_load(){
+    wp_register_style(
+            'cc_wp_admin_area_stylesheet',
+            get_stylesheet_directory_uri() . '/css/wp-admin-area-customization.css',
+            false
+        );
+    wp_enqueue_style( 'cc_wp_admin_area_stylesheet' );
+}
+add_action( 'admin_print_styles', 'cc_wp_admin_area_stylesheet_load', 11 );
+
 
 function notifications_counter() {
 	if (function_exists('bp_is_active')) {

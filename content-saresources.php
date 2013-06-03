@@ -18,11 +18,14 @@ $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 	}
 	$advocacy_targets = join( ', ', $advocacy_targets );
 
-$tags = get_the_terms( $post->ID, 'sa_resourcecat' );
-	foreach ( $tags as $tag ) {
-		$resource_tags[] = '<a href="' . get_term_link($tag->slug, 'sa_resourcecat') .'">'.$tag->name.'</a>';
+$resource_cats = get_the_terms( $post->ID, 'sa_resource_cat' );
+	if (!empty($resource_cats)) { 
+            
+		foreach ( $resource_cats as $cat ) {
+			$resource_categories[] = '<a href="' . get_term_link($cat->slug, 'sa_resource_cat') .'">'.$cat->name.'</a>';
+		}
+		$resource_categories = join( ', ', $resource_categories );
 	}
-	$resource_tags = join( ', ', $policy_tags );
 // print_r($tags);
 // echo $policy_tags;
 
@@ -69,9 +72,9 @@ $tags = get_the_terms( $post->ID, 'sa_resourcecat' );
 			</a></p>
 			<?php } ?>
 
-			<?php if ( isset($resource_tags) ) { ?>
-				<p class="sa-policy-meta">Tags :
-					<?php echo $resource_tags; ?>
+			<?php if ( isset($resource_categories) ) { ?>
+				<p class="sa-policy-meta">Categories :
+					<?php echo $resource_categories; ?>
 				</a></p>
 			<?php } ?>
 			<!-- <p class="sa-policy-meta">This policy is of the type: <a href="#">

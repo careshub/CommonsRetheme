@@ -35,7 +35,7 @@ if (is_page('salud-americaresearch')) {
           $args = array(
 					// Change these category SLUGS to suit your use.
 					'post_type' => 'saresources',
-          'sa_resourcecat'=> 'research',
+          'sa_resource_cat'=> 'research',
         	'showposts' => '4',
 					'paged' => $paged
 				);
