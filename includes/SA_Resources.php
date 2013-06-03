@@ -231,3 +231,36 @@ function saresources_get_related_resources($resource_cats) {
 		//comments_template( '', true );
 	endwhile; // end of the loop.
 }
+
+// Parses the location of a salud policy or resource to a human-readable output
+function salud_the_location() {
+  echo salud_get_the_location();
+}
+  function salud_get_the_location() {
+    //Location parsing
+      $custom_fields = get_post_custom();
+      $geography_type = isset($custom_fields['sa_geog'][0]) ? $custom_fields['sa_geog'][0] : '';
+      $geog_final = isset($custom_fields['sa_finalgeog'][0]) ? $custom_fields['sa_finalgeog'][0] : '';
+      $geog_state = isset($custom_fields['sa_state'][0]) ? ucwords($custom_fields['sa_state'][0]) : '';
+      switch ($geography_type) {
+        case 'National':
+          $location = 'United States';
+          break;
+        case 'State':
+          $location = $geog_state;
+          break;
+        case 'County':
+        case 'City':
+        case 'School District':
+        case 'US Congressional District':
+        case 'State House District':
+        case 'State Senate District':
+          $location = $geog_final . ", " . $geog_state;
+          break;
+        default:
+          $location = 'Location unknown';
+          break;
+        }
+         
+         return $location;
+  } 

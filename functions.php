@@ -652,38 +652,6 @@ function salud_excerpt_length($length) {
 }
 add_filter('excerpt_length', 'salud_excerpt_length', 999);
 
-function salud_the_location() {
-  echo salud_get_the_location();
-}
-  function salud_get_the_location() {
-    //Location parsing
-      $custom_fields = get_post_custom();
-      $geography_type = isset($custom_fields['sa_geog'][0]) ? $custom_fields['sa_geog'][0] : '';
-      $geog_final = isset($custom_fields['sa_finalgeog'][0]) ? $custom_fields['sa_finalgeog'][0] : '';
-      $geog_state = isset($custom_fields['sa_state'][0]) ? ucwords($custom_fields['sa_state'][0]) : '';
-      switch ($geography_type) {
-        case 'National':
-          $location = 'United States';
-          break;
-        case 'State':
-          $location = $geog_state;
-          break;
-        case 'County':
-        case 'City':
-        case 'School District':
-        case 'US Congressional District':
-        case 'State House District':
-        case 'State Senate District':
-          $location = $geog_final . ", " . $geog_state;
-          break;
-        default:
-          $location = 'Location unknown';
-          break;
-        }
-         
-         return $location;
-  } 
-
 //Add our custom post types to the archives page
 function cc_add_custom_types( $query ) {
   if( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {

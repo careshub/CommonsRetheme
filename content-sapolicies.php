@@ -33,7 +33,7 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 // echo "<br />";
 
 //Location
-	$location = $custom_fields['sa_finalgeog'][0];
+	// $location = $custom_fields['sa_finalgeog'][0];
 	//
 
 //Progress meter
