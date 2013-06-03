@@ -192,11 +192,9 @@ function saresources_get_featured_blocks($resource_cats) {
                 <h2 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
               </header>                     
               <div class="entry-content"><?php the_excerpt();?></div> <!-- End .entry-content -->
-              <?php } ?>
               <h4>Other Resources</h4>
-                <ul class="related-posts">       
-              <?php if ($counter != 1) { 
-              // output the related posts' titles for the second and third posts ?>
+                <ul class="related-posts">
+              <?php } else { ?>      
                     <li>
                       <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
                     </li>   

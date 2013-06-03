@@ -24,9 +24,6 @@ form#login p.status{
     position: fixed;
     z-index: 998;
 }
-ul li {
-	margin-bottom: 1em;
-}
 
 //Parent theme overrides
 body {
@@ -212,6 +209,9 @@ body.activity-permalink .activity-list li .activity-header > p {
 		//line-height: 220%;
 		p { margin: 0; 
 		}
+	}
+	.profile .profile-fields .data {
+		line-height: 1.6;
 	}
 }
 .activity-header {
@@ -3090,16 +3090,7 @@ body.home-page {
 			h3 {
 				color: lighten(@graydark, 15);
 				// font-weight: 400;
-			}
-			.related-posts li {
-		    	margin-bottom: 1em;
-
-				a {
-		    	display: block;
-		    	line-height: 1.4;
-		    	text-align: left;
-			    } 
-		    }		
+			}		
 			
 		}
 	}
@@ -3139,6 +3130,16 @@ body.home-page {
 	// display: inline-block;
 	// text-align: left;
 	// padding:.6em;
+}
+.quarter-block, .third-block, .half-block {
+	.related-posts li {
+		    	margin-bottom: 1em;
+				a {
+		    	display: block;
+		    	line-height: 1.4;
+		    	text-align: left;
+			    } 
+		    }
 }
 
 // Data Vis Page
