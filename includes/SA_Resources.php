@@ -46,7 +46,7 @@ function SA_resources_init()
 		'hierarchical' => false,
 	    'show_in_menu' => true,
 	    // 'menu_position' => 22,
-	    'taxonomies' => array('sa_advocacy_targets', 'sa_resource_cat'),
+	    'taxonomies' => array('sa_advocacy_targets', 'sa_resource_cat', 'sa_resource_type'),
 	    //'has_archive' => 'sapolicies',
 	    // 'supports' => array('title','editor','excerpt','trackbacks','custom-fields','comments','revisions','thumbnail','author','page-attributes',),
 	    'supports' => array('title','editor','comments'),

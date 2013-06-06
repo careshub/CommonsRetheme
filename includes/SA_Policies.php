@@ -103,7 +103,7 @@ add_action( 'admin_menu','sapolicy_remove_metas');
 function sapolicy_remove_metas() {
     remove_meta_box('geographiesdiv','sapolicies','side');
     // remove_meta_box('commentstatusdiv','sapolicies','normal');
-    remove_meta_box('trackbacksdiv','sapolicies','normal');
+    // remove_meta_box('trackbacksdiv','sapolicies','normal');
 }
        
 function sa_geog_meta_box()
@@ -116,33 +116,21 @@ function sa_geog_meta_box()
     
 ?>
 <style type="text/css">
-    #leftcolumn, #rightcolumn, #leftcolumn2, #rightcolumn2  { width: 300px; float: left; }
+    #leftcolumn, #rightcolumn, #leftcolumn2, #rightcolumn2  { width: 44%; margin-right: 3%; float: left; }
 </style>
 
 <div id="leftcolumn">
-    <?php
-        $geogdef="";
-        if ($geog == null)
-        {
-            $geogdef="---Select a Geography---";
-        }else {            
-            $geogdef=$geog;
-        }
-    ?>    
-    
-    <select id="sa_geog" name="sa_geog">
-      <option selected="true" value="<?php echo $geog; ?>"><?php echo $geogdef; ?></option>
-      <option value="National">National</option>
-      <option value="State">State</option>
-      <option value="County">County</option>
-      <option value="City">City</option>
-      <option value="School District">School District</option>
-      <option value="US Congressional District">US Congressional District</option>
-      <option value="State House District">State House District</option>
-      <option value="State Senate District">State Senate District</option>      
-    </select>    
-    
-    
+    <!-- <h4>Geography</h4> -->
+    <ul id="sa_geog_select">
+      <li><input type="radio" name="sa_geog" id="sa_geog_national" value="National" <?php checked( $geog, 'National' ); ?>> <label for="sa_geog_national">National</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_state" value="State" <?php checked( $geog, 'State' ); ?>> <label for="sa_geog_state">State</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_county" value="County" <?php checked( $geog, 'County' ); ?>> <label for="sa_geog_county">County</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_city" value="City" <?php checked( $geog, 'City' ); ?>> <label for="sa_geog_city">City</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_school_district" value="School District" <?php checked( $geog, 'School District' ); ?>> <label for="sa_geog_school_district">School District</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_us_congress" value="US Congressional District" <?php checked( $geog, 'US Congressional District' ); ?>> <label for="sa_geog_us_congress">US Congressional District</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_state_house" value="State House District" <?php checked( $geog, 'State House District' ); ?>> <label for="sa_geog_state_house">State House District</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_state_senate" value="State Senate District" <?php checked( $geog, 'State Senate District' ); ?>> <label for="sa_geog_state_senate">State Senate District</label></li>
+    </ul>
 
 </div>
 <div id="rightcolumn">
@@ -155,21 +143,26 @@ function sa_geog_meta_box()
 	);
         
 	$terms = get_terms( 'geographies', $args5 );
-	
         
 	if ( $terms ) {
-                print( '<select name="sa_state" id="sa_state" class="sa_state">' );
-                if ($state != '') {
-                    $properST = get_term_by('slug',$state,'geographies');
-                    printf( '<option value="%s">%s</option>', $properST->slug, $properST->name );
-                } else {
-                    print( '<option value="" selected="selected">Select a State</option>');
-                }
-		foreach ( $terms as $term ) {
-		$mnb =	printf( '<option value="%s">%s</option>', $term->slug, $term->name );
-                echo $mnb;
-		}
-		print( '</select>' );
+    echo '<select name="sa_state" id="sa_state" class="sa_state">';
+      // if ($state != '') { //$state should look like: Texas
+      //     $properST = get_term_by('slug',$state,'geographies');
+      //     printf( '<option value="%s">%s</option>', $properST->slug, $properST->name );
+      // } else {
+      //     print( '<option value="" selected="selected">Select a State</option>');
+      // }
+
+  		foreach ( $terms as $term ) {
+        echo '<option ';
+        if (!empty($state)) {
+          echo ( $state == $term->name ? ' selected="selected"' : '' );
+        }
+        echo '>'. $option . '</option>';
+      		// $mnb =	printf( '<option value="%s">%s</option>', $term->slug, $term->name );
+        //               echo $mnb;
+  		}
+		echo '</select>';
 	} else {
             print('no terms');
         }
@@ -231,7 +224,7 @@ function sa_policy_meta_box() {
         }
        
 ?> 
-
+<!-- TODO: switch types to a taxonomy -->
     <strong>Type:</strong><br>
     <select name="sa_policytype">
       <option selected="true" value="<?php echo $sapolicy_type; ?>"><?php echo $ptdef; ?></option>
@@ -246,160 +239,108 @@ function sa_policy_meta_box() {
     </select>
     <br><br>
 <div id="leftcolumn2">
-    <strong>Stage:</strong><br>
+    <h4>Stage:</h4>
+    <ul id="policy_stage_select">
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_pre_policy" value="Pre Policy" <?php checked( $sapolicy_stage, 'Pre Policy' ); ?>> <label for="sa_policystage_pre_policy">Pre-Policy</label></li>
 
-    <input type="radio" name="sa_policystage" value="Pre Policy" onClick="setStage('pre');"
-           <?php 
-                if ($sapolicy_stage == "Pre Policy") {
-                    echo " checked";
-                }
-           ?>
-           > Pre-Policy<br>
-    <input type="radio" name="sa_policystage" value="Develop Policy" onClick="setStage('develop');"
-            <?php 
-                if ($sapolicy_stage == "Develop Policy") {
-                    echo " checked";
-                }
-           ?>> Develop Policy<br>
-    <input type="radio" name="sa_policystage" value="Enact Policy" onClick="setStage('enact');"
-           <?php 
-                if ($sapolicy_stage == "Enact Policy") {
-                    echo " checked";
-                }
-           ?>           
-           > Enact Policy<br>
-    <input type="radio" name="sa_policystage" value="Post Policy" onClick="setStage('post');"
-           <?php 
-                if ($sapolicy_stage == "Post Policy") {
-                    echo " checked";
-                }
-           ?>           
-           > Post-Policy<br>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_develop_policy" value="Develop Policy" <?php checked( $sapolicy_stage, 'Develop Policy' ); ?>> <label for="sa_policystage_develop_policy">Develop Policy</label></li>
+      
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_enact_policy" value="Enact Policy" <?php checked( $sapolicy_stage, 'Enact Policy' ); ?>> <label for="sa_policystage_enact_policy">Enact Policy</label></li>
+      
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_post_policy" value="Post Policy" <?php checked( $sapolicy_stage, 'Post Policy' ); ?>> <label for="sa_policystage_post_policy">Post-Policy</label></li>
+    </ul>
 
 </div>
 <div id="rightcolumn2">
     <div id="morestage">
-        <div id="prestage" style="<?php 
-if ($sapolicy_stage === "pre") {
-    echo "display:block";
-} else {
-    echo "display:none";
-}
-?>">
-            <strong>Pre-Policy</strong><br>
-            <input type="checkbox" id="sa_pre1" name="sa_pre1" value='Describe Problem' <?php 
-                if ($pre1 == true) {
-                    echo " checked";
-                } 
-           ?>                     
-                   > Describe Problem<br>
-            <input type="checkbox" id="sa_pre2" name="sa_pre2" value='Study Causes and Consequences'<?php 
-                if ($pre2 == true) {
-                    echo " checked";
-                } 
-           ?>                  
-                   > Study Causes and Consequences<br>
-            <input type="checkbox" id="sa_pre3" name="sa_pre3" value='Describe Trend and Spread of Issues'<?php 
-                if ($pre3 == true) {
-                    echo " checked";
-                } 
-           ?>                   
-                   > Describe Trend and Spread of Issues<br>
+        
+        <div id="prestage" class="policy_stage_details">
+            <h4>Pre-Policy</h4>
+            <input type="checkbox" id="sa_pre1" name="sa_pre1" value='Describe Problem' <?php checked( $pre1, 'Describe Problem' ); ?> > <label for="sa_pre1">Describe Problem</label><br />
+            
+            <input type="checkbox" id="sa_pre2" name="sa_pre2" value='Study Causes and Consequences' <?php checked( $pre2, 'Study Causes and Consequences' ); ?>                        
+                   > <label for="sa_pre2">Study Causes and Consequences</label><br />
+            
+            <input type="checkbox" id="sa_pre3" name="sa_pre3" value='Describe Trend and Spread of Issues' <?php checked( $pre3, 'Describe Trend and Spread of Issues' ); ?>> <label for="sa_pre1">Describe Trend and Spread of Issues</label><br />
         </div>
-        <div id="developstage" style="<?php 
-if ($sapolicy_stage === "develop") {
-    echo "display:block";
-} else {
-    echo "display:none";
-}
-?>">
-            <strong>Develop Policy</strong><br>
-            <input type="checkbox" id="sa_dev1" name="sa_dev1" value='Promote Awareness'<?php 
-                if ($dev1 == true) {
-                    echo " checked";
-                } 
-           ?>                     
-                   > Promote Awareness<br>
-            <input type="checkbox" id="sa_dev2" name="sa_dev2" value='Re-frame Issues'<?php 
-                if ($dev2 == true) {
-                    echo " checked";
-                } 
-           ?>                   
-                   > Re-frame Issues<br>
-            <input type="checkbox" id="sa_dev3" name="sa_dev3" value='Mobilize Publics'<?php 
-                if ($dev3 == true) {
-                    echo " checked";
-                } 
-           ?>                    
-                   > Mobilize Publics<br>
+        
+        <div id="developstage" class="policy_stage_details">
+            <h4>Develop Policy</h4>
+            <input type="checkbox" id="sa_dev1" name="sa_dev1" value='Promote Awareness' <?php checked( $dev1, 'Promote Awareness' ); ?>                 
+                   > <label for="sa_dev1">Promote Awareness</label><br />            
+
+            <input type="checkbox" id="sa_dev2" name="sa_dev2" value='Re-frame Issues' <?php checked( $dev2, 'Re-frame Issues' ); ?>> <label for="sa_dev2">Re-frame Issues</label><br />
+            
+            <input type="checkbox" id="sa_dev3" name="sa_dev3" value='Mobilize Publics' <?php checked( $dev3, 'Mobilize Publics' ); ?>> <label for="sa_dev3">Mobilize Publics</label><br />
         </div>
-        <div id="enactstage" style="<?php 
-if ($sapolicy_stage === "enact") {
-    echo "display:block";
-} else {
-    echo "display:none";
-}
-?>">
-            <strong>Enact Policy</strong><br>
-            <input type="checkbox" id="sa_enact1" name="sa_enact1" value='Create Advocacy'<?php 
-                if ($enact1 == true) {
-                    echo " checked";
-                } 
-           ?>                    
-                   > Create Advocacy<br>
-            <input type="checkbox" id="sa_enact2" name="sa_enact2" value='Frame Policy'<?php 
-                if ($enact2 == true) {
-                    echo " checked";
-                } 
-           ?>                    
-                   > Frame Policy<br>
-            <input type="checkbox" id="sa_enact3" name="sa_enact3" value='Pass Policy or Legislation'<?php 
-                if ($enact3 == true) {
-                    echo " checked";
-                } 
-           ?>                    
-                   > Pass Policy or Legislation<br><br>
-            <strong>Date Enacted</strong><br><input id="sa_dateenacted" name="sa_dateenacted" value="<?php 
+        
+        <div id="enactstage" class="policy_stage_details">
+            <h4>Enact Policy</h4>
+            <input type="checkbox" id="sa_enact1" name="sa_enact1" value='Create Advocacy' <?php checked( $enact1, 'Create Advocacy' ); ?>             
+                   > <label for="sa_enact1">Create Advocacy</label><br />
+            <input type="checkbox" id="sa_enact2" name="sa_enact2" value='Frame Policy' <?php checked( $enact2, 'Frame Policy' ); ?>             
+                   > <label for="sa_enact2">Frame Policy</label><br />
+            <input type="checkbox" id="sa_enact3" name="sa_enact3" value='Pass Policy or Legislation' <?php checked( $enact3, 'Pass Policy or Legislation' ); ?>              
+                   > <label for="sa_enact3">Pass Policy or Legislation</label><br />
+            <label for="sa_dateenacted">Date Enacted<label><br />
+            <input id="sa_dateenacted" name="sa_dateenacted" value="<?php 
                 if ($dateenacted != "") {
                     echo $dateenacted;
                 }
-           ?>"><br>
-            <strong>Date Implemented</strong><br><input id="sa_dateimplemented" name="sa_dateimplemented" value="<?php 
+           ?>"><br />
+        </div>
+        
+        <div id="poststage" class="policy_stage_details">
+            <h4>Post-Policy</h4>
+            <input type="checkbox" id="sa_post1" name="sa_post1" value='Implement Policy' <?php checked( $post1, 'Implement Policy' ); ?>> <label for="sa_post1">Implement Policy</label><br />
+            <input type="checkbox" id="sa_post2" name="sa_post2" value='Ensure Access and Equity' <?php checked( $post2, 'Ensure Access and Equity' ); ?>> <label for="sa_post2">Ensure Access and Equity</label><br />
+            <input type="checkbox" id="sa_post3" name="sa_post3" value='Sustain, Change, Abandon'<?php checked( $post2, 'Sustain, Change, Abandon' ); ?>> <label for="sa_post3">Sustain, Change, Abandon</label><br />  
+            <label for="sa_dateimplemented">Date Implemented</label><br />
+            <input id="sa_dateimplemented" name="sa_dateimplemented" value="<?php 
                 if ($dateimplemented != "") {
                     echo $dateimplemented;
                 }
-           ?>"><br>
-        </div>
-        <div id="poststage" style="<?php 
-if ($sapolicy_stage === "post") {
-    echo "display:block";
-} else {
-    echo "display:none";
-}
-?>">
-            <strong>Post-Policy</strong><br>
-            <input type="checkbox" id="sa_post1" name="sa_post1" value='Implement Policy'<?php 
-                if ($post1 == true) {
-                    echo " checked";
-                } 
-           ?>> Implement Policy<br>
-            <input type="checkbox" id="sa_post2" name="sa_post2" value='Ensure Access and Equity'<?php 
-                if ($post2 == true) {
-                    echo " checked";
-                }
-           ?>> Ensure Access and Equity<br>
-            <input type="checkbox" id="sa_post3" name="sa_post3" value='Sustain, Change, Abandon'<?php 
-                if ($post3 == true) {
-                    echo " checked";
-                } 
-           ?>> Sustain, Change, Abandon<br>            
+           ?>"><br />          
         </div>    
     </div>
 </div>
 <div style="clear:both"></div>
 
             
+<script type="text/javascript">
+    //Show and hide appropriate stage divs
+jQuery(document).ready(function(){
 
+      refresh_policy_stage_vis_setting();
+
+      //On click, refresh the visibility. Hide them all, then show the selected one
+        jQuery('#policy_stage_select input').on( 'click', function() {           
+                  refresh_policy_stage_vis_setting();            
+          } );
+});
+
+function refresh_policy_stage_vis_setting() {
+  //First, hide them all, then show the one that is selected
+  jQuery('.policy_stage_details').hide();
+      var visible_stage_div = jQuery('#policy_stage_select').find('input:checked').val();
+      //console.log(visible_stage_div);
+      switch (visible_stage_div){
+        case "Pre Policy":
+              jQuery('#prestage').toggle();
+          break;
+        case "Develop Policy":
+              jQuery('#developstage').toggle();
+          break;
+        case "Enact Policy":
+              jQuery('#enactstage').toggle();
+          break;
+        case "Post Policy":
+              jQuery('#poststage').toggle();
+          break;
+        }
+ }
+
+</script>
 
       
 
@@ -409,6 +350,8 @@ if ($sapolicy_stage === "post") {
 var $j = jQuery.noConflict();
     $j(document).ready(function()
     {
+      
+
         $j("#sa_dateenacted").datepicker();
         $j("#sa_dateimplemented").datepicker();
 		
@@ -484,7 +427,7 @@ var $j = jQuery.noConflict();
 						   	
 						  //	alert($j("#sa_finalgeog").val());
 
-                                                      var dataString2 = 'finalgeog=' + $j("#sa_finalgeog").val() + '&geog=' + $j("#sa_geog").val() + '&state=' + $j("#sa_state").val();  
+              var dataString2 = 'finalgeog=' + $j("#sa_finalgeog").val() + '&geog=' + $j("#sa_geog").val() + '&state=' + $j("#sa_state").val();  
                                                   
 						   
 						
@@ -510,46 +453,7 @@ var $j = jQuery.noConflict();
 			
 	   });
 
-  });
-	
-	
-	
-
-
-
-
-function setStage(y) {
-
-    var pre = document.getElementById('prestage');
-    var develop = document.getElementById('developstage');
-    var enact = document.getElementById('enactstage');
-    var post = document.getElementById('poststage');
-// TODO: Why not set them all none and only change the one?
-    if (y === "pre") {
-        pre.style.display="block";
-        develop.style.display="none";
-        enact.style.display="none";
-        post.style.display="none";    
-    }
-    if (y === "develop") {        
-        pre.style.display="none";
-        develop.style.display="block";
-        enact.style.display="none";
-        post.style.display="none";    
-    }
-    if (y ==="enact") {
-        pre.style.display="none";
-        develop.style.display="none";
-        enact.style.display="block";
-        post.style.display="none";    
-    }
-    if (y === "post") {
-        pre.style.display="none";
-        develop.style.display="none";
-        enact.style.display="none";
-        post.style.display="block";    
-    }
-}
+  }); // End document ready
 
 </script>
 
@@ -609,7 +513,8 @@ function sapolicy_save_event_field($event_field) {
     }
 }
 
-add_action('init', 'sapolicy_jquery'); 
+//Not needed, WP includes jQuery UI
+// add_action('init', 'sapolicy_jquery'); 
 function sapolicy_jquery(){
     wp_enqueue_script('jquery-ui-datepicker');
     wp_enqueue_style('sticky_post-admin-ui-css','http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/base/jquery-ui.css',false,"1.9.0",false);
@@ -617,9 +522,6 @@ function sapolicy_jquery(){
 
 function sa_searchpolicies() {
         ?>
-    <div>
-
-	</div>
 	<form action="" method="POST" enctype="multipart/form-data" name="sa_ps">
 			SA Policy Search:<br><input type="text" id="saps" name="saps" value="<?php 
 			if(isset($_POST['saps'])) {
