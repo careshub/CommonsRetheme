@@ -25,10 +25,14 @@ $termdesc = term_description( $myterm->term_id, 'geographies' );
 					$long1 = (float) trim($parts[1]);
 					$lat2 = (float) trim($parts[2]);
 					$long2 = (float) trim(str_replace("</p>", "", $parts[3]));
-                                        $avglat=($lat1+$lat2)/2;
-                                        $avglong=($long1+$long2)/2;
-                                        printf('<input type="hidden" id="sa_latitude" name="sa_latitude" value="' . $avglat . '" /><input type="hidden" id="sa_longitude" name="sa_longitude" value="' . $avglong . '" />');
-					
+                    $avglat=($lat1+$lat2)/2;
+                    $avglong=($long1+$long2)/2;
+                    // printf('<input id="sa_latitude" name="sa_latitude" value="' . $avglat . '" /><input id="sa_longitude" name="sa_longitude" value="' . $avglong . '" />');
+					$coordinates = array( 
+						'latitude' => $avglat,
+						'longitude' => $avglong
+						);
+					printf( json_encode($coordinates) );
 				}
 			} 
 

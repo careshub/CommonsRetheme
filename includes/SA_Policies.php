@@ -112,7 +112,10 @@ function sa_geog_meta_box()
     $custom = get_post_custom($post->ID);
     $geog = $custom["sa_geog"][0];
     $state = $custom["sa_state"][0];
-    $selectedgeog = $custom["sa_finalgeog"][0];    
+    $selectedgeog = $custom["sa_finalgeog"][0];
+    $sa_latitude = $custom["sa_latitude"][0];
+    $sa_longitude = $custom["sa_longitude"][0];
+
     
 ?>
 <style type="text/css">
@@ -134,33 +137,30 @@ function sa_geog_meta_box()
 
 </div>
 <div id="rightcolumn">
-    <div id="states">    
+    <div id="states">
         <?php
+  //Populate States selectbox 
 	$args5 = array(
                 'parent' => 718,
-                'hide_empty' => 0 
-                
+                'hide_empty' => 0      
 	);
         
 	$terms = get_terms( 'geographies', $args5 );
+  echo '<pre>';
+  print_r($geog);
+  print_r($state);
+  print_r($selectedgeog);
+  echo '</pre>';
         
 	if ( $terms ) {
     echo '<select name="sa_state" id="sa_state" class="sa_state">';
-      // if ($state != '') { //$state should look like: Texas
-      //     $properST = get_term_by('slug',$state,'geographies');
-      //     printf( '<option value="%s">%s</option>', $properST->slug, $properST->name );
-      // } else {
-      //     print( '<option value="" selected="selected">Select a State</option>');
-      // }
 
   		foreach ( $terms as $term ) {
-        echo '<option ';
+        echo '<option value="' . $term->name . '"' ;
         if (!empty($state)) {
           echo ( $state == $term->name ? ' selected="selected"' : '' );
         }
-        echo '>'. $option . '</option>';
-      		// $mnb =	printf( '<option value="%s">%s</option>', $term->slug, $term->name );
-        //               echo $mnb;
+        echo '>'. $term->name . '</option>';
   		}
 		echo '</select>';
 	} else {
@@ -171,17 +171,43 @@ function sa_geog_meta_box()
 
         </div>
         <div id="moregeog">
-            <div id="selgeog"> 
+            <div id="selgeog">
+              <!-- If a selection exists (editing an existing policy), set up the option list on page load. We also need to be able to generate it on the fly in the case of a new policy. -->
                 <select name="sa_selectedgeog" id="sa_selectedgeog" class="sa_selectedgeog">
                 <?php
-                 if ($geog !== null) {
-                        echo "<option selected='true' value='" . $selectedgeog . "'>" . $selectedgeog . "</option>";
+                //Don't bother to try to load options if the geog value is empty or national or state.
+                 if ( !empty($geog) && !in_array($geog, array ('National','State')) ) {
+                    $geog_str_prefix = sa_get_geography_prefix($geog);
+
+                    $geo_search_slug = $geog_str_prefix . $state;
+                    $geoterm = get_term_by('slug', $geo_search_slug, 'geographies'); 
+                    $tid = $geoterm->term_id;
+                        $args = array(
+                                'parent' => $tid,
+                                'hide_empty' => 0,
+                        );
+                        $terms = get_terms( 'geographies', $args );
+                        if ( $terms ) {                    
+                                foreach ( $terms as $term ) {
+                                   echo '<option value="' . $term->name . '"' ;
+                                    if (!empty($selectedgeog)) {
+                                      echo ( $selectedgeog == $term->name ? ' selected="selected"' : '' );
+                                    }
+                                    echo '>'. $term->name . '</option>';
+                                    }
+                            }
+
+                    //load the values list for this geog and state, setting the selection along the way
+                        // echo "<option selected='true' value='" . $selectedgeog . "'>" . $selectedgeog . "</option>";
                     }            
                  ?>                   
                     
                 </select>
-				<input type="hidden" id="sa_finalgeog" name="sa_finalgeog" />
-				<div id="sa_latlongs"></div>
+				<input id="sa_finalgeog" name="sa_finalgeog"  <?php if (!empty($selectedgeog)) {
+                                      echo 'value="' . $selectedgeog . '"';
+                                    } ?> />
+        <input id="sa_latitude" value="<?php echo $sa_latitude; ?>" name="sa_latitude">
+        <input id="sa_longitude" value="<?php echo $sa_longitude; ?>" name="sa_longitude">
             </div>            
         </div>
 </div>
@@ -193,6 +219,8 @@ function sa_geog_meta_box()
 
 
 }
+
+
 
 function sa_policy_meta_box() {  
     global $post;
@@ -311,19 +339,19 @@ function sa_policy_meta_box() {
     //Show and hide appropriate stage divs
 jQuery(document).ready(function(){
 
-      refresh_policy_stage_vis_setting();
+      refresh_sa_policy_stage_vis_setting();
 
       //On click, refresh the visibility. Hide them all, then show the selected one
-        jQuery('#policy_stage_select input').on( 'click', function() {           
-                  refresh_policy_stage_vis_setting();            
+        jQuery('#policy_stage_select input').live( 'change', function() {           
+                  refresh_sa_policy_stage_vis_setting();            
           } );
 });
 
-function refresh_policy_stage_vis_setting() {
+function refresh_sa_policy_stage_vis_setting() {
   //First, hide them all, then show the one that is selected
   jQuery('.policy_stage_details').hide();
       var visible_stage_div = jQuery('#policy_stage_select').find('input:checked').val();
-      //console.log(visible_stage_div);
+      // console.log(visible_stage_div);
       switch (visible_stage_div){
         case "Pre Policy":
               jQuery('#prestage').toggle();
@@ -342,123 +370,120 @@ function refresh_policy_stage_vis_setting() {
 
 </script>
 
-      
-
-   
 <script type="text/javascript">
+    //Handle the geography input form
+jQuery(document).ready(function(){
 
-var $j = jQuery.noConflict();
-    $j(document).ready(function()
-    {
+      // refresh_policy_stage_vis_setting();
+
+      //On click, refresh the visibility.
+        jQuery('#sa_geog_select,#sa_state').live( 'change', function() {           
+            refresh_sa_policy_geographies();            
+          } );
+
+        jQuery("#sa_selectedgeog").live( 'change', function() {
+            jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog").val());
+            get_sa_geog_lat_lon();
+     });
+});
+
+function refresh_sa_policy_geographies() {
+  //First, hide them all, then show the one that is selected
+  // jQuery('.policy_stage_details').hide();
+      var sa_major_geography = jQuery('#sa_geog_select').find('input:checked').val();
+      var sa_state_geography = jQuery("#sa_state").val();
+      // console.log(sa_major_geography);
+      // console.log(sa_state_geography);
       
+      //Don't fetch the subdivisions if they're not needed.
+      if (sa_state_geography !== "" && sa_major_geography !== "National" && sa_major_geography !== "State" ) {    
+               
+         var dataString = 'selstate=' + sa_state_geography + '&geog=' + sa_major_geography;
+      
+         jQuery.ajax
+         ({
+           type: "POST",               
+           url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/geography.php",
+           data: dataString,
+           cache: false,               
+           error: function() {
+             alert("I'm hitting an error.");
+           },
+           success: function(k)
+           {       
+             //alert(k);
+             jQuery("#sa_selectedgeog").html(k);         
 
-        $j("#sa_dateenacted").datepicker();
-        $j("#sa_dateimplemented").datepicker();
-		
-		var sg = $j('#sa_geog').val()
-		if ($j('#sa_selectedgeog').val() == null) {
-			$j('#sa_selectedgeog').hide();		
-		}
-		if ($j("#sa_state").val()=="") {
-			$j("#sa_state").hide();		
-		}
-		if (sg == 'National') {
-			$j("#sa_state").hide();
-			$j('#sa_selectedgeog').hide();
-		}		
-		if (sg == 'State') {
-			$j('#sa_selectedgeog').hide();
-		}
-		
-		
-		
-		$j("#sa_state,#sa_geog").change(function()
-			   {
-					var sageog = $j("#sa_geog").val();
-					var selstate = $j("#sa_state").val();
-					 
-					 if (sageog == 'National'){	
-						$j("#sa_state,#sa_selectedgeog").val('');							
-						$j("#sa_selectedgeog,#sa_state").hide();
-						$j("#sa_finalgeog").val('United States');	
-					 } else if (sageog == 'State'){
-						$j("#sa_state").show();
-						$j("#sa_selectedgeog").hide();
-						$j("#sa_finalgeog").val(selstate);						
-					 } else { 					   
-						$j("#sa_selectedgeog,#sa_state").show();
-						$j("#sa_finalgeog").val($j("#sa_selectedgeog").val());
-						$j("#sa_finalgeog").val($j("#sa_selectedgeog").val());
-					 } 
-					
-			   	 	if (selstate !== "") {
-						   	
-						  	  
-						   
-						   var dataString = 'selstate=' + selstate + '&geog=' + sageog;
-						
-						   $j.ajax
-						   ({
-							   type: "POST",               
-							   url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/geography.php",
-							   data: dataString,
-							   cache: false,               
-							   error: function() {
-								   alert("I'm hitting an error.");
-							   },
-							   success: function(k)
-							   {       
-								   //alert(k);
-								   $j("#sa_selectedgeog").html(k);         
+           } 
+         });
+     }
+ }
 
-							   } 
-						   });
-				   }
-				   
-				   
-				   //console.log($j("#sa_finalgeog").val());
-			   });
-			   
-	   $j("#sa_selectedgeog").change(function()
-	   {
-			$j("#sa_finalgeog").val($j("#sa_selectedgeog").val());	
-			//console.log($j("#sa_finalgeog").val());
-			if ($j("#sa_finalgeog").val() !== '') {
-						   	
-						  //	alert($j("#sa_finalgeog").val());
+ function get_sa_geog_lat_lon(){
+  if (jQuery("#sa_finalgeog").val() !== '') {  
+    //  alert(jQuery("#sa_finalgeog").val());
 
-              var dataString2 = 'finalgeog=' + $j("#sa_finalgeog").val() + '&geog=' + $j("#sa_geog").val() + '&state=' + $j("#sa_state").val();  
-                                                  
-						   
-						
-						   $j.ajax
-						   ({
-							   type: "POST",               
-							   url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
-							   data: dataString2,
-							   cache: false,               
-							   error: function() {
-								   alert("I'm hitting an error2.");
-							   },
-							   success: function(p)
-							   {       
-								   //alert(p);
-								   $j("#sa_latlongs").html(p);         
+    var dataString2 = 'finalgeog=' + jQuery("#sa_finalgeog").val() + '&geog=' + jQuery("#sa_geog").val() + '&state=' + jQuery("#sa_state").val();  
 
-							   } 
-						   });
-				   }
-				   			
-			
-			
-	   });
+     jQuery.ajax
+     ({
+       type: "POST",               
+       url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
+       data: dataString2,
+       cache: false,               
+       error: function() {
+         alert("I can't calculate the lat & long.");
+       },
+       success: function(p)
+       {       
+         // console.log(p);
+         // jQuery("#sa_latlongs").html(p);
+         var coord = jQuery.parseJSON(p);
+          jQuery("#sa_latitude").val(coord.latitude);
+          jQuery("#sa_longitude").val(coord.longitude);
+       } 
+     });
+ }
+ }
 
-  }); // End document ready
+</script>
 
+<script type="text/javascript">
+  jQuery(document).ready(function(){
+    jQuery("#sa_dateenacted").datepicker();
+    jQuery("#sa_dateimplemented").datepicker();
+  });
 </script>
 
 <?php }
 
+function sa_get_geography_prefix($geog){
+   switch ($geog) {
+     case 'County':     
+     $geog_str_prefix="counties-";
+       break;
+    case 'City':    
+     $geog_str_prefix="cities-";
+       break;
+     case 'School District':    
+    $geog_str_prefix="schooldistricts-";
+       break;
+     case 'US Congressional District':     
+    $geog_str_prefix="uscongressionaldistricts-";
+       break;
+     case  'State House District':     
+    $geog_str_prefix="statehousedistricts-";
+       break;
+     case 'State Senate District':    
+    $geog_str_prefix="statesenatedistricts-";
+       break;
+     case 'County':     
+     $geog_str_prefix="counties-";
+       break; 
+   }
+   return $geog_str_prefix;
+}
+  
 add_action( 'save_post', 'sapolicy_save' );
 function sapolicy_save() { 
  
