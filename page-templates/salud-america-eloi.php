@@ -126,7 +126,7 @@ if (is_page('salud-americaresearch')) {
 				} ?>
 				<div class="policy-search">
 					<form id="sa-policy-search" class="standard-form" method="get" action="/">
-					<h3 style="color: #ef4036;font-size: 1.6rem;">Search for Training</h3>
+					<h3 style="color: #ef4036;font-size: 1.6rem;">Search for Learning Tools</h3>
 					<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Not a functional search yet." name="sa-policy">
 					<input class="sa-policy-search-button" type="submit" value="Search">
 					</form>
@@ -141,7 +141,7 @@ if (is_page('salud-americaresearch')) {
         );
         ?>
 
-    <h3>Browse Learning Resources by Type</h3>
+    <h3>Browse Learning Tools by Type</h3>
     <?php saresources_get_featured_blocks($resource_cats) ?>
  
     <h3>Latest Resources Added</h3>                      
