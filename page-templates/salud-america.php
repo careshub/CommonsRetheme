@@ -21,7 +21,7 @@ get_header(); ?>
 						<input class="sa-policy-search-button" type="submit" value="Search">
 						</form>
 					</div>
-					<h3>Browse Policies by Topic</h3>
+					<h3>Browse Changes by Topic</h3>
 					<?php 
 						$args = array(
 							'taxonomy' => 'sa_advocacy_targets'
@@ -100,7 +100,7 @@ get_header(); ?>
 				while ( have_posts() ) : the_post();
 				?>
 
-				<?php get_template_part( 'content', 'page' ); ?>
+				<?php get_template_part( 'content', 'page-notitle' ); ?>
 
                 
                 <?php 
