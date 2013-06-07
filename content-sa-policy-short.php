@@ -63,7 +63,7 @@
 						}
 					?></p>
 				<div class="meter-box clear">
-					<p>This policy is <?php echo $progress_label; ?>.
+					<p>This change is <?php echo $progress_label; ?>.
 					<!-- <div class="meter">
 						<span style="width: <?php echo $percentage; ?>%"><span></span></span>
 					</div> -->
