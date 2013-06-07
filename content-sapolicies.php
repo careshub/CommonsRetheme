@@ -77,7 +77,7 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 						}
 					?></p>
 				<div class="meter-box clear">
-					<p>This policy is <a href="/saresources/policy-stages/" title="More information about policy development"><?php echo $progress_label; ?></a>.
+					<p>This change is <a href="/saresources/spectrum/" title="More information about policy development"><?php echo $progress_label; ?></a>.
 					<div class="meter nostripes">
 						<span style="width: <?php echo $percentage; ?>%"><span></span></span>
 					</div>
