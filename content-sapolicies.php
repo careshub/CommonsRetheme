@@ -88,7 +88,7 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 
 			<?php the_content(); ?>
 
-			<p class="sa-policy-meta">Advocacy targets:
+			<p class="sa-policy-meta">Topics:
 				<?php echo $advocacy_targets; ?>
 			</a></p>
 			<?php 
@@ -98,7 +98,7 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 					<?php echo $policy_tags; ?>
 				</a></p>
 			<?php } ?>
-			<p class="sa-policy-meta">This policy is of the type: <a href="#">
+			<p class="sa-policy-meta">This change is of the type: <a href="#">
 				<?php echo $custom_fields['sa_policytype'][0];
 				// echo $advocacy_targets;
 				?>
