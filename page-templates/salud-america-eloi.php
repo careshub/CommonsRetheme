@@ -82,7 +82,7 @@ if (is_page('salud-americaresearch')) {
         <h3>Latest Resources Added</h3>
         <?php saresources_get_related_resources($resource_cats);
 			
-} elseif ( is_page('whats-going-on-now') ) {
+} elseif ( is_page('whats-new') ) {
 
 				//First, display the content of the page before making the custom loop.
 				$page_content = get_the_content();
@@ -116,7 +116,7 @@ if (is_page('salud-americaresearch')) {
       <h3>Latest Resources Added</h3>
       <?php saresources_get_related_resources($resource_cats);		
 
-} elseif (is_page('learn-how-to-create-change')) {
+} elseif (is_page('learn-to-make-change')) {
 
 				$page_content = get_the_content();
 				if ( !empty( $page_content ) ) {
