@@ -146,11 +146,11 @@ function sa_geog_meta_box()
 	);
         
 	$terms = get_terms( 'geographies', $args5 );
-  echo '<pre>';
-  print_r($geog);
-  print_r($state);
-  print_r($selectedgeog);
-  echo '</pre>';
+  // echo '<pre>';
+  // print_r($geog);
+  // print_r($state);
+  // print_r($selectedgeog);
+  // echo '</pre>';
         
 	if ( $terms ) {
     echo '<select name="sa_state" id="sa_state" class="sa_state">';
@@ -203,11 +203,9 @@ function sa_geog_meta_box()
                  ?>                   
                     
                 </select>
-				<input id="sa_finalgeog" name="sa_finalgeog"  <?php if (!empty($selectedgeog)) {
-                                      echo 'value="' . $selectedgeog . '"';
-                                    } ?> />
-        <input id="sa_latitude" value="<?php echo $sa_latitude; ?>" name="sa_latitude">
-        <input id="sa_longitude" value="<?php echo $sa_longitude; ?>" name="sa_longitude">
+                <input type="hidden" id="sa_finalgeog" value="<?php echo $selectedgeog; ?>" name="sa_finalgeog" />
+                <input type="hidden" id="sa_latitude" value="<?php echo $sa_latitude; ?>" name="sa_latitude">
+                <input type="hidden" id="sa_longitude" value="<?php echo $sa_longitude; ?>" name="sa_longitude">
             </div>            
         </div>
 </div>
@@ -342,8 +340,7 @@ jQuery(document).ready(function(){
       refresh_sa_policy_stage_vis_setting();
 
       //On click, refresh the visibility. Hide them all, then show the selected one
-        jQuery('#policy_stage_select input').live( 'change', function() {           
-                  refresh_sa_policy_stage_vis_setting();            
+        jQuery('#policy_stage_select input').live( 'change', function() {     refresh_sa_policy_stage_vis_setting();            
           } );
 });
 
@@ -373,19 +370,45 @@ function refresh_sa_policy_stage_vis_setting() {
 <script type="text/javascript">
     //Handle the geography input form
 jQuery(document).ready(function(){
+      //On page load, update the inputs that are enabled
+        refresh_sa_policy_enable_geog_inputs();
 
-      // refresh_policy_stage_vis_setting();
-
-      //On click, refresh the visibility.
-        jQuery('#sa_geog_select,#sa_state').live( 'change', function() {           
+      //On change, refresh the option list and option list visibility
+      //The page load setup is handled via php, so the js only has to handle the updates
+        jQuery('#sa_geog_select').live( 'change', function() {           
+            refresh_sa_policy_enable_geog_inputs();
             refresh_sa_policy_geographies();            
-          } );
+          });
+
+        jQuery('#sa_state').live( 'change', function() {           
+            refresh_sa_policy_geographies();          
+          });
 
         jQuery("#sa_selectedgeog").live( 'change', function() {
             jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog").val());
             get_sa_geog_lat_lon();
-     });
+           });
+
 });
+
+function refresh_sa_policy_enable_geog_inputs() {
+  //First, disable the inputs, then enable the needed inputs
+  jQuery('#sa_state,#sa_selectedgeog').prop('disabled', true);
+
+  var sa_major_geography = jQuery('#sa_geog_select').find('input:checked').val();
+    switch ( sa_major_geography ) {
+      case ( undefined ):
+      case ('National'):
+        //Leave inputs disabled
+        break;
+      case ('State'):
+        jQuery('#sa_state').prop('disabled', false);
+        break;
+      default:
+        jQuery('#sa_state,#sa_selectedgeog').prop('disabled', false);
+    }
+
+}
 
 function refresh_sa_policy_geographies() {
   //First, hide them all, then show the one that is selected
@@ -394,57 +417,74 @@ function refresh_sa_policy_geographies() {
       var sa_state_geography = jQuery("#sa_state").val();
       // console.log(sa_major_geography);
       // console.log(sa_state_geography);
-      
-      //Don't fetch the subdivisions if they're not needed.
-      if (sa_state_geography !== "" && sa_major_geography !== "National" && sa_major_geography !== "State" ) {    
-               
-         var dataString = 'selstate=' + sa_state_geography + '&geog=' + sa_major_geography;
-      
-         jQuery.ajax
-         ({
-           type: "POST",               
-           url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/geography.php",
-           data: dataString,
-           cache: false,               
-           error: function() {
-             alert("I'm hitting an error.");
-           },
-           success: function(k)
-           {       
-             //alert(k);
-             jQuery("#sa_selectedgeog").html(k);         
+    
+        switch (sa_major_geography) {
+          case ( undefined ):
+            //Nothing selected, hold tight
+            break;
+          case ('National'):
+          case ('State'):
+          case ('State Senate District'):
+            //TODO: State senate districts aren't behaving correctly - no terms seem to be available?
+            //Clear finalgeog and lat/lon values
+            //TODO: Why aren't we setting points for states?
+            jQuery("#sa_finalgeog,#sa_latitude,#sa_longitude").val('');
+            break;
+          default:
+          //Fetch the subdivisions if they're needed.
+            if (sa_state_geography !== "") {
+              var dataString = 'selstate=' + sa_state_geography + '&geog=' + sa_major_geography;
+          
+                 jQuery.ajax
+                 ({
+                   type: "POST",               
+                   url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/geography.php",
+                   data: dataString,
+                   cache: false,               
+                   error: function() {
+                     alert("I'm having trouble setting up the geographies list.");
+                   },
+                   success: function(k)
+                   {       
+                     //alert(k);
+                     jQuery("#sa_selectedgeog").html(k);
+                     //set finalgeo and lat/lon, in case the desired option is the first option... otherwise 'change' will never fire :)
+                     jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog option:first").val());
+                      get_sa_geog_lat_lon();         
 
-           } 
-         });
-     }
+                   } 
+                 });
+
+             }
+           }             
  }
 
- function get_sa_geog_lat_lon(){
-  if (jQuery("#sa_finalgeog").val() !== '') {  
-    //  alert(jQuery("#sa_finalgeog").val());
+function get_sa_geog_lat_lon(){
+    if (jQuery("#sa_finalgeog").val() !== '') {  
+      //  alert(jQuery("#sa_finalgeog").val());
 
-    var dataString2 = 'finalgeog=' + jQuery("#sa_finalgeog").val() + '&geog=' + jQuery("#sa_geog").val() + '&state=' + jQuery("#sa_state").val();  
+      var dataString2 = 'finalgeog=' + jQuery("#sa_finalgeog").val() + '&geog=' + jQuery("#sa_geog").val() + '&state=' + jQuery("#sa_state").val();  
 
-     jQuery.ajax
-     ({
-       type: "POST",               
-       url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
-       data: dataString2,
-       cache: false,               
-       error: function() {
-         alert("I can't calculate the lat & long.");
-       },
-       success: function(p)
-       {       
-         // console.log(p);
-         // jQuery("#sa_latlongs").html(p);
-         var coord = jQuery.parseJSON(p);
-          jQuery("#sa_latitude").val(coord.latitude);
-          jQuery("#sa_longitude").val(coord.longitude);
-       } 
-     });
- }
- }
+       jQuery.ajax
+       ({
+         type: "POST",               
+         url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
+         data: dataString2,
+         cache: false,               
+         error: function() {
+           alert("I can't calculate the lat & long.");
+         },
+         success: function(p)
+         {       
+           // console.log(p);
+           // jQuery("#sa_latlongs").html(p);
+           var coord = jQuery.parseJSON(p);
+            jQuery("#sa_latitude").val(coord.latitude);
+            jQuery("#sa_longitude").val(coord.longitude);
+         } 
+       });
+   }
+}
 
 </script>
 
@@ -477,9 +517,6 @@ function sa_get_geography_prefix($geog){
      case 'State Senate District':    
     $geog_str_prefix="statesenatedistricts-";
        break;
-     case 'County':     
-     $geog_str_prefix="counties-";
-       break; 
    }
    return $geog_str_prefix;
 }
@@ -531,9 +568,11 @@ function sa_geog_save() {
 
 function sapolicy_save_event_field($event_field) {
     global $post;
-    if(isset($_POST[$event_field])) {
+    //Don't save empty metas
+    if(!empty($_POST[$event_field])) {
         update_post_meta($post->ID, $event_field, $_POST[$event_field]);
-    } else{
+    } else {
+        //Also note that disabled fields are not saved. e.g. if "National" is selected, state, finalgeo and lat/lon will all be deleted. If "State" is selected, finalgeo and lat/lon will all be deleted.
         delete_post_meta($post->ID, $event_field);
     }
 }
@@ -704,19 +743,6 @@ function sa_searchpolicies() {
 			  echo "No Results";	
 		   endif;						
 	 }
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
 	 
 	 
 }
