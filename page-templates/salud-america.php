@@ -11,16 +11,25 @@ get_header(); ?>
 				<div class="salud-banner">
 					<img src="/wp-content/themes/CommonsRetheme/img/salud_america/salud-hand.jpg" class="no-box">
 					<h2>Plant Your <br /><span>Ideas for Change</span><br /> Today!</h2>
-				</div>
-
-				<div class="browse-topics">
-					<div class="policy-search">
+					<div class="policy-search-home">
 						<form id="sa-policy-search" class="standard-form" method="get" action="/">
-						<h3>Search for Changes in Progress</h3>
-						<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Not a functional search yet." name="sa-policy">
+						<h4>Search for Changes in Progress</h4>
+						<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="70" value="" placeholder="Placeholder Text" name="sa-policy">
 						<input class="sa-policy-search-button" type="submit" value="Search">
 						</form>
 					</div>
+				</div>
+				<div class="row clear">
+					<div class="half-block">
+						<h4>Change-Maker of the Week</h4>
+						<img src="/wp-content/themes/CommonsRetheme/img/salud_america/salud-hand.jpg">
+					</div>
+					<div class="half-block">
+						<h4>Where is Change Happening?</h4>
+						<img src="/wp-content/themes/CommonsRetheme/img/salud_america/map-of-movement-300x400.png">
+					</div>
+				</div>
+				<div class="browse-topics">
 					<h3>Browse Changes by Topic</h3>
 					<?php 
 						$args = array(
@@ -39,8 +48,8 @@ get_header(); ?>
 							$section_title = $cat_object->name;
 							$section_description = $cat_object->description;
 							?>
-						<div class="half-block salud-topic">
-							<a href="/salud-america/sapolicies/<?php echo $cat_slug; ?>" class="<?php echo $cat_slug; ?>">
+						<div class="half-block salud-topic <?php echo $cat_slug; ?>">
+							<a href="/salud-america/sapolicies/<?php echo $cat_slug; ?>" class="<?php echo $cat_slug; ?>  clear">
 								<span class="<?php echo $cat_slug; ?>x60"></span>
 								<h4><?php echo $section_title; ?></h4>
 							</a>
@@ -53,21 +62,30 @@ get_header(); ?>
 
 			<?php
 			} elseif (is_page('sapolicies')) {
-				//Do the custom query here, I think
-				//echo 'this is that page';
 				//First, display the content of the page before making the custom loop.
-				$page_content = get_the_content();
-				if ( !empty( $page_content ) ) {
-					echo '<p class="page-intro">';
-					echo $page_content;
-					echo '</p>';
-				} ?>
-				<div class="policy-search">
-					<form id="sa-policy-search" class="standard-form" method="get" action="commonsdev.local/salud-america/sapolicies/">
-					<h3>Search for Changes in Progress</h3>
-					<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Not a functional search yet." name="sa-policy">
-					<input class="sa-policy-search-button" type="submit" value="Search">
-					</form>
+				while ( have_posts() ) : the_post();
+				$page_intro = get_the_content();
+				if ( !empty($page_intro) ) {
+					$page_intro = apply_filters('the_content', $page_intro); 
+					?>
+					<div class="sa-page-intro">
+						<?php echo $page_intro; ?>
+					</div>	
+	                <?php } //End if empty check
+                endwhile; // end of the main page loop. 
+   				?>
+   				<div class="row">
+					<div class="policy-search half-block">
+						<form id="sa-policy-search" class="standard-form" method="get" action="commonsdev.local/salud-america/sapolicies/">
+						<h4>Search for Changes in Progress</h4>
+						<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Not a functional search yet." name="sa-policy">
+						<input class="sa-policy-search-button" type="submit" value="Search">
+						</form>
+					</div>
+					<div class="half-block">
+						<h4>Change-Maker of the Week</h4>
+						<img src="/wp-content/themes/CommonsRetheme/img/salud_america/salud-hand.jpg">
+					</div>
 				</div>
 				<?php 
 				// echo isset($_GET['sa-policy']) ? $_GET['sa-policy'] : 'nope' ;

@@ -81,14 +81,13 @@ function my_manage_sapolicies_columns( $column, $post_id ) {
 }
 
 function sap_columns_register_sortable( $columns ) {
+        //TODO: columns don't sort!
         $columns["type"] = "type";
         $columns["stage"] = "stage";
-	$columns["last_modified"] = "last_modified";
-	return $columns;
+      	$columns["last_modified"] = "last_modified";
+      	return $columns;
 }
 add_filter( "manage_edit-sapolicies_sortable_columns", "sap_columns_register_sortable" );
-
-
 
 
 //Building the input form in the WordPress admin area
@@ -99,11 +98,11 @@ function sa_policy_meta_box_add()
 	 add_meta_box( 'sa_geog_meta_box', 'Geography', 'sa_geog_meta_box', 'SA Policies', 'normal', 'high' );   
          
 }
-add_action( 'admin_menu','sapolicy_remove_metas');
+// add_action( 'admin_menu','sapolicy_remove_metas');
 function sapolicy_remove_metas() {
     remove_meta_box('geographiesdiv','sapolicies','side');
-    // remove_meta_box('commentstatusdiv','sapolicies','normal');
-    // remove_meta_box('trackbacksdiv','sapolicies','normal');
+    remove_meta_box('commentstatusdiv','sapolicies','normal');
+    remove_meta_box('trackbacksdiv','sapolicies','normal');
 }
        
 function sa_geog_meta_box()
@@ -269,13 +268,13 @@ function sa_policy_meta_box() {
 <div id="leftcolumn2">
     <h4>Stage:</h4>
     <ul id="policy_stage_select">
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_pre_policy" value="Pre Policy" <?php checked( $sapolicy_stage, 'Pre Policy' ); ?>> <label for="sa_policystage_pre_policy">Pre-Policy</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_pre_policy" value="emergence" <?php checked( $sapolicy_stage, 'emergence' ); ?>> <label for="sa_policystage_pre_policy">Emergence</label></li>
 
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_develop_policy" value="Develop Policy" <?php checked( $sapolicy_stage, 'Develop Policy' ); ?>> <label for="sa_policystage_develop_policy">Develop Policy</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_develop_policy" value="development" <?php checked( $sapolicy_stage, 'development' ); ?>> <label for="sa_policystage_develop_policy">Development</label></li>
       
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_enact_policy" value="Enact Policy" <?php checked( $sapolicy_stage, 'Enact Policy' ); ?>> <label for="sa_policystage_enact_policy">Enact Policy</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_enact_policy" value="enactment" <?php checked( $sapolicy_stage, 'enactment' ); ?>> <label for="sa_policystage_enact_policy">Enactment</label></li>
       
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_post_policy" value="Post Policy" <?php checked( $sapolicy_stage, 'Post Policy' ); ?>> <label for="sa_policystage_post_policy">Post-Policy</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_post_policy" value="implementation" <?php checked( $sapolicy_stage, 'implementation' ); ?>> <label for="sa_policystage_post_policy">Implementation</label></li>
     </ul>
 
 </div>
@@ -283,7 +282,7 @@ function sa_policy_meta_box() {
     <div id="morestage">
         
         <div id="prestage" class="policy_stage_details">
-            <h4>Pre-Policy</h4>
+            <h4>Emergence</h4>
             <input type="checkbox" id="sa_pre1" name="sa_pre1" value='Describe Problem' <?php checked( $pre1, 'Describe Problem' ); ?> > <label for="sa_pre1">Describe Problem</label><br />
             
             <input type="checkbox" id="sa_pre2" name="sa_pre2" value='Study Causes and Consequences' <?php checked( $pre2, 'Study Causes and Consequences' ); ?>                        
@@ -293,7 +292,7 @@ function sa_policy_meta_box() {
         </div>
         
         <div id="developstage" class="policy_stage_details">
-            <h4>Develop Policy</h4>
+            <h4>Development</h4>
             <input type="checkbox" id="sa_dev1" name="sa_dev1" value='Promote Awareness' <?php checked( $dev1, 'Promote Awareness' ); ?>                 
                    > <label for="sa_dev1">Promote Awareness</label><br />            
 
@@ -303,7 +302,7 @@ function sa_policy_meta_box() {
         </div>
         
         <div id="enactstage" class="policy_stage_details">
-            <h4>Enact Policy</h4>
+            <h4>Enactment</h4>
             <input type="checkbox" id="sa_enact1" name="sa_enact1" value='Create Advocacy' <?php checked( $enact1, 'Create Advocacy' ); ?>             
                    > <label for="sa_enact1">Create Advocacy</label><br />
             <input type="checkbox" id="sa_enact2" name="sa_enact2" value='Frame Policy' <?php checked( $enact2, 'Frame Policy' ); ?>             
@@ -319,7 +318,7 @@ function sa_policy_meta_box() {
         </div>
         
         <div id="poststage" class="policy_stage_details">
-            <h4>Post-Policy</h4>
+            <h4>Implementation</h4>
             <input type="checkbox" id="sa_post1" name="sa_post1" value='Implement Policy' <?php checked( $post1, 'Implement Policy' ); ?>> <label for="sa_post1">Implement Policy</label><br />
             <input type="checkbox" id="sa_post2" name="sa_post2" value='Ensure Access and Equity' <?php checked( $post2, 'Ensure Access and Equity' ); ?>> <label for="sa_post2">Ensure Access and Equity</label><br />
             <input type="checkbox" id="sa_post3" name="sa_post3" value='Sustain, Change, Abandon'<?php checked( $post2, 'Sustain, Change, Abandon' ); ?>> <label for="sa_post3">Sustain, Change, Abandon</label><br />  
@@ -353,16 +352,16 @@ function refresh_sa_policy_stage_vis_setting() {
       var visible_stage_div = jQuery('#policy_stage_select').find('input:checked').val();
       // console.log(visible_stage_div);
       switch (visible_stage_div){
-        case "Pre Policy":
+        case "emergence":
               jQuery('#prestage').toggle();
           break;
-        case "Develop Policy":
+        case "development":
               jQuery('#developstage').toggle();
           break;
-        case "Enact Policy":
+        case "enactment":
               jQuery('#enactstage').toggle();
           break;
-        case "Post Policy":
+        case "implementation":
               jQuery('#poststage').toggle();
           break;
         }
@@ -579,6 +578,7 @@ function sa_searchpolicies() {
 			</div>
 			<div style="float:left;padding-left:20px;">
 				<h4>Policy Stages</h4>
+        <!-- TODO Update these -->
 				<input type="checkbox" name="policy_stages[]" value="Pre Policy" /> Pre Policy<br>
 				<input type="checkbox" name="policy_stages[]" value="Develop Policy" /> Develop Policy<br>
 				<input type="checkbox" name="policy_stages[]" value="Enact Policy" /> Enact Policy<br>
@@ -704,20 +704,6 @@ function sa_searchpolicies() {
 			  echo "No Results";	
 		   endif;						
 	 }
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
 	 
 }
 
