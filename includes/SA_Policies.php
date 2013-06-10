@@ -742,12 +742,7 @@ function sa_searchpolicies() {
 		   else: 
 			  echo "No Results";	
 		   endif;						
-	 }
-	 
-<<<<<<< HEAD
-=======
-	 
->>>>>>> 37dd0589811459eab2c7291566962992ca1f020d
+    }
 }
 
 function sa_highlight_search_results($saps,$text) {
@@ -895,15 +890,8 @@ function sa_location_search()
 				echo "<div>" . $result->post_content . "</div><div style='font-style:italic;'>Distance from search center: " . round($result->distance, 2) . " miles</div><br>";			
             
 
-            }
-            
-            
-            
+            }   
             
         }
-        
-
-
     }
-}	
-	
+}
