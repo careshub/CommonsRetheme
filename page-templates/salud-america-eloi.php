@@ -85,12 +85,17 @@ if (is_page('salud-americaresearch')) {
 } elseif ( is_page('whats-new') ) {
 
 				//First, display the content of the page before making the custom loop.
-				$page_content = get_the_content();
-				if ( !empty( $page_content ) ) {
-					echo '<p class="page-intro">';
-					echo $page_content;
-					echo '</p>';
-				} ?>
+				while ( have_posts() ) : the_post();
+				$page_intro = get_the_content();
+				if ( !empty($page_intro) ) {
+					$page_intro = apply_filters('the_content', $page_intro); 
+					?>
+					<div class="sa-page-intro">
+						<?php echo $page_intro; ?>
+					</div>	
+	                <?php } //End if empty check
+                endwhile; // end of the main page loop. 
+   				?>
 				<div class="policy-search">
 					<form id="sa-policy-search" class="standard-form" method="get" action="/">
 					<h3 style="color: #ef4036;font-size: 1.6rem;">Search for News</h3>
@@ -118,12 +123,18 @@ if (is_page('salud-americaresearch')) {
 
 } elseif (is_page('learn-to-make-change')) {
 
-				$page_content = get_the_content();
-				if ( !empty( $page_content ) ) {
-					echo '<p class="page-intro">';
-					echo $page_content;
-					echo '</p>';
-				} ?>
+				//First, display the content of the page before making the custom loop.
+				while ( have_posts() ) : the_post();
+				$page_intro = get_the_content();
+				if ( !empty($page_intro) ) {
+					$page_intro = apply_filters('the_content', $page_intro); 
+					?>
+					<div class="sa-page-intro">
+						<?php echo $page_intro; ?>
+					</div>	
+	                <?php } //End if empty check
+                endwhile; // end of the main page loop. 
+   				?>
 				<div class="policy-search">
 					<form id="sa-policy-search" class="standard-form" method="get" action="/">
 					<h3 style="color: #ef4036;font-size: 1.6rem;">Search for Learning Tools</h3>
