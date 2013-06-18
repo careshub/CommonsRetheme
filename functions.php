@@ -74,7 +74,9 @@ function bp_support_enqueue_scripts() {
     'show_all_comments' => __( 'Show all comments for this thread', 'buddypress' ),
     'show_all'          => __( 'Show all', 'buddypress' ),
     'comments'          => __( 'comments', 'buddypress' ),
-    'close'             => __( 'Close', 'buddypress' )
+    'close'             => __( 'Close', 'buddypress' ),
+    'leave_group_confirm'   => __( 'Are you sure you want to leave this group?', 'buddypress' ),
+
   );
 
   // BP 1.5+
