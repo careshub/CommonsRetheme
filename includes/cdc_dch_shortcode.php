@@ -49,15 +49,45 @@ add_shortcode( 'cdc_dch_grouphome', 'cdc_dch_grouphome' );
 function cdc_dch_nav() {
 ?>
 <script type="text/javascript">
-	function navpg(x){
-		var $j = jQuery.noConflict();		
+	var $j = jQuery.noConflict();
+	function navpg(x){				
 		$j("#gform_target_page_number_4").val(x.value); $j("#gform_4").trigger("submit",[true]);		
 	}
+	function navpg2(x){				
+		$j("#gform_target_page_number_4").val(x); $j("#gform_4").trigger("submit",[true]);		
+	}	
+	$j(document).ready(function()
+	{
+		if (!getUrlVars()["navpg"]) {
+		} else {
+			var pg = getUrlVars()["navpg"];			
+			navpg2(pg);
+		}	
+		$j('#tacticbtn').click(function () {		
+			window.open('https://www.communitiestransforming.org/');   
+		});
+	});
+	
+	function getUrlVars()
+	{
+		var vars = [], hash;
+		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		for(var i = 0; i < hashes.length; i++)
+		{
+			hash = hashes[i].split('=');
+			vars.push(hash[0]);
+			vars[hash[0]] = hash[1];
+		}
+		return vars;
+	}
+
+
+	
 </script>
 <?php 
 
 
-	$mb = '<div style="float:right;">Navigate to: <select onchange="javascript:navpg(this);"><option value="2">Step 1. Establish Coalitions (Identify Stakeholders)</option><option value="3">Step 2. Define Community</option><option value="5">Step 3. Vulnerable Populations</option><option value="6">Step 4. Core Report</option><option value="7">Step 5. Setting Priorities</option><option value="9">Step 6. Intervention Selection</option><option value="10">Step 7. Engage Healthcare</option><option value="11">Step 8. Community Involvement</option><option value="12">Step 9. Implement Interventions</option><option value="13">Step 10. Evaluations and Metrics</option></select></div>';
+	$mb = '<div style="float:right;text-align:right;">Navigate to: <select onchange="javascript:navpg(this);"><option value="2">Step 1. Establish Strong Coalitions</option><option value="3">Step 2. Define Community</option><option value="5">Step 3. Identify Vulnerable Populations</option><option value="6">Step 4. Core Report</option><option value="7">Step 5. Setting Priorities</option><option value="9">Step 6. Intervention Selection</option><option value="11">Step 7. Engage Healthcare in Selecting Priorities and Interventions</option><option value="12">Step 8. Assess and Align Community Assets for Sustainability</option><option value="13">Step 9. Implement Interventions</option><option value="14">Step 10. Evaluations and Monitoring</option></select><br><input type="button" value="Take me to TACTIC" id="tacticbtn"></div>';
 	return $mb;
 
 }
