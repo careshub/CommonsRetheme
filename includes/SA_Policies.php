@@ -42,53 +42,66 @@ function SA_policies_init()
 	register_post_type('sapolicies',$args);
 }
 
-
-add_filter( 'manage_edit-sapolicies_columns', 'my_edit_sapolicies_columns' ) ;
-
-function my_edit_sapolicies_columns( $columns ) {
+//Define which columns should be shown on the policies overview table
+function sapolicies_edit_columns( $columns ) {
 
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'SA Policy' ),
 		'type' => __( 'Type' ),
 		'stage' => __( 'Stage' ),
-		'last_modified' => __( 'Last Modified' )
+		'date' => __( 'Date' )
 	);
 
 	return $columns;
 }
-
-add_action( 'manage_sapolicies_posts_custom_column', 'my_manage_sapolicies_columns', 10, 2 );
-
+add_filter( 'manage_edit-sapolicies_columns', 'sapolicies_edit_columns' ) ;
+//Handle the output for the various columns
 function my_manage_sapolicies_columns( $column, $post_id ) {
 	switch( $column ) {		
 		case 'type' :
 			/* Get the post meta. */
 			$type = get_post_meta( $post_id, 'sa_policytype', true );
-                        echo $type;
-                        break;
+      echo $type;
+      break;
 		case 'stage' :
 			/* Get the post meta. */
 			$stage = get_post_meta( $post_id, 'sa_policystage', true );  
-                        $stage2 = strtolower($stage);
-                        $stage3 = substr_replace($stage2, strtoupper(substr($stage2, 0, 1)), 0, 1);                    
-                        echo $stage3;
-                        break;
-                case 'last_modified' :                        
-                        echo the_modified_time('F j, Y')?> at <?php the_modified_time('g:i a');
-                        break;
+      $stage2 = strtolower($stage);
+      $stage3 = substr_replace($stage2, strtoupper(substr($stage2, 0, 1)), 0, 1);                    
+      echo $stage3;
+      break;
 	}
 }
+add_action( 'manage_sapolicies_posts_custom_column', 'my_manage_sapolicies_columns', 10, 2 );
 
-function sap_columns_register_sortable( $columns ) {
-        //TODO: columns don't sort!
+//Tell WP which columns should be sortable
+function sapolicies_columns_register_sortable( $columns ) {
         $columns["type"] = "type";
         $columns["stage"] = "stage";
-      	$columns["last_modified"] = "last_modified";
       	return $columns;
 }
-add_filter( "manage_edit-sapolicies_sortable_columns", "sap_columns_register_sortable" );
+add_filter( "manage_edit-sapolicies_sortable_columns", "sapolicies_columns_register_sortable" );
 
+//Tell WP how to sort those columns
+function sa_policies_column_orderby( $query ) {  
+    if( ! is_admin() )  
+        return;  
+
+    $orderby = $query->get( 'orderby');  
+
+    switch ($orderby) {
+      case 'stage':
+          $query->set('meta_key','sa_policystage');  
+          $query->set('orderby','meta_value');        
+        break;
+      case 'type':
+          $query->set('meta_key','sa_policytype');  
+          $query->set('orderby','meta_value');        
+        break;
+    } 
+} 
+add_action( 'pre_get_posts', 'sa_policies_column_orderby' );
 
 //Building the input form in the WordPress admin area
 add_action( 'admin_init', 'sa_policy_meta_box_add' );
