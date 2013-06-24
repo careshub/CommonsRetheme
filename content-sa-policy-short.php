@@ -11,6 +11,7 @@
 	foreach ( $terms as $term ) {
 		$advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
 		$target_icons[] = $term->slug;
+		
 	}
 	$advocacy_targets = join( ', ', $advocacy_targets );
 	// echo '<pre>';
@@ -53,7 +54,10 @@
 				<?php //echo "<br />"; ?>
 				<?php if ( isset( $target_icons ) ) {
 						foreach ($target_icons as $target_icon) {
-							echo '<span class="' . $target_icon . 'x30"></span>';
+							$replace1 = str_replace("sa-","",$target_icon);
+							$replace2 = str_replace("-"," ",$replace1);
+							$UCreplace2 = ucwords($replace2);
+							echo '<span class="' . $target_icon . 'x30" title="' . $UCreplace2 . '"></span>';
 						}
 					}
 				?>
