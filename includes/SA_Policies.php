@@ -704,10 +704,13 @@ function sa_searchpolicies() {
 	 
 	if(isset($_POST['sa_advocacy_target']) || isset($_POST['policy_stages']) || isset($_POST['sa_sapolicy_tag'])) {
 		$post_ids = get_objects_in_term($chk1, 'sa_advocacy_targets');
+		$post_ids2 = get_objects_in_term($chk3, 'sa_policy_tags');
+		$post_ids3 = array_merge($post_ids,$post_ids2);
 		$filter_args = array(
 					 'post_type' => 'sapolicies',
 					 's' => $_POST['saps'],
-					 'post__in' => $post_ids,
+					 'post__in' => $post_ids3,
+					 
 					 'meta_query' => array(
 										array(
 											'key' => 'sa_policystage',
@@ -717,8 +720,8 @@ function sa_searchpolicies() {
 					 )
 					 
 					 );
-						var_dump($filter_args);
-		$query2 = new WP_Query($filter_args);
+			//var_dump($filter_args);
+			$query2 = new WP_Query($filter_args);
 		    if($query2->have_posts()) : 
 			  while($query2->have_posts()) : 
 					$query2->the_post();
