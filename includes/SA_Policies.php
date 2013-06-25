@@ -403,6 +403,7 @@ jQuery(document).ready(function(){
       //On page load, update the inputs that are enabled
         refresh_sa_policy_enable_geog_inputs();
 		//TODO Refresh lat/longs on page load if they don't exist
+		//TODO Refresh bounding box coordinates (nelat,nelng,swlat,swlng) if they don't exist
 
       //On change, refresh the option list and option list visibility
       //The page load setup is handled via php, so the js only has to handle the updates
