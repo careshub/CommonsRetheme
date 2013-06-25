@@ -138,8 +138,10 @@ function sa_geog_meta_box()
     $selectedgeog = $custom["sa_finalgeog"][0];
     $sa_latitude = $custom["sa_latitude"][0];
     $sa_longitude = $custom["sa_longitude"][0];
-
-    
+    $sa_nelat = $custom["sa_nelat"][0];
+    $sa_nelng = $custom["sa_nelng"][0];
+	$sa_swlat = $custom["sa_swlat"][0];
+    $sa_swlng = $custom["sa_swlng"][0];
 ?>
 <style type="text/css">
     #leftcolumn, #rightcolumn, #leftcolumn2, #rightcolumn2  { width: 44%; margin-right: 3%; float: left; }
@@ -229,6 +231,11 @@ function sa_geog_meta_box()
                 <input type="hidden" id="sa_finalgeog" value="<?php echo $selectedgeog; ?>" name="sa_finalgeog" />
                 <input type="hidden" id="sa_latitude" value="<?php echo $sa_latitude; ?>" name="sa_latitude">
                 <input type="hidden" id="sa_longitude" value="<?php echo $sa_longitude; ?>" name="sa_longitude">
+				
+				<input type="hidden" id="sa_nelat" value="<?php echo $sa_nelat; ?>" name="sa_nelat">
+				<input type="hidden" id="sa_nelng" value="<?php echo $sa_nelng; ?>" name="sa_nelng">
+				<input type="hidden" id="sa_swlat" value="<?php echo $sa_swlat; ?>" name="sa_swlat">
+				<input type="hidden" id="sa_swlng" value="<?php echo $sa_swlng; ?>" name="sa_swlng">
             </div>            
         </div>
 </div>
@@ -395,6 +402,7 @@ function refresh_sa_policy_stage_vis_setting() {
 jQuery(document).ready(function(){
       //On page load, update the inputs that are enabled
         refresh_sa_policy_enable_geog_inputs();
+		//TODO Refresh lat/longs on page load if they don't exist
 
       //On change, refresh the option list and option list visibility
       //The page load setup is handled via php, so the js only has to handle the updates
@@ -504,6 +512,10 @@ function get_sa_geog_lat_lon(){
            var coord = jQuery.parseJSON(p);
             jQuery("#sa_latitude").val(coord.latitude);
             jQuery("#sa_longitude").val(coord.longitude);
+			jQuery("#sa_nelat").val(coord.nelat);
+			jQuery("#sa_nelng").val(coord.nelng);
+			jQuery("#sa_swlat").val(coord.swlat);
+			jQuery("#sa_swlng").val(coord.swlng);
          } 
        });
    }
@@ -581,7 +593,12 @@ function sa_geog_save() {
 
     if ($post->post_type == 'sapolicies') {
        sapolicy_save_event_field("sa_latitude");
-       sapolicy_save_event_field("sa_longitude");      	
+       sapolicy_save_event_field("sa_longitude");  
+
+		sapolicy_save_event_field("sa_nelat"); 
+		sapolicy_save_event_field("sa_nelng"); 
+		sapolicy_save_event_field("sa_swlat"); 
+		sapolicy_save_event_field("sa_swlng"); 	   
 	
        sapolicy_save_event_field("sa_geog");
        sapolicy_save_event_field("sa_state");
@@ -729,7 +746,7 @@ function sa_searchpolicies() {
 
 			  endwhile;
 		   else: 
-			  echo "No Results advanced";	
+			  echo "No Results - Search criteria too specific";	
 		   endif;						
     } else {
 		if(isset($_POST['saps']))
@@ -747,7 +764,7 @@ function sa_searchpolicies() {
 
 				  endwhile;
 			   else: 
-				  echo "No Results";	
+				  echo "No Results - Search criteria too specific";	
 			   endif;	
 		}	
 	
@@ -854,10 +871,10 @@ function sa_location_search()
 		<script type="text/javascript">		
 			var $j = jQuery.noConflict();
 			
-			$j(document).ready(function(){
-				
+			$j(document).ready(function(){				
 				samap_initialize();
 			});	                       
+			
                     function samap_initialize() {
 						var markers = []; 
                         var firstpt = new google.maps.LatLng(<?php echo $lat ?>, <?php echo $lng ?>);
