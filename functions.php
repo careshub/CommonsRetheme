@@ -919,3 +919,56 @@ function salud_get_taxonomy_images($category, $taxonomy){
 
   return $output;
 }
+
+// Add Taxonomy filters for Custom Post Types
+add_action('restrict_manage_posts', 'cc_cpt_restrict_manage_posts');
+function cc_cpt_restrict_manage_posts() {
+    global $typenow;
+
+    $args = array('public'=>true, '_builtin'=>false); 
+    $post_types = get_post_types($args);
+
+    if(in_array($typenow, $post_types)) {
+        $filters = get_object_taxonomies($typenow);
+
+        foreach ($filters as $tax_slug) {
+            $tax_obj = get_taxonomy($tax_slug);
+            if ($tax_obj->public) {
+            
+              $term = get_term_by('slug', $_GET[$tax_obj->query_var], $tax_slug);
+            
+              wp_dropdown_categories(array(
+                  'show_option_all' => __('Show All '.$tax_obj->label ),
+                  'taxonomy' => $tax_slug,
+                  'name' => $tax_obj->name,
+                  'orderby' => 'term_order',
+                  'selected' => $term->term_id,
+                  'hierarchical' => $tax_obj->hierarchical,
+                  'show_count' => false,
+                  // 'hide_empty' => true,
+                  'hide_empty' => false,
+                  'walker' => new DropdownSlugWalker()
+              ));
+            } //End $tax_obj->public check
+        }
+    }
+}
+
+
+//Dropdown filter class.  Used with wp_dropdown_categories() to cause the resulting dropdown to use term slugs instead of ids.
+class DropdownSlugWalker extends Walker_CategoryDropdown {
+
+    function start_el(&$output, $category, $depth, $args) {
+        $pad = str_repeat('&nbsp;', $depth * 3);
+
+        $cat_name = apply_filters('list_cats', $category->name, $category);
+        $output .= "\t<option class=\"level-$depth\" value=\"".$category->slug."\"";
+
+        if($category->term_id == $args['selected'])
+            $output .= ' selected="selected"';
+
+        $output .= '>';
+        $output .= $pad.$cat_name;
+        $output .= "</option>\n";
+    }
+}

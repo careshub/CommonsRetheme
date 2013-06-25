@@ -48,6 +48,7 @@ function sapolicies_edit_columns( $columns ) {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'SA Policy' ),
+    'advocacy_targets' => __('Advocacy Targets'),
 		'type' => __( 'Type' ),
 		'stage' => __( 'Stage' ),
 		'date' => __( 'Date' )
@@ -58,7 +59,16 @@ function sapolicies_edit_columns( $columns ) {
 add_filter( 'manage_edit-sapolicies_columns', 'sapolicies_edit_columns' ) ;
 //Handle the output for the various columns
 function my_manage_sapolicies_columns( $column, $post_id ) {
-	switch( $column ) {		
+	switch( $column ) {	
+    case 'advocacy_targets' :
+      /* Get the post's taxonomy entries. */
+      $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
+      foreach ( $terms as $term ) {
+        $advocacy_targets[] = $term->name;
+      }
+      $advocacy_targets = join( ', ', $advocacy_targets );
+      echo $advocacy_targets;
+      break;	
 		case 'type' :
 			/* Get the post meta. */
 			$type = get_post_meta( $post_id, 'sa_policytype', true );
@@ -79,6 +89,7 @@ add_action( 'manage_sapolicies_posts_custom_column', 'my_manage_sapolicies_colum
 function sapolicies_columns_register_sortable( $columns ) {
         $columns["type"] = "type";
         $columns["stage"] = "stage";
+        //Note: Advo targets can't be sortable, because the value is a string.
       	return $columns;
 }
 add_filter( "manage_edit-sapolicies_sortable_columns", "sapolicies_columns_register_sortable" );
@@ -476,7 +487,7 @@ function get_sa_geog_lat_lon(){
       //  alert(jQuery("#sa_finalgeog").val());
 
       var dataString2 = 'finalgeog=' + jQuery("#sa_finalgeog").val() + '&geog=' + jQuery("#sa_geog").val() + '&state=' + jQuery("#sa_state").val();  
-
+      //TODO: Make this a typical WP ajax request
        jQuery.ajax
        ({
          type: "POST",               
