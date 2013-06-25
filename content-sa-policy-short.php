@@ -23,21 +23,21 @@
 //Progress meter
 	$progress = $custom_fields['sa_policystage'][0];
 		switch ($progress) {
-	    case "Pre Policy":
+	    case "emergence":
 	        $percentage = 25;
-	        $progress_label = "in pre-policy";
+	        $progress_label = "in emergence";
 	        break;
-	    case "Develop Policy":
+	    case "development":
 			$percentage = 50;
 	        $progress_label = 'in development';
 	        break;
-	    case "Enact Policy":
+	    case "enactment":
 			$percentage = 75;
 	        $progress_label = 'enacted';
 	       	break;
-	    case "Post Policy":
+	    case "implementation":
 			$percentage = 75;
-	        $progress_label = 'in post-policy';
+	        $progress_label = 'in implementation';
 	       	break;
 		}
 	//echo $progress_label . " " . $percentage;
