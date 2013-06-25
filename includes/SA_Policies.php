@@ -767,10 +767,12 @@ function sa_highlight_search_results($saps,$text) {
 
 function sa_location_search()
 { 
-
         ?>
+		
+			<h4>Search for Changes in Progress</h4>
+				
         <form method="POST" action="" name="sa_ls" enctype="multipart/form-data"> 
-            SA Policy Search by Location:<br><input type="text" id="locationtxt" size="65" name="locationtxt" />
+            <input type="text" id="locationtxt" size="70" Placeholder="Type in location here" name="locationtxt" />
             <input type="submit" name="submit" value="Search"/>
         </form>
 <br><br>
@@ -801,19 +803,63 @@ function sa_location_search()
         ORDER BY distance
         LIMIT 200";
       
-        //print_r($query);
+	  ?>
+  
+	  
+	  <?php
+        
         $results = $wpdb->get_results($query);
+		
          if (!$results) {
+		 
           die("Invalid query: " . $wpdb->show_errors());
         } else {
             //var_dump($results);
-            echo "Your search: " . $loc;
+            echo "<div style='margin-bottom:12px;'>Your search: " . $loc . "</div>";
             ?>
             <div id="contact-content">
-                    <script type="text/javascript">
-                    var markers = [];    
-                    function samap_initialize() {
+	
 
+                    <div class="map">
+                        <style type="text/css">
+                        #map_sapolicies img {
+                           max-width: none;
+                           border-width:0px;
+                           -webkit-box-shadow: none;
+                           -moz-box-shadow: none;
+                           box-shadow: none;                           
+                        }
+                        </style>
+                        <div id="map_sapolicies" style="width: 600px; height: 600px"></div><br><br>  
+
+                    </div>
+
+                </div>  
+
+
+            <?php
+
+            foreach ($results as $result){
+			
+			
+                echo "<div style='color:#fe9600;font-weight:bold;font-size:13pt;'><a href='" . get_permalink($result->ID) . "'>" . $result->post_title . "</a></div><br>";
+				echo "<div>" . $result->post_content . "</div><div style='font-style:italic;'>Distance from search center: " . round($result->distance, 2) . " miles</div><br>";			
+            
+
+            }   
+            
+        }
+		?>
+	    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript">		
+			var $j = jQuery.noConflict();
+			
+			$j(document).ready(function(){
+				
+				samap_initialize();
+			});	                       
+                    function samap_initialize() {
+						var markers = []; 
                         var firstpt = new google.maps.LatLng(<?php echo $lat ?>, <?php echo $lng ?>);
 
                         var firstLatlng = new google.maps.LatLng(<?php echo $lat ?>, <?php echo $lng ?>);              
@@ -826,8 +872,8 @@ function sa_location_search()
 
                         var map = new google.maps.Map(document.getElementById("map_sapolicies"), firstOptions);
 
-                        var firstimage = 'http://localhost/wordpress/wp-content/themes/twentytwelve/includes/star-3.png';
-                        var policyimage = 'http://localhost/wordpress/wp-content/themes/twentytwelve/includes/text.png';
+                        var firstimage = 'http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/star-3.png';
+                        var policyimage = 'http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/doc-3.png';
                         
                         var firstmarker = new google.maps.Marker({
                             position: firstpt,
@@ -874,35 +920,9 @@ function sa_location_search()
                             infowindow1.open(map,firstmarker);
                         });
 
-                    }
-                    </script>
-
-                    <div class="map">
-                        <style type="text/css">
-                        #map_sapolicies img {
-                           max-width: none;
-                           border-width:0px;
-                           -webkit-box-shadow: none;
-                           -moz-box-shadow: none;
-                           box-shadow: none;                           
-                        }
-                        </style>
-                        <div id="map_sapolicies" style="width: 600px; height: 600px"></div><br><br>  
-
-                    </div>
-
-                </div>  
-
-
-            <?php
-            
-            foreach ($results as $result){
-                echo "<div style='color:#fe9600;font-weight:bold;font-size:13pt;'><a href='" . get_permalink($result->ID) . "'>" . $result->post_title . "</a></div><br>";
-				echo "<div>" . $result->post_content . "</div><div style='font-style:italic;'>Distance from search center: " . round($result->distance, 2) . " miles</div><br>";			
-            
-
-            }   
-            
-        }
+                    }			
+		</script>		
+		<?php
+		
     }
 }
