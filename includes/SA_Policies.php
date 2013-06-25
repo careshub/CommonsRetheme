@@ -42,54 +42,77 @@ function SA_policies_init()
 	register_post_type('sapolicies',$args);
 }
 
-
-add_filter( 'manage_edit-sapolicies_columns', 'my_edit_sapolicies_columns' ) ;
-
-function my_edit_sapolicies_columns( $columns ) {
+//Define which columns should be shown on the policies overview table
+function sapolicies_edit_columns( $columns ) {
 
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => __( 'SA Policy' ),
+    'advocacy_targets' => __('Advocacy Targets'),
 		'type' => __( 'Type' ),
 		'stage' => __( 'Stage' ),
-		'last_modified' => __( 'Last Modified' )
+		'date' => __( 'Date' )
 	);
 
 	return $columns;
 }
-
-add_action( 'manage_sapolicies_posts_custom_column', 'my_manage_sapolicies_columns', 10, 2 );
-
+add_filter( 'manage_edit-sapolicies_columns', 'sapolicies_edit_columns' ) ;
+//Handle the output for the various columns
 function my_manage_sapolicies_columns( $column, $post_id ) {
-	switch( $column ) {		
+	switch( $column ) {	
+    case 'advocacy_targets' :
+      /* Get the post's taxonomy entries. */
+      $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
+      foreach ( $terms as $term ) {
+        $advocacy_targets[] = $term->name;
+      }
+      $advocacy_targets = join( ', ', $advocacy_targets );
+      echo $advocacy_targets;
+      break;	
 		case 'type' :
 			/* Get the post meta. */
 			$type = get_post_meta( $post_id, 'sa_policytype', true );
-                        echo $type;
-                        break;
+      echo $type;
+      break;
 		case 'stage' :
 			/* Get the post meta. */
 			$stage = get_post_meta( $post_id, 'sa_policystage', true );  
-                        $stage2 = strtolower($stage);
-                        $stage3 = substr_replace($stage2, strtoupper(substr($stage2, 0, 1)), 0, 1);                    
-                        echo $stage3;
-                        break;
-                case 'last_modified' :                        
-                        echo the_modified_time('F j, Y')?> at <?php the_modified_time('g:i a');
-                        break;
+      $stage2 = strtolower($stage);
+      $stage3 = substr_replace($stage2, strtoupper(substr($stage2, 0, 1)), 0, 1);                    
+      echo $stage3;
+      break;
 	}
 }
+add_action( 'manage_sapolicies_posts_custom_column', 'my_manage_sapolicies_columns', 10, 2 );
 
-function sap_columns_register_sortable( $columns ) {
+//Tell WP which columns should be sortable
+function sapolicies_columns_register_sortable( $columns ) {
         $columns["type"] = "type";
         $columns["stage"] = "stage";
-	$columns["last_modified"] = "last_modified";
-	return $columns;
+        //Note: Advo targets can't be sortable, because the value is a string.
+      	return $columns;
 }
-add_filter( "manage_edit-sapolicies_sortable_columns", "sap_columns_register_sortable" );
+add_filter( "manage_edit-sapolicies_sortable_columns", "sapolicies_columns_register_sortable" );
 
+//Tell WP how to sort those columns
+function sa_policies_column_orderby( $query ) {  
+    if( ! is_admin() )  
+        return;  
 
+    $orderby = $query->get( 'orderby');  
 
+    switch ($orderby) {
+      case 'stage':
+          $query->set('meta_key','sa_policystage');  
+          $query->set('orderby','meta_value');        
+        break;
+      case 'type':
+          $query->set('meta_key','sa_policytype');  
+          $query->set('orderby','meta_value');        
+        break;
+    } 
+} 
+add_action( 'pre_get_posts', 'sa_policies_column_orderby' );
 
 //Building the input form in the WordPress admin area
 add_action( 'admin_init', 'sa_policy_meta_box_add' );
@@ -99,11 +122,11 @@ function sa_policy_meta_box_add()
 	 add_meta_box( 'sa_geog_meta_box', 'Geography', 'sa_geog_meta_box', 'SA Policies', 'normal', 'high' );   
          
 }
-add_action( 'admin_menu','sapolicy_remove_metas');
+// add_action( 'admin_menu','sapolicy_remove_metas');
 function sapolicy_remove_metas() {
     remove_meta_box('geographiesdiv','sapolicies','side');
-    // remove_meta_box('commentstatusdiv','sapolicies','normal');
-    // remove_meta_box('trackbacksdiv','sapolicies','normal');
+    remove_meta_box('commentstatusdiv','sapolicies','normal');
+    remove_meta_box('trackbacksdiv','sapolicies','normal');
 }
        
 function sa_geog_meta_box()
@@ -146,11 +169,11 @@ function sa_geog_meta_box()
 	);
         
 	$terms = get_terms( 'geographies', $args5 );
-  echo '<pre>';
-  print_r($geog);
-  print_r($state);
-  print_r($selectedgeog);
-  echo '</pre>';
+  // echo '<pre>';
+  // print_r($geog);
+  // print_r($state);
+  // print_r($selectedgeog);
+  // echo '</pre>';
         
 	if ( $terms ) {
     echo '<select name="sa_state" id="sa_state" class="sa_state">';
@@ -203,11 +226,9 @@ function sa_geog_meta_box()
                  ?>                   
                     
                 </select>
-				<input id="sa_finalgeog" name="sa_finalgeog"  <?php if (!empty($selectedgeog)) {
-                                      echo 'value="' . $selectedgeog . '"';
-                                    } ?> />
-        <input id="sa_latitude" value="<?php echo $sa_latitude; ?>" name="sa_latitude">
-        <input id="sa_longitude" value="<?php echo $sa_longitude; ?>" name="sa_longitude">
+                <input type="hidden" id="sa_finalgeog" value="<?php echo $selectedgeog; ?>" name="sa_finalgeog" />
+                <input type="hidden" id="sa_latitude" value="<?php echo $sa_latitude; ?>" name="sa_latitude">
+                <input type="hidden" id="sa_longitude" value="<?php echo $sa_longitude; ?>" name="sa_longitude">
             </div>            
         </div>
 </div>
@@ -269,13 +290,13 @@ function sa_policy_meta_box() {
 <div id="leftcolumn2">
     <h4>Stage:</h4>
     <ul id="policy_stage_select">
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_pre_policy" value="Pre Policy" <?php checked( $sapolicy_stage, 'Pre Policy' ); ?>> <label for="sa_policystage_pre_policy">Pre-Policy</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_pre_policy" value="emergence" <?php checked( $sapolicy_stage, 'emergence' ); ?>> <label for="sa_policystage_pre_policy">Emergence</label></li>
 
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_develop_policy" value="Develop Policy" <?php checked( $sapolicy_stage, 'Develop Policy' ); ?>> <label for="sa_policystage_develop_policy">Develop Policy</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_develop_policy" value="development" <?php checked( $sapolicy_stage, 'development' ); ?>> <label for="sa_policystage_develop_policy">Development</label></li>
       
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_enact_policy" value="Enact Policy" <?php checked( $sapolicy_stage, 'Enact Policy' ); ?>> <label for="sa_policystage_enact_policy">Enact Policy</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_enact_policy" value="enactment" <?php checked( $sapolicy_stage, 'enactment' ); ?>> <label for="sa_policystage_enact_policy">Enactment</label></li>
       
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_post_policy" value="Post Policy" <?php checked( $sapolicy_stage, 'Post Policy' ); ?>> <label for="sa_policystage_post_policy">Post-Policy</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_post_policy" value="implementation" <?php checked( $sapolicy_stage, 'implementation' ); ?>> <label for="sa_policystage_post_policy">Implementation</label></li>
     </ul>
 
 </div>
@@ -283,7 +304,7 @@ function sa_policy_meta_box() {
     <div id="morestage">
         
         <div id="prestage" class="policy_stage_details">
-            <h4>Pre-Policy</h4>
+            <h4>Emergence</h4>
             <input type="checkbox" id="sa_pre1" name="sa_pre1" value='Describe Problem' <?php checked( $pre1, 'Describe Problem' ); ?> > <label for="sa_pre1">Describe Problem</label><br />
             
             <input type="checkbox" id="sa_pre2" name="sa_pre2" value='Study Causes and Consequences' <?php checked( $pre2, 'Study Causes and Consequences' ); ?>                        
@@ -293,7 +314,7 @@ function sa_policy_meta_box() {
         </div>
         
         <div id="developstage" class="policy_stage_details">
-            <h4>Develop Policy</h4>
+            <h4>Development</h4>
             <input type="checkbox" id="sa_dev1" name="sa_dev1" value='Promote Awareness' <?php checked( $dev1, 'Promote Awareness' ); ?>                 
                    > <label for="sa_dev1">Promote Awareness</label><br />            
 
@@ -303,7 +324,7 @@ function sa_policy_meta_box() {
         </div>
         
         <div id="enactstage" class="policy_stage_details">
-            <h4>Enact Policy</h4>
+            <h4>Enactment</h4>
             <input type="checkbox" id="sa_enact1" name="sa_enact1" value='Create Advocacy' <?php checked( $enact1, 'Create Advocacy' ); ?>             
                    > <label for="sa_enact1">Create Advocacy</label><br />
             <input type="checkbox" id="sa_enact2" name="sa_enact2" value='Frame Policy' <?php checked( $enact2, 'Frame Policy' ); ?>             
@@ -319,7 +340,7 @@ function sa_policy_meta_box() {
         </div>
         
         <div id="poststage" class="policy_stage_details">
-            <h4>Post-Policy</h4>
+            <h4>Implementation</h4>
             <input type="checkbox" id="sa_post1" name="sa_post1" value='Implement Policy' <?php checked( $post1, 'Implement Policy' ); ?>> <label for="sa_post1">Implement Policy</label><br />
             <input type="checkbox" id="sa_post2" name="sa_post2" value='Ensure Access and Equity' <?php checked( $post2, 'Ensure Access and Equity' ); ?>> <label for="sa_post2">Ensure Access and Equity</label><br />
             <input type="checkbox" id="sa_post3" name="sa_post3" value='Sustain, Change, Abandon'<?php checked( $post2, 'Sustain, Change, Abandon' ); ?>> <label for="sa_post3">Sustain, Change, Abandon</label><br />  
@@ -342,8 +363,7 @@ jQuery(document).ready(function(){
       refresh_sa_policy_stage_vis_setting();
 
       //On click, refresh the visibility. Hide them all, then show the selected one
-        jQuery('#policy_stage_select input').live( 'change', function() {           
-                  refresh_sa_policy_stage_vis_setting();            
+        jQuery('#policy_stage_select input').live( 'change', function() {     refresh_sa_policy_stage_vis_setting();            
           } );
 });
 
@@ -353,16 +373,16 @@ function refresh_sa_policy_stage_vis_setting() {
       var visible_stage_div = jQuery('#policy_stage_select').find('input:checked').val();
       // console.log(visible_stage_div);
       switch (visible_stage_div){
-        case "Pre Policy":
+        case "emergence":
               jQuery('#prestage').toggle();
           break;
-        case "Develop Policy":
+        case "development":
               jQuery('#developstage').toggle();
           break;
-        case "Enact Policy":
+        case "enactment":
               jQuery('#enactstage').toggle();
           break;
-        case "Post Policy":
+        case "implementation":
               jQuery('#poststage').toggle();
           break;
         }
@@ -373,19 +393,45 @@ function refresh_sa_policy_stage_vis_setting() {
 <script type="text/javascript">
     //Handle the geography input form
 jQuery(document).ready(function(){
+      //On page load, update the inputs that are enabled
+        refresh_sa_policy_enable_geog_inputs();
 
-      // refresh_policy_stage_vis_setting();
-
-      //On click, refresh the visibility.
-        jQuery('#sa_geog_select,#sa_state').live( 'change', function() {           
+      //On change, refresh the option list and option list visibility
+      //The page load setup is handled via php, so the js only has to handle the updates
+        jQuery('#sa_geog_select').live( 'change', function() {           
+            refresh_sa_policy_enable_geog_inputs();
             refresh_sa_policy_geographies();            
-          } );
+          });
+
+        jQuery('#sa_state').live( 'change', function() {           
+            refresh_sa_policy_geographies();          
+          });
 
         jQuery("#sa_selectedgeog").live( 'change', function() {
             jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog").val());
             get_sa_geog_lat_lon();
-     });
+           });
+
 });
+
+function refresh_sa_policy_enable_geog_inputs() {
+  //First, disable the inputs, then enable the needed inputs
+  jQuery('#sa_state,#sa_selectedgeog').prop('disabled', true);
+
+  var sa_major_geography = jQuery('#sa_geog_select').find('input:checked').val();
+    switch ( sa_major_geography ) {
+      case ( undefined ):
+      case ('National'):
+        //Leave inputs disabled
+        break;
+      case ('State'):
+        jQuery('#sa_state').prop('disabled', false);
+        break;
+      default:
+        jQuery('#sa_state,#sa_selectedgeog').prop('disabled', false);
+    }
+
+}
 
 function refresh_sa_policy_geographies() {
   //First, hide them all, then show the one that is selected
@@ -394,57 +440,74 @@ function refresh_sa_policy_geographies() {
       var sa_state_geography = jQuery("#sa_state").val();
       // console.log(sa_major_geography);
       // console.log(sa_state_geography);
-      
-      //Don't fetch the subdivisions if they're not needed.
-      if (sa_state_geography !== "" && sa_major_geography !== "National" && sa_major_geography !== "State" ) {    
-               
-         var dataString = 'selstate=' + sa_state_geography + '&geog=' + sa_major_geography;
-      
-         jQuery.ajax
-         ({
-           type: "POST",               
-           url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/geography.php",
-           data: dataString,
-           cache: false,               
-           error: function() {
-             alert("I'm hitting an error.");
-           },
-           success: function(k)
-           {       
-             //alert(k);
-             jQuery("#sa_selectedgeog").html(k);         
+    
+        switch (sa_major_geography) {
+          case ( undefined ):
+            //Nothing selected, hold tight
+            break;
+          case ('National'):
+          case ('State'):
+          case ('State Senate District'):
+            //TODO: State senate districts aren't behaving correctly - no terms seem to be available?
+            //Clear finalgeog and lat/lon values
+            //TODO: Why aren't we setting points for states?
+            jQuery("#sa_finalgeog,#sa_latitude,#sa_longitude").val('');
+            break;
+          default:
+          //Fetch the subdivisions if they're needed.
+            if (sa_state_geography !== "") {
+              var dataString = 'selstate=' + sa_state_geography + '&geog=' + sa_major_geography;
+          
+                 jQuery.ajax
+                 ({
+                   type: "POST",               
+                   url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/geography.php",
+                   data: dataString,
+                   cache: false,               
+                   error: function() {
+                     alert("I'm having trouble setting up the geographies list.");
+                   },
+                   success: function(k)
+                   {       
+                     //alert(k);
+                     jQuery("#sa_selectedgeog").html(k);
+                     //set finalgeo and lat/lon, in case the desired option is the first option... otherwise 'change' will never fire :)
+                     jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog option:first").val());
+                      get_sa_geog_lat_lon();         
 
-           } 
-         });
-     }
+                   } 
+                 });
+
+             }
+           }             
  }
 
- function get_sa_geog_lat_lon(){
-  if (jQuery("#sa_finalgeog").val() !== '') {  
-    //  alert(jQuery("#sa_finalgeog").val());
+function get_sa_geog_lat_lon(){
+    if (jQuery("#sa_finalgeog").val() !== '') {  
+      //  alert(jQuery("#sa_finalgeog").val());
 
-    var dataString2 = 'finalgeog=' + jQuery("#sa_finalgeog").val() + '&geog=' + jQuery("#sa_geog").val() + '&state=' + jQuery("#sa_state").val();  
-
-     jQuery.ajax
-     ({
-       type: "POST",               
-       url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
-       data: dataString2,
-       cache: false,               
-       error: function() {
-         alert("I can't calculate the lat & long.");
-       },
-       success: function(p)
-       {       
-         // console.log(p);
-         // jQuery("#sa_latlongs").html(p);
-         var coord = jQuery.parseJSON(p);
-          jQuery("#sa_latitude").val(coord.latitude);
-          jQuery("#sa_longitude").val(coord.longitude);
-       } 
-     });
- }
- }
+      var dataString2 = 'finalgeog=' + jQuery("#sa_finalgeog").val() + '&geog=' + jQuery("#sa_geog").val() + '&state=' + jQuery("#sa_state").val();  
+      //TODO: Make this a typical WP ajax request
+       jQuery.ajax
+       ({
+         type: "POST",               
+         url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
+         data: dataString2,
+         cache: false,               
+         error: function() {
+           alert("I can't calculate the lat & long.");
+         },
+         success: function(p)
+         {       
+           // console.log(p);
+           // jQuery("#sa_latlongs").html(p);
+           var coord = jQuery.parseJSON(p);
+            jQuery("#sa_latitude").val(coord.latitude);
+            jQuery("#sa_longitude").val(coord.longitude);
+         } 
+       });
+   }
+}
 
 </script>
 
@@ -477,9 +540,6 @@ function sa_get_geography_prefix($geog){
      case 'State Senate District':    
     $geog_str_prefix="statesenatedistricts-";
        break;
-     case 'County':     
-     $geog_str_prefix="counties-";
-       break; 
    }
    return $geog_str_prefix;
 }
@@ -531,9 +591,11 @@ function sa_geog_save() {
 
 function sapolicy_save_event_field($event_field) {
     global $post;
-    if(isset($_POST[$event_field])) {
+    //Don't save empty metas
+    if(!empty($_POST[$event_field])) {
         update_post_meta($post->ID, $event_field, $_POST[$event_field]);
-    } else{
+    } else {
+        //Also note that disabled fields are not saved. e.g. if "National" is selected, state, finalgeo and lat/lon will all be deleted. If "State" is selected, finalgeo and lat/lon will all be deleted.
         delete_post_meta($post->ID, $event_field);
     }
 }
@@ -548,7 +610,7 @@ function sapolicy_jquery(){
 function sa_searchpolicies() {
         ?>
 	<form action="" method="POST" enctype="multipart/form-data" name="sa_ps">
-			SA Policy Search:<br><input type="text" id="saps" name="saps" value="<?php 
+			<input type="text" id="saps" name="saps" size="70" Placeholder="Enter search terms here" value="<?php 
 			if(isset($_POST['saps'])) {
 				echo $_POST['saps']; 
 			}
@@ -558,15 +620,15 @@ function sa_searchpolicies() {
 				
 			}
 				?>" />
-
+			
 			<input id="searchsubmit" type="submit" alt="Search" value="Search" />
-	</form>
-<br>
+	
+<br><br>
 	
 	<a href="#" id="toggle">+ Advanced Search</a>
 	<br><br>
-    <div id="advancedsearch" style="width:800px;display:none;">
-		<form id="advsearch" action="?qs=<?php echo $_POST['saps'] ?>" method="POST" enctype="multipart/form-data" name="sa_ps2">
+    <div id="advancedsearch" style="width:800px;height:200px;display:none;">
+		
 			<div style="float:left;">
 				<h4>Advocacy Targets</h4>
 				<?php 
@@ -579,10 +641,11 @@ function sa_searchpolicies() {
 			</div>
 			<div style="float:left;padding-left:20px;">
 				<h4>Policy Stages</h4>
-				<input type="checkbox" name="policy_stages[]" value="Pre Policy" /> Pre Policy<br>
-				<input type="checkbox" name="policy_stages[]" value="Develop Policy" /> Develop Policy<br>
-				<input type="checkbox" name="policy_stages[]" value="Enact Policy" /> Enact Policy<br>
-				<input type="checkbox" name="policy_stages[]" value="Post Policy" /> Post Policy
+        <!-- TODO Update these -->
+				<input type="checkbox" name="policy_stages[]" value="emergence" /> Emergence<br>
+				<input type="checkbox" name="policy_stages[]" value="development" /> Development<br>
+				<input type="checkbox" name="policy_stages[]" value="enactment" /> Enactment<br>
+				<input type="checkbox" name="policy_stages[]" value="implementation" /> Implementation
 			</div>
 			<div style="float:left;padding-left:20px;">
 				<h4>Tags</h4>
@@ -593,7 +656,7 @@ function sa_searchpolicies() {
 				}			
 				?>
 			</div>
-			<div><input type="submit" id="updateresults" value="Update Results" /></div>
+			
 		</form>	
 		
 	</div>
@@ -626,99 +689,68 @@ function sa_searchpolicies() {
 <?php
 	global $wpdb; 
 
-	
-	if(isset($_POST['saps']))
-    {		           
-			$saps = $_POST['saps']; 			
-
-		    $query = new WP_Query( array(
-					's' => $saps, 
-					'post_type' => 'sapolicies'));
-			
-		    if($query->have_posts()) : 
-			  while($query->have_posts()) : 
-				 $query->the_post();
-				 ?>
-					<div style='color:#fe9600;font-weight:bold;font-size:13pt;'><a href='<?php the_permalink() ?>'><?php sa_highlight_search_results($saps, the_title()) ?></a></div><br>
-					<div><?php sa_highlight_search_results($saps, the_content()) ?></div><br>
-				 <?php   
-
-			  endwhile;
-		   else: 
-			  echo "No Results";	
-		   endif;	
-	}
-	$advocacy_targets="";
-	$policy_stages="";
-	$sa_tags="";
 	if(isset($_POST['sa_advocacy_target']))
 	 {
-		 $sats = $_POST['sa_advocacy_target'];
-		 foreach ($sats as $sat) {
-			$chk1 .= $sat . ",";
-		 }		 
-		 $chk1=rtrim($chk1, ",");		 
+		 $chk1 = $_POST['sa_advocacy_target'];	 
 	 }
 	if(isset($_POST['policy_stages']))
 	 {
-		 $pss = $_POST['policy_stages'];
-		 foreach ($pss as $ps) {
-			$chk2 .= $ps . ",";
-		 }
-		 $chk2=rtrim($chk2, ",");		
-			
+		 $chk2 = $_POST['policy_stages'];			
 	 }	
 	if(isset($_POST['sa_sapolicy_tag']))
 	 {
-		 $ssts = $_POST['sa_sapolicy_tag'];
-		 foreach ($ssts as $sst) {
-			$chk3 .= $sst . ",";
-		 }
-		 $chk3=rtrim($chk3, ",");		
+		 $chk3 = $_POST['sa_sapolicy_tag'];		
 	 }
 	 
 	if(isset($_POST['sa_advocacy_target']) || isset($_POST['policy_stages']) || isset($_POST['sa_sapolicy_tag'])) {
+		$post_ids = get_objects_in_term($chk1, 'sa_advocacy_targets');
 		$filter_args = array(
 					 'post_type' => 'sapolicies',
-					 's' => $_GET['qs'],
-					 'category__in' => array($chk1)
-					 // 'meta_query' => array(
-										// 'key' => 'sa_policystage',
-										// 'value' => array($chk2)
+					 's' => $_POST['saps'],
+					 'post__in' => $post_ids,
+					 'meta_query' => array(
+										array(
+											'key' => 'sa_policystage',
+											'value' => $chk2
+											 )
 					 
-					 //)
+					 )
 					 
 					 );
 						var_dump($filter_args);
 		$query2 = new WP_Query($filter_args);
 		    if($query2->have_posts()) : 
 			  while($query2->have_posts()) : 
-				 $query2->the_post();
-				 ?>
-					<div style='color:#fe9600;font-weight:bold;font-size:13pt;'><a href='<?php the_permalink() ?>'><?php sa_highlight_search_results($saps, the_title()) ?></a></div><br>
-					<div><?php sa_highlight_search_results($saps, the_content()) ?></div><br>
-				 <?php   
+					$query2->the_post();
+					get_template_part( 'content', 'sa-policy-short' ); 
 
 			  endwhile;
 		   else: 
-			  echo "No Results";	
+			  echo "No Results advanced";	
 		   endif;						
-	 }
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
+    } else {
+		if(isset($_POST['saps']))
+		{		           
+				$saps = $_POST['saps']; 			
+
+				$query = new WP_Query( array(
+						's' => $saps, 
+						'post_type' => 'sapolicies'));
+				
+				if($query->have_posts()) : 
+				  while($query->have_posts()) : 
+						$query->the_post();
+						get_template_part( 'content', 'sa-policy-short' );  
+
+				  endwhile;
+			   else: 
+				  echo "No Results";	
+			   endif;	
+		}	
+	
+	
+	
+	}
 }
 
 function sa_highlight_search_results($saps,$text) {
@@ -866,15 +898,8 @@ function sa_location_search()
 				echo "<div>" . $result->post_content . "</div><div style='font-style:italic;'>Distance from search center: " . round($result->distance, 2) . " miles</div><br>";			
             
 
-            }
-            
-            
-            
+            }   
             
         }
-        
-
-
     }
-}	
-	
+}
