@@ -659,7 +659,7 @@ function sa_searchpolicies() {
 			</div>
 			<div style="float:left;padding-left:20px;">
 				<h4>Policy Stages</h4>
-        <!-- TODO Update these -->
+        
 				<input type="checkbox" name="policy_stages[]" value="emergence" /> Emergence<br>
 				<input type="checkbox" name="policy_stages[]" value="development" /> Development<br>
 				<input type="checkbox" name="policy_stages[]" value="enactment" /> Enactment<br>
@@ -667,11 +667,13 @@ function sa_searchpolicies() {
 			</div>
 			<div style="float:left;padding-left:20px;">
 				<h4>Tags</h4>
-				<?php $sat_args = array('orderby' => count, 'order' => DESC, 'number' => 7);
+				<?php $sat_args = array('orderby' => count, 'order' => DESC);
 				$sapolicytags = get_terms('sa_policy_tags', $sat_args);
+				echo "<div style='height:150px;width:225px;overflow:auto;'>";
 				foreach ($sapolicytags as $sapolicytag) {
 					echo "<input type='checkbox' name='sa_sapolicy_tag[]' value='" . $sapolicytag->term_id . "' /> " . $sapolicytag->name . " (" . $sapolicytag->count . ")<br>";
-				}			
+				}	
+					echo "</div>";
 				?>
 			</div>
 			
