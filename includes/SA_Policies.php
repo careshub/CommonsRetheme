@@ -826,7 +826,7 @@ function sa_location_search()
         
         $results = $wpdb->get_results($query);
 		
-         if (!$results) {
+        if (!$results) {
           die("Invalid query: " . $wpdb->show_errors());
         } else {
             //var_dump($results);
@@ -835,28 +835,24 @@ function sa_location_search()
             <div id="contact-content">
             	   <div class="map">
                         <style type="text/css">
-                        #map_sapolicies img {
-                           max-width: none;
-                           border-width:0px;
-                           -webkit-box-shadow: none;
-                           -moz-box-shadow: none;
-                           box-shadow: none;                           
-                        }
+                          #map_sapolicies img {
+                             max-width: none;
+                             border-width:0px;
+                             -webkit-box-shadow: none;
+                             -moz-box-shadow: none;
+                             box-shadow: none;                           
+                          }
                         </style>
                         <div id="map_sapolicies" style="width: 600px; height: 600px"></div><br><br>  
-
                     </div>
 
                 </div>  
             <?php
 
             foreach ($results as $result){
-			
-			
-                echo "<div style='color:#fe9600;font-weight:bold;font-size:13pt;'><a href='" . get_permalink($result->ID) . "'>" . $result->post_title . "</a></div><br>";
-				echo "<div>" . $result->post_content . "</div><div style='font-style:italic;'>Distance from search center: " . round($result->distance, 2) . " miles</div><br>";			
-            
 
+                echo "<div style='color:#fe9600;font-weight:bold;font-size:13pt;'><a href='" . get_permalink($result->ID) . "'>" . $result->post_title . "</a></div><br>";
+        				echo "<div>" . $result->post_content . "</div><div style='font-style:italic;'>Distance from search center: " . round($result->distance, 2) . " miles</div><br>";			
             }   
             
         }
@@ -869,7 +865,7 @@ function sa_location_search()
 				samap_initialize();
 			});	                       
 			
-                    function samap_initialize() {
+            function samap_initialize() {
 						var markers = []; 
                         var firstpt = new google.maps.LatLng(<?php echo $lat ?>, <?php echo $lng ?>);
 
@@ -953,7 +949,6 @@ function sa_location_search()
 		
 		);
 	
-	
         $my_query = new WP_Query($args5);
 
 	?>
@@ -965,7 +960,7 @@ function sa_location_search()
 				samap_start();
 			});	                       
 			
-                    function samap_start() {
+          function samap_start() {
 						var markers = []; 
 						var gMap = new google.maps.Map(document.getElementById('map_sastart')); 
 						gMap.setZoom(4);      // This will trigger a zoom_changed on the map
