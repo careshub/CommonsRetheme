@@ -627,6 +627,10 @@ function cc_custom_body_class( $classes ) {
       }
       }
 
+    if ( is_page_template( 'page-templates/WKKF-Compass.php' ) ) {
+        $classes[] = 'full-width';
+      }
+
     if ( is_page_template( 'page-templates/full-width-no-title.php' ) ) {
         $classes[] = 'full-width';
       }
