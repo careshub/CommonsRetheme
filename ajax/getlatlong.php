@@ -47,7 +47,7 @@ $geogstr = $finalgeog;
 
        if(strlen($geogstr)>3) {      
                $loc = $geogstr;  
-               $loc2 = str_replace(" ","%20",$loc);
+               $loc2 = rawurlencode($loc);
                $geocode = file_get_contents('http://maps.google.com/maps/api/geocode/json?address=' . $loc2 . '&sensor=false');
                $output = json_decode($geocode);
                $lt = $output->results[0]->geometry->location->lat;
