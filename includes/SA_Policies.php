@@ -235,7 +235,6 @@ function sa_geog_meta_box()
         				<input type="hidden" id="sa_nelng" value="<?php echo $sa_nelng; ?>" name="sa_nelng">
         				<input type="hidden" id="sa_swlat" value="<?php echo $sa_swlat; ?>" name="sa_swlat">
         				<input type="hidden" id="sa_swlng" value="<?php echo $sa_swlng; ?>" name="sa_swlng">
-
             </div>            
         </div>
 </div>
@@ -402,6 +401,8 @@ function refresh_sa_policy_stage_vis_setting() {
 jQuery(document).ready(function(){
       //On page load, update the inputs that are enabled
         refresh_sa_policy_enable_geog_inputs();
+		//TODO Refresh lat/longs on page load if they don't exist
+		//TODO Refresh bounding box coordinates (nelat,nelng,swlat,swlng) if they don't exist
 
 		//TODO Refresh lat/longs on page load if they don't exist
 		//TODO Refresh bounding box coordinates (nelat,nelng,swlat,swlng) if they don't exist
@@ -659,20 +660,11 @@ function sa_searchpolicies() {
 				?>
 			</div>
 			<div style="float:left;padding-left:20px;">
-				<h4>Policy Stages</h4>
-<<<<<<< HEAD
-        <!-- TODO Update these -->
-				<input type="checkbox" name="policy_stages[]" value="Pre Policy" /> Pre Policy<br>
-				<input type="checkbox" name="policy_stages[]" value="Develop Policy" /> Develop Policy<br>
-				<input type="checkbox" name="policy_stages[]" value="Enact Policy" /> Enact Policy<br>
-				<input type="checkbox" name="policy_stages[]" value="Post Policy" /> Post Policy
-=======
-        
+				<h4>Policy Stages</h4>        
 				<input type="checkbox" name="policy_stages[]" value="emergence" /> Emergence<br>
 				<input type="checkbox" name="policy_stages[]" value="development" /> Development<br>
 				<input type="checkbox" name="policy_stages[]" value="enactment" /> Enactment<br>
 				<input type="checkbox" name="policy_stages[]" value="implementation" /> Implementation
->>>>>>> master
 			</div>
 			<div style="float:left;padding-left:20px;">
 				<h4>Tags</h4>
@@ -738,15 +730,13 @@ function sa_searchpolicies() {
 		$filter_args = array(
 					 'post_type' => 'sapolicies',
 					 's' => $_POST['saps'],
-					 'post__in' => $post_ids3,
-					 
+					 'post__in' => $post_ids3,					 
 					 'meta_query' => array(
 										array(
 											'key' => 'sa_policystage',
 											'value' => $chk2
 											 )
-					 
-					 )
+					 					 )
 					 
 					 );
 			//var_dump($filter_args);
@@ -760,33 +750,26 @@ function sa_searchpolicies() {
 		   else: 
 			  echo "No Results - Search criteria too specific";	
 		   endif;						
-<<<<<<< HEAD
-    }
-=======
     } else {
-		if(isset($_POST['saps']))
-		{		           
-				$saps = $_POST['saps']; 			
+  		if(isset($_POST['saps']))
+  		{		           
+  				$saps = $_POST['saps']; 			
 
-				$query = new WP_Query( array(
-						's' => $saps, 
-						'post_type' => 'sapolicies'));
-				
-				if($query->have_posts()) : 
-				  while($query->have_posts()) : 
-						$query->the_post();
-						get_template_part( 'content', 'sa-policy-short' );  
+  				$query = new WP_Query( array(
+  						's' => $saps, 
+  						'post_type' => 'sapolicies'));
+  				
+  				if($query->have_posts()) : 
+  				  while($query->have_posts()) : 
+  						$query->the_post();
+  						get_template_part( 'content', 'sa-policy-short' );  
 
-				  endwhile;
-			   else: 
-				  echo "No Results - Search criteria too specific";	
-			   endif;	
-		}	
-	
-	
-	
+  				  endwhile;
+  			   else: 
+  				  echo "No Results - Search criteria too specific";	
+  			   endif;	
+  		}		
 	}
->>>>>>> master
 }
 
 function sa_highlight_search_results($saps,$text) {
@@ -802,7 +785,7 @@ function sa_location_search()
 { 
         ?>
 		
-			<h4>Search for Changes in Progress</h4>
+			<h4>Search for Changes in Progress by Location</h4>
 				
         <form method="POST" action="" name="sa_ls" enctype="multipart/form-data"> 
             <input type="text" id="locationtxt" size="70" Placeholder="Type in location here" name="locationtxt" />
@@ -810,7 +793,7 @@ function sa_location_search()
         </form>
 <br><br>
 <?php
-        if(isset($_POST['locationtxt']))
+        if(isset($_POST['locationtxt']) && strlen($_POST['locationtxt'])>1)
     {
         global $wpdb;    
         $loc = $_POST['locationtxt'];  
@@ -844,16 +827,13 @@ function sa_location_search()
         $results = $wpdb->get_results($query);
 		
          if (!$results) {
-		 
           die("Invalid query: " . $wpdb->show_errors());
         } else {
             //var_dump($results);
             echo "<div style='margin-bottom:12px;'>Your search: " . $loc . "</div>";
             ?>
             <div id="contact-content">
-	
-
-                    <div class="map">
+            	   <div class="map">
                         <style type="text/css">
                         #map_sapolicies img {
                            max-width: none;
@@ -868,8 +848,6 @@ function sa_location_search()
                     </div>
 
                 </div>  
-
-
             <?php
 
             foreach ($results as $result){
@@ -952,43 +930,80 @@ function sa_location_search()
                         google.maps.event.addListener(firstmarker, 'click', function() {
                             infowindow1.open(map,firstmarker);
                         });
-
-<<<<<<< HEAD
-                    }
-                    </script>
-
-                    <div class="map">
-                        <style type="text/css">
-                        #map_sapolicies img {
-                           max-width: none;
-                           border-width:0px;
-                           -webkit-box-shadow: none;
-                           -moz-box-shadow: none;
-                           box-shadow: none;                           
-                        }
-                        </style>
-                        <div id="map_sapolicies" style="width: 600px; height: 600px"></div><br><br>  
-
-                    </div>
-
-                </div>  
-
-
-            <?php
-            
-            foreach ($results as $result){
-                echo "<div style='color:#fe9600;font-weight:bold;font-size:13pt;'><a href='" . get_permalink($result->ID) . "'>" . $result->post_title . "</a></div><br>";
-				echo "<div>" . $result->post_content . "</div><div style='font-style:italic;'>Distance from search center: " . round($result->distance, 2) . " miles</div><br>";			
-            
-
-            }   
-            
-        }
-=======
                     }			
 		</script>		
 		<?php
 		
->>>>>>> master
-    }
+    } else {
+		$args5 = array(
+			'post_type' => 'sapolicies',
+			'post_status' => 'publish',
+			'posts_per_page' => -1,
+			'caller_get_posts'=> 1,
+			'meta_query' => array(
+					array(
+						'key' => 'sa_latitude',	
+						'compare' => 'EXISTS'
+					),
+					array(
+						'key' => 'sa_longitude',
+						'compare' => 'EXISTS'
+					)
+				)			  
+		
+		);
+	
+	
+        $my_query = new WP_Query($args5);
+
+	?>
+	    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript">		
+			var $j = jQuery.noConflict();
+			
+			$j(document).ready(function(){				
+				samap_start();
+			});	                       
+			
+                    function samap_start() {
+						var markers = []; 
+						var gMap = new google.maps.Map(document.getElementById('map_sastart')); 
+						gMap.setZoom(4);      // This will trigger a zoom_changed on the map
+						gMap.setCenter(new google.maps.LatLng(38.195279, -96.031494));
+						gMap.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+						
+						var policyimage = 'http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/doc-3.png';
+						var infowindow = new google.maps.InfoWindow({
+                            content: "loading..."
+                        });
+						
+                        <?php 
+							if( $my_query->have_posts() ) {
+						  while ($my_query->have_posts()) : $my_query->the_post(); 	
+							  $theLat2 = get_post_meta(get_the_ID(), 'sa_latitude', true);
+							  $theLng2 = get_post_meta(get_the_ID(), 'sa_longitude', true); ?>
+                      
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(<?php echo $theLat2 . ", " . $theLng2 ?>),
+                            map: gMap,
+                            icon: policyimage,
+                            html: "<b><a href='<?php echo get_permalink(); ?>'><?php echo get_the_title(); ?></a></b><br>"
+                          });
+                        markers.push(marker);
+                        google.maps.event.addListener(marker, 'click', function () {
+                            infowindow.setContent(this.html);
+                            infowindow.open(gMap, this);
+                        });
+                        <?php 
+						  endwhile;
+						} 
+						?>						
+						
+
+					}
+					
+		</script>
+		 <div id="map_sastart" style="width: 700px; height: 400px"></div><br><br>
+	<?php
+	}
 }
