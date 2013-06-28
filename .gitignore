@@ -177,3 +177,5 @@ js/jquery.hoverIntent.minified-ck.js
 js/jquery.localscroll-1.2.7-min-ck.js
 
 js/jquery.scrollTo-1.4.2-min-ck.js
+
+page-templates/wp-editor-test.php
