@@ -9,29 +9,45 @@
 			<div id="item-header">
 				<?php locate_template( array( 'groups/single/group-header.php' ), true ) ?>
 			</div><!-- #item-header -->
+			<div id="secondary" role="complementary">
+				<div id="group-navigation"> 
+				    <!-- <div id="item-buttons">
+
+						<?php //do_action( 'bp_group_header_actions' ); ?>
+
+					</div> --><!-- #item-buttons -->
+					<div class="sidebar-activity-tabs no-ajax" id="object-nav" role="navigation">
+						<ul>
+							<?php bp_get_options_nav(); ?>
+							<?php do_action( 'bp_group_options_nav' ); ?>
+						</ul>
+					</div>
+				</div> 
+				
+			</div> <!-- End #secondary -->
 
 			<!-- <div id="item-nav">
 				<div class="item-list-tabs no-ajax" id="object-nav">
-					<ul>
-						<?php bp_get_options_nav() ?>
+					<ul> -->
+						<?php //bp_get_options_nav() ?>
 
-						<?php do_action( 'bp_group_options_nav' ) ?>
-					</ul>
+						<?php //do_action( 'bp_group_options_nav' ) ?>
+					<!-- </ul>
 				</div>
 			</div> --><!-- #item-nav -->
 			<div id="item-body">
-			<div id="subnav" class="item-list-tabs no-ajax">
-			<ul class="nav-tabs">
-			<?php bcg_get_options_menu();?>
-			</ul>
-			</div>
+				<div id="subnav" class="item-list-tabs no-ajax">
+					<ul class="nav-tabs"> 
+					<?php bcg_get_options_menu();?>
+					</ul>
+				</div>
 			<?php
 			if(bcg_is_single_post())
-				locate_template( array( 'bcg/single-post.php' ), true );
+				bcg_load_template('bcg/single-post.php' );
 			else if(bcg_is_post_create())
-				locate_template( array( 'bcg/create.php' ), true );
+				bcg_load_template('bcg/create.php' );
 			else
-				locate_template( array( 'bcg/blog.php' ), true );
+				bcg_load_template( 'bcg/blog.php');
 			?>
 			</div>
 			
@@ -42,5 +58,6 @@
 		</div><!-- .padder -->
 	</div><!-- #content -->
 
-<?php get_sidebar( 'groups-single' ); ?>
-<?php get_footer('buddypress') ?>
+	<?php locate_template( array( 'sidebar.php' ), true ) ?>
+
+<?php get_footer() ?>
