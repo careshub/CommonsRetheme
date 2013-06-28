@@ -12,21 +12,23 @@ get_header(); ?>
 					<img src="/wp-content/themes/CommonsRetheme/img/salud_america/salud-hand.jpg" class="no-box">
 					<h2>Plant Your <br /><span>Ideas for Change</span><br /> Today!</h2>
 					<div class="policy-search-home">
-						<form id="sa-policy-search" class="standard-form" method="get" action="/">
 						<h4>Search for Changes in Progress</h4>
-						<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="70" value="" placeholder="Placeholder Text" name="sa-policy">
+						<?php sa_searchpolicies(); ?>
+						<!--<form id="sa-policy-search" class="standard-form" method="get" action="/">
+						<h4>Search for Changes in Progress</h4>
+						<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="70" value="" placeholder="Enter search terms here" name="sa-policy">
 						<input class="sa-policy-search-button" type="submit" value="Search">
-						</form>
+						</form>-->
 					</div>
 				</div>
 				<div class="row clear">
 					<div class="half-block">
 						<h4>Change-Maker of the Week</h4>
-						<img src="/wp-content/themes/CommonsRetheme/img/salud_america/salud-hand.jpg">
+                                                <img src="/wp-content/themes/CommonsRetheme/img/salud_america/Video_thumbnail_300x400.jpg">
 					</div>
 					<div class="half-block">
-						<h4>Where is Change Happening?</h4>
-						<img src="/wp-content/themes/CommonsRetheme/img/salud_america/map-of-movement-300x400.png">
+						<a href="http://dev.communitycommons.org/sa-policy-map-search/" style="text-decoration:none;"><h4>Where is Change Happening?</h4>
+						<img class="alignnone size-full wp-image-17422" alt="Link to Policy Map Search" src="http://dev.communitycommons.org/wp-content/uploads/2013/06/samap2.jpg" width="274" height="206" /></a>
 					</div>
 				</div>
 				<div class="browse-topics">
@@ -84,7 +86,7 @@ get_header(); ?>
 					</div>
 					<div class="half-block">
 						<h4>Change-Maker of the Week</h4>
-						<img src="/wp-content/themes/CommonsRetheme/img/salud_america/salud-hand.jpg">
+						<img src="/wp-content/themes/CommonsRetheme/img/salud_america/Video_thumbnail_300x400.jpg">
 					</div>
 				</div>
 				<?php 
@@ -115,7 +117,7 @@ get_header(); ?>
 
 			} elseif (is_page('sa-policy-map-search')) {
 				sa_location_search();
-			} elseif (is_child(150)) {
+			} elseif (is_child(11911)) {
 				//The number above is the id of the parent page, is 11911 on the dev server.
 				while ( have_posts() ) : the_post();
 				?>
