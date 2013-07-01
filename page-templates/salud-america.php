@@ -154,11 +154,50 @@ get_header(); ?>
                 //echo '$page_slug ' . $page_slug; 
 				//echo '$parent ' . $parent;
 				?>
-				<div>
+
+                            	<div class="row clear">
+
+    					<div class="half-block">
+
+                                            <h4>Active Play Change-Makers</h4>
+                                             <?php
+                                             //Need to adapt it to query resourcecat and resource topic area
+                                            wp_reset_postdata();
+
+                                            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+          
+                                            $args = array(
+                                                // Change these category SLUGS to suit your use.
+                                                'post_type' => 'saresources',
+                                                'sa_resource_cat'=> 'changemaker',
+                                                'paged' => $paged
+                                                );
+                                
+                                                $list_of_policies = new WP_Query( $args );
+                                        while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
+					//This template should be the short result
+					get_template_part( 'content', 'page-notitle');
+
+					//comments_template( '', true );
+                                        endwhile; // end of the loop. 
+                                              ?>
+					</div>
+                                    
+                                    
+                                        <div class="half-block">
 					<!-- <div class="active-play"><span class="icon"></span></div> -->
-					<h2>How is your community doing with respect to this topic area?</h2>
+					<h4>Tell Us: How Are You Targeting Active Play?</h4>
 					<div style="width:100%;height:200px;background-color:#CCC;margin-bottom:24px;">form/charts go here</div>
+                                        </div>
 				</div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+
 				<?php //Now we make our loop
 				wp_reset_postdata();
 			  	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
