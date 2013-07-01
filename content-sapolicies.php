@@ -9,7 +9,7 @@
 
 //print_r($post);
 // echo 'META:';
-
+ 
 $custom_fields = get_post_custom($post->ID);
 $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 	foreach ( $terms as $term ) {
