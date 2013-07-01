@@ -13,23 +13,23 @@
  * @subpackage Twenty_Twelve
  * @since Twenty Twelve 1.0
  */
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
+// ini_set('display_errors', 'On');
+// error_reporting(E_ALL | E_STRICT);
 get_header(); ?>
-<script type="text/javascript" src="/wordpress/wp-content/themes/commonsretheme/js/wkkf.js"></script>
-<link rel='stylesheet' type="text/css" href="/wordpress/wp-content/themes/commonsretheme/css/wkkf.css" />
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/wkkf.js'; ?>"></script>
+<link rel='stylesheet' type="text/css" href="<?php echo get_stylesheet_directory_uri() . '/css/wkkf.css';?>" />
 
-	<div id="primary" class="site-content width-full">
-		<div id="content" role="main">
+  <div id="primary" class="site-content width-full">
+    <div id="content" role="main">
 
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php //get_template_part( 'content', 'page-notitle' ); ?>
-				<?php //comments_template( '', true ); ?>
-			<?php endwhile; // end of the loop. ?>
+      <?php while ( have_posts() ) : the_post(); ?>
+        <?php //get_template_part( 'content', 'page-notitle' ); ?>
+        <?php //comments_template( '', true ); ?>
+      <?php endwhile; // end of the loop. ?>
 
       <?php
       $focusPlaces = array(
-					'nola' => array( 'place' => 'New Orleans, LA', 'thumb' => 'Louisiana.png')
+          'nola' => array( 'place' => 'New Orleans, LA', 'thumb' => 'Louisiana.png')
         , 'grmi' => array( 'place' => 'Grand Rapids, MI', 'thumb' => 'Michigan.png')
         , 'jxms' => array( 'place' => 'Jackson, MS', 'thumb' => 'Mississippi.png')
         , 'newm' => array( 'place' => 'New Mexico', 'thumb' => 'New_Mexico.png')
@@ -37,7 +37,7 @@ get_header(); ?>
         , 'hati' => array( 'place' => 'Haiti', 'thumb' => 'neworleansmapicon.png')
         );
       $wkkfPages = array(
-					'context' => array( 'name' => 'Context', 'next' => 'outcomes', 'prev' => 'map', 'img' => 'context.png')
+          'context' => array( 'name' => 'Context', 'next' => 'outcomes', 'prev' => 'map', 'img' => 'context.png')
         , 'outcomes' => array( 'name' => 'Child Outcomes', 'next' => 'outcomesdet', 'prev' => 'context', 'img' => 'childoutcomes.png')
         , 'outcomesdet' => array( 'name' => 'Child Outcomes Detail', 'next' => 'continvest', 'prev' => 'outcomes', 'img' => 'childoutcomesdetail.png')
         , 'continvest' => array( 'name' => 'Continuum Investments', 'next' => 'contstages', 'prev' => 'outcomesdet', 'img' => 'continvest.png')
@@ -74,7 +74,7 @@ get_header(); ?>
         $loc=$_GET['loc']; 
         $pg=$_GET['pg'];
         
-        $imgFolder='/wordpress/wp-content/themes/commonsretheme/img/WKKF/';
+        $imgFolder= get_stylesheet_directory_uri() . '/img/WKKF/';
         $place=$focusPlaces[$loc]['place'];
         $placeThumb=$focusPlaces[$loc]['thumb'];
         
@@ -121,7 +121,7 @@ get_header(); ?>
         <img id="uxPageHolderImage" class="page-holder-image " src="<?php echo $imgFolder . $pgImg; ?>"></img>
       </div>      
       
-		</div><!-- #content -->
-	</div><!-- #primary -->
+    </div><!-- #content -->
+  </div><!-- #primary -->
   
 <?php get_footer(); ?>
