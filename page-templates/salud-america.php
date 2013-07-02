@@ -25,25 +25,26 @@ get_header(); ?>
 					<div class="half-block">
 						<h4>Change-Maker of the Week</h4>
                              <?php
-                            wp_reset_postdata();
+                                             //Need to adapt it to query resourcecat and resource topic area
+                                            wp_reset_postdata();
 
-			  	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                                            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
           
-                                $args = array(
-					// Change these category SLUGS to suit your use.
-				       'post_type' => 'saresources',
-                                       'sa_resource_cat'=> 'changemaker',
-				       'paged' => $paged
-				);
+                                            $args = array(
+                                                // Change these category SLUGS to suit your use.
+                                                'post_type' => 'saresources',
+                                                'sa_resource_cat'=> 'changemaker',
+                                                'paged' => $paged
+                                                );
                                 
-				$list_of_policies = new WP_Query( $args );
-				while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
+                                                $list_of_policies = new WP_Query( $args );
+                                        while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
 					//This template should be the short result
-					get_template_part( 'content', 'page-notitle');
+					get_template_part( 'content', 'saresources-mini');
 
 					//comments_template( '', true );
-                                endwhile; // end of the loop. 
-                                ?>
+                                        endwhile; // end of the loop. 
+                                              ?>
 					</div>
 					<div class="half-block">
 						<a href="http://dev.communitycommons.org/sa-policy-map-search/" style="text-decoration:none;"><h4>Where is Change Happening?</h4>
@@ -106,7 +107,27 @@ get_header(); ?>
 					</div>
 					<div class="half-block">
 						<h4>Change-Maker of the Week</h4>
-						<img src="/wp-content/themes/CommonsRetheme/img/salud_america/Video_thumbnail_300x400.jpg">
+						<?php
+                                             //Need to adapt it to query resourcecat and resource topic area
+                                            wp_reset_postdata();
+
+                                            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+          
+                                            $args = array(
+                                                // Change these category SLUGS to suit your use.
+                                                'post_type' => 'saresources',
+                                                'sa_resource_cat'=> 'changemaker',
+                                                'paged' => $paged
+                                                );
+                                
+                                                $list_of_policies = new WP_Query( $args );
+                                        while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
+					//This template should be the short result
+					get_template_part( 'content', 'saresources-mini');
+
+					//comments_template( '', true );
+                                        endwhile; // end of the loop. 
+                                              ?>
 					</div>
 				</div>
 				<?php 
@@ -134,7 +155,9 @@ get_header(); ?>
 				 if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('sa_geosearch_widget') ) : 
 				 endif;
 				// Custom widget Area End
-
+			}  elseif (is_page('sa-policy-map-search')) {
+				sa_location_search();
+			
 			}  elseif (is_child(11911)) {
                            
 				//The number above is the id of the parent page, is 11911 on the dev server.
