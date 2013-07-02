@@ -95,6 +95,18 @@ get_header(); ?>
 	                <?php } //End if empty check
                 endwhile; // end of the main page loop. 
    				?>
+                            
+                                        <div class="policy-search-home">
+						<h4>Search for Changes in Progress on This Topic</h4>
+						<?php sa_searchpolicies(); ?>
+						<!--<form id="sa-policy-search" class="standard-form" method="get" action="/">
+						<h4>Search for Changes in Progress</h4>
+						<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="70" value="" placeholder="Enter search terms here" name="sa-policy">
+						<input class="sa-policy-search-button" type="submit" value="Search">
+						</form>-->
+					</div>
+
+                            
    				<div class="row">
 					<div class="policy-search half-block">
 						<form id="sa-policy-search" class="standard-form" method="get" action="commonsdev.local/salud-america/sapolicies/">
