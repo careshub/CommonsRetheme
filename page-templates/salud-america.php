@@ -186,7 +186,7 @@ get_header(); ?>
                                     
                                         <div class="half-block">
 					<!-- <div class="active-play"><span class="icon"></span></div> -->
-					<h4>Tell Us: How Are You Targeting Active Play?</h4>
+					<h4>How Are You Targeting Active Play?</h4>
 					<div style="width:100%;height:200px;background-color:#CCC;margin-bottom:24px;">form/charts go here</div>
                                         </div>
 				</div>
