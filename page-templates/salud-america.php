@@ -138,6 +138,7 @@ get_header(); ?>
 				sa_location_search();
 			} elseif (is_child(11911)) {
 				//The number above is the id of the parent page, is 11911 on the dev server.
+				//It's 150 on DC's local install
 				while ( have_posts() ) : the_post();
 				?>
 
@@ -176,7 +177,7 @@ get_header(); ?>
                                                 $list_of_policies = new WP_Query( $args );
                                         while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
 					//This template should be the short result
-					get_template_part( 'content', 'page-notitle');
+					get_template_part( 'content', 'saresources-mini');
 
 					//comments_template( '', true );
                                         endwhile; // end of the loop. 
