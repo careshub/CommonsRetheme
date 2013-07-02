@@ -134,9 +134,7 @@ get_header(); ?>
 				 endif;
 				// Custom widget Area End
 
-			} elseif (is_page('sa-policy-map-search')) {
-				sa_location_search();
-			} elseif (is_child(11911)) {
+			}  elseif (is_child(11911)) {
 				//The number above is the id of the parent page, is 11911 on the dev server.
 				while ( have_posts() ) : the_post();
 				?>
