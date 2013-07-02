@@ -96,17 +96,6 @@ get_header(); ?>
                 endwhile; // end of the main page loop. 
    				?>
                             
-                                        <div class="policy-search-home">
-						<h4>Search for Changes in Progress on This Topic</h4>
-						<?php sa_searchpolicies(); ?>
-						<!--<form id="sa-policy-search" class="standard-form" method="get" action="/">
-						<h4>Search for Changes in Progress</h4>
-						<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="70" value="" placeholder="Enter search terms here" name="sa-policy">
-						<input class="sa-policy-search-button" type="submit" value="Search">
-						</form>-->
-					</div>
-
-                            
    				<div class="row">
 					<div class="policy-search half-block">
 						<form id="sa-policy-search" class="standard-form" method="get" action="commonsdev.local/salud-america/sapolicies/">
@@ -147,6 +136,7 @@ get_header(); ?>
 				// Custom widget Area End
 
 			}  elseif (is_child(11911)) {
+                           
 				//The number above is the id of the parent page, is 11911 on the dev server.
 				while ( have_posts() ) : the_post();
 				?>
@@ -164,6 +154,16 @@ get_header(); ?>
                 //echo '$page_slug ' . $page_slug; 
 				//echo '$parent ' . $parent;
 				?>
+                            
+                                        <div class="policy-search-home">
+						<h4>Search for Changes in Progress on This Topic</h4>
+						<?php sa_searchpolicies(); ?>
+						<!--<form id="sa-policy-search" class="standard-form" method="get" action="/">
+						<h4>Search for Changes in Progress</h4>
+						<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="70" value="" placeholder="Enter search terms here" name="sa-policy">
+						<input class="sa-policy-search-button" type="submit" value="Search">
+						</form>-->
+					</div>
 
                             	<div class="row clear">
 
