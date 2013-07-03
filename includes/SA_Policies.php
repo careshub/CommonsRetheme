@@ -229,12 +229,14 @@ function sa_geog_meta_box()
                     
                 </select>
                 <input type="hidden" id="sa_finalgeog" value="<?php echo $selectedgeog; ?>" name="sa_finalgeog" />
-                <input type="hidden" id="sa_latitude" value="<?php echo $sa_latitude; ?>" name="sa_latitude">
-                <input type="hidden" id="sa_longitude" value="<?php echo $sa_longitude; ?>" name="sa_longitude">
-				 				<input type="hidden" id="sa_nelat" value="<?php echo $sa_nelat; ?>" name="sa_nelat">
-        				<input type="hidden" id="sa_nelng" value="<?php echo $sa_nelng; ?>" name="sa_nelng">
-        				<input type="hidden" id="sa_swlat" value="<?php echo $sa_swlat; ?>" name="sa_swlat">
-        				<input type="hidden" id="sa_swlng" value="<?php echo $sa_swlng; ?>" name="sa_swlng">
+                <div id="geography_coords">
+                  <input type="hidden" id="sa_latitude" value="<?php echo $sa_latitude; ?>" name="sa_latitude">
+                  <input type="hidden" id="sa_longitude" value="<?php echo $sa_longitude; ?>" name="sa_longitude">
+                  <input type="hidden" id="sa_nelat" value="<?php echo $sa_nelat; ?>" name="sa_nelat">
+                  <input type="hidden" id="sa_nelng" value="<?php echo $sa_nelng; ?>" name="sa_nelng">
+                  <input type="hidden" id="sa_swlat" value="<?php echo $sa_swlat; ?>" name="sa_swlat">
+                  <input type="hidden" id="sa_swlng" value="<?php echo $sa_swlng; ?>" name="sa_swlng">
+                </div>
             </div>            
         </div>
 </div>
@@ -397,15 +399,27 @@ function refresh_sa_policy_stage_vis_setting() {
 </script>
 
 <script type="text/javascript">
-    //Handle the geography input form
+//Handle the geography input form
 jQuery(document).ready(function(){
       //On page load, update the inputs that are enabled
         refresh_sa_policy_enable_geog_inputs();
-		//TODO Refresh lat/longs on page load if they don't exist
-		//TODO Refresh bounding box coordinates (nelat,nelng,swlat,swlng) if they don't exist
 
-		//TODO Refresh lat/longs on page load if they don't exist
-		//TODO Refresh bounding box coordinates (nelat,nelng,swlat,swlng) if they don't exist
+      //If a geography has been selected, but not copied over to #final_geog, do it.
+      //TODO: Why are we using final_geog again?
+        if ( ( jQuery('#sa_finalgeog').val() == '' ) && ( jQuery('#sa_selectedgeog').val() !== '' )  ) {
+          jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog").val());
+        }
+
+      //Refresh lat/longs on page load if any are empty
+      var emptyCoords = jQuery('#geography_coords input').filter(function() { return this.value == ""; });
+
+      //emptyCoords will return an object of objects if it finds any empty inputs
+      if (emptyCoords.length > 0) {
+          //This function will only run if #sa_finalgeog isn't empty
+          get_sa_geog_lat_lon();
+      } else {
+        // console.log('No need to run the function');
+      }
 
       //On change, refresh the option list and option list visibility
       //The page load setup is handled via php, so the js only has to handle the updates
@@ -629,81 +643,82 @@ function sapolicy_jquery(){
 
 function sa_searchpolicies() {
         ?>
+<div id="cc-adv-search" class="clear">
 	<form action="" method="POST" enctype="multipart/form-data" name="sa_ps">
-			<input type="text" id="saps" name="saps" size="70" Placeholder="Enter search terms here" value="<?php 
-			if(isset($_POST['saps'])) {
-				echo $_POST['saps']; 
-			}
-			elseif(isset($_GET['qs'])) {
-				
-					echo $_GET['qs'];
-				
-			}
-				?>" />
+			<div class="row">
+        <input type="text" id="saps" name="saps" Placeholder="Enter search terms here" value="<?php 
+    			if (isset($_POST['saps'])) {
+    				echo $_POST['saps']; 
+    			}	elseif (isset($_GET['qs'])) {
+    					echo $_GET['qs'];	
+    			}
+    				?>" />
 			
-			<input id="searchsubmit" type="submit" alt="Search" value="Search" />
+  			<input id="searchsubmit" type="submit" alt="Search" value="Search" />
+      </div>
 	
-<br><br>
-	
-	<a href="#" id="toggle">+ Advanced Search</a>
-	<br><br>
-    <div id="advancedsearch" style="width:800px;height:200px;display:none;">
-		
-			<div style="float:left;">
-				<h4>Advocacy Targets</h4>
-				<?php 
-				
-				$ATterms = get_terms('sa_advocacy_targets');
-				foreach ($ATterms as $ATterm) {
-					echo "<input type='checkbox' name='sa_advocacy_target[]' value='" . $ATterm->term_id . "' /> " . substr($ATterm->name, 0, 25) . "...<br>";
-				}
-				?>
-			</div>
-			<div style="float:left;padding-left:20px;">
-				<h4>Policy Stages</h4>        
-				<input type="checkbox" name="policy_stages[]" value="emergence" /> Emergence<br>
-				<input type="checkbox" name="policy_stages[]" value="development" /> Development<br>
-				<input type="checkbox" name="policy_stages[]" value="enactment" /> Enactment<br>
-				<input type="checkbox" name="policy_stages[]" value="implementation" /> Implementation
-			</div>
-			<div style="float:left;padding-left:20px;">
-				<h4>Tags</h4>
-				<?php $sat_args = array('orderby' => count, 'order' => DESC);
-				$sapolicytags = get_terms('sa_policy_tags', $sat_args);
-				echo "<div style='height:150px;width:225px;overflow:auto;'>";
-				foreach ($sapolicytags as $sapolicytag) {
-					echo "<input type='checkbox' name='sa_sapolicy_tag[]' value='" . $sapolicytag->term_id . "' /> " . $sapolicytag->name . " (" . $sapolicytag->count . ")<br>";
-				}	
-					echo "</div>";
-				?>
-			</div>
+	<a role="button" id="cc_advanced_search_toggle" class="clear" >+ Advanced Search</a>
+		 
+			<div id="cc-adv-search-pane-container" class="row clear">
+        <div class="cc-adv-search-option-pane third-block">
+          <h4>Advocacy Targets</h4>
+          <ul>
+            <?php 
+            $ATterms = get_terms('sa_advocacy_targets');
+            foreach ($ATterms as $ATterm) {
+              echo '<li><input type="checkbox" name="sa_advocacy_target[]" id="sa_adv_target_' . $ATterm->term_id . '" value="' . $ATterm->term_id . '" /> <label for="sa_adv_target_' . $ATterm->term_id . '">' . $ATterm->name . '</label></li>';
+            }
+            ?>
+          </ul>
+        </div> <!-- End option pane -->
+      
+        <div class="cc-adv-search-option-pane third-block">
+          <h4>Policy Stages</h4>        
+          <ul>
+            <li><input type="checkbox" name="policy_stages[]" id="policy-stage-emergence" value="emergence" /> <label for="policy-stage-emergence">Emergence</label></li>
+            <li><input type="checkbox" name="policy_stages[]" id="policy-stage-develop" value="development" /> <label for="policy-stage-develop">Development</label></li>
+            <li><input type="checkbox" name="policy_stages[]" id="policy-stage-enact" value="enactment" /> <label for="policy-stage-enact">Enactment</label></li>
+            <li><input type="checkbox" name="policy_stages[]" id="policy-stage-implement" value="implementation" /> <label for="policy-stage-implement">Implementation</label></li>
+          </ul>
+        </div> <!-- End option pane -->
+      
+        <div class="cc-adv-search-option-pane third-block">
+          <h4>Tags</h4>
+          <?php $sat_args = array('orderby' => count, 'order' => DESC);
+          $sapolicytags = get_terms('sa_policy_tags', $sat_args);
+          ?>
+          <div class="cc-adv-search-scroll-container">
+          <ul>
+            <?php
+            foreach ($sapolicytags as $sapolicytag) {
+              echo '<li><input type="checkbox" name="sa_sapolicy_tag[]" id="sa_policy_tag_' .  $sapolicytag->term_id . '" value="' . $sapolicytag->term_id . '" /> <label for="sa_policy_tag_' . $sapolicytag->term_id . '">' . $sapolicytag->name . ' (' . $sapolicytag->count . ')</label></li>';
+            } 
+            ?>
+          </ul>
+          </div> <!-- End scroll container -->
+        </div> <!-- End option pane -->
+      </div>
 			
 		</form>	
 		
 	</div>
-<br>
 	<script type="text/javascript">
 		var $j = jQuery.noConflict();
 		
 		$j(document).ready(function(){
 
-
-		   $j('#advancedsearch').hide();	
-		   $j('#toggle').click(function(){
-				$j('#advancedsearch').slideToggle('slow');
-				if ($j("#toggle").text() == "+ Advanced Search") {
-					$j("#toggle").text("- Advanced Search");
-				}
-				else {
-					$j("#toggle").text("+ Advanced Search");
-				}
+		   $j('#cc-adv-search-pane-container').hide();	
+		   $j('#cc_advanced_search_toggle').click(function(){
+  				$j('#cc-adv-search-pane-container').slideToggle('fast');
+  				if ($j("#cc_advanced_search_toggle").text() == "+ Advanced Search") {
+  					$j("#cc_advanced_search_toggle").text("- Advanced Search");
+  				}
+  				else {
+  					$j("#cc_advanced_search_toggle").text("+ Advanced Search");
+  				}
 		   });
 
-		});	
-		
-		
-		
-		
+		});
     
 	</script>
 
