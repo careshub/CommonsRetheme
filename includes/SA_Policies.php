@@ -661,7 +661,7 @@ function sa_searchpolicies() {
 		 
 			<div id="cc-adv-search-pane-container" class="row clear">
         <div class="cc-adv-search-option-pane third-block">
-          <h4>Advocacy Targets</h4>
+          <h4>Topic Area</h4>
           <ul>
             <?php 
             $ATterms = get_terms('sa_advocacy_targets');
@@ -673,7 +673,7 @@ function sa_searchpolicies() {
         </div> <!-- End option pane -->
       
         <div class="cc-adv-search-option-pane third-block">
-          <h4>Policy Stages</h4>        
+          <h4>Stage of Change</h4>        
           <ul>
             <li><input type="checkbox" name="policy_stages[]" id="policy-stage-emergence" value="emergence" /> <label for="policy-stage-emergence">Emergence</label></li>
             <li><input type="checkbox" name="policy_stages[]" id="policy-stage-develop" value="development" /> <label for="policy-stage-develop">Development</label></li>
