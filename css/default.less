@@ -1074,12 +1074,12 @@ div#message p {
 	margin-top: 8px;
 	text-decoration: none;
 	background: lighten(@ccyellow, 26%);
-	background-image: -webkit-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255, 255, 255, .5)), color-stop(100%,rgba(255, 255, 255, 0))); /* Chrome,Safari4+ */
-	background-image: -moz-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
-	background-image: -ms-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
-	background-image: -o-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
-	background-image: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
+	// background-image: -webkit-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
+	// background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255, 255, 255, .5)), color-stop(100%,rgba(255, 255, 255, 0))); /* Chrome,Safari4+ */
+	// background-image: -moz-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
+	// background-image: -ms-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
+	// background-image: -o-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
+	// background-image: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
 }
 div#item-header {
 	overflow: hidden;
@@ -2388,7 +2388,7 @@ ul.item-list li .share-buttons-below li {
 	-webkit-animation: none;
 	background-image: none;
 }
-.facebookx60, .searchx18, .userx18, .userx21, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24, .linkedinx24, .emailx24, .collaborationx24, .mapx24, .reportx24, .collaborationx40, .mapx40, .reportx40{
+.facebookx60, .searchx18, .userx18, .userx21, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24, .linkedinx24, .emailx24, .collaborationx24, .mapx24, .reportx24, .collaborationx40, .mapx40, .reportx40, .linkedinx60{
 	background: url(img/sprites.png) no-repeat;
 }
 
@@ -2462,7 +2462,11 @@ ul.item-list li .share-buttons-below li {
 	width: 24px;
 	height: 24px;
 }
-
+.linkedinx60{
+	background-position: -72px -300px ;
+	width: 60px;
+	height: 60px;
+}
 .emailx24{
 	background-position: 0 -500px ;
 	width: 24px;
