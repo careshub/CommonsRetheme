@@ -6,15 +6,22 @@ get_header(); ?>
 		<div id="content" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', 'page-notitle' ); ?>
+				<?php get_template_part( 'content', 'page' ); ?>
 				<?php //comments_template( '', true ); ?>
 			<?php endwhile; // end of the loop. ?>
+	<!-- Quicklinks -->
+	<div class="quicklinks clear">
+	<a href="" class="quarter-block button">Download the Quickstart Guide for Adults</a>
+	<a href="" class="quarter-block button">Download the Quickstart Guide for Adults</a>
+	<a href="" class="quarter-block button">Share Your Event</a>
+	<a href="" class="quarter-block button">Join the Weight of the Nation Group</a>
+	</div>
 	<!-- VIDEOS -->
-	<div id="tool-group-videos" class="tool-group">
+	<div id="tool-group-videos" class="tool-group accent-blue">
 		<header class="entry-header clear">
 			<h1 class="entry-title">Videos, Summaries and Strategies</h1>
 			<div id="tool-group-header-videos" class="tool-group-header clear">
-				<img width="600" height="200" src="http://commonsdev.local/wp-content/uploads/2013/04/book-brigade-600x200.jpg" class="attachment-full" alt="book-brigade-600x200">
+				<img width="600" height="200" src="http://www.communitycommons.org/wp-content/uploads/2013/04/dv-taxonomy-community.jpg" class="attachment-full" alt="book-brigade-600x200">
 				<p class="tool-group-description">Describing the video section.</p>
 			</div>
 		</header>
@@ -45,7 +52,7 @@ get_header(); ?>
 			</div>
 			<div class="tool-group-tool quarter-block videos">
 				<header class="entry-header clear">
-					<h3 class="entry-title"><a href="http://dev.communitycommons.org/wotn-overview-strategies/" title="Link to the map tool" rel="bookmark"><p>The Weight of the Nation for Kids</p> Video Overviews and Strategies</a></h3>
+					<h3 class="entry-title"><a href="http://dev.communitycommons.org/wotn-overview-strategies/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation for Kids</em> Video Overviews and Strategies</a></h3>
 				</header>
 				<!-- <div class="entry-content">
 					<p>This should be short but will probably be longer than I expect. You know?</p>
@@ -55,11 +62,11 @@ get_header(); ?>
 
   </div>
   <!-- PLANNING -->
-  <div id="tool-group-planning" class="tool-group">
+  <div id="tool-group-planning" class="tool-group  accent-yellow">
 		<header class="entry-header clear">
 			<h1 class="entry-title">Planning Your Screening to Action Event</h1>
 			<div id="tool-group-header-planning" class="tool-group-header clear">
-				<img width="600" height="200" src="http://commonsdev.local/wp-content/uploads/2013/04/book-brigade-600x200.jpg" class="attachment-full" alt="book-brigade-600x200">
+				<img width="600" height="200" src="http://www.communitycommons.org/wp-content/uploads/2013/04/dv-taxonomy-community.jpg" class="attachment-full" alt="book-brigade-600x200">
 				<p class="tool-group-description">Describing the screening to action section.</p>
 			</div>
 		</header>
@@ -100,12 +107,12 @@ get_header(); ?>
 
   </div>
   <!-- MOVING TO ACTION -->
-  <div id="tool-group-moving-to-action" class="tool-group">
+  <div id="tool-group-moving-to-action" class="tool-group  accent-red">
 		<header class="entry-header clear">
-			<h1 class="entry-title">Planning Your Screening to Action Event</h1>
+			<h1 class="entry-title">Moving to Action</h1>
 			<div id="tool-group-header-planning" class="tool-group-header clear">
-				<img width="600" height="200" src="http://commonsdev.local/wp-content/uploads/2013/04/book-brigade-600x200.jpg" class="attachment-full" alt="book-brigade-600x200">
-				<p class="tool-group-description">Describing the screening to action section.</p>
+				<img width="600" height="200" src="http://www.communitycommons.org/wp-content/uploads/2013/04/dv-taxonomy-community.jpg" class="attachment-full" alt="book-brigade-600x200">
+				<p class="tool-group-description">Describing the moving to action section.</p>
 			</div>
 		</header>
   	    <div class="content-row">
@@ -145,12 +152,12 @@ get_header(); ?>
 
   </div>
   <!-- ADDITIONAL RESOURCES -->
-  <div id="tool-group-wotn-resources" class="tool-group">
+  <div id="tool-group-wotn-resources" class="tool-group accent-green">
 		<header class="entry-header clear">
-			<h1 class="entry-title">Planning Your Screening to Action Event</h1>
+			<h1 class="entry-title">Additional Resources</h1>
 			<div id="tool-group-header-wotn-resources" class="tool-group-header clear">
-				<img width="600" height="200" src="http://commonsdev.local/wp-content/uploads/2013/04/book-brigade-600x200.jpg" class="attachment-full" alt="book-brigade-600x200">
-				<p class="tool-group-description">Describing the screening to action section.</p>
+				<img width="600" height="200" src="http://www.communitycommons.org/wp-content/uploads/2013/04/dv-taxonomy-community.jpg" class="attachment-full" alt="book-brigade-600x200">
+				<p class="tool-group-description">Describing the additional resources section.</p>
 			</div>
 		</header>
   	    <div class="content-row">
@@ -164,7 +171,7 @@ get_header(); ?>
 			</div>
 			<div class="tool-group-tool quarter-block wotn-resources">
 				<header class="entry-header clear">
-					<h3 class="entry-title"><a href="http://dev.communitycommons.org/wotn-youth-facts/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation for Kids</em> Youth Health Facts</a></h3>
+					<h3 class="entry-title"><a href="http://www.communitycommons.org/wotn-youth-facts/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation for Kids</em> Youth Health Facts</a></h3>
 				</header>
 				<!-- <div class="entry-content">
 					<p>This should be short but will probably be longer than I expect. You know?</p>
