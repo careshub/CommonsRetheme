@@ -34,6 +34,7 @@ get_header(); ?>
                                                 // Change these category SLUGS to suit your use.
                                                 'post_type' => 'saresources',
                                                 'sa_resource_cat'=> 'changemaker',
+                                                'showposts' => '1',
                                                 'paged' => $paged
                                                 );
                                 
@@ -117,6 +118,7 @@ get_header(); ?>
                                                 // Change these category SLUGS to suit your use.
                                                 'post_type' => 'saresources',
                                                 'sa_resource_cat'=> 'changemaker',
+                                                'showposts' => '1',
                                                 'paged' => $paged
                                                 );
                                 
@@ -193,7 +195,7 @@ get_header(); ?>
 
     					<div class="half-block">
 
-                                            <h4>Active Play Change-Makers</h4>
+                                            <h4>Change-Makers on This Topic</h4>
                                              <?php
                                              //Need to adapt it to query resourcecat and resource topic area
                                             wp_reset_postdata();
@@ -204,6 +206,8 @@ get_header(); ?>
                                                 // Change these category SLUGS to suit your use.
                                                 'post_type' => 'saresources',
                                                 'sa_resource_cat'=> 'changemaker',
+                                                'showposts' => '1',
+                                                'sa_advocacy_targets' => $page_slug,
                                                 'paged' => $paged
                                                 );
                                 
