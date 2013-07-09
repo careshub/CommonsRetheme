@@ -270,6 +270,10 @@ function sa_policy_meta_box() {
     $post3 = $custom["sa_post3"][0];
     $dateenacted = $custom["sa_dateenacted"][0];
     $dateimplemented = $custom["sa_dateimplemented"][0];
+    $emergencedatestg = $custom["sa_emergencedate_stg"][0];
+    $developmentdatestg = $custom["sa_developmentdate_stg"][0];
+    $enactmentdatestg = $custom["sa_enactmentdate_stg"][0];
+    $implementationdatestg = $custom["sa_implementationdate_stg"][0];
 
 
    
@@ -298,13 +302,29 @@ function sa_policy_meta_box() {
 <div id="leftcolumn2">
     <h4>Stage:</h4>
     <ul id="policy_stage_select">
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_pre_policy" value="emergence" <?php checked( $sapolicy_stage, 'emergence' ); ?>> <label for="sa_policystage_pre_policy">Emergence</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_pre_policy" value="emergence" <?php checked( $sapolicy_stage, 'emergence' ); ?>> <label for="sa_policystage_pre_policy">Emergence</label><input type="text" id="sa_emergencedate_stg" placeholder="Enter date here" value="<?php 
+                if ($emergencedatestg != "") {
+                    echo $emergencedatestg;
+                }
+           ?>"/></li>
 
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_develop_policy" value="development" <?php checked( $sapolicy_stage, 'development' ); ?>> <label for="sa_policystage_develop_policy">Development</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_develop_policy" value="development" <?php checked( $sapolicy_stage, 'development' ); ?>> <label for="sa_policystage_develop_policy">Development</label><input type="text" id="sa_developmentdate_stg" placeholder="Enter date here" value="<?php 
+                if ($developmentdatestg != "") {
+                    echo $developmentdatestg;
+                }
+           ?>"/></li>/></li>
       
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_enact_policy" value="enactment" <?php checked( $sapolicy_stage, 'enactment' ); ?>> <label for="sa_policystage_enact_policy">Enactment</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_enact_policy" value="enactment" <?php checked( $sapolicy_stage, 'enactment' ); ?>> <label for="sa_policystage_enact_policy">Enactment</label><input type="text" id="sa_enactmentdate_stg" placeholder="Enter date here" value="<?php 
+                if ($enactmentdatestg != "") {
+                    echo $enactmentdatestg;
+                }
+           ?>"/></li>/></li>
       
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_post_policy" value="implementation" <?php checked( $sapolicy_stage, 'implementation' ); ?>> <label for="sa_policystage_post_policy">Implementation</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_post_policy" value="implementation" <?php checked( $sapolicy_stage, 'implementation' ); ?>> <label for="sa_policystage_post_policy">Implementation</label><input type="text" id="sa_implementationdate_stg" placeholder="Enter date here" value="<?php 
+                if ($implementationdatestg != "") {
+                    echo $implementationdatestg;
+                }
+           ?>"/></li>/></li>
     </ul>
 
 </div>
@@ -544,6 +564,10 @@ function get_sa_geog_lat_lon(){
   jQuery(document).ready(function(){
     jQuery("#sa_dateenacted").datepicker();
     jQuery("#sa_dateimplemented").datepicker();
+    jQuery("#sa_emergencedate_stg").datepicker();
+    jQuery("#sa_developmentdate_stg").datepicker();
+    jQuery("#sa_enactmentdate_stg").datepicker();
+    jQuery("#sa_implementationdate_stg").datepicker();
   });
 </script>
 
@@ -596,7 +620,11 @@ function sapolicy_save() {
        sapolicy_save_event_field("sa_post2");
        sapolicy_save_event_field("sa_post3");       
        sapolicy_save_event_field("sa_dateenacted");
-       sapolicy_save_event_field("sa_dateimplemented");       
+       sapolicy_save_event_field("sa_dateimplemented");
+       sapolicy_save_event_field("sa_emergencedate_stg");  
+       sapolicy_save_event_field("sa_developmentdate_stg");  
+       sapolicy_save_event_field("sa_enactmentdate_stg");  
+       sapolicy_save_event_field("sa_implementationdate_stg");  
 
 
     }
