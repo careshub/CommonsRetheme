@@ -11,10 +11,10 @@ get_header(); ?>
 			<?php endwhile; // end of the loop. ?>
 	<!-- Quicklinks -->
 	<div class="quicklinks clear">
-	<a href="" class="quarter-block button">Download the Quickstart Guide for Adults</a>
-	<a href="" class="quarter-block button">Download the Quickstart Guide for Adults</a>
-	<a href="" class="quarter-block button">Share Your Event</a>
-	<a href="" class="quarter-block button">Join the Weight of the Nation Group</a>
+	<a href="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-Quickstart-Guide.pdf" class="quarter-block button">Download the Quickstart Guide for Adults</a>
+	<a href="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-Quickstart-Guide.pdf" class="quarter-block button">Download the Quickstart Guide for Kids</a>
+	<a href="http://www.communitycommons.org/wotn_sak_form/" class="quarter-block button">Share Your Event</a>
+	<a href="http://www.communitycommons.org/groups/weight-of-the-nation/" class="quarter-block button">Join the Weight of the Nation Group</a>
 	</div>
 	<!-- VIDEOS -->
 	<div id="tool-group-videos" class="tool-group accent-blue">
@@ -36,7 +36,7 @@ get_header(); ?>
 			</div>
 			<div class="tool-group-tool quarter-block videos">
 				<header class="entry-header clear">
-					<h3 class="entry-title"><a href="http://dev.communitycommons.org/wotn-video-index/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation</em>&trade; Video Index and Strategy Guide</a></h3>
+					<h3 class="entry-title"><a href="http://www.communitycommons.org/wotn-video-index/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation</em>&trade; Video Index and Strategy Guide</a></h3>
 				</header>
 				<!-- <div class="entry-content">
 					<p>This should be short but will probably be longer than I expect. You know?</p>
@@ -44,7 +44,7 @@ get_header(); ?>
 			</div>
 			<div class="tool-group-tool quarter-block videos">
 				<header class="entry-header clear">
-					<h3 class="entry-title"><a href="http://dev.communitycommons.org/wotn-bonus-shorts/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation</em>&trade; Bonus Shorts: Themes and Recommendations</a></h3>
+					<h3 class="entry-title"><a href="http://www.communitycommons.org/wotn-bonus-shorts/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation</em>&trade; Bonus Shorts: Themes and Recommendations</a></h3>
 				</header>
 				<!-- <div class="entry-content">
 					<p>This should be short but will probably be longer than I expect. You know?</p>
@@ -52,7 +52,7 @@ get_header(); ?>
 			</div>
 			<div class="tool-group-tool quarter-block videos">
 				<header class="entry-header clear">
-					<h3 class="entry-title"><a href="http://dev.communitycommons.org/wotn-overview-strategies/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation for Kids</em> Video Overviews and Strategies</a></h3>
+					<h3 class="entry-title"><a href="http://www.communitycommons.org/wotn-overview-strategies/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation for Kids</em> Video Overviews and Strategies</a></h3>
 				</header>
 				<!-- <div class="entry-content">
 					<p>This should be short but will probably be longer than I expect. You know?</p>
@@ -73,7 +73,7 @@ get_header(); ?>
   	    <div class="content-row">
 			<div class="tool-group-tool quarter-block planning">
 				<header class="entry-header clear">
-					<h3 class="entry-title"><a href="http://dev.communitycommons.org/wotn-planning/" title="Link to the map tool" rel="bookmark">Planning Guide</a></h3>
+					<h3 class="entry-title"><a href="http://www.communitycommons.org/wotn-planning/" title="Link to the map tool" rel="bookmark">Planning Guide</a></h3>
 				</header>
 				<!-- <div class="entry-content">
 					<p>This should be short but will probably be longer than I expect. You know?</p>
@@ -81,7 +81,7 @@ get_header(); ?>
 			</div>
 			<div class="tool-group-tool quarter-block planning">
 				<header class="entry-header clear">
-					<h3 class="entry-title"><a href="http://dev.communitycommons.org/wotn-facilitator-tips/" title="Link to the map tool" rel="bookmark">Facilitator Tips</a></h3>
+					<h3 class="entry-title"><a href="http://www.communitycommons.org/wotn-facilitator-tips/" title="Link to the map tool" rel="bookmark">Facilitator Tips</a></h3>
 				</header>
 				<!-- <div class="entry-content">
 					<p>This should be short but will probably be longer than I expect. You know?</p>
@@ -89,7 +89,7 @@ get_header(); ?>
 			</div>
 			<div class="tool-group-tool quarter-block planning">
 				<header class="entry-header clear">
-					<h3 class="entry-title"><a href="http://dev.communitycommons.org/wotn-room/" title="Link to the map tool" rel="bookmark">Room Set Up and Equipment</a></h3>
+					<h3 class="entry-title"><a href="http://www.communitycommons.org/wotn-room/" title="Link to the map tool" rel="bookmark">Room Set Up and Equipment</a></h3>
 				</header>
 				<!-- <div class="entry-content">
 					<p>This should be short but will probably be longer than I expect. You know?</p>
@@ -97,7 +97,7 @@ get_header(); ?>
 			</div>
 			<div class="tool-group-tool quarter-block planning">
 				<header class="entry-header clear">
-					<h3 class="entry-title"><a href="http://dev.communitycommons.org/wotn-agendas/" title="Link to the map tool" rel="bookmark">Screening to Action Agendas</a></h3>
+					<h3 class="entry-title"><a href="http://www.communitycommons.org/wotn-agendas/" title="Link to the map tool" rel="bookmark">Screening to Action Agendas</a></h3>
 				</header>
 				<!-- <div class="entry-content">
 					<p>This should be short but will probably be longer than I expect. You know?</p>
@@ -118,7 +118,7 @@ get_header(); ?>
   	    <div class="content-row">
 			<div class="tool-group-tool quarter-block moving-to-action">
 				<header class="entry-header clear">
-					<h3 class="entry-title"><a href="http://dev.communitycommons.org/wotn-moving-to-action/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation</em>&trade; Moving to Action Resources</a></h3>
+					<h3 class="entry-title"><a href="http://www.communitycommons.org/wotn-moving-to-action/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation</em>&trade; Moving to Action Resources</a></h3>
 				</header>
 				<!-- <div class="entry-content">
 					<p>This should be short but will probably be longer than I expect. You know?</p>
@@ -126,7 +126,7 @@ get_header(); ?>
 			</div>
 			<div class="tool-group-tool quarter-block moving-to-action">
 				<header class="entry-header clear">
-					<h3 class="entry-title"><a href="http://dev.communitycommons.org/wotn-move-action/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation for Kids</em> Moving to Action Resources</a></h3>
+					<h3 class="entry-title"><a href="http://www.communitycommons.org/wotn-kids-moving-action" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation for Kids</em> Moving to Action Resources</a></h3>
 				</header>
 				<!-- <div class="entry-content">
 					<p>This should be short but will probably be longer than I expect. You know?</p>
