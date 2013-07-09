@@ -66,7 +66,7 @@ if (is_page('salud-americaresearch')) {
         <?php
 
         //Specify the saresourcecat slugs we want to show here 
-        //                          
+        // If specifying more than one category, make them a comma-separated list               
         $resource_cats = array(
           'report',
           'toolkit',
@@ -106,9 +106,10 @@ if (is_page('salud-americaresearch')) {
                           
         <?php  
         //4 BLOCKS FOR WHAT'S GOING ON NOW
-        // Specify the saresourcecat slugs we want to show here                        
+        // Specify the saresourcecat slugs we want to show here
+        // If specifying more than one category, make them a comma-separated list                       
             $resource_cats = array(
-              'get-involved',
+              'get-involved,journal-article',
               'journal-article',
               'news',
               'press-release'

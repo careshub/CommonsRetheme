@@ -56,7 +56,7 @@ $do_not_duplicate = array();
 			// echo '<br />';
 
 		    //$related_tag = $post->tag ?>
-		    <p><a href="/blog/" title="Article archive">Browse all articles.</a></p>
+		    <p><a href="/blog/" title="Article archive" class="button">Browse all articles.</a></p>
 		</div> <!-- end #top-story -->
 
 		<?php endwhile; 
