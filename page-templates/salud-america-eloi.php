@@ -109,10 +109,9 @@ if (is_page('salud-americaresearch')) {
         // Specify the saresourcecat slugs we want to show here
         // If specifying more than one category, make them a comma-separated list                       
             $resource_cats = array(
-              'get-involved,journal-article',
-              'journal-article',
-              'news',
-              'press-release'
+              'news, press-release',
+              'op-ed',
+              'research, report, policy-brief' 
             );
             ?>
 
@@ -147,9 +146,10 @@ if (is_page('salud-americaresearch')) {
 
     //3 BLOCKS FOR LEARNING RESOURCES ####################################################                          
         $resource_cats = array(
-          'learning-resource',
-          'training',
-          'role-model-story'
+          'coalition',
+          'how-to-resource, toolkit',
+          'training, webinar-2',
+          'learning-resource' 
         );
         ?>
 
