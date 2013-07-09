@@ -606,10 +606,6 @@ function add_this_script_footer(){ ?>
 /* Filter classes added to body tag to add "buddypress" if BuddyPress is active
 ***************/
 function cc_custom_body_class( $classes ) {
-    //First we unset the class "buddypress" that was added in BP 1.7 a little too indiscriminately.
-    // if(($key = array_search('buddypress', $classes)) !== false) {
-    //     unset($classes[$key]);
-    //   }
      
     if ( function_exists( 'bp_is_blog_page' ) && !bp_is_blog_page() ) {
         $classes[] = 'buddypress';

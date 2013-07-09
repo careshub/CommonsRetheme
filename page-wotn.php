@@ -11,18 +11,18 @@ get_header(); ?>
 			<?php endwhile; // end of the loop. ?>
 	<!-- Quicklinks -->
 	<div class="quicklinks clear">
-	<a href="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-Quickstart-Guide.pdf" class="quarter-block button">Download the Quickstart Guide for Adults</a>
-	<a href="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-Quickstart-Guide.pdf" class="quarter-block button">Download the Quickstart Guide for Kids</a>
-	<a href="http://www.communitycommons.org/wotn_sak_form/" class="quarter-block button">Share Your Event</a>
+	<a href="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-Quickstart-Guide.pdf" class="quarter-block button">Download the original series Quickstart Guide</a>
+	<a href="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-Quickstart-Guide.pdf" class="quarter-block button">Download the kids' series Quickstart Guide</a>
+	<a href="http://www.communitycommons.org/wotn_sak_form/" class="quarter-block button">Share a Story From Your Event</a>
 	<a href="http://www.communitycommons.org/groups/weight-of-the-nation/" class="quarter-block button">Join the Weight of the Nation Group</a>
 	</div>
 	<!-- VIDEOS -->
 	<div id="tool-group-videos" class="tool-group accent-blue">
 		<header class="entry-header clear">
-			<h1 class="entry-title">Videos, Summaries and Strategies</h1>
+			<h1 class="entry-title">Film Resources</h1>
 			<div id="tool-group-header-videos" class="tool-group-header clear">
-				<img width="600" height="200" src="http://www.communitycommons.org/wp-content/uploads/2013/04/dv-taxonomy-community.jpg" class="attachment-full" alt="book-brigade-600x200">
-				<p class="tool-group-description">Describing the video section.</p>
+				<img width="600" height="200" src="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-film-resources.jpg" class="attachment-full" alt="film resources">
+				<p class="tool-group-description">Familiarize yourself with the films.</p>
 			</div>
 		</header>
   	    <div class="content-row">
@@ -36,7 +36,7 @@ get_header(); ?>
 			</div>
 			<div class="tool-group-tool quarter-block videos">
 				<header class="entry-header clear">
-					<h3 class="entry-title"><a href="http://www.communitycommons.org/wotn-video-index/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation</em>&trade; Video Index and Strategy Guide</a></h3>
+					<h3 class="entry-title"><a href="http://www.communitycommons.org/wotn-video-index/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation</em>&trade; Film Index and Strategy Guide</a></h3>
 				</header>
 				<!-- <div class="entry-content">
 					<p>This should be short but will probably be longer than I expect. You know?</p>
@@ -52,7 +52,7 @@ get_header(); ?>
 			</div>
 			<div class="tool-group-tool quarter-block videos">
 				<header class="entry-header clear">
-					<h3 class="entry-title"><a href="http://www.communitycommons.org/wotn-overview-strategies/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation for Kids</em> Video Overviews and Strategies</a></h3>
+					<h3 class="entry-title"><a href="http://www.communitycommons.org/wotn-overview-strategies/" title="Link to the map tool" rel="bookmark"><em>The Weight of the Nation for Kids</em> Film Overviews and Strategies</a></h3>
 				</header>
 				<!-- <div class="entry-content">
 					<p>This should be short but will probably be longer than I expect. You know?</p>
@@ -64,10 +64,10 @@ get_header(); ?>
   <!-- PLANNING -->
   <div id="tool-group-planning" class="tool-group  accent-yellow">
 		<header class="entry-header clear">
-			<h1 class="entry-title">Planning Your Screening to Action Event</h1>
+			<h1 class="entry-title">Event Resources</h1>
 			<div id="tool-group-header-planning" class="tool-group-header clear">
 				<img width="600" height="200" src="http://www.communitycommons.org/wp-content/uploads/2013/04/dv-taxonomy-community.jpg" class="attachment-full" alt="book-brigade-600x200">
-				<p class="tool-group-description">Describing the screening to action section.</p>
+				<p class="tool-group-description">Plan your Screening to Action event.</p>
 			</div>
 		</header>
   	    <div class="content-row">
@@ -109,10 +109,10 @@ get_header(); ?>
   <!-- MOVING TO ACTION -->
   <div id="tool-group-moving-to-action" class="tool-group  accent-red">
 		<header class="entry-header clear">
-			<h1 class="entry-title">Moving to Action</h1>
+			<h1 class="entry-title">Action Resources</h1>
 			<div id="tool-group-header-planning" class="tool-group-header clear">
-				<img width="600" height="200" src="http://www.communitycommons.org/wp-content/uploads/2013/04/dv-taxonomy-community.jpg" class="attachment-full" alt="book-brigade-600x200">
-				<p class="tool-group-description">Describing the moving to action section.</p>
+				<img width="600" height="200" src="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-action-resources.jpg" class="attachment-full" alt="Moving to action">
+				<p class="tool-group-description">Move to Action.</p>
 			</div>
 		</header>
   	    <div class="content-row">
@@ -156,8 +156,8 @@ get_header(); ?>
 		<header class="entry-header clear">
 			<h1 class="entry-title">Additional Resources</h1>
 			<div id="tool-group-header-wotn-resources" class="tool-group-header clear">
-				<img width="600" height="200" src="http://www.communitycommons.org/wp-content/uploads/2013/04/dv-taxonomy-community.jpg" class="attachment-full" alt="book-brigade-600x200">
-				<p class="tool-group-description">Describing the additional resources section.</p>
+				<img width="600" height="200" src="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-Additional-resources.png" class="attachment-full" alt="Additional resources">
+				<p class="tool-group-description">Accelerate your progress.</p>
 			</div>
 		</header>
   	    <div class="content-row">
