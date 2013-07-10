@@ -185,6 +185,19 @@ get_header(); ?>
 
         <div id="uxContext" class="<?php echo ($showContext === true) ? '' : 'display-none'; ?>">
 Context
+<script src="C:\Workspace\Eloi\00_WKKF_project_Phase2\Chart_javscript\RGraph\libraries\RGraph.bar.js"></script>              <!-- Just needed for Bar charts -->
+
+<script>
+    window.onload = function ()
+    {
+        var data = [280, 45, 133, 166, 84, 259, 266, 960, 219, 311, 67, 89];
+
+        var bar = new RGraph.Bar('myCanvas', data);
+        bar.Set('chart.labels', ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
+        bar.Set('chart.gutter.left', 35);
+        bar.Draw();
+    }
+</script>
 
         </div>
         <div id="uxChildOutcomes" class="<?php echo ($showChildOut === true) ? '' : 'display-none'; ?>">
