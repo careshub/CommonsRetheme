@@ -16,9 +16,6 @@
 // ini_set('display_errors', 'On');
 // error_reporting(E_ALL | E_STRICT);
 get_header(); ?>
-<?php
-require ('getData.php');
-?>
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/wkkf.js'; ?>"></script>
 <link rel='stylesheet' type="text/css" href="<?php echo get_stylesheet_directory_uri() . '/css/wkkf.css';?>" />
 
@@ -228,9 +225,9 @@ $piChart->setColors(array("ff3344", "11ff11", "22aacc", "3333aa"));
           //echo do_shortcode("[wp_charts title='mypie' type='pie' labels='10,32,50,25,5' margin='5px 5px' data='10,32,50,25,5']"); 
           //echo '</div>';
           //echo '<div class="chartbox_spacer">&nbsp;</div>';
-          //echo '<div class="chartbox">&nbsp;';  
-          //echo do_shortcode("[easychart type='horizbar' height='150' title='SYSMark 2007: AMD v.s. Intel' groupnames='AMD Phenom X4 9950, Intel Core i7 940' groupcolors='005599,229944' valuenames='Overall,E-Learning,Video Creation,Productivity,3D' group1values='157,132,208,150,148' group2values='229,202,259,226,232' ]");
-          //echo '</div>';
+          echo '<div class="chartbox">&nbsp;';  
+          echo do_shortcode("[easychart type='horizbar' height='150' title='SYSMark 2007: AMD v.s. Intel' groupnames='AMD Phenom X4 9950, Intel Core i7 940' groupcolors='005599,229944' valuenames='Overall,E-Learning,Video Creation,Productivity,3D' group1values='157,132,208,150,148' group2values='229,202,259,226,232' ]");
+          echo '</div>';
            ?>
 
                 
