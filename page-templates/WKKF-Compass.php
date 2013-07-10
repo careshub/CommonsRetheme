@@ -130,7 +130,7 @@ require ('getData.php')
       ?>
 
   <div id="primary" class="site-content width-full">
-    <div id="content" role="main" style="border:solid 2px #BFBFBF;background-color:#f2f2f2;">          
+    <div id="content" role="main" style="border:solid 2px #BFBFBF;background-color:#f2f2f2;padding:12px;">          
       
       <div id="uxCompassHeader" class="colmask threecol header">
         <div class="colmid">
@@ -195,8 +195,8 @@ require ('getData.php')
             
             <div class="chartyear">
               
-            <h2>VIEWING THE IMPACT MADE UP TO &nbsp;<image src="http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/prev.png" /> 2012 <image src="http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/next.png" />
-            </h2>
+            <div style="font-family:Calibri,Arial;font-size:12pt;font-weight:bold;color:#7f7f7f;">VIEWING THE IMPACT MADE UP TO &nbsp;<image src="<?php echo get_stylesheet_directory_uri() . '/img/Larrow.png' ?>" width="20px" /> 2012 <image src="<?php echo get_stylesheet_directory_uri() . '/img/Rarrow.png' ?>" width="20px" />
+            </div>
             </div>
             <div id="row1" class='chartboxparent'>
 
