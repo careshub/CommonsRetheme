@@ -155,19 +155,33 @@ require ('getData.php')
               <div class="middle">
               <div id="uxNavigation" class="nav-section inner">
                 <div id="uxPrevPage" class="<?php echo (isset($pg) && $pg !== 'Home') ? '' : 'display-none'; ?>">
-                  <a href="<?php echo (isset($pg) && $pg !== 'Home') ? GoToCompassPage($uriNoQuery, $loc, GetPrevPage($pg)) : ''; ?>">
-                    <span class="nav-arrow">&#8666;</span>
-                    <span class="">
+                  <a href="<?php echo (isset($pg) && $pg !== 'Home') ? GoToCompassPage($uriNoQuery, $loc, GetPrevPage($pg)) : ''; ?>" style="text-decoration:none;">
+                    <span class="nav-arrow"><img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/navleft.png' ?>" style="vertical-align:middle;" /></span>
+                    <span style="font-family:Calibri,Arial;font-weight:bold;font-size:12pt;color:#7f7f7f;">
                       <?php echo (isset($pg) && $pg !== 'Home') ? GetPrevPageName($pg) : ''; ?>
                     </span>
                   </a>
-                </div><br />
-                <div id="uxNextPage" class="<?php echo (isset($pg) && $pg !== 'Home') ? '' : 'display-none'; ?>">
-                  <a href="<?php echo (isset($pg) && $pg !== 'Home') ? GoToCompassPage($uriNoQuery, $loc, GetNextPage($pg)) : ''; ?>">
-                    <span class="">
+                </div>
+				<div>
+					<select>
+						<?php	
+							if (isset($pg)) {
+								echo "<option selected value='" . $wkkfPages[$pg] . "'>" . $wkkfPages[$pg]['name'] . "</option>";
+							}
+							foreach ($wkkfPages as $wkkfPage) {
+
+										echo "<option value='" . $wkkfPage . "'>" . $wkkfPage['name'] . "</option>";
+								
+							}
+						?>
+					</select>
+				</div>
+                <div id="uxNextPage" class="<?php echo (isset($pg) && $pg !== 'Home') ? '' : 'display-none'; ?>"> 
+                  <a href="<?php echo (isset($pg) && $pg !== 'Home') ? GoToCompassPage($uriNoQuery, $loc, GetNextPage($pg)) : ''; ?>" style="text-decoration:none;">
+                    <span style="font-family:Calibri,Arial;font-weight:bold;font-size:12pt;color:#7f7f7f;">
                       <?php echo (isset($pg) && $pg !== 'Home') ? GetNextPageName($pg) : ''; ?>
                     </span>
-                    <span class="nav-arrow">&#8667;</span>
+                    <span class="nav-arrow"><img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/navright.png' ?>" style="vertical-align:middle;" /></span>
                   </a>
                 </div>
               </div>
@@ -195,7 +209,7 @@ require ('getData.php')
             
             <div class="chartyear">
               
-            <div style="font-family:Calibri,Arial;font-size:12pt;font-weight:bold;color:#7f7f7f;">VIEWING THE IMPACT MADE UP TO &nbsp;<image src="<?php echo get_stylesheet_directory_uri() . '/img/Larrow.png' ?>" width="20px" style="vertical-align:middle;" /> 2012 <image src="<?php echo get_stylesheet_directory_uri() . '/img/Rarrow.png' ?>" width="20px" style="vertical-align:middle;" />
+            <div style="font-family:Calibri,Arial;font-size:12pt;font-weight:bold;color:#7f7f7f;">VIEWING THE IMPACT MADE UP TO &nbsp;<image src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/prev.png' ?>" width="20px" style="vertical-align:middle;" /> 2012 <image src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/next.png' ?>" width="20px" style="vertical-align:middle;" />
             </div>
             </div>
             <div id="row1" class='chartboxparent'>
@@ -247,7 +261,7 @@ Continuum
 Live Feeds
 
         </div>
-                
+        <div style="text-align:right;padding:10px;"><img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/wkkf.png' ?>" /></div>  
       </div><!-- #uxCompassContents -->  
     </div><!-- #content -->
   </div><!-- #primary -->
