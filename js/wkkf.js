@@ -10,7 +10,7 @@ function GoToPage(baseurl, priplace, page) {
 
 jQuery(document).ready(function(){
 	
-	      jQuery('#pageselector').live( 'change', function() {           
+	      jQuery('#pageselector').live( 'change', function() { 			
             window.location=jQuery('#pageselector').val();         
           });
 });
