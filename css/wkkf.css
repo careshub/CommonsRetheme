@@ -34,7 +34,7 @@ root { display: block;}
 .location-thumbnail { border-top: 2px #f8971d solid;border-bottom: 2px #f8971d solid;}
 .nav-arrow { font-size: 1.5em;}
 
-.header { width: 100%; height: 86px;  background-color: #f8971d;  }
+.header { width: 100%; height: 86px;  background-color: #f2f2f2;  }
 .header .outer {height: 86px;width: 960px;}
 .outer { overflow: hidden;display: table; position: relative; }
 .middle {display: table-cell; vertical-align: middle;   position: relative; }
