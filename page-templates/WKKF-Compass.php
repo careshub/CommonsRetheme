@@ -195,7 +195,7 @@ require ('getData.php')
             
             <div class="chartyear">
               
-            <div style="font-family:Calibri,Arial;font-size:12pt;font-weight:bold;color:#7f7f7f;">VIEWING THE IMPACT MADE UP TO &nbsp;<image src="<?php echo get_stylesheet_directory_uri() . '/img/Larrow.png' ?>" width="20px" /> 2012 <image src="<?php echo get_stylesheet_directory_uri() . '/img/Rarrow.png' ?>" width="20px" />
+            <div style="font-family:Calibri,Arial;font-size:12pt;font-weight:bold;color:#7f7f7f;">VIEWING THE IMPACT MADE UP TO &nbsp;<image src="<?php echo get_stylesheet_directory_uri() . '/img/Larrow.png' ?>" width="20px" style="vertical-align:middle;" /> 2012 <image src="<?php echo get_stylesheet_directory_uri() . '/img/Rarrow.png' ?>" width="20px" style="vertical-align:middle;" />
             </div>
             </div>
             <div id="row1" class='chartboxparent'>
