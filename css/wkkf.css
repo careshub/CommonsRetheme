@@ -30,11 +30,11 @@ root { display: block;}
 .height-half{ height: 50%; }
 .main { z-index: 1; clear: both; min-height: 400px;}
 .page-holder-image { width: 100%; }
-.location-text{ font-size: 1.5em;}
-.location-thumbnail { border-top: 2px #f8971d solid;border-bottom: 2px #f8971d solid;}
+.location-text{ font-size: 18pt;font-family:Calibri,Arial;font-weight:bold;}
+.location-thumbnail { border-top: 2px #f2f2f2 solid;border-bottom: 2px #f2f2f2 solid;}
 .nav-arrow { font-size: 1.5em;}
 
-.header { width: 100%; height: 86px;  background-color: #f8971d;  }
+.header { width: 100%; height: 86px;  background-color: #f2f2f2; margin-bottom:15px;  }
 .header .outer {height: 86px;width: 960px;}
 .outer { overflow: hidden;display: table; position: relative; }
 .middle {display: table-cell; vertical-align: middle;   position: relative; }
@@ -46,7 +46,7 @@ root { display: block;}
 
 /* <!-- http://matthewjamestaylor.com/blog/perfect-2-column-left-menu.htm */
 /* column container */
-.colmask { position:relative; /* This fixes the IE7 overflow hidden bug */ clear:both; float:left; width:100%;   /* width of whole page */
+.colmask { position:relative; /* This fixes the IE7 overflow hidden bug */ clear:both; float:left; width:100%;    /* width of whole page */
  /* overflow:hidden;  This chops off any overhanging divs */ }
 /* common column settings */
 .colright,.colmid,.colleft { float:left; width:100%;   /* width of page */ position:relative;}
@@ -167,7 +167,7 @@ display: block;
 div.chartboxparent
 {
 
-border: 1px solid #402607;
+background-color:#e6e6e6;
 height: 650px;
 padding: 5px;
 }
@@ -185,7 +185,7 @@ background: #E6E6E6;
  width: 290px;
  height: 290px;
   text-align: left;
-  border: 1px solid #402607;
+ 
   font: 12px Arial;
   padding: 5px;
   margin:0px;
@@ -196,7 +196,7 @@ background: #E6E6E6;
  width: 290px;
  height: 290px;
   text-align: left;
-  border: 1px solid #402607;
+ 
   font: 12px Arial;
   padding: 5px;
   margin:0px;
