@@ -16,8 +16,12 @@
 // ini_set('display_errors', 'On');
 // error_reporting(E_ALL | E_STRICT);
 get_header(); ?>
+<?php
+require ('getData.php');
+?>
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/wkkf.js'; ?>"></script>
 <link rel='stylesheet' type="text/css" href="<?php echo get_stylesheet_directory_uri() . '/css/wkkf.css';?>" />
+
 
       <?php while ( have_posts() ) : the_post(); ?>
         <?php //get_template_part( 'content', 'page-notitle' ); ?>
@@ -186,10 +190,51 @@ get_header(); ?>
 Context
 
         </div>
-
         <div id="uxChildOutcomes" class="<?php echo ($showChildOut === true) ? '' : 'display-none'; ?>">
-Child Outcomes
+            Child Outcomes
+            <div class="chartyear">
+              
+            <h2>VIEWING THE IMPACT MADE UP TO &nbsp;<image src="http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/prev.png" /> 2012 <image src="http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/next.png" />
+            </h2>
+            </div>
+            <div id="row1" class='chartboxparent'>
 
+        <?php
+$piChart = new gPieChart();
+$piChart->addDataSet(array(23.4,25,10,20));
+$piChart->setLegend(array("23.4", "25", "10","20"));
+$piChart->setLabels(array("23.4%", "25%", "10%","20%"));
+$piChart->setColors(array("ff3344", "11ff11", "22aacc", "3333aa"));
+?>
+           <div class="chartbox"> 
+               <img src="<?php print $piChart->getUrl();  ?>" style='background:#E6E6E6;width: 290px;'/> <br><h2 align="center">25%<br> Percent of kids eating healthy.</h2> 
+    </div>
+    <div class="chartbox_spacer"></div>
+    <div class="chartbox">dddddd</div>
+    <div class="chartbox_spacer"></div>
+       <div class="chartbox">dfsfs</div>
+       <br><br>
+   <div id="row2" class="chartboxparent_spacer">&nbsp;<br>
+    <div class="chartbox_bot">               <img src="<?php print $piChart->getUrl();  ?>" style='background:#E6E6E6;width: 290px;'/> <br><h2 align="center">25%<br> Percent of kids eating healthy.</h2> 
+    </div>
+    <div class="chartbox_spacer"></div>
+       <div class="chartbox_bot">row2-1</div>
+       <div class="chartbox_spacer"></div>
+       <div class="chartbox_bot">row2-3</div>
+       
+   </div>
+           <?php 
+          //echo '<div class="chartbox">&nbsp;'; 
+          //echo do_shortcode("[wp_charts title='mypie' type='pie' labels='10,32,50,25,5' margin='5px 5px' data='10,32,50,25,5']"); 
+          //echo '</div>';
+          //echo '<div class="chartbox_spacer">&nbsp;</div>';
+          //echo '<div class="chartbox">&nbsp;';  
+          //echo do_shortcode("[easychart type='horizbar' height='150' title='SYSMark 2007: AMD v.s. Intel' groupnames='AMD Phenom X4 9950, Intel Core i7 940' groupcolors='005599,229944' valuenames='Overall,E-Learning,Video Creation,Productivity,3D' group1values='157,132,208,150,148' group2values='229,202,259,226,232' ]");
+          //echo '</div>';
+           ?>
+
+                
+</div>
         </div>
 
         <div id="uxContinuum" class="<?php echo ($showContinuum === true) ? '' : 'display-none'; ?>">

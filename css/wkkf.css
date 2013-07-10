@@ -6,10 +6,9 @@
         Purpose of the stylesheet follows.
 
 primary colors
-orange: f8971d
+orange: f8971d (logo: f89781d)
 gray: 919195
 black: 000000
-
 secondary colors
 magenta: db0962
 violet: 716fb3
@@ -27,43 +26,19 @@ root { display: block;}
 /* ----- by class ----- */
 .display-none {display:none;}
 .width-full{ width: 100%; }
-.width-half{ width: 50%; }
 .height-full{ height: 100%; }
 .height-half{ height: 50%; }
-
-.contents { position: relative; clear: both; min-height: 400px;}
+.main { z-index: 1; clear: both; min-height: 400px;}
 .page-holder-image { width: 100%; }
+.location-text{ font-size: 1.5em;}
+.location-thumbnail { border-top: 2px #f8971d solid;border-bottom: 2px #f8971d solid;}
+.nav-arrow { font-size: 1.5em;}
 
-
-/* ----- Dashboard page ----- */
-.dashboard-cont {position: relative; /*debug border*/ border: 1px #00cc00 solid;}
-.left-half { position: absolute; width: 50%; height: 100%; left:0; /*debug border*/ border: 1px #cc0000 solid;}
-.right-half { position: absolute; width: 50%; height: 100%; right:0; /*debug border*/ border: 1px #0000cc solid;}
-
-
-/* ----- Context page ----- */
-
-
-/* ----- Child Outcomes page ----- */
-
-
-/* ----- Continuum page ----- */
-
-
-/* ----- Live Feed page ----- */
-
-
-
-
-/* ----- Header/Nav stuff ----- */
 .header { width: 100%; height: 86px;  background-color: #f8971d;  }
 .header .outer {height: 86px;width: 960px;}
 .outer { overflow: hidden;display: table; position: relative; }
 .middle {display: table-cell; vertical-align: middle;   position: relative; }
 .nav-section.inner { text-align: right; }
-.nav-arrow { font-size: 1.25em;}
-.location-text{ font-size: 1.5em;}
-.location-thumbnail { border-top: 2px #f8971d solid; border-bottom: 2px #f8971d solid;}
 
 .popup {position: absolute; background-color: #fdbb30; padding: 5px;z-index: 100; }
 .popup-nav-loc {  top: 80px; left: 0; }
@@ -106,7 +81,7 @@ ul li a {display: block;text-decoration: none;padding: 5px 15px 5px 15px;
 ul li a:hover {/*background: #3b3b3b;*/}
 li:hover ul {display: block;position: absolute;}
 li:hover li {float: none;}
-li:hover a { /*background: #3b3b3b;*/ }
+li:hover a { background: /*#3b3b3b;*/ }
 li:hover li a:hover {/*background: #1e7c9a;*/}
 
 /*------------------------------------*\
@@ -180,4 +155,61 @@ li:hover li a:hover {/*background: #1e7c9a;*/}
   background: -ms-linear-gradient(top, #0057A7 5%, #448fc6 100%);  /* IE10+ */
   background: linear-gradient(top, #0057A7 5%, #448fc6 100%);  /* W3C */
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#0057A7', endColorstr='#448fc6', GradientType=0);  /* IE6-9 */
+}
+div.chartyear
+{
+  padding: 5px;  
+  font-family: 'Times New Roman',Times,serif;
+width: 950px;
+display: block;
+
+}
+div.chartboxparent
+{
+
+border: 1px solid #402607;
+height: 650px;
+padding: 5px;
+}
+div.chartboxparent_spacer
+{
+
+width: 950px;
+height: 330px;
+padding-top: 5px;
+padding-bottom: 5px;
+  float: left; 
+}
+div.chartbox {
+background: #E6E6E6;
+ width: 290px;
+ height: 290px;
+  text-align: left;
+  border: 1px solid #402607;
+  font: 12px Arial;
+  padding: 5px;
+  margin:0px;
+  float: left;  
+}
+div.chartbox_bot {
+background: #E6E6E6;
+ width: 290px;
+ height: 290px;
+  text-align: left;
+  border: 1px solid #402607;
+  font: 12px Arial;
+  padding: 5px;
+  margin:0px;
+  float: left;  
+}
+div.chartbox_spacer {
+
+ width: 2px;
+ height: 2px;
+  text-align: left;
+  border: 0px solid #402607;
+  font: 12px Arial;
+  padding: 5px;
+  margin:0px;
+      float: left;  
 }
