@@ -130,7 +130,7 @@ require ('getData.php')
       ?>
 
   <div id="primary" class="site-content width-full">
-    <div id="content" role="main">          
+    <div id="content" role="main" style="border:solid 2px #BFBFBF;background-color:#f2f2f2;">          
       
       <div id="uxCompassHeader" class="colmask threecol header">
         <div class="colmid">
@@ -138,7 +138,7 @@ require ('getData.php')
             <div class="col1 outer">
               <!-- Column 1 (middle) start -->
               <div class="middle">
-                <div id="uxLocation" class="location-text inner"><?php echo $place; ?></div>
+                <div id="uxLocation" class="location-text inner"><?php echo $place; if (isset($pg)) {echo ' - ' . $wkkfPages[$pg]['name'];}?></div>
               </div>
               <!-- Column 1 end -->
             </div>
@@ -188,11 +188,11 @@ require ('getData.php')
         </div>
 
         <div id="uxContext" class="<?php echo ($showContext === true) ? '' : 'display-none'; ?>">
-Context
+
 
         </div>
         <div id="uxChildOutcomes" class="<?php echo ($showChildOut === true) ? '' : 'display-none'; ?>">
-            Child Outcomes
+            
             <div class="chartyear">
               
             <h2>VIEWING THE IMPACT MADE UP TO &nbsp;<image src="http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/prev.png" /> 2012 <image src="http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/next.png" />
