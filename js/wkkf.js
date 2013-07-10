@@ -8,3 +8,10 @@ function GoToPage(baseurl, priplace, page) {
   window.location=newPage;
 }
 
+jQuery(document).ready(function(){
+	
+	      jQuery('#pageselector').live( 'change', function() {           
+            window.location=jQuery('#pageselector').val();         
+          });
+});
+

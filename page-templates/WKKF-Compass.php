@@ -77,7 +77,13 @@ require ('getData.php')
         }
         return $pageURL;
       }
-      
+	  
+	  function switchPage($newpg){
+		$newUrl = str_replace('&pg='.$_GET['pg'], '&pg='.$newpg, getUrl());
+		return $newUrl;
+      }
+	  
+	  
       InitPage();
       ?>
       <?php //page functions
@@ -163,14 +169,14 @@ require ('getData.php')
                   </a>
                 </div>
 				<div>
-					<select>
+					<select id="pageselector" name="pageselector">
 						<?php	
 							if (isset($pg)) {
-								echo "<option selected value='" . $wkkfPages[$pg] . "'>" . $wkkfPages[$pg]['name'] . "</option>";
+								echo "<option selected value='" . $pg . "'>" . $wkkfPages[$pg]['name'] . "</option>";
 							}
-							foreach ($wkkfPages as $wkkfPage) {
+							foreach ($wkkfPages as $key => $value) {
 
-										echo "<option value='" . $wkkfPage . "'>" . $wkkfPage['name'] . "</option>";
+								echo "<option value='" . switchPage($key) . "'>" . $value['name'] . "</option>";
 								
 							}
 						?>
