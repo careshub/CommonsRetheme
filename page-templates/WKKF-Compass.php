@@ -19,7 +19,7 @@ get_header(); ?>
 <?php
 
 include ('getData.php');
-include ('childoutcomedetails.php');
+
 
 ?>
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/wkkf.js'; ?>"></script>
@@ -47,7 +47,7 @@ include ('childoutcomedetails.php');
         , 'outcomes'=>array( 
             'name'=>'Child Outcomes', 'next'=>'outcomesdet', 'prev'=>'context', 'img'=>'childoutcomes.png', 'showVar'=>'showChildOut')
         , 'outcomesdet'=>array(
-            'name'=>'Child Outcomes Detail', 'next'=>'continvest', 'prev'=>'outcomes', 'img'=>'childoutcomesdetail.png', 'showVar'=>'showChildOutD')
+            'name'=>'Child Outcomes Detail', 'next'=>'continvest', 'prev'=>'outcomes', 'img'=>'childoutcomesdetail.png')
         , 'continvest'=>array(
             'name'=>'Continuum Investments', 'next'=>'contstages', 'prev'=>'outcomesdet', 'img'=>'continvest.png', 'showVar'=>'showContinuum')
         , 'contstages'=>array(
@@ -66,7 +66,7 @@ include ('childoutcomedetails.php');
       
       $loc='WKKF Compass'; $place='WKKF'; $placeThumb='wkkf.png'; //global defaults
       $pg='Home'; $pgImg=''; //global defaults
-      $showDash=false;$showContext=false;$showChildOut=false;$showChildOutD=false;$showContinuum=false;$showLive=false; //global defaults
+      $showDash=false;$showContext=false;$showChildOut=false;$showContinuum=false;$showLive=false; //global defaults
       
       function getUrl(){
         $pageURL = 'http';
@@ -259,11 +259,7 @@ $piChart->setColors(array("ff3344", "11ff11", "22aacc", "3333aa"));
                 
 </div>
         </div>
-		<div id="uxChildOutcomesD" class="<?php echo ($showChildOutD === true) ? '' : 'display-none'; ?>">
-			<?php 
-				wkkfsc_COD();
-			?>
-		</div>
+
         <div id="uxContinuum" class="<?php echo ($showContinuum === true) ? '' : 'display-none'; ?>">
 
 
