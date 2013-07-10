@@ -17,15 +17,9 @@
 // error_reporting(E_ALL | E_STRICT);
 get_header(); ?>
 <?php
-<<<<<<< HEAD
+
 require ('getData.php')
 ?>
-=======
-
-require ('getData.php');
-?>
-
->>>>>>> 4d4b4c1ed4229f204c37ed4ca6fe3b6ce706393b
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/wkkf.js'; ?>"></script>
 <link rel='stylesheet' type="text/css" href="<?php echo get_stylesheet_directory_uri() . '/css/wkkf.css';?>" />
 
