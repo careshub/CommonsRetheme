@@ -25,6 +25,7 @@ include ('getData.php');
 
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/wkkf.js'; ?>"></script>
 <link rel='stylesheet' type="text/css" href="<?php echo get_stylesheet_directory_uri() . '/css/wkkf.css';?>" />
+<link rel='stylesheet' type="text/css" href="<?php echo get_stylesheet_directory_uri() . '/css/tick.css';?>" />
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . '/css/reveal.css'; ?>"></script>
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/jquery.reveal.js'; ?>"></script>
 
@@ -246,7 +247,9 @@ $piChart->setColors(array("ff3344", "11ff11", "22aacc", "3333aa"));
     <div class="chartbox_spacer"></div>
        <div class="chartbox_bot">row2-1</div>
        <div class="chartbox_spacer"></div>
-       <div class="chartbox_bot">row2-3</div>
+       <div class="chartbox_bot">
+			<p class="tick tick-flip">0</p>
+	   </div>
        
    </div>
            <?php 
@@ -288,5 +291,18 @@ $piChart->setColors(array("ff3344", "11ff11", "22aacc", "3333aa"));
 	</div>
   
 
-  
+ 
 <?php get_footer(); ?>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/tick.js'; ?>"></script> 
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+			  jQuery( '.tick' ).ticker(
+				{
+				  incremental: 1,
+				  stopnum: 25,
+				  delay: 50,
+				  separators: true
+				});
+			
+	});
+</script>
