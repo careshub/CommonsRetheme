@@ -38,7 +38,7 @@ root { display: block;}
 .header .outer {height: 86px;width: 960px;}
 .outer { overflow: hidden;display: table; position: relative; }
 .middle {display: table-cell; vertical-align: middle;   position: relative; }
-.nav-section.inner { text-align: right; }
+.nav-section.inner { text-align: right; vertical-align:top; }
 
 .popup {position: absolute; background-color: #fdbb30; padding: 5px;z-index: 100; }
 .popup-nav-loc {  top: 80px; left: 0; }

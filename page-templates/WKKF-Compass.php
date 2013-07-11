@@ -162,15 +162,14 @@ include ('getData.php');
               <!-- Column 3 (right) start -->
               <div class="middle">
               <div id="uxNavigation" class="nav-section inner">
-                <div id="uxPrevPage" class="<?php echo (isset($pg) && $pg !== 'Home') ? '' : 'display-none'; ?>">
+
+				
+
                   <a href="<?php echo (isset($pg) && $pg !== 'Home') ? GoToCompassPage($uriNoQuery, $loc, GetPrevPage($pg)) : ''; ?>" style="text-decoration:none;">
-                    <span class="nav-arrow"><img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/navleft.png' ?>" style="vertical-align:middle;" /></span>
-                    <span style="font-family:Calibri,Arial;font-weight:bold;font-size:12pt;color:#7f7f7f;">
-                      <?php echo (isset($pg) && $pg !== 'Home') ? GetPrevPageName($pg) : ''; ?>
-                    </span>
+                    <span class="nav-arrow"><img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/navleft.png' ?>" width="20px" style="vertical-align:middle;" /></span>
+
                   </a>
-                </div>
-				<div>
+
 					<select id="pageselector" name="pageselector">
 						<?php	
 							if (isset($pg)) {
@@ -183,15 +182,13 @@ include ('getData.php');
 							}
 						?>
 					</select>
-				</div>
-                <div id="uxNextPage" class="<?php echo (isset($pg) && $pg !== 'Home') ? '' : 'display-none'; ?>"> 
+
                   <a href="<?php echo (isset($pg) && $pg !== 'Home') ? GoToCompassPage($uriNoQuery, $loc, GetNextPage($pg)) : ''; ?>" style="text-decoration:none;">
-                    <span style="font-family:Calibri,Arial;font-weight:bold;font-size:12pt;color:#7f7f7f;">
-                      <?php echo (isset($pg) && $pg !== 'Home') ? GetNextPageName($pg) : ''; ?>
-                    </span>
-                    <span class="nav-arrow"><img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/navright.png' ?>" style="vertical-align:middle;" /></span>
+
+                    <span class="nav-arrow"><img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/navright.png' ?>" width="20px" style="vertical-align:middle;" /></span>
                   </a>
-                </div>
+                
+				
               </div>
               </div>
               <!-- Column 3 end -->
