@@ -93,6 +93,11 @@ function sa_resource_meta_box()
 	}
 
 	?>
+<br>
+            <input type="checkbox" id="saresource_promote" name="saresource_promote" value='Create Advocacy' <?php checked( $saresrouce_promote, 'Promote to Resources' ); ?>             
+                   > <label for="saresource_promote"><strong>Promote to Resources</strong></label><br /></input>
+<br>
+
 	<strong>Source Date</strong><br><input type='text' name='saresource_date' id='saresource_date' value='<?php 
                 if ($saresource_date != "") {
                     echo $saresource_date;
@@ -135,6 +140,7 @@ function saresource_save() {
     if ($post->post_type == 'saresources') {
        saresource_save_event_field("saresource_date");
 	   saresource_save_event_field("saresource_policy");
+           saresource_save_event_field("saresource_promote");
 	}
 }
 function saresource_save_event_field($event_field) {
