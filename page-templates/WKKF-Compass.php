@@ -22,8 +22,11 @@ include ('getData.php');
 
 
 ?>
+
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/wkkf.js'; ?>"></script>
 <link rel='stylesheet' type="text/css" href="<?php echo get_stylesheet_directory_uri() . '/css/wkkf.css';?>" />
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . '/css/reveal.css'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/jquery.reveal.js'; ?>"></script>
 
 
       <?php while ( have_posts() ) : the_post(); ?>
@@ -45,17 +48,17 @@ include ('getData.php');
           'context'=>array(
             'name'=>'Context', 'next'=>'outcomes', 'prev'=>'map', 'img'=>'context.png', 'showVar'=>'showContext')
         , 'outcomes'=>array( 
-            'name'=>'Child Outcomes', 'next'=>'outcomesdet', 'prev'=>'context', 'img'=>'childoutcomes.png', 'showVar'=>'showChildOut')
+            'name'=>'Child Outcomes', 'next'=>'continvest', 'prev'=>'context', 'img'=>'childoutcomes.png', 'showVar'=>'showChildOut')
         , 'outcomesdet'=>array(
             'name'=>'Child Outcomes Detail', 'next'=>'continvest', 'prev'=>'outcomes', 'img'=>'childoutcomesdetail.png')
         , 'continvest'=>array(
-            'name'=>'Continuum Investments', 'next'=>'contstages', 'prev'=>'outcomesdet', 'img'=>'continvest.png', 'showVar'=>'showContinuum')
+            'name'=>'Continuum Investments', 'next'=>'live', 'prev'=>'outcomes', 'img'=>'continvest.png', 'showVar'=>'showContinuum')
         , 'contstages'=>array(
             'name'=>'Continuum Stages', 'next'=>'live', 'prev'=>'continvest', 'img'=>'contstages.png')
         , 'live'=>array(
-            'name'=>'Live Feeds', 'next'=>'map', 'prev'=>'contstages', 'img'=>'livefeeds.png', 'showVar'=>'showLive')
+            'name'=>'Live Feeds', 'next'=>'map', 'prev'=>'continvest', 'img'=>'livefeeds.png', 'showVar'=>'showLive')
         , 'map'=>array(
-            'name'=>'Community Map', 'next'=>'context', 'prev'=>'live', 'img'=>'communitymap.png')
+            'name'=>'Community Map', 'next'=>'context', 'prev'=>'live', 'img'=>'communitymap.png', 'showVar'=>'showMap')
         );
       
       $imgFolder= get_stylesheet_directory_uri() . '/img/WKKF/';
@@ -66,7 +69,7 @@ include ('getData.php');
       
       $loc='WKKF Compass'; $place='WKKF'; $placeThumb='wkkf.png'; //global defaults
       $pg='Home'; $pgImg=''; //global defaults
-      $showDash=false;$showContext=false;$showChildOut=false;$showContinuum=false;$showLive=false; //global defaults
+      $showDash=false;$showContext=false;$showChildOut=false;$showContinuum=false;$showLive=false;$showMap=false; //global defaults
       
       function getUrl(){
         $pageURL = 'http';
@@ -138,7 +141,7 @@ include ('getData.php');
       ?>
 
   <div id="primary" class="site-content width-full">
-    <div id="content" role="main" style="border:solid 2px #BFBFBF;background-color:#f2f2f2;padding:12px;">          
+    <div id="content" role="main" style="border:solid 2px #BFBFBF;background-color:#f2f2f2;padding:20px;">          
       
       <div id="uxCompassHeader" class="colmask threecol header">
         <div class="colmid">
@@ -173,12 +176,13 @@ include ('getData.php');
 					<select id="pageselector" name="pageselector">
 						<?php	
 							if (isset($pg)) {
+							
 								echo "<option selected value='" . $pg . "'>" . $wkkfPages[$pg]['name'] . "</option>";
 							}
 							foreach ($wkkfPages as $key => $value) {
-
-								echo "<option value='" . wkkfsc_switchPage($key) . "'>" . $value['name'] . "</option>";
-								
+								if (isset($value['showVar'])) {
+									echo "<option value='" . wkkfsc_switchPage($key) . "'>" . $value['name'] . "</option>";
+								}
 							}
 						?>
 					</select>
@@ -226,9 +230,11 @@ $piChart->setLegend(array("23.4", "25", "10","20"));
 $piChart->setLabels(array("23.4%", "25%", "10%","20%"));
 $piChart->setColors(array("ff3344", "11ff11", "22aacc", "3333aa"));
 ?>
-           <div class="chartbox"> 
+           <a href="#" data-reveal-id="modal_outcomes1"><div class="chartbox"> 
+
                <img src="<?php print $piChart->getUrl();  ?>" style='background:#E6E6E6;width: 290px;'/> <br><h2 align="center">25%<br> Percent of kids eating healthy.</h2> 
-    </div>
+
+    </div></a>
     <div class="chartbox_spacer"></div>
     <div class="chartbox">dddddd</div>
     <div class="chartbox_spacer"></div>
@@ -266,9 +272,21 @@ $piChart->setColors(array("ff3344", "11ff11", "22aacc", "3333aa"));
 
 
         </div>
+        <div id="uxCommunityMap" class="<?php echo ($showMap === true) ? '' : 'display-none'; ?>">
+
+
+        </div>		
         <div style="text-align:right;padding:10px;"><img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/wkkf.png' ?>" /></div>  
       </div><!-- #uxCompassContents -->  
     </div><!-- #content -->
   </div><!-- #primary -->
+  
+	<div id="modal_outcomes1" class="reveal-modal xxlarge">
+		 <h1>Modal Title</h1>
+		 <p>Any content could go in here.</p>
+		 <a class="close-reveal-modal">&#215;</a>
+	</div>
+  
+
   
 <?php get_footer(); ?>
