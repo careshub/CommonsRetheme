@@ -141,7 +141,7 @@ include ('getData.php');
       ?>
 
   <div id="primary" class="site-content width-full">
-    <div id="content" role="main" style="border:solid 2px #BFBFBF;background-color:#f2f2f2;padding:20px;">          
+    <div id="content" role="main" style="border:solid 2px #BFBFBF;background-color:#f0f0f0;padding:20px;">          
       
       <div id="uxCompassHeader" class="colmask threecol header">
         <div class="colmid">
@@ -173,7 +173,7 @@ include ('getData.php');
 
                   </a>
 
-					<select id="pageselector" name="pageselector">
+					<select id="pageselector" name="pageselector" style="font-family:Calibri,Arial;">
 						<?php	
 							if (isset($pg)) {
 							
@@ -218,7 +218,7 @@ include ('getData.php');
             
             <div class="chartyear">
               
-            <div style="font-family:Calibri,Arial;font-size:12pt;font-weight:bold;color:#7f7f7f;">VIEWING THE IMPACT MADE UP TO &nbsp;<image src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/prev.png' ?>" width="20px" style="vertical-align:middle;" /> 2012 <image src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/next.png' ?>" width="20px" style="vertical-align:middle;" />
+            <div style="font-family:Calibri,Arial;font-size:12pt;font-weight:bold;color:#7f7f7f;">VIEWING THE IMPACT MADE UP TO &nbsp;<image src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/prev.png' ?>" width="20px" style="vertical-align:middle;" /> 2013 <image src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/next.png' ?>" width="20px" style="vertical-align:middle;" />
             </div>
             </div>
             <div id="row1" class='chartboxparent'>
