@@ -236,11 +236,13 @@ $piChart->setLegend(array("23.4", "25", "10","20"));
 $piChart->setLabels(array("23.4%", "25%", "10%","20%"));
 $piChart->setColors(array("ff3344", "11ff11", "22aacc", "3333aa"));
 ?>
-           <a href="#" data-reveal-id="modal_outcomes1"><div class="chartbox"> 
+           <a href="#" data-reveal-id="modal_outcomes1">
+		   <div class="chartbox"> 
 
-               <canvas id="cvs" width="275" height="275">[No canvas support]</canvas>
-
-    </div></a>
+               <canvas id="cvs" width="275">[No canvas support]</canvas><br /><br />
+				<strong>31%</strong><br /><br />of kids eating healthy school food
+				
+		   </div></a>
     <div class="chartbox_spacer"></div>
     <div class="chartbox">dddddd</div>
     <div class="chartbox_spacer"></div>
@@ -359,10 +361,10 @@ $piChart->setColors(array("ff3344", "11ff11", "22aacc", "3333aa"));
 	.Set('text.color', '#747474')
 	.Set('text.size', 8)
 	.Set('labels', true);
-	
+	meter.Set('chart.colors.ranges', [[0, 1, '#a3c167'],[1, 25, '#b3a2c7'],[25, 50, '#e6e0ec'],[50, 100, '#ffffff']])
 	//.Draw();
 	RGraph.Effects.Meter.Grow(meter, {'frames': 550});
-	meter.Set('chart.colors.ranges', [[0, 1, '#a3c167'],[1, 25, '#b3a2c7'],[25, 50, '#e6e0ec'],[50, 100, '#ffffff']])
+	
 	
 	
   }
