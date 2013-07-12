@@ -28,6 +28,11 @@ include ('getData.php');
 <link rel='stylesheet' type="text/css" href="<?php echo get_stylesheet_directory_uri() . '/css/tick.css';?>" />
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . '/css/reveal.css'; ?>"></script>
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/jquery.reveal.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/canvasjs.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/RGraph/libraries/RGraph.common.core.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/RGraph/libraries/RGraph.common.effects.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/RGraph/libraries/RGraph.meter.js'; ?>"></script>
+
 
 
       <?php while ( have_posts() ) : the_post(); ?>
@@ -233,7 +238,7 @@ $piChart->setColors(array("ff3344", "11ff11", "22aacc", "3333aa"));
 ?>
            <a href="#" data-reveal-id="modal_outcomes1"><div class="chartbox"> 
 
-               <img src="<?php print $piChart->getUrl();  ?>" style='background:#E6E6E6;width: 290px;'/> <br><h2 align="center">25%<br> Percent of kids eating healthy.</h2> 
+               <canvas id="cvs" width="275" height="275">[No canvas support]</canvas>
 
     </div></a>
     <div class="chartbox_spacer"></div>
@@ -242,13 +247,15 @@ $piChart->setColors(array("ff3344", "11ff11", "22aacc", "3333aa"));
        <div class="chartbox">dfsfs</div>
        <br><br>
    <div id="row2" class="chartboxparent_spacer">&nbsp;<br>
-    <div class="chartbox_bot">               <img src="<?php print $piChart->getUrl();  ?>" style='background:#E6E6E6;width: 290px;'/> <br><h2 align="center">25%<br> Percent of kids eating healthy.</h2> 
+    <div class="chartbox_bot">               <img src="<?php print $piChart->getUrl();  ?>" style='background:#E6E6E6;width: 290px;'/> <br><span align="center">25%<br> Percent of kids eating healthy.</span> 
     </div>
     <div class="chartbox_spacer"></div>
        <div class="chartbox_bot">row2-1</div>
        <div class="chartbox_spacer"></div>
        <div class="chartbox_bot">
-			<p class="tick tick-flip">0</p>
+			 <!--style="float:left;margin-left:25px;"--><div class="tick tick-flip" align="center">0</div><!--<div style="float:left;display:inline-block;position:relative;font-family:calibri,arial;font-weight:bold;font-size:60pt;color:#696b97;top:50px;">%</div>-->
+			<span align="center">Percent of schools contracting with<br />School Food Authorities</span>
+			
 	   </div>
        
    </div>
@@ -266,8 +273,9 @@ $piChart->setColors(array("ff3344", "11ff11", "22aacc", "3333aa"));
 </div>
         </div>
 
-        <div id="uxContinuum" class="<?php echo ($showContinuum === true) ? '' : 'display-none'; ?>">
-
+        <div id="uxContinuum" class="<?php echo ($showContinuum === true) ? '' : 'display-none'; ?>" style="height: 500px;">
+			<div id="chartContainer" style="height: 300px; width: 600px;">
+			</div>
 
         </div>
 
@@ -305,4 +313,58 @@ $piChart->setColors(array("ff3344", "11ff11", "22aacc", "3333aa"));
 				});
 			
 	});
+	
+ 
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer",
+    {
+      title:{
+        text: "Total Spending: $657,385",
+        fontFamily: "Impact",
+        fontWeight: "normal",
+      },
+	  backgroundColor: "#f0f0f0",
+      legend:{
+        verticalAlign: "bottom",
+        horizontalAlign: "center"
+      },
+      data: [
+      {
+       //startAngle: -90,
+       indexLabelFontSize: 14,
+       indexLabelFontFamily: "Arial",
+       indexLabelFontColor: "darkgrey",
+       indexLabelLineColor: "darkgrey",
+       indexLabelPlacement: "outside",
+       type: "doughnut",
+       showInLegend: false,
+       dataPoints: [
+       {  y: 52.24, legendText:"Unawareness 52%", indexLabel: "Unawareness 52%" },
+       {  y: 20.45, legendText:"Mobilization 20%", indexLabel: "Mobilization 20%" },
+       {  y: 18.59, legendText:"Unawareness 19%", indexLabel: "Unawareness 19%" },
+       {  y: 6.75, legendText:"Implementation 7%", indexLabel: "Implementation 7%" },
+       {  y: 1.95, legendText:"Transform 2%", indexLabel: "Others 2%" },
+       ]
+     }
+     ]
+   });
+
+    chart.render();
+
+	var meter = new RGraph.Meter('cvs', 0, 100, 31)
+	.Set('units.post', '%')
+	.Set('border', false)
+	.Set('tickmarks.small.num', 0)
+	.Set('tickmarks.big.num', 0)
+	.Set('text.color', '#747474')
+	.Set('text.size', 8)
+	.Set('labels', true);
+	
+	//.Draw();
+	RGraph.Effects.Meter.Grow(meter, {'frames': 550});
+	meter.Set('chart.colors.ranges', [[0, 1, '#a3c167'],[1, 25, '#b3a2c7'],[25, 50, '#e6e0ec'],[50, 100, '#ffffff']])
+	
+	
+  }
+  
 </script>

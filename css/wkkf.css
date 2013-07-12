@@ -171,42 +171,42 @@ padding: 5px;
 }
 div.chartboxparent_spacer
 {
-width: 950px;
-height: 330px;
-padding-top: 5px;
-padding-bottom: 5px;
+  width: 950px;
+  height: 330px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   float: left; 
 }
 div.chartbox {
-background-color:#e6e6e6;
- width: 280px;
- height: 280px;
-  text-align: left;
- 
-  font: 12px Arial;
+  background-color:#e6e6e6;
+  width: 280px;
+  height: 280px;
+  text-align: center; 
+  font: 18px Calibri (Body), Calibri, Arial;
   padding: 5px;
   margin:0px;
   float: left;  
+  color:#696b97;
 }
 div.chartbox_bot {
-background: #E6E6E6;
- width: 280px;
- height: 280px;
-  text-align: left;
- 
-  font: 12px Arial;
+  background: #E6E6E6;
+  width: 280px;
+  height: 280px;
+  text-align: center; 
+  font: 18px Calibri (Body), Calibri, Arial;
   padding: 5px;
   margin:0px;
   float: left;  
+  color:#696b97;
 }
 div.chartbox_spacer {
 
- width: 2px;
- height: 2px;
+  width: 2px;
+  height: 2px;
   text-align: left;
   border: 0px solid #402607;
-  font: 12px Arial;
+  font: 12px Calibri (Body), Calibri, Arial;
   padding: 5px;
   margin:0px;
-      float: left;  
+  float: left;  
 }

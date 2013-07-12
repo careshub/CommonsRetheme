@@ -10,22 +10,22 @@
 /* line 24, ../scss/tick.scss */
 .tick-flip {
   position: relative;
-  float: left;
+  float: center;
   padding: 7px;
-  border: 1px solid #f0f0f0;
+  border: 1px solid #e6e6e6;
   border-radius: 5px;
   margin-bottom: 0.125em;
-  box-shadow: 0 0 6px #f0f0f0;
+  box-shadow: 0 0 6px #e6e6e6;
   /* background: $gradient; */
-  background-color: #f0f0f0;
+  background-color: #e6e6e6;
   *zoom: 1;
-  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFf0f0f0', endColorstr='#FFf0f0f0');
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f0f0f0), color-stop(30%, #f0f0f0));
-  background-image: -webkit-linear-gradient(top, #f0f0f0 0%, #f0f0f0 30%);
-  background-image: -moz-linear-gradient(top, #f0f0f0 0%, #f0f0f0 30%);
-  background-image: -o-linear-gradient(top, #f0f0f0 0%, #f0f0f0 30%);
-  background-image: -ms-linear-gradient(top, #f0f0f0 0%, #f0f0f0 30%);
-  background-image: linear-gradient(top, #f0f0f0 0%, #f0f0f0 30%);
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFe6e6e6', endColorstr='#FFe6e6e6');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e6e6e6), color-stop(30%, #e6e6e6));
+  background-image: -webkit-linear-gradient(top, #e6e6e6 0%, #e6e6e6 30%);
+  background-image: -moz-linear-gradient(top, #e6e6e6 0%, #e6e6e6 30%);
+  background-image: -o-linear-gradient(top, #e6e6e6 0%, #e6e6e6 30%);
+  background-image: -ms-linear-gradient(top, #e6e6e6 0%, #e6e6e6 30%);
+  background-image: linear-gradient(top, #e6e6e6 0%, #e6e6e6 30%);
   /* Fallback styles */
   color: white;
   width: 100%;
