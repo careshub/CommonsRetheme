@@ -25,13 +25,16 @@ include ('getData.php');
 
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/wkkf.js'; ?>"></script>
 <link rel='stylesheet' type="text/css" href="<?php echo get_stylesheet_directory_uri() . '/css/wkkf.css';?>" />
-<link rel='stylesheet' type="text/css" href="<?php echo get_stylesheet_directory_uri() . '/css/tick.css';?>" />
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . '/css/reveal.css'; ?>"></script>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/jquery.reveal.js'; ?>"></script>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/canvasjs.js'; ?>"></script>
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/RGraph/libraries/RGraph.common.core.js'; ?>"></script>
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/RGraph/libraries/RGraph.common.effects.js'; ?>"></script>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/RGraph/libraries/RGraph.meter.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/canvasjs.js'; ?>"></script>
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . '/css/reveal.css'; ?>" />
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/jquery.reveal.js'; ?>"></script>
+
+<?php
+	include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/wkkf_outcomes.php';
+	include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/wkkf_continuum.php';
+?>
 
 
 
@@ -101,7 +104,7 @@ include ('getData.php');
       function InitPage(){
         global $loc, $place, $placeThumb, $focusPlaces, $isLocal; //use global vars
         if ( ! ( isset($_GET['loc']) && isset($focusPlaces[$_GET['loc']]) ) ) return;
-        if ($isLocal) echo 'Have location. ';
+        //if ($isLocal) echo 'Have location. ';
         $loc=$_GET['loc'];
         $place=$focusPlaces[$loc]['place'];
         $placeThumb=$focusPlaces[$loc]['thumb'];
@@ -111,7 +114,7 @@ include ('getData.php');
         //Can set nav links if we have the right query attributes
         global $pg, $pgImg, $wkkfPages, $isLocal, $showImg; //use global vars         
         if ( ! ( isset($_GET['pg']) && isset($wkkfPages[$_GET['pg']]) ) ) return;
-        if ($isLocal) echo 'Have page. ';
+        //if ($isLocal) echo 'Have page. ';
         $pg=$_GET['pg'];
         $pgImg=$wkkfPages[$pg]['img'];
         if ($isLocal) { //show contents if on localhost
@@ -223,62 +226,47 @@ include ('getData.php');
         <div id="uxChildOutcomes" class="<?php echo ($showChildOut === true) ? '' : 'display-none'; ?>">
             
             <div class="chartyear">
-              
-            <div style="font-family:Calibri,Arial;font-size:12pt;font-weight:bold;color:#7f7f7f;">VIEWING THE IMPACT MADE UP TO &nbsp;<image src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/prev.png' ?>" width="20px" style="vertical-align:middle;" /> 2013 <image src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/next.png' ?>" width="20px" style="vertical-align:middle;" />
-            </div>
+				<div>
+					<div style="font-family:Calibri,Arial;font-size:12pt;font-weight:bold;color:#7f7f7f;float:left;">VIEWING THE IMPACT MADE UP TO &nbsp;<img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/prev.png' ?>" width="20px" style="vertical-align:middle;" /> 2013 <img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/next.png' ?>" width="20px" style="vertical-align:middle;" /></div>
+					<div style="margin-left:600px;">
+						<img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/wkkflegend.jpg' ?>" />
+					</div>
+				</div>
             </div>
             <div id="row1" class='chartboxparent'>
+					<a href="#" data-reveal-id="modal_outcomes1">
+					   <div class="chartbox"> 
 
-        <?php
-$piChart = new gPieChart();
-$piChart->addDataSet(array(23.4,25,10,20));
-$piChart->setLegend(array("23.4", "25", "10","20"));
-$piChart->setLabels(array("23.4%", "25%", "10%","20%"));
-$piChart->setColors(array("ff3344", "11ff11", "22aacc", "3333aa"));
-?>
-           <a href="#" data-reveal-id="modal_outcomes1">
-		   <div class="chartbox"> 
+						<?php outcomes1A(); ?>
+							
+					   </div>
+					</a>
+					<div class="chartbox_spacer"></div>
+					<div class="chartbox">dddddd</div>
+					<div class="chartbox_spacer"></div>
+					<div class="chartbox">dfsfs</div>
+					<br><br>
+			   <div id="row2" class="chartboxparent_spacer">&nbsp;<br>
+					<div class="chartbox_bot">
+						<?php outcomes2A(); ?>
+					</div>
+					<div class="chartbox_spacer"></div>
+				    <div class="chartbox_bot">row2-1</div>
+				    <div class="chartbox_spacer"></div>
+				    <div class="chartbox_bot">
+						 <!--style="float:left;margin-left:25px;"--><!--<div style="float:left;display:inline-block;position:relative;font-family:calibri,arial;font-weight:bold;font-size:60pt;color:#696b97;top:50px;">%</div>-->
+						<?php outcomes2C(); ?>
+						<span align="center">% of schools contracting with<br />School Food Authorities</span>
+						
+				    </div>
+				   
+			   </div>
 
-               <canvas id="cvs" width="275">[No canvas support]</canvas><br /><br />
-				<strong>31%</strong><br /><br />of kids eating healthy school food
-				
-		   </div></a>
-    <div class="chartbox_spacer"></div>
-    <div class="chartbox">dddddd</div>
-    <div class="chartbox_spacer"></div>
-       <div class="chartbox">dfsfs</div>
-       <br><br>
-   <div id="row2" class="chartboxparent_spacer">&nbsp;<br>
-    <div class="chartbox_bot">               <img src="<?php print $piChart->getUrl();  ?>" style='background:#E6E6E6;width: 290px;'/> <br><span align="center">25%<br> Percent of kids eating healthy.</span> 
-    </div>
-    <div class="chartbox_spacer"></div>
-       <div class="chartbox_bot">row2-1</div>
-       <div class="chartbox_spacer"></div>
-       <div class="chartbox_bot">
-			 <!--style="float:left;margin-left:25px;"--><div class="tick tick-flip" align="center">0</div><!--<div style="float:left;display:inline-block;position:relative;font-family:calibri,arial;font-weight:bold;font-size:60pt;color:#696b97;top:50px;">%</div>-->
-			<span align="center">Percent of schools contracting with<br />School Food Authorities</span>
-			
-	   </div>
-       
-   </div>
-           <?php 
-          //echo '<div class="chartbox">&nbsp;'; 
-          //echo do_shortcode("[wp_charts title='mypie' type='pie' labels='10,32,50,25,5' margin='5px 5px' data='10,32,50,25,5']"); 
-          //echo '</div>';
-          //echo '<div class="chartbox_spacer">&nbsp;</div>';
-          echo '<div class="chartbox">&nbsp;';  
-          echo do_shortcode("[easychart type='horizbar' height='150' title='SYSMark 2007: AMD v.s. Intel' groupnames='AMD Phenom X4 9950, Intel Core i7 940' groupcolors='005599,229944' valuenames='Overall,E-Learning,Video Creation,Productivity,3D' group1values='157,132,208,150,148' group2values='229,202,259,226,232' ]");
-          echo '</div>';
-           ?>
-
-                
-</div>
+			</div>
         </div>
 
         <div id="uxContinuum" class="<?php echo ($showContinuum === true) ? '' : 'display-none'; ?>" style="height: 500px;">
-			<div id="chartContainer" style="height: 300px; width: 600px;">
-			</div>
-
+			<?php continuum1(); ?>
         </div>
 
         <div id="uxLiveFeeds" class="<?php echo ($showLive === true) ? '' : 'display-none'; ?>">
@@ -303,70 +291,3 @@ $piChart->setColors(array("ff3344", "11ff11", "22aacc", "3333aa"));
 
  
 <?php get_footer(); ?>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/tick.js'; ?>"></script> 
-<script type="text/javascript">
-	jQuery(document).ready(function(){
-			  jQuery( '.tick' ).ticker(
-				{
-				  incremental: 1,
-				  stopnum: 25,
-				  delay: 50,
-				  separators: true
-				});
-			
-	});
-	
- 
-  window.onload = function () {
-    var chart = new CanvasJS.Chart("chartContainer",
-    {
-      title:{
-        text: "Total Spending: $657,385",
-        fontFamily: "Impact",
-        fontWeight: "normal",
-      },
-	  backgroundColor: "#f0f0f0",
-      legend:{
-        verticalAlign: "bottom",
-        horizontalAlign: "center"
-      },
-      data: [
-      {
-       //startAngle: -90,
-       indexLabelFontSize: 14,
-       indexLabelFontFamily: "Arial",
-       indexLabelFontColor: "darkgrey",
-       indexLabelLineColor: "darkgrey",
-       indexLabelPlacement: "outside",
-       type: "doughnut",
-       showInLegend: false,
-       dataPoints: [
-       {  y: 52.24, legendText:"Unawareness 52%", indexLabel: "Unawareness 52%" },
-       {  y: 20.45, legendText:"Mobilization 20%", indexLabel: "Mobilization 20%" },
-       {  y: 18.59, legendText:"Unawareness 19%", indexLabel: "Unawareness 19%" },
-       {  y: 6.75, legendText:"Implementation 7%", indexLabel: "Implementation 7%" },
-       {  y: 1.95, legendText:"Transform 2%", indexLabel: "Others 2%" },
-       ]
-     }
-     ]
-   });
-
-    chart.render();
-
-	var meter = new RGraph.Meter('cvs', 0, 100, 31)
-	.Set('units.post', '%')
-	.Set('border', false)
-	.Set('tickmarks.small.num', 0)
-	.Set('tickmarks.big.num', 0)
-	.Set('text.color', '#747474')
-	.Set('text.size', 8)
-	.Set('labels', true);
-	meter.Set('chart.colors.ranges', [[0, 1, '#a3c167'],[1, 25, '#b3a2c7'],[25, 50, '#e6e0ec'],[50, 100, '#ffffff']])
-	//.Draw();
-	RGraph.Effects.Meter.Grow(meter, {'frames': 550});
-	
-	
-	
-  }
-  
-</script>
