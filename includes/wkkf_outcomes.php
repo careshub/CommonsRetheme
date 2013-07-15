@@ -24,19 +24,12 @@ function outcomes1A() {
 					.Set('tickmarks.big.num', 0)
 					.Set('text.color', '#747474')
 					.Set('text.size', 8)
+					.Set('segment.radius.start', 40)
+					.Set('background.color', '#e6e6e6')
 					.Set('labels', true);
 					meter.Set('chart.colors.ranges', [[0, 1, '#a3c167'],[1, 25, '#b3a2c7'],[25, 50, '#e6e0ec'],[50, 100, '#ffffff']])
 					//.Draw();
-					RGraph.Effects.Meter.Grow(meter, {'frames': 550});  	
-					
-				
-				  
-
-
-					
-					
-					
-				  
+					RGraph.Effects.Meter.Grow(meter, {'frames': 550});  	  
 				  
 	</script>
 				
@@ -45,7 +38,9 @@ function outcomes1A() {
 function outcomes1B() {
 
 }
+function outcomes1C() {
 
+}
 function outcomes2A() {
 		?>
 			<div id="pie1" style="width:220px;height:220px;margin:0px auto;"></div>
@@ -55,7 +50,12 @@ function outcomes2A() {
 					var outcome_pie1 = new CanvasJS.Chart("pie1",
 					{
 					  colorSet: "wkkfReportCardColors1",	
-					  backgroundColor: "#e6e6e6",	  
+					  backgroundColor: "#e6e6e6",	
+			  
+					  toolTip:{
+						enabled: true,       //disable here
+						animationEnabled: true, //disable here
+					  },					  
 					  data: [
 					  {
 					   indexLabelPlacement: "inside",
@@ -77,9 +77,12 @@ function outcomes2A() {
 					outcome_pie1.render();	
 						
 			</script>
+			<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/canvasjs.min.js'; ?>"></script>
 		<?php
 }
+function outcomes2B() {
 
+}
 function outcomes2C() {
 	?>
 	<link rel='stylesheet' type="text/css" href="<?php echo get_stylesheet_directory_uri() . '/css/tick.css';?>" />

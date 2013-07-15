@@ -242,16 +242,16 @@ include ('getData.php');
 					   </div>
 					</a>
 					<div class="chartbox_spacer"></div>
-					<div class="chartbox">dddddd</div>
+					<div class="chartbox"></div>
 					<div class="chartbox_spacer"></div>
-					<div class="chartbox">dfsfs</div>
+					<div class="chartbox"></div>
 					<br><br>
 			   <div id="row2" class="chartboxparent_spacer">&nbsp;<br>
 					<div class="chartbox_bot">
 						<?php outcomes2A(); ?>
 					</div>
 					<div class="chartbox_spacer"></div>
-				    <div class="chartbox_bot">row2-1</div>
+				    <div class="chartbox_bot"></div>
 				    <div class="chartbox_spacer"></div>
 				    <div class="chartbox_bot">
 						 <!--style="float:left;margin-left:25px;"--><!--<div style="float:left;display:inline-block;position:relative;font-family:calibri,arial;font-weight:bold;font-size:60pt;color:#696b97;top:50px;">%</div>-->
