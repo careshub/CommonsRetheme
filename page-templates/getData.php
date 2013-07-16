@@ -10,7 +10,12 @@ $place=$focusPlaces[$loc]['place'];
 $placeThumb=$focusPlaces[$loc]['thumb'];
 echo $loc;
 echo $string;
-
+$piChart = new gPieChart();
+            $piChart->addDataSet(array(23.4,25,2,20));
+            //$piChart->setLegend(array("", "", "", ""));
+            //$piChart->setLabels(array("", "", "", ""));
+           // $piChart->setColors(array("E6E0EC", "B3A2C7", "0DC167", "604A7B"));
+            $piChart->setColors(array("#A3C167","#B3A2C7","#E6E0EC","#FFFFFF"));
 /**
  * @mainpage
  * gChartPhp, a php wrapper for  the Google Chart Tools / Image Charts (aka Chart API) {@link http://code.google.com/apis/charttools/}
@@ -53,7 +58,7 @@ class gChart{
 	 * @var array
 	 */
 	private $chart;
-	
+
 	/**
 	 * @brief API server URL
 	 * @var string
