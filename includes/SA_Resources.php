@@ -94,8 +94,13 @@ function sa_resource_meta_box()
 
 	?>
 <br>
-            <input type="checkbox" id="saresource_promote" name="saresource_promote" value='Create Advocacy' <?php checked( $saresrouce_promote, 'Promote to Resources' ); ?>             
+            <input type="checkbox" id="saresource_promote" name="saresource_promote" value='Promote to Resources' <?php checked( $saresrouce_promote, 'Promote to Resources' ); ?>             
                    > <label for="saresource_promote"><strong>Promote to Resources</strong></label><br /></input>
+            <?php 
+                if ($saresource_promote != "") {
+                    echo $saresource_promote;
+                }
+           ?>'
 <br>
 
 	<strong>Source Date</strong><br><input type='text' name='saresource_date' id='saresource_date' value='<?php 
