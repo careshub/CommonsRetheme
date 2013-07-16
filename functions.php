@@ -151,9 +151,14 @@ function cc_wp_admin_area_stylesheet_load(){
             false
         );
     wp_enqueue_style( 'cc_wp_admin_area_stylesheet' );
+    wp_register_style(
+            'cc_wp_admin_area_jquery_ui',
+            'http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css',
+            false
+        );
+    wp_enqueue_style( 'cc_wp_admin_area_jquery_ui' );
 }
 add_action( 'admin_print_styles', 'cc_wp_admin_area_stylesheet_load', 11 );
-
 
 function notifications_counter() {
 	if (function_exists('bp_is_active')) {
