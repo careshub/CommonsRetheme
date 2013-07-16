@@ -70,6 +70,7 @@ function sa_resource_meta_box()
     $custom = get_post_custom($post->ID);
     $saresource_date = $custom["saresource_date"][0];
     $saresource_policy = $custom["saresource_policy"][0];
+    $saresource_promote = $custom["saresource_promote"][0];
 
 	$args=array(
 	  'post_type' => 'sapolicies',
@@ -93,15 +94,8 @@ function sa_resource_meta_box()
 	}
 
 	?>
-<br>
-            <input type="checkbox" id="saresource_promote" name="saresource_promote" value='Promote to Resources' <?php checked( $saresrouce_promote, 'Promote to Resources' ); ?>             
-                   > <label for="saresource_promote"><strong>Promote to Resources</strong></label><br /></input>
-            <?php 
-                if ($saresource_promote != "") {
-                    echo $saresource_promote;
-                }
-           ?>'
-<br>
+
+    <p><input type="checkbox" id="saresource_promote" name="saresource_promote" <?php checked( $saresource_promote, 'on' ); ?> > <label for="saresource_promote">Promote to Resources <em>(visible independent of related policies)</em></label></input></p>
 
 	<strong>Source Date</strong><br><input type='text' name='saresource_date' id='saresource_date' value='<?php 
                 if ($saresource_date != "") {
@@ -145,14 +139,14 @@ function saresource_save() {
     if ($post->post_type == 'saresources') {
        saresource_save_event_field("saresource_date");
 	   saresource_save_event_field("saresource_policy");
-           saresource_save_event_field("saresource_promote");
+       saresource_save_event_field("saresource_promote");
 	}
 }
 function saresource_save_event_field($event_field) {
     global $post;
-    if(isset($_POST[$event_field])) {
+    if( isset( $_POST[$event_field] ) && !empty( $_POST[$event_field] ) ) {
         update_post_meta($post->ID, $event_field, $_POST[$event_field]);
-    } else{
+    } else {
         delete_post_meta($post->ID, $event_field);
     }
 }

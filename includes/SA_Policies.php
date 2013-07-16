@@ -285,46 +285,55 @@ function sa_policy_meta_box() {
         }
        
 ?> 
-<!-- TODO: switch types to a taxonomy -->
+<!-- TODO: switch types to a taxonomy 
+      Also use sensible select select-->
     <strong>Type:</strong><br>
     <select name="sa_policytype">
-      <option selected="true" value="<?php echo $sapolicy_type; ?>"><?php echo $ptdef; ?></option>
-      <option value="Legislation/Ordinance">Legislation/Ordinance</option>
-      <option value="Resolution">Resolution</option>
-      <option value="Tax Ordinance">Tax Ordinance</option>
-      <option value="Internal Policy">Internal Policy</option>
-      <option value="Executive Order">Executive Order</option>
-      <option value="Plan">Plan</option>
-      <option value="Design Manual">Design Manual</option>
-      <option value="Other">Other</option>  
+      <option <?php selected( $sapolicy_type, "Legislation/Ordinance" ); ?> value="Legislation/Ordinance">Legislation/Ordinance</option>
+      <option <?php selected( $sapolicy_type, "Resolution" ); ?> value="Resolution">Resolution</option>
+      <option <?php selected( $sapolicy_type, "Tax Ordinance" ); ?> value="Tax Ordinance">Tax Ordinance</option>
+      <option <?php selected( $sapolicy_type, "Internal Policy" ); ?> value="Internal Policy">Internal Policy</option>
+      <option <?php selected( $sapolicy_type, "Executive Order" ); ?> value="Executive Order">Executive Order</option>
+      <option <?php selected( $sapolicy_type, "Design Manual" ); ?> value="Design Manual">Plan</option>
+      <option <?php selected( $sapolicy_type, "Design Manual" ); ?> value="Design Manual">Design Manual</option>
+      <option <?php selected( $sapolicy_type, "Other" ); ?> value="Other">Other</option>  
     </select>
     <br><br>
 <div id="leftcolumn2">
     <h4>Stage:</h4>
     <ul id="policy_stage_select">
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_pre_policy" value="emergence" <?php checked( $sapolicy_stage, 'emergence' ); ?>> <label for="sa_policystage_pre_policy">Emergence</label><input type="text" id="sa_emergencedate_stg" placeholder="Enter date here" value="<?php 
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_pre_policy" value="emergence" <?php checked( $sapolicy_stage, 'emergence' ); ?> > <label for="sa_policystage_pre_policy">Emergence</label><br />
+        <input type="text" id="sa_emergencedate_stg" name="sa_emergencedate_stg" placeholder="Emergence start date" value="<?php 
                 if ($emergencedatestg != "") {
                     echo $emergencedatestg;
                 }
            ?>"/></li>
 
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_develop_policy" value="development" <?php checked( $sapolicy_stage, 'development' ); ?>> <label for="sa_policystage_develop_policy">Development</label><input type="text" id="sa_developmentdate_stg" placeholder="Enter date here" value="<?php 
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_develop_policy" value="development" <?php checked( $sapolicy_stage, 'development' ); ?>> <label for="sa_policystage_develop_policy">Development</label><br />
+        <input type="text" id="sa_developmentdate_stg" name="sa_developmentdate_stg" placeholder="Development start date" value="<?php 
                 if ($developmentdatestg != "") {
                     echo $developmentdatestg;
                 }
-           ?>"/></li>/></li>
+           ?>"/></li>
       
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_enact_policy" value="enactment" <?php checked( $sapolicy_stage, 'enactment' ); ?>> <label for="sa_policystage_enact_policy">Enactment</label><input type="text" id="sa_enactmentdate_stg" placeholder="Enter date here" value="<?php 
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_enact_policy" value="enactment" <?php checked( $sapolicy_stage, 'enactment' ); ?>> <label for="sa_policystage_enact_policy">Enactment</label><br />
+        <input type="text" id="sa_enactmentdate_stg" name="sa_enactmentdate_stg" placeholder="Enactment date" value="<?php 
                 if ($enactmentdatestg != "") {
                     echo $enactmentdatestg;
                 }
-           ?>"/></li>/></li>
+           ?>"/></li>
       
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_post_policy" value="implementation" <?php checked( $sapolicy_stage, 'implementation' ); ?>> <label for="sa_policystage_post_policy">Implementation</label><input type="text" id="sa_implementationdate_stg" placeholder="Enter date here" value="<?php 
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_post_policy" value="implementation" <?php checked( $sapolicy_stage, 'implementation' ); ?>> <label for="sa_policystage_post_policy">Implementation</label><br />
+        <!-- <input type="text" id="sa_implementationdate_stg" placeholder="Enter date here" value="<?php 
                 if ($implementationdatestg != "") {
                     echo $implementationdatestg;
                 }
-           ?>"/></li>/></li>
+           ?>"/> -->
+           <input id="sa_dateimplemented" name="sa_dateimplemented" placeholder="Implementation start date" value="<?php 
+                if ($dateimplemented != "") {
+                    echo $dateimplemented;
+                }
+           ?>"></li>
     </ul>
 
 </div>
@@ -359,7 +368,7 @@ function sa_policy_meta_box() {
                    > <label for="sa_enact2">Frame Policy</label><br />
             <input type="checkbox" id="sa_enact3" name="sa_enact3" value='Pass Policy or Legislation' <?php checked( $enact3, 'Pass Policy or Legislation' ); ?>              
                    > <label for="sa_enact3">Pass Policy or Legislation</label><br />
-            <label for="sa_dateenacted">Date Enacted<label><br />
+            <label for="sa_dateenacted">Date Enacted <em>legal date</em><label><br />
             <input id="sa_dateenacted" name="sa_dateenacted" value="<?php 
                 if ($dateenacted != "") {
                     echo $dateenacted;
@@ -372,12 +381,12 @@ function sa_policy_meta_box() {
             <input type="checkbox" id="sa_post1" name="sa_post1" value='Implement Policy' <?php checked( $post1, 'Implement Policy' ); ?>> <label for="sa_post1">Implement Policy</label><br />
             <input type="checkbox" id="sa_post2" name="sa_post2" value='Ensure Access and Equity' <?php checked( $post2, 'Ensure Access and Equity' ); ?>> <label for="sa_post2">Ensure Access and Equity</label><br />
             <input type="checkbox" id="sa_post3" name="sa_post3" value='Sustain, Change, Abandon'<?php checked( $post2, 'Sustain, Change, Abandon' ); ?>> <label for="sa_post3">Sustain, Change, Abandon</label><br />  
-            <label for="sa_dateimplemented">Date Implemented</label><br />
-            <input id="sa_dateimplemented" name="sa_dateimplemented" value="<?php 
+            <!-- <label for="sa_dateimplemented">Date Implemented</label><br /> -->
+            <!-- <input id="sa_dateimplemented" name="sa_dateimplemented" value="<?php 
                 if ($dateimplemented != "") {
                     echo $dateimplemented;
                 }
-           ?>"><br />          
+           ?>"> --><br />          
         </div>    
     </div>
 </div>
@@ -391,7 +400,8 @@ jQuery(document).ready(function(){
       refresh_sa_policy_stage_vis_setting();
 
       //On click, refresh the visibility. Hide them all, then show the selected one
-        jQuery('#policy_stage_select input').live( 'change', function() {     refresh_sa_policy_stage_vis_setting();            
+        jQuery('#policy_stage_select input').live( 'change', function() {     
+          refresh_sa_policy_stage_vis_setting();            
           } );
 });
 
@@ -567,7 +577,7 @@ function get_sa_geog_lat_lon(){
     jQuery("#sa_emergencedate_stg").datepicker();
     jQuery("#sa_developmentdate_stg").datepicker();
     jQuery("#sa_enactmentdate_stg").datepicker();
-    jQuery("#sa_implementationdate_stg").datepicker();
+    // jQuery("#sa_implementationdate_stg").datepicker();
   });
 </script>
 
@@ -624,7 +634,7 @@ function sapolicy_save() {
        sapolicy_save_event_field("sa_emergencedate_stg");  
        sapolicy_save_event_field("sa_developmentdate_stg");  
        sapolicy_save_event_field("sa_enactmentdate_stg");  
-       sapolicy_save_event_field("sa_implementationdate_stg");  
+       // sapolicy_save_event_field("sa_implementationdate_stg");  
 
 
     }
@@ -637,17 +647,15 @@ function sa_geog_save() {
       return;
 
     if ($post->post_type == 'sapolicies') {
-       sapolicy_save_event_field("sa_latitude");
-       sapolicy_save_event_field("sa_longitude");  
-
-		sapolicy_save_event_field("sa_nelat"); 
-		sapolicy_save_event_field("sa_nelng"); 
-		sapolicy_save_event_field("sa_swlat"); 
-		sapolicy_save_event_field("sa_swlng"); 	   
-	
-       sapolicy_save_event_field("sa_geog");
-       sapolicy_save_event_field("sa_state");
-       sapolicy_save_event_field("sa_finalgeog");
+        sapolicy_save_event_field("sa_latitude");
+        sapolicy_save_event_field("sa_longitude");  
+        sapolicy_save_event_field("sa_nelat"); 
+        sapolicy_save_event_field("sa_nelng"); 
+        sapolicy_save_event_field("sa_swlat"); 
+        sapolicy_save_event_field("sa_swlng");
+        sapolicy_save_event_field("sa_geog");
+        sapolicy_save_event_field("sa_state");
+        sapolicy_save_event_field("sa_finalgeog");
     }
 }
 
