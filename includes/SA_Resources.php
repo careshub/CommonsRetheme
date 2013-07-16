@@ -88,7 +88,7 @@ function sa_resource_meta_box()
 	if ($saresource_policy == null){
 		$seltext="---Select a Policy---";
 		$selval="";
-	}else {            
+	} else {            
 		$seltext=$saresource_policy;
 		$selval=$saresource_policy;
 	}

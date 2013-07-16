@@ -59,6 +59,7 @@
 		    <a href="http://www.facebook.com/CommunityCommons" class="facebookx60 iconx60 alignleft"></a>
 		    <a href="https://twitter.com/communitycommon" class="twitterx60 iconx60 alignleft"></a>
 		    <a href="http://www.linkedin.com/company/3194585" class="linkedinx60 iconx60 alignleft"></a>
+		    <a href="https://plus.google.com/117982399710195199733" rel="publisher" class="gplusx60 iconx60 alignleft"></a>
 		</div>        
 		</div><!-- .site-info -->
 	</div> <!-- .page width -->
