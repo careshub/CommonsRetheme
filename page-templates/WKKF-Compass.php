@@ -16,13 +16,6 @@
 // ini_set('display_errors', 'On');
 // error_reporting(E_ALL | E_STRICT);
 get_header(); ?>
-<?php
-
-include ('getData.php');
-
-
-?>
-
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/wkkf.js'; ?>"></script>
 <link rel='stylesheet' type="text/css" href="<?php echo get_stylesheet_directory_uri() . '/css/wkkf.css';?>" />
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/RGraph/libraries/RGraph.common.core.js'; ?>"></script>
@@ -221,8 +214,72 @@ include ('getData.php');
 
         <div id="uxContext" class="<?php echo ($showContext === true) ? '' : 'display-none'; ?>">
 
+          <div id="row1" class="contextmain">
+         <div id="contextparent" class="contextparent" >
+               
+                <div id="maparea" class="maparea"></div>
+                         <div id="contact" class="contact">
+                            <p style="color:#604A7B;">Introduction to New Orleans. Currently, New Orleans public schools predominantly serve low-income, African-American students (90 percent).
+                                   Overall, 71 percent of New Orleans public school students attend charter schools. Lorem ipsum dolot sit amet, consecuteur adpiscing elit.
+                                </p>
+                                <hr >
+                                <p style="color:#604A7B;font-size:22px;padding:0px;">New Orleans Conditions</p>
+                                <p style="color:#604A7B;font-size:16px;padding:0px;"> Healthy School Food</p>
+                                <p style="color:#604A7B;font-size:16px;padding:0px;">Racial Equity</p>
+                                <p style="color:#604A7B;font-size:16px;padding:0px;">Early Care and Education</p>
+                        </div>
+            </div>
+              <div id="contextparent2" class="contextparent_spacer"  > 
+               <div id="statarea" class="statarea">
+                   <div id="row21" class="row21"><p><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;line-height:1px;">343,828</h2> </p> <p align="center" style="color:#000000;font-size:22px">total population</p> </div>
+                   <div id="row22" class="row21"><p><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;line-height:1px;">83%</h2> </p> <p align="center" style="color:#000000;font-size:22px">have high school degree or higher</p> </div>
+                   
+                   <div id="row23" class="row21"><p><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;line-height:1px;">$37,468</h2> </p> <p align="center" style="color:#000000;font-size:22px">median household income</p> </div>
+                   
+                   <div id="row24" class="row24">&nbsp;
+                    <canvas id="hbarrace" width="300" height="150"  >[No canvas support]</canvas>
+<!--                       <canvas id="hbarrace_pie" width="100" height="300" style="border: 1px solid #ddd; border-radius: 15px">[No canvas support]</canvas>-->
+                   </div>
+                 </div> 
+                  
+                <div id="contextparent3" class="Row3" style="margin-top:80px;" >
+                    <div id="row31_male" >
+                        <div style="position:absolute;"> 
+                            <div id="malecontainer" style="position:relative;"> 
+                                <img src="http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/manshade.gif" /> 
+                            <div id="maleoverlay" style="position: absolute; top: 0; margin-left:0px;"> 
 
-        </div>
+
+                            </div>
+                                      
+                            
+                          </div>   
+                     </div> 
+                      
+                    </div>
+                     <div id="row31_female" style="margin-left:100px;" >
+                       <div style="position:absolute;"> 
+                            <div id="femalecontainer" style="position:relative;"> 
+                                <img src="http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/womanshade.gif" /> 
+                            <div id="femaleoverlay" style="position: absolute; top: 0; margin-left:0px;"> 
+
+                            </div>
+   
+                          </div>
+                         </div>
+                     </div>
+                          
+                  
+                    <div id="row32" class="row31" style="margin-left:240px;"><p><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;">31%</h2> </p> <p align="center" style="color:#000000;font-size:22px">have a bachelor's degree or higher</p> </div>
+                   
+                    <div id="row33" class="row31"><p><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;">24%</h2> </p> <p align="center" style="color:#000000;font-size:22px">living below the poverty line</p> </div>
+                    <div id="row34" class="row31"> <canvas id="hbarhispanic" width="300" height="150"  >[No canvas support]</canvas></div>
+                    
+                    </div>
+               
+               </div>
+    </div>  
+ </div>
         <div id="uxChildOutcomes" class="<?php echo ($showChildOut === true) ? '' : 'display-none'; ?>">
             
             <div class="chartyear">
@@ -234,38 +291,70 @@ include ('getData.php');
 				</div>
             </div>
             <div id="row1" class='chartboxparent'>
-					<a href="#" data-reveal-id="modal_outcomes1">
-					   <div class="chartbox"> 
 
-						<?php outcomes1A(); ?>
-							
-					   </div>
-					</a>
-					<div class="chartbox_spacer"></div>
-					<div class="chartbox"></div>
-					<div class="chartbox_spacer"></div>
-					<div class="chartbox"></div>
-					<br><br>
-			   <div id="row2" class="chartboxparent_spacer">&nbsp;<br>
-					<div class="chartbox_bot">
-						<?php outcomes2A(); ?>
-					</div>
-					<div class="chartbox_spacer"></div>
-				    <div class="chartbox_bot"></div>
-				    <div class="chartbox_spacer"></div>
-				    <div class="chartbox_bot">
-						 <!--style="float:left;margin-left:25px;"--><!--<div style="float:left;display:inline-block;position:relative;font-family:calibri,arial;font-weight:bold;font-size:60pt;color:#696b97;top:50px;">%</div>-->
-						<?php outcomes2C(); ?>
-						<span align="center">% of schools contracting with<br />School Food Authorities</span>
-						
-				    </div>
-				   
-			   </div>
+           <div class="chartbox">
+               <div style="padding: 0; margin: 0;" >  
+              <canvas id="cvs" width="290" height="150"  > [No canvas support]</canvas>
+              <br><p ><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;line-height:1px;">25%</h2> </p> <p align="center" style="color:#000000;font-size:22px">Percent of kids eating healthy.</p> 
+          </div>
+            </div>
+    <div class="chartbox_spacer"></div>
+   
+      <div class="chartbox" >   
+          <canvas id="hbar" width="290" height="150" >[No canvas support]</canvas>
+         <br><p ><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;line-height:1px;">2.5 K</h2> </p> <p align="center" style="color:#000000;font-size:22px">Number of daily healthy school meals served</p> 
+       
+       </div> 
+   
+    <div class="chartbox_spacer"></div>
+     <div class="chartbox"> 
+         <p ><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;line-height:1px;">25 % </h2></p>
+                        <canvas id="hbar2" width="290" height="70" >[No canvas support]</canvas>
+                        <br> <p align="center" style="color:#000000;font-size:22px">Percent of schools contracting with School Food Authorities</p> 
+     </div>
 
-			</div>
-        </div>
+   <div id="row2" class="chartboxparent_spacer">&nbsp;
+    <div class="chartbox_bot">               
+ 
+                        <canvas id="pie" width="200" height="180" style="margin-left:30px;margin-top:10px;padding:0px;">[No canvas support]</canvas>
+                       <p ><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;line-height:1px;">25 % </h2></p> <p align="center" style="color:#000000;font-size:22px;">Percent of kids eating healthy school foods</p> 
+         
+    </div>
+    <div class="chartbox_spacer"></div>
+       <div class="chartbox_bot">   
+                <div style="position:absolute;"> 
+                            <div id="dudecontainer" style="position:relative;"> 
+                                <img src="http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/forkpurple.gif" /> 
+                            <div id="dudeoverlay" style="position: absolute; top: 0; margin-left:0px;"> 
 
-        <div id="uxContinuum" class="<?php echo ($showContinuum === true) ? '' : 'display-none'; ?>" style="height: 500px;">
+                            </div>
+   
+                        </div>
+
+                 </div>
+           <div style="position:relative;margin-top:200px"  >    
+ <p><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;line-height:1px;">2.5 K</h2> 
+       </p> <p align="center" style="color:#000000;font-size:22px">Number of daily healthy school meals served</p> 
+      
+       </div>
+       </div> 
+
+          
+           
+       
+       <div class="chartbox_spacer"></div>
+       <div class="chartbox_bot" > 
+       
+      
+	<div id="counter">
+
+            <div>
+
+       </div>
+       </div>    
+             </div>
+     
+       <div id="uxContinuum" class="<?php echo ($showContinuum === true) ? '' : 'display-none'; ?>" style="height: 500px;">
 			<?php continuum1(); ?>
         </div>
 

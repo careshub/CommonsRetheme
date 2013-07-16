@@ -81,7 +81,7 @@ ul li a {display: block;text-decoration: none;padding: 5px 15px 5px 15px;
 ul li a:hover {/*background: #3b3b3b;*/}
 li:hover ul {display: block;position: absolute;}
 li:hover li {float: none;}
-li:hover a { background: /*#3b3b3b;*/ }
+li:hover a {/* background: #3b3b3b;*/ }
 li:hover li a:hover {/*background: #1e7c9a;*/}
 
 /*------------------------------------*\
@@ -161,13 +161,14 @@ div.chartyear
   padding: 5px;  
   font-family: 'Times New Roman',Times,serif;
 width: 950px;
-display: block;
+display: inline-block;
 
 }
 div.chartboxparent
 {
 height: 650px;
 padding: 5px;
+display: inline-block;
 }
 div.chartboxparent_spacer
 {
@@ -178,22 +179,24 @@ div.chartboxparent_spacer
   float: left; 
 }
 div.chartbox {
-  background-color:#e6e6e6;
-  width: 280px;
-  height: 280px;
-  text-align: center; 
-  font: 18px Calibri (Body), Calibri, Arial;
+background: #E6E6E6;
+ width: 290px;
+ height: 290px;
+  text-align: top;
+  border: 1px solid #402607;
+  font: 12px Arial;
   padding: 5px;
   margin:0px;
   float: left;  
   color:#696b97;
 }
 div.chartbox_bot {
-  background: #E6E6E6;
-  width: 280px;
-  height: 280px;
-  text-align: center; 
-  font: 18px Calibri (Body), Calibri, Arial;
+background: #E6E6E6;
+ width: 290px;
+ height: 290px;
+ text-align: top;
+  border: 1px solid #402607;
+  font: 12px Arial;
   padding: 5px;
   margin:0px;
   float: left;  
@@ -208,5 +211,178 @@ div.chartbox_spacer {
   font: 12px Calibri (Body), Calibri, Arial;
   padding: 5px;
   margin:0px;
+  float: left;  
+}
+.frame{  
+position: absolute;
+
+}  
+/*The container the character goes in for easy placement*/  
+#dude{  
+height: 275px;  
+width: 280px;  
+margin: 0px auto;  
+}  
+/*Adds padding around image to make border. Needed only for pngs.*/  
+img.loadpic{  
+margin: 0px;  
+}  
+/*Prevents spillover from middle layer moving up*/  
+#dudecontainer{  
+
+overflow: hidden;  
+height: 275px;  
+width: 280px;  
+background: #E6E6E6;
+}  
+/*The middle layer container, hiding base image initially*/  
+#dudeoverlay{    
+height:75px;
+width: 0px; 
+background: url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/forkfilling.gif');
+}  
+/*White div in #dudeoverlay that fill space the edge image doesn't*/  
+#dudeblock{  
+height:325px;  
+width: 280px;  
+background: #E6E6E6;  
+}  
+/*Image that adds effect the fill, in this case slanted*/  
+#dudeedge{  
+height: 90px;  
+width: 300px;  
+/*  
+background: url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/forkfill_f.gif');*/
+}  
+li.film{
+  float:left;
+  background:url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/filmstrip.png') 0 0 no-repeat;
+  width:53px;
+  height:103px;
+    margin-left:125x;
+}
+ul.seperator{
+  list-style-type:none;
+
+}
+div.contextmain
+{
+margin: 0px;
+border: 1px solid #604A7B;
+height: 260px;
+width: 960px;
+padding: 0px;
+display: inline-block;
+}
+
+div.contextparent
+{
+margin: 0px;
+height: 130px;
+padding: 20px;
+}
+
+div.contextparent_spacer
+{
+width: 950px;height:390px;
+background: #E6E6E6;
+padding: 5px;
+border: 1px solid #000000;   
+display: inline-block;
+}
+
+div.maparea
+{
+background:url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/nola.jpg') 0 0 no-repeat;
+ width: 290px;
+ height: 230px;
+  border: 0px solid #402607;
+  font: 12px Arial;
+  padding:25px;
+  margin:0px;
+  float: left;  
+}
+div.contact
+{
+  height: 240px;
+  border: 0px solid #000000;
+  font: 14px Arial;
+  color: #402607;
+  padding: 5px;
+  margin:0px;
+
+}
+
+div.statarea
+{
+height: 100px;
+
+}
+#malecontainer
+{
+overflow: hidden;  
+height:150px;
+width: 100px;  
+background: #E6E6E6;
+}
+
+#maleoverlay
+{    
+height: 150px;
+width: 100px; 
+background: url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/male.gif');
+}
+
+
+#femalecontainer
+{
+overflow: hidden;  
+height: 150px;
+width: 100px;  
+background: #E6E6E6;
+}
+
+#femaleoverlay
+{
+height: 150px;
+width: 100px; 
+border:0px solid #402607;
+background: url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/woman.gif');
+}
+
+div.row21 {
+background: #E6E6E6;
+ width: 180px;
+ height: 150px;
+  border: 0px solid #402607;
+  font: 12px Arial;
+  padding: 5px;
+  margin:0px;
+  float: left;  
+}
+
+div.row24 {
+background: #E6E6E6;
+ width: 300px;
+ height: 150px;
+  text-align: top;
+  border: 0px solid #402607;
+  font: 12px Arial;
+  padding: 5px;
+  margin:0px;
+  float: left;  
+}
+div.Row3 
+{
+    width:950px;
+    height:300px;
+}
+div.row31 {
+background: #E6E6E6;
+  width: 190px;
+  border: 0px solid #402607;
+  font: 12px Arial;
+  padding:0px;
+  margin-right:0px;
   float: left;  
 }
