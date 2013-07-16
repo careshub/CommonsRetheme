@@ -39,10 +39,10 @@ get_header();
 <?php
         
       
-         require ('c:\wamp\www\wordpress\wp-content\themes\CommonsRetheme\includes\childoutcome.php');  
+        require ('c:\wamp\www\wordpress\wp-content\themes\CommonsRetheme\includes\childoutcome.php');  
         require ('c:\wamp\www\wordpress\wp-content\themes\CommonsRetheme\includes\context.php'); 
-//	include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/wkkf_outcomes.php';
-//	include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/wkkf_continuum.php';
+	include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/wkkf_outcomes.php';
+	include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/wkkf_continuum.php';
 ?>
       <?php while ( have_posts() ) : the_post(); ?>
         <?php //get_template_part( 'content', 'page-notitle' ); ?>
