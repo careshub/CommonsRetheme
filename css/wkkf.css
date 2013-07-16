@@ -239,7 +239,7 @@ background: #E6E6E6;
 #dudeoverlay{    
 height:75px;
 width: 0px; 
-background: url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/forkfilling.gif');
+background: url('./wp-content/themes/CommonsRetheme/img/WKKF/forkfilling.gif');
 }  
 /*White div in #dudeoverlay that fill space the edge image doesn't*/  
 #dudeblock{  
@@ -251,12 +251,10 @@ background: #E6E6E6;
 #dudeedge{  
 height: 90px;  
 width: 300px;  
-/*  
-background: url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/forkfill_f.gif');*/
 }  
 li.film{
   float:left;
-  background:url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/filmstrip.png') 0 0 no-repeat;
+  background:url('./wp-content/themes/CommonsRetheme/img/WKKF/filmstrip.png') 0 0 no-repeat;
   width:53px;
   height:103px;
     margin-left:125x;
@@ -293,7 +291,7 @@ display: inline-block;
 
 div.maparea
 {
-background:url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/nola.jpg') 0 0 no-repeat;
+background:url('./wp-content/themes/CommonsRetheme/img/WKKF/nola.jpg') 0 0 no-repeat;
  width: 290px;
  height: 230px;
   border: 0px solid #402607;
@@ -330,7 +328,7 @@ background: #E6E6E6;
 {    
 height: 150px;
 width: 100px; 
-background: url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/male.gif');
+background: url('./wp-content/themes/CommonsRetheme/img/WKKF/male.gif');
 }
 
 
@@ -347,7 +345,7 @@ background: #E6E6E6;
 height: 150px;
 width: 100px; 
 border:0px solid #402607;
-background: url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/woman.gif');
+background: url('./wp-content/themes/CommonsRetheme/img/WKKF/woman.gif');
 }
 
 div.row21 {
