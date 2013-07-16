@@ -1,17 +1,4 @@
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.common.core.js'; ?>"></script>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.hbar.js'; ?>"></script>
-
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.meter.js'; ?>"></script>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.hbar.js'; ?>"></script>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.common.key.js'; ?>"></script>
-
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.hprogress.js'; ?>"></script>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.pie.js'; ?>"></script>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.common.dynamic.js'; ?>"></script>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.common.tooltips.js'; ?>"></script>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.common.effects.js'; ?>"></script>
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/css/demos.css';?>" type="text/css" media="screen" />
-    <script>
+<script>
     
    
         window.onload = function ()
@@ -107,24 +94,23 @@
                 
 
 //           
-                if (!RGraph.isOld()) {
-                meter.canvas.onmousedown = function (e)
-                {
-                    var obj = RGraph.ObjectRegistry.getObjectByXY(e);
-                    
-                    if (obj) {
-                        var value = obj.getValue(e);
-                        
-                        obj.value = value;
-                        RGraph.Effects.Meter.Grow(obj);
-                    }
-                }
-            }
-       //        
-//$("#dudeoverlay").stop().animate({left:'-265px'},{queue:false,duration:3500} );  
-        
-                 }
-                  
+//                if (!RGraph.isOld()) {
+//                meter.canvas.onmousedown = function (e)
+//                {
+//                    var obj = RGraph.ObjectRegistry.getObjectByXY(e);
+//                    
+//                    if (obj) {
+//                        var value = obj.getValue(e);
+//                        
+//                        obj.value = value;
+//                        RGraph.Effects.Meter.Grow(obj);
+//                    }
+//                }
+//            }
+ 
+        }   
+                
+     
     </script>
     <script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.js"></script>
 	<script type="text/javascript">
@@ -135,9 +121,6 @@
 	</script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
 
-
-        
-        
 <?php
 /*
  * Child Outcome PHP page

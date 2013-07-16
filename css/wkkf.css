@@ -160,7 +160,7 @@ div.chartyear
 {
   padding: 5px;  
   font-family: 'Times New Roman',Times,serif;
-width: 950px;
+width: 930px;
 display: inline-block;
 
 }
@@ -172,7 +172,7 @@ display: inline-block;
 }
 div.chartboxparent_spacer
 {
-  width: 950px;
+  width: 930px;
   height: 330px;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -180,7 +180,7 @@ div.chartboxparent_spacer
 }
 div.chartbox {
 background: #E6E6E6;
- width: 290px;
+ width: 280px;
  height: 290px;
   text-align: top;
   border: 1px solid #402607;
@@ -192,9 +192,8 @@ background: #E6E6E6;
 }
 div.chartbox_bot {
 background: #E6E6E6;
- width: 290px;
+ width: 280px;
  height: 290px;
- text-align: top;
   border: 1px solid #402607;
   font: 12px Arial;
   padding: 5px;
@@ -205,10 +204,9 @@ background: #E6E6E6;
 div.chartbox_spacer {
 
   width: 2px;
-  height: 2px;
+  height: 290px;
   text-align: left;
   border: 0px solid #402607;
-  font: 12px Calibri (Body), Calibri, Arial;
   padding: 5px;
   margin:0px;
   float: left;  
@@ -239,7 +237,7 @@ background: #E6E6E6;
 #dudeoverlay{    
 height:75px;
 width: 0px; 
-background: url('./wp-content/themes/CommonsRetheme/img/WKKF/forkfilling.gif');
+background: url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/forkfilling.gif');
 }  
 /*White div in #dudeoverlay that fill space the edge image doesn't*/  
 #dudeblock{  
@@ -251,10 +249,12 @@ background: #E6E6E6;
 #dudeedge{  
 height: 90px;  
 width: 300px;  
+/*  
+background: url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/forkfill_f.gif');*/
 }  
 li.film{
   float:left;
-  background:url('./wp-content/themes/CommonsRetheme/img/WKKF/filmstrip.png') 0 0 no-repeat;
+  background:url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/filmstrip.png') 0 0 no-repeat;
   width:53px;
   height:103px;
     margin-left:125x;
@@ -268,7 +268,7 @@ div.contextmain
 margin: 0px;
 border: 1px solid #604A7B;
 height: 260px;
-width: 960px;
+width: 930px;
 padding: 0px;
 display: inline-block;
 }
@@ -282,7 +282,8 @@ padding: 20px;
 
 div.contextparent_spacer
 {
-width: 950px;height:390px;
+width: 920px;
+height:390px;
 background: #E6E6E6;
 padding: 5px;
 border: 1px solid #000000;   
@@ -291,7 +292,7 @@ display: inline-block;
 
 div.maparea
 {
-background:url('./wp-content/themes/CommonsRetheme/img/WKKF/nola.jpg') 0 0 no-repeat;
+background:url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/nola.jpg') 0 0 no-repeat;
  width: 290px;
  height: 230px;
   border: 0px solid #402607;
@@ -328,7 +329,7 @@ background: #E6E6E6;
 {    
 height: 150px;
 width: 100px; 
-background: url('./wp-content/themes/CommonsRetheme/img/WKKF/male.gif');
+background: url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/male.gif');
 }
 
 
@@ -345,7 +346,7 @@ background: #E6E6E6;
 height: 150px;
 width: 100px; 
 border:0px solid #402607;
-background: url('./wp-content/themes/CommonsRetheme/img/WKKF/woman.gif');
+background: url('http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/woman.gif');
 }
 
 div.row21 {
@@ -372,7 +373,7 @@ background: #E6E6E6;
 }
 div.Row3 
 {
-    width:950px;
+    width:930px;
     height:300px;
 }
 div.row31 {

@@ -15,24 +15,35 @@
  */
 // ini_set('display_errors', 'On');
 // error_reporting(E_ALL | E_STRICT);
-get_header(); ?>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/wkkf.js'; ?>"></script>
-<link rel='stylesheet' type="text/css" href="<?php echo get_stylesheet_directory_uri() . '/css/wkkf.css';?>" />
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/RGraph/libraries/RGraph.common.core.js'; ?>"></script>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/RGraph/libraries/RGraph.common.effects.js'; ?>"></script>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/canvasjs.js'; ?>"></script>
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . '/css/reveal.css'; ?>" />
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/jquery.reveal.js'; ?>"></script>
+get_header(); 
 
-<?php
-	include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/wkkf_outcomes.php';
-	include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/wkkf_continuum.php';
-        include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/childoutcome.php';
-        include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/context.php';
 ?>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/wkkf.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/canvasjs.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/jquery.reveal.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.common.core.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.hbar.js'; ?>"></script>
 
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.meter.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.hbar.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.common.key.js'; ?>"></script>
 
-
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.hprogress.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.pie.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.common.dynamic.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.common.tooltips.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/libraries/RGraph.common.effects.js'; ?>"></script>
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . '/includes/RGraph/css/demos.css';?>" type="text/css" media="screen" />
+<link rel='stylesheet' type="text/css" href="<?php echo get_stylesheet_directory_uri() . '/css/wkkf.css';?>" />
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . '/css/reveal.css'; ?>" />
+<?php
+        
+      
+         require ('c:\wamp\www\wordpress\wp-content\themes\CommonsRetheme\includes\childoutcome.php');  
+         require ('c:\wamp\www\wordpress\wp-content\themes\CommonsRetheme\includes\context.php'); 
+//	include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/wkkf_outcomes.php';
+//	include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/wkkf_continuum.php';
+?>
       <?php while ( have_posts() ) : the_post(); ?>
         <?php //get_template_part( 'content', 'page-notitle' ); ?>
         <?php //comments_template( '', true ); ?>
@@ -239,7 +250,7 @@ get_header(); ?>
                    <div id="row23" class="row21"><p><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;line-height:1px;">$37,468</h2> </p> <p align="center" style="color:#000000;font-size:22px">median household income</p> </div>
                    
                    <div id="row24" class="row24">&nbsp;
-                    <canvas id="hbarrace" width="300" height="150"  >[No canvas support]</canvas>
+                    <canvas id="hbarrace" width="290" height="150"  >[No canvas support]</canvas>
 <!--                       <canvas id="hbarrace_pie" width="100" height="300" style="border: 1px solid #ddd; border-radius: 15px">[No canvas support]</canvas>-->
                    </div>
                  </div> 
@@ -248,7 +259,7 @@ get_header(); ?>
                     <div id="row31_male" >
                         <div style="position:absolute;"> 
                             <div id="malecontainer" style="position:relative;"> 
-                                <img src="http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/manshade.gif" /> 
+                                <img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/manshade.gif'?>" /> 
                             <div id="maleoverlay" style="position: absolute; top: 0; margin-left:0px;"> 
 
 
@@ -262,7 +273,7 @@ get_header(); ?>
                      <div id="row31_female" style="margin-left:100px;" >
                        <div style="position:absolute;"> 
                             <div id="femalecontainer" style="position:relative;"> 
-                                <img src="http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/womanshade.gif" /> 
+                                <img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/womanshade.gif'?>" /> 
                             <div id="femaleoverlay" style="position: absolute; top: 0; margin-left:0px;"> 
 
                             </div>
@@ -275,7 +286,7 @@ get_header(); ?>
                     <div id="row32" class="row31" style="margin-left:240px;"><p><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;">31%</h2> </p> <p align="center" style="color:#000000;font-size:22px">have a bachelor's degree or higher</p> </div>
                    
                     <div id="row33" class="row31"><p><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;">24%</h2> </p> <p align="center" style="color:#000000;font-size:22px">living below the poverty line</p> </div>
-                    <div id="row34" class="row31"> <canvas id="hbarhispanic" width="300" height="150"  >[No canvas support]</canvas></div>
+                    <div id="row34" class="row31"> <canvas id="hbarhispanic" width="290" height="150"  >[No canvas support]</canvas></div>
                     
                     </div>
                
@@ -283,10 +294,9 @@ get_header(); ?>
     </div>  
  </div>
         <div id="uxChildOutcomes" class="<?php echo ($showChildOut === true) ? '' : 'display-none'; ?>">
-            
             <div class="chartyear">
 				<div>
-					<div style="font-family:Calibri,Arial;font-size:12pt;font-weight:bold;color:#7f7f7f;float:left;">VIEWING THE IMPACT MADE UP TO &nbsp;<img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/prev.png' ?>" width="20px" style="vertical-align:middle;" /> 2013 <img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/next.png' ?>" width="20px" style="vertical-align:middle;" /></div>
+					<div style="font-size:12pt;font-weight:bold;color:#7f7f7f;float:left;">VIEWING THE IMPACT MADE UP TO &nbsp;<img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/prev.png' ?>" width="20px" style="vertical-align:middle;" /> 2013 <img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/next.png' ?>" width="20px" style="vertical-align:middle;" /></div>
 					<div style="margin-left:600px;">
 						<img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/wkkflegend.jpg' ?>" />
 					</div>
@@ -295,8 +305,8 @@ get_header(); ?>
             <div id="row1" class='chartboxparent'>
 
            <div class="chartbox">
-               <div style="padding: 0; margin: 0;" >  
-              <canvas id="cvs" width="290" height="150"  > [No canvas support]</canvas>
+               <div style="padding: 0; margin: 0;" >
+              <canvas id="cvs" width="280" height="150"  >[No canvas support]</canvas>
               <br><p ><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;line-height:1px;">25%</h2> </p> <p align="center" style="color:#000000;font-size:22px">Percent of kids eating healthy.</p> 
           </div>
             </div>
@@ -326,7 +336,7 @@ get_header(); ?>
        <div class="chartbox_bot">   
                 <div style="position:absolute;"> 
                             <div id="dudecontainer" style="position:relative;"> 
-                                <img src="http://localhost:8080/wordpress/wp-content/themes/CommonsRetheme/img/WKKF/forkpurple.gif" /> 
+                                <img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/forkpurple.gif' ?>" /> 
                             <div id="dudeoverlay" style="position: absolute; top: 0; margin-left:0px;"> 
 
                             </div>
@@ -335,25 +345,19 @@ get_header(); ?>
 
                  </div>
            <div style="position:relative;margin-top:200px"  >    
- <p><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;line-height:1px;">2.5 K</h2> 
-       </p> <p align="center" style="color:#000000;font-size:22px">Number of daily healthy school meals served</p> 
+                    <p><h2 align="center"   style="color:#604A7B;font-size:22px;padding:0px;line-height:1px;">2.5 K</h2> 
+                </p> <p align="center" style="color:#000000;font-size:22px">Number of daily healthy school meals served</p> 
       
-       </div>
+                </div>
        </div> 
 
           
            
        
-       <div class="chartbox_spacer"></div>
-       <div class="chartbox_bot" > 
+       <div class="chartbox_spacer"> &nbsp;</div>
+       <div class="chartbox_bot" > &nbsp;
        
-      
-	<div id="counter">
-
-            <div>
-
-       </div>
-       </div>    
+       
              </div>
      
        <div id="uxContinuum" class="<?php echo ($showContinuum === true) ? '' : 'display-none'; ?>" style="height: 500px;">
