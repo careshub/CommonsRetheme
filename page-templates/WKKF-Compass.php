@@ -27,6 +27,8 @@ get_header(); ?>
 <?php
 	include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/wkkf_outcomes.php';
 	include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/wkkf_continuum.php';
+        include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/childoutcome.php';
+        include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/context.php';
 ?>
 
 
