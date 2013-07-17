@@ -11,8 +11,8 @@ get_header(); ?>
 			<?php endwhile; // end of the loop. ?>
 	<!-- Quicklinks -->
 	<div class="quicklinks clear">
-	<a href="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-Quickstart-Guide.pdf" class="quarter-block button">Download the original series Quickstart Guide</a>
-	<a href="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-Quickstart-Guide.pdf" class="quarter-block button">Download the kids' series Quickstart Guide</a>
+	<a href="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-Quickstart-Guide.pdf" class="quarter-block button">Download the Original Series Quickstart Guide</a>
+	<a href="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-Quickstart-Guide.pdf" class="quarter-block button">Download the Kids' Series Quickstart Guide</a>
 	<a href="http://www.communitycommons.org/wotn_sak_form/" class="quarter-block button">Share a Story From Your Event</a>
 	<a href="http://www.communitycommons.org/groups/weight-of-the-nation/" class="quarter-block button">Join the Weight of the Nation Group</a>
 	</div>
@@ -187,7 +187,7 @@ get_header(); ?>
 			</div>
 			<div class="tool-group-tool quarter-block wotn-resources">
 				<header class="entry-header clear">
-					<h3 class="entry-title"><a href="http://www.communitycommons.org/wotn-data-to-support/" title="Link to the map tool" rel="bookmark">Data to Support Screening to Action</a></h3>
+					<h3 class="entry-title"><a href="http://assessment.communitycommons.org/DataReport/" title="Link to the map tool" rel="bookmark">Data to Support Screening to Action</a></h3>
 				</header>
 				<!-- <div class="entry-content">
 					<p>This should be short but will probably be longer than I expect. You know?</p>
