@@ -8,8 +8,8 @@ global $loc, $place, $placeThumb, $focusPlaces; //use global vars
 $loc=$_GET['loc'];
 $place=$focusPlaces[$loc]['place'];
 $placeThumb=$focusPlaces[$loc]['thumb'];
-echo $loc;
-echo $string;
+//echo $loc;
+//echo $string;
 $piChart = new gPieChart();
             $piChart->addDataSet(array(23.4,25,2,20));
             //$piChart->setLegend(array("", "", "", ""));
