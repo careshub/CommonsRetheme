@@ -8,13 +8,7 @@ function outcomes1A() {
 				<script type="text/javascript">
 
 					
-					CanvasJS.addColorSet("wkkfReportCardColors1",
-					 [//colorSet Array
-					 "#A3C167",
-					 "#B3A2C7",
-					 "#E6E0EC",
-					 "#FFFFFF"
-					]); 	
+	
 				 
 				  
 					var meter = new RGraph.Meter('canvas1', 0, 100, 31)
@@ -43,41 +37,64 @@ function outcomes1C() {
 }
 function outcomes2A() {
 		?>
+		<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/highcharts.js'; ?>"></script>
+		<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/exporting.js'; ?>"></script>
 			<div id="pie1" style="width:220px;height:220px;margin:0px auto;"></div>
-			<strong style="font-size:18pt;">26%</strong><br /><br />of kids eating healthy school foods
+			<strong style="font-size:18pt;">24%</strong><br /><br />of kids eating healthy school foods
 			<script type="text/javascript">
-				
-					var outcome_pie1 = new CanvasJS.Chart("pie1",
-					{
-					  colorSet: "wkkfReportCardColors1",	
-					  backgroundColor: "#e6e6e6",	
-			  
-					  toolTip:{
-						enabled: true,       //disable here
-						animationEnabled: true, //disable here
-					  },					  
-					  data: [
-					  {
-					   indexLabelPlacement: "inside",
-					   indexLabelFontColor: "white",
-					   indexLabelFontSize: 10,
-					   startAngle: -90,
-					   type: "pie",
-					   showInLegend: false,
-					   dataPoints: [
-					   {  y: 1 },
-					   {  y: 24 },
-					   {  y: 25 },
-					   {  y: 50 },
-					   ]
-					 }
-					 ]
-				   });
-					
-					outcome_pie1.render();	
+				jQuery(function () {
+					jQuery('#pie1').highcharts({
+						chart: {
+							margin: [0, 0, 0, 0],
+							plotBackgroundColor: '#e6e6e6',
+							plotBorderWidth: null,
+							plotShadow: false
+						},
+						exporting: {
+							enabled: false
+						},						
+						title: {
+							text: ''
+						},
+						tooltip: {
+							pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+						},
+						plotOptions: {
+							pie: {
+								allowPointSelect: true,
+								cursor: 'pointer',
+								dataLabels: {
+									enabled: false,
+									color: '#000000',
+									connectorColor: '#000000',
+									format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+								}
+							}
+						},
+						colors: [
+							'#a3c167',
+							'#b3a2c7',
+							'#e6e0ec',
+							'#ffffff'
+							],
+						
+						series: [{
+							type: 'pie',
+							name: 'kids eating healthy<br />school foods',
+							data: [
+								['Baseline', 1],
+								['Current', 24],
+								['Goal', 25],
+								['n/a', 50]
+							
+							]
+						}]
+					});
+				});				
+
 						
 			</script>
-			<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/canvasjs.min.js'; ?>"></script>
+			
 		<?php
 }
 function outcomes2B() {
