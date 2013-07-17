@@ -2523,7 +2523,12 @@ ul.item-list li .share-buttons-below li {
 //Salud America subsection
 @sagreen:#60b035;
 @sared:#ef4036;
-@saorange:#f58220;
+@saorange:#F48120;//#f58220;
+@sapink:#EB008B;
+@sayellow:#FDB913;
+@sapurple:#92278F;
+@salime:#72BF44;
+@sablue:#0088CF;
 .salud-america { 
 	.site-content { 
 		// float: right;
@@ -2601,16 +2606,16 @@ ul.item-list li .share-buttons-below li {
 			h2 {
 				color: darken(@sagreen,10);
 				font-style: italic;
-				.font-size(2.2);
+				.font-size(1.8);
 				clear:none;
 				display: inline-block;
 				margin-left: 8%;
-				margin-top: 6%;
+				// margin-top: 6%;
 				line-height:1.2;
 				vertical-align: top;
 				span {
 					color:@sagreen;
-					.font-size(2.5);
+					.font-size(2);
 				}
 			}
 		}
@@ -2618,7 +2623,12 @@ ul.item-list li .share-buttons-below li {
 				color:@sared;
 				.font-size(1.6);
 			}
+		h4 {
+				color:@sared;
+				.font-size(1.2);
+			}
 		.browse-topics {
+			border-top: 1px solid @saorange;
 		.salud-topic{
 			// float: left;
 			// margin-bottom: 3%;
@@ -2638,20 +2648,63 @@ ul.item-list li .share-buttons-below li {
 			    line-height: 1.4;
 			}
 			p { 
-				clear: left;
-				padding-top: 12px;
-				margin-bottom: 0;
+				border-left: 2px solid @sayellow;
+			    clear: left;
+			    line-height: 1.7;
+			    .font-size(1.0);
+			    margin-bottom: 0;
+			    margin-left: 1px;
+			    margin-top: 6px;
+			    padding-left: 10px;
+			    padding-top: 6px;
+			}
+			&.sa-active-spaces p {
+				border-left-color: @sablue; 
+			}
+			&.sa-better-food-in-neighborhoods p {
+				border-left-color: @saorange; 
+			}
+			&.sa-healthier-marketing p {
+				border-left-color: @sapink; 
+			}
+			&.sa-healthier-school-snacks p {
+				border-left-color: @salime; 
+			}
+			&.sa-sugary-drinks p {
+				border-left-color: @sapurple; 
 			}
 		}
 	}
 	.policy-search {
 		border-bottom: 1px solid @saorange;
-	    margin-bottom: 3em;
-	    padding-bottom: 3em;
+	    margin-bottom: 2em;
+	    padding-bottom: 2em;
 	    h3 {
 				color:@sared;
 				.font-size(1.6);
-			}	
+			}
+		h4 {
+				color:@sared;
+				.font-size(1.2);
+			}
+	}
+	.policy-search-home {
+		// border-bottom: 1px solid @saorange;
+	    margin-bottom: 2em;
+	    padding-bottom: 2em;
+	    // display: inline-block;
+	    h4 {
+				color:@sared;
+				.font-size(1.2);
+		}
+	}
+	.sa-page-intro p {
+		padding: 12px;	
+		background-color: lighten(@graylight,11);	
+		color: @black;	
+		.font-size(1.1);	
+		line-height: 1.6;	
+		// font-style: italic;
 	}
 	.sapolicies, .saresources {
 		.icon { margin-right: 2%; }
@@ -2821,6 +2874,45 @@ ul.item-list li .share-buttons-below li {
 
 .sa-sugary-drinksx30{
 	background-position: 0 -140px ;
+}
+//Styles for salud advanced search form
+#cc-adv-search{
+	#saps {
+		width:70%;
+		float: left;
+		margin-right: 1%;
+		margin-bottom: 1em;
+	}
+	#cc_advanced_search_toggle {
+		float: left;
+		width: 100%;
+		display: block;
+		margin-bottom: 1em;
+	}
+	#cc-adv-search-pane-container {
+		margin-bottom: 1.5em;
+		.cc-adv-search-option-pane {
+			margin-top: 0;
+			margin-bottom: 0;
+			padding-bottom: 0;
+			ul li  {
+				margin-bottom: 6px;
+				input {
+					float: left;
+					margin-left: 0;
+				}
+				label {
+					display: block;
+					margin-left: 20px;
+					line-height: 1.4;
+					}
+			}
+			.cc-adv-search-scroll-container {
+				max-height:250px;
+				overflow: auto;
+			}
+		}
+	}
 }
 
 
@@ -3137,6 +3229,9 @@ body.home-page {
 	// display: inline-block;
 	// text-align: left;
 	// padding:.6em;
+	img {
+		max-width:90%;
+	}
 }
 .quarter-block, .third-block, .half-block {
 	.related-posts li {
