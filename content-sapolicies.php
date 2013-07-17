@@ -41,7 +41,7 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 		switch ($progress) {
 	    case "emergence":
 	        $percentage = 25;
-	        $progress_label = "in emergence";
+	        $progress_label = 'in emergence';
 	        break;
 	    case "development":
 			$percentage = 50;
@@ -55,6 +55,11 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 			$percentage = 75;
 	        $progress_label = 'in implementation';
 	       	break;
+	    default:
+		    $percentage = 0;
+	        $progress_label = 'in emergence';
+			break;
+
 		}
 	//echo $progress_label . " " . $percentage;
 
@@ -78,8 +83,8 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 					?></p>
 				<div class="meter-box clear">
 					<p>This change is <a href="/saresources/spectrum/" title="More information about policy development"><?php echo $progress_label; ?></a>.
-					<div class="meter nostripes">
-						<span style="width: <?php echo $percentage; ?>%"><span></span></span>
+					<div class="meter">
+						<span style="width: <?php echo $percentage; ?>%"></span>
 					</div>
 				</div> <!-- end .meter-box -->
 				
@@ -98,11 +103,16 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 					<?php echo $policy_tags; ?>
 				</a></p>
 			<?php } ?>
+			<?php 
+			if ( !empty( $custom_fields['sa_policytype'][0] ) ) { 
+					?>
 			<p class="sa-policy-meta">This change is of the type: <a href="#">
 				<?php echo $custom_fields['sa_policytype'][0];
 				// echo $advocacy_targets;
 				?>
 			</a></p>
+			<?php } ?>
+
 
 			<?php 
 				if ( function_exists('bp_share_post_button') ) { 

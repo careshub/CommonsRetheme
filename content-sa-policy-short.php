@@ -40,6 +40,10 @@
 			$percentage = 75;
 	        $progress_label = 'in implementation';
 	       	break;
+       	default:
+		    $percentage = 0;
+	        $progress_label = 'in emergence';
+			break;
 		}
 	//echo $progress_label . " " . $percentage;
 
