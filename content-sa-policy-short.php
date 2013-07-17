@@ -8,12 +8,13 @@
  */
 	$custom_fields = get_post_custom($post->ID);
 	$terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
-	foreach ( $terms as $term ) {
-		$advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
-		$target_icons[] = $term->slug;
-		
-	}
-	$advocacy_targets = join( ', ', $advocacy_targets );
+	if ( !empty ($terms) ) :
+		foreach ( $terms as $term ) {
+			$advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
+		}
+		$advocacy_targets = join( ', ', $advocacy_targets );
+	endif; //check for empty terms
+
 	// echo '<pre>';
 	// print_r($post);
 	// print_r($advocacy_targets);
@@ -56,14 +57,9 @@
 				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 				</h2>
 				<?php //echo "<br />"; ?>
-				<?php if ( isset( $target_icons ) ) {
-						foreach ($target_icons as $target_icon) {
-							$replace1 = str_replace("sa-","",$target_icon);
-							$replace2 = str_replace("-"," ",$replace1);
-							$UCreplace2 = ucwords($replace2);
-							echo '<span class="' . $target_icon . 'x30" title="' . $UCreplace2 . '"></span>';
+				<?php if (function_exists('salud_the_target_icons')) {
+						salud_the_target_icons();
 						}
-					}
 				?>
 				<p class="location"><?php //echo $location; 
 						if (function_exists('salud_the_location')) {

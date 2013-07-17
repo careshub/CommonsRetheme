@@ -717,7 +717,7 @@ function set_user_admin_bar_false_by_default($user_id) {
 
 //Add new image sizes for front page
 if ( function_exists( 'add_image_size' ) ) { 
-  add_image_size( 'feature-front', '600', '300', false ); //not hard cropped, resized proportionally
+  add_image_size( 'feature-front', '576', '600', false ); //not hard cropped, resized proportionally
   add_image_size( 'feature-front-sub', '300', '200', true ); // hard cropped
 }
 

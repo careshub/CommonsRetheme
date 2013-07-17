@@ -12,17 +12,21 @@
  
 $custom_fields = get_post_custom($post->ID);
 $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
-	foreach ( $terms as $term ) {
-		$advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
-		$target_icons[] = $term->slug;
-	}
-	$advocacy_targets = join( ', ', $advocacy_targets );
+	if ( !empty ($terms) ) :
+		foreach ( $terms as $term ) {
+			$advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
+		}
+		$advocacy_targets = join( ', ', $advocacy_targets );
+	endif; //check for empty terms
 
 $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
-	foreach ( $tags as $tag ) {
-		$policy_tags[] = '<a href="' . get_term_link($tag->slug, 'sa_policy_tags') .'">'.$tag->name.'</a>';
-	}
-	$policy_tags = join( ', ', $policy_tags );
+	if ( !empty ($tags) ) :
+		foreach ( $tags as $tag ) {
+			$policy_tags[] = '<a href="' . get_term_link($tag->slug, 'sa_policy_tags') .'">'.$tag->name.'</a>';
+		}
+		$policy_tags = join( ', ', $policy_tags );
+	endif; //check for empty tags
+
 // print_r($tags);
 // echo $policy_tags;
 
@@ -70,11 +74,9 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 			<header class="entry-header clear">
 				<h1 class="entry-title"><?php the_title(); ?></h1>
 				<?php //echo "<br />"; ?>
-				<?php if ( isset( $target_icons ) ) {
-						foreach ($target_icons as $target_icon) {
-							echo '<span class="' . $target_icon . 'x30"></span>';
+				<?php if (function_exists('salud_the_target_icons')) {
+						salud_the_target_icons();
 						}
-					}
 				?>
 				<p class="location"><?php //echo $location; 
 						if (function_exists('salud_the_location')) {
@@ -92,10 +94,13 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 
 
 			<?php the_content(); ?>
-
+			<?php 
+			if (isset($advocacy_targets)) { 
+					?>
 			<p class="sa-policy-meta">Topics:
 				<?php echo $advocacy_targets; ?>
 			</a></p>
+			<?php } ?>
 			<?php 
 			if (isset($policy_tags)) { 
 					?>

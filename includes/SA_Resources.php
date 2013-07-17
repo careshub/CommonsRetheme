@@ -269,3 +269,27 @@ function salud_the_location() {
          
          return $location;
   } 
+// Create icons from the advocacy targets of a salud policy or resource
+function salud_the_target_icons() {
+  echo salud_get_the_target_icons();
+}
+  function salud_get_the_target_icons() {
+  	$terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
+	if ( !empty ($terms) ) :
+		foreach ( $terms as $term ) {
+			$target_icons[] = array ( 
+				'target_slug' => $term->slug,
+				'target_name' => $term->name
+				);
+		}
+	endif; //check for empty terms
+
+	if ( isset( $target_icons ) ) :
+		$output = '';
+		foreach ($target_icons as $target_icon) {
+			$output .= '<span class="' . $target_icon['target_slug'] . 'x30" title="' . $target_icon['target_name'] . '"></span>';
+		}
+		return $output;
+	endif; //isset $target_icons
+	}
+
