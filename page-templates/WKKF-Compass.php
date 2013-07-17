@@ -27,13 +27,16 @@ include ('getData.php');
 <link rel='stylesheet' type="text/css" href="<?php echo get_stylesheet_directory_uri() . '/css/wkkf.css';?>" />
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/RGraph/libraries/RGraph.common.core.js'; ?>"></script>
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/RGraph/libraries/RGraph.common.effects.js'; ?>"></script>
-
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/RGraph/libraries/RGraph.meter.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/highcharts.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/exporting.js'; ?>"></script>
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . '/css/reveal.css'; ?>" />
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/jquery.reveal.js'; ?>"></script>
 
 <?php
-	include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/wkkf_outcomes.php';
-	include ABSPATH . '/wp-content/themes/CommonsRetheme/includes/wkkf_continuum.php';
+	 include( get_stylesheet_directory() . '/includes/wkkf_context.php');
+	 include( get_stylesheet_directory() . '/includes/wkkf_outcomes.php');
+	 include( get_stylesheet_directory() . '/includes/wkkf_continuum.php');
 ?>
 
 
@@ -220,7 +223,7 @@ include ('getData.php');
         </div>
 
         <div id="uxContext" class="<?php echo ($showContext === true) ? '' : 'display-none'; ?>">
-
+			<?php wkkf_context(); ?>
 
         </div>
         <div id="uxChildOutcomes" class="<?php echo ($showChildOut === true) ? '' : 'display-none'; ?>">
@@ -242,16 +245,16 @@ include ('getData.php');
 					   </div>
 					</a>
 					<div class="chartbox_spacer"></div>
-					<div class="chartbox"></div>
+					<div class="chartbox"><?php outcomes1B(); ?></div>
 					<div class="chartbox_spacer"></div>
-					<div class="chartbox"></div>
+					<div class="chartbox"><?php outcomes1C(); ?></div>
 					<br><br>
 			   <div id="row2" class="chartboxparent_spacer">&nbsp;<br>
 					<div class="chartbox_bot">
 						<?php outcomes2A(); ?>
 					</div>
 					<div class="chartbox_spacer"></div>
-				    <div class="chartbox_bot"></div>
+				    <div class="chartbox_bot"><?php outcomes2B(); ?></div>
 				    <div class="chartbox_spacer"></div>
 				    <div class="chartbox_bot">
 						 <!--style="float:left;margin-left:25px;"--><!--<div style="float:left;display:inline-block;position:relative;font-family:calibri,arial;font-weight:bold;font-size:60pt;color:#696b97;top:50px;">%</div>-->
