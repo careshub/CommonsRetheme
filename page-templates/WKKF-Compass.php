@@ -65,11 +65,11 @@ include ('getData.php');
         , 'outcomesdet'=>array(
             'name'=>'Child Outcomes Detail', 'next'=>'continvest', 'prev'=>'outcomes', 'img'=>'childoutcomesdetail.png')
         , 'continvest'=>array(
-            'name'=>'Continuum Investments', 'next'=>'live', 'prev'=>'outcomes', 'img'=>'continvest.png', 'showVar'=>'showContinuum')
+            'name'=>'Continuum Investments', 'next'=>'contstages', 'prev'=>'outcomes', 'img'=>'continvest.png', 'showVar'=>'showContinuum')
         , 'contstages'=>array(
-            'name'=>'Continuum Stages', 'next'=>'live', 'prev'=>'continvest', 'img'=>'contstages.png')
+            'name'=>'Continuum Stages', 'next'=>'live', 'prev'=>'continvest', 'img'=>'contstages.png', 'showVar'=>'showStages')
         , 'live'=>array(
-            'name'=>'Live Feeds', 'next'=>'map', 'prev'=>'continvest', 'img'=>'livefeeds.png', 'showVar'=>'showLive')
+            'name'=>'Live Feeds', 'next'=>'map', 'prev'=>'contstages', 'img'=>'livefeeds.png', 'showVar'=>'showLive')
         , 'map'=>array(
             'name'=>'Community Map', 'next'=>'context', 'prev'=>'live', 'img'=>'communitymap.png', 'showVar'=>'showMap')
         );
@@ -82,7 +82,7 @@ include ('getData.php');
       
       $loc='WKKF Compass'; $place='WKKF'; $placeThumb='wkkf.png'; //global defaults
       $pg='Home'; $pgImg=''; //global defaults
-      $showDash=false;$showContext=false;$showChildOut=false;$showContinuum=false;$showLive=false;$showMap=false; //global defaults
+      $showDash=false;$showContext=false;$showChildOut=false;$showContinuum=false;$showLive=false;$showMap=false;$showStages=false; //global defaults
       
       function getUrl(){
         $pageURL = 'http';
@@ -273,6 +273,10 @@ include ('getData.php');
 			<?php continuum1(); ?>
         </div>
 
+        <div id="uxStages" class="<?php echo ($showStages === true) ? '' : 'display-none'; ?>" style="height:550px;background-color:#e6e6e6;padding:15px;" >
+			<?php continuum_stages(); ?>
+        </div>		
+		
         <div id="uxLiveFeeds" class="<?php echo ($showLive === true) ? '' : 'display-none'; ?>">
 
 
@@ -287,8 +291,8 @@ include ('getData.php');
   </div><!-- #primary -->
   
 	<div id="modal_outcomes1" class="reveal-modal xxlarge">
-		 <h1>Modal Title</h1>
-		 <p>Any content could go in here.</p>
+		 <h1>Child-Level Outcomes</h1><br /><br />
+		 <img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/outcome_detail1.jpg' ?>" />
 		 <a class="close-reveal-modal">&#215;</a>
 	</div>
   

@@ -2,7 +2,7 @@
 function continuum1() {
 ?>
 	<script type='text/javascript' src='https://www.google.com/jsapi'></script>
-	<div style="padding:20px;" class="bigstats">Total Spending: $657,385</div>
+	<div class="bigstats" style="padding:20px;font-size:20pt;">Total Spending: $657,385</div>
 	<div id="continuumPie" style="width:550px;height:375px;position:absolute;top:300px;padding:20px;">
 	</div>
 	<script type="text/javascript">
@@ -167,4 +167,75 @@ function continuum1() {
 	</div>
 <?php
 }
+
+function continuum_stages() {
 ?>
+<img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/stages.jpg' ?>" width="99%" />
+<div id="bar_stages" style="width:100%;height:200px;margin:0 auto;"></div>
+	<script type="text/javascript">
+	
+						jQuery(function () {
+							jQuery('#bar_stages').highcharts({
+								chart: {
+									renderTo: 'bar_stages',
+									type: 'bar',
+									backgroundColor: '#e6e6e6',
+									plotBackgroundColor: '#e6e6e6',
+									plotBorderWidth: null,
+									plotShadow: false
+								},
+								exporting: {
+									enabled: false
+								},						
+								title: false,
+																
+
+								xAxis: {
+									
+									tickWidth: 1,
+									tickmarkPlacement: 'between',
+									labels: {enabled: false},
+									title: {
+										text: 'Progress'
+									}
+								},
+								yAxis: {
+									categories: ['Unawareness', 'Awareness', 'Mobilization', 'Implementation', 'Transform'],
+									title: {
+										text: 'Stage'										
+									},
+									labels: {enabled: true}
+								},
+								tooltip: {
+									valueSuffix: ' %'
+								},
+								colors: ['#b3a2c7'],
+								plotOptions: {
+									series: {
+										stacking: 'normal',
+										pointWidth: 50,
+										pointPadding: 0,																			
+
+									}
+
+								},
+								legend: {enabled: false},
+								credits: {
+									enabled: false
+								},
+								series: [{
+									name: '% of population',
+									data: [31, 5]
+								}]
+								});
+							});
+    
+
+	</script>
+
+
+
+
+
+<?php
+}
