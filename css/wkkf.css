@@ -236,4 +236,16 @@ div.chartbox_spacer {
  padding: 10px;
  
  }
+ 
+ .bigstats {
+	font-weight:bold;
+	font-size:30pt;
+	color: #696b97; 	
+ }
+ 
+ .textstats {
+ 	font-weight:bold;
+	font-size:10pt;
+	color: #7f7f7f;  
+ }
   

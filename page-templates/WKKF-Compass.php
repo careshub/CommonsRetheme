@@ -259,7 +259,7 @@ include ('getData.php');
 				    <div class="chartbox_bot">
 						 <!--style="float:left;margin-left:25px;"--><!--<div style="float:left;display:inline-block;position:relative;font-family:calibri,arial;font-weight:bold;font-size:60pt;color:#696b97;top:50px;">%</div>-->
 						<?php outcomes2C(); ?>
-						<span align="center">% of schools contracting with<br />School Food Authorities</span>
+						<span align="center" class="textstats">% of schools contracting with<br />School Food Authorities</span>
 						
 				    </div>
 				   

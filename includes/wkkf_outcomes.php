@@ -4,7 +4,7 @@ function outcomes1A() {
 
 				
                 <canvas id="meter1" width="275">[No canvas support]</canvas><br /><br />
-			    <strong style="font-size:18pt;">31%</strong><br /><br />of kids eating healthy school foods
+			    <span class="bigstats">31%</span><br /><br /><span class="textstats">of kids eating healthy school foods</span>
 				<script type="text/javascript">
 
 					
@@ -105,17 +105,17 @@ jQuery(function () {
     
 
 	</script>
-<strong style="font-size:18pt;">2,500</strong><br /><br />healthy school meals served daily	
+<span class="bigstats">2,500</span><br /><br /><span class="textstats">healthy school meals served daily</span>
 <?php
 }
 function outcomes1C() {
 ?>
 <br /><br /><br />
-<strong style="font-size:48pt;">25%</strong>
+<span class="bigstats">25%</span>
 <div id="bar2" style="width:90%;height:60px;margin:0px auto;"></div>
 	<script type="text/javascript">
-jQuery(function () {
-        jQuery('#bar2').highcharts({
+		jQuery(function () {
+			jQuery('#bar2').highcharts({
             chart: {
                 type: 'bar',
 				margin: [0, 0, 0, 0],
@@ -187,7 +187,7 @@ jQuery(function () {
     
 
 	</script>
-of schools contracting with School Food Authorities
+<span class="textstats">of schools contracting with School Food Authorities</span>
 	
 <?php
 
@@ -196,7 +196,7 @@ function outcomes2A() {
 		?>
 
 			<div id="pie1" style="width:90%;height:200px;margin:0px auto;"></div>
-			<strong style="font-size:18pt;">24%</strong><br /><br />of kids eating healthy school foods
+			<span class="bigstats">24%</span><br /><br /><span class="textstats">of kids eating healthy school foods</span>
 			<script type="text/javascript">
 				jQuery(function () {
 					jQuery('#pie1').highcharts({
@@ -257,7 +257,7 @@ function outcomes2B() {
 
 				
                 <canvas id="meter2" width="275">[No canvas support]</canvas><br /><br />
-			    <strong style="font-size:18pt;">45%</strong><br /><br />healthy school meals served daily
+			    <span class="bigstats">45%</span><br /><br /><span class="textstats">healthy school meals served daily</span>
 				<script type="text/javascript">
 
 					
