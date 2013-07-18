@@ -66,7 +66,7 @@ get_header(); ?>
 		<header class="entry-header clear">
 			<h1 class="entry-title">Event Resources</h1>
 			<div id="tool-group-header-planning" class="tool-group-header clear">
-				<img width="600" height="200" src="http://www.communitycommons.org/wp-content/uploads/2013/04/dv-taxonomy-community.jpg" class="attachment-full" alt="book-brigade-600x200">
+				<img width="600" height="200" src="http://www.communitycommons.org/wp-content/uploads/2013/07/meeting-hand-w-pen.jpg" class="attachment-full" alt="book-brigade-600x200">
 				<p class="tool-group-description">Plan your Screening to Action event.</p>
 			</div>
 		</header>
