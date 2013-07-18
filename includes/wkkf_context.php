@@ -13,8 +13,8 @@ function wkkf_context() {
 			<td style="width:20%;text-align:center;">
 				<span class="bigstats">$37,468</span><br /><span class="textstats">median household income</span>
 			</td>
-			<td style="width:25%;text-align:center;">
-				<span class="textstats">racial makeup</span>			
+			<td style="width:25%;text-align:center;padding-left:20px;"">
+				<span class="textstats">racial makeup %</span>			
 				<div id="racialbar"></div>
 			</td>			
 		</tr>
@@ -41,13 +41,14 @@ function wkkf_context() {
 			<td style="width:20%;text-align:center;">
 				<span class="bigstats">24%</span><br /><span class="textstats">living below poverty level</span>
 			</td>
-			<td style="width:25%;text-align:center;">
-				<span class="textstats">hispanic origin</span>
+			<td style="width:25%;text-align:center;padding-left:20px;">
+				<span class="textstats">hispanic origin %</span>
 				<div id="hispanicbar"></div>
 			</td>	
 		</tr>
 </table>
 					<script type="text/javascript">
+  
 						jQuery(function () {
 							jQuery('#pie_malefemale').highcharts({
 								chart: {
@@ -110,7 +111,7 @@ function wkkf_context() {
 																
 
 								xAxis: {
-									categories: ['Caucasian', 'African-American', 'Hispanic', 'Asian', 'Alaskan/Native American'],
+									categories: ['African-American', 'Caucasian', 'Asian', 'Alaskan/Native American', 'Native Hawaiian/Pacific Islander'],
 									title: {
 										text: null
 									}
@@ -161,7 +162,7 @@ function wkkf_context() {
 										plotBorderWidth: null,
 										plotShadow: false,
 										width:250,
-										height:60
+										height:50
 								},
 								exporting: {
 									enabled: false
@@ -170,7 +171,7 @@ function wkkf_context() {
 																
 
 								xAxis: {
-									categories: ['Mexico', 'other Latin America'],
+									categories: ['White, Non-Hispanic', 'Hispanic/Latino Origin'],
 									title: {
 										text: null
 									}

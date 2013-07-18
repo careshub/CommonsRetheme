@@ -2,7 +2,7 @@
 function continuum1() {
 ?>
 	<script type='text/javascript' src='https://www.google.com/jsapi'></script>
-	<div style="font-size:18pt;font-weight:bold;padding:10px;color:#696b97;">Total Spending: $657,385</div>
+	<div style="padding:20px;" class="bigstats">Total Spending: $657,385</div>
 	<div id="continuumPie" style="width:550px;height:375px;position:absolute;top:300px;padding:20px;">
 	</div>
 	<script type="text/javascript">
