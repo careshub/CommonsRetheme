@@ -170,14 +170,26 @@ function continuum1() {
 
 function continuum_stages() {
 ?>
+<select style="margin-bottom:10px;font-family:Calibri,Arial;">
+	<option value="" selected>---Select Topic---</option>
+	<option value="Childhood Obesity">Childhood Obesity</option>
+	<option value="Access to Healthy Food">Access to Healthy Food</option>
+	<option value="Healthy Food in Schools">Healthy Food in Schools</option>
+	<option value="Poverty">Poverty</option>
+	<option value="Education">Education</option>
+</select>
 <img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/stages.jpg' ?>" width="99%" />
-<div id="bar_stages" style="width:100%;height:200px;margin:0 auto;"></div>
+<img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/perspectives.png' ?>" />
+<div id="bar_stages_perspectives" style="width:100%;height:200px;margin:0 auto;position:relative;right:10px;"></div>
+<img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/funding.png' ?>" />
+<div id="column_stages_investments" style="width:100%;height:200px;margin:0 auto;position:relative;right:10px;"></div>
+
 	<script type="text/javascript">
 	
 						jQuery(function () {
-							jQuery('#bar_stages').highcharts({
+							jQuery('#bar_stages_perspectives').highcharts({
 								chart: {
-									renderTo: 'bar_stages',
+									renderTo: 'bar_stages_perspectives',
 									type: 'bar',
 									backgroundColor: '#e6e6e6',
 									plotBackgroundColor: '#e6e6e6',
@@ -191,30 +203,84 @@ function continuum_stages() {
 																
 
 								xAxis: {
-									
-									tickWidth: 1,
-									tickmarkPlacement: 'between',
-									labels: {enabled: false},
-									title: {
-										text: 'Progress'
-									}
+									labels: {enabled:false},
+									tickLength: 0,
+									tickWidth: 0								
 								},
 								yAxis: {
-									categories: ['Unawareness', 'Awareness', 'Mobilization', 'Implementation', 'Transform'],
-									title: {
-										text: 'Stage'										
+									max: 100,
+									min: 0,
+									labels: {enabled: false},
+									title: {enabled: false},
+									plotLines: [{
+										color: '#FF0000',
+										width: 2,
+										value: 80,
+										zIndex: 5,
+										label: {
+											text: 'Transform',
+											verticalAlign: 'bottom',
+											textAlign: 'right',
+											y: -10
+										}
+									},										
+									{
+										color: '#FF0000',
+										width: 2,
+										value: 60,
+										zIndex: 5,
+										label: {
+											text: 'Implementation',
+											verticalAlign: 'bottom',
+											textAlign: 'right',
+											y: -10
+										}	
 									},
-									labels: {enabled: true}
+									{
+										color: '#FF0000',
+										width: 2,
+										value: 40,
+										zIndex: 5,
+										label: {
+											text: 'Mobilization',
+											verticalAlign: 'bottom',
+											textAlign: 'right',
+											y: -10
+										}	
+									},
+									{
+										color: '#FF0000',
+										width: 2,
+										value: 20,
+										zIndex: 5,
+										label: {
+											text: 'Awareness',
+											verticalAlign: 'bottom',
+											textAlign: 'right',
+											y: -10
+										}	
+									},
+									{
+										color: '#FF0000',
+										width: 2,
+										value: 0,
+										zIndex: 5,
+										label: {
+											text: 'Unawareness',
+											verticalAlign: 'bottom',
+											textAlign: 'right',
+											y: -10
+										}
+									}
+									]	
 								},
-								tooltip: {
-									valueSuffix: ' %'
-								},
+
 								colors: ['#b3a2c7'],
 								plotOptions: {
 									series: {
 										stacking: 'normal',
 										pointWidth: 50,
-										pointPadding: 0,																			
+										pointPadding: 0		
 
 									}
 
@@ -223,13 +289,147 @@ function continuum_stages() {
 								credits: {
 									enabled: false
 								},
+								tooltip: {enabled: false},
 								series: [{
-									name: '% of population',
-									data: [31, 5]
+									data: [{
+										name: 'Grantee Perspective',
+										color: '#77933c',
+										y: 70
+									}, {
+										name: 'Staff Perspective',
+										color: '#a3c167',
+										y: 99
+									}]
 								}]
 								});
 							});
     
+	jQuery(function () {
+        jQuery('#column_stages_investments').highcharts({
+			chart: {
+				renderTo: 'column_stages_investments',
+				type: 'column',
+				backgroundColor: '#e6e6e6',
+				plotBackgroundColor: '#e6e6e6',
+				plotBorderWidth: null,
+				plotShadow: false
+			},
+			exporting: {
+				enabled: false
+			},	
+			legend: {enabled: false},
+			credits: {
+				enabled: false
+			},
+			title: false,
+			plotOptions: {
+				column: {
+					stacking: 'normal',
+					dataLabels: {
+						enabled: true,
+						inside: false,
+						color: '#000000',
+						format: '${point.y:,.0f}'
+					},
+					pointStart: 10,
+					pointInterval: 20
+				},
+				series: {
+					stacking: 'normal',
+					pointWidth: 170,
+					pointPadding: 0		
+
+				}
+
+			},
+            xAxis: {
+
+				maxPadding: 0,
+				labels: {enabled: false},
+				
+				plotLines: [{
+							color: '#FF0000',
+							width: 2,
+							value: 80,
+							zIndex: 5,
+							label: {
+								text: 'Transform',
+								verticalAlign: 'bottom',
+								textAlign: 'right',
+								y: -10
+							}
+						},										
+						{
+							color: '#FF0000',
+							width: 2,
+							value: 60,
+							zIndex: 5,
+							label: {
+								text: 'Implementation',
+								verticalAlign: 'bottom',
+								textAlign: 'right',
+								y: -10
+							}	
+						},
+						{
+							color: '#FF0000',
+							width: 2,
+							value: 40,
+							zIndex: 5,
+							label: {
+								text: 'Mobilization',
+								verticalAlign: 'bottom',
+								textAlign: 'right',
+								y: -10
+							}	
+						},
+						{
+							color: '#FF0000',
+							width: 2,
+							value: 20,
+							zIndex: 5,
+							label: {
+								text: 'Awareness',
+								verticalAlign: 'bottom',
+								textAlign: 'right',
+								y: -10
+							}	
+						},
+						{
+							color: '#FF0000',
+							width: 2,
+							value: 0,
+							zIndex: 5,
+							label: {
+								text: 'Unawareness',
+								verticalAlign: 'bottom',
+								textAlign: 'right',
+								y: -10
+							}
+						}
+						]					
+            },
+            yAxis: {
+				title: {enabled: false},
+				labels: {enabled: false}
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="padding:0"><b>${point.y:,.0f}</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+
+            series: [{
+						data: [
+						{name: 'Unawareness', color: '#7f7f7f', y:122233},{name: 'Awareness', color: '#7f7f7f', y:343423},{name: 'Mobilization', color: '#7f7f7f', y:134423},{name: 'Implementation', color: '#7f7f7f', y:44423},{name: 'Transform', color: '#7f7f7f', y:12883}]				
+    
+            }]
+        });
+    });
+    
+
 
 	</script>
 
