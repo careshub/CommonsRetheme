@@ -54,7 +54,7 @@
 
 				</div>
 
-				<div class="item-meta"><span class="activity"><?php bp_member_last_active(); ?></span></div>
+				<!-- <div class="item-meta"><span class="activity"><?php bp_member_last_active(); ?></span></div> -->
 
 				<?php do_action( 'bp_directory_members_item' ); ?>
 

@@ -25,7 +25,7 @@ do_action( 'bp_before_group_header' );
 	</div>
 
 	<span class="highlight clear"><?php bp_group_type(); ?></span> 
-	<span class="activity clear"><?php printf( __( 'active %s', 'buddypress' ), bp_get_group_last_active() ); ?></span>
+	<!-- <span class="activity clear"><?php printf( __( 'active %s', 'buddypress' ), bp_get_group_last_active() ); ?></span> -->
 
 	<?php do_action( 'bp_before_group_header_meta' ); ?>
 
