@@ -21,7 +21,7 @@
 	global $post;
 	bcg_loop_start();//please do not remove it
 	while($q->have_posts()):$q->the_post();?>
-	<div class="post" id="post-<?php the_ID(); ?>">
+	<!-- <div class="post" id="post-<?php the_ID(); ?>">
 
 						<div class="author-box">
 							<?php echo get_avatar( get_the_author_meta( 'user_email' ), '50' ); ?>
@@ -40,7 +40,9 @@
 							<p class="postmetadata"><span class="tags"><?php the_tags( __( 'Tags: ', 'bcg' ), ', ', '<br />'); ?></span> <span class="comments"><?php comments_popup_link( __( 'No Comments &#187;', 'bcg' ), __( '1 Comment &#187;', 'bcg' ), __( '% Comments &#187;', 'bcg' ) ); ?></span></p>
 						</div>
 
-					</div>
+					</div> -->
+	<?php get_template_part( 'content' ); ?>
+
 	<?php endwhile;?>
 	<?php do_action( 'bp_after_group_blog_content' ) ;
 	bcg_loop_end();//please do not remove it

@@ -915,11 +915,15 @@ function cc_get_taxonomy_images($category, $taxonomy){
 */
 function salud_get_taxonomy_images($category, $taxonomy){
   // Build the section header
-  $cat_object = get_term_by('slug', $category, $taxonomy);
-  $section_title = $cat_object->name;
+  $cat_array = explode(",", $category);
+  foreach ($cat_array as $single_cat) {
+    $cat_object = get_term_by('slug', $single_cat, $taxonomy);
+    $section_title_cats[] = $cat_object->name;
+  }
+  $section_title = implode(" &amp; ", $section_title_cats);
   
   $output .= '<div class="sa-resource-header-icon"><span>' . $section_title . '</span>';
-  $output .= cc_get_taxonomy_images($category, $taxonomy);
+  $output .= cc_get_taxonomy_images($cat_array[0], $taxonomy);
   $output .= '</div>';
 
   return $output;
