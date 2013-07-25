@@ -836,19 +836,20 @@ function bp_dump() {
 
 //Add confirm e-mail address on BP registration form
 function registration_add_email_confirm(){ ?>
+    <?php //do_action( 'bp_signup_email_confirm_errors' ); ?>
+    <label for="signup_email_confirm">Confirm Email <?php _e( '(required)', 'buddypress' ); ?></label>
     <?php do_action( 'bp_signup_email_confirm_errors' ); ?>
     <input type="text" name="signup_email_confirm" id="signup_email_confirm" value="<?php
     echo empty($_POST['signup_email_confirm'])?'':$_POST['signup_email_confirm']; ?>" />
-    <label>Confirm Email <?php _e( '(required)', 'buddypress' ); ?></label>
-    <?php do_action( 'bp_signup_email_second_errors' ); ?>
 <?php }
-add_action('bp_signup_email_errors', 'registration_add_email_confirm',20);
+add_action('bp_signup_after_email', 'registration_add_email_confirm',20);
  
 function registration_check_email_confirm(){
     global $bp;
  
     //buddypress check error in signup_email that is the second field, so we unset that error if any and check both email fields
-    unset($bp->signup->errors['signup_email']);
+    //UPDATE: unsetting this means that BP/WP/WangGuard will potentially lose the errors they've set. I've rewritten the code below to only deal with the confirmation field.
+    // unset($bp->signup->errors['signup_email']);
  
     //check if email address is correct and set an error message for the first field if any
     $account_details = bp_core_validate_user_signup( $_POST['signup_username'], $_POST['signup_email_confirm'] );
@@ -856,13 +857,13 @@ function registration_check_email_confirm(){
         $bp->signup->errors['signup_email_confirm'] = $account_details['errors']->errors['user_email'][0];
  
     //if first email field is not empty we check the second one
-    if (!empty( $_POST['signup_email_confirm'] ) ){
+    if (!empty( $_POST['signup_email'] ) ){
         //first field not empty and second field empty
-        if(empty( $_POST['signup_email'] ))
-            $bp->signup->errors['signup_email_second'] = 'Please confirm your address.';
+        if(empty( $_POST['signup_email_confirm'] ))
+            $bp->signup->errors['signup_email_confirm'] = 'Please confirm your address.';
         //both fields not empty but differents
         elseif($_POST['signup_email'] != $_POST['signup_email_confirm'] )
-            $bp->signup->errors['signup_email_second'] = 'The addresses you entered do not match.';
+            $bp->signup->errors['signup_email_confirm'] = 'The addresses you entered do not match.';
     }
 }
 add_action('bp_signup_validate', 'registration_check_email_confirm');
@@ -980,4 +981,36 @@ class DropdownSlugWalker extends Walker_CategoryDropdown {
         $output .= $pad.$cat_name;
         $output .= "</option>\n";
     }
+}
+
+// Code originally by @t31os
+add_action('pre_get_posts','users_own_attachments');
+// add_action('pre-upload-ui','users_own_attachments_upload');
+
+function users_own_attachments( $wp_query_obj ) 
+{
+    global $current_user, $pagenow;
+
+    if( !is_a( $current_user, 'WP_User') )
+        return;
+
+    if( 'upload.php' != $pagenow && 'media-new.php' != $pagenow && 'async-upload.php' != $pagenow)
+        return;
+
+    if( !current_user_can('delete_pages') )
+        $wp_query_obj->set('author', $current_user->id );
+
+    return;
+}
+function users_own_attachments_upload( $wp_query_obj ) 
+{
+    global $current_user, $pagenow;
+
+    if( !is_a( $current_user, 'WP_User') )
+        return;
+
+    if( !current_user_can('delete_pages') )
+        $wp_query_obj->set('author', $current_user->id );
+
+    return;
 }
