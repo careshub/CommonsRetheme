@@ -121,11 +121,11 @@ include ('getData.php');
         //if ($isLocal) echo 'Have page. ';
         $pg=$_GET['pg'];
         $pgImg=$wkkfPages[$pg]['img'];
-        if ($isLocal) { //show contents if on localhost
+        //if ($isLocal) { //show contents if on localhost
           $showImg=false;
           global $$wkkfPages[$pg]['showVar']; //get flag for which div to show
           $$wkkfPages[$pg]['showVar']=true; //set flag for which div to show
-        }
+        //}
       }
       function GoToCompassPage($baseUrl, $focusPlace, $page){
         $newPage=$baseUrl . "?loc=" . $focusPlace . "&amp;pg=" . $page;
