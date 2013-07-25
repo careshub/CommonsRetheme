@@ -16,6 +16,31 @@
 // ini_set('display_errors', 'On');
 // error_reporting(E_ALL | E_STRICT);
 get_header(); ?>
+<script type="text/javascript">
+			var $j = jQuery.noConflict();
+			
+			$j(document).ready(function(){				
+				if ((getUrlVars()["pg"])==null && (getUrlVars()["loc"]!=null)) {
+					//alert(window.location.pathname);
+					var currPath=window.location.pathname;
+					window.location.href=currPath + '?loc=' + getUrlVars()["loc"] + "&pg=context";
+				} 				
+			});	
+			
+			function getUrlVars()
+			{
+				var vars = [], hash;
+				var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+				for(var i = 0; i < hashes.length; i++)
+				{
+					hash = hashes[i].split('=');
+					vars.push(hash[0]);
+					vars[hash[0]] = hash[1];
+				}
+				return vars;
+			}
+			
+</script>
 <?php
 
 include ('getData.php');
