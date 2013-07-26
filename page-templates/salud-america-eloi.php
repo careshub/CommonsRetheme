@@ -189,14 +189,16 @@ if (is_page('salud-americaresearch')) {
                                                         $list_of_policies = new WP_Query( $resource );
 							?>
 						<div class="half-block salud-topic <?php echo $cat_slug; ?>">
-							<a href="/salud-america/sapolicies/<?php echo $cat_slug; ?>" class="<?php echo $cat_slug; ?>  clear">
+							<a href="/salud-america/success-stories-topics/?topic=<?php echo $cat_slug; ?>" class="<?php echo $cat_slug; ?>  clear">
 								<span class="<?php echo $cat_slug; ?>x60"></span>
 								<h4><?php echo $section_title; ?></h4>
 							</a>
 							<?php while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
                                                         //This template should be the short result
-                                                        get_template_part( 'content', 'saresources-mini');
-
+                                                        get_template_part( 'content', 'saresources-mini'); ?>
+                                                        </br>
+                                                        <a href="/salud-america/success-stories-topics/?topic=<?php echo $cat_slug; ?>" class="<?php echo $cat_slug; ?>  clear">See more</a>
+                                                    <?php
                                                         //comments_template( '', true );
                                                         endwhile; // end of the loop. 
                                                         ?>
