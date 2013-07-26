@@ -159,6 +159,56 @@ if (is_page('salud-americaresearch')) {
     <h3>Latest Resources Added</h3>                      
 		<?php saresources_get_related_resources($resource_cats);
 
+                
+} elseif ( is_page('success-stories') ) {                
+	?>
+    <div class="browse-topics">
+					<h3>Success Stories</h3>
+					<?php 
+						$args = array(
+							'taxonomy' => 'sa_advocacy_targets'
+						);
+						$categories = get_categories($args);
+						$all_cats = array();
+						foreach ($categories as $cat) {
+							$all_cats[] = $cat->slug;
+						} 
+
+						foreach ($all_cats as $cat_slug) { 
+							//Loop through each advocacy target
+							$cat_object = get_term_by('slug', $cat_slug, 'sa_advocacy_targets');
+							// print_r($cat_object);
+							$section_title = $cat_object->name;
+							$resource = array(
+                                                            // Change these category SLUGS to suit your use.
+                                                             'post_type' => 'saresources',
+                                                             'sa_resource_cat'=> 'changemaker',
+                                                             'showposts' => '1',
+                                                             'paged' => $paged
+                                                );
+                                                        $list_of_policies = new WP_Query( $resource );
+							?>
+						<div class="half-block salud-topic <?php echo $cat_slug; ?>">
+							<a href="/salud-america/sapolicies/<?php echo $cat_slug; ?>" class="<?php echo $cat_slug; ?>  clear">
+								<span class="<?php echo $cat_slug; ?>x60"></span>
+								<h4><?php echo $section_title; ?></h4>
+							</a>
+							<?php while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
+                                                        //This template should be the short result
+                                                        get_template_part( 'content', 'saresources-mini');
+
+                                                        //comments_template( '', true );
+                                                        endwhile; // end of the loop. 
+                                                        ?>
+						</div>
+
+						<?php } // End advocacy target loop ?>
+
+				</div>                
+                
+<?php                
+                
+          
 } elseif (is_child(11911)) {
 				//The number above is the id of the parent page, is 11911 on the dev server.
 				while ( have_posts() ) : the_post();
