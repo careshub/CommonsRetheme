@@ -176,6 +176,7 @@ get_header(); ?>
 				$args = array(
 					'post_type' => 'sapolicies', 
 					'paged' => $paged,
+                                        'showposts' => '10',
 					'sa_advocacy_targets' => $page_slug,
 				);
 
