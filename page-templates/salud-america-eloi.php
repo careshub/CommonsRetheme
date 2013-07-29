@@ -184,6 +184,7 @@ if (is_page('salud-americaresearch')) {
                                                              'post_type' => 'saresources',
                                                              'sa_resource_cat'=> 'changemaker',
                                                              'showposts' => '1',
+                                                             'sa_advocacy_targets' => $cat_slug,
                                                              'paged' => $paged
                                                 );
                                                         $list_of_policies = new WP_Query( $resource );
