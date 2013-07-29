@@ -1012,6 +1012,8 @@ function sa_location_search()
 			});	                       
 			
           function samap_start() {
+	  
+
 						var markers = []; 
 						var gMap = new google.maps.Map(document.getElementById('map_sastart')); 
 						gMap.setZoom(4);      // This will trigger a zoom_changed on the map
@@ -1022,29 +1024,35 @@ function sa_location_search()
 						var infowindow = new google.maps.InfoWindow({
                             content: "loading..."
                         });
-						
+						var mbstr="";
                         <?php 
 							if( $my_query->have_posts() ) {
-						  while ($my_query->have_posts()) : $my_query->the_post(); 	
-							  $theLat2 = get_post_meta(get_the_ID(), 'sa_latitude', true);
-							  $theLng2 = get_post_meta(get_the_ID(), 'sa_longitude', true); ?>
-                      
-                        var marker = new google.maps.Marker({
-                            position: new google.maps.LatLng(<?php echo $theLat2 . ", " . $theLng2 ?>),
-                            map: gMap,
-                            icon: policyimage,
-                            html: "<b><a href='<?php echo get_permalink(); ?>'><?php echo get_the_title(); ?></a></b><br>"
-                          });
-                        markers.push(marker);
-                        google.maps.event.addListener(marker, 'click', function () {
-                            infowindow.setContent(this.html);
-                            infowindow.open(gMap, this);
-                        });
-                        <?php 
-						  endwhile;
-						} 
+							  while ($my_query->have_posts()) : $my_query->the_post(); 	
+								  $theLat2 = get_post_meta(get_the_ID(), 'sa_latitude', true);
+								  $theLng2 = get_post_meta(get_the_ID(), 'sa_longitude', true); 
+								  
+								  if ($theLat2 != null && $theLng2 != null) {
+					    ?>
+								mbstr=mbstr + <?php echo $theLat2 ?> + ","; 
+								var marker = new google.maps.Marker({
+									position: new google.maps.LatLng(<?php echo $theLat2 . ", " . $theLng2 ?>),
+									//position: new google.maps.LatLng(42,-90),
+									map: gMap,
+									icon: policyimage,
+									html: "<b><a href='<?php echo get_permalink(); ?>'><?php echo get_the_title(); ?></a></b><br>"
+								  });
+								markers.push(marker);
+								google.maps.event.addListener(marker, 'click', function () {
+									infowindow.setContent(this.html);
+									infowindow.open(gMap, this);
+								});
+							<?php 
+							}
+							  endwhile;
+							
+							}
 						?>						
-						
+						//alert(mbstr);
 
 					}
 					
