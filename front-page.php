@@ -159,7 +159,7 @@ for ($i = 1; $i <= 4; $i++) {
 		while ( $main_query->have_posts() ) : $main_query->the_post();
 			$layout_location = 'secondary';
 			if ( $i%2 !== 0 ) {
-				echo '<div class="content-row">';
+				//echo '<div class="content-row">';
 			}
 			?>
 		<div id="story-block-<?php echo $i; ?>" class="quarter-block" class="clear">
@@ -272,7 +272,7 @@ for ($i = 1; $i <= 4; $i++) {
 
   <?php 
   if ( $i%2 == 0 ) {
-				echo '</div> <!-- End .content-row -->';
+				//echo '</div> <!-- End .content-row -->';
 			}
 	endif; //ends if ( main_query )
 
