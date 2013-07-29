@@ -21,37 +21,21 @@ get_header(); ?>
 						</form>-->
 					</div>
 				</div>
-				<div class="row clear">
-					<div class="half-block">
-						<h4>Change-Maker of the Week</h4>
-                             <?php
-                                             //Need to adapt it to query resourcecat and resource topic area
-                                            wp_reset_postdata();
-
-                                            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-          
-                                            $args = array(
-                                                // Change these category SLUGS to suit your use.
-                                                'post_type' => 'saresources',
-                                                'sa_resource_cat'=> 'changemaker',
-                                                'showposts' => '1',
-                                                'paged' => $paged
-                                                );
-                                
-                                                $list_of_policies = new WP_Query( $args );
-                                        while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
-					//This template should be the short result
-					get_template_part( 'content', 'saresources-mini');
-
-					//comments_template( '', true );
-                                        endwhile; // end of the loop. 
-                                              ?>
-					</div>
-					<div class="half-block">
-						<a href="http://dev.communitycommons.org/sa-policy-map-search/" style="text-decoration:none;"><h4>Where is Change Happening?</h4>
-						<img class="alignnone size-full wp-image-17422" alt="Link to Policy Map Search" src="http://dev.communitycommons.org/wp-content/uploads/2013/06/samap2.jpg" width="274" height="206" /></a>
-					</div>
-				</div>
+                        <?php
+			} elseif (is_page('sapolicies')) {
+				//First, display the content of the page before making the custom loop.
+				while ( have_posts() ) : the_post();
+				$page_intro = get_the_content();
+				if ( !empty($page_intro) ) {
+					$page_intro = apply_filters('the_content', $page_intro); 
+					?>
+					<div class="sa-page-intro">
+						<?php echo $page_intro; ?>
+					</div>	
+	                <?php } //End if empty check
+                endwhile; // end of the main page loop. 
+   				?>
+                            
 				<div class="browse-topics">
 					<h3>Browse Changes by Topic</h3>
 					<?php 
@@ -81,82 +65,7 @@ get_header(); ?>
 
 						<?php } // End advocacy target loop ?>
 
-				</div>
-
-			<?php
-			} elseif (is_page('sapolicies')) {
-				//First, display the content of the page before making the custom loop.
-				while ( have_posts() ) : the_post();
-				$page_intro = get_the_content();
-				if ( !empty($page_intro) ) {
-					$page_intro = apply_filters('the_content', $page_intro); 
-					?>
-					<div class="sa-page-intro">
-						<?php echo $page_intro; ?>
-					</div>	
-	                <?php } //End if empty check
-                endwhile; // end of the main page loop. 
-   				?>
-                            
-   				<div class="row">
-					<div class="policy-search half-block">
-						<form id="sa-policy-search" class="standard-form" method="get" action="commonsdev.local/salud-america/sapolicies/">
-						<h4>Search for Changes in Progress</h4>
-						<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Not a functional search yet." name="sa-policy">
-						<input class="sa-policy-search-button" type="submit" value="Search">
-						</form>
-					</div>
-					<div class="half-block">
-						<h4>Change-Maker of the Week</h4>
-						<?php
-                                             //Need to adapt it to query resourcecat and resource topic area
-                                            wp_reset_postdata();
-
-                                            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-          
-                                            $args = array(
-                                                // Change these category SLUGS to suit your use.
-                                                'post_type' => 'saresources',
-                                                'sa_resource_cat'=> 'changemaker',
-                                                'showposts' => '1',
-                                                'paged' => $paged
-                                                );
-                                
-                                                $list_of_policies = new WP_Query( $args );
-                                        while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
-					//This template should be the short result
-					get_template_part( 'content', 'saresources-mini');
-
-					//comments_template( '', true );
-                                        endwhile; // end of the loop. 
-                                              ?>
-					</div>
-				</div>
-				<?php 
-				// echo isset($_GET['sa-policy']) ? $_GET['sa-policy'] : 'nope' ;
-				?>
-				<?php //Now we make our loop
-				wp_reset_postdata();
-			  	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
-				$args = array(
-					// Change these category SLUGS to suit your use.
-					'post_type' => 'sapolicies', 
-					'paged' => $paged
-				);
-
-				$list_of_policies = new WP_Query( $args ); 
-
-				while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
-					//This template should be the short result
-					get_template_part( 'content', 'sa-policy-short' );
-					//comments_template( '', true );
-				endwhile; // end of the loop.
-				
-				// Custom widget Area Start
-				 if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('sa_geosearch_widget') ) : 
-				 endif;
-				// Custom widget Area End
+				</div><?php
 			}  elseif (is_page('sa-policy-map-search')) {
 				sa_location_search();
 			
