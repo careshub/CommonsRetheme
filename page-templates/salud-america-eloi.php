@@ -146,10 +146,9 @@ if (is_page('salud-americaresearch')) {
 
     //3 BLOCKS FOR LEARNING RESOURCES ####################################################                          
         $resource_cats = array(
-          'coalition',
-          'how-to-resource, toolkit',
-          'training, webinar-2',
-          'learning-resource' 
+          'report, research, journal-article',
+          'how-to-resource, toolkit, training, webinar-2, learning-resource, recommendations',
+          'get-involved',
         );
         ?>
 
