@@ -8,7 +8,7 @@ get_header(); ?>
 		<div id="content" role="main">
 			<div class="padder">
 			<?php if (is_page('salud-america')) { ?>
-			<?php sa_slider('main-page-slider'); ?>
+			<?php if ( function_exists('sa_slider') ) { sa_slider('main-page-slider'); } ?>
 				<div class="salud-banner">
 					<img src="/wp-content/themes/CommonsRetheme/img/salud_america/salud-hand.jpg" class="no-box">
 					<h2>Plant Your <br /><span>Ideas for Change</span><br /> Today!</h2>
