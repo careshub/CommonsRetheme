@@ -1020,31 +1020,41 @@ function sa_location_search()
 						gMap.setCenter(new google.maps.LatLng(38.195279, -96.031494));
 						gMap.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 						
-						var policyimage = 'http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/doc-3.png';
 						var infowindow = new google.maps.InfoWindow({
                             content: "loading..."
                         });
 						var mbstr="";
                         <?php 
 							if( $my_query->have_posts() ) {
-							  while ($my_query->have_posts()) : $my_query->the_post(); 	
-								  $theLat2 = get_post_meta(get_the_ID(), 'sa_latitude', true);
-								  $theLng2 = get_post_meta(get_the_ID(), 'sa_longitude', true); 
-								  
-								  if ($theLat2 != null && $theLng2 != null) {
-					    ?>
-								mbstr=mbstr + <?php echo $theLat2 ?> + ","; 
-								var marker = new google.maps.Marker({
-									position: new google.maps.LatLng(<?php echo $theLat2 . ", " . $theLng2 ?>),
-									//position: new google.maps.LatLng(42,-90),
-									map: gMap,
-									icon: policyimage,
-									html: "<b><a href='<?php echo get_permalink(); ?>'><?php echo get_the_title(); ?></a></b><br>"
-								  });
-								markers.push(marker);
-								google.maps.event.addListener(marker, 'click', function () {
-									infowindow.setContent(this.html);
-									infowindow.open(gMap, this);
+							  while ($my_query->have_posts()) : $my_query->the_post();
+                  //discover sa_advocacy_target terms, assign image
+                  $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
+                  if ( empty( $terms ) || count( $terms ) > 1 ) {
+                      $point_icon = get_stylesheet_directory_uri() . '/img/salud_america/map_icons/multiple_adv_targets.png' ;
+                    } else {
+                        //If count of terms = 1 we can set an icon
+                        foreach ( $terms as $term ) {
+                          $point_icon = get_stylesheet_directory_uri() . '/img/salud_america/map_icons/' . $term->slug . '.png';
+                        }
+                    }
+
+    								  $theLat2 = get_post_meta(get_the_ID(), 'sa_latitude', true);
+    								  $theLng2 = get_post_meta(get_the_ID(), 'sa_longitude', true); 
+    								  
+    								  if ($theLat2 != null && $theLng2 != null) {
+    					    ?>
+    								mbstr=mbstr + <?php echo $theLat2 ?> + ","; 
+    								var marker = new google.maps.Marker({
+    									position: new google.maps.LatLng(<?php echo $theLat2 . ", " . $theLng2 ?>),
+    									//position: new google.maps.LatLng(42,-90),
+    									map: gMap,
+    									icon: '<?php echo $point_icon; ?>',
+    									html: "<strong><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></strong><br />"
+    								  });
+    								markers.push(marker);
+    								google.maps.event.addListener(marker, 'click', function () {
+    									infowindow.setContent(this.html);
+    									infowindow.open(gMap, this);
 								});
 							<?php 
 							}
