@@ -899,12 +899,87 @@ function sa_location_search()
 
                 </div>  
             <?php
+            global $post;
 
-            foreach ($results as $result){
+            foreach ($results as $post){
+              //This is the policy short template. Sending results through the template doesn't work with get_results
+              setup_postdata( $post );
+              $custom_fields = get_post_custom($post->ID);
+              $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
+              if ( !empty ($terms) ) {
+                $advocacy_targets = array();
+                foreach ( $terms as $term ) {
+                  $advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
+                }
+                $advocacy_targets = join( ', ', $advocacy_targets );
+              } //check for empty terms
 
-                echo "<div style='color:#fe9600;font-weight:bold;font-size:13pt;'><a href='" . get_permalink($result->ID) . "'>" . $result->post_title . "</a></div><br>";
-        				echo "<div>" . $result->post_content . "</div><div style='font-style:italic;'>Distance from search center: " . round($result->distance, 2) . " miles</div><br>";			
-            }   
+            //Progress meter
+              $progress = $custom_fields['sa_policystage'][0];
+                switch ($progress) {
+                  case "emergence":
+                      $percentage = 25;
+                      $progress_label = "in emergence";
+                      break;
+                  case "development":
+                  $percentage = 50;
+                      $progress_label = 'in development';
+                      break;
+                  case "enactment":
+                  $percentage = 75;
+                      $progress_label = 'enacted';
+                      break;
+                  case "implementation":
+                  $percentage = 75;
+                      $progress_label = 'in implementation';
+                      break;
+                    default:
+                    $percentage = 0;
+                      $progress_label = 'in emergence';
+                  break;
+                }
+            ?>
+
+              <article id="post-<?php echo $post->ID; ?>" <?php post_class(); ?>>
+                <div class="entry-content">
+                  <header class="entry-header clear">
+                    <h2 class="entry-title">
+                    <a href="<?php echo get_permalink( $post->ID ); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+                    </h2>
+                    <?php if (function_exists('salud_the_target_icons')) {
+                        salud_the_target_icons();
+                        }
+                    ?>
+                    <p class="location"><?php //echo $location; 
+                        if (function_exists('salud_the_location')) {
+                          salud_the_location();
+                        }
+                      ?></p>
+                    <div class="meter-box clear">
+                      <p>This change is <?php echo $progress_label; ?>.
+                      <!-- <div class="meter">
+                        <span style="width: <?php echo $percentage; ?>%"><span></span></span>
+                      </div> -->
+                    </div> <!-- end .meter-box -->
+                    
+                  </header>
+                  <p><?php 
+                  // $excerpt = get_the_excerpt();
+                  // the_excerpt();
+                    $content = ellipsis( $post->post_content, 400 );
+                    $content = $content . ' <a href="' . get_permalink( $post->ID ) . '">Continue reading.</a>';
+                    $content = apply_filters( 'the_content', $content );
+                    echo $content;
+                  
+                  ?></p>
+
+                  <div class="clear"></div>     
+                </div><!-- .entry-content -->
+    
+              </article><!-- #post -->
+              <?php //     echo "<div style='color:#fe9600;font-weight:bold;font-size:13pt;'><a href='" . get_permalink($result->ID) . "'>" . $result->post_title . "</a></div><br>";
+              // echo "<div>" . $result->post_content . "</div><div style='font-style:italic;'>Distance from search center: " . round($result->distance, 2) . " miles</div><br>";     
+            }  
             
         }
 		?>
@@ -931,7 +1006,7 @@ function sa_location_search()
                         var map = new google.maps.Map(document.getElementById("map_sapolicies"), firstOptions);
 
                         var firstimage = 'http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/star-3.png';
-                        var policyimage = 'http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/doc-3.png';
+                        //var policyimage = 'http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/doc-3.png';
                         
                         var firstmarker = new google.maps.Marker({
                             position: firstpt,
@@ -946,14 +1021,24 @@ function sa_location_search()
                                 $theTitle = $result->post_title;
                                 $theLat = $result->latitude;
                                 $theLng = $result->longitude;
-                                $pl = get_permalink($result->ID);    
+                                $pl = get_permalink($result->ID);
+                                 //discover sa_advocacy_target terms, assign image
+                                $terms = get_the_terms( $result->ID, 'sa_advocacy_targets' );
+                                if ( empty( $terms ) || count( $terms ) > 1 ) {
+                                    $point_icon = get_stylesheet_directory_uri() . '/img/salud_america/map_icons/multiple_adv_targets.png' ;
+                                  } else {
+                                      //If count of terms = 1 we can set an icon
+                                      foreach ( $terms as $term ) {
+                                        $point_icon = get_stylesheet_directory_uri() . '/img/salud_america/map_icons/' . $term->slug . '.png';
+                                      }
+                                  }     
                                 
                         ?>
                       
                         var marker = new google.maps.Marker({
                             position: new google.maps.LatLng(<?php echo $theLat . ", " . $theLng ?>),
                             map: map,
-                            icon: policyimage,
+                            icon: '<?php echo $point_icon; ?>',
                             html: "<b><a href='<?php echo $pl; ?>'><?php echo $theTitle; ?></a></b><br>"
                           });
                         markers.push(marker);
