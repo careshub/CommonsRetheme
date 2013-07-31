@@ -9,19 +9,19 @@ get_header(); ?>
 			<div class="padder">
 			<?php if (is_page('salud-america')) { ?>
 			<?php if ( function_exists('sa_slider') ) { sa_slider('main-page-slider'); } ?>
-				<div class="salud-banner">
+				<!-- <div class="salud-banner">
 					<img src="/wp-content/themes/CommonsRetheme/img/salud_america/salud-hand.jpg" class="no-box">
 					<h2>Plant Your <br /><span>Ideas for Change</span><br /> Today!</h2>
 					<div class="policy-search-home">
-						<h4>Search for Changes in Progress</h4>
-						<?php sa_searchpolicies(); ?>
+						<h4>Search for Changes in Progress</h4> -->
+						<?php //sa_searchpolicies(); ?>
 						<!--<form id="sa-policy-search" class="standard-form" method="get" action="/">
 						<h4>Search for Changes in Progress</h4>
 						<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="70" value="" placeholder="Enter search terms here" name="sa-policy">
 						<input class="sa-policy-search-button" type="submit" value="Search">
 						</form>-->
-					</div>
-				</div>
+					<!-- </div>
+				</div> -->
                         <?php
 			} elseif (is_page('sapolicies')) {
 				//First, display the content of the page before making the custom loop.
@@ -70,7 +70,7 @@ get_header(); ?>
 			}  elseif (is_page('sa-policy-map-search')) {
 				sa_location_search();
 			
-			}  elseif (is_child(11911)) {
+			}  elseif (is_child(150)) {
                            
 				//The number above is the id of the parent page, is 11911 on the dev server.
 				//It's 150 on DC's local install

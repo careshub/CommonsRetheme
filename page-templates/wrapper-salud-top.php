@@ -13,6 +13,8 @@
 		get_sidebar( 'salud-singlepolicy' ); 
 	} elseif ( is_page_template( 'page-templates/salud-america.php' ) || is_page_template( 'page-templates/salud-america-eloi.php' ) ) {
 		get_sidebar( 'salud-single' );
+	} else {
+		get_sidebar( 'salud-single' ); 
 	}
 
 ?>

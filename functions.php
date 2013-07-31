@@ -620,7 +620,8 @@ function cc_custom_body_class( $classes ) {
       is_page_template( 'page-templates/salud-america.php' ) 
       || is_page_template( 'page-templates/salud-america-eloi.php' ) 
       || is_singular('sapolicies')  
-      || is_singular('saresources') 
+      || is_singular('saresources')
+      || is_tax('sa_advocacy_targets')
       ) {
         $classes[] = 'salud-america';
         if(($key = array_search('full-width', $classes)) !== false) {

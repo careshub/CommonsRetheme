@@ -1061,3 +1061,14 @@ function sa_location_search()
 	<?php
 	}
 }
+
+//Make the menus reflect where we are
+//Apply current-menu-item class to nav items when child pages, related tax or CPT is active
+add_filter('nav_menu_css_class' , 'cc_filter_nav_class' , 10 , 2);
+function cc_filter_nav_class($classes, $item){
+    
+     if ( ( is_child(150) || is_singular( 'sapolicies' ) ) && $item->title == "Changes in Progress" )
+        $classes[] = "current-menu-item";
+
+     return $classes;
+}

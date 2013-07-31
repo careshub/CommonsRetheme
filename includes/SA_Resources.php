@@ -139,7 +139,7 @@ function saresource_save() {
     if ($post->post_type == 'saresources') {
        saresource_save_event_field("saresource_date");
 	   saresource_save_event_field("saresource_policy");
-       saresource_save_event_field("saresource_promote");
+       saresource_save_check_field("saresource_promote");
 	}
 }
 function saresource_save_event_field($event_field) {
@@ -150,6 +150,11 @@ function saresource_save_event_field($event_field) {
         delete_post_meta($post->ID, $event_field);
     }
 }
+function saresource_save_check_field($field) {
+    $chk = ( isset( $_POST[$field] ) && $_POST[$field] ) ? 1 : 0 ;
+		update_post_meta( get_the_ID(), $field, $chk );
+}
+
 
 function saresources_get_featured_blocks($resource_cats) {
 	//We'll loop through the entries of the array to build the queries and display the content
@@ -292,4 +297,28 @@ function salud_the_target_icons() {
 		return $output;
 	endif; //isset $target_icons
 	}
+//Need to exclude non-promoted resources from taxonomy archives. Little weird because resources have a meta to promote, but policies do not. We're going to have to _not_ match a specific meta value. This will also find resources that don't have a value! Yuck.
+// Some query filters for archive pages
+// Display upcoming events in date order on Events archive and if viewing a type_of_event taxonomy page.
+ 
+function sa_filter_unpromoted_saresources( $query ) {
+ 
+    if( (is_post_type_archive( 'saresources' ) || is_tax( 'sa_advocacy_targets' ) ) && ( !is_admin() ) && ( $query->is_main_query() )  ) {
+        //TODO: This isn't working
+        $meta = array(
+            array(
+            'key' => 'saresource_promote',
+            'value' => 0,
+            'compare' => 'NOT'
+            )
+        );
+        
+        $query->set('meta_query',$meta );
+        // $query->set('meta_key', 'event_date');
+        // $query->set('orderby', 'meta_value');
+        // $query->set('order', 'ASC');
+    }
+ 
+}
+add_action('pre_get_posts', 'sa_filter_unpromoted_saresources', 9999); 
 
