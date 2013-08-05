@@ -51,14 +51,33 @@ function cdc_dch_nav() {
 <script type="text/javascript">
 	var $j = jQuery.noConflict();
 	function navpg(x){				
-		$j("#gform_target_page_number_4").val(x.value); $j("#gform_4").trigger("submit",[true]);		
+		$j("#gform_target_page_number_4").val(x.value); $j("#gform_4").trigger("submit",[true]);	
+		$j("#steps").val(x.value);
 	}
 	function navpg2(x){				
-		$j("#gform_target_page_number_4").val(x); $j("#gform_4").trigger("submit",[true]);		
+		$j("#gform_target_page_number_4").val(x); $j("#gform_4").trigger("submit",[true]);	
+		$j("#steps").val(x);		
 	}	
+	
+	$j(document).bind('gform_post_render', function(event, form_id, current_page){
+		if (current_page == 4)
+		{
+			$j("#steps").val(3);
+		} else if (current_page == 8) {
+			$j("#steps").val(7);
+		} else if (current_page == 10) { 
+			$j("#steps").val(9);
+		} else {
+			$j("#steps").val(current_page);
+		}	
+		
+		//alert(current_page);
+	});
+	
 	$j(document).ready(function()
 	{
 		if (!getUrlVars()["navpg"]) {
+		
 		} else {
 			var pg = getUrlVars()["navpg"];			
 			navpg2(pg);
@@ -85,6 +104,7 @@ function cdc_dch_nav() {
 	
 </script>
 <?php 
+
 	$a = array(
 		'Step 1. Establish Strong Coalitions' => 2,
 		'Step 2. Define Community' => 3,
@@ -98,9 +118,9 @@ function cdc_dch_nav() {
 		'Step 10. Evaluations and Monitoring' => 14		
 	);
 
-	$pt1 = '<div style="float:right;text-align:right;">Navigate to: <select onchange="javascript:navpg(this);">';
+	$pt1 = '<div style="float:right;text-align:right;">Navigate to: <select onchange="javascript:navpg(this);" id="steps">';
 	$pt2 = '';
-	foreach($a as $val => $option) {
+	foreach($a as $option => $val) {
 		$pt2 = $pt2 . "<option value='".$val."'>".$option."</option>";			
 	}
 	$pt3 = '</select><br><input type="button" value="Take me to TACTIC" id="tacticbtn"></div>';
@@ -110,6 +130,3 @@ function cdc_dch_nav() {
 }
 
 add_shortcode( 'cdc_dch_nav', 'cdc_dch_nav' );
-
-
-
