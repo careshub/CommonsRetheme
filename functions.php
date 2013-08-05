@@ -375,6 +375,16 @@ function cc_nav_header_js_load(){
 }
 add_action('wp_enqueue_scripts', 'cc_nav_header_js_load');
 
+function wotn_modal_interruptus_js_load(){
+
+  if ( is_page('wotn') ) {
+    wp_register_script('jqSimpleModal', get_stylesheet_directory_uri().'/js/jquery.simplemodal.1.4.4.min.js">', array('jquery'), '1.4.4', true  ); 
+    wp_enqueue_script('jqSimpleModal');
+  }
+
+}
+add_action('wp_enqueue_scripts', 'wotn_modal_interruptus_js_load');
+
 
 
 /* SEARCH - replaces standard WordPress search with a unified results page
@@ -1027,3 +1037,17 @@ function ellipsis($text, $max=100, $append='&hellip;') {
 
     return preg_replace('/\w+$/','',$out).$append;
 }
+//Remove some group creation steps if the user isn't a superadmin
+function cc_remove_group_creation_steps() {
+  global $bp;
+
+  // If we're not at domain.org/groups/create/ then return false
+  // if ( !bp_is_groups_component() || !bp_is_current_action( 'create' ) )
+  //   return false;
+
+  unset( $bp->groups->group_creation_steps['blog-categories'] );
+  unset( $bp->groups->group_creation_steps['docs'] );
+
+}
+add_action( 'bp_before_create_group_content_template', 'cc_remove_group_creation_steps', 9999 );
+

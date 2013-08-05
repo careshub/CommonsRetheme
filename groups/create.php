@@ -13,6 +13,9 @@ get_header( 'buddypress' ); ?>
 		<div class="padder">
 		
 		<?php do_action( 'bp_before_create_group_content_template' ); ?>
+		<pre>
+			<?php global $bp; print_r($bp->groups->group_creation_steps); ?>
+		</pre>
 
 		<form action="<?php bp_group_creation_form_action(); ?>" method="post" id="create-group-form" class="standard-form" enctype="multipart/form-data">
 			<h3><?php _e( 'Create a Group', 'buddypress' ); ?> &nbsp;<a class="button" href="<?php echo trailingslashit( bp_get_root_domain() . '/' . bp_get_groups_root_slug() ); ?>"><?php _e( 'Groups Directory', 'buddypress' ); ?></a></h3>
