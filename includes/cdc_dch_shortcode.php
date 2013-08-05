@@ -85,9 +85,26 @@ function cdc_dch_nav() {
 	
 </script>
 <?php 
+	$a = array(
+		'Step 1. Establish Strong Coalitions' => 2,
+		'Step 2. Define Community' => 3,
+		'Step 3. Identify Vulnerable Populations' => 5,
+		'Step 4. Core Report' => 6,
+		'Step 5. Setting Priorities' => 7,
+		'Step 6. Intervention Selection' => 9,
+		'Step 7. Engage Healthcare in Selecting Priorities and Interventions' => 11,
+		'Step 8. Assess and Align Community Assets for Sustainability' => 12,
+		'Step 9. Implement Interventions' => 13,
+		'Step 10. Evaluations and Monitoring' => 14		
+	);
 
-
-	$mb = '<div style="float:right;text-align:right;">Navigate to: <select onchange="javascript:navpg(this);"><option value="2">Step 1. Establish Strong Coalitions</option><option value="3">Step 2. Define Community</option><option value="5">Step 3. Identify Vulnerable Populations</option><option value="6">Step 4. Core Report</option><option value="7">Step 5. Setting Priorities</option><option value="9">Step 6. Intervention Selection</option><option value="11">Step 7. Engage Healthcare in Selecting Priorities and Interventions</option><option value="12">Step 8. Assess and Align Community Assets for Sustainability</option><option value="13">Step 9. Implement Interventions</option><option value="14">Step 10. Evaluations and Monitoring</option></select><br><input type="button" value="Take me to TACTIC" id="tacticbtn"></div>';
+	$pt1 = '<div style="float:right;text-align:right;">Navigate to: <select onchange="javascript:navpg(this);">';
+	$pt2 = '';
+	foreach($a as $val => $option) {
+		$pt2 = $pt2 . "<option value='".$val."'>".$option."</option>";			
+	}
+	$pt3 = '</select><br><input type="button" value="Take me to TACTIC" id="tacticbtn"></div>';
+	$mb = $pt1.$pt2.$pt3;
 	return $mb;
 
 }

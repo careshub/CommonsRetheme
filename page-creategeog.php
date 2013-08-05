@@ -9,7 +9,7 @@ get_header(); ?>
 			<?php 
                         
                         //add_geographies();         
-                        
+                        sa_updatetaxons();
                         
                         
                         while ( have_posts() ) : the_post(); ?>
@@ -446,36 +446,17 @@ wp_insert_term(
 }
 
 function sa_updatetaxons() {
-	$terms = get_terms( 'geographies' )
-
+	// $terms = get_terms( 'geographies', $args );
+	// $args = array(
+	// slug=>'wyoming'
+	// );
+    // foreach ( $terms as $term ) {
+      // echo $term->name . " - " . $term->id;
+        
+    // }
 	
 	?>
-	<script type="text/javascript">
-      var dataString = "";  
-      //TODO: Make this a typical WP ajax request
-       jQuery.ajax
-       ({
-         type: "POST",               
-         url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getgeoids.php",
-         data: dataString,
-         cache: false,               
-         error: function() {
-           alert("I'm not working :(");
-         },
-         success: function(p)
-         {       
-           // console.log(p);
-           // jQuery("#sa_latlongs").html(p);
-           var coord = jQuery.parseJSON(p);
-            jQuery("#sa_latitude").val(coord.latitude);
-            jQuery("#sa_longitude").val(coord.longitude);
-      			jQuery("#sa_nelat").val(coord.nelat);
-      			jQuery("#sa_nelng").val(coord.nelng);
-      			jQuery("#sa_swlat").val(coord.swlat);
-      			jQuery("#sa_swlng").val(coord.swlng);
-         } 
-       });
-	</script>
+
 	
 	
 <?php
