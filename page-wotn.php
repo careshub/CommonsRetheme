@@ -200,10 +200,14 @@ get_header(); ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 	<div id="wotn-quickstart-kids-modal" class="modal-content" style="">
-		[gravityform id="9" name"Weight of the Nation for Kids Quickstart Guide Support"]
+		<?php echo do_shortcode( '[gravityform id="9" name="Weight of the Nation for Kids Quickstart Guide Support"]' ); ?>
+		<?php //if function_exists('gravity_form') 
+		// 		gravity_form(9, true, true, false, '', false); ?>
 	</div>
 	<div id="wotn-quickstart-modal" class="modal-content" style="">
-		[gravityform id="8" name"Weight of the Nation Quickstart Guide Support"]
+		<?php echo do_shortcode( '[gravityform id="8" name="Weight of the Nation Quickstart Guide Support"]' ); ?>
+		<?php //if function_exists('gravity_form') 
+				//gravity_form(8, true, true, false, '', false); ?>
 	</div>
 	<script type="text/javascript">
 	jQuery(function () {
