@@ -207,11 +207,11 @@ include ('getData.php');
 				
 
                   <a href="<?php echo (isset($pg) && $pg !== 'Home') ? GoToCompassPage($uriNoQuery, $loc, GetPrevPage($pg)) : ''; ?>" style="text-decoration:none;">
-                    <span class="nav-arrow"><img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/navleft.png' ?>" width="20px" style="vertical-align:middle;" /></span>
+                    <span class="nav-arrow"><img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/navleft.png' ?>" width="30px" style="vertical-align:middle;" /></span>
 
                   </a>
 
-					<select id="pageselector" name="pageselector" style="font-family:Calibri,Arial;">
+					<select id="pageselector" name="pageselector" style="font-family:Calibri,Arial;font-size:14pt;padding:5px;">
 						<?php	
 							if (isset($pg)) {
 							
@@ -227,7 +227,7 @@ include ('getData.php');
 
                   <a href="<?php echo (isset($pg) && $pg !== 'Home') ? GoToCompassPage($uriNoQuery, $loc, GetNextPage($pg)) : ''; ?>" style="text-decoration:none;">
 
-                    <span class="nav-arrow"><img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/navright.png' ?>" width="20px" style="vertical-align:middle;" /></span>
+                    <span class="nav-arrow"><img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/navright.png' ?>" width="30px" style="vertical-align:middle;" /></span>
                   </a>
                 
 				
