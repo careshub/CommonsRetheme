@@ -49,7 +49,7 @@ function SA_resources_init()
 	    'taxonomies' => array('sa_advocacy_targets', 'sa_resource_cat', 'sa_resource_type'),
 	    //'has_archive' => 'sapolicies',
 	    // 'supports' => array('title','editor','excerpt','trackbacks','custom-fields','comments','revisions','thumbnail','author','page-attributes',),
-	    'supports' => array('title','editor','comments'),
+	    'supports' => array('title','editor','comments', 'thumbnail'),
 	  	'capability_type' => 'saresources',
 	  	'map_meta_cap' => true
 		);

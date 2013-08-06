@@ -194,9 +194,9 @@ if (is_page('salud-americaresearch')) {
 								<h4><?php echo $section_title; ?></h4>
 							</a>
 							<?php while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
-                                                        //This template should be the short result
+                                                        //Use the template with the featured image thumbnail.
                                                         get_template_part( 'content', 'saresources-mini'); ?>
-                                                        </br>
+                                                        <br />
                                                         <a href="/salud-america/success-stories-topics/?topic=<?php echo $cat_slug; ?>" class="<?php echo $cat_slug; ?>  clear">See more</a>
                                                     <?php
                                                         //comments_template( '', true );

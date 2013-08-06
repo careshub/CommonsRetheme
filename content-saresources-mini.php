@@ -43,8 +43,14 @@ $resource_cats = get_the_terms( $post->ID, 'sa_resource_cat' );
 
 	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<div class="entry-content">
-			<!-- <header class="entry-header clear"> -->
-				<!-- <h1 class="entry-title"><?php the_title(); ?></h1> -->
+			<header class="entry-header clear">
+				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark">
+					<?php 
+					if ( has_post_thumbnail() ) {
+						the_post_thumbnail('feature-front-sub'); 
+						}
+					?>
+				<h1 class="entry-title"><?php the_title(); ?></h1></a>
 				<?php //echo "<br />"; ?>
 				<?php //if ( isset( $target_icons ) ) {
 					// 	foreach ($target_icons as $target_icon) {
@@ -62,10 +68,10 @@ $resource_cats = get_the_terms( $post->ID, 'sa_resource_cat' );
 					?>
 				</p> -->
 				 <!-- end .meter-box -->
-			<!-- </header> -->
+			</header>
 
 
-			<?php the_content(); ?>
+			<?php the_excerpt(); ?>
 			<?php //if ( isset($advocacy_targets) ) { ?>
 			<!-- <p class="sa-policy-meta">Advocacy targets:
 				<?php echo $advocacy_targets; ?>
