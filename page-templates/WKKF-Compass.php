@@ -303,11 +303,12 @@ include ('getData.php');
         </div>		
 		
         <div id="uxLiveFeeds" class="<?php echo ($showLive === true) ? '' : 'display-none'; ?>">
-			<img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/nola_map.jpg' ?>" width="900px" />
+			<img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/feeds.jpg' ?>" width="900px" />
 
         </div>
         <div id="uxCommunityMap" class="<?php echo ($showMap === true) ? '' : 'display-none'; ?>">
-			<img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/feeds.jpg' ?>" width="900px" />
+			<img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/nola_map.jpg' ?>" width="900px" />
+			
 
         </div>		
         <div style="text-align:right;padding:10px;"><img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/wkkf.png' ?>" /></div>  
