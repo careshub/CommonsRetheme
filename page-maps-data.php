@@ -26,7 +26,7 @@ get_header(); ?>
 							<li>
 								<h4><a href="http://maps.communitycommons.org">Map Room Beta</a></h4>
 								<!-- <a href="http://maps.communitycommons.org" class="button">Try the new tool</a> -->
-								<p>Visit the newly redesigned maproom currently in Beta. Create a map. Save it. Share it!</p>
+                                <p>Visit the newly redesigned maproom currently in Beta. Check out our <a href="http://maps.communitycommons.org/viewer/datalist.aspx">data list</a>. Create a map. Save it. Share it!</p>
 							</li>
 							<li>
 								<h4><a href="http://initiatives.communitycommons.org/tool/CC/Default.aspx?url=../maps/default.aspx">Map Room Classic</a></h4>
