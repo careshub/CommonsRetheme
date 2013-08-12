@@ -1051,3 +1051,31 @@ function cc_remove_group_creation_steps() {
 }
 add_action( 'bp_before_create_group_content_template', 'cc_remove_group_creation_steps', 9999 );
 
+function hide_group_admin_tabs($classes) {
+  if ( bp_is_groups_component() ) {
+    // if ( groups_is_user_admin( bp_loggedin_user_id(), bp_get_current_group_id() ) ) {
+    //   $classes[] = 'group-member-admin-cap';
+    // } else if ( groups_is_user_mod( bp_loggedin_user_id(), bp_get_current_group_id() ) ) {
+    //   $classes[] = 'group-member-mod-cap';
+    // }
+    //Hmmm. The group admin tabs aren't accessible by css selector
+    if ( current_user_can('manage_options') ) {
+      //Only site admins have this capability
+     $classes[] = 'site-administrator';;
+    }
+  }
+  return $classes;
+}
+add_filter( 'body_class', 'hide_group_admin_tabs', 98 );
+add_action( 'admin_footer-post-new.php', 'idealien_mediaDefault_script' );
+add_action( 'admin_footer-post.php', 'idealien_mediaDefault_script' );
+
+function idealien_mediaDefault_script()
+{
+    ?>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+wp.media.controller.Library.prototype.defaults.contentUserSetting=false;
+});
+</script>
+<?php }

@@ -2532,7 +2532,11 @@ ul.item-list li .share-buttons-below li {
 	.site-content { 
 		// float: right;
 		width: 100%;
-		article {border-bottom: 1px solid @saorange;}
+		article {
+			border-bottom: 1px solid @saorange;
+			margin-bottom: 24px;
+			margin-bottom: 1.71429rem;
+		}
 	}
 	.widget-area { 
 		// float: left; 
@@ -3590,6 +3594,9 @@ body.home-page {
 }
 //SimpleModal
 /* Overlay */
+.modal-content {
+	display: none;
+}
 #simplemodal-overlay {background-color:#000;}
 /* Container */
 #simplemodal-container {
@@ -3604,4 +3611,36 @@ body.home-page {
 }
 #simplemodal-container a {
 	// font-size:1em;
+}
+//Gravity Form overrides
+.simplemodal-container .gform_wrapper .description, 
+.simplemodal-container .gform_wrapper .gfield_description, 
+.simplemodal-container .gform_wrapper .gsection_description, 
+.simplemodal-container .gform_wrapper .instruction {
+	font-size: 0.95em;
+    line-height: 1.6;
+}
+//Hiding group admin tabs from non-site admins. This is a cheesy hack.
+.group-admin .item-list-tabs li > a[href$="/admin/blog-categories/"],
+.group-admin .item-list-tabs li > a[href$="/admin/narrative/"],
+.group-admin .item-list-tabs li > a[href$="/admin/docs/"],
+.group-admin .item-list-tabs li > a[href$="/admin/hierarchy/"],
+.group-admin .item-list-tabs li > a[href$="/admin/forum/"] { 
+	display: none;
+}
+.site-administrator.group-admin .item-list-tabs li > a[href$="/admin/blog-categories/"],
+.site-administrator.group-admin .item-list-tabs li > a[href$="/admin/narrative/"],
+.site-administrator.group-admin .item-list-tabs li > a[href$="/admin/docs/"],
+.site-administrator.group-admin .item-list-tabs li > a[href$="/admin/hierarchy/"],
+.site-administrator.group-admin .item-list-tabs li > a[href$="/admin/forum/"] { 
+	display: block;
+}
+// Tiny MCE editor overrides
+.js .bp-simple-post-form .tmce-active .wp-editor-area {
+    color: @black;
+}
+#item-body article {
+	margin-bottom: 2em;
+	padding-bottom: 2em;
+	border-bottom: 1px solid @graylight;
 }
