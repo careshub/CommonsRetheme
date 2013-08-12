@@ -30,6 +30,7 @@ get_header(); ?>
             // comments_template( '', true );              
           endwhile; // end of the loop. 
           ?>    
+                                <?php if ( function_exists('sa_location_search') ) {sa_location_search();} ?>
 				<div class="browse-topics">
 					<h3>Browse Changes by Topic</h3>
 					<?php 
