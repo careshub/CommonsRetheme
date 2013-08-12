@@ -70,8 +70,7 @@ if (is_page('salud-americaresearch')) {
         $resource_cats = array(
           'report',
           'toolkit',
-          'webinar-2',
-          'case-study'
+          'webinar-2'
         );
         ?>
 
