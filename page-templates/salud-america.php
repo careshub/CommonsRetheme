@@ -24,19 +24,12 @@ get_header(); ?>
 				</div> -->
                         <?php
 			} elseif (is_page('sapolicies')) {
-				//First, display the content of the page before making the custom loop.
-				while ( have_posts() ) : the_post();
-				$page_intro = get_the_content();
-				if ( !empty($page_intro) ) {
-					$page_intro = apply_filters('the_content', $page_intro); 
-					?>
-					<div class="sa-page-intro">
-						<?php echo $page_intro; ?>
-					</div>	
-	                <?php } //End if empty check
-                endwhile; // end of the main page loop. 
-   				?>
-                            
+         //Display the page content before making the custom loop
+          while ( have_posts() ) : the_post();
+            get_template_part( 'content', 'page-notitle' );
+            // comments_template( '', true );              
+          endwhile; // end of the loop. 
+          ?>    
 				<div class="browse-topics">
 					<h3>Browse Changes by Topic</h3>
 					<?php 
