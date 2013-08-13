@@ -1,51 +1,4 @@
 <?php
-
-function cdc_dch_grouphome()
-{ 
-	// echo "<p>This is the landing page.</p>";
-	// echo "<p>Logic Model.</p>";
-	// echo "<p>Video.</p>";
-	
-	global $current_user;
-	    $return_string = '';    
-	// $cuid = (string)$current_user->ID;
-	// $mapurl = "http://maps.communitycommons.org/api/service.svc/json/reset-dch/?id=" . $cuid . "&key=XSbJBeM6ii6JD1irnJZ1ukf4F632Upfj";
-    $form_id = 4;        
-    $cdcusers = RGFormsModel::get_leads($form_id, '45', 'ASC');
-	$count = 0;
-	// loop through all the returned results
-    foreach ($cdcusers as $cdcuser) {                
-			if ($current_user->display_name == $cdcuser['45'])
-			{
-				$count = $count + 1;
-			}            
-    }
-	 if ($count > 0) {
-	 
-	 				$return_string = '<div style="display:inline";><div style="padding:5px;"><a href="http://communitycommons.org/cdc-dch-v2/" class="button">Return to Community Health Improvement Journey</a>&nbsp;<a href="http://assessment.communitycommons.org/footprint/default.aspx?t=DCH;" class="button">Return to Footprint Tool</a>&nbsp;<a href="http://communitycommons.org/CHNA/SelectArea.aspx?reporttype=core&t=DCH&action=edit;" class="button">Return to Core Report</a></div></div>';
-
-			?>
-			<!--<input type="button" value="Return to Community Health Improvement Journey" onclick="window.location='http://communitycommons.org/cdc-dch-v2/';" />
-			<input type="button" value="Return to Footprint Tool" onclick="window.location='http://assessment.communitycommons.org/footprint/default.aspx?t=DCH';" />
-			<input type="button" value="Return to Core Report" onclick="window.location='http://communitycommons.org/CHNA/SelectArea.aspx?reporttype=core&t=DCH&action=edit';" /><br>-->
-			
-			<?php
-			//wp_redirect( 'http://assessment.communitycommons.org/Footprint/Default.aspx?t=DCH' );
-			//exit();    
-	 } else {
-	 	     $return_string = '<div><a href="http://communitycommons.org/cdc-dch-v2/" class="button">Get Started on Your Community Health Improvement Journey</a></div>';
-	
-	 ?>
-			<!--- <a href="http://communitycommons.org/cdc-dch-v2/" class="button">Get Started on Your Community Health Improvement Journey</a>--->
-	 <?php	 
-	 }
-	
-return $return_string;
-
-}
-
-add_shortcode( 'cdc_dch_grouphome', 'cdc_dch_grouphome' );
-
 function cdc_dch_nav() {
 ?>
 <style type="text/css">
@@ -180,12 +133,13 @@ function cdc_dch_nav() {
 		'Journey Overview' => 2,
 		'Step 1. Strong Coalitions' => 3,
 		'Step 2. Define Community' => 4,
-		'Step 3. Identify Vulnerable Populations' => 6,
+		'Step 3. Explore Community Needs' => 6,
 		'Step 4. Setting Priorities' => 7,
 		'Step 5. Intervention Selection' => 9,
 		'Step 6. Engage Healthcare in Selecting Priorities and Interventions' => 11,
 		'Step 7. Implement Interventions' => 12,
-		'Step 8. Evaluations and Monitoring' => 13		
+		'Step 8. Evaluations and Monitoring' => 13,
+		'Journey Summary' => 14		
 	);
 
 	$pt1 = '<div style="float:right;text-align:right;">Navigate to: <select onchange="javascript:navpg(this);" id="steps">';
@@ -193,7 +147,7 @@ function cdc_dch_nav() {
 	foreach($a as $option => $val) {
 		$pt2 = $pt2 . "<option value='".$val."'>".$option."</option>";			
 	}
-	$pt3 = '</select><br><input type="button" value="Take me to TACTIC" id="tacticbtn"></div>';
+	$pt3 = '</select></div>';
 	$mb = $pt1.$pt2.$pt3;
 	return $mb;
 
