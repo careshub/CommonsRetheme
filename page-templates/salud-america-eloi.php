@@ -79,7 +79,12 @@ if (is_page('salud-americaresearch')) {
         <h3>Latest Resources Added</h3>
         <?php saresources_get_related_resources($resource_cats);
 			
-} elseif ( is_page('whats-new') ) {
+} elseif (is_page('getting-started')) {
+
+            if ( function_exists('SA_getting_started') ) { SA_getting_started(); }        
+} 
+
+elseif ( is_page('whats-new') ) {
 
 				//First, display the content of the page before making the custom loop.
 				while ( have_posts() ) : the_post();
