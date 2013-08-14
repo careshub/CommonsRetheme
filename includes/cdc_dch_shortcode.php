@@ -1,5 +1,5 @@
 <?php
-function cdc_dch_nav() {
+function cdc_dch_top() {
 ?>
 <style type="text/css">
 .popup {z-index:10; width:700px; height:600px; background-color:#d3d3d3;border:solid 5px #bebebe; margin:0 auto;padding:15px;display:none;  
@@ -31,6 +31,7 @@ function cdc_dch_nav() {
     height: 100%;
     z-index: 90; /* makes the div the second most top layer, so it’ll lay on top of everything else EXCEPT for divs with a higher z-index (meaning the #overlay ruleset) */
 }
+.gf_progressbar_title {display:none;}
 </style>
 
 
@@ -48,21 +49,29 @@ function cdc_dch_nav() {
 		formid = 10;
 	} 
 		
-	function navpg(x){				
-		$j("#gform_target_page_number_" + formid).val(x.value); $j("#gform_" + formid).trigger("submit",[true]);	
-		$j("#steps").val(x.value);
+	function navpg(x){	
+		if (x.value=='/groups/cdc-division-of-community-health/') {		
+			location.href=x.value;
+		} else {			
+			$j("#gform_target_page_number_" + formid).val(x.value); $j("#gform_" + formid).trigger("submit",[true]);	
+			$j("#steps").val(x.value);
+		}
 	}
-	function navpg2(x){				
-		$j("#gform_target_page_number_" + formid).val(x); $j("#gform_" + formid).trigger("submit",[true]);	
-		$j("#steps").val(x);		
+	function navpg2(x){			
+		if (x=='/groups/cdc-division-of-community-health/') {
+			location.href=x;
+		} else {
+			$j("#gform_target_page_number_" + formid).val(x); $j("#gform_" + formid).trigger("submit",[true]);	
+			$j("#steps").val(x);	
+		}		
 	}	
 	
 	$j(document).bind('gform_post_render', function(event, form_id, current_page){
 		//alert("Mike's test - PAGE:" + current_page);
 	
-		if (current_page == 5)
+		if (current_page == 6)
 		{
-			$j("#steps").val(4);
+			$j("#steps").val(5);
 			$j(".gform_next_button").click(function() {			
 				var value9 = $j('input[name=input_9]:checked').val();	
 				var value20 = $j('input[name=input_20]:checked').val();
@@ -81,10 +90,10 @@ function cdc_dch_nav() {
 				}
 			});
 			
-		} else if (current_page == 8) {
-			$j("#steps").val(7);
-		} else if (current_page == 10) { 
-			$j("#steps").val(9);
+		} else if (current_page == 9) {
+			$j("#steps").val(8);
+		} else if (current_page == 11) { 
+			$j("#steps").val(10);
 		} else {
 			$j("#steps").val(current_page);
 		}	
@@ -98,7 +107,8 @@ function cdc_dch_nav() {
 		if (!getUrlVars()["navpg"]) {
 		
 		} else {
-			var pg = getUrlVars()["navpg"];			
+			var pg = getUrlVars()["navpg"];		
+			
 			navpg2(pg);
 		}	
 		$j('#tacticbtn').click(function () {		
@@ -128,21 +138,34 @@ function cdc_dch_nav() {
 </script>
 <?php 
 
+
+
+	$pt1 = '<div style="width:800px; text-align:left;position:relative;top:-20px;"><img src="http://dev.communitycommons.org/wp-content/uploads/2013/08/banner.jpg" alt="Community Health Improvement Journey" style="box-shadow: 0px 0px 0px #ffffff;"></div>';
+
+	return $pt1;
+
+}
+
+add_shortcode( 'cdc_dch_top', 'cdc_dch_top' );
+
+function cdc_dch_bot() {
 	$a = array(
-		'Name your Journey' => 1,
-		'Journey Overview' => 2,
-		'Step 1. Strong Coalitions' => 3,
-		'Step 2. Define Community' => 4,
-		'Step 3. Explore Community Needs' => 6,
-		'Step 4. Setting Priorities' => 7,
-		'Step 5. Intervention Selection' => 9,
-		'Step 6. Engage Healthcare in Selecting Priorities and Interventions' => 11,
-		'Step 7. Implement Interventions' => 12,
-		'Step 8. Evaluations and Monitoring' => 13,
-		'Journey Summary' => 14		
+		'Group Home' => '/groups/cdc-division-of-community-health/',
+		'Step 1: Journey Overview' => 1,	
+		'Step 2: Name your Journey' => 2,	
+		'Step 3: Health Equity' => 3,
+		'Step 4. Strong Coalitions' => 4,
+		'Step 5. Define Community' => 5,
+		'Step 6. Explore Community Needs' => 7,
+		'Step 7. Setting Priorities' => 8,
+		'Step 8. Intervention Selection' => 10,
+		'Step 9. Engage Healthcare in Selecting Priorities and Interventions' => 12,
+		'Step 10. Implement Interventions' => 13,
+		'Step 11. Evaluation and Monitoring' => 14,
+		'Journey Summary' => 15		
 	);
 
-	$pt1 = '<div style="width:800px; margin:0 auto;position:relative;top:-20px;"><a href="/groups/cdc-division-of-community-health/" title="Return to group home page"><img src="http://dev.communitycommons.org/wp-content/uploads/2013/08/banner.jpg" alt="Community Health Improvement Journey" style="box-shadow: 0px 0px 0px #ffffff;"></a></div><div style="float:right;text-align:right;">Navigate to: <select onchange="javascript:navpg(this);" id="steps">';
+	$pt1 = '<div style="float:right;text-align:left;position:relative;top:-60px;">Navigate to:<br /><select onchange="javascript:navpg(this);" id="steps">';
 	$pt2 = '';
 	foreach($a as $option => $val) {
 		$pt2 = $pt2 . "<option value='".$val."'>".$option."</option>";			
@@ -150,7 +173,6 @@ function cdc_dch_nav() {
 	$pt3 = '</select></div>';
 	$mb = $pt1.$pt2.$pt3;
 	return $mb;
-
 }
 
-add_shortcode( 'cdc_dch_nav', 'cdc_dch_nav' );
+add_shortcode( 'cdc_dch_bot', 'cdc_dch_bot' );
