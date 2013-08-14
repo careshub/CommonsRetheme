@@ -1070,6 +1070,13 @@ add_filter( 'body_class', 'hide_group_admin_tabs', 98 );
 add_action( 'admin_footer-post-new.php', 'idealien_mediaDefault_script' );
 add_action( 'admin_footer-post.php', 'idealien_mediaDefault_script' );
 
+add_filter("gform_field_value_uuid", "uuid");
+function uuid($value)
+{
+	$uuid = md5(uniqid(mt_rand(), true));
+    return $uuid;
+}
+
 function idealien_mediaDefault_script()
 {
     ?>
