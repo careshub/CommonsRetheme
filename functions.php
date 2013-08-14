@@ -1046,7 +1046,7 @@ function cc_remove_group_creation_steps() {
   //   return false;
 
   unset( $bp->groups->group_creation_steps['blog-categories'] );
-  unset( $bp->groups->group_creation_steps['docs'] );
+  // unset( $bp->groups->group_creation_steps['docs'] );
 
 }
 add_action( 'bp_before_create_group_content_template', 'cc_remove_group_creation_steps', 9999 );
@@ -1070,8 +1070,7 @@ add_filter( 'body_class', 'hide_group_admin_tabs', 98 );
 add_action( 'admin_footer-post-new.php', 'idealien_mediaDefault_script' );
 add_action( 'admin_footer-post.php', 'idealien_mediaDefault_script' );
 
-function idealien_mediaDefault_script()
-{
+function idealien_mediaDefault_script() {
     ?>
 <script type="text/javascript">
 jQuery(document).ready(function($){
@@ -1079,3 +1078,40 @@ wp.media.controller.Library.prototype.defaults.contentUserSetting=false;
 });
 </script>
 <?php }
+
+//Setting some defaults for child groups
+add_filter('bp_docs_force_enable_at_group_creation', 'setup_bp_docs_for_child_groups', 10, 1);
+function setup_bp_docs_for_child_groups() {
+  //If this new group is a child group of another group, we'll set up BP docs to match the parent group's setup. This piece disables the docs create step if the new group has a parent group.
+  if ( isset( $_COOKIE["bp_new_group_parent_id"] ) ) {
+    return true;
+  } else { 
+    return false;
+  }
+}
+
+add_filter('bp_docs_default_group_settings', 'bp_docs_default_settings_for_child_groups', 10, 1);
+function bp_docs_default_settings_for_child_groups($settings) {
+  //If this new group is a child group of another group, we'll set up BP docs to match the parent group's setup. This step copies the parent group's attributes over to the child group.
+  //This happens outside the groups environment, so we may have to get the parent ID from the cookie 'bp_new_group_parent_id'
+    $parent_id_cookie = $_COOKIE["bp_new_group_parent_id"] ;
+    $parent_settings = groups_get_groupmeta( $parent_id_cookie, 'bp-docs');
+    
+    if ( !empty($parent_settings) ) {
+      $settings = array(
+          'group-enable'  => isset( $parent_settings['group-enable'] ) ? $parent_settings['group-enable'] : 0,
+          'can-create'  => isset( $parent_settings['can-create'] ) ? $parent_settings['can-create'] : 'admin'
+        );
+    }
+
+    $towrite = PHP_EOL . 'Parent ID from cookie:';
+    $towrite .= print_r($parent_id_cookie, TRUE);
+    $towrite .= PHP_EOL;
+    $towrite .= print_r($settings, TRUE);    
+    $fp = fopen('bp_docs_create.txt', 'a');
+    fwrite($fp, $towrite);
+    fclose($fp);
+
+  return $settings;
+
+} 
