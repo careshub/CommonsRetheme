@@ -142,7 +142,7 @@ function cdc_dch_nav() {
 		'Journey Summary' => 14		
 	);
 
-	$pt1 = '<div style="float:right;text-align:right;">Navigate to: <select onchange="javascript:navpg(this);" id="steps">';
+	$pt1 = '<div style="width:800px; margin:0 auto;position:relative;top:-20px;"><a href="/groups/cdc-division-of-community-health/" title="Return to group home page"><img src="http://dev.communitycommons.org/wp-content/uploads/2013/08/banner.jpg" alt="Community Health Improvement Journey" style="box-shadow: 0px 0px 0px #ffffff;"></a></div><div style="float:right;text-align:right;">Navigate to: <select onchange="javascript:navpg(this);" id="steps">';
 	$pt2 = '';
 	foreach($a as $option => $val) {
 		$pt2 = $pt2 . "<option value='".$val."'>".$option."</option>";			
