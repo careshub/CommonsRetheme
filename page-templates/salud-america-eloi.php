@@ -58,9 +58,7 @@ if (is_page('salud-americaresearch')) {
    				<div class="policy-search">
   					<form id="sa-policy-search" class="standard-form" method="get" action="/">
   					<h3 style="color: #ef4036;font-size: 1.6rem;">Search for Resources</h3>
-  					<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Search for Resources." name="sa-policy">
-  					<input class="sa-policy-search-button" type="submit" value="Search">
-  					</form>
+                                        <?php if ( function_exists('sa_searchpolicies') ) { sa_searchpolicies(); } ?>
   				</div>
 
         <?php
@@ -70,8 +68,7 @@ if (is_page('salud-americaresearch')) {
         $resource_cats = array(
           'report',
           'toolkit',
-          'webinar-2',
-          'case-study'
+          'webinar-2'
         );
         ?>
 
@@ -82,7 +79,12 @@ if (is_page('salud-americaresearch')) {
         <h3>Latest Resources Added</h3>
         <?php saresources_get_related_resources($resource_cats);
 			
-} elseif ( is_page('whats-new') ) {
+} elseif (is_page('getting-started')) {
+
+            if ( function_exists('SA_getting_started') ) { SA_getting_started(); }        
+} 
+
+elseif ( is_page('whats-new') ) {
 
 				//First, display the content of the page before making the custom loop.
 				while ( have_posts() ) : the_post();

@@ -24,19 +24,13 @@ get_header(); ?>
 				</div> -->
                         <?php
 			} elseif (is_page('sapolicies')) {
-				//First, display the content of the page before making the custom loop.
-				while ( have_posts() ) : the_post();
-				$page_intro = get_the_content();
-				if ( !empty($page_intro) ) {
-					$page_intro = apply_filters('the_content', $page_intro); 
-					?>
-					<div class="sa-page-intro">
-						<?php echo $page_intro; ?>
-					</div>	
-	                <?php } //End if empty check
-                endwhile; // end of the main page loop. 
-   				?>
-                            
+         //Display the page content before making the custom loop
+          while ( have_posts() ) : the_post();
+            get_template_part( 'content', 'page-notitle' );
+            // comments_template( '', true );              
+          endwhile; // end of the loop. 
+          ?>    
+                                <?php if ( function_exists('sa_location_search') ) {sa_location_search();} ?>
 				<div class="browse-topics">
 					<h3>Browse Changes by Topic</h3>
 					<?php 
@@ -70,7 +64,7 @@ get_header(); ?>
 			}  elseif (is_page('sa-policy-map-search')) {
 				sa_location_search();
 			
-			}  elseif (is_child(150)) {
+			}  elseif (is_child(11911)) {
                            
 				//The number above is the id of the parent page, is 11911 on the dev server.
 				//It's 150 on DC's local install
