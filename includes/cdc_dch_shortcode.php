@@ -160,17 +160,18 @@ function cdc_dch_bot() {
 		'Step 7. Setting Priorities' => 8,
 		'Step 8. Intervention Selection' => 10,
 		'Step 9. Engage Healthcare in Selecting Priorities and Interventions' => 12,
-		'Step 10. Implement Interventions' => 13,
-		'Step 11. Evaluation and Monitoring' => 14,
-		'Journey Summary' => 15		
+		'Step 10. Align Community Assets' => 13,
+		'Step 11. Implement Interventions' => 14,
+		'Step 12. Evaluation and Monitoring' => 15,
+		'Journey Summary' => 16		
 	);
 
-	$pt1 = '<div style="float:right;text-align:left;position:relative;top:-60px;">Navigate to:<br /><select onchange="javascript:navpg(this);" id="steps">';
+	$pt1 = '<div style="float:right;text-align:left;position:relative;top:-60px;">Navigate to:<br /><select style="font-family:Calibri,Arial;" onchange="javascript:navpg(this);" id="steps">';
 	$pt2 = '';
 	foreach($a as $option => $val) {
 		$pt2 = $pt2 . "<option value='".$val."'>".$option."</option>";			
 	}
-	$pt3 = '</select></div>';
+	$pt3 = '</select><br /><a href="/cdc-dch-journey-feedback/" target="_blank" class="button" style="margin-top:10px;">Send us your feedback!</a></div>';
 	$mb = $pt1.$pt2.$pt3;
 	return $mb;
 }
