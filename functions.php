@@ -621,7 +621,7 @@ function add_this_script_footer(){ ?>
 /* Filter classes added to body tag to add "buddypress" if BuddyPress is active
 ***************/
 function cc_custom_body_class( $classes ) {
-     
+ 
     if ( function_exists( 'bp_is_blog_page' ) && !bp_is_blog_page() ) {
         $classes[] = 'buddypress';
       }
@@ -1120,4 +1120,15 @@ function bp_docs_default_settings_for_child_groups($settings) {
 
   return $settings;
 
-} 
+}
+
+//Include specific categories from the blog page
+add_filter('pre_get_posts', 'modify_blog_page_posts');
+function modify_blog_page_posts() {
+ // Order tunes by title
+    if( is_page( 'blog' ) && ( !is_admin() ) && ( $query->is_main_query() )  ) {
+        
+        $query->set('orderby', 'title');
+        $query->set('order', 'ASC');
+    }
+}

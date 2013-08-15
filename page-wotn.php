@@ -11,9 +11,9 @@ get_header(); ?>
 			<?php endwhile; // end of the loop. ?>
 	<!-- Quicklinks -->
 	<div class="quicklinks clear">
-	<a href="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-Quickstart-Guide.pdf" class="quarter-block button open-quickstart-kids-modal">Download the Original Series Quickstart Guide</a>
-	<a href="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-Quickstart-Guide.pdf" class="quarter-block button open-quickstart-modal">Download the Kids' Series Quickstart Guide</a>
-	<a href="http://www.communitycommons.org/wotn_sak_form/" class="quarter-block button">Share a Story From Your Event</a>
+	<a href="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-Quickstart-Guide.pdf" class="quarter-block button open-quickstart-modal">Download the Original Series Quickstart Guide</a>
+	<a href="http://www.communitycommons.org/wp-content/uploads/2013/08/WOTN-Kids.pdf" class="quarter-block button open-quickstart-kids-modal">Download the Kids' Series Quickstart Guide</a>
+	<a href="http://www.communitycommons.org/wotn_sak_form/" class="quarter-block button open-event-submission-modal">Share a Story From Your Event</a>
 	<a href="http://www.communitycommons.org/groups/weight-of-the-nation/" class="quarter-block button">Join the Weight of the Nation Group</a>
 	</div>
 	<!-- VIDEOS -->
@@ -199,29 +199,62 @@ get_header(); ?>
 
 		</div><!-- #content -->
 	</div><!-- #primary -->
+	<?php 
+		$home_url = get_home_url();
+			switch ($home_url) {
+				case 'http://commonsdev.local':
+					$id_kids = 3;
+					$id_adult = 7;
+					$id_event = 8;
+					break;
+				case 'http://www.communitycommons.org':
+					$id_kids = 8;
+					$id_adult = 7;
+					$id_event = 3;
+					break;
+				case 'http://dev.communitycommons.org':
+					$id_kids = 9;
+					$id_adult = 8;
+					$id_event = 11;
+					break;
+				default:
+					# code...
+					break;
+				}
+	?>
 	<div id="wotn-quickstart-kids-modal" class="modal-content" style="">
-		<?php echo do_shortcode( '[gravityform id="9" name="Weight of the Nation for Kids Quickstart Guide Support"]' ); ?>
+		<?php echo do_shortcode( '[gravityform id="' . $id_kids . '" name="Weight of the Nation for Kids Quickstart Guide Support"]' ); ?>
 		<?php //if function_exists('gravity_form') 
 		// 		gravity_form(9, true, true, false, '', false); ?>
 	</div>
 	<div id="wotn-quickstart-modal" class="modal-content" style="">
-		<?php echo do_shortcode( '[gravityform id="8" name="Weight of the Nation Quickstart Guide Support"]' ); ?>
+		<?php echo do_shortcode( '[gravityform id="' . $id_adult . '" name="Weight of the Nation Quickstart Guide Support"]' ); ?>
 		<?php //if function_exists('gravity_form') 
 				//gravity_form(8, true, true, false, '', false); ?>
 	</div>
+	<div id="wotn-event-submission-modal" class="modal-content" style="">
+	<?php 
+		//Get the right form IDs
+		//echo do_shortcode( '[gravityform id="' . $id_event . '" name="Weight of the Nation: Screening to Action-Quickstart Guide Event Submission" ajax="true"]' ); 
+		?>
+	</div>
+
 	<script type="text/javascript">
 	jQuery(function () {
 		  // Load modal dialog on click
 		  jQuery('.open-quickstart-kids-modal').click(function (k) {
 		    jQuery('#wotn-quickstart-kids-modal').modal({overlayClose:true, minHeight:500});
-
 		    return false;
 		  });
 		  jQuery('.open-quickstart-modal').click(function (g) {
 		    jQuery('#wotn-quickstart-modal').modal({overlayClose:true, minHeight:500});
-
 		    return false;
 		  });
+		  //This form is too large to work in a modal
+		  // jQuery('.open-event-submission-modal').click(function (u) {
+		  //   jQuery('#wotn-event-submission-modal').modal({overlayClose:true, minHeight:500});
+		  //   return false;
+		  // });
 		});
 	</script>
 
