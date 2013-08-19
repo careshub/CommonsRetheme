@@ -13,7 +13,7 @@ get_header(); ?>
 	<div class="quicklinks clear">
 	<a href="http://www.communitycommons.org/wp-content/uploads/2013/07/WOTN-Quickstart-Guide.pdf" class="quarter-block button open-quickstart-modal">Download the Original Series Quickstart Guide</a>
 	<a href="http://www.communitycommons.org/wp-content/uploads/2013/08/WOTN-Kids.pdf" class="quarter-block button open-quickstart-kids-modal">Download the Kids' Series Quickstart Guide</a>
-	<a href="http://www.communitycommons.org/wotn_sak_form/" class="quarter-block button open-event-submission-modal">Share a Story From Your Event</a>
+	<a href="http://www.communitycommons.org/wotn-event-submission/" class="quarter-block button open-event-submission-modal">Share a Story From Your Event</a>
 	<a href="http://www.communitycommons.org/groups/weight-of-the-nation/" class="quarter-block button">Join the Weight of the Nation Group</a>
 	</div>
 	<!-- VIDEOS -->
@@ -223,12 +223,12 @@ get_header(); ?>
 				}
 	?>
 	<div id="wotn-quickstart-kids-modal" class="modal-content" style="">
-		<?php echo do_shortcode( '[gravityform id="' . $id_kids . '" name="Weight of the Nation for Kids Quickstart Guide Support"]' ); ?>
+		<?php echo do_shortcode( '[gravityform id="' . $id_kids . '" title="false" description="false" name="Weight of the Nation for Kids Quickstart Guide Support"]' ); ?>
 		<?php //if function_exists('gravity_form') 
 		// 		gravity_form(9, true, true, false, '', false); ?>
 	</div>
 	<div id="wotn-quickstart-modal" class="modal-content" style="">
-		<?php echo do_shortcode( '[gravityform id="' . $id_adult . '" name="Weight of the Nation Quickstart Guide Support"]' ); ?>
+		<?php echo do_shortcode( '[gravityform id="' . $id_adult . '" title="false" description="false" name="Weight of the Nation Quickstart Guide Support"]' ); ?>
 		<?php //if function_exists('gravity_form') 
 				//gravity_form(8, true, true, false, '', false); ?>
 	</div>
