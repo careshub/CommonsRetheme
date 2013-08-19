@@ -32,19 +32,20 @@ function cdc_dch_top() {
     z-index: 90; /* makes the div the second most top layer, so it’ll lay on top of everything else EXCEPT for divs with a higher z-index (meaning the #overlay ruleset) */
 }
 .gf_progressbar_title {display:none;}
+#comments {display:none;}
 </style>
 
 
 
 
-<div id="overlay"><div class="closex"  onclick="javascript:closediv(this);return false;">[X] close</div><div><br><p><ul><li><a href="http://www.communitycommons.org/wp-content/uploads/2013/06/guidingprinciples.pdf" target="_blank">Guiding Principles</a></li><li><a href="http://www.communitycommons.org/wp-content/uploads/2013/06/practices.pdf" target="_blank">Recommended Practices for Enhancing Community Health Improvement</a></li></ul></p></div>
+<div id="overlay"><div class="closex"  onclick="javascript:closediv(this);return false;">[X] close</div><div><h2>Reflection Point Resources</h2><p><ul><li><a href="http://www.communitycommons.org/wp-content/uploads/2013/06/guidingprinciples.pdf" target="_blank">Guiding Principles</a></li><li><a href="http://www.communitycommons.org/wp-content/uploads/2013/06/practices.pdf" target="_blank">Recommended Practices for Enhancing Community Health Improvement</a></li></ul></p></div>
 </div>
 <div id="fade"></div>
 
 <script type="text/javascript">
 	var $j = jQuery.noConflict();
 	var baseurl = window.location.protocol + "//" + window.location.host + "/";
-	var formid = 4;
+	var formid = 9;
 	if (baseurl == "http://dev.communitycommons.org/") {
 		formid = 10;
 	} 
@@ -151,19 +152,18 @@ add_shortcode( 'cdc_dch_top', 'cdc_dch_top' );
 function cdc_dch_bot() {
 	$a = array(
 		'Group Home' => '/groups/cdc-division-of-community-health/',
-		'Step 1: Journey Overview' => 1,	
-		'Step 2: Name your Journey' => 2,	
-		'Step 3: Health Equity' => 3,
-		'Step 4. Strong Coalitions' => 4,
-		'Step 5. Define Community' => 5,
-		'Step 6. Explore Community Needs' => 7,
-		'Step 7. Setting Priorities' => 8,
-		'Step 8. Intervention Selection' => 10,
-		'Step 9. Engage Healthcare in Selecting Priorities and Interventions' => 12,
-		'Step 10. Align Community Assets' => 13,
-		'Step 11. Implement Interventions' => 14,
-		'Step 12. Evaluation and Monitoring' => 15,
-		'Journey Summary' => 16		
+		'Community Health Improvement Process Overview' => 1,	
+		'Name your Journey' => 2,	
+		'Step 1: Health Equity' => 3,
+		'Step 2. Strong Coalitions' => 4,
+		'Step 3. Define Community' => 5,
+		'Step 4. Explore Community Needs' => 7,
+		'Step 5. Setting Priorities' => 8,
+		'Step 6. Intervention Selection' => 10,		
+		'Step 7. Align Community Assets' => 12,
+		'Step 8. Implement Interventions' => 13,
+		'Step 9. Evaluation and Monitoring' => 14,
+		'Journey Summary' => 15		
 	);
 
 	$pt1 = '<div style="float:right;text-align:left;position:relative;top:-60px;">Navigate to:<br /><select style="font-family:Calibri,Arial;" onchange="javascript:navpg(this);" id="steps">';
