@@ -1049,7 +1049,7 @@ function cc_remove_group_creation_steps() {
   // unset( $bp->groups->group_creation_steps['docs'] );
 
 }
-add_action( 'bp_before_create_group_content_template', 'cc_remove_group_creation_steps', 9999 );
+// add_action( 'bp_before_create_group_content_template', 'cc_remove_group_creation_steps', 9999 );
 
 function hide_group_admin_tabs($classes) {
   if ( bp_is_groups_component() ) {
@@ -1123,7 +1123,7 @@ function bp_docs_default_settings_for_child_groups($settings) {
 }
 
 //Include specific categories from the blog page
-add_filter('pre_get_posts', 'modify_blog_page_posts');
+// add_filter('pre_get_posts', 'modify_blog_page_posts');
 function modify_blog_page_posts() {
  // Order tunes by title
     if( is_page( 'blog' ) && ( !is_admin() ) && ( $query->is_main_query() )  ) {
