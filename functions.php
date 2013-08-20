@@ -106,28 +106,29 @@ function bp_support_enqueue_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'bp_support_enqueue_scripts' );
 
+add_action( 'wp_enqueue_scripts', 'custom_childtheme_stylesheet_load', 99 );
 function custom_childtheme_stylesheet_load(){
-wp_register_style(
-        'custom_childtheme_stylesheet',
-        get_stylesheet_directory_uri() . '/style.css',
-        false,
-        0.2
-    );
-wp_enqueue_style( 'custom_childtheme_stylesheet' );
+  wp_deregister_style( 'twentytwelve-style' );
+  wp_register_style(
+          'commons_retheme_stylesheet',
+          get_stylesheet_uri(),
+          false,
+          0.3
+      );
+  wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
-// Twenty Twelve parent theme functions call this stylesheet, so we don't need to.
-// add_action( 'wp_print_styles', 'custom_childtheme_stylesheet_load' );
 
+add_action( 'wp_enqueue_scripts', 'parent_stylesheet_load', 1 );
 function parent_stylesheet_load(){
     wp_register_style(
             '2012_parent_stylesheet',
             get_template_directory_uri() . '/style.css',
-            false
+            false,
+            1.2
         );
     wp_enqueue_style( '2012_parent_stylesheet' );
 }
-add_action( 'wp_enqueue_scripts', 'parent_stylesheet_load', 1 );
-
+add_action( 'wp_enqueue_scripts', 'commons_ie_stylesheet_load', 99 );
 function commons_ie_stylesheet_load(){
     global $wp_styles;
     wp_register_style(
@@ -141,10 +142,7 @@ function commons_ie_stylesheet_load(){
     // wp_register_script('modernizr', get_stylesheet_directory_uri().'/includes/modernizr.custom.91496.js">', false, '0.1' );  
     // wp_enqueue_script('localScroll');
     // $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lt IE 9' );
-
-
 }
-add_action( 'wp_enqueue_scripts', 'commons_ie_stylesheet_load', 99 );
 
 function cc_wp_admin_area_stylesheet_load(){
     wp_register_style(
