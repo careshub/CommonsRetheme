@@ -43,7 +43,7 @@ bcg_loop_end();//please do not remove it
 <?php else: ?>
 
 	<div id="message" class="info">
-		<p><?php _e( 'This group has no Blog posts.', 'bcg' ); ?></p>
+		<p><?php _e( 'That post does not appear to exist.', 'bcg' ); ?></p>
 	</div>
 
 <?php endif; ?>

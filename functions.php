@@ -20,6 +20,8 @@ require_once('includes/taxonomy-sapolicytag.php');
 require_once('includes/cdc_dch_shortcode.php');
 //Shortcode for SA Policy Map Search
 require_once('includes/sa_policy_map_shortcode.php');
+//Definition of the group stories custom post type
+require_once('includes/cpt-group-stories.php');
 
 function bp_support_theme_setup() {
   global $bp;
