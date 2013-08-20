@@ -68,22 +68,8 @@ get_header(); ?>
                            
 				//The number above is the id of the parent page, is 11911 on the dev server.
 				//It's 150 on DC's local install
-				while ( have_posts() ) : the_post();
-				?>
-
-				<?php get_template_part( 'content', 'page-notitle' ); ?>
-
-                
-                <?php 
-                $page_slug = $post->post_name;
-
-                endwhile; // end of the main page loop. 
-
-                // $parent = $post->post_parent;
-                // wp_reset_query(); 
-                //echo '$page_slug ' . $page_slug; 
-				//echo '$parent ' . $parent;
-				?>
+				 
+                            if ( function_exists('SA_topics') ) {SA_topics();} ?>
                             
                                         <div class="policy-search-home">
 						<h4>Search for Changes in Progress on This Topic</h4>
