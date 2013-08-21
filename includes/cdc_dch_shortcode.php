@@ -70,9 +70,9 @@ function cdc_dch_top() {
 	$j(document).bind('gform_post_render', function(event, form_id, current_page){
 		//alert("Mike's test - PAGE:" + current_page);
 	
-		if (current_page == 6)
+		if (current_page == 5)
 		{
-			$j("#steps").val(5);
+			$j("#steps").val(4);
 			$j(".gform_next_button").click(function() {			
 				var value9 = $j('input[name=input_9]:checked').val();	
 				var value20 = $j('input[name=input_20]:checked').val();
@@ -91,10 +91,10 @@ function cdc_dch_top() {
 				}
 			});
 			
-		} else if (current_page == 9) {
-			$j("#steps").val(8);
-		} else if (current_page == 11) { 
-			$j("#steps").val(10);
+		} else if (current_page == 8) {
+			$j("#steps").val(7);
+		} else if (current_page == 10) { 
+			$j("#steps").val(9);
 		} else {
 			$j("#steps").val(current_page);
 		}	
@@ -152,17 +152,17 @@ add_shortcode( 'cdc_dch_top', 'cdc_dch_top' );
 function cdc_dch_bot() {
 	$a = array(
 		'Group Home' => '/groups/cdc-division-of-community-health/',
-		'Community Health Improvement Process Overview' => 1,	
-		'Name your Journey' => 2,	
-		'Step 1: Health Equity' => 3,
-		'Step 2. Strong Coalitions' => 4,
-		'Step 3. Define Community' => 5,
-		'Step 4. Explore Community Needs' => 7,
-		'Step 5. Setting Priorities' => 8,
-		'Step 6. Intervention Selection' => 10,		
-		'Step 7. Align Community Assets' => 12,
-		'Step 8. Implement Interventions' => 13,
-		'Step 9. Evaluation and Monitoring' => 14,
+		'Community Health Improvement Process Overview' => 1,				
+		'Step 1: Health Equity' => 2,
+		'Step 2. Strong Coalitions' => 3,
+		'Step 3. Define Community' => 4,
+		'Step 4. Explore Community Needs' => 6,
+		'Step 5. Setting Priorities' => 7,
+		'Step 6. Intervention Selection' => 9,		
+		'Step 7. Align Community Assets' => 11,
+		'Step 8. Implement Interventions' => 12,
+		'Step 9. Evaluation and Monitoring' => 13,
+		'Name your Journey' => 14,
 		'Journey Summary' => 15		
 	);
 
