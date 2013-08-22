@@ -72,7 +72,7 @@ get_header(); ?>
                             if ( function_exists('SA_topics') ) {SA_topics();} ?>
                             
                                         <div class="policy-search-home">
-						<h4>Search for Changes in Progress on This Topic</h4>
+						<h3>Search for Changes in Progress on This Topic</h3>
 						<?php sa_searchpolicies(); ?>
 						<!--<form id="sa-policy-search" class="standard-form" method="get" action="/">
 						<h4>Search for Changes in Progress</h4>
@@ -113,13 +113,16 @@ get_header(); ?>
 				$args = array(
 					'post_type' => 'sapolicies', 
 					'paged' => $paged,
-                                        'showposts' => '10',
+                                        'showposts' => '5',
 					'sa_advocacy_targets' => $page_slug,
 				);
 
 				$list_of_policies = new WP_Query( $args ); ?>
-
-				<h2>Policies that address this target area: </h2>
+                                        
+                                <!-- NEED FIX TO PULL THE RIGHT CONTENT-->        
+                                
+                                <div>        
+				<div style="width:60%" class="half-block"><h3>Latest Changes: </h3>
 
 				<?php
 				while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
@@ -130,7 +133,73 @@ get_header(); ?>
 				
 				// Add comment form to these subpages.
 				wp_reset_query();
-				comments_template( '', true );
+				
+                                ?>
+                                </div>
+                                <div style="width:25%" class="half-block">
+                                <div style="background-color:rgb(240,240,240);">
+                                <h3>Start a Change</h3>
+                                <a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/">Add a change</a> in your area!<br/><br/><a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/">
+                                    <img class=" wp-image-12449 aligncenter" alt="Health" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/images.jpg" width="120" height="120" /></a>
+                                <br/>
+                                </div> 
+                                  <br/>    
+                                <div style="background-color:rgb(240,240,240);">
+                                <h3>Success Story</h3>
+                                
+                                    <?php
+                                        $cat_object = get_term_by('slug', $cat_slug, 'sa_advocacy_targets');    
+                                    
+                                        $success = array(
+					'post_type' => 'saresources', 
+					'sa_resource_cat' => 'changemaker',
+                                        'paged' => $paged,
+                                        'showposts' => '1',
+					'sa_advocacy_targets' => $page_slug,
+                                    );
+                                     $feat_resource = new WP_Query( $success );
+                                     while ( $feat_resource->have_posts() ): $feat_resource->the_post();
+                                     //Use the template with the featured image thumbnail.
+                                     ?><h2 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></h2>
+                                     <?php 
+                                            if ( has_post_thumbnail() ) {
+						the_post_thumbnail('feature-front-sub'); 
+						}?></a><?php
+                                     endwhile
+                                         ?><br/><br/>
+                                                        <a href="/salud-america/success-stories-topics/?topic=<?php echo $page_slug; ?>" class="<?php echo $page_slug; ?>  clear">See more</a>
+                                   <br/>
+                                </div>
+                                    <br/>
+                                <div style="background-color:rgb(240,240,240);">
+                                 <h3>Resources</h3>
+                                    <?php
+                                        $cat_object = get_term_by('slug', $cat_slug, 'sa_advocacy_targets');    
+                                    
+                                        $success = array(
+					'post_type' => 'saresources', 
+                                        'paged' => $paged,
+                                        'showposts' => '1',
+					'sa_advocacy_targets' => $page_slug,
+                                    );
+                                     $feat_resource = new WP_Query( $success );
+                                     while ( $feat_resource->have_posts() ): $feat_resource->the_post();
+                                     //Use the template with the featured image thumbnail.
+                                     ?><h2 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></h2>
+                                     <?php 
+                                            if ( has_post_thumbnail() ) {
+						the_post_thumbnail('feature-front-sub'); 
+						}?></a><?php
+                                     endwhile
+                                         ?><br/><br/>
+                                                        <a href="http://dev.communitycommons.org/salud-america/saresourcespage/">See more</a>
+                                   <br/><br/>
+                                </div>
+                                
+                                </div>
+                                </div>    
+                                <?php
+                                comments_template( '', true );
 
 			} else {
 
