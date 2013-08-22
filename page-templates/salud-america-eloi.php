@@ -324,10 +324,10 @@ elseif ( is_page('whats-new') ) {
 								<img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/price-of-sugar_x90.jpg' width="70" height="70" alt='Sugary Drinks'></span></a></td>
 							    <td><table><p style="color: #92278f;"><strong>Sugary Drinks</strong></a></p>
                                                         <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=recess">Sugar-Sweetened Beverages</td></a>
+                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=sugar-sweetened-beverages">Sugar-Sweetened Beverages</td></a>
                                                         </tr>
                                                         <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=sugar-sweetened-beverages">Soda Tax</td></a>
+                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=soda-tax">Soda Tax</td></a>
                                                         </tr>                                                            
                                                         <tr>
                                                            <td><a href="/salud-america/what-is-change/browse-change?tag=water">Water</td></a>
