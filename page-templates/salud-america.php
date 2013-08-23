@@ -152,7 +152,7 @@ get_header(); ?>
                                     
                                         $success = array(
 					'post_type' => 'saresources', 
-					'sa_resource_cat' => 'changemaker',
+					'sa_resource_cat' => 'success-stories',
                                         'paged' => $paged,
                                         'showposts' => '1',
 					'sa_advocacy_targets' => $page_slug,

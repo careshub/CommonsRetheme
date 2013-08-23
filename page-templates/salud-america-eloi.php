@@ -183,7 +183,7 @@ elseif ( is_page('whats-new') ) {
 							$resource = array(
                                                             // Change these category SLUGS to suit your use.
                                                              'post_type' => 'saresources',
-                                                             'sa_resource_cat'=> 'changemaker',
+                                                             'sa_resource_cat'=> 'sucess-stories',
                                                              'showposts' => '1',
                                                              'sa_advocacy_targets' => $cat_slug,
                                                              'paged' => $paged
