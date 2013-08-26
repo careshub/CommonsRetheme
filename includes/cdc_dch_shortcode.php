@@ -85,7 +85,7 @@ function cdc_dch_top() {
 	} 
 		
 	function navpg(x){	
-		if (x.value=='/groups/cdc-division-of-community-health/') {		
+		if (x.value=='/groups/cdc-dch/') {		
 			location.href=x.value;
 		} else {			
 			$j("#gform_target_page_number_" + formid).val(x.value); $j("#gform_" + formid).trigger("submit",[true]);	
@@ -93,7 +93,7 @@ function cdc_dch_top() {
 		}
 	}
 	function navpg2(x){			
-		if (x=='/groups/cdc-division-of-community-health/') {
+		if (x=='/groups/cdc-dch/') {
 			location.href=x;
 		} else {
 			$j("#gform_target_page_number_" + formid).val(x); $j("#gform_" + formid).trigger("submit",[true]);	
@@ -139,8 +139,8 @@ function cdc_dch_top() {
 				var value30 = $j('input[name=input_30]:checked').val();
 				var value29 = $j('input[name=input_29]:checked').val();		
 				if (value28 < 3 || value32 < 3 || value31 < 3 || value30 < 3 || value29 < 3) {
-					$j("#overlay2").fadeIn();
-					$j("#fade").fadeIn();
+					//$j("#overlay2").fadeIn();
+					//$j("#fade").fadeIn();
 				}
 			});			
 		} else if (current_page == 10) { 
@@ -152,8 +152,8 @@ function cdc_dch_top() {
 				var value63 = $j('input[name=input_63]:checked').val();
 				var value64 = $j('input[name=input_64]:checked').val();		
 				if (value59 < 3 || value61 < 3 || value62 < 3 || value63 < 3 || value64 < 3) {
-					$j("#overlay3").fadeIn();
-					$j("#fade").fadeIn();
+					//$j("#overlay3").fadeIn();
+					//$j("#fade").fadeIn();
 				}
 			});					
 		} else {
@@ -212,7 +212,7 @@ add_shortcode( 'cdc_dch_top', 'cdc_dch_top' );
 
 function cdc_dch_bot() {
 	$a = array(
-		'Group Home' => '/groups/cdc-division-of-community-health/',
+		'Group Home' => '/groups/cdc-dch/',
 		'Community Health Improvement Process Overview' => 1,				
 		'Step 1: Health Equity' => 2,
 		'Step 2. Strong Coalitions' => 3,
