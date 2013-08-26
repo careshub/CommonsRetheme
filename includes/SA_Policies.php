@@ -830,6 +830,19 @@ function sa_highlight_search_results($saps,$text) {
 				return $text2;
 }
 
+function sa_searchpolicies_single() 
+{ 
+?>     <div id="cc-adv-search" class="clear">
+	<form action="search-results" method="POST" enctype="multipart/form-data" name="sa_ps_single">
+			<div class="row">
+        <input type="text" id="saps" name="saps" Placeholder="Enter search terms here" value="" />
+
+  			<input id="searchsubmit" type="submit" alt="Search" value="Search" />
+      </div>
+	
+
+<?php }
+
 
 
 function sa_location_search()
