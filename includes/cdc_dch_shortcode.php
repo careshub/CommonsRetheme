@@ -115,6 +115,7 @@ function cdc_dch_top() {
 			$j('input[name=input_56]').change(function() {			
 				var value9 = $j('input[name=input_9]:checked').val();	
 				var value20 = $j('input[name=input_20]:checked').val();
+				var value108 = $j('input[name=input_108]:checked').val();
 				var value19 = $j('input[name=input_19]:checked').val();
 				var value18 = $j('input[name=input_18]:checked').val();
 				var value17 = $j('input[name=input_17]:checked').val();
@@ -124,7 +125,7 @@ function cdc_dch_top() {
 				var value13 = $j('input[name=input_13]:checked').val();
 				var value12 = $j('input[name=input_12]:checked').val();
 				var value56 = $j('input[name=input_56]:checked').val();		
-				if (value9 < 3 || value20 < 3 || value19 < 3 || value18 < 3 || value17 < 3 || value16 < 3 || value15 < 3 || value14 < 3 || value13 < 3 || value12 < 3 || value56 < 3) {
+				if (value9 < 3 || value20 < 3 || value108 < 3 || value19 < 3 || value18 < 3 || value17 < 3 || value16 < 3 || value15 < 3 || value14 < 3 || value13 < 3 || value12 < 3 || value56 < 3) {
 					$j("#overlay1").fadeIn();
 					$j("#fade").fadeIn();
 				}
