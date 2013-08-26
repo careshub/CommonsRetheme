@@ -6,16 +6,16 @@ function cdc_dch_top() {
   position:fixed;top:50%; left:50%; margin-left:-350px; margin-top:-300px;}
 .closex {float:right;cursor:pointer;color:#0645AD;}
 .closex:hover { TEXT-DECORATION: underline; font-weight:bold; }
-#overlay {
+.overlay {
     display: none; /* ensures it’s invisible until it’s called */
     position: absolute; /* makes the div go into a position that’s absolute to the browser viewing area */
-    left: 25%; /* positions the div half way horizontally */
-    top: 25%; /* positions the div half way vertically */
+    left: 35%; /* positions the div half way horizontally */
+    top: 75%; /* positions the div half way vertically */
     padding: 25px; 
     border: 2px solid black;
     background-color: #ffffff;
-    width: 50%;
-    height: 50%;
+    width: 30%;
+    height: 30%;
     z-index: 100; /* makes the div the top layer, so it’ll lay on top of the other content */
 }
 #fade {
@@ -35,10 +35,44 @@ function cdc_dch_top() {
 #comments {display:none;}
 </style>
 
-
-
-
-<div id="overlay"><div class="closex"  onclick="javascript:closediv(this);return false;">[X] close</div><div><h2>Reflection Point Resources</h2><p><ul><li><a href="http://www.communitycommons.org/wp-content/uploads/2013/06/guidingprinciples.pdf" target="_blank">Guiding Principles</a></li><li><a href="http://www.communitycommons.org/wp-content/uploads/2013/06/practices.pdf" target="_blank">Recommended Practices for Enhancing Community Health Improvement</a></li></ul></p></div>
+<div id="overlay1" class="overlay">
+	<div class="closex"  onclick="javascript:closediv('1');return false;">[X] close</div>
+	<div>
+		<h2>Reflection Point One - Resources</h2>
+		<p>
+			<ul>
+				<li><a href="http://www.communitycommons.org/wp-content/uploads/2013/06/guidingprinciples.pdf" target="_blank">Guiding Principles</a></li>
+				<li><a href="http://www.communitycommons.org/wp-content/uploads/2013/06/practices.pdf" target="_blank">Recommended Practices for Enhancing Community Health Improvement</a></li>
+			</ul>
+		</p>
+	</div>
+	<input type="button" value="Next" id="next1" onclick="nextPg('6','1')" />
+</div>
+<div id="overlay2" class="overlay">
+	<div class="closex"  onclick="javascript:closediv('2');return false;">[X] close</div>
+	<div>
+		<h2>Reflection Point Two - Resources</h2>
+		<p>
+			<ul>
+				<li>Resource 1</li>
+				<li>Resource 2</li>
+			</ul>
+		</p>
+	</div>
+	<input type="button" value="Next" id="next2" onclick="nextPg('9','2')" />
+</div>
+<div id="overlay3" class="overlay">
+	<div class="closex"  onclick="javascript:closediv('3');return false;">[X] close</div>
+	<div>
+		<h2>Reflection Point Three - Resources</h2>
+		<p>
+			<ul>
+				<li>Resource 1</li>
+				<li>Resource 2</li>			
+			</ul>
+		</p>
+	</div>
+	<input type="button" value="Next" id="next3" onclick="nextPg('11','3')" />
 </div>
 <div id="fade"></div>
 
@@ -66,14 +100,19 @@ function cdc_dch_top() {
 			$j("#steps").val(x);	
 		}		
 	}	
+	function nextPg(x,y) {
+		$j("#gform_target_page_number_" + formid).val(x); $j("#gform_" + formid).trigger("submit",[true]);
+		$j("#steps").val(x);
+		closediv(y);
+	}
 	
 	$j(document).bind('gform_post_render', function(event, form_id, current_page){
 		//alert("Mike's test - PAGE:" + current_page);
 	
 		if (current_page == 5)
-		{
+		{			
 			$j("#steps").val(4);
-			$j(".gform_next_button").click(function() {			
+			$j('input[name=input_56]').change(function() {			
 				var value9 = $j('input[name=input_9]:checked').val();	
 				var value20 = $j('input[name=input_20]:checked').val();
 				var value19 = $j('input[name=input_19]:checked').val();
@@ -85,16 +124,38 @@ function cdc_dch_top() {
 				var value13 = $j('input[name=input_13]:checked').val();
 				var value12 = $j('input[name=input_12]:checked').val();
 				var value56 = $j('input[name=input_56]:checked').val();		
-				if (value9 < 3 || value20 < 3 || value19 < 3 || value18 < 3 || value17 < 3 || value16 < 3 || value15 < 3 || value14 < 3 || value13 < 3 || value12 < 3 || value53 < 3) {
-					$j("#overlay").show();
-					$j("#fade").show();
+				if (value9 < 3 || value20 < 3 || value19 < 3 || value18 < 3 || value17 < 3 || value16 < 3 || value15 < 3 || value14 < 3 || value13 < 3 || value12 < 3 || value56 < 3) {
+					$j("#overlay1").fadeIn();
+					$j("#fade").fadeIn();
 				}
 			});
 			
-		} else if (current_page == 8) {
+		} else if (current_page == 8) {		
 			$j("#steps").val(7);
+			$j('input[name=input_29]').change(function() {			
+				var value28 = $j('input[name=input_28]:checked').val();
+				var value32 = $j('input[name=input_32]:checked').val();
+				var value31 = $j('input[name=input_31]:checked').val();
+				var value30 = $j('input[name=input_30]:checked').val();
+				var value29 = $j('input[name=input_29]:checked').val();		
+				if (value28 < 3 || value32 < 3 || value31 < 3 || value30 < 3 || value29 < 3) {
+					$j("#overlay2").fadeIn();
+					$j("#fade").fadeIn();
+				}
+			});			
 		} else if (current_page == 10) { 
 			$j("#steps").val(9);
+			$j('input[name=input_64]').change(function() {			
+				var value59 = $j('input[name=input_59]:checked').val();
+				var value61 = $j('input[name=input_61]:checked').val();
+				var value62 = $j('input[name=input_62]:checked').val();
+				var value63 = $j('input[name=input_63]:checked').val();
+				var value64 = $j('input[name=input_64]:checked').val();		
+				if (value59 < 3 || value61 < 3 || value62 < 3 || value63 < 3 || value64 < 3) {
+					$j("#overlay3").fadeIn();
+					$j("#fade").fadeIn();
+				}
+			});					
 		} else {
 			$j("#steps").val(current_page);
 		}	
@@ -130,9 +191,9 @@ function cdc_dch_top() {
 		return vars;
 	}
 
-	function closediv(x) {
-		$j("#overlay").hide();
-		$j("#fade").hide();
+	function closediv(y) {
+		$j("#overlay" + y).fadeOut();
+		$j("#fade").fadeOut();
 	}
 
 	
