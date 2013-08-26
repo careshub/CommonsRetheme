@@ -2202,6 +2202,10 @@ h5 {
 	// }
 }
 //Sharing buttons
+.bp-share-it-container {
+	display: inline-block;
+	margin-right: 1em;
+}
 .share-buttons-below {
 		display: none;
 		overflow: hidden; /*TODO clearfix?*/
@@ -2239,6 +2243,27 @@ ul.item-list li .share-buttons-below li {
 }
 .bp-share-it-button-group {
 	float: left;
+}
+.love-it-wrapper {
+	display: inline-block;
+	margin-right: 1em;
+	.love-it-icon {
+		width: 14px;
+		height: 14px;
+		margin-right: .5em;
+		display: inline-block;
+		vertical-align: middle;
+		margin-top: -3px;
+		// default icon
+		background-position: -40px -480px ;
+	}
+	.loved .love-it-icon {
+		background-position: -40px -460px ;
+	}
+	.love-count {
+		color:@graymid;
+	}
+
 }
 
 //meters
@@ -2387,7 +2412,7 @@ ul.item-list li .share-buttons-below li {
 	-webkit-animation: none;
 	background-image: none;
 }
-.facebookx60, .searchx18, .userx18, .userx21, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24, .linkedinx24, .emailx24, .collaborationx24, .mapx24, .reportx24, .collaborationx40, .mapx40, .reportx40, .linkedinx60, .gplusx60{
+.facebookx60, .searchx18, .userx18, .userx21, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24, .linkedinx24, .emailx24, .collaborationx24, .mapx24, .reportx24, .collaborationx40, .mapx40, .reportx40, .linkedinx60, .gplusx60,.love-it-icon-loved, .love-it-icon, .share-icon{
 	background: url(img/sprites.png) no-repeat;
 }
 
@@ -2510,6 +2535,16 @@ ul.item-list li .share-buttons-below li {
 	width: 40px;
 	height: 40px;
 }
+.share-icon{
+	background-position: -70px -460px ;
+	width: 14px;
+	height: 14px;
+	margin-right: .5em;
+	margin-top: -3px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
 .primary-navigation li span.visible-mini {
 	width:auto;
 	padding: .5em 0;

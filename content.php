@@ -49,7 +49,9 @@
 		// if ( function_exists('bp_share_favorite_post_button') ) {
 		// 		bp_share_favorite_post_button( $post->ID );
 		// 	}
-
+		if ( function_exists('love_it_button') ) { 
+				love_it_button(); 
+			}
 		if ( function_exists('bp_share_post_button') ) { 
 				bp_share_post_button(); 
 			} ?>

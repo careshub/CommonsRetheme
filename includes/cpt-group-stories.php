@@ -28,8 +28,7 @@ function register_cpt_group_story() {
         'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,
-        'menu_position' => 60,
-        
+        'menu_position' => 37,
         'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
@@ -73,7 +72,6 @@ function register_taxonomy_related_groups() {
         'show_tagcloud' => false,
         'show_admin_column' => true,
         'hierarchical' => true,
-
         'rewrite' => true,
         'query_var' => true
     );
