@@ -344,7 +344,7 @@ Here’s how the site can help:</br></br></br></br>
 <a href="http://dev.communitycommons.org/wp-content/uploads/2013/03/Latino_play.jpg"><img class=" wp-image-12449 alignleft" alt="Health" src="http://dev.communitycommons.org/wp-content/uploads/2013/03/Latino_play.jpg" width="140" height="140" /></a>
 
 </br>
-<a href="http://ss">Lean about Latino childhood obesity issues</a></br>
+<a href="http://ss">Learn about Latino childhood obesity issues</a></br>
 </br>
 <a href="http://ss">Learn about <em>Salud America!</em></a>
 </div>
