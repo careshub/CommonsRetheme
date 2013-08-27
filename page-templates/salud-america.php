@@ -197,6 +197,9 @@ get_header(); ?>
 			  	// 		break;
 			  	// }
 
+                                global $post;
+                                $page_slug = get_post( $post )->post_name;
+
 				$args = array(
 					'post_type' => 'sapolicies', 
 					'paged' => $paged,
