@@ -65,7 +65,7 @@ get_header(); ?>
                                             </div>    
                                             <div class="third-block"><h4 style='text-align:center'>By Location</h4>
                                                <table>
-                                                    <tr align='center'><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Salud_Location_Map.png' style='width:100%; height: 100%; padding-left:20px;' alt='Map of Changes'></tr> 
+                                                    <tr align='center'><a href="http://dev.communitycommons.org/salud-america/sapolicies/"><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Salud_Location_Map.png' style='width:100%; height: 100%; padding-left:20px;' alt='Map of Changes'></a></tr> 
                                                     <tr><td style="text-align: center; padding-left:20px; padding-top:20px;"><a href='http://dev.communitycommons.org/salud-america/sapolicies/'>Browse changes happening in your area right now</a></td></tr>
                                                     <tr><td style="text-align: center; padding-left:20px; padding-top:20px;"><a href='http://dev.communitycommons.org/salud-america/sapolicies/'>Discover change across the country</a></td></tr>
 
