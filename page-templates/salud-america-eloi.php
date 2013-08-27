@@ -162,9 +162,14 @@ elseif ( is_page('whats-new') ) {
 
                 
 } elseif ( is_page('success-stories') ) {                
-	?>
+	//Display the page content before making the custom loop
+          while ( have_posts() ) : the_post();
+            get_template_part( 'content', 'page-notitle' );
+            // comments_template( '', true );              
+          endwhile; // end of the loop. 
+          ?>
     <div class="browse-topics">
-					<h3>Success Stories</h3>
+
 					<?php 
 						$args = array(
 							'taxonomy' => 'sa_advocacy_targets'
