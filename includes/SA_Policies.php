@@ -1201,7 +1201,7 @@ function SA_topics()
     </tr>
     <tr>
 	<td valign="top" width="345" style="vertical-align:top;"><div class="content-sapolicies entry-content"><p>Studies suggest that Latino children are less likely to meet the recommendations for daily physical activity and more likely to engage in sedentary behaviors than White children. Improving Latino parents’ perceptions about healthy weight and increasing their skills for monitoring and reinforcing their child’s activity may improve physical activity levels among Latino children. Addressing neighborhood and environmental barriers to active transport may improve active transport to recreation and physical activity sites. Structured school- and community-based programs that are culturally relevant have demonstrated some success in increasing physical activity among Latino children.</p></div></td>
-	<td valign="top" width="345">
+	<td valign="top" width="345" style="vertical-align:top;">
 		<table>
 			<tr>
 				<td>
@@ -1258,7 +1258,7 @@ if (is_page('sa-active-spaces')) {
     </tr>
     <tr>
 	<td valign="top" width="345" style="vertical-align:top;"><div class="content-sapolicies entry-content"><p>Physical activity is important for maintaining a healthy weight, yet Latino children in underserved communities often have limited access to safe places where they can be active. Shared use of “active spaces,” including gyms, athletic fields, and playgrounds, can help increase access to school facilities and other public sites for physical activity among Latino youths. Street-level improvements, such as repairing sidewalks and installing street lights and bike lanes, can help families and children walk and bike more safely to active spaces. Improving access to active spaces may help Latino youths become more physically active and maintain a healthy weight.</p></div></td>
-	<td valign="top" width="345">
+	<td valign="top" width="345" style="vertical-align:top;">
 		<table>
 			<tr>
 				<td>
@@ -1315,7 +1315,7 @@ if (is_page('sa-better-food-in-neighborhoods')) {
     </tr>
     <tr>
 	<td valign="top" width="345" style="vertical-align:top;"><div class="content-sapolicies entry-content"><p>Many Latino families do not have access to healthy affordable foods. In Latino neighborhoods, convenience stores (or small grocers like bodegas) and fast-food restaurants are widespread, but supermarkets and farmers’ markets, which can offer affordable fresh fruits and vegetables, whole-grain products, low-fat milk, and other healthy options, are scarce. Unhealthy diets can contribute to obesity. However, a variety of policy initiatives may improve the food environment and economy in underserved communities. Healthy food financing initiatives include tax credits, zoning incentives, funding, technical assistance, or equipment to spur supermarkets and farmers’ markets to locate in underserved areas. In addition, several government financing initiatives encourage corner stores to expand their offerings of healthy affordable foods. Other financing initiatives include food subsidies to expand demand and purchasing power for healthy foods by low-income consumers.</p></div></td>
-	<td valign="top" width="345">
+	<td valign="top" width="345" style="vertical-align:top;">
 		<table>
 			<tr>
 				<td>
@@ -1372,7 +1372,7 @@ if (is_page('sa-healthier-marketing')) {
     </tr>
     <tr>
 	<td valign="top" width="345" style="vertical-align:top;"><div class="content-sapolicies entry-content"><p>Many environmental, social, and cultural factors—including food and beverage marketing—may contribute to Latino youths’ dietary practices, a central component to weight status. Food industry marketing to youths is a big business, with nearly $2 billion spent annually to target this market segment. Ethnic-minority children, such as Latino youths, present a particularly attractive target to food marketers because of their increasing population size, spending power, and media exposure. However, the vast majority of food products advertised to youths are unhealthy and Latino youths are disproportionately targeted with unhealthy food ads. As concerns regarding the role food marketing plays in Latino youths’ diets as obesity increases, demand for industry regulation also is rising.</p></div></td>
-	<td valign="top" width="345">
+	<td valign="top" width="345" style="vertical-align:top;">
 		<table>
 			<tr>
 				<td>
@@ -1429,7 +1429,7 @@ if (is_page('sa-healthier-school-snacks')) {
     </tr>
     <tr>
 	<td valign="top" width="345" style="vertical-align:top;"><div class="content-sapolicies entry-content"><p>Children and adolescents consume a high proportion of their daily calories at school. Latino students are widely exposed to snacks and drinks sold in school à la carte lines, vending machines, stores, snack bars, and other venues. These items are sometimes called competitive foods because they are sold in competition with the reimbursable school meal. These snacks and drinks are often are high in fat, calories, sugar and/or salt, and offer little nutritional value. Access to snack foods and beverages in schools has a disproportionately negative health influence among Latino students, and schools with a higher proportion of Latino students tend to have weaker policies regarding access to these items. Implementing and enforcing stronger nutrition standards for snacks and drinks sold in school can help ensure Latino students have healthier choices at school and may help this growing population maintain a healthy weight.</p></div></td>
-	<td valign="top" width="345">
+	<td valign="top" width="345" style="vertical-align:top;">
 		<table>
 			<tr>
 				<td>
@@ -1486,7 +1486,7 @@ if (is_page('sa-sugary-drinks')) {
     </tr>
     <tr>
 	<td valign="top" width="345" style="vertical-align:top;"><div class="content-sapolicies entry-content"><p>Latino youths’ consumption of sugary drinks—soft drinks, sports drinks, fruit-flavored drinks, and other caloric but non-nutritious beverages—is higher than the overall average, which contributes to increased rates of obesity, diabetes, and other health issues that disproportionately affect the Latino community. Pricing interventions, including sugary drink taxes, exclusion of sugary drinks from food assistance programs, and subsidization of healthier beverages have been proposed to reduce sugary drink consumption. Among these, sugary drink taxes have been proposed in several jurisdictions, with many earmarking the new revenues for obesity-prevention and other health-promotion efforts.</p></div></td>
-	<td valign="top" width="345">
+	<td valign="top" width="345" style="vertical-align:top;">
 		<table>
 			<tr>
 				<td>
