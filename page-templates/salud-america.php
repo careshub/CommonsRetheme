@@ -246,9 +246,12 @@ get_header(); ?>
                                         'paged' => $paged,
                                         'showposts' => '1',
 					'sa_advocacy_targets' => $page_slug,
-                                    );
-                                     $feat_resource = new WP_Query( $success );
-                                     while ( $feat_resource->have_posts() ): $feat_resource->the_post();
+                                         );
+                                        
+                                        
+                                     $feat_success = new WP_Query( $success );
+                                     while ( $feat_success->have_posts() ): $feat_success->the_post();
+                                     $success[] = $post->ID;
                                      //Use the template with the featured image thumbnail.
                                      ?><h2 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></h2>
                                      <?php 
@@ -266,13 +269,14 @@ get_header(); ?>
                                     <?php
                                         $cat_object = get_term_by('slug', $cat_slug, 'sa_advocacy_targets');    
                                     
-                                        $success = array(
+                                        $resources = array(
 					'post_type' => 'saresources', 
+                                        'post__not_in' => $success,
                                         'paged' => $paged,
                                         'showposts' => '1',
 					'sa_advocacy_targets' => $page_slug,
                                     );
-                                     $feat_resource = new WP_Query( $success );
+                                     $feat_resource = new WP_Query( $resources );
                                      while ( $feat_resource->have_posts() ): $feat_resource->the_post();
                                      //Use the template with the featured image thumbnail.
                                      ?><h2 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></h2>
