@@ -157,17 +157,6 @@ get_header(); ?>
 				//It's 150 on DC's local install
 				 
                             if ( function_exists('SA_topics') ) {SA_topics();} ?>
-                            
-                                        <div class="policy-search-home">
-						<h3>Search for Changes in Progress on This Topic</h3>
-						<?php sa_searchpolicies(); ?>
-						<!--<form id="sa-policy-search" class="standard-form" method="get" action="/">
-						<h4>Search for Changes in Progress</h4>
-						<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="70" value="" placeholder="Enter search terms here" name="sa-policy">
-						<input class="sa-policy-search-button" type="submit" value="Search">
-						</form>-->
-					</div>
-
 
 				<?php //Now we make our loop
 				wp_reset_postdata();
