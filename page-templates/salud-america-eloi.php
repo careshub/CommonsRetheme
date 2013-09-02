@@ -193,18 +193,18 @@ elseif ( is_page('whats-new') ) {
                                                              'sa_advocacy_targets' => $cat_slug,
                                                              'paged' => $paged
                                                 );
-                                                        $list_of_policies = new WP_Query( $resource );
+                                                        $list_of_stories = new WP_Query( $resource );
 							?>
 						<div class="half-block salud-topic <?php echo $cat_slug; ?>">
-							<a href="/salud-america/success-stories-topics/?topic=<?php echo $cat_slug; ?>" class="<?php echo $cat_slug; ?>  clear">
+							<a href="/salud-america/success-stories/success-stories-topics?tag=<?php echo $cat_slug; ?>" class="<?php echo $cat_slug; ?>  clear">
 								<span class="<?php echo $cat_slug; ?>x60"></span>
 								<h4><?php echo $section_title; ?></h4>
 							</a>
-							<?php while ( $list_of_policies->have_posts() ): $list_of_policies->the_post();
+							<?php while ( $list_of_stories->have_posts() ): $list_of_stories->the_post();
                                                         //Use the template with the featured image thumbnail.
                                                         get_template_part( 'content', 'saresources-mini'); ?>
                                                         <br />
-                                                        <a href="/salud-america/success-stories-topics/?topic=<?php echo $cat_slug; ?>" class="<?php echo $cat_slug; ?>  clear">See more</a>
+                                                        <a href="/salud-america/success-stories/success-stories-topics?tag=<?php echo $cat_slug; ?>" class="<?php echo $cat_slug; ?>  clear">See more</a>
                                                     <?php
                                                         //comments_template( '', true );
                                                         endwhile; // end of the loop. 
@@ -215,7 +215,35 @@ elseif ( is_page('whats-new') ) {
 
 				</div>                
                 
-<?php                
+<?php
+} elseif ( is_page('success-stories-topics') ) {
+
+$tag = $_GET['tag'];
+
+$term = get_term_by ('slug', $tag, 'sa_advocacy_targets');
+
+$stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
+
+
+		$filter_args = array(
+					 'post_type' => 'saresources',
+                                         'sa_resource_cat'=> 'success-stories',
+					 'post__in' => $stories,
+);
+                    $query2 = new WP_Query($filter_args);
+		    if($query2->have_posts()) : 
+			  while($query2->have_posts()) : 
+					$query2->the_post();
+					get_template_part( 'content', 'saresources-short' ); 
+
+			  endwhile;
+		   else: 
+			  echo "No Results - Search criteria too specific";	
+		   endif;					
+                    
+
+
+
 
 } elseif ( is_page('what-is-change') ) {   
 
