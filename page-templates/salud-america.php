@@ -220,16 +220,16 @@ get_header(); ?>
                                 ?>
                                 </div>
                                 <div style="width:25%" class="half-block">
-                                <div style="background-color:rgb(240,240,240);">
-                                <h3>Start a Change</h3>
-                                <a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/">Add a change</a> in your area!<br/><br/><a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/">
+                                <div style="background-color:rgb(240,240,240);border-width: 3px; border-style: solid;border-color: lightgrey;">
+                                <h3 style='text-align:center; padding-top:0px'>Start a Change</h3>
+                                <div style="padding-left:15px"><a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/">Add a change</a> in your area!<br/><br/><a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/"></div>
                                     <img class=" wp-image-12449 aligncenter" alt="Health" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/images.jpg" width="120" height="120" /></a>
                                 <br/>
                                 </div> 
                                   <br/>    
-                                <div style="background-color:rgb(240,240,240);">
-                                <h3>Success Story</h3>
-                                
+                                <div style="background-color:rgb(240,240,240);border-width: 3px; border-style: solid;border-color: lightgrey;">
+                                <h3 style='text-align:center; padding-top:0px'>Success Story</h3>
+                                <div style="padding-left:15px;padding-right:5px">
                                     <?php
                                         $cat_object = get_term_by('slug', $cat_slug, 'sa_advocacy_targets');    
                                     
@@ -256,9 +256,11 @@ get_header(); ?>
                                                         <a href="/salud-america/success-stories-topics/?topic=<?php echo $page_slug; ?>" class="<?php echo $page_slug; ?>  clear">See more</a>
                                    <br/>
                                 </div>
+                                </div>
                                     <br/>
-                                <div style="background-color:rgb(240,240,240);">
-                                 <h3>Resources</h3>
+                                <div style="background-color:rgb(240,240,240);border-width: 3px; border-style: solid;border-color: lightgrey;">
+                                 <h3 style='text-align:center; padding-top:0px'>Resources</h3>
+                                 <div style="padding-left:15px;padding-right:5px">
                                     <?php
                                         $cat_object = get_term_by('slug', $cat_slug, 'sa_advocacy_targets');    
                                     
@@ -281,6 +283,7 @@ get_header(); ?>
                                          ?><br/><br/>
                                                         <a href="http://dev.communitycommons.org/salud-america/saresourcespage/">See more</a>
                                    <br/><br/>
+                                 </div>   
                                 </div>
                                 
                                 </div>
