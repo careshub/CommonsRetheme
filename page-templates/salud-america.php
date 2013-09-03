@@ -23,22 +23,22 @@ get_header(); ?>
 					<!-- </div>
 				</div> -->
                         
-                                            <div class="third-block">
+                                            <div style="width:170px;" class="third-block">
                                                 <table>    
-                                                    <tr><td><h3 style='float:left; text-align: center;'> Find Changes!</h3></td>
+                                                    <tr><td><h4 style='float:left; text-align: center;'> Find Changes!</h4></td>
                                                     <td><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Orange_arrow.png' style='width:50px; height:500px; float:right;' alt='Find Changes'> </td></tr>
                                                 </table>
                                                 <table>
-                                                    <tr><td><h3 style='float:left; text-align: center;'> Learn to Make Changes!</h3></td>
+                                                    <tr><td><h4 style='float:left; text-align: center;'> Learn to Make Changes!</h4></td>
                                                     <td><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Purple_arrow.png' style='width:50px; height:150px; float:right;' alt='Find Changes'> </td></tr>                                                
                                                 </table>
                                                 <table>    
-                                                    <tr><td><h3 style='float:left; text-align: center;'> Share Your Change!</h3></td>
+                                                    <tr><td><h4 style='float:left; text-align: center;'> Share Your Changes!</h4></td>
                                                     <td><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Green_arrow.png' style='width:50px; height:150px; float:right;' alt='Find Changes'> </td></tr>
                                                 </table>                                                     
                                                 </table>
                                             </div>    
-                                            <div class="third-block"><h4 style='text-align:center'>By Topic</h4>
+                                            <div style="padding-left:10px" class="third-block"><h4 style='text-align:center'>By Topic</h4>
                                                 <table>
                                                     <tr><td><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-active-play/"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/more-active-play-time_x90.jpg' style='width:100px; height: 100px; ' alt='Active Play'></a></td>
                                                     <td><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-active-spaces/"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Places-for-activity_x90.jpg' style='width:100px; height: 100px;' alt='Active Spaces'></a></td>
@@ -54,16 +54,18 @@ get_header(); ?>
                                                     <td><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-sugary-drinks/"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/price-of-sugar_x90.jpg' style='width:100px; height: 100px;' alt='sugary Drinks'></a></td>
                                                     <tr><td style="text-align: center; "><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-healthier-school-snacks/">Healthier School Snacks</td></a><td style="text-align: center;"><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-sugary-drinks/">Sugary Drinks</td></a>
                                                 </table>
-                                                <table><h4 style="text-align: center; padding-top:27px;">What's Change?</h4>
-                                                    <tr><td><img align='center' src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png' style='width:50px; height: 50px; ' alt='Active Play'></td>
+                                                <hr>
+                                                <table><h4 style="text-align: center; padding-top:0px;">What's Change?</h4>
+                                                    <tr><td><img align='center' src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png' style='width:60px; height: 60px; ' alt='Active Play'></td>
                                                     <td style='float:left;'><a href='http://dev.communitycommons.org/salud-america/what-is-change/'>Change at a glance</a></br></br></br><a href='http://dev.communitycommons.org/salud-america/what-is-change/the-science-behind-change/'>The science behind change</a></td>    
                                                 </table>
-                                                <table><h4 style="text-align: center; padding-top: 30px;">Add a Change</h4>
-                                                    <tr><td><img align='center' src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/AddChange_icon.png' style='width:50px; height: 50px; ' alt='Active Play'></td>
+                                                <hr>
+                                                <table><h4 style="text-align: center; padding-top: 0px;">Add a Change</h4>
+                                                    <tr><td><img align='center' src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/AddChange_icon.png' style='width:60px; height: 60px; ' alt='Active Play'></td>
                                                     <td style='float:left;'>Making a change?</br>We missed a change?</br></br><a href='http://dev.communitycommons.org/salud-america/share-your-own-stories/'>Add the details here</a></td>    
                                                 </table>
-                                            </div>    
-                                            <div class="third-block"><h4 style='text-align:center'>By Location</h4>
+                                            </div>
+                                            <div style="float:right;" class="third-block"><h4 style='text-align:center'>By Location</h4>
                                                <table>
                                                     <tr align='center'><a href="http://dev.communitycommons.org/salud-america/sapolicies/"><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Salud_Location_Map.png' style='width:100%; height: 100%; padding-left:20px;' alt='Map of Changes'></a></tr> 
                                                     <tr><td style="text-align: center; padding-left:20px; padding-top:20px;"><a href='http://dev.communitycommons.org/salud-america/sapolicies/'>Browse changes happening in your area right now</a></td></tr>
@@ -72,12 +74,14 @@ get_header(); ?>
                                                     <tr><td style="text-align: center; padding-left:20px;"><h4>By Keyword</h4></td></tr>
                                                     <tr><td style=" padding-left:20px;"><?php sa_searchpolicies_single(); ?></td></tr>
                                                </table>
-                                               <table><h4 style="text-align: center; padding-top:45px;">Learn to Make Changes</h4>
-                                                    <tr><td><img align='center' src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/Resoucesmakechange_icon.png' style='width:50px; height: 50px; ' alt='Active Play'></td>
-                                                    <td style='float:left;'>Use research, toolkits, and other elements to<a href='http://dev.communitycommons.org/salud-america/saresourcespage/'> learn about healthy change</a></td>    
+                                                <hr>
+                                               <table><h4 style="text-align: center; padding-top:0px;">Learn to Make Changes</h4>
+                                                    <tr><td><img align='center' src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/Resoucesmakechange_icon.png' style='width:60px; height: 60px; ' alt='Active Play'></td>
+                                                    <td style='float:left;'>Use research, toolkits, and other elements to<a href='http://dev.communitycommons.org/salud-america/saresourcespage/'> learn about healthy change</a></td>
                                                </table> 
-                                               <table><h4 style="text-align: center; padding-top: 30px; ">Be a Star!</h4>
-                                                    <tr><td><img align='center' src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png' style='width:50px; height: 50px; ' alt='Active Play'></td>
+                                                <hr>
+                                               <table><h4 style="text-align: center; padding-top: 0px; ">Be a Star!</h4>
+                                                    <tr><td><img align='center' src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png' style='width:60px; height: 60px; ' alt='Active Play'></td>
                                                     <td style='float:left;'><a href='http://dev.communitycommons.org/salud-america/share-your-own-stories/'>Share your story</a> of successful change -- we can write it up and upload it here!</td>    
                                                </table>   
                                             </div>
