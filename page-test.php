@@ -46,26 +46,67 @@ get_header(); ?>
 						endwhile;
 						?>
 
-						<p> si? </p>
-
+<!-- 						<p> si? </p>
+ -->
 		</div><!-- #content -->
 	</div><!-- #primary -->
-	<?php if (function_exists('cc_add_constant_contact')) {
-				// cc_add_constant_contact(1);
-				echo "function_exists!";
-			}
+	<?php 
+// include_once( ABSPATH . WPINC . '/class-IXR.php' );
+// include_once( ABSPATH . WPINC . '/class-wp-http-ixr-client.php' );
+// $client = new WP_HTTP_IXR_CLIENT( 'http://dev.communitycommons.org/xmlrpc.php' );
+// $client->debug = true;
 
-	//Check to see if user opted in for e-mails:
-	$email_option = get_user_meta( 6, 'newsletter', TRUE );
-	// $email_me = ( isset( $email_option[0] ) ) ? 1 : 0 ; 
-	// print_r($email_option);
+// $addition = $client->query( 'demo.addTwoNumbers', array( 55, 17 ) );
+//report 32
+//map 63
+// $hello = $client->query( 'cc.record_map_activity', array(
+// 	'username' => "dcavins", 
+// 	'password' => "mando2ba", 
+// 	// 'actor_id' => 2, 
+// 	'activity_type' => "map_created",
+// 	'item_id' => 63,
+// 	// 'sharing' => '17,26',
+// 	// 'title' => $title,
+// 	// 'description' => $description,
+// 	) 
+// );
 
-	if ( $email_option == 'agreed' ) {
-		echo '<br>This user wants spam';
-	} else {
-		echo '<br>This user is not interested.';
-	}
-	
+// cc_maps_reports_delete_activity( 63, "map_created");
+// $hello = $client->query( 'cc.record_map_activity', array(
+// 	'username' => "admin", 
+// 	'password' => "admin", 
+// 	'actor_id' => 2, 
+// 	'activity_type' => "created_map",
+// 	'id' => 176,
+// 	'sharing' => 'public'
+// 	) 
+// );
+
+// global $bp;
+// echo "<pre>";
+// print_r($bp);
+// echo "</pre>";
+
+	// Get 50 custom post types pages, set the number higher if is not slow.
+
+// $mycustomposts = get_posts( array( 'post_type' => 'sapolicies', 'number' => 250) );
+//    foreach( $mycustomposts as $mypost ) {
+     // Delete's each post.
+     // wp_delete_post( $mypost->ID, true);
+    // Set to False if you want to send them to Trash.
+   // }
+// 50 custom post types are being deleted everytime you refresh the page.
+
+						$taxonomy = 'geographies';
+
+$terms = get_terms($taxonomy);
+ $count = count($terms);
+ if ( $count > 0 ){
+
+     foreach ( $terms as $term ) {
+        wp_delete_term( $term->term_id, $taxonomy );
+     }
+ }
 
 						?>
 

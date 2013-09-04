@@ -16,6 +16,8 @@
 		get_sidebar( 'salud-singlepolicy' ); 
 	} elseif ( is_singular("sapolicies") ) {
 		get_sidebar( 'salud-singlepolicy' ); 
+	} elseif ( is_page('salud-america') ) {
+		get_sidebar( 'salud-home' );
 	} elseif ( is_page_template( 'page-templates/salud-america.php' ) || is_page_template( 'page-templates/salud-america-eloi.php' ) ) {
 		get_sidebar( 'salud-single' );
 	} else {
