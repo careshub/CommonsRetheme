@@ -115,13 +115,8 @@ get_header(); ?>
 			                                  
 
 			} elseif (is_page('sapolicies')) {
-         //Display the page content before making the custom loop
-          while ( have_posts() ) : the_post();
-            get_template_part( 'content', 'page-notitle' );
-            // comments_template( '', true );              
-          endwhile; // end of the loop. 
-          ?>    
-                                <?php if ( function_exists('sa_location_search') ) {sa_location_search();} ?>
+
+                             if ( function_exists('sa_location_search') ) {sa_location_search();} ?>
 				<div class="browse-topics">
 					<h3>Browse Changes by Topic</h3>
 					<?php 
