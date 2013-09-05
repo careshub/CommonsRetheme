@@ -56,6 +56,7 @@ function wkkf_scorecard_meta_box_add()
 function wkkf_definitions_metabox()
 {
 ?>
+
 <table>
 	<tr>
 		<td>
@@ -101,11 +102,12 @@ function wkkf_definitions_metabox()
 	<tbody>
 	  <tr id="oRow1">
 		<td><input name="outcome1" id="outcome1" type="text" size="85"></td>
-		<td><input name="baseline1" id="baseline1" type="text" size="5"></td>		
-		<td><input name="goal1" id="goal1" type="text" size="5"></td>		
+		<td><input name="baseline1" id="baseline1" type="text" size="5" class="positive-integer"></td>		
+		<td><input name="goal1" id="goal1" type="text" size="5" class="positive-integer"></td>		
 		<td>
 			<select name="measurement1" id="measurement1">
-				<option value="Percent (%)" selected>Percent (%)</option>
+				<option value="" selected disabled>---Select---</option>
+				<option value="Percent">Percent (%)</option>
 				<option value="Number">Number</option>
 			</select>
 		</td>
@@ -125,6 +127,7 @@ function wkkf_definitions_metabox()
 	}
 
     
+
  
 
 
@@ -134,8 +137,32 @@ function wkkf_definitions_metabox()
 		var lastrowNum = lastrowID.charAt(lastrowID.length-1);
 		var newrowNum = parseInt(lastrowNum) + 1;
 		
-		jQuery('#outcomeTable > tbody:last').append('<tr id="oRow' + newrowNum + '"><td><input name="outcome' + newrowNum + '" id="outcome' + newrowNum + '" type="text" size="85"></td><td><input name="baseline' + newrowNum + '" id="baseline' + newrowNum + '" type="text" size="5"></td><td><input name="goal' + newrowNum + '" id="goal' + newrowNum + '" type="text" size="5"></td><td><select name="measurement' + newrowNum + '" id="measurement' + newrowNum + '"><option value="Percent (%)" selected>Percent (%)</option><option value="Number">Number</option></select></td><td><input type="button" value="Remove" onclick="removeRow(' + newrowNum + ')" /></td></tr>');
-
+		jQuery('#outcomeTable > tbody:last').append('<tr id="oRow' + newrowNum + '"><td><input name="outcome' + newrowNum + '" id="outcome' + newrowNum + '" type="text" size="85"></td><td><input name="baseline' + newrowNum + '" id="baseline' + newrowNum + '" type="text" size="5" class="positive-integer"></td><td><input name="goal' + newrowNum + '" id="goal' + newrowNum + '" type="text" size="5" class="positive-integer"></td><td><select name="measurement' + newrowNum + '" id="measurement' + newrowNum + '"><option value="" selected disabled>---Select---</option><option value="Percent">Percent (%)</option><option value="Number">Number</option></select></td><td><input type="button" value="Remove" onclick="removeRow(' + newrowNum + ')" /></td></tr>');
+		jQuery('#outcomeTable_A > tbody:last').append('<tr><td><div id="outcome' + newrowNum + '_A"></div></td><td><input type="text" name="wkkf_C' + newrowNum + '" size="5" class="positive-integer" value="<?php echo $wkkf_C1; ?>"><div style="display:inline-block;" id="measurement' + newrowNum + '_A"></div></td><td align="right"><div id="baseline' + newrowNum + '_A"></div></td><td align="right"><div id="goal' + newrowNum + '_A"></div></td></tr>');
+			
+	
+		jQuery('#outcome' + newrowNum).blur(function() {
+			
+			jQuery('#outcome' + newrowNum + '_A').html(jQuery('#outcome' + newrowNum).val());
+		});
+		jQuery('#baseline' + newrowNum).blur(function() {
+			jQuery('#baseline' + newrowNum + '_A').html(jQuery('#baseline' + newrowNum).val());
+		});
+		jQuery('#goal' + newrowNum).blur(function() {
+			jQuery('#goal' + newrowNum + '_A').html(jQuery('#goal' + newrowNum).val());
+		});	
+		jQuery('#measurement' + newrowNum).change(function() {
+			if (jQuery('#measurement' + newrowNum).val() != "Number") {
+				jQuery('#baseline' + newrowNum + '_A').html(jQuery('#baseline' + newrowNum).val() + '%');
+				jQuery('#goal' + newrowNum + '_A').html(jQuery('#goal' + newrowNum).val() + '%');	
+				jQuery('#measurement' + newrowNum + '_A').html('%');
+			} else {
+				jQuery('#baseline' + newrowNum + '_A').html(jQuery('#baseline' + newrowNum).val());
+				jQuery('#goal' + newrowNum + '_A').html(jQuery('#goal' + newrowNum).val());
+				jQuery('#measurement' + newrowNum + '_A').html('');
+			}
+		});
+	
 	}
 	function removeRow(x) {
 		jQuery('#oRow' + x).remove();
@@ -163,114 +190,77 @@ function wkkf_childoutcomes_metabox()
 
 
 ?>
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/jquery.numeric.js'; ?>"></script>
 <div style="overflow:auto;">
-	<table>
-		<tr>
-			<td>
-				
-			</td>
-			<td align="left" style="width:150px;">
-				<strong>Current Year (<?php echo date('Y'); ?>)</strong>
-			</td>
-			<td align="right" style="width:150px;">
-				<strong>Baseline</strong>
-			</td>
-			<td align="right" style="width:150px;">	
-				<strong>Goal</strong>
-			</td>			
-		</tr>
-		<tr>
-			<td>
-				Percent of Kids Eating Healthy School Food
-			</td>
-			<td>
-				<input type="text" name="wkkf_C1" size="5" value="<?php echo $wkkf_C1; ?>">%
-			</td>
-			<td align="right">
-				5%
-			</td>
-			<td align="right">
-				28%
-			</td>			
-		</tr>
-		<tr>
-			<td>
-				Number of Daily Healthy School Meals Served
-			</td>
-			<td>
-				<input type="text" name="wkkf_C2" size="5" value="<?php echo $wkkf_C2; ?>">
-			</td>
-			<td align="right">
-				67
-			</td>
-			<td align="right">
-				31
-			</td>			
-		</tr>
-		<tr>
-			<td>
-				Percent of Schools Contracting With School Food Authorities
-			</td>
-			<td>
-				<input type="text" name="wkkf_C3" size="5">%
-			</td>
-			<td align="right">
-				%
-			</td>
-			<td align="right">
-				%
-			</td>			
-		</tr>
-		<tr>
-			<td>
-				Percent of Births with a  Healthy Birth Weight
-			</td>
-			<td>
-				<input type="text" name="wkkf_C4" size="5">%
-			</td>
-			<td align="right">
-				%
-			</td>
-			<td align="right">
-				%
-			</td>			
-		</tr>
-		<tr>
-			<td>
-				Percent of 3rd Graders Proficient in Reading
-			</td>
-			<td>
-				<input type="text" name="wkkf_C5" size="5">%
-			</td>
-			<td align="right">
-				%
-			</td>
-			<td align="right">
-				%
-			</td>			
-		</tr>		
-		<tr>
-			<td>
-				Percent of 3rd Graders Proficient in Math
-			</td>
-			<td>
-				<input type="text" name="wkkf_C6" size="5">%
-			</td>
-			<td align="right">
-				%
-			</td>
-			<td align="right">
-				%
-			</td>			
-		</tr>
+	<table id="outcomeTable_A">
+		<thead>
+			<tr>
+				<th align="left" style="width:350px;">
+					<strong>Child Outcome</strong>
+				</th>
+				<th align="left" style="width:150px;">
+					<strong>Current Year (<?php echo date('Y'); ?>)</strong>
+				</th>
+				<th align="right" style="width:150px;">
+					<strong>Baseline <div id="byear"></div></strong>
+				</th>
+				<th align="right" style="width:150px;">	
+					<strong>Goal <div id="gyear"></div></strong>
+				</th>			
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<div id="outcome1_A"></div>
+				</td>
+				<td>
+					<input type="text" name="wkkf_C1" size="5" class="positive-integer" value="<?php echo $wkkf_C1; ?>"><div style="display:inline-block;" id="measurement1_A"></div>
+				</td>
+				<td align="right">
+					<div id="baseline1_A"></div>
+				</td>
+				<td align="right">
+					<div id="goal1_A"></div>
+				</td>			
+			</tr>		
+		</tbody>
 	</table>
 </div>
 <script type="text/javascript">
 jQuery( document ).ready(function() {
-	jQuery( "#wkkf_pplace" ).change(function() {
-	  alert(this.value);
+	jQuery(".positive-integer").numeric({ decimal: false, negative: false }, function() { alert("Positive integers only"); this.value = ""; this.focus(); });
+	
+	jQuery("#byear").html("(" + new Date().getFullYear() + ")");
+	jQuery( "#baselineyear1" ).change(function() {
+	  jQuery("#byear").html("(" + jQuery( "#baselineyear1" ).val() + ")");
 	});
-    
+    jQuery("#gyear").html("(" + parseInt(new Date().getFullYear()+27) + ")");
+	jQuery( "#goalyear1" ).change(function() {
+	  jQuery("#gyear").html("(" + jQuery( "#goalyear1" ).val() + ")");
+	});
+	
+	jQuery('#outcome1').blur(function() {
+		jQuery('#outcome1_A').html(jQuery('#outcome1').val());
+	});
+	jQuery('#baseline1').blur(function() {
+		jQuery('#baseline1_A').html(jQuery('#baseline1').val());
+	});
+	jQuery('#goal1').blur(function() {
+		jQuery('#goal1_A').html(jQuery('#goal1').val());
+	});	
+	jQuery('#measurement1').change(function() {
+		if (jQuery('#measurement1').val() != "Number") {
+			jQuery('#baseline1_A').html(jQuery('#baseline1').val() + '%');
+			jQuery('#goal1_A').html(jQuery('#goal1').val() + '%');	
+			jQuery('#measurement1_A').html('%');
+		} else {
+			jQuery('#baseline1_A').html(jQuery('#baseline1').val());
+			jQuery('#goal1_A').html(jQuery('#goal1').val());
+			jQuery('#measurement1_A').html('');
+		}
+	});		
+
 });
 </script>
 <?php
