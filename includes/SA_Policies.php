@@ -142,6 +142,58 @@ function sa_geog_meta_box()
     $sa_nelng = $custom["sa_nelng"][0];
 	$sa_swlat = $custom["sa_swlat"][0];
     $sa_swlng = $custom["sa_swlng"][0];
+
+    //Walk up the geographies taxonomy from the selected geography
+    //Get the Geography term for this post
+    $geo_tax = get_the_terms( $post->ID, 'geographies' );
+
+    //Figure out which level of geography we're dealing with here. Get the term's parent, which will give us the type of geography.
+    if ( !empty( $geo_tax ) )      
+      $geo_type_terms = get_term_by( 'id', $geo_tax[0]->parent, 'geographies' );
+        // Possible Values of $geo_type_terms->name:
+        // States
+        // Counties
+        // Cities
+        // School Districts
+        // US Congressional Districts
+        // State House Districts
+        // State Senate Districts
+    switch ($geo_type_terms->name) {
+      case 'States':
+        $geo_type = 'State';
+        break;
+      case 'Counties':
+        $geo_type = 'County';
+        break;
+      case 'Cities':
+        $geo_type = 'City';
+        break;
+      case 'School Districts':
+        $geo_type = 'School District';
+        break;
+      case 'US Congressional Districts':
+        $geo_type = 'US Congressional District';
+        break;
+      case 'State House Districts':
+        $geo_type = 'State House District';
+        break;
+      case 'State Senate Districts':
+        $geo_type = 'State Senate District';
+        break;
+      default:
+        $geo_type = 'National';
+        break;
+    }
+
+    if ( !empty( $geo_type_terms ) && $geo_type_terms->parent == 0 ) {
+      //0 means we've reached the top level, so this is a state
+      $geo_tax_state = $geo_tax[0]->name;
+    } else if ( !empty( $geo_type_terms ) ) {
+      $geo_tax_state_prep = get_term_by( 'id', $geo_type_terms->parent, 'geographies' );
+      $geo_tax_state = $geo_tax_state_prep->name;
+    }
+
+
 ?>
 <style type="text/css">
     #leftcolumn, #rightcolumn, #leftcolumn2, #rightcolumn2  { width: 44%; margin-right: 3%; float: left; }
@@ -159,33 +211,56 @@ function sa_geog_meta_box()
       <li><input type="radio" name="sa_geog" id="sa_geog_state_house" value="State House District" <?php checked( $geog, 'State House District' ); ?>> <label for="sa_geog_state_house">State House District</label></li>
       <li><input type="radio" name="sa_geog" id="sa_geog_state_senate" value="State Senate District" <?php checked( $geog, 'State Senate District' ); ?>> <label for="sa_geog_state_senate">State Senate District</label></li>
     </ul>
+    <!-- <p> Geography:<pre>
+      <?php print_r($geo_tax); ?>
+    </pre>
+    </p>
+    <p> Geography type:<pre>
+      <?php print_r($geo_type_terms); 
+        echo PHP_EOL . $geo_type; ?>
+    </pre>
+    </p>
+    <p> State:<pre>
+      <?php print_r($geo_tax_state); ?>
+    </pre>
+    </p> -->
 
 </div>
 <div id="rightcolumn">
     <div id="states">
-        <?php
-  //Populate States selectbox 
-	$args5 = array(
-                'parent' => 718,
-                'hide_empty' => 0      
-	);
-        
-	$terms = get_terms( 'geographies', $args5 );
+  <?php
+    //Set up geographies
+    //Get the terms, starting by finding the starting point, which is the only term in geographies with a parent of 0
+    $geo_starting_point = array(
+                  'parent' => 0,
+                  'hide_empty' => 0     
+                  );
+    $top_level_geo = get_terms( 'geographies', $geo_starting_point );
+
+    //Populate States selectbox 
+    $state_args = array(
+                  'parent' => $top_level_geo[0]->term_id,
+                  'hide_empty' => 0      
+    );
+          
+    $state_terms = get_terms( 'geographies', $state_args );
   // echo '<pre>';
   // print_r($geog);
   // print_r($state);
   // print_r($selectedgeog);
+  // print_r($top_level_geo);
+  // print_r($state_args);
   // echo '</pre>';
         
-	if ( $terms ) {
+	if ( $state_terms ) {
     echo '<select name="sa_state" id="sa_state" class="sa_state">';
 
-  		foreach ( $terms as $term ) {
-        echo '<option value="' . $term->name . '"' ;
+  		foreach ( $state_terms as $state_term ) {
+        echo '<option value="' . $state_term->term_id . '"' ;
         if (!empty($state)) {
-          echo ( $state == $term->name ? ' selected="selected"' : '' );
+          echo ( $state == $state_term->name ? ' selected="selected"' : '' );
         }
-        echo '>'. $term->name . '</option>';
+        echo '>'. $state_term->name . '</option>';
   		}
 		echo '</select>';
 	} else {
@@ -212,6 +287,7 @@ function sa_geog_meta_box()
                                 'hide_empty' => 0,
                         );
                         $terms = get_terms( 'geographies', $args );
+                        //The old way stored the final choice as text.
                         if ( $terms ) {                    
                                 foreach ( $terms as $term ) {
                                    echo '<option value="' . $term->name . '"' ;
@@ -606,7 +682,16 @@ function sa_get_geography_prefix($geog){
    }
    return $geog_str_prefix;
 }
+
   
+function cc_get_the_geo_tax_type( $geo_term ) {
+return false;
+}
+
+function cc_get_the_geo_tax_state( $geo_term ){
+return false;
+
+}
 add_action( 'save_post', 'sapolicy_save' );
 function sapolicy_save() { 
  
