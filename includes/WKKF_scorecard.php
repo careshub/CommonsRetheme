@@ -89,20 +89,34 @@ function wkkf_definitions_metabox()
 		<td><select name="goalyear1" id="goalyear1"></select></td>	
 	</tr>
 </table>
-<table id="outcomeTable">
-	<thead>
+<table id="outcomeTable" cellpadding="5px" style="background-color:#ebebeb;border:solid 1px #dcdcdc;border-collapse:collapse;">
+	<thead style="background-color:#dcdcdc;">
 	  <tr>
-		<th align="left">Child Outcome</th>
-		<th align="left">Baseline</th>		
-		<th align="left">Goal</th>		
-		<th align="left">Measurement Method</th>
+		<th align="left" style="vertical-align:top;">Child Outcome</th>
+		<th align="left" style="vertical-align:top;">Baseline <div id="byear"></div></th>	
+		<th align="left">	
+			<strong>Benchmark year</strong>
+			<select id="selBenchYear" name="selBenchYear"></select>			
+		</th>
+		<th align="left" style="vertical-align:top;">Goal <div id="gyear"></div></th>		
+		<th align="left" style="vertical-align:top;">Measurement Method</th>
 	  </tr>
 	</thead>
 
 	<tbody>
 	  <tr id="oRow1">
 		<td><input name="outcome1" id="outcome1" type="text" size="85"></td>
-		<td><input name="baseline1" id="baseline1" type="text" size="5" class="positive-integer"></td>		
+		<td><input name="baseline1" id="baseline1" type="text" size="5" class="positive-integer"></td>	
+		<td>
+			<div>
+				Benchmarks
+		
+		
+		
+		
+		
+			</div>
+		</td>
 		<td><input name="goal1" id="goal1" type="text" size="5" class="positive-integer"></td>		
 		<td>
 			<select name="measurement1" id="measurement1">
@@ -114,7 +128,7 @@ function wkkf_definitions_metabox()
 	  </tr>
 	</tbody>
 </table>
-<input type="button" value="Add new child outcome" onclick="addRow()" />
+<p><input type="button" value="Add new child outcome" onclick="addRow()" /></p>
 <script type="text/javascript">
 
 	for (i = new Date().getFullYear()+27; i > 1990; i--)
@@ -126,23 +140,16 @@ function wkkf_definitions_metabox()
 		jQuery('#baselineyear1').append(jQuery('<option />').val(j).html(j));
 	}
 
-    
-
- 
-
-
-
 	function addRow() {
 		var lastrowID = jQuery('#outcomeTable tr:last').attr('id');
 		var lastrowNum = lastrowID.charAt(lastrowID.length-1);
 		var newrowNum = parseInt(lastrowNum) + 1;
 		
-		jQuery('#outcomeTable > tbody:last').append('<tr id="oRow' + newrowNum + '"><td><input name="outcome' + newrowNum + '" id="outcome' + newrowNum + '" type="text" size="85"></td><td><input name="baseline' + newrowNum + '" id="baseline' + newrowNum + '" type="text" size="5" class="positive-integer"></td><td><input name="goal' + newrowNum + '" id="goal' + newrowNum + '" type="text" size="5" class="positive-integer"></td><td><select name="measurement' + newrowNum + '" id="measurement' + newrowNum + '"><option value="" selected disabled>---Select---</option><option value="Percent">Percent (%)</option><option value="Number">Number</option></select></td><td><input type="button" value="Remove" onclick="removeRow(' + newrowNum + ')" /></td></tr>');
-		jQuery('#outcomeTable_A > tbody:last').append('<tr><td><div id="outcome' + newrowNum + '_A"></div></td><td><input type="text" name="wkkf_C' + newrowNum + '" size="5" class="positive-integer" value="<?php echo $wkkf_C1; ?>"><div style="display:inline-block;" id="measurement' + newrowNum + '_A"></div></td><td align="right"><div id="baseline' + newrowNum + '_A"></div></td><td align="right"><div id="goal' + newrowNum + '_A"></div></td></tr>');
+		jQuery('#outcomeTable > tbody:last').append('<tr id="oRow' + newrowNum + '"><td><input name="outcome' + newrowNum + '" id="outcome' + newrowNum + '" type="text" size="85"></td><td><input name="baseline' + newrowNum + '" id="baseline' + newrowNum + '" type="text" size="5" class="positive-integer"></td><td><div>Benchmarks</div></td><td><input name="goal' + newrowNum + '" id="goal' + newrowNum + '" type="text" size="5" class="positive-integer"></td><td><select name="measurement' + newrowNum + '" id="measurement' + newrowNum + '"><option value="" selected disabled>---Select---</option><option value="Percent">Percent (%)</option><option value="Number">Number</option></select></td><td><input type="button" value="Remove" onclick="removeRow(' + newrowNum + ')" /></td></tr>');
+		jQuery('#outcomeTable_A > tbody:last').append('<tr><td><div style="font-weight:bold;" id="outcome' + newrowNum + '_A"></div></td><td><input type="text" name="wkkf_C' + newrowNum + '" size="5" class="positive-integer" value="<?php echo $wkkf_C1; ?>"><div style="display:inline-block;" id="measurement' + newrowNum + '_A"></div></td><td align="right"><div id="baseline' + newrowNum + '_A"></div></td><td><div>Benchmarks</div></td><td align="right"><div id="goal' + newrowNum + '_A"></div></td></tr>');
 			
 	
-		jQuery('#outcome' + newrowNum).blur(function() {
-			
+		jQuery('#outcome' + newrowNum).blur(function() {			
 			jQuery('#outcome' + newrowNum + '_A').html(jQuery('#outcome' + newrowNum).val());
 		});
 		jQuery('#baseline' + newrowNum).blur(function() {
@@ -192,35 +199,42 @@ function wkkf_childoutcomes_metabox()
 ?>
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/js/jquery.numeric.js'; ?>"></script>
 <div style="overflow:auto;">
-	<table id="outcomeTable_A">
-		<thead>
+	<table id="outcomeTable_A" cellpadding="5px" style="background-color:#ebebeb;border:solid 1px #dcdcdc;border-collapse:collapse;">
+		<thead style="background-color:#dcdcdc;">
 			<tr>
-				<th align="left" style="width:350px;">
+				<th align="left" style="width:350px;vertical-align:top;">
 					<strong>Child Outcome</strong>
 				</th>
-				<th align="left" style="width:150px;">
+				<th align="left" style="width:150px;vertical-align:top;">
+					<strong>Baseline <div id="byear_A"></div></strong>
+				</th>
+				<th align="left" style="width:150px;vertical-align:top;">
 					<strong>Current Year (<?php echo date('Y'); ?>)</strong>
+				</th>		
+				<th align="left">
+					<strong>Benchmarks</strong>
+					<select id="selBenchYear_A" name="selBenchYear_A"></select>
 				</th>
-				<th align="right" style="width:150px;">
-					<strong>Baseline <div id="byear"></div></strong>
-				</th>
-				<th align="right" style="width:150px;">	
-					<strong>Goal <div id="gyear"></div></strong>
+				<th align="left" style="width:150px;vertical-align:top;">	
+					<strong>Goal <div id="gyear_A"></div></strong>
 				</th>			
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td>
-					<div id="outcome1_A"></div>
+					<div style="font-weight:bold;" id="outcome1_A"></div>
 				</td>
-				<td>
-					<input type="text" name="wkkf_C1" size="5" class="positive-integer" value="<?php echo $wkkf_C1; ?>"><div style="display:inline-block;" id="measurement1_A"></div>
-				</td>
-				<td align="right">
+				<td align="left">
 					<div id="baseline1_A"></div>
 				</td>
-				<td align="right">
+				<td align="left">
+					<input type="text" name="wkkf_C1" size="5" class="positive-integer" value="<?php echo $wkkf_C1; ?>"><div style="display:inline-block;" id="measurement1_A"></div>
+				</td>	
+				<td align="left">
+					Benchmarks
+				</td>
+				<td align="left">
 					<div id="goal1_A"></div>
 				</td>			
 			</tr>		
@@ -231,13 +245,50 @@ function wkkf_childoutcomes_metabox()
 jQuery( document ).ready(function() {
 	jQuery(".positive-integer").numeric({ decimal: false, negative: false }, function() { alert("Positive integers only"); this.value = ""; this.focus(); });
 	
-	jQuery("#byear").html("(" + new Date().getFullYear() + ")");
+
 	jQuery( "#baselineyear1" ).change(function() {
-	  jQuery("#byear").html("(" + jQuery( "#baselineyear1" ).val() + ")");
+		//jQuery("#byear").html("(" + jQuery( "#baselineyear1" ).val() + ")");
+		//jQuery("#byear_A").html("(" + jQuery( "#baselineyear1" ).val() + ")");
+	  	var goalyr = parseInt(jQuery( "#goalyear1" ).val());
+		var baseyr = parseInt(jQuery( "#baselineyear1" ).val());	
+		jQuery('#selBenchYear')
+		    .find('option')
+			.remove()
+			.end()
+			;
+		jQuery('#selBenchYear_A')
+		    .find('option')
+			.remove()
+			.end()
+			;
+		for (i = baseyr; i < goalyr; i++)
+		{    
+			
+			jQuery('#selBenchYear').append(jQuery('<option />').val(i).html(i));
+			jQuery('#selBenchYear_A').append(jQuery('<option />').val(i).html(i));
+		}
 	});
-    jQuery("#gyear").html("(" + parseInt(new Date().getFullYear()+27) + ")");
+
 	jQuery( "#goalyear1" ).change(function() {
-	  jQuery("#gyear").html("(" + jQuery( "#goalyear1" ).val() + ")");
+		//jQuery("#gyear").html("(" + jQuery( "#goalyear1" ).val() + ")");
+		//jQuery("#gyear_A").html("(" + jQuery( "#goalyear1" ).val() + ")");
+	  	var goalyr = parseInt(jQuery( "#goalyear1" ).val());
+		var baseyr = parseInt(jQuery( "#baselineyear1" ).val());	
+		jQuery('#selBenchYear')
+		    .find('option')
+			.remove()
+			.end()
+			;
+		jQuery('#selBenchYear_A')
+		    .find('option')
+			.remove()
+			.end()
+			;		
+		for (i = baseyr; i < goalyr; i++)
+		{    
+			jQuery('#selBenchYear').append(jQuery('<option />').val(i).html(i));
+			jQuery('#selBenchYear_A').append(jQuery('<option />').val(i).html(i));
+		}
 	});
 	
 	jQuery('#outcome1').blur(function() {
@@ -261,6 +312,9 @@ jQuery( document ).ready(function() {
 		}
 	});		
 
+	
+	jQuery("#goalyear1").trigger("change");
+	
 });
 </script>
 <?php
