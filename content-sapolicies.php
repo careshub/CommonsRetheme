@@ -31,7 +31,9 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 // echo $policy_tags;
 
 // echo '<pre>';
-// print_r($custom_fields); 
+// print_r($terms); 
+// echo PHP_EOL . $post->ID . PHP_EOL;
+// print_r($advocacy_targets_id_array);
 // echo '</pre>';
 
 // echo "<br />";

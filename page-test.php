@@ -89,24 +89,24 @@ get_header(); ?>
 
 	// Get 50 custom post types pages, set the number higher if is not slow.
 
-// $mycustomposts = get_posts( array( 'post_type' => 'sapolicies', 'number' => 250) );
-//    foreach( $mycustomposts as $mypost ) {
+$mycustomposts = get_posts( array( 'post_type' => 'sapolicies', 'number' => 250) );
+   foreach( $mycustomposts as $mypost ) {
      // Delete's each post.
-     // wp_delete_post( $mypost->ID, true);
+     wp_delete_post( $mypost->ID, true);
     // Set to False if you want to send them to Trash.
-   // }
+   }
 // 50 custom post types are being deleted everytime you refresh the page.
 
-						$taxonomy = 'geographies';
+// 						$taxonomy = 'geographies';
 
-$terms = get_terms($taxonomy);
- $count = count($terms);
- if ( $count > 0 ){
+// $terms = get_terms($taxonomy);
+//  $count = count($terms);
+//  if ( $count > 0 ){
 
-     foreach ( $terms as $term ) {
-        wp_delete_term( $term->term_id, $taxonomy );
-     }
- }
+//      foreach ( $terms as $term ) {
+//         wp_delete_term( $term->term_id, $taxonomy );
+//      }
+//  }
 
 						?>
 

@@ -50,34 +50,57 @@
 				wp_nav_menu( $args );
 				?>
 		</div>
+		<ul class="salud-success-stories-sidebar">
+			<h3>Success Stories</h3>
+				<?php 
+				//Loop to display the most recent changemaker featured image for eah target area.
+				$advocacy_targets = get_terms('sa_advocacy_targets');
+				// echo '<pre>';
+				// print_r($advocacy_targets);
+				// echo '</pre>';
+				$do_not_duplicate = array();
+				foreach ($advocacy_targets as $target) {
+					//Build the query
+					$args = array (
+						'post_type' => 'saresources',
+						// 'sa_advocacy_targets' => $target->slug,
+						// 'sa_resource_cat' => 'success-stories',
+						'posts_per_page' => 1,
+						'post__not_in' => $do_not_duplicate,
+						'tax_query' => array(
+							'relation' => 'AND',
+							array(
+								'taxonomy' => 'sa_advocacy_targets',
+								'field' => 'slug',
+								'terms' => array( $target->slug )
+							),
+							array(
+								'taxonomy' => 'sa_resource_cat',
+								'field' => 'slug',
+								'terms' => array( 'success-stories' ),
+							)
+						)
+						);
+					$ssquery = new WP_Query( $args );
+					while ( $ssquery->have_posts() ) {
+						$ssquery->the_post();
+						global $post;
+						setup_postdata( $post );
+						echo '<li><h5>' . $target->name . '</h5>';
+						if ( has_post_thumbnail()) : ?>
+						   	<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
+						   	<?php the_post_thumbnail('small'); ?>
+						   	</a>
+						<?php
+						endif;
+						echo get_the_title() . '</li>';
+						// print_r($do_not_duplicate);
+						$do_not_duplicate[] = get_the_ID();
+					}
+					wp_reset_postdata();
 
-		<?php 
-		//Loop to display the most recent changemaker featured image for eah target area.
-		$advocacy_targets = get_terms('sa_advocacy_targets');
-		// echo '<pre>';
-		// print_r($advocacy_targets);
-		// echo '</pre>';
-		$do_not_duplicate = array();
-		foreach ($advocacy_targets as $target) {
-			//Build the query
-			$args = array (
-				'post_type' => 'saresources',
-				'sa_advocacy_targets' => $target->slug,
-				'sa_resource_cat' => 'success-stories',
-				'posts_per_page' => 1,
-				'post__not_in' => $do_not_duplicate,
-				);
-			$ssquery = new WP_Query( $args );
-			while ( $ssquery->have_posts() ) {
-				$ssquery->the_post();
-				echo '<li>' . get_the_title() . ' | '. get_the_ID() . '</li>';
-				print_r($do_not_duplicate);
-				$do_not_duplicate[] = get_the_ID();
-			}
 
-
-		} //End foreach
-
-
+				} //End foreach
 		?>
+		</ul>
 		</div><!-- #secondary -->
