@@ -278,10 +278,10 @@ jQuery( document ).ready(function() {
 			jQuery('#selBenchYear').append(jQuery('<option />').val(i).html(i));
 			jQuery('#selBenchYear_A').append(jQuery('<option />').val(i).html(i));
 			if (i == baseyr) {
-				benchyearStr = benchyearStr + '<div id="bench1_' + i + '"><table><tr><td><input type="text" name="bench1Q1_' + i + '" id="bench1Q1_' + i + '" placeholder="Qtr 1" class="positive-integer" size="5" /></td><td><input type="text" name="bench1Q2_' + i + '" id="bench1Q2_' + i + '" placeholder="Qtr 2" class="positive-integer" size="5" /></td><td><input type="text" name="bench1Q3_' + i + '" id="bench1Q3_' + i + '" placeholder="Qtr 3" class="positive-integer" size="5" /></td><td><input type="text" name="bench1Q4_' + i + '" id="bench1Q4_' + i + '" placeholder="Qtr 4" class="positive-integer" size="5" /></td></tr></table></div>';
+				benchyearStr = benchyearStr + '<div id="bench1_' + i + '" class="' + i + ' benchmark"><table><tr><td><input type="text" name="bench1Q1_' + i + '" id="bench1Q1_' + i + '" placeholder="Qtr 1, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q2_' + i + '" id="bench1Q2_' + i + '" placeholder="Qtr 2, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q3_' + i + '" id="bench1Q3_' + i + '" placeholder="Qtr 3, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q4_' + i + '" id="bench1Q4_' + i + '" placeholder="Qtr 4, ' + i + '" class="positive-integer" size="10" /></td></tr></table></div>';
 			} else {
-				benchyearStr = benchyearStr + '<div id="bench1_' + i + '" style="display:none;"><table><tr><td><input type="text" name="bench1Q1_' + i + '" id="bench1Q1_' + i + '" placeholder="Qtr 1" class="positive-integer" size="5" /></td><td><input type="text" name="bench1Q2_' + i + '" id="bench1Q2_' + i + '" placeholder="Qtr 2" class="positive-integer" size="5" /></td><td><input type="text" name="bench1Q3_' + i + '" id="bench1Q3_' + i + '" placeholder="Qtr 3" class="positive-integer" size="5" /></td><td><input type="text" name="bench1Q4_' + i + '" id="bench1Q4_' + i + '" placeholder="Qtr 4" class="positive-integer" size="5" /></td></tr></table></div>';		
-			}			
+				benchyearStr = benchyearStr + '<div id="bench1_' + i + '"  class="' + i + ' benchmark" style="display:none;"><table><tr><td><input type="text" name="bench1Q1_' + i + '" id="bench1Q1_' + i + '" placeholder="Qtr 1, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q2_' + i + '" id="bench1Q2_' + i + '" placeholder="Qtr 2, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q3_' + i + '" id="bench1Q3_' + i + '" placeholder="Qtr 3, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q4_' + i + '" id="bench1Q4_' + i + '" placeholder="Qtr 4, ' + i + '" class="positive-integer" size="10" /></td></tr></table></div>';		
+			}		
 		}
 		jQuery('#benchmarks1').html(benchyearStr);		
 	});
@@ -307,9 +307,9 @@ jQuery( document ).ready(function() {
 			jQuery('#selBenchYear').append(jQuery('<option />').val(i).html(i));
 			jQuery('#selBenchYear_A').append(jQuery('<option />').val(i).html(i));
 			if (i == baseyr) {
-				benchyearStr = benchyearStr + '<div id="bench1_' + i + '" class="' + i + ' benchmark"><table><tr><td><input type="text" name="bench1Q1_' + i + '" id="bench1Q1_' + i + '" placeholder="Qtr 1" class="positive-integer" size="5" /></td><td><input type="text" name="bench1Q2_' + i + '" id="bench1Q2_' + i + '" placeholder="Qtr 2" class="positive-integer" size="5" /></td><td><input type="text" name="bench1Q3_' + i + '" id="bench1Q3_' + i + '" placeholder="Qtr 3" class="positive-integer" size="5" /></td><td><input type="text" name="bench1Q4_' + i + '" id="bench1Q4_' + i + '" placeholder="Qtr 4" class="positive-integer" size="5" /></td></tr></table></div>';
+				benchyearStr = benchyearStr + '<div id="bench1_' + i + '" class="' + i + ' benchmark"><table><tr><td><input type="text" name="bench1Q1_' + i + '" id="bench1Q1_' + i + '" placeholder="Qtr 1, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q2_' + i + '" id="bench1Q2_' + i + '" placeholder="Qtr 2, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q3_' + i + '" id="bench1Q3_' + i + '" placeholder="Qtr 3, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q4_' + i + '" id="bench1Q4_' + i + '" placeholder="Qtr 4, ' + i + '" class="positive-integer" size="10" /></td></tr></table></div>';
 			} else {
-				benchyearStr = benchyearStr + '<div id="bench1_' + i + '"  class="' + i + ' benchmark" style="display:none;"><table><tr><td><input type="text" name="bench1Q1_' + i + '" id="bench1Q1_' + i + '" placeholder="Qtr 1" class="positive-integer" size="5" /></td><td><input type="text" name="bench1Q2_' + i + '" id="bench1Q2_' + i + '" placeholder="Qtr 2" class="positive-integer" size="5" /></td><td><input type="text" name="bench1Q3_' + i + '" id="bench1Q3_' + i + '" placeholder="Qtr 3" class="positive-integer" size="5" /></td><td><input type="text" name="bench1Q4_' + i + '" id="bench1Q4_' + i + '" placeholder="Qtr 4" class="positive-integer" size="5" /></td></tr></table></div>';		
+				benchyearStr = benchyearStr + '<div id="bench1_' + i + '"  class="' + i + ' benchmark" style="display:none;"><table><tr><td><input type="text" name="bench1Q1_' + i + '" id="bench1Q1_' + i + '" placeholder="Qtr 1, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q2_' + i + '" id="bench1Q2_' + i + '" placeholder="Qtr 2, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q3_' + i + '" id="bench1Q3_' + i + '" placeholder="Qtr 3, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q4_' + i + '" id="bench1Q4_' + i + '" placeholder="Qtr 4, ' + i + '" class="positive-integer" size="10" /></td></tr></table></div>';		
 			}
 		}
 		jQuery('#benchmarks1').html(benchyearStr);
@@ -339,10 +339,21 @@ jQuery( document ).ready(function() {
 	jQuery("#goalyear1").trigger("change");
 	
 	jQuery('#selBenchYear').change(function() {
+		var lastrowID = jQuery('.mb:last').attr('id');		
+		var lastrowNum = lastrowID.charAt(lastrowID.length-1);
+
+		var idStr="";
+		for (i = 1; i <= lastrowNum; i++) {
+			idStr = idStr + "#benchmarks" + i + ","; 
+		}
+		idStr = idStr.slice(0, -1)
+	
+		jQuery(idStr).hide();
 		//Display benchmarks for selected year
 		jQuery( "." + jQuery('#selBenchYear').val() + ".benchmark").css( "display", "block" );		
 		//Hide benchmarks for years not selected
 		jQuery(".benchmark").not("." + jQuery('#selBenchYear').val()).css("display", "none");
+		jQuery(idStr).fadeIn();
 	});
 	
 });
