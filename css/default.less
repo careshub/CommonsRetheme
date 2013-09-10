@@ -13,6 +13,26 @@ form#login{
 form#login p.status{
     display: none;
 }
+.site-content  {
+	.entry-content {
+		ul {
+			list-style-type: none;
+			li {
+				margin-bottom: 0.8em;
+			}
+		}
+	}
+
+	p {
+		line-height: 1.71429;
+		margin: 0 0 24px;
+	    margin: 0 0 1.71429rem;
+	}
+	.mini-text {
+		.font-size(0.8);
+		line-height: 1.4;
+	}
+}
 
 .login_overlay{
     height: 100%;
@@ -2185,6 +2205,27 @@ h5 {
 	line-height: 1.2;
 	font-weight: normal;
 }
+#primary #content .screamer {
+	background-color: @ccblue;
+	margin-bottom: 1.4em;
+	font-weight: 400;
+	color:@white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	// padding-bottom: 1em;
+	// border-bottom: 1px solid @graylight;
+	line-height: 1.6;
+	// margin: 0.8em 1em;
+	padding: 0.3em 0.5em;
+	&.saorange {
+		background-color: @saorange;
+	}
+	&.sapurple {
+		background-color: @sapurple;
+	}
+	&.sagreen {
+		background-color: @sagreen;
+	}
+}
 
 // Columns
 .column1of3 {
@@ -2555,14 +2596,6 @@ ul.item-list li .share-buttons-below li {
     }
 
 //Salud America subsection
-@sagreen:#60b035;
-@sared:#ef4036;
-@saorange:#F48120;//#f58220;
-@sapink:#EB008B;
-@sayellow:#FDB913;
-@sapurple:#92278F;
-@salime:#72BF44;
-@sablue:#0088CF;
 .salud-america { 
 	.site-content { 
 		// float: right;
@@ -2617,6 +2650,11 @@ ul.item-list li .share-buttons-below li {
 			margin-top: 1em;
 			color:#FFF;
 			font-weight: 400;
+		    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+
+		}
+		.social-icons {
+			display: none;
 		}
 
 	}
@@ -2715,8 +2753,8 @@ ul.item-list li .share-buttons-below li {
 	}
 	.policy-search {
 		border-bottom: 1px solid @saorange;
-	    margin-bottom: 2em;
-	    padding-bottom: 2em;
+	    margin-bottom: 1em;
+	    // padding-bottom: 2em;
 	    h3 {
 				color:@sared;
 				.font-size(1.6);
@@ -2728,8 +2766,8 @@ ul.item-list li .share-buttons-below li {
 	}
 	.policy-search-home {
 		// border-bottom: 1px solid @saorange;
-	    margin-bottom: 2em;
-	    padding-bottom: 2em;
+	    margin-bottom: 1em;
+	    // padding-bottom: 2em;
 	    // display: inline-block;
 	    h4 {
 				color:@sared;
