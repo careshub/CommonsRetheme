@@ -8,6 +8,85 @@ get_header(); ?>
 		<div id="content" role="main">
 			<div class="padder">
 			<?php if (is_page('salud-america')) { ?>
+
+			<?php if ( function_exists('sa_slider') ) { 
+						sa_slider('main-page-slider'); 
+					} ?>
+			<div class="entry-content">
+
+				<h2>Want to make a healthy change in your area?</h2>
+
+				<p>Welcome to Growing Healthy Change, where you can learn what's going on to make Latino communities healthier and how you can help. Get started below.</p>
+
+				<h3 class="screamer saorange">1. Find Changes</h3>
+
+					<div style="margin-bottom:1.6em; margin-left:3%;">
+						<h4 style="margin-top:0;">By Keyword</h4>
+						<form name="sa_ps" enctype="multipart/form-data" method="POST" action="">
+							<div class="row">
+						        <input type="text" value="" placeholder="Enter search terms here" name="saps" id="saps" style="width:65%;">
+								<input type="submit" value="Search" alt="Search" id="searchsubmit">
+						    </div>
+						</form>
+					</div>
+
+				<div class="row">
+
+					<div class="half-block">
+						<h4 style="margin-top:0;">By Topic</h4>
+						<div class="column1of3 mini-text"><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-active-play/"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/more-active-play-time_x90.jpg' alt='Active Play'><br />Active Play</a></div>
+						<div class="column1of3 mini-text"><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-active-spaces/"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Places-for-activity_x90.jpg' alt='Active Spaces'><br />Active Spaces</a></div>
+						<div class="column1of3 mini-text"><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-better-food-in-neighborhoods/"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/better-food-in-neighborhoods_x90.jpg' alt='Better Food in Neighborhoods'><br />Better Foods in Neighborhoods</a></div>
+						<div class="column1of3 mini-text"><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-healthier-marketing/"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/stop-unhealthy-advertising_happy_x90.jpg' alt='Healthier Marketing'><br />Healthier Marketing</a></div>
+						<div class="column1of3 mini-text"><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-healthier-school-snacks/"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/better-food-in-schools_x90.jpg' alt='Healthier School Snacks'><br />Healthier School Snacks</a></div>
+						<div class="column1of3 mini-text"><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-sugary-drinks/"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/price-of-sugar_x90.jpg' alt='sugary Drinks'><br />Sugary Drinks</a></div>
+					</div>
+
+					<div class="half-block">
+						<h4 style="margin-top:0;">By Location</h4>
+						<a href="http://dev.communitycommons.org/salud-america/sapolicies/"><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Salud_Location_Map.png' alt='Map of Changes'class="no-box"></a>
+		                <a href='http://dev.communitycommons.org/salud-america/sapolicies/'>Browse changes happening in your area</a>
+					</div>
+				</div>
+
+				<h3 class="screamer sapurple">2. Learn to Create Change</h3>
+
+				<div class="row">
+					<div class="half-block" style="margin-top:0;">
+						<h3 style="margin-top:0;">What's Change?</h3>
+	                    <img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;">
+	                    <ul>
+		                    <li><a href='http://dev.communitycommons.org/salud-america/what-is-change/'>Change at a glance</a></li>
+		                    <li><a href='http://dev.communitycommons.org/salud-america/what-is-change/the-science-behind-change/'>The science behind change</a></li>
+	                    </ul>
+					</div>
+
+					<div class="half-block" style="margin-top:0;">
+						<h3 style="margin-top:0;">Learn to Make Changes</h3>
+	                    <img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/Resoucesmakechange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;">
+	                    <p>Use research, toolkits, and other elements to<a href='http://dev.communitycommons.org/salud-america/saresourcespage/'> learn about healthy change</a></p>
+					</div>
+				</div>
+				
+				<h3 class="screamer sagreen">3. Share Your Change</h3>
+
+				<div class="row">
+					<div class="half-block" style="margin-top:0;">
+						<h3 style="margin-top:0;">Add a Change</h3>
+	                    <img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/AddChange_icon.png' alt='Active Play' style="width:30%; float:left; margin-right:5%;" class="no-box">
+	                    <p>Making a change? <br /><a href='http://dev.communitycommons.org/salud-america/share-your-own-stories/'>Add the details here</a></p>
+					</div>
+
+					<div class="half-block" style="margin-top:0;">
+						<h3 style="margin-top:0;">Be a Star!</h3>
+	                    <img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png'alt='Active Play' style="width:30%; float:left; margin-right:5%;" class="no-box">
+	                    <p><a href='http://dev.communitycommons.org/salud-america/share-your-own-stories/'>Share your story</a> of successful change &mdash; we can write it up and upload it here!</p>
+					</div>
+				</div>
+			</div>
+
+			<?php }  elseif (is_page('salud-old')) { ?>
+
 			<?php if ( function_exists('sa_slider') ) { sa_slider('main-page-slider'); } ?>
 				<!-- <div class="salud-banner">
 					<img src="/wp-content/themes/CommonsRetheme/img/salud_america/salud-hand.jpg" class="no-box">

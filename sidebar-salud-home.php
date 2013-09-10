@@ -50,7 +50,7 @@
 				wp_nav_menu( $args );
 				?>
 		</div>
-		<ul class="salud-success-stories-sidebar">
+		<!-- <ul class="salud-success-stories-sidebar">
 			<h3>Success Stories</h3>
 				<?php 
 				//Loop to display the most recent changemaker featured image for eah target area.
@@ -102,5 +102,5 @@
 
 				} //End foreach
 		?>
-		</ul>
+		</ul> -->
 		</div><!-- #secondary -->
