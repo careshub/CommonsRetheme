@@ -1135,3 +1135,12 @@ function modify_blog_page_posts() {
         $query->set('order', 'ASC');
     }
 }
+
+function get_ID_by_slug($page_slug) {
+    $page = get_page_by_path($page_slug);
+    if ($page) {
+        return $page->ID;
+    } else {
+        return 'not found';
+    }
+}

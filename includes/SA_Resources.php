@@ -320,7 +320,7 @@ function sa_filter_unpromoted_saresources( $query ) {
     }
  
 }
-add_action('pre_get_posts', 'sa_filter_unpromoted_saresources', 9999); 
+// add_action('pre_get_posts', 'sa_filter_unpromoted_saresources', 9999); 
 
 function SA_getting_started() 
 {

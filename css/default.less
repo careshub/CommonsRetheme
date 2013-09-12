@@ -1890,11 +1890,11 @@ form.dir-form div.dir-search {
 }
 
 #cc-primary-search #cc-navbar-search .cc-nav-input:-moz-placeholder {
-	//color: #ddd;
+	// color: #ddd;
 }
 
 //Registration page 
-//over-ride the float:right on the registration submit button
+// over-ride the float:right on the registration submit button
 //#signup_form.standard-form div.submit { float: left;}
 
 
@@ -2225,6 +2225,9 @@ h5 {
 	&.sagreen {
 		background-color: @sagreen;
 	}
+}
+hr {
+    background-color: lighten( @ccgreen, 5);
 }
 
 // Columns
@@ -2849,6 +2852,31 @@ ul.item-list li .share-buttons-below li {
 				margin-bottom: .4em;
 			}
 		}
+	}
+}
+
+.tax-sa_advocacy_targets {
+	.advocacy_target_introduction {
+		header {
+			margin-bottom: 2em;
+		}
+		.video-container {
+			margin-bottom: 2em;
+		}
+		// p {
+		// 	width: 45%;
+		// 	float: left;
+		// }
+		// embed,
+		// iframe,
+		// object,
+		// video {
+		// 	width: 45%;
+		// 	float:right;
+		// 	height: auto;
+		// 	margin-left: 5%;
+		// }
+
 	}
 }
 
@@ -3721,4 +3749,23 @@ body.home-page {
 	margin-bottom: 2em;
 	padding-bottom: 2em;
 	border-bottom: 1px solid @graylight;
+}
+
+//Videos
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+}
+
+.video-container iframe,  
+.video-container object,  
+.video-container embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }

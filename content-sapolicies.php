@@ -14,7 +14,9 @@ $custom_fields = get_post_custom($post->ID);
 $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 	if ( !empty ($terms) ) :
 		foreach ( $terms as $term ) {
-			$advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
+
+			// $advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
+			$advocacy_targets[] = '<a href="' . get_the_intersection_link( 'sapolicies', 'sa_advocacy_targets', $term->slug ) .'">'.$term->name.'</a>';
 		}
 		$advocacy_targets = join( ', ', $advocacy_targets );
 	endif; //check for empty terms
@@ -74,7 +76,7 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<div class="entry-content">
 			<header class="entry-header clear">
-				<h1 class="entry-title"><?php the_title(); ?></h1>
+				<h1 class="entry-title">POLICY: <?php the_title(); ?></h1>
 				<?php //echo "<br />"; ?>
 				<?php if (function_exists('salud_the_target_icons')) {
 						salud_the_target_icons();

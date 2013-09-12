@@ -37,6 +37,7 @@ function register_taxonomy_advocacy_targets() {
         'hierarchical' => true,
 
         'rewrite' => true,
+        // 'rewrite' => array( 'slug' => 'salud/sa_advocacy_targets', 'with_front' => false),
         'query_var' => true
     );
 

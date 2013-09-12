@@ -34,12 +34,12 @@ get_header(); ?>
 
 					<div class="half-block">
 						<h4 style="margin-top:0;">By Topic</h4>
-						<div class="column1of3 mini-text"><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-active-play/"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/more-active-play-time_x90.jpg' alt='Active Play'><br />Active Play</a></div>
-						<div class="column1of3 mini-text"><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-active-spaces/"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Places-for-activity_x90.jpg' alt='Active Spaces'><br />Active Spaces</a></div>
-						<div class="column1of3 mini-text"><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-better-food-in-neighborhoods/"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/better-food-in-neighborhoods_x90.jpg' alt='Better Food in Neighborhoods'><br />Better Foods in Neighborhoods</a></div>
-						<div class="column1of3 mini-text"><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-healthier-marketing/"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/stop-unhealthy-advertising_happy_x90.jpg' alt='Healthier Marketing'><br />Healthier Marketing</a></div>
-						<div class="column1of3 mini-text"><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-healthier-school-snacks/"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/better-food-in-schools_x90.jpg' alt='Healthier School Snacks'><br />Healthier School Snacks</a></div>
-						<div class="column1of3 mini-text"><a href="http://dev.communitycommons.org/salud-america/sapolicies/sa-sugary-drinks/"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/price-of-sugar_x90.jpg' alt='sugary Drinks'><br />Sugary Drinks</a></div>
+						<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-active-play' ) ?>"><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/more-active-play-time_x90.jpg' alt='Active Play' class="no-box"><br />Active Play</a></div>
+						<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-active-spaces' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Places-for-activity_x90.jpg' alt='Active Spaces'><br />Active Spaces</a></div>
+						<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-better-food-in-neighborhoods' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/better-food-in-neighborhoods_x90.jpg' alt='Better Food in Neighborhoods'><br />Better Foods in Neighborhoods</a></div>
+						<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-healthier-marketing' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/stop-unhealthy-advertising_happy_x90.jpg' alt='Healthier Marketing'><br />Healthier Marketing</a></div>
+						<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-healthier-school-snacks' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/better-food-in-schools_x90.jpg' alt='Healthier School Snacks'><br />Healthier School Snacks</a></div>
+						<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-sugary-drinks' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/price-of-sugar_x90.jpg' alt='sugary Drinks'><br />Sugary Drinks</a></div>
 					</div>
 
 					<div class="half-block">
@@ -216,7 +216,7 @@ get_header(); ?>
 							$section_description = $cat_object->description;
 							?>
 						<div class="half-block salud-topic <?php echo $cat_slug; ?>">
-							<a href="/salud-america/sapolicies/<?php echo $cat_slug; ?>" class="<?php echo $cat_slug; ?>  clear">
+							<a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', $cat_slug ) ?>" class="<?php echo $cat_slug; ?>  clear">
 								<span class="<?php echo $cat_slug; ?>x60"></span>
 								<h4><?php echo $section_title; ?></h4>
 							</a>
@@ -229,12 +229,16 @@ get_header(); ?>
 			}  elseif (is_page('sa-policy-map-search')) {
 				sa_location_search();
 			
-			}  elseif (is_child(11911)) {
+			}  elseif (is_child(150)) {
+
+				//This section is being replaced by the taxonomy pages. See archive-sapolicies-sa_advocacy_targets.php.
                            
 				//The number above is the id of the parent page, is 11911 on the dev server.
 				//It's 150 on DC's local install
 				 
-                            if ( function_exists('SA_topics') ) {SA_topics();} ?>
+                            if ( function_exists('SA_topics') ) {
+                            	SA_topics();} 
+                            	?>
                                         	-                            
 	                                        <div class="policy-search-home">
 							<h3>Search for Changes in Progress on This Topic</h3>

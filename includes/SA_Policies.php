@@ -1266,6 +1266,18 @@ function cc_filter_nav_class($classes, $item){
      return $classes;
 }
 
+// Some query filters for archive pages
+add_action('pre_get_posts', 'sa_taxonomy_filter_queries', 9999);
+function sa_taxonomy_filter_queries( $query ) {
+
+    // Show only policies for the main query
+    if( is_tax( 'sa_advocacy_targets' ) && ( !is_admin() ) && ( $query->is_main_query() )  ) {
+        
+        $query->set('post_type', 'sapolicies');
+    }
+ 
+}
+
 function SA_topics() 
 {
     
