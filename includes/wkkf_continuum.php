@@ -1,15 +1,65 @@
 <?php 
-function continuum1() {
+function continuum1($loc) {
+$continuumArr = array(				
+						"nola" => array(
+								"continuum" => array(
+												"Unawareness" => 122233,
+												"Awareness" => 323423,
+												"Mobilization" => 134423,
+												"Implementation" => 44423,
+												"Transform" =>12,883
+									),
+								"total_spending" => "$657,385",
+							),
+						"miece" => array(
+								"continuum" => array(
+												"Mobilization" => 6522342,
+												"Connection" => 1211095,
+												"ECE System Building" => 1744430,
+												"Alignment" => 105600,
+												"Ready to Learn" => 1763126
+												),
+								"total_spending" => "$11,346,593",
+							),
+					);
+
 ?>
 	<script type='text/javascript' src='https://www.google.com/jsapi'></script>
-	<div class="bigstats" style="padding:20px;font-size:20pt;">Total Spending: $657,385</div>
-	<div id="continuumPie" style="width:550px;height:375px;position:absolute;top:300px;padding:20px;">
+	<div class="bigstats" style="padding:20px;font-size:20pt;">Total Spending: <?php echo $continuumArr[$loc]['total_spending'];?></div>
+	<div id="continuumPie" style="display:inline-block;width:450px;position:relative;top:-17px;">
 	</div>
 	<script type="text/javascript">
 		jQuery(function() {
 			var chart;
 			jQuery(document).ready(function() {
-        
+			
+			var loc = <?php echo json_encode($loc) ?>;
+			if (loc == "nola") {
+				var continuumInfo = {				
+							"Unawareness": 122233,
+							"Awareness": 323423,
+							"Mobilization": 134423,
+							"Implementation": 44423,
+							"Transform": 12883
+						};
+			} else if (loc == "miece") {
+				var continuumInfo = {		
+						"Mobilization": 6522342,
+						"Connection": 1211095,
+						"ECE System Building": 1744430,
+						"Alignment": 105600,
+						"Ready to Learn": 1763126								
+					};	
+			}
+// var myStr = "";					
+// for(var key in continuumInfo) {
+  // console.log( key + " : " + continuumInfo[key] + "<br />");
+  // myStr = myStr + 
+// }
+
+		
+		
+		
 			function animateSlice(point) {
 				point.slice();
 			}
@@ -18,7 +68,7 @@ function continuum1() {
 							renderTo: 'continuumPie',
 							margin: [0, 0, 0, 0],
 							plotBackgroundColor: '#e6e6e6',
-							plotBorderWidth: null,
+							plotBorderWidth: 0,
 							plotShadow: false
 						},
 						exporting: {
@@ -145,7 +195,7 @@ function continuum1() {
 		  }
 	</script>
 
-	<div style="width:400px;position:absolute;top:300px;margin-left:525px;float:right;">
+	<div style="display:inline-block;vertical-align:top;">
 		<ul class="accordion">
 
 		<dt id="dt1" data-slice="Unawareness-slice"><a href="">Stage 1 - Unawareness</a></dt>

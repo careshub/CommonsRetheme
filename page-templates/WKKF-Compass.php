@@ -61,7 +61,8 @@ include ('getData.php');
 
 <?php
 	 include( get_stylesheet_directory() . '/includes/wkkf_context.php');
-	 include( get_stylesheet_directory() . '/includes/wkkf_outcomes.php');
+	 include( get_stylesheet_directory() . '/includes/wkkf_outcomes_nola.php');
+	 include( get_stylesheet_directory() . '/includes/wkkf_outcomes_grmi.php');	 
 	 include( get_stylesheet_directory() . '/includes/wkkf_continuum.php');
 ?>
 
@@ -76,7 +77,8 @@ include ('getData.php');
       $showImg = true; //show or hide image instead of actual html content
       $focusPlaces = array(
           'nola'=>array('place'=>'New Orleans, LA', 'thumb'=>'Louisiana.png')
-        , 'grmi'=>array('place'=>'Grand Rapids, MI', 'thumb'=>'Michigan.png')
+        , 'grmi'=>array('place'=>'Grand Rapids Early Childhood and Education', 'thumb'=>'Michigan.png')
+		, 'miece'=>array('place'=>'Michigan Early Childhood and Education', 'thumb'=>'Michigan.png')		
         , 'jxms'=>array('place'=>'Jackson, MS', 'thumb'=>'Mississippi.png')
         , 'newm'=>array('place'=>'New Mexico', 'thumb'=>'New_Mexico.png')
         , 'chmx'=>array('place'=>'Chiapas, Mexico', 'thumb'=>'neworleansmapicon.png')
@@ -179,15 +181,15 @@ include ('getData.php');
       ?>
 
   <div id="primary" class="site-content width-full">
-    <div id="content" role="main" style="border:solid 2px #BFBFBF;background-color:#f0f0f0;padding:20px;">          
+    <div id="content" role="main" style="padding:20px;">          
       
-      <div id="uxCompassHeader" class="colmask threecol header">
+      <div id="uxCompassHeader" class="colmask threecol header" style="padding-bottom:30px;">
         <div class="colmid">
           <div class="colleft">
             <div class="col1 outer">
               <!-- Column 1 (middle) start -->
               <div class="middle">
-                <div id="uxLocation" class="location-text inner"><?php echo $place; if (isset($pg)) {echo ' - ' . $wkkfPages[$pg]['name'];}?></div>
+                <div id="uxLocation" class="location-text inner"><?php echo $place; if (isset($pg)) {echo '<br /><span style="font-size:14pt;color:#000080;font-weight:normal;font-style:italic;">' . $wkkfPages[$pg]['name'] . '</span>';}?></div>
               </div>
               <!-- Column 1 end -->
             </div>
@@ -249,7 +251,7 @@ include ('getData.php');
         </div>
 
         <div id="uxContext" class="<?php echo ($showContext === true) ? '' : 'display-none'; ?>">
-			<?php wkkf_context(); ?>
+			<?php wkkf_context($loc); ?>
 
         </div>
         <div id="uxChildOutcomes" class="<?php echo ($showChildOut === true) ? '' : 'display-none'; ?>">
@@ -262,40 +264,15 @@ include ('getData.php');
 					</div>
 				</div>
             </div>
-            <div id="row1" class='chartboxparent'>
-					<a href="#" data-reveal-id="modal_outcomes1">
-					   <div class="chartbox"> 
-
-						<?php outcomes1A(); ?>
-							
-					   </div>
-					</a>
-					<div class="chartbox_spacer"></div>
-					<div class="chartbox"><?php outcomes1B(); ?></div>
-					<div class="chartbox_spacer"></div>
-					<div class="chartbox"><?php outcomes1C(); ?></div>
-					<br><br>
-			   <div id="row2" class="chartboxparent_spacer">&nbsp;<br>
-					<div class="chartbox_bot">
-						<?php outcomes2A(); ?>
-					</div>
-					<div class="chartbox_spacer"></div>
-				    <div class="chartbox_bot"><?php outcomes2B(); ?></div>
-				    <div class="chartbox_spacer"></div>
-				    <div class="chartbox_bot">
-						 <!--style="float:left;margin-left:25px;"--><!--<div style="float:left;display:inline-block;position:relative;font-family:calibri,arial;font-weight:bold;font-size:60pt;color:#696b97;top:50px;">%</div>-->
-						<?php outcomes2C(); ?>
-						<span align="center" class="textstats">% of schools contracting with<br />School Food Authorities</span>
-						
-				    </div>
-				   
-			   </div>
-
-			</div>
+			<?php 
+				$d = $loc . '_outcomes';
+				$func = $d;
+				$func(); 
+			?>
         </div>
 
-        <div id="uxContinuum" class="<?php echo ($showContinuum === true) ? '' : 'display-none'; ?>" style="height:550px;background-color:#e6e6e6;" >
-			<?php continuum1(); ?>
+        <div id="uxContinuum" class="<?php echo ($showContinuum === true) ? '' : 'display-none'; ?>" style="height:575px;background-color:#e6e6e6;" >
+			<?php continuum1($loc); ?>
         </div>
 
         <div id="uxStages" class="<?php echo ($showStages === true) ? '' : 'display-none'; ?>" style="height:850px;background-color:#e6e6e6;padding:15px;" >
@@ -307,7 +284,8 @@ include ('getData.php');
 
         </div>
         <div id="uxCommunityMap" class="<?php echo ($showMap === true) ? '' : 'display-none'; ?>">
-			<img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/nola_map.jpg' ?>" width="900px" />
+		
+			<img src="<?php echo get_stylesheet_directory_uri() . '/img/WKKF/' . $loc . '_map.jpg' ?>" style="max-width:900px;"  />
 			
 
         </div>		
