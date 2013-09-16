@@ -8,7 +8,7 @@
 				<?php get_template_part( 'content', 'sapolicies' ); ?>
 				<?php comments_template( '', true ); ?>
 			<?php endwhile; // end of the loop. ?>
-			<div class="related-policies" style="width:68%; float:left;">
+			<div class="related-policies">
 				<?php //Get related posts by topic
 				$source_post_id = $post->ID;
 				$exclude_posts = array( $source_post_id );
@@ -35,18 +35,41 @@
 
 						$related_policies = new WP_Query( $related_policies_args );
 						// print_r($related_policies);
-						echo "<h3>Related Changes by Topic</h3>";
-						while ( $related_policies->have_posts() ): $related_policies->the_post();
-							//This template should be the short result
-							get_template_part( 'content', 'sa-policy-short' );
-							$exclude_posts[] = $post->ID;
-						endwhile; // end of the loop.
+						?>
+						<div class="related-by-topic">
+							<h3 class="screamer sagreen">Related Changes by Topic</h3>
+							<?php
+							while ( $related_policies->have_posts() ): $related_policies->the_post();
+								//This template should be the short result
+								get_template_part( 'content', 'sa-policy-short' );
+								$exclude_posts[] = $post->ID;
+							endwhile; // end of the loop.
+						?>
+						</div> <!-- #related-by-topic -->
+						<?php
 
 					endif; //check for empty terms
 					// echo PHP_EOL . 'excluded posts: ';
 					// print_r($exclude_posts);
 
 	                  ?>  
+
+			            <div class="related-what-can-you-do clear">
+			                <h3 class="screamer sablue">What Can You Do?</h3>
+			                  	
+		                  	<a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/" class="column1of3 aligncenter">
+			                  	<img alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png" /><br />Start your own change!
+		                  	</a>
+		      
+		                  
+		                  	<a href="http://##" class="column1of3 aligncenter">
+	                            <img alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/AddChange_icon.png" /><br />Connect with members in your area!
+                        	</a>
+
+		                  	<a href="http://dev.communitycommons.org/salud-america/what-is-change/" class="column1of3 aligncenter">
+	                            <img alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png" /><br />See how a change is made
+                        	</a>
+	                    </div>
 
 	            <?php //Get related posts by tag
 				$tags = get_the_terms( $source_post_id, 'sa_policy_tags' );
@@ -75,20 +98,26 @@
 
 						$related_policies = new WP_Query( $related_policies_args );
 						// print_r($related_policies);
-						echo "<h3>Related Changes by Tag</h3>";
-						while ( $related_policies->have_posts() ): $related_policies->the_post();
-							//This template should be the short result
-							get_template_part( 'content', 'sa-policy-short' );
-						endwhile; // end of the loop.
-
+						?>
+						<div class="related-by-tag">
+							<h3 class="screamer saorange">Related Changes by Tag</h3>
+							<?php
+							while ( $related_policies->have_posts() ): $related_policies->the_post();
+								//This template should be the short result
+								get_template_part( 'content', 'sa-policy-short' );
+							endwhile; // end of the loop.
+						?>
+						</div>
+						<?php
 					endif; //check for empty terms
 
 
 	                  ?>
+		                
               </div> <!-- .related-policies -->  
-               <!-- <div style="width:25%" class="half-block"> -->
-                <div style="width: 25%; float:right; background-color:rgb(240,240,240);border-width: 3px; border-style: solid;border-color: lightgrey;">
-                <h3 style='text-align:center; padding-top:0px'>What Can</br> You Do?</h3>
+
+                <!-- <div class="related-items-sidebar">
+                <h3 class="aligncenter screamer sablue">What Can</br> You Do?</h3>
                   <table>
                     <tr><td><a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/">
                             <img class=" wp-image-12449 aligncenter" alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png" width="60" height="60" /></a></td>
@@ -101,9 +130,7 @@
                         <td><h4><a href="http://dev.communitycommons.org/salud-america/what-is-change/">See how a change is made</a></td></h4></tr>
                   </table>
                
-                  </div>
-                <!-- </div>    -->
-                            
+                  </div> -->                            
 		</div><!-- .padder -->
 		</div><!-- #content -->
 		

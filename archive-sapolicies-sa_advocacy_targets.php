@@ -73,18 +73,45 @@
 
                     <?php } ?>
 
+                    <?php 
+                    switch ( $tax_term->slug ) {
+                    	case 'sa-active-play':
+                    		$topic_color = 'sayellow';
+                    		break;
+                		case 'sa-active-spaces':
+                    		$topic_color = 'sablue';
+                    		break;
+                		case 'sa-better-food-in-neighborhoods':
+                    		$topic_color = 'saorange';
+                    		break;
+                		case 'sa-healthier-marketing':
+                    		$topic_color = 'sapink';
+                    		break;
+                		case 'sa-healthier-school-snacks':
+                    		$topic_color = 'sagreen';
+                    		break;
+                		case 'sa-sugary-drinks':
+                    		$topic_color = 'sapurple';
+                    		break;
+                    	default:
+							$topic_color = 'saorange';
+							break;
+                    }
+                    ?>
+
 
                </div>
 
                </article>
-
-               <h2>Changes in the <?php echo $tax_term->name; ?> topic</h2>
-					
-				<?php while ( have_posts() ) : the_post(); ?>
-					<?php get_template_part( 'content', 'sa-policy-short' ); ?>
-					<?php comments_template( '', true ); ?>
-				<?php endwhile; // end of the loop. ?>
-				<?php twentytwelve_content_nav( 'nav-below' ); ?>
+			    <div class="taxonomy-policies">
+	               <h3 class="screamer <?php echo $topic_color; ?>">Changes in the <?php echo $tax_term->name; ?> topic</h3>
+						
+					<?php while ( have_posts() ) : the_post(); ?>
+						<?php get_template_part( 'content', 'sa-policy-short' ); ?>
+						<?php comments_template( '', true ); ?>
+					<?php endwhile; // end of the loop. ?>
+					<?php twentytwelve_content_nav( 'nav-below' ); ?>
+				</div>
 					
 			</div> <!-- .entry-content -->
 			</div><!-- .padder -->

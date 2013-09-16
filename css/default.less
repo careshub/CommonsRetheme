@@ -724,7 +724,8 @@ input[type=button],
 input[type=reset],
 ul.button-nav li a,
 div.generic-button a,
-.comment-reply-link {
+.comment-reply-link, 
+.comment-respond h3 {
 	background: #fff; /* Old browsers */
 	background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
@@ -761,7 +762,8 @@ input[type=reset]:hover,
 ul.button-nav li a:hover,
 ul.button-nav li.current a,
 div.generic-button a:hover,
-.comment-reply-link:hover {
+.comment-reply-link:hover,
+.comment-respond h3:hover {
 	background: #ededed;
 	background: -moz-linear-gradient(top, #ffffff 0%, #e0e0e0 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e0e0e0)); /* Chrome,Safari4+ */
@@ -795,7 +797,11 @@ div.generic-button a:hover,
 	    width: 70%;
 	}
 }
-
+//Make "Leave a Reply button" use CC link color
+#comments #respond h3 {
+	color: @ccblue;
+	font-weight: normal;
+}
 
 /*--------------------------------------------------------------
 6.6 - Ajax Loading
@@ -2213,7 +2219,7 @@ h5 {
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 	// padding-bottom: 1em;
 	// border-bottom: 1px solid @graylight;
-	line-height: 1.6;
+	line-height: 1.4;
 	// margin: 0.8em 1em;
 	padding: 0.3em 0.5em;
 	&.saorange {
@@ -2224,6 +2230,15 @@ h5 {
 	}
 	&.sagreen {
 		background-color: @sagreen;
+	}
+	&.sayellow {
+		background-color: @sayellow;
+	}
+	&.sablue {
+		background-color: @sablue;
+	}
+	&.sapink {
+		background-color: @sapink;
 	}
 }
 hr {
@@ -2607,6 +2622,18 @@ ul.item-list li .share-buttons-below li {
 			border-bottom: 1px solid @saorange;
 			margin-bottom: 24px;
 			margin-bottom: 1.71429rem;
+		&:last-child {
+			border-bottom: none;
+		}
+		}
+		.main-article {
+			padding-bottom: 3.4em;
+			margin-bottom: 3.4em;
+		}
+		.comments-area {
+			padding-bottom: 3.4em;
+			margin-bottom: 3.4em;
+			border-bottom: 1px solid @saorange;
 		}
 	}
 	.widget-area { 
@@ -2787,10 +2814,10 @@ ul.item-list li .share-buttons-below li {
 	}
 	.sapolicies, .saresources {
 		.icon { margin-right: 2%; }
-		h1, h2, h4, p { 
-			clear: none; 
-			margin: 0 0 .5em 0;
-		}
+		// h1, h2, h4, p { 
+		// 	clear: none; 
+		// 	margin: 0 0 .5em 0;
+		// }
 		.sa-policy-meta {
 			.font-size(0.9);
 		}
@@ -2814,6 +2841,41 @@ ul.item-list li .share-buttons-below li {
 			}
 		}
 	}
+	.related-policies, .taxonomy-policies {
+		h3 {
+			margin-top: 0;
+			margin-bottom: .7em !important;
+		}
+		.related-by-topic, .related-by-tag {
+			article:last-child {
+				// border-bottom: none;
+			}
+		}
+	}
+	.related-what-can-you-do {
+		margin-bottom: 24px;
+		margin-bottom: 1.71429rem;
+		padding-bottom: 24px;
+		padding-bottom: 1.71429rem;
+	}
+	.sa-item-short-form {
+			.entry-content {
+				.entry-header {
+					margin-bottom: 0;
+					h2 {
+						margin-bottom: .7em
+					}
+					.location {
+						margin-bottom: .7em;
+					}
+				}
+			}
+		}
+	
+	// .related-items-sidebar {
+	// 	display: none;
+	// }
+
 	.sa-resource-header-icon {
 		position: relative;
 		span {
@@ -2834,12 +2896,18 @@ ul.item-list li .share-buttons-below li {
 		}
 	}
 	.entry-header  {
-		margin-bottom: 0;
+		// margin-bottom: 0;
+		// background-color: #AAA;
+		// border: 1px solid @sagreen;
 		img.wp-post-image {
 		    margin-top: 18px;
 		    margin-top: 1.285714286rem;
 		    margin-bottom: 14px;
 		    margin-bottom: 1rem;
+			}
+			h1 {
+				margin-top: 0;
+				margin-bottom: 1em !important;
 			}
 		}
 	} //End #content
@@ -2857,6 +2925,7 @@ ul.item-list li .share-buttons-below li {
 
 .tax-sa_advocacy_targets {
 	.advocacy_target_introduction {
+		border-bottom: none !important;
 		header {
 			margin-bottom: 2em;
 		}
@@ -2882,6 +2951,7 @@ ul.item-list li .share-buttons-below li {
 
 .policy-meta {
 	//border: 1px solid #FAB;
+	display: none;
 	float: left;
 	width: 100%;
 	margin-top: 4em;

@@ -50,13 +50,45 @@ get_header(); ?>
  -->
 		</div><!-- #content -->
 	</div><!-- #primary -->
-	<?php 
-// include_once( ABSPATH . WPINC . '/class-IXR.php' );
-// include_once( ABSPATH . WPINC . '/class-wp-http-ixr-client.php' );
-// $client = new WP_HTTP_IXR_CLIENT( 'http://dev.communitycommons.org/xmlrpc.php' );
+
+<h4>Using WP suggest:</h4>
+<script src="http://commonsdev.local/wp-includes/js/jquery/suggest.js" type="text/javascript"></script>
+<script type="text/javascript">
+        jQuery('#tag_suggest').suggest( "<?php echo get_bloginfo('wpurl'); ?>/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=post_tag");
+ </script>
+<input type="text" id="tag_suggest">
+
+<h4>Using JQ autocomplete:</h4>
+<?php 
+include_once( ABSPATH . WPINC . '/class-IXR.php' );
+include_once( ABSPATH . WPINC . '/class-wp-http-ixr-client.php' );
+$client = new WP_HTTP_IXR_CLIENT( 'http://dev.communitycommons.org/xmlrpc.php' );
 // $client->debug = true;
 
-// $addition = $client->query( 'demo.addTwoNumbers', array( 55, 17 ) );
+$tag_request = $client->query( 'wp.getTerms', array( 0, 'dcavins', 'mando2ba', 'post_tag' ) );
+$tags = $client->getResponse();
+foreach ($tags as $tag) {
+	$tag_var[] = $tag['name'];
+}
+//convert to a js-friendly array
+$js_array = json_encode($tag_var);
+?>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>  
+<!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" /> -->
+
+<input type="text" id="tags">
+
+<script>
+  jQuery(function() {
+    var availableTags = <?php echo $js_array . ";\n"; ?>
+    jQuery( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  });
+</script>
+
+
+<?php
 //report 32
 //map 63
 // $hello = $client->query( 'cc.record_map_activity', array(

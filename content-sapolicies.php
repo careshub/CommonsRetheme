@@ -73,10 +73,10 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 
 ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'main-article' ); ?>>
 		<div class="entry-content">
 			<header class="entry-header clear">
-				<h1 class="entry-title">POLICY: <?php the_title(); ?></h1>
+				<h1 class="entry-title screamer sapurple"><?php the_title(); ?></h1>
 				<?php //echo "<br />"; ?>
 				<?php if (function_exists('salud_the_target_icons')) {
 						salud_the_target_icons();
@@ -212,8 +212,7 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 
 			<?php //wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
-		<footer class="entry-meta">
-                    
-			<?php edit_post_link( __( 'Edit', 'twentytwelve' ), '<span class="edit-link">', '</span>' ); ?>
-		</footer><!-- .entry-meta -->
+		<!-- <footer class="entry-meta"> -->
+			<?php //edit_post_link( __( 'Edit', 'twentytwelve' ), '<span class="edit-link">', '</span>' ); ?>
+		<!-- </footer> --><!-- .entry-meta -->
 	</article><!-- #post -->

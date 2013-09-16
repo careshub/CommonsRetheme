@@ -50,7 +50,7 @@
 
 ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'sa-item-short-form' ); ?>>
 		<div class="entry-content">
 			<header class="entry-header clear">
 				<h2 class="entry-title">
