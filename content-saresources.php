@@ -79,7 +79,11 @@ $resource_cats = get_the_terms( $post->ID, 'sa_resource_cat' );
 				// echo $advocacy_targets;
 				?>
 			</a></p> -->
-
+			<?php 
+				if ( function_exists('cc_add_comment_button') ) { 
+					cc_add_comment_button(); 
+				} 
+			?>
 			<?php 
 				if ( function_exists('bp_share_post_button') ) { 
 					bp_share_post_button(); 

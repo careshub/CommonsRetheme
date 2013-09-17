@@ -41,7 +41,24 @@
 							<?php
 							while ( $related_policies->have_posts() ): $related_policies->the_post();
 								//This template should be the short result
-								get_template_part( 'content', 'sa-policy-short' );
+								// get_template_part( 'content', 'sa-policy-short' );
+								// $body = apply_filters( 'the_content', get_the_content() );
+								// $body = ellipsis( $body );
+								?>
+								<div class="third-block">
+									<article id="post-<?php the_ID(); ?>" <?php post_class( 'sa-item-short-form' ); ?>>
+										<div class="entry-content">
+											<header class="entry-header clear">
+												<h4 class="entry-title">
+												<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+												</h4>
+												<?php the_excerpt(); ?>
+											</header>
+
+										</div> <!-- entry-content -->
+									</article>
+								</div>
+								<?php
 								$exclude_posts[] = $post->ID;
 							endwhile; // end of the loop.
 						?>
@@ -58,16 +75,15 @@
 			                <h3 class="screamer sablue">What Can You Do?</h3>
 			                  	
 		                  	<a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/" class="column1of3 aligncenter">
-			                  	<img alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png" /><br />Start your own change!
+			                  	<img alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png" width="100px"/><br />Start your own change!
 		                  	</a>
-		      
-		                  
+		                  	
 		                  	<a href="http://##" class="column1of3 aligncenter">
-	                            <img alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/AddChange_icon.png" /><br />Connect with members in your area!
+	                            <img alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/AddChange_icon.png" width="100px"/><br />Connect with members in your area!
                         	</a>
 
 		                  	<a href="http://dev.communitycommons.org/salud-america/what-is-change/" class="column1of3 aligncenter">
-	                            <img alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png" /><br />See how a change is made
+	                            <img alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png" width="100px"/><br />See how a change is made
                         	</a>
 	                    </div>
 
@@ -104,7 +120,22 @@
 							<?php
 							while ( $related_policies->have_posts() ): $related_policies->the_post();
 								//This template should be the short result
-								get_template_part( 'content', 'sa-policy-short' );
+								// get_template_part( 'content', 'sa-policy-short' );
+							?>
+							<div class="third-block">
+									<article id="post-<?php the_ID(); ?>" <?php post_class( 'sa-item-short-form' ); ?>>
+										<div class="entry-content">
+											<header class="entry-header clear">
+												<h4 class="entry-title">
+												<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+												</h4>
+												<?php the_excerpt(); ?>
+											</header>
+
+										</div> <!-- entry-content -->
+									</article>
+								</div>
+							<?php
 							endwhile; // end of the loop.
 						?>
 						</div>

@@ -675,7 +675,8 @@ add_filter( 'body_class', 'cc_custom_body_class', 99 );
 //   }
 // }
 function salud_excerpt_length($length) {
-  if ( is_page_template( 'page-templates/salud-america-eloi.php' ) ) {
+  if ( is_page_template( 'page-templates/salud-america-eloi.php' )
+        || is_singular( 'sapolicies' ) ) {
     return 20;
   } else {
     return $length;
@@ -1143,4 +1144,26 @@ function get_ID_by_slug($page_slug) {
     } else {
         return 'not found';
     }
+}
+
+//Add comment button to appear next to share button
+function cc_add_comment_button() {
+  // ob_start();
+
+  // our wrapper DIV
+  // echo '<div class="love-it-wrapper">';
+
+  // only show the Love It link if the user has NOT previously loved this item
+  if ( is_singular() ) {
+    echo '<a href="#respond" class="button add-comment-link"><span class="comment-icon"></span>Comment</a>';
+  }
+
+  // close our wrapper DIV
+  // echo '</div>';
+
+  // if ( $echo )
+  //   echo apply_filters( 'lip_links', ob_get_clean() );
+  // else
+  //   return apply_filters( 'lip_links', ob_get_clean() );
+
 }

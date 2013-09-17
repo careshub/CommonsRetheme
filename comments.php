@@ -26,7 +26,7 @@ if ( post_password_required() )
 	<?php // You can start editing here -- including this comment! ?>
 
 	<?php if ( have_comments() ) : ?>
-		<h2 class="comments-title">
+		<h2 class="comments-title screamer">
 			<?php
 				printf( _n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'twentytwelve' ),
 					number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
@@ -58,16 +58,33 @@ if ( post_password_required() )
 	<?php comment_form(); ?>
 
 	<script> jQuery(document).ready(function($) {
-		$("#respond form").hide();
+		if ($(".add-comment-link").length ) {
+    		$("#respond").hide();
 
-		$(".comment-reply-link").click(function() {
-		    $(this).parents("#comments").find("form").toggle('slow');
-		});
+    		$(".comment-reply-link").click(function() {
+			    $(this).parents("#comments").find("#respond").show('slow');
+			});
 
-		$("#respond h3").click(function(g) {
-		    g.preventDefault();
-		    $(this).parents("#respond").find("form").toggle('slow');
-		});
+			$(".add-comment-link").click(function(g) {
+			    // g.preventDefault();
+			    $(this).parents("#content").find("#respond").show('slow');
+			});
+
+		} else {
+
+			$("#respond form").hide();
+
+			$(".comment-reply-link").click(function() {
+			    $(this).parents("#comments").find("form").toggle('slow');
+			});
+
+			$("#respond h3").click(function(g) {
+			    g.preventDefault();
+			    $(this).parents("#respond").find("form").toggle('slow');
+			});
+		}
+
+		
 	}); 
 </script>
 

@@ -724,8 +724,7 @@ input[type=button],
 input[type=reset],
 ul.button-nav li a,
 div.generic-button a,
-.comment-reply-link, 
-.comment-respond h3 {
+.comment-reply-link {
 	background: #fff; /* Old browsers */
 	background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
@@ -762,8 +761,7 @@ input[type=reset]:hover,
 ul.button-nav li a:hover,
 ul.button-nav li.current a,
 div.generic-button a:hover,
-.comment-reply-link:hover,
-.comment-respond h3:hover {
+.comment-reply-link:hover {
 	background: #ededed;
 	background: -moz-linear-gradient(top, #ffffff 0%, #e0e0e0 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e0e0e0)); /* Chrome,Safari4+ */
@@ -2305,6 +2303,7 @@ ul.item-list li .share-buttons-below li {
 }
 .love-it-wrapper {
 	display: inline-block;
+	vertical-align: top;
 	margin-right: 1em;
 	.love-it-icon {
 		width: 14px;
@@ -2324,7 +2323,10 @@ ul.item-list li .share-buttons-below li {
 	}
 
 }
-
+.add-comment-link {
+	margin-right: 1em;
+	vertical-align: top;
+}
 //meters
 .meter { 
 	height: 10px;  /* Can be anything */
@@ -2471,7 +2473,7 @@ ul.item-list li .share-buttons-below li {
 	-webkit-animation: none;
 	background-image: none;
 }
-.facebookx60, .searchx18, .userx18, .userx21, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24, .linkedinx24, .emailx24, .collaborationx24, .mapx24, .reportx24, .collaborationx40, .mapx40, .reportx40, .linkedinx60, .gplusx60,.love-it-icon-loved, .love-it-icon, .share-icon{
+.facebookx60, .searchx18, .userx18, .userx21, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24, .linkedinx24, .emailx24, .collaborationx24, .mapx24, .reportx24, .collaborationx40, .mapx40, .reportx40, .linkedinx60, .gplusx60, .comment-icon, .love-it-icon-loved, .love-it-icon, .share-icon{
 	background: url(img/sprites.png) no-repeat;
 }
 
@@ -2603,6 +2605,15 @@ ul.item-list li .share-buttons-below li {
 	display: inline-block;
 	vertical-align: middle;
 }
+.comment-icon{
+	background-position: -70px -480px ;
+	width: 14px;
+	height: 14px;
+	margin-right: .5em;
+	margin-top: -3px;
+	display: inline-block;
+	vertical-align: middle;
+}
 
 .primary-navigation li span.visible-mini {
 	width:auto;
@@ -2627,13 +2638,14 @@ ul.item-list li .share-buttons-below li {
 		}
 		}
 		.main-article {
-			padding-bottom: 3.4em;
-			margin-bottom: 3.4em;
+			// padding-bottom: 3.4em;
+			// margin-bottom: 3.4em;
+			border-bottom: none;
 		}
 		.comments-area {
-			padding-bottom: 3.4em;
-			margin-bottom: 3.4em;
-			border-bottom: 1px solid @saorange;
+			padding-bottom: 1em;
+			margin-bottom: 1em;
+			// border-bottom: 1px solid @saorange;
 		}
 	}
 	.widget-area { 
@@ -2849,6 +2861,14 @@ ul.item-list li .share-buttons-below li {
 		.related-by-topic, .related-by-tag {
 			article:last-child {
 				// border-bottom: none;
+			}
+		}
+		.third-block {
+			margin-bottom: 1.4em;
+			padding-bottom: 1.4em;
+			article {
+				margin-bottom: 0;
+				padding-bottom: 0;
 			}
 		}
 	}

@@ -49,6 +49,9 @@
 		// if ( function_exists('bp_share_favorite_post_button') ) {
 		// 		bp_share_favorite_post_button( $post->ID );
 		// 	}
+		if ( function_exists('cc_add_comment_button') ) { 
+					cc_add_comment_button(); 
+			}
 		if ( function_exists('love_it_button') ) { 
 				love_it_button(); 
 			}

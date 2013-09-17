@@ -122,7 +122,11 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 			</a></p>
 			<?php } ?>
 
-
+			<?php 
+				if ( function_exists('cc_add_comment_button') ) { 
+					cc_add_comment_button(); 
+				} 
+			?>
 			<?php 
 				if ( function_exists('bp_share_post_button') ) { 
 					bp_share_post_button(); 
