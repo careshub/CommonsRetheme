@@ -676,7 +676,8 @@ add_filter( 'body_class', 'cc_custom_body_class', 99 );
 // }
 function salud_excerpt_length($length) {
   if ( is_page_template( 'page-templates/salud-america-eloi.php' )
-        || is_singular( 'sapolicies' ) ) {
+        || is_singular( 'sapolicies' ) 
+        || is_page( 'salud-america' ) ) {
     return 20;
   } else {
     return $length;
@@ -1154,7 +1155,7 @@ function cc_add_comment_button() {
   // echo '<div class="love-it-wrapper">';
 
   // only show the Love It link if the user has NOT previously loved this item
-  if ( is_singular() ) {
+  if ( is_singular() && comments_open() ) {
     echo '<a href="#respond" class="button add-comment-link"><span class="comment-icon"></span>Comment</a>';
   }
 

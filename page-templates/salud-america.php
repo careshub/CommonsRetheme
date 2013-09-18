@@ -10,46 +10,173 @@ get_header(); ?>
 			<?php if (is_page('salud-america')) { ?>
 
 			<?php if ( function_exists('sa_slider') ) { 
-						sa_slider('main-page-slider'); 
+						// sa_slider('main-page-slider'); 
 					} ?>
 			<div class="entry-content">
 
-				<h2>Want to make a healthy change in your area?</h2>
+				<h2 class="screamer sagreen" style="font-size:1.4em">Want to make a healthy change in your area?</h2>
+
+				<p><img src="http://dev.communitycommons.org/wp-content/uploads/2013/08/girl-in-swing.jpg" class="alignnone"></p>
 
 				<p>Welcome to Growing Healthy Change, where you can learn what's going on to make Latino communities healthier and how you can help. Get started below.</p>
 
-				<h3 class="screamer saorange">1. Find Changes</h3>
+				<div class="find-changes">
+					<h3 class="screamer saorange">1. Find Changes</h3>
 
-					<div style="margin-bottom:1.6em; margin-left:3%;">
-						<h4 style="margin-top:0;">By Keyword</h4>
-						<form name="sa_ps" enctype="multipart/form-data" method="POST" action="">
-							<div class="row">
-						        <input type="text" value="" placeholder="Enter search terms here" name="saps" id="saps" style="width:65%;">
-								<input type="submit" value="Search" alt="Search" id="searchsubmit">
-						    </div>
-						</form>
+						<div style="margin-bottom:1.6em; margin-left:3%;">
+							<h4 style="margin-top:0;">By Keyword</h4>
+							<form name="sa_ps" enctype="multipart/form-data" method="POST" action="">
+								<div class="row">
+							        <input type="text" value="" placeholder="Enter search terms here" name="saps" id="saps" style="width:65%;">
+									<input type="submit" value="Search" alt="Search" id="searchsubmit">
+							    </div>
+							</form>
+						</div>
+
+					<div class="row">
+
+						<div class="half-block">
+							<h4 style="margin-top:0;">By Topic</h4>
+							<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-active-play' ) ?>"><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/more-active-play-time_x90.jpg' alt='Active Play' class="no-box"><br />Active Play</a></div>
+							<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-active-spaces' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Places-for-activity_x90.jpg' alt='Active Spaces'><br />Active Spaces</a></div>
+							<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-better-food-in-neighborhoods' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/better-food-in-neighborhoods_x90.jpg' alt='Better Food in Neighborhoods'><br />Better Foods in Neighborhoods</a></div>
+							<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-healthier-marketing' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/stop-unhealthy-advertising_happy_x90.jpg' alt='Healthier Marketing'><br />Healthier Marketing</a></div>
+							<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-healthier-school-snacks' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/better-food-in-schools_x90.jpg' alt='Healthier School Snacks'><br />Healthier School Snacks</a></div>
+							<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-sugary-drinks' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/price-of-sugar_x90.jpg' alt='sugary Drinks'><br />Sugary Drinks</a></div>
+						</div>
+
+						<div class="half-block">
+							<h4 style="margin-top:0;">By Location</h4>
+							<a href="http://dev.communitycommons.org/salud-america/sapolicies/"><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Salud_Location_Map.png' alt='Map of Changes'class="no-box"></a>
+			                <a href='http://dev.communitycommons.org/salud-america/sapolicies/'>Browse changes happening in your area</a>
+						</div>
 					</div>
+					<h4>Recent Changes</h4>
+					<div class="row">
+						<?php
+						//Grab the 3 most recent success stories
+							$args = array (
+									'post_type' => 'sapolicies',
+									'posts_per_page' => 3,
+									// 'tax_query' => array(
+									// 	array(
+									// 		'taxonomy' => 'sa_resource_cat',
+									// 		'field' => 'slug',
+									// 		'terms' => array( 'success-stories' ),
+									// 	)
+									// )
+								);
+							//Grab the possible advocacy targets
+							$advocacy_targets = get_terms('sa_advocacy_targets');
+							foreach ($advocacy_targets as $target) {
+								$possible_targets[] = $target->slug;
+							}
+							$ssquery = new WP_Query( $args );
+							while ( $ssquery->have_posts() ) {
+							// print_r($possible_targets);
 
-				<div class="row">
+								$ssquery->the_post();
+								global $post;
+								setup_postdata( $post );
 
-					<div class="half-block">
-						<h4 style="margin-top:0;">By Topic</h4>
-						<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-active-play' ) ?>"><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/more-active-play-time_x90.jpg' alt='Active Play' class="no-box"><br />Active Play</a></div>
-						<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-active-spaces' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Places-for-activity_x90.jpg' alt='Active Spaces'><br />Active Spaces</a></div>
-						<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-better-food-in-neighborhoods' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/better-food-in-neighborhoods_x90.jpg' alt='Better Food in Neighborhoods'><br />Better Foods in Neighborhoods</a></div>
-						<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-healthier-marketing' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/stop-unhealthy-advertising_happy_x90.jpg' alt='Healthier Marketing'><br />Healthier Marketing</a></div>
-						<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-healthier-school-snacks' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/better-food-in-schools_x90.jpg' alt='Healthier School Snacks'><br />Healthier School Snacks</a></div>
-						<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-sugary-drinks' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/price-of-sugar_x90.jpg' alt='sugary Drinks'><br />Sugary Drinks</a></div>
-					</div>
+								// echo '<li class="third-block"><h5>' . $target->name . '</h5>';
+								echo '<div class="third-block">';
+								?>
+									<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
 
-					<div class="half-block">
-						<h4 style="margin-top:0;">By Location</h4>
-						<a href="http://dev.communitycommons.org/salud-america/sapolicies/"><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Salud_Location_Map.png' alt='Map of Changes'class="no-box"></a>
-		                <a href='http://dev.communitycommons.org/salud-america/sapolicies/'>Browse changes happening in your area</a>
-					</div>
+									<?php 
+									if ( has_post_thumbnail()) { 
+										//Use the post thumbnail if it exists
+										the_post_thumbnail('feature-front-sub'); 
+										echo '<br />';
+									} else {
+										//Otherwise, use some stand-in images by advocacy target
+										$terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
+										if ( !empty ($terms) ) :
+											//loop through the terms to find a usable (unique) image
+											foreach ($terms as $term) {
+												if ( in_array( $term->slug, $possible_targets ) ) {
+													$advo_target = $term->slug;
+													break;
+												}
+											}
+											//If an advo_target didn't get set, we'll set one at random
+											if ( !( $advo_target ) ) {
+												$advo_target = current($possible_targets);
+												// $advo_target = next_targe;
+												// print_r(current($possible_targets));
+											}
+
+											// echo PHP_EOL . $advo_target;
+
+											//Delete that value from the possible values
+												$key_to_delete = array_search($advo_target, $possible_targets);
+												if ( false !== $key_to_delete ) {
+												    unset( $possible_targets[$key_to_delete] );
+												}
+											
+										endif; //check for empty terms
+
+										echo '<img src="' . get_stylesheet_directory_uri() . '/img/salud_america/advocacy_targets/' . $advo_target . 'x300.jpg" > ';
+										unset($advo_target);
+									}
+
+									echo '<h5 class="entry-title">' . get_the_title() . '</h5></a>';
+									the_excerpt();
+									?>
+								</div>
+								 <?php
+							}
+							wp_reset_postdata();
+							?>
+					</div> <!-- .row -->
+				</div> <!-- find-changes -->
+
+				<h3 class="screamer sablue">2. Learn from Success Stories</h3>
+				<div class="learn-from-success-stories">
+					<div class="row clear">
+					<?php
+					//Grab the 3 most recent success stories
+						$args = array (
+								'post_type' => 'saresources',
+								'posts_per_page' => 3,
+								'tax_query' => array(
+									array(
+										'taxonomy' => 'sa_resource_cat',
+										'field' => 'slug',
+										'terms' => array( 'success-stories' ),
+									)
+								)
+							);
+						$ssquery = new WP_Query( $args );
+						while ( $ssquery->have_posts() ) {
+							
+							$ssquery->the_post();
+							global $post;
+							setup_postdata( $post );
+							// echo '<li class="third-block"><h5>' . $target->name . '</h5>';
+							echo '<div class="third-block">';
+							?>
+								<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
+
+								<?php 
+								if ( has_post_thumbnail()) { 
+									the_post_thumbnail('feature-front-sub'); 
+									echo '<br />';
+									} 
+
+								the_title();
+								?>
+								</a>
+							</div>
+							 <?php
+						}
+						wp_reset_postdata();
+						?>
+					</div>  <!-- end .row -->
 				</div>
 
-				<h3 class="screamer sapurple">2. Learn to Create Change</h3>
+				<h3 class="screamer sapurple">3. Learn to Create Change</h3>
 
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">
@@ -68,7 +195,7 @@ get_header(); ?>
 					</div>
 				</div>
 				
-				<h3 class="screamer sagreen">3. Share Your Change</h3>
+				<h3 class="screamer sagreen">4. Share Your Change</h3>
 
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">
