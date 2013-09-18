@@ -16,9 +16,13 @@ get_header(); ?>
 
 				<h2 class="screamer sagreen" style="font-size:1.4em">Want to make a healthy change in your area?</h2>
 
-				<p><img src="http://dev.communitycommons.org/wp-content/uploads/2013/08/girl-in-swing.jpg" class="alignnone"></p>
+				<p><img src="http://dev.communitycommons.org/wp-content/uploads/2013/08/girl-in-swing.jpg" class="alignright" width="373px"></p>
 
-				<p>Welcome to Growing Healthy Change, where you can learn what's going on to make Latino communities healthier and how you can help. Get started below.</p>
+				<p class="intro-text" style="font-size:1.2em;">Welcome to Growing Healthy Change, where you can learn what's going on to make Latino communities healthier and how you can help.</p>
+ 
+				<p>Here you will be able to find changes happening all around the country, learn about others’ success stories and our tools and resources for change, and even share the work you’re doing in your community.</p>
+				 
+				<p>Let’s get started!</p>
 
 				<div class="find-changes">
 					<h3 class="screamer saorange">1. Find Changes</h3>
@@ -132,9 +136,15 @@ get_header(); ?>
 					</div> <!-- .row -->
 				</div> <!-- find-changes -->
 
-				<h3 class="screamer sablue">2. Learn from Success Stories</h3>
-				<div class="learn-from-success-stories">
-					<div class="row clear">
+				<!-- <h3 class="screamer sablue">2. Learn from Success Stories</h3> -->
+				<!-- <div class="learn-from-success-stories">
+					
+				</div> -->
+
+				<h3 class="screamer sapurple">2. Learn to Create Change</h3>
+				<div class="row clear">
+					<h4 style="margin-top:0;">Learn from Success Stories</h4>
+
 					<?php
 					//Grab the 3 most recent success stories
 						$args = array (
@@ -174,13 +184,10 @@ get_header(); ?>
 						wp_reset_postdata();
 						?>
 					</div>  <!-- end .row -->
-				</div>
-
-				<h3 class="screamer sapurple">3. Learn to Create Change</h3>
 
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">
-						<h3 style="margin-top:0;">What's Change?</h3>
+						<h4 style="margin-top:0;">What's Change?</h4>
 	                    <img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;">
 	                    <ul>
 		                    <li><a href='http://dev.communitycommons.org/salud-america/what-is-change/'>Change at a glance</a></li>
@@ -189,23 +196,23 @@ get_header(); ?>
 					</div>
 
 					<div class="half-block" style="margin-top:0;">
-						<h3 style="margin-top:0;">Learn to Make Changes</h3>
+						<h4 style="margin-top:0;">Learn to Make Changes</h4>
 	                    <img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/Resoucesmakechange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;">
 	                    <p>Use research, toolkits, and other elements to<a href='http://dev.communitycommons.org/salud-america/saresourcespage/'> learn about healthy change</a></p>
 					</div>
 				</div>
 				
-				<h3 class="screamer sagreen">4. Share Your Change</h3>
+				<h3 class="screamer sagreen">3. Share Your Change</h3>
 
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">
-						<h3 style="margin-top:0;">Add a Change</h3>
+						<h4 style="margin-top:0;">Add a Change</h4>
 	                    <img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/AddChange_icon.png' alt='Active Play' style="width:30%; float:left; margin-right:5%;" class="no-box">
 	                    <p>Making a change? <br /><a href='http://dev.communitycommons.org/salud-america/share-your-own-stories/'>Add the details here</a></p>
 					</div>
 
 					<div class="half-block" style="margin-top:0;">
-						<h3 style="margin-top:0;">Be a Star!</h3>
+						<h4 style="margin-top:0;">Be a Star!</h4>
 	                    <img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png'alt='Active Play' style="width:30%; float:left; margin-right:5%;" class="no-box">
 	                    <p><a href='http://dev.communitycommons.org/salud-america/share-your-own-stories/'>Share your story</a> of successful change &mdash; we can write it up and upload it here!</p>
 					</div>
