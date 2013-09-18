@@ -254,7 +254,7 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
           endwhile; // end of the loop.     
 ?>
 				<div class="half-block"><h3>Examples of change</h3>
-					  
+                                    <p>Here are a few examples of how people are changing their communities.</p>					  
                                                     <div>
 							<table>
                                                         <tr><td style="vertical-align:top;"><a href="/salud-america/sapolicies/sa-active-play" >
@@ -286,10 +286,7 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
                                                         </tr>
                                                         <tr>
                                                            <td><a href="/salud-america/what-is-change/browse-change?tag=shared-use">Shared Use</td></a>
-                                                        </tr>                                                            
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=joint-use">Joint Use</td></a>
-                                                        </tr>                                                       
+                                                        </tr>                                                                                                                 
                                                         <tr>
                                                            <td><a href="/salud-america/what-is-change/browse-change?tag=playgrounds">Playgrounds</td></a>
                                                         </tr>                                                                                                                     
