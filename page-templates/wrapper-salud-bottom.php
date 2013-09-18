@@ -1,5 +1,4 @@
 		<div class="salud-footer">	
-			<a href="#"><img src="/wp-content/themes/CommonsRetheme/img/salud_america/salud-video-still.jpg" class=""></a>
 			<p>Salud America! The RWJF Research Network to Prevent Obesity among Latino Children aims to activate and inform the public, advocacy groups and policymakers targeting Latino childhood obesity.</p>
 			<p>The network, funded by the Robert Wood Johnson Foundation, is a project of <a href="http://ihpr.uthscsa.edu/"> the Institute for Health Promotion Research (IHPR)</a> at <a href="http://uthscsa.edu/">The UT Health Science Center at San Antonio</a>.</p>
                         <p>Policies, comments, external links, and contributed stories and images are not affiliated with Salud America!, RWJF, or The UT Health Science Center at San Antonio, nor do they necessarily reflect the views of or endorsement by these organizations.</p>
