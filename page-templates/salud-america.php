@@ -16,11 +16,11 @@ get_header(); ?>
 
 				<h2 class="screamer sagreen" style="font-size:1.4em">Want to make a healthy change in your area?</h2>
 
-				<p><img src="http://dev.communitycommons.org/wp-content/uploads/2013/08/girl-in-swing.jpg" class="alignright" width="373px"></p>
+				<p><img src="http://dev.communitycommons.org/wp-content/uploads/2013/09/family-biking-cropped.jpg" class="alignright" width="373px"></p>
 
 				<p class="intro-text" style="font-size:1.2em;">Welcome to Growing Healthy Change, where you can learn what's going on to make Latino communities healthier and how you can help.</p>
  
-				<p>Here you will be able to find changes happening all around the country, learn about others’ success stories and our tools and resources for change, and even share the work you’re doing in your community.</p>
+				<p>Here you will be able to find changes happening across the country (from opening playgrounds after school to helping corner stores offer fresh produce or marketing healthier products), learn about others’ success stories and our resources for change, and even share the work you’re doing in your community.</p>
 				 
 				<p>Let’s get started!</p>
 
