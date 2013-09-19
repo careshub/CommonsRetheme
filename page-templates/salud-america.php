@@ -55,7 +55,7 @@ get_header(); ?>
 			                <a href='http://dev.communitycommons.org/salud-america/sapolicies/'>Browse changes happening in your area</a>
 						</div>
 					</div>
-					<h4>Recent Changes</h4>
+					<h4 style="margin-left:3%;">Recent Changes</h4>
 					<div class="row">
 						<?php
 						//Grab the 3 most recent success stories
@@ -143,7 +143,7 @@ get_header(); ?>
 
 				<h3 class="screamer sapurple">2. Learn to Create Change</h3>
 				<div class="row clear">
-					<h4 style="margin-top:0;">Learn from Success Stories</h4>
+					<h4 style="margin-top:0;margin-left:3%;">Learn from Success Stories</h4>
 
 					<?php
 					//Grab the 3 most recent success stories
