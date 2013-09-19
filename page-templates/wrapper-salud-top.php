@@ -11,7 +11,7 @@
 			    <a href='http://www.saludtoday.com/blog/'><img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/Blog_Icon.png' alt='Blog'></a>
 		    </div>
 	    </div>
-	<h3 class="screamer saorange">Let's reduce Latino child obesity.</h3>
+	<h3 class="screamer saorange">Let's reduce Latino childhood obesity!</h3>
 	<!-- <div class="sa-kids-photo"><img src="/wp-content/themes/CommonsRetheme/img/salud_america/sa-kids-335.png"></div> -->
 
 </div>
