@@ -12,6 +12,7 @@ require_once('includes/taxonomy-advocacytarget.php');
 require_once('includes/taxonomy-geography.php');
 //Definition of the Salud America Resources custom post type
 require_once('includes/SA_Resources.php');
+require_once('includes/cpt-sa-success-stories.php');
 //Definition of the Salud America Resources custom taxonomy
 require_once('includes/taxonomy-resourcecat.php');
 //Definition of the Salud America policy tag custom taxonomy
@@ -24,6 +25,7 @@ require_once('includes/sa_policy_map_shortcode.php');
 require_once('includes/cpt-group-stories.php');
 //Definition of the WKKF Scorecard Data Input custom post type
 require_once('includes/WKKF_scorecard.php');
+
 
 
 function bp_support_theme_setup() {
@@ -634,6 +636,7 @@ function cc_custom_body_class( $classes ) {
       || is_page_template( 'page-templates/salud-america-eloi.php' ) 
       || is_singular('sapolicies')  
       || is_singular('saresources')
+      || is_singular('sa_success_story')
       || is_tax('sa_advocacy_targets')
       ) {
         $classes[] = 'salud-america';
