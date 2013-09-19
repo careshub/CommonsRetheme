@@ -12,7 +12,7 @@
 		    </div>
 	    </div>
 	<h3 class="screamer saorange">Let's reduce Latino childhood obesity!</h3>
-	<!-- <div class="sa-kids-photo"><img src="/wp-content/themes/CommonsRetheme/img/salud_america/sa-kids-335.png"></div> -->
+	<div class="sa-kids-photo"><img src="/wp-content/themes/CommonsRetheme/img/salud_america/sa-kids-335.png"></div>
 
 </div>
 

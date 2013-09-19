@@ -202,7 +202,7 @@ get_header(); ?>
 					</div>
 				</div>
 				
-				<h3 class="screamer sagreen">3. Share Your Change</h3>
+				<h3 class="screamer sablue">3. Share Your Change</h3>
 
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">

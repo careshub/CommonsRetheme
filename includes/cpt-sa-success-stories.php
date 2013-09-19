@@ -62,20 +62,13 @@ class sa_success_story_meta_box {
 	public function __construct() {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
+		add_action( 'save_post', array( $this, 'save_custom_upload_data' ) );
 	}
 
 	/**
 	 * Adds the meta box container.
 	 */
 	public function add_meta_box() {
-		// add_meta_box(
-		// 	 'some_meta_box_name'
-		// 	,__( 'Some Meta Box Headline', 'myplugin_textdomain' )
-		// 	,array( $this, 'render_meta_box_content' )
-		// 	,'post'
-		// 	,'advanced'
-		// 	,'high'
-		// );
 
 		add_meta_box( 
 			'sa_success_stories_meta_box', 
@@ -101,10 +94,38 @@ class sa_success_story_meta_box {
 		$value = get_post_meta( $post->ID, 'sa_success_story_video_url', true );
 
 		// Display the form, using the current value.
-		echo '<label for="sa_success_story_video_url">';
-		echo 'Featured video URL <em>e.g.: http://www.youtube.com/watch?v=UueU0-EFido</em>';
-		echo '</label><br /> ';
-		echo '<input type="text" id="sa_success_story_video_url" name="sa_success_story_video_url" value="' . esc_attr( $value ) . '" size="75" />';
+		?>
+		<label for="sa_success_story_video_url" class="description">Featured video URL <em>e.g.: http://www.youtube.com/watch?v=UueU0-EFido</em></label><br />
+		<input type="text" id="sa_success_story_video_url" name="sa_success_story_video_url" value="<?php esc_attr( $value); ?>" size="75" />
+		
+		<label for="post_media" class="description">Attach the PDF version of this story</label><br />
+		<input id="post_media" type="file" name="post_media" value="" size="25" />
+		<p class="description">
+			<?php 
+			if( '' == get_post_meta( $post->ID, 'umb_file', true ) ) {
+				echo 'No PDF is attached to this post.';
+			} else {
+				echo 'Currently attached: ' . get_post_meta( $post->ID, 'umb_file', true );
+			} // end if
+			?>
+		</p><!-- /.description -->
+		
+		<script type="text/javascript">
+			jQuery(document).ready( function( $ ) {
+
+				"use strict";
+				
+				$(function() {
+				
+					if( 0 < $('#post_media').length ) {
+					  $('form').attr('enctype', 'multipart/form-data');
+					} // end if
+					
+				});
+
+			});
+		</script>
+<?php
 	}
 
 	/**
@@ -119,39 +140,64 @@ class sa_success_story_meta_box {
 		 * because save_post can be triggered at other times.
 		 */
 
-		// Check if our nonce is set.
-		if ( ! isset( $_POST['sa_success_story_custom_meta_box_nonce'] ) )
-			return $post_id;
+		// First, make sure the user can save the post
+		if( $this->user_can_save( $post_id, $this->nonce ) ) { 
 
-		$nonce = $_POST['sa_success_story_custom_meta_box_nonce'];
+			/* OK, its safe for us to save the data now. */
 
-		// Verify that the nonce is valid.
-		if ( ! wp_verify_nonce( $nonce, 'sa_success_story_custom_meta_box' ) )
-			return $post_id;
+			// Sanitize the user input.
+			$mydata = sanitize_text_field( $_POST['sa_success_story_video_url'] );
 
-		// If this is an autosave, our form has not been submitted, so we don't want to do anything.
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
-			return $post_id;
+			// Update the meta field.
+			update_post_meta( $post_id, 'sa_success_story_video_url', $mydata );
 
-		// Check the user's permissions.
-		if ( 'page' == $_POST['post_type'] ) {
-
-			if ( ! current_user_can( 'edit_page', $post_id ) )
-				return $post_id;
-	
-		} else {
-
-			if ( ! current_user_can( 'edit_post', $post_id ) )
-				return $post_id;
 		}
-
-		/* OK, its safe for us to save the data now. */
-
-		// Sanitize the user input.
-		$mydata = sanitize_text_field( $_POST['sa_success_story_video_url'] );
-
-		// Update the meta field.
-		update_post_meta( $post_id, 'sa_success_story_video_url', $mydata );
 	}
+
+	public function save_custom_upload_data( $post_id ) {
+	
+		// First, make sure the user can save the post
+		if( $this->user_can_save( $post_id, $this->nonce ) ) { 
+
+			// If the user uploaded an image, let's upload it to the server
+			if( ! empty( $_FILES ) && isset( $_FILES['post_media'] ) ) {
+			
+				// Upload the goal image to the uploads directory, resize the image, then upload the resized version
+				$goal_image_file = wp_upload_bits( $_FILES['post_media']['name'], null, wp_remote_get( $_FILES['post_media']['tmp_name'] ) );
+
+				// Set post meta about this image. Need the comment ID and need the path.
+				if( false == $goal_image_file['error'] ) {
+				
+					// Since we've already added the key for this, we'll just update it with the file.
+					update_post_meta( $post_id, 'umb_file', $goal_image_file['url'] );
+		
+				} // end if/else
+
+			} // end if
+	
+		} // end if
+	
+	} // end update_data
+
+	/*--------------------------------------------*
+	 * Helper Functions
+	 *--------------------------------------------*/
+
+	/**
+	 * Determines whether or not the current user has the ability to save meta data associated with this post.
+	 *
+	 * @param		int		$post_id	The ID of the post being save
+	 * @param		bool				Whether or not the user has the ability to save this post.
+	 */
+	function user_can_save( $post_id, $nonce ) {
+		
+	    $is_autosave = wp_is_post_autosave( $post_id );
+	    $is_revision = wp_is_post_revision( $post_id );
+	    $is_valid_nonce = ( isset( $_POST[ $nonce ] ) && wp_verify_nonce( $_POST[ $nonce ], plugin_basename( __FILE__ ) ) );
+	    
+	    // Return true if the user is able to save; otherwise, false.
+	    return ! ( $is_autosave || $is_revision ) && $is_valid_nonce;
+	 
+	} // end user_can_save
 
 }
