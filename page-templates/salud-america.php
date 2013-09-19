@@ -206,16 +206,15 @@ get_header(); ?>
 
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">
-						<h4 style="margin-top:0;">Add a Change</h4>
-	                    <img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/AddChange_icon.png' alt='Active Play' style="width:30%; float:left; margin-right:5%;" class="no-box">
-	                    <p>Making a change? <br /><a href='http://dev.communitycommons.org/salud-america/share-your-own-stories/'>Add the details here</a></p>
+						<h4 style="margin-top:0;">Be a "Change" Star</h4>
+	                    <img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png' alt='Share Your Change' style="width:30%; float:left; margin-right:5%;" class="no-box">
+	                    <p>Are you making a change? <br />Already made a successful change?<br /><a href='http://dev.communitycommons.org/salud-america/share-your-own-stories/'>Share your story with us</a> - we can write it up and upload it here!</p>
 					</div>
 
 					<div class="half-block" style="margin-top:0;">
-						<h4 style="margin-top:0;">Be a Star!</h4>
-	                    <img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png'alt='Active Play' style="width:30%; float:left; margin-right:5%;" class="no-box">
-	                    <p><a href='http://dev.communitycommons.org/salud-america/share-your-own-stories/'>Share your story</a> of successful change &mdash; we can write it up and upload it here!</p>
-					</div>
+			
+	                    <iframe width="450" height="180" src="//www.youtube.com/embed/8I4T08MONBA?rel=0;showinfo=0;controls=0" frameborder="0" allowfullscreen></iframe>
+	                         	</div>
 				</div>
 			</div>
 
