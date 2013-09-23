@@ -41,12 +41,13 @@ get_header(); ?>
 
 						<div class="half-block">
 							<h4 style="margin-top:0;">By Topic</h4>
-							<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-active-play' ) ?>"><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/more-active-play-time_x90.jpg' alt='Active Play' class="no-box"><br />Active Play</a></div>
-							<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-active-spaces' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Places-for-activity_x90.jpg' alt='Active Spaces'><br />Active Spaces</a></div>
-							<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-better-food-in-neighborhoods' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/better-food-in-neighborhoods_x90.jpg' alt='Better Food in Neighborhoods'><br />Better Foods in Neighborhoods</a></div>
-							<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-healthier-marketing' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/stop-unhealthy-advertising_happy_x90.jpg' alt='Healthier Marketing'><br />Healthier Marketing</a></div>
-							<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-healthier-school-snacks' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/better-food-in-schools_x90.jpg' alt='Healthier School Snacks'><br />Healthier School Snacks</a></div>
-							<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', 'sa-sugary-drinks' ) ?>"><img align='center' src='http://dev.communitycommons.org/wp-content/uploads/2013/08/price-of-sugar_x90.jpg' alt='sugary Drinks'><br />Sugary Drinks</a></div>
+							<?php 
+							$advocacy_targets = get_terms('sa_advocacy_targets');
+							foreach ($advocacy_targets as $target) {
+								?>
+								<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', $target->slug ) ?>"><span class="<?php echo $target->slug; ?>x90"></span><br /><?php echo $target->name; ?></a></div>						
+							<?php } //end foreach ?>
+							
 						</div>
 
 						<div class="half-block">
@@ -148,15 +149,8 @@ get_header(); ?>
 					<?php
 					//Grab the 3 most recent success stories
 						$args = array (
-								'post_type' => 'saresources',
+								'post_type' => 'sa_success_story',
 								'posts_per_page' => 3,
-								'tax_query' => array(
-									array(
-										'taxonomy' => 'sa_resource_cat',
-										'field' => 'slug',
-										'terms' => array( 'success-stories' ),
-									)
-								)
 							);
 						$ssquery = new WP_Query( $args );
 						while ( $ssquery->have_posts() ) {

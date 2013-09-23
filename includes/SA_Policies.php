@@ -1267,7 +1267,7 @@ function cc_filter_nav_class($classes, $item){
 }
 
 // Some query filters for archive pages
-add_action('pre_get_posts', 'sa_taxonomy_filter_queries', 9999);
+// add_action('pre_get_posts', 'sa_taxonomy_filter_queries', 9999);
 function sa_taxonomy_filter_queries( $query ) {
 
     // Show only policies for the main query
@@ -1277,6 +1277,37 @@ function sa_taxonomy_filter_queries( $query ) {
     }
  
 }
+function sa_the_topic_color ( $tax_term ) {
+  echo sa_get_topic_color( $tax_term );
+}
+
+function sa_get_topic_color( $tax_term ){
+  switch ( $tax_term ) {
+          case 'sa-active-play':
+            $topic_color = 'sayellow';
+            break;
+        case 'sa-active-spaces':
+            $topic_color = 'sablue';
+            break;
+        case 'sa-better-food-in-neighborhoods':
+            $topic_color = 'saorange';
+            break;
+        case 'sa-healthier-marketing':
+            $topic_color = 'sapink';
+            break;
+        case 'sa-healthier-school-snacks':
+            $topic_color = 'sagreen';
+            break;
+        case 'sa-sugary-drinks':
+            $topic_color = 'sapurple';
+            break;
+        default:
+            $topic_color = 'saorange';
+            break;
+                  }
+  return $topic_color;
+}
+
 
 function SA_topics() 
 {

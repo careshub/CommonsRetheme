@@ -161,7 +161,7 @@ elseif ( is_page('whats-new') ) {
 		<?php saresources_get_related_resources($resource_cats);
 
                 
-} elseif ( is_page('success-stories') ) {                
+} elseif ( is_page('success-stories-intro') ) {                
 	//Display the page content before making the custom loop
           while ( have_posts() ) : the_post();
             get_template_part( 'content', 'page-notitle' );

@@ -13,7 +13,8 @@
 $custom_fields = get_post_custom($post->ID);
 $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 	foreach ( $terms as $term ) {
-		$advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
+		// $advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
+		$advocacy_targets[] = '<a href="' . get_the_intersection_link( 'saresources', 'sa_advocacy_targets', $term->slug ) .'">'.$term->name.'</a>';
 	}
 	$advocacy_targets = join( ', ', $advocacy_targets );
 

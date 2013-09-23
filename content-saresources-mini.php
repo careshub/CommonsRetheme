@@ -10,22 +10,22 @@
 //print_r($post);
 // echo 'META:';
 
-$custom_fields = get_post_custom($post->ID);
-$terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
-	foreach ( $terms as $term ) {
-		$advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
-		$target_icons[] = $term->slug;
-	}
-	$advocacy_targets = join( ', ', $advocacy_targets );
+// $custom_fields = get_post_custom($post->ID);
+// $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
+// 	foreach ( $terms as $term ) {
+// 		$advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
+// 		$target_icons[] = $term->slug;
+// 	}
+// 	$advocacy_targets = join( ', ', $advocacy_targets );
 
-$resource_cats = get_the_terms( $post->ID, 'sa_resource_cat' );
-	if (!empty($resource_cats)) { 
+// $resource_cats = get_the_terms( $post->ID, 'sa_resource_cat' );
+// 	if (!empty($resource_cats)) { 
             
-		foreach ( $resource_cats as $cat ) {
-			$resource_categories[] = '<a href="' . get_term_link($cat->slug, 'sa_resource_cat') .'">'.$cat->name.'</a>';
-		}
-		$resource_categories = join( ', ', $resource_categories );
-	}
+// 		foreach ( $resource_cats as $cat ) {
+// 			$resource_categories[] = '<a href="' . get_term_link($cat->slug, 'sa_resource_cat') .'">'.$cat->name.'</a>';
+// 		}
+// 		$resource_categories = join( ', ', $resource_categories );
+// 	}
 // print_r($tags);
 // echo $policy_tags;
 
@@ -43,7 +43,7 @@ $resource_cats = get_the_terms( $post->ID, 'sa_resource_cat' );
 
 	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<div class="entry-content">
-			<header class="entry-header clear">
+			<header class="entry-header clear min-bottom-margin">
 				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark">
 					<?php 
 					if ( has_post_thumbnail() ) {
@@ -71,7 +71,7 @@ $resource_cats = get_the_terms( $post->ID, 'sa_resource_cat' );
 			</header>
 
 
-			<?php the_excerpt(); ?>
+			<?php //the_excerpt(); ?>
 			<?php //if ( isset($advocacy_targets) ) { ?>
 			<!-- <p class="sa-policy-meta">Advocacy targets:
 				<?php echo $advocacy_targets; ?>

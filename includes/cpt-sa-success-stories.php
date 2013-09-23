@@ -56,6 +56,8 @@ add_action( 'admin_init', 'call_sa_success_story_meta_box' );
  */
 class sa_success_story_meta_box {
 
+	private $nonce = 'sa_success_story_custom_meta_box_nonce';
+
 	/**
 	 * Hook into the appropriate actions when the class is constructed.
 	 */
@@ -63,6 +65,8 @@ class sa_success_story_meta_box {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
 		add_action( 'save_post', array( $this, 'save_custom_upload_data' ) );
+		add_action( 'wp_ajax_delete_success_story_pdf', array( $this, 'ajax_delete_success_story_pdf' ) );
+
 	}
 
 	/**
@@ -88,26 +92,28 @@ class sa_success_story_meta_box {
 	public function render_meta_box_content( $post ) {
 	
 		// Add an nonce field so we can check for it later.
-		wp_nonce_field( 'sa_success_story_custom_meta_box', 'sa_success_story_custom_meta_box_nonce' );
+		wp_nonce_field( 'sa_success_story_custom_meta_box', $this->nonce );
 
 		// Use get_post_meta to retrieve an existing value from the database.
 		$value = get_post_meta( $post->ID, 'sa_success_story_video_url', true );
 
 		// Display the form, using the current value.
 		?>
-		<label for="sa_success_story_video_url" class="description">Featured video URL <em>e.g.: http://www.youtube.com/watch?v=UueU0-EFido</em></label><br />
-		<input type="text" id="sa_success_story_video_url" name="sa_success_story_video_url" value="<?php esc_attr( $value); ?>" size="75" />
+		<label for="sa_success_story_video_url" class="description"><h4>Featured video URL</h4>
+			<em>e.g.: http://www.youtube.com/watch?v=UueU0-EFido</em></label><br />
+		<input type="text" id="sa_success_story_video_url" name="sa_success_story_video_url" value="<?php echo esc_attr( $value); ?>" size="75" />
 		
-		<label for="post_media" class="description">Attach the PDF version of this story</label><br />
-		<input id="post_media" type="file" name="post_media" value="" size="25" />
+		<label for="sa_success_story_pdf" class="description"><h4>Attach the PDF version of this story</h4></label>
+		<input id="sa_success_story_pdf" type="file" name="sa_success_story_pdf" value="" size="25" />
 		<p class="description">
 			<?php 
-			if( '' == get_post_meta( $post->ID, 'umb_file', true ) ) {
+			if( '' == get_post_meta( $post->ID, 'sa_success_story_pdf', true ) ) {
 				echo 'No PDF is attached to this post.';
 			} else {
-				echo 'Currently attached: ' . get_post_meta( $post->ID, 'umb_file', true );
+				echo '<span id="attached_pdf_info">Currently attached: ' . get_post_meta( $post->ID, 'sa_success_story_pdf', true ) . ' (<a id="delete_attached_pdf">Detach this PDF</a>)</span>';
 			} // end if
 			?>
+			 
 		</p><!-- /.description -->
 		
 		<script type="text/javascript">
@@ -117,10 +123,31 @@ class sa_success_story_meta_box {
 				
 				$(function() {
 				
-					if( 0 < $('#post_media').length ) {
+					if( 0 < $('#sa_success_story_pdf').length ) {
 					  $('form').attr('enctype', 'multipart/form-data');
 					} // end if
 					
+				});
+
+				//For deleting attachments
+				var data = {
+					action: 'delete_success_story_pdf',
+					post_attachment_to_delete: <?php echo $post->ID; ?>,
+					security: '<?php echo wp_create_nonce( 'delete_attached_pdf' ); ?>'
+				};
+
+				// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+				$("#delete_attached_pdf").click(function(evt) {
+					$.post(
+							ajaxurl, 
+							data, 
+							function(response) {
+							// alert('Got this from the server: ' + response);
+								if ( response == 1 ) {
+									$("#attached_pdf_info").text("No PDF is attached to this post.");
+								}
+							}
+						);
 				});
 
 			});
@@ -141,17 +168,16 @@ class sa_success_story_meta_box {
 		 */
 
 		// First, make sure the user can save the post
-		if( $this->user_can_save( $post_id, $this->nonce ) ) { 
-
-			/* OK, its safe for us to save the data now. */
-
+		if( $this->user_can_save( $post_id, $this->nonce ) ) {
+					
 			// Sanitize the user input.
-			$mydata = sanitize_text_field( $_POST['sa_success_story_video_url'] );
+			$video_url = sanitize_text_field( $_POST['sa_success_story_video_url'] );
 
 			// Update the meta field.
-			update_post_meta( $post_id, 'sa_success_story_video_url', $mydata );
+			update_post_meta( $post_id, 'sa_success_story_video_url', $video_url );
 
 		}
+
 	}
 
 	public function save_custom_upload_data( $post_id ) {
@@ -160,16 +186,16 @@ class sa_success_story_meta_box {
 		if( $this->user_can_save( $post_id, $this->nonce ) ) { 
 
 			// If the user uploaded an image, let's upload it to the server
-			if( ! empty( $_FILES ) && isset( $_FILES['post_media'] ) ) {
+			if( ! empty( $_FILES ) && isset( $_FILES['sa_success_story_pdf'] ) ) {
 			
 				// Upload the goal image to the uploads directory, resize the image, then upload the resized version
-				$goal_image_file = wp_upload_bits( $_FILES['post_media']['name'], null, wp_remote_get( $_FILES['post_media']['tmp_name'] ) );
+				$goal_image_file = wp_upload_bits( $_FILES['sa_success_story_pdf']['name'], null, wp_remote_get( $_FILES['sa_success_story_pdf']['tmp_name'] ) );
 
 				// Set post meta about this image. Need the comment ID and need the path.
 				if( false == $goal_image_file['error'] ) {
 				
 					// Since we've already added the key for this, we'll just update it with the file.
-					update_post_meta( $post_id, 'umb_file', $goal_image_file['url'] );
+					update_post_meta( $post_id, 'sa_success_story_pdf', $goal_image_file['url'] );
 		
 				} // end if/else
 
@@ -189,15 +215,78 @@ class sa_success_story_meta_box {
 	 * @param		int		$post_id	The ID of the post being save
 	 * @param		bool				Whether or not the user has the ability to save this post.
 	 */
-	function user_can_save( $post_id, $nonce ) {
+	public function user_can_save( $post_id, $nonce ) {
 		
-	    $is_autosave = wp_is_post_autosave( $post_id );
-	    $is_revision = wp_is_post_revision( $post_id );
-	    $is_valid_nonce = ( isset( $_POST[ $nonce ] ) && wp_verify_nonce( $_POST[ $nonce ], plugin_basename( __FILE__ ) ) );
-	    
-	    // Return true if the user is able to save; otherwise, false.
-	    return ! ( $is_autosave || $is_revision ) && $is_valid_nonce;
+	    // Don't save if the user hasn't submitted the changes
+		if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return false;
+		} // end if
+
+		// Verify that the input is coming from the proper form
+		if( ! wp_verify_nonce( $_POST[ $nonce ], 'sa_success_story_custom_meta_box' ) ) {
+			return false;
+		} // end if
+
+		// Make sure the user has permissions to post
+		// if( 'post' == $_POST['post_type'] ) {
+		// 	if( ! current_user_can( 'edit_post', $post_id ) ) {
+		// 		return;
+		// 	} // end if
+		// } // end if/else
+
+		return true;
 	 
 	} // end user_can_save
 
+	public function ajax_delete_success_story_pdf() {
+		global $wpdb; // this is how you get access to the database
+
+		if( wp_verify_nonce( $_REQUEST['security'], 'delete_attached_pdf' ) ) {
+
+		$post_attachment_to_delete = intval( $_POST['post_attachment_to_delete'] );
+
+		$success = delete_post_meta( $post_attachment_to_delete, 'umb_file' );
+	        
+		die( $success ); // this is required to return a proper result
+
+		} else {
+			die('-1');
+		}
+	}
+
+}
+
+//Insert ads after lead in paragraph of single success story.
+
+add_filter( 'the_content', 'insert_actions_in_success_stories' );
+function insert_actions_in_success_stories( $content ) {
+
+	if ( is_singular( 'sa_success_story' ) && ! is_admin() ) {
+		global $post;
+		$pdf_url = get_post_meta( $post->ID, 'sa_success_story_pdf', true );
+		$insertion = '<p><a href="' . $pdf_url . '" class="button">Download the PDF</a> <a class="button add-comment-link" href="#respond"><span class="comment-icon"></span>Comment</a> ';
+		$insertion .= bp_get_share_post_button();
+		$insertion .= '</p>';
+		return insert_random_content_after_paragraph( $insertion, 1, $content );
+	}
+	
+	return $content;
+}
+ 
+// Parent Function that makes the magic happen
+function insert_random_content_after_paragraph( $insertion, $paragraph_id, $content ) {
+	$closing_p = '</p>';
+	$paragraphs = explode( $closing_p, $content );
+	foreach ($paragraphs as $index => $paragraph) {
+
+		if ( trim( $paragraph ) ) {
+			$paragraphs[$index] .= $closing_p;
+		}
+
+		if ( $paragraph_id == $index + 1 ) {
+			$paragraphs[$index] .= $insertion;
+		}
+	}
+	
+	return implode( '', $paragraphs );
 }

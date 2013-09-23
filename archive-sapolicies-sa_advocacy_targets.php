@@ -72,39 +72,11 @@
                         <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_info.png" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_info.png"  /><br />Infographic</a>
 
                     <?php } ?>
-
-                    <?php 
-                    switch ( $tax_term->slug ) {
-                    	case 'sa-active-play':
-                    		$topic_color = 'sayellow';
-                    		break;
-                		case 'sa-active-spaces':
-                    		$topic_color = 'sablue';
-                    		break;
-                		case 'sa-better-food-in-neighborhoods':
-                    		$topic_color = 'saorange';
-                    		break;
-                		case 'sa-healthier-marketing':
-                    		$topic_color = 'sapink';
-                    		break;
-                		case 'sa-healthier-school-snacks':
-                    		$topic_color = 'sagreen';
-                    		break;
-                		case 'sa-sugary-drinks':
-                    		$topic_color = 'sapurple';
-                    		break;
-                    	default:
-							$topic_color = 'saorange';
-							break;
-                    }
-                    ?>
-
-
                </div>
 
                </article>
 			    <div class="taxonomy-policies">
-	               <h3 class="screamer <?php echo $topic_color; ?>">Changes in the <?php echo $tax_term->name; ?> topic</h3>
+	               <h3 class="screamer <?php sa_the_topic_color( $tax_term->slug ); ?>">Changes in the <?php echo $tax_term->name; ?> topic</h3>
 						
 					<?php while ( have_posts() ) : the_post(); ?>
 						<?php get_template_part( 'content', 'sa-policy-short' ); ?>
@@ -116,45 +88,6 @@
 			</div> <!-- .entry-content -->
 			</div><!-- .padder -->
 		</div><!-- #content -->
-<script type="text/javascript">
-jQuery(document).ready(function($) {
 
-	$('ul.nav-tabs').each(function(){
-	  // For each set of tabs, we want to keep track of
-	  // which tab is active and its associated content
-	  var $active, $content, $links = $(this).find('a');
-
-	  // If the location.hash matches one of the links, use that as the active tab.
-	  // If no match is found, use the first link as the initial active tab.
-	  $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-	  $active.parents('li').addClass('current');
-	  $content = $($active.attr('href'));
-
-	  // Hide the remaining content
-	  $links.not($active).each(function () {
-	    $($(this).attr('href')).hide();
-	  });
-
-	  // Bind the click event handler
-	  $(this).on('click', 'a', function(e){
-	    // Make the old tab inactive.
-	    $active.parents('li').removeClass('current');
-	    $content.hide();
-
-	    // Update the variables with the new link and content
-	    $active = $(this);
-	    $content = $($(this).attr('href'));
-
-	    // Make the tab active.
-	    $active.parents('li').addClass('current');
-	    $content.show();
-
-	    // Prevent the anchor's default click action
-	    // e.preventDefault();
-	  });
-	});
-});
-
-</script>
 <?php get_template_part('page-templates/wrapper-salud-bottom'); ?>
 <?php get_footer(); ?>

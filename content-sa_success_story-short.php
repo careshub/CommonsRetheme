@@ -25,26 +25,29 @@ $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 
 	}
 
+// $featured_image = get_the_post_thumbnail( $post->ID, 'feature-front-sub');
+
 ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class( 'main-article' ); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'sa-item-short-form' ); ?>>
 		<div class="entry-content">
-			<header class="entry-header clear">
-				<span class="<?php echo $first_advo_target; ?>x90"></span><h1 class="entry-title icon-friendly"><?php the_title(); ?></h1>
+			<!-- <header class="entry-header clear">
+				<h1 class="entry-title"><span class="<?php echo $first_advo_target; ?>x60"></span><?php the_title(); ?></h1>
 				<?php //if (function_exists('salud_the_target_icons')) {
 				// 		salud_the_target_icons();
 				// 		}
 				?>
+			</header> -->
+			<header class="entry-header clear">
+				<?php if ($featured_image) { ?>
+					<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark" class="front<?php echo $layout_location ?>"><?php echo $featured_image; ?></a>
+				<?php } ?>
+				<h2 class="entry-title"><span class="<?php echo $first_advo_target; ?>x60"></span><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 			</header>
-			<?php if ( $video_url ) { ?>
-			<div class="video-container">
-				<p> 
-				<?php echo $video_embed_code; ?>
-			 	</p>
+			<div class="entry-content">
+				<?php the_excerpt(); ?>
 			</div>
-			<?php } ?>
-
-			<?php the_content(); ?>
+			
 
 			<?php if ( isset($advocacy_targets) ) { ?>
 			<p class="sa-policy-meta">Advocacy targets:
@@ -52,25 +55,15 @@ $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 			</a></p>
 			<?php } ?>
 
-			<?php if ( isset($resource_categories) ) { ?>
-				<p class="sa-policy-meta">Categories :
-					<?php echo $resource_categories; ?>
-				</a></p>
-			<?php } ?>
-			<!-- <p class="sa-policy-meta">This policy is of the type: <a href="#">
-				<?php //echo $custom_fields['sa_policytype'][0];
-				// echo $advocacy_targets;
-				?>
-			</a></p> -->
 			<?php 
-				if ( function_exists('cc_add_comment_button') ) { 
-					cc_add_comment_button(); 
-				} 
+				// if ( function_exists('cc_add_comment_button') ) { 
+				// 	cc_add_comment_button(); 
+				// } 
 			?>
 			<?php 
-				if ( function_exists('bp_share_post_button') ) { 
-					bp_share_post_button(); 
-				} 
+				// if ( function_exists('bp_share_post_button') ) { 
+				// 	bp_share_post_button(); 
+				// } 
 			?>
 
 			<div class="clear"></div>			
@@ -78,7 +71,7 @@ $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 
 			<?php //wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
-		<footer class="entry-meta">
+		<!-- <footer class="entry-meta">
 			<?php edit_post_link( __( 'Edit', 'twentytwelve' ), '<span class="edit-link">', '</span>' ); ?>
-		</footer><!-- .entry-meta -->
+		</footer> --><!-- .entry-meta -->
 	</article><!-- #post -->

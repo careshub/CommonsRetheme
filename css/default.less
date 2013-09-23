@@ -2202,12 +2202,22 @@ h5 {
 		margin: 0.8em 1em;
 		}
 	}
+	.icon-friendly {
+		width: 80%;
+		display: inline-block;
+		vertical-align: middle;
+		}
 }
-.entry-header .entry-title, .archive-header .archive-title {
+.entry-header {
+	&.min-bottom-margin {
+		margin-bottom: 0;
+	}
+	.entry-title, .archive-header .archive-title {
 	font-size: 20px;
 	font-size: 1.428571429rem;
 	line-height: 1.2;
 	font-weight: normal;
+	}
 }
 #primary #content .screamer {
 	background-color: @ccblue;
@@ -2639,6 +2649,9 @@ ul.item-list li .share-buttons-below li {
 		&:last-child {
 			border-bottom: none;
 		}
+		&.sa_archive_introduction {
+			border-bottom: none;
+		}
 		}
 		.main-article {
 			// padding-bottom: 3.4em;
@@ -2795,6 +2808,7 @@ ul.item-list li .share-buttons-below li {
 				border-left-color: @sapurple; 
 			}
 		}
+		
 	}
 	.policy-search {
 		border-bottom: 1px solid @saorange;
@@ -3050,6 +3064,16 @@ ul.item-list li .share-buttons-below li {
 	width: 30px;
 }
 
+.sa-active-playx90, .sa-active-spacesx90, .sa-better-food-in-neighborhoodsx90, .sa-healthier-marketingx90, .sa-healthier-school-snacksx90, .sa-sugary-drinksx90, .sa-active-play-whx90, .sa-active-spaces-whx90, .sa-better-food-in-neighborhoods-whx90, .sa-healthier-marketing-whx90, .sa-healthier-school-snacks-whx90, .sa-sugary-drinks-whx90{
+	background: url(img/salud_america/sa-sprites.png) no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	// float: left;
+	margin-right: 2%;
+	height: 90px;
+	width: 90px;
+}
+
 .sa-active-playx60{
 	background-position: -140px -70px ;
 }
@@ -3096,6 +3120,53 @@ ul.item-list li .share-buttons-below li {
 
 .sa-sugary-drinksx30{
 	background-position: 0 -140px ;
+}
+.sa-active-playx90{
+	background-position: -200px -280px ;
+}
+
+.sa-active-spacesx90{
+	background-position: -100px -280px ;
+}
+
+.sa-better-food-in-neighborhoodsx90{
+	background-position: 0 -280px ;
+}
+
+.sa-healthier-marketingx90{
+	background-position: -200px -180px ;
+}
+
+.sa-healthier-school-snacksx90{
+	background-position: -100px -180px ;
+}
+
+.sa-sugary-drinksx90{
+	background-position: 0 -180px ;
+}
+
+.sa-active-play-whx90{
+	background-position: -200px -480px ;
+}
+
+.sa-active-spaces-whx90{
+	background-position: -100px -480px ;
+}
+
+.sa-better-food-in-neighborhoods-whx90{
+	background-position: 0 -480px ;
+}
+
+.sa-healthier-marketing-whx90{
+	background-position: -200px -380px ;
+}
+
+.sa-healthier-school-snacks-whx90{
+	background-position: -100px -380px ;
+}
+
+.sa-sugary-drinks-whx90{
+	background-position: 0 -380px ;
 }
 //Styles for salud advanced search form
 #cc-adv-search{

@@ -638,6 +638,7 @@ function cc_custom_body_class( $classes ) {
       || is_singular('saresources')
       || is_singular('sa_success_story')
       || is_tax('sa_advocacy_targets')
+      || is_archive('sa_success_story')
       ) {
         $classes[] = 'salud-america';
         if(($key = array_search('full-width', $classes)) !== false) {
