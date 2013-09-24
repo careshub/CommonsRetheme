@@ -934,7 +934,7 @@ function sa_location_search()
 { 
         ?>
 		
-			<h3>Search for Changes in Progress by Location</h3>
+			<h3 class="screamer sapurple">Search for Changes in Progress by Location</h3>
 				
         <form method="POST" action="" name="sa_ls" enctype="multipart/form-data"> 
             <input type="text" id="locationtxt" size="70" Placeholder="Type in location here" name="locationtxt" />
