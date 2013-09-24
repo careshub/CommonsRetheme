@@ -296,7 +296,7 @@ get_header(); ?>
     			}  elseif (is_page('search-results')) {
 				$filter_args = array(
 					 'post_type' => 'sapolicies',
-					 's' => $_POST['saps_single'],
+					 's' => $_POST['saps'],
 					 'post__in' => $post_ids3,					 
 					 'meta_query' => array(
 										array(
