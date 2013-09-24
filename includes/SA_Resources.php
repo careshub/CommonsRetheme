@@ -322,6 +322,150 @@ function sa_filter_unpromoted_saresources( $query ) {
 }
 // add_action('pre_get_posts', 'sa_filter_unpromoted_saresources', 9999); 
 
+function sa_searchresources($searchresults) {
+        ?>
+<div id="cc-adv-search" class="clear">
+	<form action="<?php '/salud-america' . $searchresults?>" method="POST" enctype="multipart/form-data" name="sa_ps">
+			<div class="row">
+        <input type="text" id="saps" name="saps" Placeholder="Enter search terms here" value="<?php 
+    			if (isset($_POST['saps'])) {
+    				echo $_POST['saps']; 
+    			}	elseif (isset($_GET['qs'])) {
+    					echo $_GET['qs'];	
+    			}
+    				?>" />
+			
+  			<input id="searchsubmit" type="submit" alt="Search" value="Search" />
+      </div>
+	
+	<a role="button" id="cc_advanced_search_toggle" class="clear" >+ Advanced Search</a>
+		 
+			<div id="cc-adv-search-pane-container" class="row clear">
+        <div class="cc-adv-search-option-pane third-block">
+          <h4>Topic Area</h4>
+          <ul>
+            <?php 
+            $ATterms = get_terms('sa_advocacy_targets');
+            foreach ($ATterms as $ATterm) {
+              echo '<li><input type="checkbox" name="sa_advocacy_target[]" id="sa_adv_target_' . $ATterm->term_id . '" value="' . $ATterm->term_id . '" /> <label for="sa_adv_target_' . $ATterm->term_id . '">' . $ATterm->name . '</label></li>';
+            }
+            ?>
+          </ul>
+        </div> <!-- End option pane -->
+      
+        <div class="cc-adv-search-option-pane third-block">
+          <h4>Type of Resource</h4>        
+          <div class="cc-adv-search-scroll-container">
+          <ul>
+            <?php 
+            $CATterms = get_terms('sa_resource_cat');
+            foreach ($CATterms as $CATterm) {
+              echo '<li><input type="checkbox" name="sa_resource_cat[]" id="sa_res_cat_' . $CATterm->term_id . '" value="' . $CATterm->term_id . '" /> <label for="sa_res_cat_' . $CATterm->term_id . '">' . $CATterm->name . '</label></li>';
+            }
+            ?>
+          </ul>
+          </div>
+         </div> <!-- End option pane -->
+      
+        <div class="cc-adv-search-option-pane third-block">
+          <h4>Tags</h4>
+          <?php $sat_args = array('orderby' => count, 'order' => DESC);
+          $sapolicytags = get_terms('sa_policy_tags', $sat_args);
+          ?>
+          <div class="cc-adv-search-scroll-container">
+          <ul>
+            <?php
+            foreach ($sapolicytags as $sapolicytag) {
+              echo '<li><input type="checkbox" name="sa_sapolicy_tag[]" id="sa_policy_tag_' .  $sapolicytag->term_id . '" value="' . $sapolicytag->term_id . '" /> <label for="sa_policy_tag_' . $sapolicytag->term_id . '">' . $sapolicytag->name . ' (' . $sapolicytag->count . ')</label></li>';
+            } 
+            ?>
+          </ul>
+          </div> <!-- End scroll container -->
+        </div> <!-- End option pane -->
+      </div>
+			
+		</form>	
+		
+	</div>
+	<script type="text/javascript">
+		var $j = jQuery.noConflict();
+		
+		$j(document).ready(function(){
+
+		   $j('#cc-adv-search-pane-container').hide();	
+		   $j('#cc_advanced_search_toggle').click(function(){
+  				$j('#cc-adv-search-pane-container').slideToggle('fast');
+  				if ($j("#cc_advanced_search_toggle").text() == "+ Advanced Search") {
+  					$j("#cc_advanced_search_toggle").text("- Advanced Search");
+  				}
+  				else {
+  					$j("#cc_advanced_search_toggle").text("+ Advanced Search");
+  				}
+		   });
+
+		});
+    
+	</script>
+
+<?php
+	global $wpdb; 
+
+	if(isset($_POST['sa_advocacy_target']))
+	 {
+		 $chk1 = $_POST['sa_advocacy_target'];	 
+	 }
+	if(isset($_POST['sa_resource_cat']))
+	 {
+		 $chk2 = $_POST['sa_resource_cat'];			
+	 }	
+	if(isset($_POST['sa_sapolicy_tag']))
+	 {
+		 $chk3 = $_POST['sa_sapolicy_tag'];		
+	 }
+	 
+	if(isset($_POST['sa_advocacy_target']) || isset($_POST['sa_resource_cat']) || isset($_POST['sa_sapolicy_tag'])) {
+		$post_ids = get_objects_in_term($chk1, 'sa_advocacy_targets');
+		$post_ids2 = get_objects_in_term($chk3, 'sa_resource_cat');
+		$post_ids3 = array_merge($post_ids,$post_ids2);
+		$filter_args = array(
+					 'post_type' => 'saresources',
+					 's' => $_POST['saps'],
+					 'post__in' => $post_ids3,					 
+
+					 );
+			//var_dump($filter_args);
+			$query2 = new WP_Query($filter_args);
+		    if($query2->have_posts()) : 
+			  while($query2->have_posts()) : 
+					$query2->the_post();
+					get_template_part( 'content', 'saresources-short' ); 
+
+			  endwhile;
+		   else: 
+			  echo "No Results - Search criteria too specific";	
+		   endif;						
+    } else {
+  		if(isset($_POST['saps']))
+  		{		           
+  				$saps = $_POST['saps']; 			
+
+  				$query = new WP_Query( array(
+  						's' => $saps, 
+  						'post_type' => 'saresources'));
+  				
+  				if($query->have_posts()) : 
+  				  while($query->have_posts()) : 
+  						$query->the_post();
+  						get_template_part( 'content', 'saresources-short' );  
+
+  				  endwhile;
+  			   else: 
+  				  echo "No Results - Search criteria too specific";	
+  			   endif;	
+  		}		
+	}
+}
+
 function SA_getting_started() 
 {
 ?>

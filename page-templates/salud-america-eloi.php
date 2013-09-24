@@ -56,9 +56,9 @@ if (is_page('salud-americaresearch')) {
           endwhile; // end of the loop. 
           ?>
    				<div class="policy-search">
-  					<form id="sa-policy-search" class="standard-form" method="get" action="/">
+  					<!--<form id="sa-policy-search" class="standard-form" method="post" action="/">-->
   					<h3 style="color: #ef4036;font-size: 1.6rem;">Search for Resources</h3>
-                                        <?php if ( function_exists('sa_searchpolicies') ) { sa_searchpolicies(); } ?>
+                                        <?php if ( function_exists('sa_searchresources') ) { sa_searchresources('search-results-resources'); } ?>
   				</div>
 
         <?php
@@ -78,6 +78,27 @@ if (is_page('salud-americaresearch')) {
         //Begin secondary loop for most recently added resources ?>
         <h3>Latest Resources Added</h3>
         <?php saresources_get_related_resources($resource_cats);
+			
+} elseif (is_page('search-results-resources')) {
+				$filter_args = array(
+					 'post_type' => 'saresources',
+					 's' => $_POST['saps'],
+					 'post__in' => $post_ids3,					 
+
+					 
+					 );
+                                //var_dump($filter_args);
+                                $query2 = new WP_Query($filter_args);
+                                    if($query2->have_posts()) : 
+                                        while($query2->have_posts()) : 
+                                            $query2->the_post();
+                                            get_template_part( 'content', 'saresources-short' ); 
+
+                                        endwhile;
+                                    
+                                        else: 
+                                            echo "No Results - Search criteria too specific";	
+                                    endif;
 			
 } elseif (is_page('getting-started')) {
 
