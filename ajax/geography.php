@@ -10,8 +10,13 @@ $geog_str_prefix = sa_get_geography_prefix($geog);
 
 if( $selstate )
 {
+    //get the selected state slug
+    $state_term = get_term_by('id', $selstate, 'geographies');
+    //Trim the "-state" from the end of the state slug
+    $state_clean = substr( $state_term->slug, 0, -6);
+
     if ($geog) {     
-        $thisid = $geog_str_prefix . $selstate;
+        $thisid = $geog_str_prefix . $state_clean;
         $geoterm = get_term_by('slug', $thisid, 'geographies'); 
         $tid = $geoterm->term_id;
             $args = array(
@@ -21,7 +26,7 @@ if( $selstate )
             $terms = get_terms( 'geographies', $args );
             if ( $terms ) {                    
                     foreach ( $terms as $term ) {
-                            printf( '<option value="' . $term->name . '">' . $term->name . '</option>' );
+                            printf( '<option value="' . $term->term_id . '">' . $term->name . '</option>' );
                     }
             }
     }

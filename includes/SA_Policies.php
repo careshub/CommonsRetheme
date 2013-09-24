@@ -140,26 +140,28 @@ function sa_geog_meta_box()
     $sa_longitude = $custom["sa_longitude"][0];
     $sa_nelat = $custom["sa_nelat"][0];
     $sa_nelng = $custom["sa_nelng"][0];
-	$sa_swlat = $custom["sa_swlat"][0];
+  	$sa_swlat = $custom["sa_swlat"][0];
     $sa_swlng = $custom["sa_swlng"][0];
 
     //Walk up the geographies taxonomy from the selected geography
     //Get the Geography term for this post
     $geo_tax = get_the_terms( $post->ID, 'geographies' );
+    $geo_tax_id = $geo_tax[0]->term_id;
 
     //Figure out which level of geography we're dealing with here. Get the term's parent, which will give us the type of geography.
     if ( !empty( $geo_tax ) )      
       $geo_type_terms = get_term_by( 'id', $geo_tax[0]->parent, 'geographies' );
         // Possible Values of $geo_type_terms->name:
-        // States
+        // United States (parent term of all states)
         // Counties
         // Cities
         // School Districts
         // US Congressional Districts
         // State House Districts
         // State Senate Districts
+
     switch ($geo_type_terms->name) {
-      case 'States':
+      case 'United States':
         $geo_type = 'State';
         break;
       case 'Counties':
@@ -202,17 +204,18 @@ function sa_geog_meta_box()
 <div id="leftcolumn">
     <!-- <h4>Geography</h4> -->
     <ul id="sa_geog_select">
-      <li><input type="radio" name="sa_geog" id="sa_geog_national" value="National" <?php checked( $geog, 'National' ); ?>> <label for="sa_geog_national">National</label></li>
-      <li><input type="radio" name="sa_geog" id="sa_geog_state" value="State" <?php checked( $geog, 'State' ); ?>> <label for="sa_geog_state">State</label></li>
-      <li><input type="radio" name="sa_geog" id="sa_geog_county" value="County" <?php checked( $geog, 'County' ); ?>> <label for="sa_geog_county">County</label></li>
-      <li><input type="radio" name="sa_geog" id="sa_geog_city" value="City" <?php checked( $geog, 'City' ); ?>> <label for="sa_geog_city">City</label></li>
-      <li><input type="radio" name="sa_geog" id="sa_geog_school_district" value="School District" <?php checked( $geog, 'School District' ); ?>> <label for="sa_geog_school_district">School District</label></li>
-      <li><input type="radio" name="sa_geog" id="sa_geog_us_congress" value="US Congressional District" <?php checked( $geog, 'US Congressional District' ); ?>> <label for="sa_geog_us_congress">US Congressional District</label></li>
-      <li><input type="radio" name="sa_geog" id="sa_geog_state_house" value="State House District" <?php checked( $geog, 'State House District' ); ?>> <label for="sa_geog_state_house">State House District</label></li>
-      <li><input type="radio" name="sa_geog" id="sa_geog_state_senate" value="State Senate District" <?php checked( $geog, 'State Senate District' ); ?>> <label for="sa_geog_state_senate">State Senate District</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_national" value="National" <?php checked( $geo_type, 'National' ); ?>> <label for="sa_geog_national">National</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_state" value="State" <?php checked( $geo_type, 'State' ); ?>> <label for="sa_geog_state">State</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_county" value="County" <?php checked( $geo_type, 'County' ); ?>> <label for="sa_geog_county">County</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_city" value="City" <?php checked( $geo_type, 'City' ); ?>> <label for="sa_geog_city">City</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_school_district" value="School District" <?php checked( $geo_type, 'School District' ); ?>> <label for="sa_geog_school_district">School District</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_us_congress" value="US Congressional District" <?php checked( $geo_type, 'US Congressional District' ); ?>> <label for="sa_geog_us_congress">US Congressional District</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_state_house" value="State House District" <?php checked( $geo_type, 'State House District' ); ?>> <label for="sa_geog_state_house">State House District</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_state_senate" value="State Senate District" <?php checked( $geo_type, 'State Senate District' ); ?>> <label for="sa_geog_state_senate">State Senate District</label></li>
     </ul>
-    <!-- <p> Geography:<pre>
-      <?php print_r($geo_tax); ?>
+    <p> Geography:<pre>
+      <?php print_r($geo_tax);
+      echo PHP_EOL . $geo_tax_id;  ?>
     </pre>
     </p>
     <p> Geography type:<pre>
@@ -223,23 +226,20 @@ function sa_geog_meta_box()
     <p> State:<pre>
       <?php print_r($geo_tax_state); ?>
     </pre>
-    </p> -->
+    </p>
 
 </div>
 <div id="rightcolumn">
     <div id="states">
   <?php
     //Set up geographies
-    //Get the terms, starting by finding the starting point, which is the only term in geographies with a parent of 0
-    $geo_starting_point = array(
-                  'parent' => 0,
-                  'hide_empty' => 0     
-                  );
-    $top_level_geo = get_terms( 'geographies', $geo_starting_point );
+    //Get the terms, starting by finding the starting pointsave
+    $geo_tax_top_level_term_id = get_geo_tax_top_level_term_id();
+    print_r($geo_tax_top_level_term_id);
 
-    //Populate States selectbox 
+    //Populate States selectbox, states are direct descendants of the top level geography term
     $state_args = array(
-                  'parent' => $top_level_geo[0]->term_id,
+                  'parent' => $geo_tax_top_level_term_id,
                   'hide_empty' => 0      
     );
           
@@ -258,7 +258,7 @@ function sa_geog_meta_box()
   		foreach ( $state_terms as $state_term ) {
         echo '<option value="' . $state_term->term_id . '"' ;
         if (!empty($state)) {
-          echo ( $state == $state_term->name ? ' selected="selected"' : '' );
+          echo ( ( $geo_tax_state == $state_term->name || $state == $state_term->name || $state == $state_term->term_id ) ? ' selected="selected"' : '' );
         }
         echo '>'. $state_term->name . '</option>';
   		}
@@ -276,10 +276,10 @@ function sa_geog_meta_box()
                 <select name="sa_selectedgeog" id="sa_selectedgeog" class="sa_selectedgeog">
                 <?php
                 //Don't bother to try to load options if the geog value is empty or national or state.
-                 if ( !empty($geog) && !in_array($geog, array ('National','State')) ) {
-                    $geog_str_prefix = sa_get_geography_prefix($geog);
+                 if ( !empty($geo_type) && !in_array($geo_type, array ('National','State')) ) {
+                    $geog_str_prefix = sa_get_geography_prefix($geo_type);
 
-                    $geo_search_slug = $geog_str_prefix . $state;
+                    $geo_search_slug = $geog_str_prefix . $geo_tax_state;
                     $geoterm = get_term_by('slug', $geo_search_slug, 'geographies'); 
                     $tid = $geoterm->term_id;
                         $args = array(
@@ -290,9 +290,9 @@ function sa_geog_meta_box()
                         //The old way stored the final choice as text.
                         if ( $terms ) {                    
                                 foreach ( $terms as $term ) {
-                                   echo '<option value="' . $term->name . '"' ;
+                                   echo '<option value="' . $term->term_id . '"' ;
                                     if (!empty($selectedgeog)) {
-                                      echo ( $selectedgeog == $term->name ? ' selected="selected"' : '' );
+                                      echo ( ( $selectedgeog == $term->name || $geo_tax_id == $term->term_id )  ? ' selected="selected"' : '' );
                                     }
                                     echo '>'. $term->name . '</option>';
                                     }
@@ -304,7 +304,8 @@ function sa_geog_meta_box()
                  ?>                   
                     
                 </select>
-                <input type="hidden" id="sa_finalgeog" value="<?php echo $selectedgeog; ?>" name="sa_finalgeog" />
+                <input id="sa_finalgeog" value="<?php echo $selectedgeog; ?>" name="sa_finalgeog" />
+                <input id="sa_state-check" disabled="disabled" value="<?php echo $state; ?>" name="sa_finalgeog" />
                 <div id="geography_coords">
                   <input type="hidden" id="sa_latitude" value="<?php echo $sa_latitude; ?>" name="sa_latitude">
                   <input type="hidden" id="sa_longitude" value="<?php echo $sa_longitude; ?>" name="sa_longitude">
@@ -578,7 +579,6 @@ function refresh_sa_policy_geographies() {
             break;
           case ('National'):
           case ('State'):
-          case ('State Senate District'):
             //TODO: State senate districts aren't behaving correctly - no terms seem to be available?
             //Clear finalgeog and lat/lon values
             //TODO: Why aren't we setting points for states?
@@ -683,6 +683,21 @@ function sa_get_geography_prefix($geog){
    return $geog_str_prefix;
 }
 
+function get_geo_tax_top_level_term_id() {
+  //The top level term is the only term in geographies with a parent of 0
+  $geo_starting_point = array(
+                  'parent' => 0,
+                  'hide_empty' => 0     
+                  );
+  $top_level_geo = get_terms( 'geographies', $geo_starting_point );
+$towrite = print_r($top_level_geo, TRUE);
+$fp = fopen('top-geo-term.txt', 'a');
+fwrite($fp, $towrite);
+fclose($fp);
+
+  return intval( $top_level_geo[0]->term_id );
+}
+
   
 function cc_get_the_geo_tax_type( $geo_term ) {
 return false;
@@ -755,6 +770,49 @@ function sapolicy_save_event_field($event_field) {
     }
 }
 
+add_action( 'save_post', 'sa_geog_tax_save' );
+function sa_geog_tax_save() {   
+   global $post;
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+      return;
+    $towrite = PHP_EOL . 'new attempt: ' . $post->ID . PHP_EOL;
+    if ( $post->post_type == 'sapolicies' ) {
+      //Try to save the more specific option first
+      if ( !empty( $_POST["sa_selectedgeog"] ) ) {
+        sapolicy_save_taxonomy_field("sa_selectedgeog");
+        $towrite .= "Selected Geog not empty" . print_r($_POST["sa_selectedgeog"], TRUE) . PHP_EOL;
+
+      } elseif ( !empty( $_POST["sa_state"] ) ) {
+        //Save the state term if a more specific term isn't set
+        sapolicy_save_taxonomy_field("sa_state");
+        $towrite .= "State not empty" . print_r($_POST["sa_state"], TRUE) . PHP_EOL;
+
+      } else {
+        //if that fails, set the terms as 'national'
+        $term_ids = array( intval( get_geo_tax_top_level_term_id() ) );
+        wp_set_object_terms( $post->ID, $term_ids, 'geographies' );
+      }
+
+     $fp = fopen('geo-term-saving.txt', 'a');
+      fwrite($fp, $towrite);
+      fclose($fp);
+
+    }
+}
+
+function sapolicy_save_taxonomy_field($tax_field) {
+    global $post;
+    //Don't save empty metas
+    if ( !empty($_POST[$tax_field]) ) {
+      $term_ids = array( $_POST[$tax_field] );
+      //Make sure the terms IDs are integers:
+      $term_ids = array_map('intval', $term_ids);
+      $term_ids = array_unique( $term_ids );
+      wp_set_object_terms( $post->ID, $term_ids, 'geographies' );
+    }
+}
+
+
 //Not needed, WP includes jQuery UI
 // add_action('init', 'sapolicy_jquery'); 
 function sapolicy_jquery(){
@@ -762,10 +820,10 @@ function sapolicy_jquery(){
     wp_enqueue_style('sticky_post-admin-ui-css','http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/base/jquery-ui.css',false,"1.9.0",false);
     }
 
-function sa_searchpolicies($searchresults) {
+function sa_searchpolicies( $searchresults ) {
         ?>
 <div id="cc-adv-search" class="clear">
-	<form action=<?php "/salud-america . $searchresults"?> method="POST" enctype="multipart/form-data" name="sa_ps">
+	<form action="/salud-america<?php echo $searchresults; ?>" method="POST" enctype="multipart/form-data" name="sa_ps">
 			<div class="row">
         <input type="text" id="saps" name="saps" Placeholder="Enter search terms here" value="<?php 
     			if (isset($_POST['saps'])) {
