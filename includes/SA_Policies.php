@@ -762,10 +762,10 @@ function sapolicy_jquery(){
     wp_enqueue_style('sticky_post-admin-ui-css','http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/base/jquery-ui.css',false,"1.9.0",false);
     }
 
-function sa_searchpolicies() {
+function sa_searchpolicies($searchresults) {
         ?>
 <div id="cc-adv-search" class="clear">
-	<form action="" method="POST" enctype="multipart/form-data" name="sa_ps">
+	<form action=<?php "/salud-america . $searchresults"?> method="POST" enctype="multipart/form-data" name="sa_ps">
 			<div class="row">
         <input type="text" id="saps" name="saps" Placeholder="Enter search terms here" value="<?php 
     			if (isset($_POST['saps'])) {
