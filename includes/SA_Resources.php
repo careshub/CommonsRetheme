@@ -247,47 +247,7 @@ function salud_the_location() {
   echo salud_get_the_location();
 }
   function salud_get_the_location() {
-  	// global $post;
-    
-    //Taxonomy-based location parsing
-	// $geo_tax = wp_get_object_terms( $post->ID, 'geographies' );
-	// $geo_tax_name = $geo_tax[0]->name;
-
-    //Figure out which level of geography we're dealing with here. Get the term's parent, which will give us the type of geography.
-    // if ( !empty( $geo_tax ) ) {
-    //   	$geo_parent_term = get_term_by( 'id', $geo_tax[0]->parent, 'geographies' );
-    //   	$geo_parent_name = $geo_parent_term->name; 
-    // }
-        // Possible Values of $geo_parent_name
-        // United States (parent term of all states)
-        // Counties
-        // Cities
-        // School Districts
-        // US Congressional Districts
-        // State House Districts
-        // State Senate Districts
-   	   
-    // switch ($geo_parent_name) {
-	   //  case 'United States':
-	   //    	$geo_tax_location = $geo_tax_name;
-	   //      break;
-	   //  case 'Counties':
-	   //  case 'Cities':
-	   //  case 'School Districts':
-	   //  case 'US Congressional Districts':
-	   //  case 'State House Districts':
-	   //  case 'State Senate Districts':
-	   //      //For all of these, we want the term's name followed by the state
-	   //  	//The state is the grandparent of the term
-		  //   // $geo_grandparent_term = get_term_by( 'id', $geo_parent_term->parent, 'geographies' );
-	   //   //    $geo_tax_location = $geo_tax_name . ', ' . $geo_grandparent_term->name;
-	   //      $geo_tax_location = cc_get_the_geo_tax_name() . ', ' . cc_get_the_geo_tax_state();
-
-		  //   break;
-    //     default:
-	   //      $geo_tax_location = 'United States';
-	   //      break;
-    // }       
+  	   
     $geo_tax_type = cc_get_the_geo_tax_type();
 
 	  switch ($geo_tax_type) {
@@ -306,7 +266,7 @@ function salud_the_location() {
 			$geo_tax_location = 'United States';	        
 			break;
 	    }
-	    
+
          return $geo_tax_location;
   } 
 
