@@ -132,69 +132,27 @@ function sapolicy_remove_metas() {
 function sa_geog_meta_box()
 {
     global $post;
-    $custom = get_post_custom($post->ID);
-    $geog = $custom["sa_geog"][0];
-    $state = $custom["sa_state"][0];
-    $selectedgeog = $custom["sa_finalgeog"][0];
-    $sa_latitude = $custom["sa_latitude"][0];
-    $sa_longitude = $custom["sa_longitude"][0];
-    $sa_nelat = $custom["sa_nelat"][0];
-    $sa_nelng = $custom["sa_nelng"][0];
-  	$sa_swlat = $custom["sa_swlat"][0];
-    $sa_swlng = $custom["sa_swlng"][0];
+   //  $custom = get_post_custom($post->ID);
+   //  $geog = $custom["sa_geog"][0];
+   //  $state = $custom["sa_state"][0];
+   //  $selectedgeog = $custom["sa_finalgeog"][0];
+   //  $sa_latitude = $custom["sa_latitude"][0];
+   //  $sa_longitude = $custom["sa_longitude"][0];
+   //  $sa_nelat = $custom["sa_nelat"][0];
+   //  $sa_nelng = $custom["sa_nelng"][0];
+  	// $sa_swlat = $custom["sa_swlat"][0];
+   //  $sa_swlng = $custom["sa_swlng"][0];
 
     //Walk up the geographies taxonomy from the selected geography
     //Get the Geography term for this post
-    $geo_tax = get_the_terms( $post->ID, 'geographies' );
+    $geo_tax = wp_get_object_terms( $post->ID, 'geographies' );
     $geo_tax_id = $geo_tax[0]->term_id;
 
-    //Figure out which level of geography we're dealing with here. Get the term's parent, which will give us the type of geography.
-    if ( !empty( $geo_tax ) )      
-      $geo_type_terms = get_term_by( 'id', $geo_tax[0]->parent, 'geographies' );
-        // Possible Values of $geo_type_terms->name:
-        // United States (parent term of all states)
-        // Counties
-        // Cities
-        // School Districts
-        // US Congressional Districts
-        // State House Districts
-        // State Senate Districts
+    //Helper function returns the type of geography we're working with.
+    $geo_type = cc_get_the_geo_tax_type();
 
-    switch ($geo_type_terms->name) {
-      case 'United States':
-        $geo_type = 'State';
-        break;
-      case 'Counties':
-        $geo_type = 'County';
-        break;
-      case 'Cities':
-        $geo_type = 'City';
-        break;
-      case 'School Districts':
-        $geo_type = 'School District';
-        break;
-      case 'US Congressional Districts':
-        $geo_type = 'US Congressional District';
-        break;
-      case 'State House Districts':
-        $geo_type = 'State House District';
-        break;
-      case 'State Senate Districts':
-        $geo_type = 'State Senate District';
-        break;
-      default:
-        $geo_type = 'National';
-        break;
-    }
-
-    if ( !empty( $geo_type_terms ) && $geo_type_terms->parent == 0 ) {
-      //0 means we've reached the top level, so this is a state
-      $geo_tax_state = $geo_tax[0]->name;
-    } else if ( !empty( $geo_type_terms ) ) {
-      $geo_tax_state_prep = get_term_by( 'id', $geo_type_terms->parent, 'geographies' );
-      $geo_tax_state = $geo_tax_state_prep->name;
-    }
-
+    //Get the state name in human-readable format
+    $geo_tax_state = cc_get_the_geo_tax_state();
 
 ?>
 <style type="text/css">
@@ -213,7 +171,7 @@ function sa_geog_meta_box()
       <li><input type="radio" name="sa_geog" id="sa_geog_state_house" value="State House District" <?php checked( $geo_type, 'State House District' ); ?>> <label for="sa_geog_state_house">State House District</label></li>
       <li><input type="radio" name="sa_geog" id="sa_geog_state_senate" value="State Senate District" <?php checked( $geo_type, 'State Senate District' ); ?>> <label for="sa_geog_state_senate">State Senate District</label></li>
     </ul>
-    <p> Geography:<pre>
+   <!-- <p> Geography:<pre>
       <?php print_r($geo_tax);
       echo PHP_EOL . $geo_tax_id;  ?>
     </pre>
@@ -226,7 +184,7 @@ function sa_geog_meta_box()
     <p> State:<pre>
       <?php print_r($geo_tax_state); ?>
     </pre>
-    </p>
+    </p> -->
 
 </div>
 <div id="rightcolumn">
@@ -235,7 +193,7 @@ function sa_geog_meta_box()
     //Set up geographies
     //Get the terms, starting by finding the starting pointsave
     $geo_tax_top_level_term_id = get_geo_tax_top_level_term_id();
-    print_r($geo_tax_top_level_term_id);
+    // print_r($geo_tax_top_level_term_id);
 
     //Populate States selectbox, states are direct descendants of the top level geography term
     $state_args = array(
@@ -257,15 +215,15 @@ function sa_geog_meta_box()
 
   		foreach ( $state_terms as $state_term ) {
         echo '<option value="' . $state_term->term_id . '"' ;
-        if (!empty($state)) {
-          echo ( ( $geo_tax_state == $state_term->name || $state == $state_term->name || $state == $state_term->term_id ) ? ' selected="selected"' : '' );
+        if (!empty( $geo_tax_state )) {
+          echo ( ( $geo_tax_state == $state_term->name ) ? ' selected="selected"' : '' );
         }
         echo '>'. $state_term->name . '</option>';
   		}
 		echo '</select>';
 	} else {
-            print('no terms');
-        }
+    print('no terms');
+  }
 
         ?>   
 
@@ -276,7 +234,7 @@ function sa_geog_meta_box()
                 <select name="sa_selectedgeog" id="sa_selectedgeog" class="sa_selectedgeog">
                 <?php
                 //Don't bother to try to load options if the geog value is empty or national or state.
-                 if ( !empty($geo_type) && !in_array($geo_type, array ('National','State')) ) {
+                 if ( !empty( $geo_type ) && !in_array( $geo_type, array ('National','State') ) ) {
                     $geog_str_prefix = sa_get_geography_prefix($geo_type);
 
                     $geo_search_slug = $geog_str_prefix . $geo_tax_state;
@@ -291,8 +249,8 @@ function sa_geog_meta_box()
                         if ( $terms ) {                    
                                 foreach ( $terms as $term ) {
                                    echo '<option value="' . $term->term_id . '"' ;
-                                    if (!empty($selectedgeog)) {
-                                      echo ( ( $selectedgeog == $term->name || $geo_tax_id == $term->term_id )  ? ' selected="selected"' : '' );
+                                    if (!empty( $geo_tax_id )) {
+                                      echo ( ( $geo_tax_id == $term->term_id )  ? ' selected="selected"' : '' );
                                     }
                                     echo '>'. $term->name . '</option>';
                                     }
@@ -304,16 +262,16 @@ function sa_geog_meta_box()
                  ?>                   
                     
                 </select>
-                <input id="sa_finalgeog" value="<?php echo $selectedgeog; ?>" name="sa_finalgeog" />
-                <input id="sa_state-check" disabled="disabled" value="<?php echo $state; ?>" name="sa_finalgeog" />
-                <div id="geography_coords">
-                  <input type="hidden" id="sa_latitude" value="<?php echo $sa_latitude; ?>" name="sa_latitude">
-                  <input type="hidden" id="sa_longitude" value="<?php echo $sa_longitude; ?>" name="sa_longitude">
-                  <input type="hidden" id="sa_nelat" value="<?php echo $sa_nelat; ?>" name="sa_nelat">
-                  <input type="hidden" id="sa_nelng" value="<?php echo $sa_nelng; ?>" name="sa_nelng">
-                  <input type="hidden" id="sa_swlat" value="<?php echo $sa_swlat; ?>" name="sa_swlat">
-                  <input type="hidden" id="sa_swlng" value="<?php echo $sa_swlng; ?>" name="sa_swlng">
-                </div>
+                <!-- <input id="sa_finalgeog" value="<?php echo $selectedgeog; ?>" name="sa_finalgeog" />
+                <input id="sa_state-check" disabled="disabled" value="<?php echo $state; ?>" name="sa_finalgeog" /> -->
+                <!-- <div id="geography_coords">
+                  <input id="sa_latitude" value="<?php echo $sa_latitude; ?>" name="sa_latitude">
+                  <input id="sa_longitude" value="<?php echo $sa_longitude; ?>" name="sa_longitude">
+                  <input id="sa_nelat" value="<?php echo $sa_nelat; ?>" name="sa_nelat">
+                  <input id="sa_nelng" value="<?php echo $sa_nelng; ?>" name="sa_nelng">
+                  <input id="sa_swlat" value="<?php echo $sa_swlat; ?>" name="sa_swlat">
+                  <input id="sa_swlng" value="<?php echo $sa_swlng; ?>" name="sa_swlng">
+                </div> -->
             </div>            
         </div>
 </div>
@@ -513,20 +471,20 @@ jQuery(document).ready(function(){
 
       //If a geography has been selected, but not copied over to #final_geog, do it.
       //TODO: Why are we using final_geog again?
-        if ( ( jQuery('#sa_finalgeog').val() == '' ) && ( jQuery('#sa_selectedgeog').val() !== '' )  ) {
-          jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog").val());
-        }
+        // if ( ( jQuery('#sa_finalgeog').val() == '' ) && ( jQuery('#sa_selectedgeog').val() !== '' )  ) {
+        //   jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog").val());
+        // }
 
       //Refresh lat/longs on page load if any are empty
-      var emptyCoords = jQuery('#geography_coords input').filter(function() { return this.value == ""; });
+      // var emptyCoords = jQuery('#geography_coords input').filter(function() { return this.value == ""; });
 
       //emptyCoords will return an object of objects if it finds any empty inputs
-      if (emptyCoords.length > 0) {
-          //This function will only run if #sa_finalgeog isn't empty
-          get_sa_geog_lat_lon();
-      } else {
-        // console.log('No need to run the function');
-      }
+      // if (emptyCoords.length > 0) {
+      //     //This function will only run if #sa_finalgeog isn't empty
+      //     // get_sa_geog_lat_lon();
+      // } else {
+      //   // console.log('No need to run the function');
+      // }
 
       //On change, refresh the option list and option list visibility
       //The page load setup is handled via php, so the js only has to handle the updates
@@ -539,10 +497,10 @@ jQuery(document).ready(function(){
             refresh_sa_policy_geographies();          
           });
 
-        jQuery("#sa_selectedgeog").live( 'change', function() {
-            jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog").val());
-            get_sa_geog_lat_lon();
-           });
+        // jQuery("#sa_selectedgeog").live( 'change', function() {
+        //     jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog").val());
+        //     // get_sa_geog_lat_lon();
+        //    });
 
 });
 
@@ -579,70 +537,97 @@ function refresh_sa_policy_geographies() {
             break;
           case ('National'):
           case ('State'):
-            //TODO: State senate districts aren't behaving correctly - no terms seem to be available?
-            //Clear finalgeog and lat/lon values
-            //TODO: Why aren't we setting points for states?
-            jQuery("#sa_finalgeog,#sa_latitude,#sa_longitude").val('');
+            // jQuery("#sa_finalgeog,#sa_latitude,#sa_longitude").val('');
             break;
           default:
           //Fetch the subdivisions if they're needed.
             if (sa_state_geography !== "") {
-              var dataString = 'selstate=' + sa_state_geography + '&geog=' + sa_major_geography;
-          
-                 jQuery.ajax
-                 ({
-                   type: "POST",               
-                   url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/geography.php",
-                   data: dataString,
-                   cache: false,               
-                   error: function() {
-                     alert("I'm having trouble setting up the geographies list.");
-                   },
-                   success: function(k)
-                   {       
-                     //alert(k);
-                     jQuery("#sa_selectedgeog").html(k);
-                     //set finalgeo and lat/lon, in case the desired option is the first option... otherwise 'change' will never fire :)
-                     jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog option:first").val());
-                      get_sa_geog_lat_lon();         
-
-                   } 
-                 });
+             
+                 //Getting the geographies list via WP AJAX request
+                  var data = {
+                    action: 'get_geographies_list',
+                    // post_attachment_to_delete: <?php echo $post->ID; ?>,
+                    selstate: sa_state_geography,
+                    geog: sa_major_geography,
+                    security: '<?php echo wp_create_nonce( 'get_geographies_list' ); ?>'
+                  };
+                 // since WP 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+                  jQuery.post(
+                        ajaxurl, 
+                        data, 
+                        function(response) {
+                          // console.log(response)
+                          if ( response != -1 ) {
+                            //If we got a response, update the geography select.
+                           jQuery("#sa_selectedgeog").html(response);
+                           //set finalgeo and lat/lon, in case the desired option is the first option... otherwise 'change' will never fire :)
+                           // jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog option:first").val());
+                            // get_sa_geog_lat_lon();
+                          }
+                        }
+                      );
 
              }
+             break;
            }             
  }
 
-function get_sa_geog_lat_lon(){
-    if (jQuery("#sa_finalgeog").val() !== '') {  
-      //  alert(jQuery("#sa_finalgeog").val());
+// function get_sa_geog_lat_lon(){
+//     if (jQuery("#sa_finalgeog").val() !== '') {  
+//       //  alert(jQuery("#sa_finalgeog").val());
 
-      var dataString2 = 'finalgeog=' + jQuery("#sa_finalgeog").val() + '&geog=' + jQuery("#sa_geog").val() + '&state=' + jQuery("#sa_state").val();  
-      //TODO: Make this a typical WP ajax request
-       jQuery.ajax
-       ({
-         type: "POST",               
-         url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
-         data: dataString2,
-         cache: false,               
-         error: function() {
-           alert("I can't calculate the lat & long.");
-         },
-         success: function(p)
-         {       
-           // console.log(p);
-           // jQuery("#sa_latlongs").html(p);
-           var coord = jQuery.parseJSON(p);
-            jQuery("#sa_latitude").val(coord.latitude);
-            jQuery("#sa_longitude").val(coord.longitude);
-      			jQuery("#sa_nelat").val(coord.nelat);
-      			jQuery("#sa_nelng").val(coord.nelng);
-      			jQuery("#sa_swlat").val(coord.swlat);
-      			jQuery("#sa_swlng").val(coord.swlng);
-         } 
-       });
-   }
-}
+//       var dataString2 = 'finalgeog=' + jQuery("#sa_finalgeog").val() + '&geog=' + jQuery("#sa_geog").val() + '&state=' + jQuery("#sa_state").val();
+//       console.log(dataString2);
+//       //TODO: Make this a typical WP ajax request
+//        jQuery.ajax
+//        ({
+//          type: "POST",               
+//          url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
+//          data: dataString2,
+//          cache: false,               
+//          error: function() {
+//            alert("I can't calculate the lat & long.");
+//          },
+//          success: function(p)
+//          {       
+//            // console.log(p);
+//            // jQuery("#sa_latlongs").html(p);
+//            var coord = jQuery.parseJSON(p);
+//             jQuery("#sa_latitude").val(coord.latitude);
+//             jQuery("#sa_longitude").val(coord.longitude);
+//       			jQuery("#sa_nelat").val(coord.nelat);
+//       			jQuery("#sa_nelng").val(coord.nelng);
+//       			jQuery("#sa_swlat").val(coord.swlat);
+//       			jQuery("#sa_swlng").val(coord.swlng);
+//          } 
+//        });
+
+//        //Getting the geographies list via WP AJAX request
+//        //  var data = {
+//        //    action: 'get_geography_lat_lon',
+//        //    // post_attachment_to_delete: <?php echo $post->ID; ?>,
+//        //    finalgeog: jQuery("#sa_finalgeog").val(),
+//        //    geog: jQuery("#sa_geog").val(),
+//        //    state: jQuery("#sa_state").val(), 
+//        //    security: '<?php echo wp_create_nonce( 'get_geography_lat_lon' ); ?>'
+//        //  };
+//        // // since WP 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+//        //  jQuery.post(
+//        //        ajaxurl, 
+//        //        data, 
+//        //        function(response) {
+//        //          // console.log(response)
+//        //          if ( response != -1 ) {
+//        //            //If we got a response, update the geography select.
+//        //           jQuery("#sa_selectedgeog").html(response);
+//        //           //set finalgeo and lat/lon, in case the desired option is the first option... otherwise 'change' will never fire :)
+//        //           jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog option:first").val());
+//        //            get_sa_geog_lat_lon();
+//        //          }
+//        //        }
+//        //      );
+//    }
+// }
 
 </script>
 
@@ -658,6 +643,47 @@ function get_sa_geog_lat_lon(){
 </script>
 
 <?php }
+
+add_action( 'wp_ajax_get_geographies_list', 'ajax_get_geographies_list' );
+function ajax_get_geographies_list() {
+    global $wpdb; // this is how you get access to the database
+
+    if( wp_verify_nonce( $_REQUEST['security'], 'get_geographies_list' ) ) {
+           
+      $selstate = (int)$_POST['selstate'];
+      $geog = $_POST['geog'];
+
+      $geog_str_prefix = sa_get_geography_prefix($geog);
+
+      if( $selstate ) {
+          //get the selected state slug
+          $state_term = get_term_by('id', $selstate, 'geographies');
+          //Trim the "-state" from the end of the state slug
+          $state_clean = substr( $state_term->slug, 0, -6);
+
+          if ( $geog ) {     
+              $thisid = $geog_str_prefix . $state_clean;
+              $geoterm = get_term_by('slug', $thisid, 'geographies'); 
+              $tid = $geoterm->term_id;
+                  $args = array(
+                          'parent' => $tid,
+                          'hide_empty' => 0,
+                  );
+                  $terms = get_terms( 'geographies', $args );
+                  if ( $terms ) {                    
+                          foreach ( $terms as $term ) {
+                                  $result .= '<option value="' . $term->term_id . '">' . $term->name . '</option> ';
+                          }
+                  }
+          }
+      }
+      //return the result
+      die( $result );
+
+    } else {
+      die('-1');
+    }
+}
 
 function sa_get_geography_prefix($geog){
    switch ($geog) {
@@ -690,23 +716,97 @@ function get_geo_tax_top_level_term_id() {
                   'hide_empty' => 0     
                   );
   $top_level_geo = get_terms( 'geographies', $geo_starting_point );
-$towrite = print_r($top_level_geo, TRUE);
-$fp = fopen('top-geo-term.txt', 'a');
-fwrite($fp, $towrite);
-fclose($fp);
 
-  return intval( $top_level_geo[0]->term_id );
+  return (int) $top_level_geo[0]->term_id;
 }
 
   
-function cc_get_the_geo_tax_type( $geo_term ) {
-return false;
+function cc_get_the_geo_tax_type() {
+  global $post;
+  //Get the Geography term for this post
+    $geo_tax = wp_get_object_terms( $post->ID, 'geographies' );
+    // $geo_tax_id = $geo_tax[0]->term_id;
+
+    //Figure out which level of geography we're dealing with here. Get the term's parent, which will give us the type of geography.
+    if ( !empty( $geo_tax ) )      
+      $geo_type_terms = get_term_by( 'id', $geo_tax[0]->parent, 'geographies' );
+        // Possible Values of $geo_type_terms->name:
+        // United States (parent term of all states)
+        // Counties
+        // Cities
+        // School Districts
+        // US Congressional Districts
+        // State House Districts
+        // State Senate Districts
+
+    switch ($geo_type_terms->name) {
+      case 'United States':
+        $geo_type = 'State';
+        break;
+      case 'Counties':
+        $geo_type = 'County';
+        break;
+      case 'Cities':
+        $geo_type = 'City';
+        break;
+      case 'School Districts':
+        $geo_type = 'School District';
+        break;
+      case 'US Congressional Districts':
+        $geo_type = 'US Congressional District';
+        break;
+      case 'State House Districts':
+        $geo_type = 'State House District';
+        break;
+      case 'State Senate Districts':
+        $geo_type = 'State Senate District';
+        break;
+      default:
+        $geo_type = 'National';
+        break;
+    }
+
+    return $geo_type;
 }
 
-function cc_get_the_geo_tax_state( $geo_term ){
-return false;
+function cc_get_the_geo_tax_name(){
+  global $post;
+  $geo_tax = wp_get_object_terms( $post->ID, 'geographies' );
+  
+  $locality_name = $geo_tax[0]->name;
+
+  return $locality_name;
 
 }
+
+function cc_get_the_geo_tax_state(){
+  global $post;
+  $geo_tax = wp_get_object_terms( $post->ID, 'geographies' );
+  $geo_tax_type = cc_get_the_geo_tax_type();
+
+  switch ($geo_tax_type) {
+      case 'State':
+        $geo_tax_state = $geo_tax[0]->name;
+        break;
+      case 'County':
+      case 'City':
+      case 'School District':
+      case 'US Congressional District':
+      case 'State House District':
+      case 'State Senate District':
+        $geo_parent_term = get_term_by( 'id', $geo_tax[0]->parent, 'geographies' );
+        $geo_grandparent_term = get_term_by( 'id', $geo_parent_term->parent, 'geographies' );
+        $geo_tax_state = $geo_grandparent_term->name;
+        break;
+      default:
+        $geo_tax_state = '';
+        break;
+    }
+
+  return $geo_tax_state;
+
+}
+
 add_action( 'save_post', 'sapolicy_save' );
 function sapolicy_save() { 
  
@@ -740,7 +840,7 @@ function sapolicy_save() {
     }
 }
 
-add_action( 'save_post', 'sa_geog_save' );
+// add_action( 'save_post', 'sa_geog_save' );
 function sa_geog_save() {   
    global $post;
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
@@ -775,27 +875,20 @@ function sa_geog_tax_save() {
    global $post;
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
       return;
-    $towrite = PHP_EOL . 'new attempt: ' . $post->ID . PHP_EOL;
     if ( $post->post_type == 'sapolicies' ) {
       //Try to save the more specific option first
       if ( !empty( $_POST["sa_selectedgeog"] ) ) {
         sapolicy_save_taxonomy_field("sa_selectedgeog");
-        $towrite .= "Selected Geog not empty" . print_r($_POST["sa_selectedgeog"], TRUE) . PHP_EOL;
 
       } elseif ( !empty( $_POST["sa_state"] ) ) {
         //Save the state term if a more specific term isn't set
         sapolicy_save_taxonomy_field("sa_state");
-        $towrite .= "State not empty" . print_r($_POST["sa_state"], TRUE) . PHP_EOL;
 
       } else {
         //if that fails, set the terms as 'national'
         $term_ids = array( intval( get_geo_tax_top_level_term_id() ) );
         wp_set_object_terms( $post->ID, $term_ids, 'geographies' );
       }
-
-     $fp = fopen('geo-term-saving.txt', 'a');
-      fwrite($fp, $towrite);
-      fclose($fp);
 
     }
 }
