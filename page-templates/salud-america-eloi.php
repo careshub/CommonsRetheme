@@ -49,6 +49,9 @@ if (is_page('salud-americaresearch')) {
         endwhile; // end of the loop.              
                         
 } elseif (is_page('saresourcespage')) {
+  echo '<div class="entry-content">
+        <h3 class="screamer sablue">Find Resources</h2>';
+
          //Display the page content before making the custom loop
           while ( have_posts() ) : the_post();
             get_template_part( 'content', 'page-notitle' );
@@ -57,7 +60,7 @@ if (is_page('salud-americaresearch')) {
           ?>
    				<div class="policy-search">
   					<!--<form id="sa-policy-search" class="standard-form" method="post" action="/">-->
-  					<h3 class="screamer sablue">Search for Resources</h3>
+  					<h3 class="screamer saorange">Search for Resources</h3>
                 <?php if ( function_exists('sa_searchresources') ) { 
                   sa_searchresources('/search-results'); 
                 } ?>
@@ -84,6 +87,7 @@ if (is_page('salud-americaresearch')) {
           <h3 class="screamer sapink">Latest Resources Added</h3>
           <?php saresources_get_related_resources($resource_cats);?>
         </div>
+      </div> <!-- end .entry-content -->
 			<?php
 } elseif (is_page('search-results-resources')) {
 				$filter_args = array(
