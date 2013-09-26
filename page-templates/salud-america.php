@@ -14,7 +14,7 @@ get_header(); ?>
 					} ?>
 			<div class="entry-content">
 
-				<h2 class="screamer sagreen" style="font-size:1.4em">Want to make a healthy change in your area?</h2>
+				<h3 class="screamer sagreen">Want to make a healthy change in your area?</h2>
 
 				<p><img src="http://dev.communitycommons.org/wp-content/uploads/2013/09/family-biking-cropped.jpg" class="alignright" width="373px"></p>
 

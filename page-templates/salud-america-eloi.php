@@ -14,7 +14,7 @@ if (is_page('salud-americaresearch')) {
 				?>
    				<div class="policy-search">
 					<form id="sa-policy-search" class="standard-form" method="get" action="/">
-					<h3 style="color: #ef4036;font-size: 1.6rem;">Search for Research</h3>
+					<h3>Search for Research</h3>
 					<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Search for Research." name="sa-policy">
 					<input class="sa-policy-search-button" type="submit" value="Search">
 					</form>
@@ -57,9 +57,11 @@ if (is_page('salud-americaresearch')) {
           ?>
    				<div class="policy-search">
   					<!--<form id="sa-policy-search" class="standard-form" method="post" action="/">-->
-  					<h3 style="color: #ef4036;font-size: 1.6rem;">Search for Resources</h3>
-                                        <?php if ( function_exists('sa_searchresources') ) { sa_searchresources('search-results-resources'); } ?>
-  				</div>
+  					<h3 class="screamer sablue">Search for Resources</h3>
+                <?php if ( function_exists('sa_searchresources') ) { 
+                  sa_searchresources('/search-results'); 
+                } ?>
+          </div>
 
         <?php
 
@@ -72,13 +74,17 @@ if (is_page('salud-americaresearch')) {
         );
         ?>
 
-        <h3>Browse Resources by Type</h3>
-        <?php saresources_get_featured_blocks($resource_cats);
+        <div class="row">
+          <h3 class="screamer sagreen">Browse Resources by Type</h3>
+          <?php saresources_get_featured_blocks($resource_cats);?>
+        </div>
 
-        //Begin secondary loop for most recently added resources ?>
-        <h3>Latest Resources Added</h3>
-        <?php saresources_get_related_resources($resource_cats);
-			
+        <!-- Begin secondary loop for most recently added resources -->
+        <div class="row">
+          <h3 class="screamer sapink">Latest Resources Added</h3>
+          <?php saresources_get_related_resources($resource_cats);?>
+        </div>
+			<?php
 } elseif (is_page('search-results-resources')) {
 				$filter_args = array(
 					 'post_type' => 'saresources',
@@ -267,138 +273,94 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
 
 
 } elseif ( is_page('what-is-change') ) {   
+        echo '<div class="entry-content">
+        <h3 class="screamer sablue">What is Change?</h2>';
 
          //Display the page content before making the custom loop
           while ( have_posts() ) : the_post();
             get_template_part( 'content', 'page-notitle' );
             // comments_template( '', true );              
           endwhile; // end of the loop.     
-?>
-				<div class="half-block"><h3>Examples of change</h3>
-                                    <p>Here are a few examples of how people are changing their communities.</p>					  
-                                                    <div>
-							<table>
-                                                        <tr><td style="vertical-align:top;"><a href="/salud-america/sapolicies/sa-active-play" >
-								<img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/more-active-play-time_x90.jpg' width="70" height="70" alt='Active Play'></span></a></td>
-							    <td><table><p style="color: #fdb813;"><strong> Active Play</strong></p>
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=recess">Recess</td></a>
-                                                        </tr>
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=pe">P.E.</td></a>
-                                                        </tr>                                                            
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=after-school-program">After School Programs</td></a>
-                                                        </tr>                                                       
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=safe-routes-to-school">Safe Routes to Schools</td></a>
-                                                        </tr>                                                                                                                     
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=brain-breaks">Brain Breaks</td></a>
-                                                        </tr>   </td>                                                                
-                                                                                                    
-                                                       </table>
-                                                       <tr><td></tr></td>
-                                                        <tr><td style="vertical-align:top;"><a href="/salud-america/sapolicies/sa-active-spaces" >
-								<img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Places-for-activity_x90.jpg' width="70" height="70" alt='Active Spaces'></span></a></td>
-							    <td><table><p style="color: #0088d0;"><strong> Active Spaces</strong></a></p>
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=parks">Parks</td></a>
-                                                        </tr>
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=shared-use">Shared Use</td></a>
-                                                        </tr>                                                                                                                 
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=playgrounds">Playgrounds</td></a>
-                                                        </tr>                                                                                                                     
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=complete-streets">Complete Streets</td></a>
-                                                        </tr>
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=sidewalks">Sidewalks</td></a>
-                                                        </tr>    </td>                                                                                                       
-                                                       
-                                                        </table>
-                                                       <tr><td></tr></td>
-                                                        <tr><td style="vertical-align:top;"><a href="/salud-america/sapolicies/sa-better-food-in-neighborhoods" >
-								<img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/better-food-in-neighborhoods_x90.jpg' width="70" height="70" alt='Better Food in Neighborhoods'></span></a></td>
-							    <td><table><p style="color: #f6801e;"><strong>Better Food in Neighborhoods</strong></a></p>
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=corner-stores">Corner Stores</td></a>
-                                                        </tr>
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=farmers-market">Farmer's Markets</td></a>
-                                                        </tr>                                                            
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=community-gardens-3">Community Gardens</td></a>
-                                                        </tr>                                                       
-                                                        </td>                                                                                                       
-                                                       </table>
-                                                       <tr><td></tr></td> 
-                                                       <tr><td style="vertical-align:top;"<a href="/salud-america/sapolicies/sa-healthier-marketing" >
-								<img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/stop-unhealthy-advertising_happy_x90.jpg' width="70" height="70" alt='Healthier Marketing'></span></a></td>
-							    <td><table><p style="color: #eb008b;"><strong>Healthier Marketing</strong></a></p>
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=healthy-ad-campaign">Healthy Ad Campaigns</td></a>
-                                                        </tr>
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=unhealthy-ad-campaign">Unhealthy Ad Campaigns</td></a>
-                                                        </tr>                                                            
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=digital-advertising">Digital Advertising</td></a>
-                                                        </tr>
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=tv-advertising">TV Advertising</td></a>
-                                                        </tr> 
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=neighborhood-advertising">Neighborhood Advertising</td></a>
-                                                        </tr> 
-                                                        </td>                                                                                                       
-                                                       </table>   
-                                                       <tr><td></tr></td>         
-                                                       <tr><td style="vertical-align:top;"><a href="/salud-america/sapolicies/sa-healthier-school-snacks" >
-								<img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/better-food-in-schools_x90.jpg' width="70" height="70" alt='Healthier School Snacks'></span></a></td>
-							    <td><table><p style="color: #73bf45;"><strong>Healthier School Snacks</strong></a></p>
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=healthy-lunches">Healthy Lunches</td></a>
-                                                        </tr>
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=fundraising">Fundraising</td></a>
-                                                        </tr>                                                            
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=school-wellness-policies">School Wellness Policies</td></a>
-                                                        </tr>
-                                                        </td>                                                                                                       
-                                                       </table>           
-                                                       <tr><td></tr></td>
-                                                       <tr><td style="vertical-align:top;"><a href="/salud-america/sapolicies/sa-sugary-drinks" >
-								<img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/price-of-sugar_x90.jpg' width="70" height="70" alt='Sugary Drinks'></span></a></td>
-							    <td><table><p style="color: #92278f;"><strong>Sugary Drinks</strong></a></p>
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=sugar-sweetened-beverages">Sugar-Sweetened Beverages</td></a>
-                                                        </tr>
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=soda-tax">Soda Tax</td></a>
-                                                        </tr>                                                            
-                                                        <tr>
-                                                           <td><a href="/salud-america/what-is-change/browse-change?tag=water">Water</td></a>
-                                                        </tr>
-                                                        </td>                                                                                                       
-                                                       </table>   
-                                                                
-                                                                
-                                                        </table>
-                                                    </div>
+?>      
+      <div class="examples-of-change">
+				<h3 class="screamer sapurple">Examples of change</h3>
+        <p>Here are a few examples of how people are changing their communities.</p>					  
+          <div class="row">
+            <div class="third-block">
+              <h4 class="clear"><span class="sa-active-playx60"></span>Active Play</h4>
+              <ul class="no-bullets clear">
+                <li><a href="/salud-america/what-is-change/browse-change?tag=recess">Recess</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=pe">P.E.</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=after-school-program">After School Programs</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=safe-routes-to-school">Safe Routes to Schools</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=brain-breaks">Brain Breaks</a></li>
+              </ul>
+              </div>
 
-				</div>
-                                <div class="half-block"><h3>The science behind change</h3>
-                                    <img class="aligncenter" src="/wp-content/uploads/2013/08/time-for-change.jpg" width="350" height="150" />
-                                    <p><br>How far along is change in a community?</br></br></br> Where might you step in to make a contribution?<br><br><br>
-                                        The answers can be found in the Salud America! Policy Contribution        Spectra.
-                                        <br><br>
-                                          <a href="/salud-america/what-is-change/the-science-behind-change/" clear">View more</a>
-                                    </p>    
-                                    </div>
+            <div class="third-block">
+              <h4 class="clear"><span class="sa-active-spacesx60"></span>Active Spaces</h4>
+              <ul class="no-bullets clear">
+                <li><a href="/salud-america/what-is-change/browse-change?tag=parks">Parks
+                <li><a href="/salud-america/what-is-change/browse-change?tag=shared-use">Shared Use</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=playgrounds">Playgrounds</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=complete-streets">Complete Streets</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=sidewalks">Sidewalks</a></li>
+              </ul>
+              </div>
+
+            <div class="third-block">
+              <h4 class="clear"><span class="sa-better-food-in-neighborhoodsx60"></span>Active Spaces</h4>
+              <ul class="no-bullets clear">
+                <li><a href="/salud-america/what-is-change/browse-change?tag=corner-stores">Corner Stores</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=farmers-market">Farmers' Markets</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=community-gardens-3">Community Gardens</a></li>
+              </ul>
+              </div>
+          </div> <!-- end .row -->
+
+          <div class="row">
+            <div class="third-block">
+              <h4 class="clear"><span class="sa-active-playx60"></span>Healthier Marketing</h4>
+              <ul class="no-bullets clear">
+                <li><a href="/salud-america/what-is-change/browse-change?tag=healthy-ad-campaign">Healthy Ad Campaigns</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=unhealthy-ad-campaign">Unhealthy Ad Campaigns</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=digital-advertising">Digital Advertising 
+                <a href="/salud-america/what-is-change/browse-change?tag=tv-advertising">TV Advertising</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=neighborhood-advertising">Neighborhood Advertising</a></li>
+              </ul>
+            </div>
+
+            <div class="third-block">
+              <h4 class="clear"><span class="sa-active-spacesx60"></span>Healthier School Snacks</h4>
+              <ul class="no-bullets clear">
+                <li><a href="/salud-america/what-is-change/browse-change?tag=healthy-lunches">Healthy Lunches</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=fundraising">Fundraising</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=school-wellness-policies">School Wellness Policies</a></li>
+              </ul>
+            </div>
+
+            <div class="third-block">
+              <h4 class="clear"><span class="sa-better-food-in-neighborhoodsx60"></span>Sugary Drinks</h4>
+              <ul class="no-bullets clear">
+                <li><a href="/salud-america/what-is-change/browse-change?tag=sugar-sweetened-beverages">Sugar-Sweetened Beverages</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=soda-tax">Soda Tax</a></li>
+                <li><a href="/salud-america/what-is-change/browse-change?tag=water">Water</a></li>
+              </ul>
+            </div>
+          </div> <!-- end .row -->
+        </div> <!-- end .examples-of-change -->
+	
+                                
+        <div class="science-of-change">
+          <h3 class="screamer saorange">The Science Behind Change</h3>
+           <img class="alignleft" src="/wp-content/uploads/2013/08/time-for-change.jpg" width="350" height="150" />
+           <p>How far along is change in a community?<br />
+            Where might you step in to make a contribution?<br />
+            The answers can be found in the Salud America! <a href="/salud-america/what-is-change/the-science-behind-change/" clear="">Policy Contribution Spectra</a>.
+           </p> 
+         </div>   
+       </div>
+                                    
 
               
 <?php 

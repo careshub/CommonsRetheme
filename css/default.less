@@ -32,6 +32,18 @@ form#login p.status{
 		.font-size(0.8);
 		line-height: 1.4;
 	}
+	ul {
+		// margin-top: .6em;
+		&.no-bullets {
+			list-style-type: none;
+			li {
+				margin-left: 0.8em;
+			}
+		}
+		li {
+		margin-bottom: 0.6em;
+		}
+	}
 }
 
 .login_overlay{
@@ -2636,6 +2648,12 @@ ul.item-list li .share-buttons-below li {
 .primary-navigation li.visible-maxi {
 	display: none;
     }
+.visible-mini {
+	display:block;
+}
+.visible-maxi {
+	display:none;
+}
 
 //Salud America subsection
 .salud-america { 
@@ -2649,7 +2667,7 @@ ul.item-list li .share-buttons-below li {
 		&:last-child {
 			border-bottom: none;
 		}
-		&.sa_archive_introduction {
+		&.sa_archive_introduction, &.page {
 			border-bottom: none;
 		}
 		}
@@ -2711,9 +2729,6 @@ ul.item-list li .share-buttons-below li {
 		    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 
 		}
-		.social-icons {
-			display: none;
-		}
 
 	}
 	.salud-footer {
@@ -2752,6 +2767,10 @@ ul.item-list li .share-buttons-below li {
 					.font-size(2);
 				}
 			}
+		}
+		h2 {
+			color:@sared;
+			.font-size(2);
 		}
 		h3 {
 				color:@sared;
@@ -2814,14 +2833,14 @@ ul.item-list li .share-buttons-below li {
 		// border-bottom: 1px solid @saorange;
 	    margin-bottom: 1em;
 	    // padding-bottom: 2em;
-	    h3 {
-				color:@sared;
-				.font-size(1.6);
-			}
-		h4 {
-				color:@sared;
-				.font-size(1.2);
-			}
+	 //    h3 {
+		// 		color:@sared;
+		// 		.font-size(1.4);
+		// 	}
+		// h4 {
+		// 		color:@sared;
+		// 		.font-size(1.2);
+		// 	}
 	}
 	.policy-search-home {
 		// border-bottom: 1px solid @saorange;
@@ -3074,6 +3093,13 @@ ul.item-list li .share-buttons-below li {
 	width: 90px;
 }
 
+.facebook-whx26, .sa-blog-wh-26x54, .twitter-whx26, .youtube-whx26{
+	background: url(img/salud_america/sa-sprites.png) no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 2%;
+}
+
 .sa-active-playx60{
 	background-position: -140px -70px ;
 }
@@ -3167,6 +3193,35 @@ ul.item-list li .share-buttons-below li {
 
 .sa-sugary-drinks-whx90{
 	background-position: 0 -380px ;
+}
+
+.facebook-whx26{
+	background-position: -210px 0;
+	width: 26px;
+	height: 26px;
+}
+
+.sa-blog-wh-26x54{
+	background-position: -210px -30px ;
+	width: 54px;
+	height: 26px;
+}
+
+.twitter-whx26{
+	background-position: -240px 0;
+	width: 26px;
+	height: 26px;
+}
+
+.youtube-whx26{
+	background-position: -210px -60px ;
+	width: 26px;
+	height: 26px;
+}
+
+.sa-social-icons {
+	float: right;
+	width: 28%;
 }
 //Styles for salud advanced search form
 #cc-adv-search{
