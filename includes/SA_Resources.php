@@ -207,7 +207,7 @@ function saresources_get_featured_blocks($resource_cats) {
               </header>                     
               <div class="entry-content"><?php the_excerpt();?></div> <!-- End .entry-content -->
               <h4>Other Resources</h4>
-                <ul class="related-posts">
+                <ul class="related-posts no-bullets">
               <?php } else { ?>      
                     <li>
                       <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>

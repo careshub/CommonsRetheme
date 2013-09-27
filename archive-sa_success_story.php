@@ -31,7 +31,7 @@
 
 		               </article>
 			
-			<h3 class="screamer">Success Stories</h3>
+			<h3 class="screamer sablue">Success Stories</h3>
 				<?php 
 				//Loop to display the most recent changemaker featured image for eah target area.
 				$advocacy_targets = get_terms('sa_advocacy_targets');

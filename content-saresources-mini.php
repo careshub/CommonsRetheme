@@ -50,7 +50,7 @@
 						the_post_thumbnail('feature-front-sub'); 
 						}
 					?>
-				<h1 class="entry-title"><?php the_title(); ?></h1></a>
+				<h4 class="entry-title"><?php the_title(); ?></h4></a>
 				<?php //echo "<br />"; ?>
 				<?php //if ( isset( $target_icons ) ) {
 					// 	foreach ($target_icons as $target_icon) {
