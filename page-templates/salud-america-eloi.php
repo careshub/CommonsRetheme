@@ -292,7 +292,7 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
               </div>
 
             <div class="third-block">
-              <h4 class="clear"><span class="sa-better-food-in-neighborhoodsx60"></span>Active Spaces</h4>
+              <h4 class="clear"><span class="sa-better-food-in-neighborhoodsx60"></span>Better Food in Neighborhoods</h4>
               <ul class="no-bullets clear">
                 <li><a href="/salud-america/what-is-change/browse-change?tag=corner-stores">Corner Stores</a></li>
                 <li><a href="/salud-america/what-is-change/browse-change?tag=farmers-market">Farmers' Markets</a></li>
@@ -303,7 +303,7 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
 
           <div class="row">
             <div class="third-block">
-              <h4 class="clear"><span class="sa-active-playx60"></span>Healthier Marketing</h4>
+              <h4 class="clear"><span class="sa-healthier-marketingx60"></span>Healthier Marketing</h4>
               <ul class="no-bullets clear">
                 <li><a href="/salud-america/what-is-change/browse-change?tag=healthy-ad-campaign">Healthy Ad Campaigns</a></li>
                 <li><a href="/salud-america/what-is-change/browse-change?tag=unhealthy-ad-campaign">Unhealthy Ad Campaigns</a></li>
@@ -314,7 +314,7 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
             </div>
 
             <div class="third-block">
-              <h4 class="clear"><span class="sa-active-spacesx60"></span>Healthier School Snacks</h4>
+              <h4 class="clear"><span class="sa-healthier-school-snacksx60"></span>Healthier School Snacks</h4>
               <ul class="no-bullets clear">
                 <li><a href="/salud-america/what-is-change/browse-change?tag=healthy-lunches">Healthy Lunches</a></li>
                 <li><a href="/salud-america/what-is-change/browse-change?tag=fundraising">Fundraising</a></li>
@@ -323,7 +323,7 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
             </div>
 
             <div class="third-block">
-              <h4 class="clear"><span class="sa-better-food-in-neighborhoodsx60"></span>Sugary Drinks</h4>
+              <h4 class="clear"><span class="sa-sugary-drinksx60"></span>Sugary Drinks</h4>
               <ul class="no-bullets clear">
                 <li><a href="/salud-america/what-is-change/browse-change?tag=sugar-sweetened-beverages">Sugar-Sweetened Beverages</a></li>
                 <li><a href="/salud-america/what-is-change/browse-change?tag=soda-tax">Soda Tax</a></li>

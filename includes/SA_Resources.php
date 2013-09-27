@@ -171,17 +171,18 @@ function saresources_get_featured_blocks($resource_cats) {
 			$block_class = 'half-block';
 			break;
 	}
+	$do_not_duplicate = array();
 
     foreach ($resource_cats as $resource_cat) {
 
       // The Query
 
           $args = array(
-          // Change these category SLUGS to suit your use.
-          'post_type' => 'saresources',
-          'sa_resource_cat' => $resource_cat,
-          'showposts' => '3',
-          );
+	          'post_type' => 'saresources',
+	          'sa_resource_cat' => $resource_cat,
+	          'showposts' => '3',
+	          'post__not_in' => $do_not_duplicate,
+	          );
           $resources_results = new WP_Query( $args );
 
           // The Loop
@@ -191,6 +192,9 @@ function saresources_get_featured_blocks($resource_cats) {
               <?php $counter = 0;
                  while ( $resources_results->have_posts() ) : $resources_results->the_post();
                     ++$counter;
+                    //Add each displayed post to the do_not_duplicate array
+                    $do_not_duplicate[] = get_the_ID();
+
               if ( $counter == 1 ) { ?>
 
               <header class="entry-header">
@@ -211,7 +215,8 @@ function saresources_get_featured_blocks($resource_cats) {
               <?php } // end if $counter is not 1 
               // Reset Query
                wp_reset_query();      
-               endwhile; ?>
+               endwhile; 
+               ?>
                  </ul>
               </div> <?php echo '<!-- End ' . $block_class . '-->'; ?>
         <?php  endif; ?>                                                         
