@@ -50,6 +50,7 @@ $resource_cats = get_the_terms( $post->ID, 'sa_resource_cat' );
 						salud_the_target_icons();
 						}
 				?>
+			</header>
 				<!-- <p class="location">
 					<?php 
 					// if ($custom_fields['sa_finalgeog'][0]) {
@@ -69,17 +70,17 @@ $resource_cats = get_the_terms( $post->ID, 'sa_resource_cat' );
 			}
 			?></p>
 
-			<?php if ( isset($advocacy_targets) ) { ?>
-			<p class="sa-policy-meta">Advocacy targets:
+			<?php //if ( isset($advocacy_targets) ) { ?>
+			<!-- <p class="sa-policy-meta">Advocacy targets:
 				<?php echo $advocacy_targets; ?>
-			</a></p>
-			<?php } ?>
+			</a></p> -->
+			<?php //} ?>
 
-			<?php if ( isset($resource_categories) ) { ?>
-				<p class="sa-policy-meta">Categories :
+			<?php //if ( isset($resource_categories) ) { ?>
+				<!-- <p class="sa-policy-meta">Categories :
 					<?php echo $resource_categories; ?>
-				</a></p>
-			<?php } ?>
+				</a></p> -->
+			<?php //} ?>
 			<!-- <p class="sa-policy-meta">This policy is of the type: <a href="#">
 				<?php //echo $custom_fields['sa_policytype'][0];
 				// echo $advocacy_targets;
@@ -91,7 +92,7 @@ $resource_cats = get_the_terms( $post->ID, 'sa_resource_cat' );
 
 			<?php //wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
-		<footer class="entry-meta">
+		<!-- <footer class="entry-meta">
 			<?php edit_post_link( __( 'Edit', 'twentytwelve' ), '<span class="edit-link">', '</span>' ); ?>
-		</footer><!-- .entry-meta -->
+		</footer> --><!-- .entry-meta -->
 	</article><!-- #post -->
