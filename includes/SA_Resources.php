@@ -199,7 +199,7 @@ function saresources_get_featured_blocks($resource_cats) {
                    echo salud_get_taxonomy_images($resource_cat, 'sa_resource_cat');
                   }
                 ?>                   
-                <h2 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+                <h4 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h4>
               </header>                     
               <div class="entry-content"><?php the_excerpt();?></div> <!-- End .entry-content -->
               <h4>Other Resources</h4>
@@ -321,7 +321,7 @@ function sa_filter_unpromoted_saresources( $query ) {
 function sa_searchresources($searchresults) {
         ?>
 <div id="cc-adv-search" class="clear">
-	<form action="<?php '/salud-america' . $searchresults?>" method="POST" enctype="multipart/form-data" name="sa_ps">
+	<form action="<?php echo '/salud-america' . $searchresults?>" method="POST" enctype="multipart/form-data" name="sa_ps">
 			<div class="row">
         <input type="text" id="saps" name="saps" Placeholder="Enter search terms here" value="<?php 
     			if (isset($_POST['saps'])) {
@@ -330,6 +330,8 @@ function sa_searchresources($searchresults) {
     					echo $_GET['qs'];	
     			}
     				?>" />
+    	<!-- Hidden input to set post type for search-->
+	    <input type="hidden" name="post_type" value="saresources" />
 			
   			<input id="searchsubmit" type="submit" alt="Search" value="Search" />
       </div>

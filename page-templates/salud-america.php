@@ -210,6 +210,28 @@ get_header(); ?>
 			</div>
 
 			<?php } elseif (is_page('search-results')) {
+				
+				if ( $_POST['post_type'] == 'saresources' ) {
+
+			        $filter_args = array(
+								 'post_type' => 'saresources',
+								 's' => $_POST['saps'],
+								 'post__in' => $post_ids3,								 
+								 );
+			        //var_dump($filter_args);
+			        $query2 = new WP_Query($filter_args);
+			        if($query2->have_posts()) : 
+			        	while($query2->have_posts()) : 
+	                        $query2->the_post();
+	                        get_template_part( 'content', 'saresources-short' ); 
+
+	                    endwhile;
+			        else: 
+	                    echo "No Results - Search criteria too specific";	
+	                endif;
+
+
+				} else {
 
 				$filter_args = array(
 					 'post_type' => 'sapolicies',
@@ -223,18 +245,19 @@ get_header(); ?>
 					 					 )
 					 
 					 );
-                                //var_dump($filter_args);
-                                $query2 = new WP_Query($filter_args);
-                                    if($query2->have_posts()) : 
-                                        while($query2->have_posts()) : 
-                                            $query2->the_post();
-                                            get_template_part( 'content', 'sa-policy-short' ); 
+                    //var_dump($filter_args);
+                    $query2 = new WP_Query($filter_args);
+                    if($query2->have_posts()) : 
+                        while($query2->have_posts()) : 
+                            $query2->the_post();
+                            get_template_part( 'content', 'sa-policy-short' ); 
 
-                                        endwhile;
-                                    
-                                        else: 
-                                            echo "No Results - Search criteria too specific";	
-                                    endif;
+                        endwhile;
+                    
+                    else: 
+                        echo "No Results - Search criteria too specific";	
+                    endif;
+                }
 			                                  
 
 			} elseif (is_page('sapolicies')) {

@@ -943,7 +943,7 @@ function salud_get_taxonomy_images($category, $taxonomy){
   }
   $section_title = implode(" &amp; ", $section_title_cats);
   
-  $output .= '<div class="sa-resource-header-icon"><!--<span>' . $section_title . '</span>-->';
+  $output .= '<div class="sa-resource-header-icon"><span>' . $section_title . '</span>';
   $output .= cc_get_taxonomy_images($cat_array[0], $taxonomy);
   $output .= '</div>';
 

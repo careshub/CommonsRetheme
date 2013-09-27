@@ -925,6 +925,8 @@ function sa_searchpolicies( $searchresults ) {
     					echo $_GET['qs'];	
     			}
     				?>" />
+        <!-- Hidden input to set post type for search-->
+        <input type="hidden" name="post_type" value="sapolicies" />
 			
   			<input id="searchsubmit" type="submit" alt="Search" value="Search" />
       </div>

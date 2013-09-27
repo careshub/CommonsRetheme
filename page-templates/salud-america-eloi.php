@@ -89,27 +89,6 @@ if (is_page('salud-americaresearch')) {
         </div>
       </div> <!-- end .entry-content -->
 			<?php
-} elseif (is_page('search-results-resources')) {
-				$filter_args = array(
-					 'post_type' => 'saresources',
-					 's' => $_POST['saps'],
-					 'post__in' => $post_ids3,					 
-
-					 
-					 );
-                                //var_dump($filter_args);
-                                $query2 = new WP_Query($filter_args);
-                                    if($query2->have_posts()) : 
-                                        while($query2->have_posts()) : 
-                                            $query2->the_post();
-                                            get_template_part( 'content', 'saresources-short' ); 
-
-                                        endwhile;
-                                    
-                                        else: 
-                                            echo "No Results - Search criteria too specific";	
-                                    endif;
-			
 } elseif (is_page('getting-started')) {
 
             if ( function_exists('SA_getting_started') ) { SA_getting_started(); }        
