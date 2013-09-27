@@ -60,7 +60,7 @@ if (is_page('salud-americaresearch')) {
           ?>
    				<div class="policy-search">
   					<!--<form id="sa-policy-search" class="standard-form" method="post" action="/">-->
-  					<h3 class="screamer saorange">Search for Resources</h3>
+
                 <?php if ( function_exists('sa_searchresources') ) { 
                   sa_searchresources('/search-results'); 
                 } ?>
