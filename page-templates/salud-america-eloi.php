@@ -71,10 +71,10 @@ if (is_page('salud-americaresearch')) {
         //Specify the saresourcecat slugs we want to show here 
         // If specifying more than one category, make them a comma-separated list               
         $resource_cats = array(
-          'report',
-          'toolkit',
-          'webinar-2'
-        );
+                            'report',
+                            'toolkit',
+                            'webinar-2'
+                          );
         ?>
 
         <div class="row">
@@ -83,7 +83,7 @@ if (is_page('salud-americaresearch')) {
         </div>
 
         <!-- Begin secondary loop for most recently added resources -->
-        <div class="row">
+        <div class="row taxonomy-policies">
           <h3 class="screamer sapink">Latest Resources Added</h3>
           <?php saresources_get_related_resources($resource_cats);?>
         </div>
