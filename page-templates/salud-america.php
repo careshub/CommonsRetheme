@@ -240,18 +240,18 @@ get_header(); ?>
 			} elseif (is_page('sapolicies')) {
 
 				echo '<div class="entry-content">';
+                                ?>
+                                 <div class="policy-search">
+  					<!--<form id="sa-policy-search" class="standard-form" method="get" action="/search-results">-->
+  					<h3 class="screamer sagreen">Search for Changes by Keyword</h3>
+                                        <?php if ( function_exists('sa_searchpolicies') ) { 
+                                                sa_searchpolicies('/search-results'); 
+                                                } ?>
+  				</div><?php 
 
                 if ( function_exists('sa_location_search') ) {
 	                 	sa_location_search();
 	                } ?>
-                                        
-                <div class="policy-search">
-  					<!--<form id="sa-policy-search" class="standard-form" method="get" action="/search-results">-->
-  					<h3 class="screamer sagreen">Search for Changes by Keyword</h3>
-                        <?php if ( function_exists('sa_searchpolicies') ) { 
-                        	sa_searchpolicies('/search-results'); 
-                        } ?>
-  				</div>        
                                         
 				<div class="browse-topics">
 					<h3 class="screamer sablue">Browse Changes by Topic</h3>
