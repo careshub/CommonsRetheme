@@ -290,3 +290,11 @@ function insert_random_content_after_paragraph( $insertion, $paragraph_id, $cont
 	
 	return implode( '', $paragraphs );
 }
+
+add_filter( 'embed_oembed_html', 'success_story_oembed_filter', 10, 4 ) ;
+function success_story_oembed_filter($html, $url, $attr, $post_ID) {
+	if ( is_singular('sa_success_story') ) {
+	    $html = '<figure class="video-container">'.$html.'</figure>';
+	}
+    return $html;
+}

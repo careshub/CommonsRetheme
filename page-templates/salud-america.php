@@ -209,9 +209,15 @@ get_header(); ?>
 				</div>
 			</div>
 
-			<?php } elseif (is_page('search-results')) {
+			<?php } elseif ( is_page('search-results') ) {
 				
-				if ( $_POST['post_type'] == 'saresources' ) {
+				if ( $_POST['requested_content'] == 'saresources' ) {
+
+					echo '<h3 class="screamer sablue">Searching for Resources</h3>';
+
+					if ( function_exists('sa_searchresources') ) { 
+                        	sa_searchpolicies('/search-results'); 
+                        }
 
 			        $filter_args = array(
 								 'post_type' => 'saresources',
@@ -220,18 +226,26 @@ get_header(); ?>
 								 );
 			        //var_dump($filter_args);
 			        $query2 = new WP_Query($filter_args);
-			        if($query2->have_posts()) : 
+			        if($query2->have_posts()) { 
+			      		echo '<div class="taxonomy-policies">';
 			        	while($query2->have_posts()) : 
 	                        $query2->the_post();
 	                        get_template_part( 'content', 'saresources-short' ); 
-
 	                    endwhile;
-			        else: 
+	                    echo '<div>';
+
+			        } else { 
 	                    echo "No Results - Search criteria too specific";	
-	                endif;
+	                }
 
 
 				} else {
+
+				echo '<h3 class="screamer sablue">Searching for Changes</h3>';
+
+				if ( function_exists('sa_searchpolicies') ) { 
+                    	sa_searchpolicies('/search-results'); 
+                    }
 
 				$filter_args = array(
 					 'post_type' => 'sapolicies',
@@ -247,16 +261,19 @@ get_header(); ?>
 					 );
                     //var_dump($filter_args);
                     $query2 = new WP_Query($filter_args);
-                    if($query2->have_posts()) : 
+                    if($query2->have_posts()) {
+                    	echo '<div class="taxonomy-policies">';
+ 
                         while($query2->have_posts()) : 
                             $query2->the_post();
                             get_template_part( 'content', 'sa-policy-short' ); 
-
                         endwhile;
+                        echo '<div>';
+
                     
-                    else: 
+                    } else { 
                         echo "No Results - Search criteria too specific";	
-                    endif;
+                    }
                 }
 			                                  
 

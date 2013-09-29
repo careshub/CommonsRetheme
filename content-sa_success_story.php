@@ -36,12 +36,10 @@ $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 				// 		}
 				?>
 			</header>
-			<?php if ( $video_url ) { ?>
-			<div class="video-container">
-				<p> 
+			<?php if ( $video_embed_code ) { ?>
+			<figure class="video-container"> 
 				<?php echo $video_embed_code; ?>
-			 	</p>
-			</div>
+			</figure>
 			<?php } ?>
 
 			<?php the_content(); ?>
