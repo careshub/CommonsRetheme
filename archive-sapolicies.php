@@ -9,6 +9,8 @@
 					$tax_term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
 					// print_r($tax_term);
 
+					if ( $tax_term->taxonomy == 'sa_advocacy_targets' ) {
+
 					//Get the page intro content, which is stored as a page with the same slug as the target area.
 					$args = array (
 						'pagename' => 'salud-america/sapolicies/' . $tax_term->slug,
@@ -28,7 +30,6 @@
 						 <?php
 							
 							the_content(); 
-					endwhile; // end of the loop.
 
 					//Get the related dings
 
@@ -75,8 +76,15 @@
                </div>
 
                </article>
+               <?php 					
+	               endwhile; // end of the loop.
+				} //end check for taxonomy == sa_advocacy_targets 
+				?>
 			    <div class="taxonomy-policies">
-	               <h3 class="screamer <?php sa_the_topic_color( $tax_term->slug ); ?>">Changes in the <?php echo $tax_term->name; ?> topic</h3>
+	               <h3 class="screamer <?php sa_the_topic_color( $tax_term->slug ); ?>">Changes in the <?php 
+	               echo $tax_term->name; 
+	               echo ( $tax_term->taxonomy == 'sa_policy_tags' ? ' tag' : ' topic' )
+	               ?></h3>
 						
 					<?php while ( have_posts() ) : the_post(); ?>
 						<?php get_template_part( 'content', 'sa-policy-short' ); ?>

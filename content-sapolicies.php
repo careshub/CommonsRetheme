@@ -24,8 +24,10 @@ $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 	if ( !empty ($tags) ) :
 		foreach ( $tags as $tag ) {
-			$policy_tags[] = '<a href="' . get_term_link($tag->slug, 'sa_policy_tags') .'">'.$tag->name.'</a>';
+			// $policy_tags[] = '<a href="' . get_term_link($tag->slug, 'sa_policy_tags') .'">'.$tag->name.'</a>';
+			$policy_tags[] = '<a href="' . get_the_intersection_link( 'sapolicies', 'sa_policy_tags', $tag->slug ) .'">'.$tag->name.'</a>';
 		}
+
 		$policy_tags = join( ', ', $policy_tags );
 	endif; //check for empty tags
 
