@@ -289,8 +289,8 @@ get_header(); ?>
                                                 } ?>
   				</div><?php 
 
-                if ( function_exists('sa_location_search_old') ) {
-	                 	sa_location_search_old();
+                if ( function_exists('sa_location_search') ) {
+	                 	sa_location_search();
 	                } ?>
                                         
 				<div class="browse-topics">
