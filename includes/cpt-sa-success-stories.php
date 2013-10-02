@@ -189,15 +189,25 @@ class sa_success_story_meta_box {
 			if( ! empty( $_FILES ) && isset( $_FILES['sa_success_story_pdf'] ) ) {
 			
 				// Upload the goal image to the uploads directory, resize the image, then upload the resized version
-				$goal_image_file = wp_upload_bits( $_FILES['sa_success_story_pdf']['name'], null, wp_remote_get( $_FILES['sa_success_story_pdf']['tmp_name'] ) );
+				// $goal_image_file = wp_upload_bits( $_FILES['sa_success_story_pdf']['name'], null, wp_remote_get( $_FILES['sa_success_story_pdf']['tmp_name'] ) );
 
 				// Set post meta about this image. Need the comment ID and need the path.
-				if( false == $goal_image_file['error'] ) {
+				// if( false == $goal_image_file['error'] ) {
 				
-					// Since we've already added the key for this, we'll just update it with the file.
-					update_post_meta( $post_id, 'sa_success_story_pdf', $goal_image_file['url'] );
+				// 	// Since we've already added the key for this, we'll just update it with the file.
+				// 	update_post_meta( $post_id, 'sa_success_story_pdf', $goal_image_file['url'] );
 		
-				} // end if/else
+				// } // end if/else
+
+				// Use the WordPress API to upload the file  
+	            $upload = wp_upload_bits($_FILES['sa_success_story_pdf']['name'], null, file_get_contents($_FILES['sa_success_story_pdf']['tmp_name']));
+	      
+	            if( isset( $upload['error'] ) && $upload['error'] != 0 ) {  
+	                wp_die('There was an error uploading your file. The error is: ' . $upload['error']);  
+	            } else {  
+	                // add_post_meta($post_id, 'wp_custom_attachment', $upload);  
+	                update_post_meta($post_id, 'sa_success_story_pdf', $upload['url'] );       
+	            } // end if/else 
 
 			} // end if
 	
