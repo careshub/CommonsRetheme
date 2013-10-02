@@ -7,7 +7,7 @@
 			<a href='http://twitter.com/saludtoday' class="twitter-whx26"></a>
 			<a href='http://www.youtube.com/user/SaludToday' class="youtube-whx26"></a>
 			<a href='http://www.saludtoday.com/blog/' class="sa-blog-wh-26x54"></a>
-		<div>
+		</div>
     </h3>
 	<div class="sa-kids-photo"><img src="/wp-content/themes/CommonsRetheme/img/salud_america/sa-kids-335.png"></div>
 

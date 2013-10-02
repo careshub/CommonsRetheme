@@ -304,6 +304,8 @@ get_header(); ?>
 						foreach ($categories as $cat) {
 							$all_cats[] = $cat->slug;
 						} 
+						echo '<div class="row clear">';
+						$i=0;
 
 						foreach ($all_cats as $cat_slug) { 
 							//Loop through each advocacy target
@@ -311,6 +313,7 @@ get_header(); ?>
 							// print_r($cat_object);
 							$section_title = $cat_object->name;
 							$section_description = $cat_object->description;
+							++$i;
 							?>
 						<div class="half-block salud-topic <?php echo $cat_slug; ?>">
 							<a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', $cat_slug ) ?>" class="<?php echo $cat_slug; ?>  clear">
@@ -319,8 +322,16 @@ get_header(); ?>
 							</a>
 							<p><?php echo $section_description; ?></p>
 						</div>
+						<?php 
+						if ( $i%2 == 0 ) {
+							echo '</div>
+							<div class="row clear">';
 
-						<?php } // End advocacy target loop ?>
+					}
+
+						} // End advocacy target loop 
+						echo '</div>';
+						 ?>
 
 				</div>
 			</div> <!-- .entry-content -->

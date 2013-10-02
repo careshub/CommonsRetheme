@@ -268,7 +268,7 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
       <div class="examples-of-change">
 				<h3 class="screamer sapurple">Examples of change</h3>
         <p>Here are a few examples of how people are changing their communities.</p>					  
-          <div class="row">
+          <div class="row clear">
             <div class="third-block">
               <h4 class="clear"><span class="sa-active-playx60"></span>Active Play</h4>
               <ul class="no-bullets clear">
@@ -301,7 +301,7 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
               </div>
           </div> <!-- end .row -->
 
-          <div class="row">
+          <div class="row clear">
             <div class="third-block">
               <h4 class="clear"><span class="sa-healthier-marketingx60"></span>Healthier Marketing</h4>
               <ul class="no-bullets clear">
