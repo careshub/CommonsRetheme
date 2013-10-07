@@ -37,7 +37,7 @@
 					<label for="signup_username"><?php _e( 'Username', 'buddypress' ); ?> <?php _e( '(required)', 'buddypress' ); ?></label>
 					<?php do_action( 'bp_signup_username_errors' ); ?>
 					<input type="text" name="signup_username" id="signup_username" value="<?php bp_signup_username_value(); ?>" />
-					<p class="description">Please use lowercase letter and numbers only in your username. <br />Spaces are not allowed.<p>
+					<p class="description">Please use lowercase letters and numbers only in your username. <br />Spaces are not allowed.<p>
 
 					<label for="signup_email"><?php _e( 'Email Address', 'buddypress' ); ?> <?php _e( '(required)', 'buddypress' ); ?></label>
 					<?php do_action( 'bp_signup_email_errors' ); ?>
@@ -292,7 +292,7 @@
 		});
 	</script>
 
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?api=3.6&sensor=false"></script>
+	<!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?api=3.6&sensor=false"></script>
 	
 	<script type="text/javascript">
 
@@ -325,6 +325,6 @@
 	   });
 	  
 	  });
-	</script>
+	</script> -->
 
 <?php get_footer( 'buddypress' ); ?>

@@ -104,7 +104,7 @@ function bp_support_enqueue_scripts() {
   }
 
   // Enqueue the global JS - Ajax will not work without it
-  wp_enqueue_script( 'dtheme-ajax-js', BP_PLUGIN_URL . '/bp-themes/bp-default/_inc/global.js', array( 'jquery' ), $version );
+  wp_enqueue_script( 'dtheme-ajax-js', BP_PLUGIN_URL . 'bp-themes/bp-default/_inc/global.js', array( 'jquery' ), $version );
 
   // Localize the JS strings
   wp_localize_script( 'dtheme-ajax-js', 'BP_DTheme', $params );
@@ -396,7 +396,6 @@ add_action('wp_enqueue_scripts', 'wotn_modal_interruptus_js_load');
 *************/
 
 // TODO wrap this in a buddypress safe way
-
 //redirect to new search page
 
 function fb_change_search_url_rewrite() {
@@ -853,40 +852,6 @@ function bp_dump() {
     die;
 }
 // add_action( 'wp', 'bp_dump' );
-
-//Add confirm e-mail address on BP registration form
-function registration_add_email_confirm(){ ?>
-    <?php //do_action( 'bp_signup_email_confirm_errors' ); ?>
-    <label for="signup_email_confirm">Confirm Email <?php _e( '(required)', 'buddypress' ); ?></label>
-    <?php do_action( 'bp_signup_email_confirm_errors' ); ?>
-    <input type="text" name="signup_email_confirm" id="signup_email_confirm" value="<?php
-    echo empty($_POST['signup_email_confirm'])?'':$_POST['signup_email_confirm']; ?>" />
-<?php }
-add_action('bp_signup_after_email', 'registration_add_email_confirm',20);
- 
-function registration_check_email_confirm(){
-    global $bp;
- 
-    //buddypress check error in signup_email that is the second field, so we unset that error if any and check both email fields
-    //UPDATE: unsetting this means that BP/WP/WangGuard will potentially lose the errors they've set. I've rewritten the code below to only deal with the confirmation field.
-    // unset($bp->signup->errors['signup_email']);
- 
-    //check if email address is correct and set an error message for the first field if any
-    $account_details = bp_core_validate_user_signup( $_POST['signup_username'], $_POST['signup_email_confirm'] );
-    if ( !empty( $account_details['errors']->errors['user_email'] ) )
-        $bp->signup->errors['signup_email_confirm'] = $account_details['errors']->errors['user_email'][0];
- 
-    //if first email field is not empty we check the second one
-    if (!empty( $_POST['signup_email'] ) ){
-        //first field not empty and second field empty
-        if(empty( $_POST['signup_email_confirm'] ))
-            $bp->signup->errors['signup_email_confirm'] = 'Please confirm your address.';
-        //both fields not empty but differents
-        elseif($_POST['signup_email'] != $_POST['signup_email_confirm'] )
-            $bp->signup->errors['signup_email_confirm'] = 'The addresses you entered do not match.';
-    }
-}
-add_action('bp_signup_validate', 'registration_check_email_confirm');
 
 /*
 // Get taxonomy images
