@@ -186,7 +186,8 @@ class sa_success_story_meta_box {
 		if( $this->user_can_save( $post_id, $this->nonce ) ) { 
 
 			// If the user uploaded an image, let's upload it to the server
-			if( ! empty( $_FILES ) && isset( $_FILES['sa_success_story_pdf'] ) ) {
+			// $_FILES isn't enough, we need to see if there's something specific set, like the name
+			if( !empty( $_FILES ) && !empty( $_FILES['sa_success_story_pdf']['name']) ) {
 			
 				// Upload the goal image to the uploads directory, resize the image, then upload the resized version
 				// $goal_image_file = wp_upload_bits( $_FILES['sa_success_story_pdf']['name'], null, wp_remote_get( $_FILES['sa_success_story_pdf']['tmp_name'] ) );
@@ -201,11 +202,17 @@ class sa_success_story_meta_box {
 
 				// Use the WordPress API to upload the file  
 	            $upload = wp_upload_bits($_FILES['sa_success_story_pdf']['name'], null, file_get_contents($_FILES['sa_success_story_pdf']['tmp_name']));
+
+	   //          $towrite = PHP_EOL . "FILES" . print_r($_FILES, TRUE);
+				// $towrite .= PHP_EOL . print_r($upload, TRUE);
+				// $fp = fopen('success_story_files.txt', 'a');
+				// fwrite($fp, $towrite);
+				// fclose($fp);
 	      
 	            if( isset( $upload['error'] ) && $upload['error'] != 0 ) {  
 	                wp_die('There was an error uploading your file. The error is: ' . $upload['error']);  
-	            } else {  
-	                // add_post_meta($post_id, 'wp_custom_attachment', $upload);  
+	            } else if ( !empty($upload['url']) ) {
+	            	//Only record the meta if it isn't empty 
 	                update_post_meta($post_id, 'sa_success_story_pdf', $upload['url'] );       
 	            } // end if/else 
 
