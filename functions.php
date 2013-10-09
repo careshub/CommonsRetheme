@@ -1137,3 +1137,20 @@ function cc_add_comment_button() {
   //   return apply_filters( 'lip_links', ob_get_clean() );
 
 }
+
+//Slightly modify the lost password message.
+add_filter('retrieve_password_message', 'cc_modify_lost_password_email_message', 35, 2);
+function cc_modify_lost_password_email_message( $message, $key ) {
+  
+  global $wpdb;
+  $user_login = $wpdb->get_var($wpdb->prepare("SELECT user_login FROM $wpdb->users WHERE user_activation_key = %s", $key));
+
+  $message = __('Someone requested that the password be reset for the following account:') . "\r\n\r\n";
+  $message .= network_home_url( '/' ) . "\r\n\r\n";
+  $message .= sprintf(__('Username: %s'), $user_login) . "\r\n\r\n";
+  $message .= __('If this was a mistake, just ignore this email and nothing will happen.') . "\r\n\r\n";
+  $message .= __('To reset your password, visit the following address:') . "\r\n\r\n";
+  $message .= network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_login), 'login') . "\r\n";
+
+  return $message;
+}
