@@ -1154,3 +1154,11 @@ function cc_modify_lost_password_email_message( $message, $key ) {
 
   return $message;
 }
+
+add_filter('bp_docs_attachment_url_base', 'iis_friendly_bp_docs_attachment_url', 35, 2);
+function iis_friendly_bp_docs_attachment_url( $url, $attachment ) {
+  
+  $url = $attachment->guid;
+  
+  return $url;
+}
