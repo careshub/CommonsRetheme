@@ -416,7 +416,7 @@ function bpmag_remove_search_dropdown($select_html){
 remove_action( 'bp_init', 'bp_core_action_search_site', 7 );
 
 //let us handle the unified page ourself
-add_action( 'init', 'bp_buddydev_search', 10 );// custom handler for the search
+add_action( 'bp_init', 'bp_buddydev_search', 10 );// custom handler for the search
 function bp_buddydev_search(){
 global $bp;
 
