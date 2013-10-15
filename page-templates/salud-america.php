@@ -216,7 +216,7 @@ get_header(); ?>
 					echo '<h3 class="screamer sablue">Searching for Resources</h3>';
 
 					if ( function_exists('sa_searchresources') ) { 
-                        	sa_searchpolicies('/search-results'); 
+                        	sa_searchresources('/search-results'); 
                         }
 
 			        $filter_args = array(
