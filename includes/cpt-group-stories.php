@@ -78,3 +78,172 @@ function register_taxonomy_related_groups() {
 
     register_taxonomy( 'related_groups', array('group_story'), $args );
 }
+/**
+ * Putting the meta box creation in a class
+ * Calls the class on the post edit screen.
+ */
+function call_group_story_meta_box() {
+
+    return new group_stories_meta_box();
+}
+add_action( 'admin_init', 'call_group_story_meta_box' );
+
+/** 
+ * The class that handles meta box creation.
+ */
+class group_stories_meta_box {
+
+    private $nonce = 'group_stories_custom_meta_box_nonce';
+    private $meta_box_name = 'group_stories_custom_meta_box';
+
+    /**
+     * Hook into the appropriate actions when the class is constructed.
+     */
+    public function __construct() {
+        add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
+        add_action( 'save_post', array( $this, 'save' ) );
+        add_action( 'save_post', array( $this, 'save_custom_upload_data' ) );
+    }
+
+    /**
+     * Adds the meta box container.
+     */
+    public function add_meta_box() {
+
+        add_meta_box( 
+            $this->meta_box_name, 
+            'Related Docs', 
+            array( $this, 'render_meta_box_content' ), 
+            'group_story', 
+            'normal', 
+            'high'
+            ); 
+    }
+
+    /**
+     * Render Meta Box content.
+     *
+     * @param WP_Post $post The post object.
+     */
+    public function render_meta_box_content( $post ) {
+    
+        // Add an nonce field so we can check for it later.
+        wp_nonce_field( $this->meta_box_name, $this->nonce );
+
+        $meta_field = 'group_story_related_docs';
+
+        // Use get_post_meta to retrieve an existing value from the database.
+        $doc_associations = get_post_meta( $post->ID, $meta_field, false ); // Use false because we want an array of associations to be returned
+        // Get candidate docs: must be associated with the group, must be readable by anyone. We can search for docs that are associated with the group, then in the while loop ignore those with privacy not "read:anyone"
+        $docs_args = array( 'group_id' =>  17 );
+
+        echo '<p class="howto">In order to associate a document with a group story, the doc must be able to be read by anyone and be associated with the group that is producing the story.</p>';
+        if ( bp_docs_has_docs( $docs_args ) ) :
+            echo '<ul>';
+            while ( bp_docs_has_docs() ) : 
+                bp_docs_the_doc();
+                //Only allow to attach docs that have read set to anyone.
+                // $doc = get_post();
+                // print_r($doc);
+                $doc_id = get_the_ID();
+                $settings = bp_docs_get_doc_settings( $doc_id );
+                if ( $settings['read'] == 'anyone') { 
+                    ?>
+                    <li>
+                        <input type="checkbox" id="<?php echo $meta_field; ?>-<?php echo $doc_id; ?>" name="<?php echo $meta_field; ?>[]" value="<?php echo $doc_id; ?>" <?php checked( in_array( $doc_id , $doc_associations ) ); ?> />
+                        <label for="<?php echo $meta_field; ?>-<?php echo $doc_id ?>"><?php the_title() ?></label>
+                    </li>
+                    <?php
+                    // the_title();
+                    // echo '<pre>' . PHP_EOL;
+                    // print_r($settings);
+                    // echo '</pre>';                
+                }
+                
+            endwhile;
+            echo '</ul>';
+        endif;
+
+        // Display the form, using the current value.
+        ?>
+        <!-- <label for="<?php echo $meta_field; ?>" class="description"><h4>Featured video URL</h4>
+            <em>e.g.: http://www.youtube.com/watch?v=UueU0-EFido</em></label><br />
+        <input type="text" id="<?php echo $meta_field; ?>" name="<?php echo $meta_field; ?>" value="<?php echo esc_attr( $value); ?>" size="75" /> -->
+
+<?php
+    }
+
+    /**
+     * Save the meta when the post is saved.
+     *
+     * @param int $post_id The ID of the post being saved.
+     */
+    public function save( $post_id ) {
+    
+        /*
+         * We need to verify this came from the our screen and with proper authorization,
+         * because save_post can be triggered at other times.
+         */
+
+        // First, make sure the user can save the post and only fire when editing this post type
+        if( get_post_type( $post_id ) == 'group_story' && $this->user_can_save( $post_id, $this->nonce ) ) {
+
+            $meta_field = 'group_story_related_docs';
+                    
+            // Sanitize the user input.
+            // $input = sanitize_text_field( $_POST[ $meta_field ] );
+
+            // Update the meta field.
+            // update_post_meta( $post_id, $meta_field, $input );
+
+            if ( empty($_POST[ $meta_field ]) ) {
+                //If this element of POST is empty, then we should delete any stored values if they exist
+                delete_post_meta($post_id, $meta_field);
+            }
+
+            if ( !empty($_POST[ $meta_field ]) && is_array($_POST[ $meta_field ]) ) {
+                    delete_post_meta( $post_id, $meta_field );
+                    foreach ($_POST[ $meta_field ] as $association) {
+                        add_post_meta($post_id, $meta_field, $association);
+                    }
+                }
+
+        }
+
+    }
+
+    /*--------------------------------------------*
+     * Helper Functions
+     *--------------------------------------------*/
+
+    /**
+     * Determines whether or not the current user has the ability to save meta data associated with this post.
+     *
+     * @param       int     $post_id    The ID of the post being save
+     * @param       bool                Whether or not the user has the ability to save this post.
+     */
+    public function user_can_save( $post_id, $nonce ) {
+        
+        // Don't save if the user hasn't submitted the changes
+        if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+            return false;
+        } // end if
+
+        // Verify that the input is coming from the proper form
+        if( ! wp_verify_nonce( $_POST[ $nonce ], $this->meta_box_name ) ) {
+            return false;
+        } // end if
+
+        // Make sure the user has permissions to post
+        // if( 'post' == $_POST['post_type'] ) {
+        //  if( ! current_user_can( 'edit_post', $post_id ) ) {
+        //      return;
+        //  } // end if
+        // } // end if/else
+
+        return true;
+     
+    } // end user_can_save
+
+
+}
