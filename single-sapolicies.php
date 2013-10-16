@@ -78,9 +78,11 @@
 			                  	<img alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png" width="100px"/><br />Start your own change!
 		                  	</a>
 		                  	
-		                  	<a href="http://##" class="column1of3 aligncenter">
+<!--		                  	<a href="http://##" class="column1of3 aligncenter">-->
+                                    <span class="column1of3 aligncenter">
 	                            <img alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/AddChange_icon.png" width="100px"/><br />Connect with members in your area!
-                        	</a>
+                                    </span>
+                                    <!--                        	</a>-->
 
 		                  	<a href="http://dev.communitycommons.org/salud-america/what-is-change/" class="column1of3 aligncenter">
 	                            <img alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png" width="100px"/><br />See how a change is made
