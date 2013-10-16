@@ -997,68 +997,68 @@ function sa_searchpolicies( $searchresults ) {
 	</script>
 
 <?php
-	// global $wpdb; 
+	 global $wpdb; 
 
-	// if(isset($_POST['sa_advocacy_target']))
-	//  {
-	// 	 $chk1 = $_POST['sa_advocacy_target'];	 
-	//  }
-	// if(isset($_POST['policy_stages']))
-	//  {
-	// 	 $chk2 = $_POST['policy_stages'];			
-	//  }	
-	// if(isset($_POST['sa_sapolicy_tag']))
-	//  {
-	// 	 $chk3 = $_POST['sa_sapolicy_tag'];		
-	//  }
+	 if(isset($_POST['sa_advocacy_target']))
+	  {
+	 	 $chk1 = $_POST['sa_advocacy_target'];	 
+	  }
+	 if(isset($_POST['policy_stages']))
+	  {
+	 	 $chk2 = $_POST['policy_stages'];			
+	  }	
+	 if(isset($_POST['sa_sapolicy_tag']))
+	  {
+	 	 $chk3 = $_POST['sa_sapolicy_tag'];		
+	  }
 	 
-	// if(isset($_POST['sa_advocacy_target']) || isset($_POST['policy_stages']) || isset($_POST['sa_sapolicy_tag'])) {
-	// 	$post_ids = get_objects_in_term($chk1, 'sa_advocacy_targets');
-	// 	$post_ids2 = get_objects_in_term($chk3, 'sa_policy_tags');
-	// 	$post_ids3 = array_merge($post_ids,$post_ids2);
-	// 	$filter_args = array(
-	// 				 'post_type' => 'sapolicies',
-	// 				 's' => $_POST['saps'],
-	// 				 'post__in' => $post_ids3,					 
-	// 				 'meta_query' => array(
-	// 									array(
-	// 										'key' => 'sa_policystage',
-	// 										'value' => $chk2
-	// 										 )
-	// 				 					 )
+	 if(isset($_POST['sa_advocacy_target']) || isset($_POST['policy_stages']) || isset($_POST['sa_sapolicy_tag'])) {
+	 	$post_ids = get_objects_in_term($chk1, 'sa_advocacy_targets');
+	 	$post_ids2 = get_objects_in_term($chk3, 'sa_policy_tags');
+	 	$post_ids3 = array_merge($post_ids,$post_ids2);
+	 	$filter_args = array(
+	 				 'post_type' => 'sapolicies',
+	 				 's' => $_POST['saps'],
+	 				 'post__in' => $post_ids3,					 
+	 				 'meta_query' => array(
+	 									array(
+	 										'key' => 'sa_policystage',
+	 										'value' => $chk2
+	 										 )
+	 				 					 )
 					 
-	// 				 );
-	// 		//var_dump($filter_args);
-	// 		$query2 = new WP_Query($filter_args);
-	// 	    if($query2->have_posts()) : 
-	// 		  while($query2->have_posts()) : 
-	// 				$query2->the_post();
-	// 				get_template_part( 'content', 'sa-policy-short' ); 
+	 				 );
+	 		//var_dump($filter_args);
+	 		$query2 = new WP_Query($filter_args);
+	 	    if($query2->have_posts()) : 
+	 		  while($query2->have_posts()) : 
+	 				$query2->the_post();
+	 				get_template_part( 'content', 'sa-policy-short' ); 
 
-	// 		  endwhile;
-	// 	   else: 
-	// 		  echo "No Results - Search criteria too specific";	
-	// 	   endif;						
- //    } else {
- //  		if(isset($_POST['saps']))
- //  		{		           
- //  				$saps = $_POST['saps']; 			
+	 		  endwhile;
+	 	   else: 
+	 		  echo "No Results - Search criteria too specific";	
+	 	   endif;						
+     } else {
+   		if(isset($_POST['saps']))
+   		{		           
+   				$saps = $_POST['saps']; 			
 
- //  				$query = new WP_Query( array(
- //  						's' => $saps, 
- //  						'post_type' => 'sapolicies'));
+   				$query = new WP_Query( array(
+   						's' => $saps, 
+   						'post_type' => 'sapolicies'));
   				
- //  				if($query->have_posts()) : 
- //  				  while($query->have_posts()) : 
- //  						$query->the_post();
- //  						get_template_part( 'content', 'sa-policy-short' );  
+   				if($query->have_posts()) : 
+   				  while($query->have_posts()) : 
+   						$query->the_post();
+   						get_template_part( 'content', 'sa-policy-short' );  
 
- //  				  endwhile;
- //  			   else: 
- //  				  echo "No Results - Search criteria too specific";	
- //  			   endif;	
- //  		}		
-	// }
+   				  endwhile;
+   			   else: 
+   				  echo "No Results - Search criteria too specific";	
+   			   endif;	
+   		}		
+	 }
 }
 
 function sa_highlight_search_results($saps,$text) {

@@ -247,33 +247,33 @@ get_header(); ?>
                     	sa_searchpolicies('/search-results'); 
                     }
 
-				$filter_args = array(
-					 'post_type' => 'sapolicies',
-					 's' => $_POST['saps'],
-					 'post__in' => $post_ids3,					 
-					 'meta_query' => array(
-										array(
-											'key' => 'sa_policystage',
-											'value' => $chk2
-											 )
-					 					 )
-					 
-					 );
-                    //var_dump($filter_args);
-                    $query2 = new WP_Query($filter_args);
-                    if($query2->have_posts()) {
-                    	echo '<div class="taxonomy-policies">';
- 
-                        while($query2->have_posts()) : 
-                            $query2->the_post();
-                            get_template_part( 'content', 'sa-policy-short' ); 
-                        endwhile;
-                        echo '<div>';
-
-                    
-                    } else { 
-                        echo "No Results - Search criteria too specific";	
-                    }
+//				$filter_args = array(
+//					 'post_type' => 'sapolicies',
+//					 's' => $_POST['saps'],
+//					 'post__in' => $post_ids3,					 
+//					 'meta_query' => array(
+//										array(
+//											'key' => 'sa_policystage',
+//											'value' => $chk2
+//											 )
+//					 					 )
+//					 
+//					 );
+//                    //var_dump($filter_args);
+//                    $query2 = new WP_Query($filter_args);
+//                    if($query2->have_posts()) {
+//                    	echo '<div class="taxonomy-policies">';
+// 
+//                        while($query2->have_posts()) : 
+//                            $query2->the_post();
+//                            get_template_part( 'content', 'sa-policy-short' ); 
+//                        endwhile;
+//                        echo '<div>';
+//
+//                    
+//                    } else { 
+//                        echo "No Results - Search criteria too specific";	
+//                    }
                 }
 			                                  
 
