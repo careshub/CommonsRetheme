@@ -1016,18 +1016,52 @@ function sa_searchpolicies( $searchresults ) {
 	 	$post_ids = get_objects_in_term($chk1, 'sa_advocacy_targets');
 	 	$post_ids2 = get_objects_in_term($chk3, 'sa_policy_tags');
 	 	$post_ids3 = array_merge($post_ids,$post_ids2);
-	 	$filter_args = array(
-	 				 'post_type' => 'sapolicies',
-	 				 's' => $_POST['saps'],
-	 				 'post__in' => $post_ids3,					 
-	 				 'meta_query' => array(
-	 									array(
-	 										'key' => 'sa_policystage',
-	 										'value' => $chk2
-	 										 )
-	 				 					 )
-					 
-	 				 );
+	 	
+                $tax_query = array();
+                    if (!empty($chk1)) {
+                        $tax_query[] = array(
+                           'taxonomy' => 'sa_advocacy_targets',
+                           'field' => 'term_id',
+                           'terms' => $chk1
+                        );
+                    }
+                               
+                    if (!empty($chk3)) {
+                        $tax_query[] = array(
+                           'taxonomy' => 'sa_policy_tags',
+                           'field' => 'term_id',
+                           'terms' => $chk3
+                        );
+                    }    
+                
+                $meta_query = array();
+                    if (!empty($chk2)) {
+                        $meta_query[] = array(
+                           'key' => 'sa_policystage',
+                           'value' => $chk2
+                        );
+                    }
+                
+                  $filter_args = array(
+                      'post_type' => 'sapolicies',
+                      's' => $_POST['saps'],
+                      'relation' => 'AND',
+                      'tax_query'=> $tax_query,
+                      'meta_query' => $meta_query,
+                      );
+                
+//                $filter_args = array(
+//	 				 'post_type' => 'sapolicies',
+//	 				 's' => $_POST['saps'],
+//	 				 'post__in' => $post_ids3,					 
+//	 				 'meta_query' => array(
+//	 									array(
+//	 										'key' => 'sa_policystage',
+//	 										'value' => $chk2
+//	 										 )
+//	 				 					 )
+//					 
+//	 				 );
 	 		//var_dump($filter_args);
 	 		$query2 = new WP_Query($filter_args);
 	 	    if($query2->have_posts()) : 
