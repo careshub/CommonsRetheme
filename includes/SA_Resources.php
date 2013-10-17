@@ -411,62 +411,76 @@ function sa_searchresources($searchresults) {
 	</script>
 
 <?php
-	// global $wpdb; 
+	global $wpdb; 
+	
+	//Get the search terms
+	if( isset($_POST['sa_advocacy_target']) ) {
+	 	 $advo_targets = $_POST['sa_advocacy_target'];
+	}
+	if( isset($_POST['sa_resource_cat']) ) {
+	 	 $resource_cats = $_POST['sa_resource_cat'];
+	}	
+	if( isset($_POST['sa_sapolicy_tag']) ) {
+		 $policy_tags = $_POST['sa_sapolicy_tag'];
+	}
 
-	// if(isset($_POST['sa_advocacy_target']))
-	//  {
-	// 	 $chk1 = $_POST['sa_advocacy_target'];	 
-	//  }
-	// if(isset($_POST['sa_resource_cat']))
-	//  {
-	// 	 $chk2 = $_POST['sa_resource_cat'];			
-	//  }	
-	// if(isset($_POST['sa_sapolicy_tag']))
-	//  {
-	// 	 $chk3 = $_POST['sa_sapolicy_tag'];		
-	//  }
-	 
-	// if(isset($_POST['sa_advocacy_target']) || isset($_POST['sa_resource_cat']) || isset($_POST['sa_sapolicy_tag'])) {
-	// 	$post_ids = get_objects_in_term($chk1, 'sa_advocacy_targets');
-	// 	$post_ids2 = get_objects_in_term($chk3, 'sa_resource_cat');
-	// 	$post_ids3 = array_merge($post_ids,$post_ids2);
-	// 	$filter_args = array(
-	// 				 'post_type' => 'saresources',
-	// 				 's' => $_POST['saps'],
-	// 				 'post__in' => $post_ids3,					 
+	//Build the query
+	if( $advo_targets || $resource_cats || $policy_tags ) {
+		$tax_query = array(
+		    'relation' => 'AND',
+		);
+	}
 
-	// 				 );
-	// 		//var_dump($filter_args);
-	// 		$query2 = new WP_Query($filter_args);
-	// 	    if($query2->have_posts()) : 
-	// 		  while($query2->have_posts()) : 
-	// 				$query2->the_post();
-	// 				get_template_part( 'content', 'saresources-short' ); 
+    if (!empty($advo_targets)) {
+        $tax_query[] = array(
+           'taxonomy' => 'sa_advocacy_targets',
+           'field' => 'term_id',
+           'terms' => $advo_targets
+        );
+    }
+    
+    if (!empty($resource_cats)) {
+        $tax_query[] = array(
+           'taxonomy' => 'sa_resource_cat',
+           'field' => 'term_id',
+           'terms' => $resource_cats
+        );
+    } 
 
-	// 		  endwhile;
-	// 	   else: 
-	// 		  echo "No Results - Search criteria too specific";	
-	// 	   endif;						
- //    } else {
- //  		if(isset($_POST['saps']))
- //  		{		           
- //  				$saps = $_POST['saps']; 			
+    if (!empty($policy_tags)) {
+        $tax_query[] = array(
+           'taxonomy' => 'sa_policy_tags',
+           'field' => 'term_id',
+           'terms' => $policy_tags
+        );
+    }
+    
+    if ($tax_query) {
+        $filter_args = array(
+          'post_type' => 'saresources',
+          's' => $_POST['saps'],
+	      'tax_query'=> $tax_query,
+          );
+	} else {
+		$filter_args = array(
+          'post_type' => 'saresources',
+          's' => $_POST['saps'],
+          );
+	}
 
- //  				$query = new WP_Query( array(
- //  						's' => $saps, 
- //  						'post_type' => 'saresources'));
-  				
- //  				if($query->have_posts()) : 
- //  				  while($query->have_posts()) : 
- //  						$query->the_post();
- //  						get_template_part( 'content', 'saresources-short' );  
+    //Make the query, do the loop
+	$query2 = new WP_Query($filter_args);
+    if($query2->have_posts()) : 
+	  while($query2->have_posts()) : 
+			$query2->the_post();
+			get_template_part( 'content', 'saresources-short' ); 
 
- //  				  endwhile;
- //  			   else: 
- //  				  echo "No Results - Search criteria too specific";	
- //  			   endif;	
- //  		}		
-	// }
+	  endwhile;
+	  // echo "END OF SEARCH RESULTS";
+   else: 
+	  echo "No Results - Search criteria too specific";	
+   endif;
+
 }
 
 function SA_getting_started() 
