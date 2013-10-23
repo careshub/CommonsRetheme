@@ -630,19 +630,19 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'buddypress';
       }
 
-    if ( 
-      is_page_template( 'page-templates/salud-america.php' ) 
+    if ( is_page_template( 'page-templates/salud-america.php' ) 
       || is_page_template( 'page-templates/salud-america-eloi.php' ) 
       || is_singular('sapolicies')  
       || is_singular('saresources')
       || is_singular('sa_success_story')
       || is_tax('sa_advocacy_targets')
-      || is_archive('sa_success_story')
+      || is_post_type_archive('sa_success_story')
       ) {
         $classes[] = 'salud-america';
-        if(($key = array_search('full-width', $classes)) !== false) {
-        unset($classes[$key]);
-      }
+        if ( ($key = array_search('full-width', $classes) ) !== false ) {
+          unset( $classes[$key] );
+        }
+
       }
 
     if ( is_page_template( 'page-templates/WKKF-Compass.php' ) ) {

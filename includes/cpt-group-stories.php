@@ -102,7 +102,6 @@ class group_stories_meta_box {
     public function __construct() {
         add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
         add_action( 'save_post', array( $this, 'save' ) );
-        add_action( 'save_post', array( $this, 'save_custom_upload_data' ) );
     }
 
     /**
@@ -133,9 +132,15 @@ class group_stories_meta_box {
         $meta_field = 'group_story_related_docs';
 
         // Use get_post_meta to retrieve an existing value from the database.
-        $doc_associations = get_post_meta( $post->ID, $meta_field, false ); // Use false because we want an array of associations to be returned
+        $doc_associations = get_post_meta( $post->ID, $meta_field, true ); // Use true to actually get an unserialized array back
+
         // Get candidate docs: must be associated with the group, must be readable by anyone. We can search for docs that are associated with the group, then in the while loop ignore those with privacy not "read:anyone"
-        $docs_args = array( 'group_id' =>  17 );
+        
+        //This assumes that each group only has one associated category, otherwise we'll have docs crossing over.
+        $category_ids = wp_get_post_terms($post->ID, 'related_groups', array("fields" => "ids"));
+        $group_ids = $this->get_group_ids( $category_ids[0] );
+
+        $docs_args = array( 'group_id' =>  $group_ids );
 
         echo '<p class="howto">In order to associate a document with a group story, the doc must be able to be read by anyone and be associated with the group that is producing the story.</p>';
         if ( bp_docs_has_docs( $docs_args ) ) :
@@ -202,10 +207,10 @@ class group_stories_meta_box {
             }
 
             if ( !empty($_POST[ $meta_field ]) && is_array($_POST[ $meta_field ]) ) {
-                    delete_post_meta( $post_id, $meta_field );
-                    foreach ($_POST[ $meta_field ] as $association) {
-                        add_post_meta($post_id, $meta_field, $association);
-                    }
+                    // delete_post_meta( $post_id, $meta_field );
+                    // foreach ($_POST[ $meta_field ] as $association) {
+                        update_post_meta($post_id, $meta_field, $_POST[ $meta_field ] );
+                    // }
                 }
 
         }
@@ -245,5 +250,74 @@ class group_stories_meta_box {
      
     } // end user_can_save
 
+    public function get_group_ids( $category_id ) {
+        //Todo: This will need to be updated when we switch to buddyforms.
+        // Getting the associated group is going to be kind of funky, since the blog_categories plugin stores the group => associated categories as serialized data.
 
+        global $wpdb, $bp;
+        // We want to look for meta_value LIKE '%\"1132\"%' so weve got to do some wrapping
+        $category_id = '%"' . $category_id . '"%';
+ 
+        $sql = $wpdb->prepare( "SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = %s AND meta_value LIKE %s", 'group_blog_cats', $category_id );
+ 
+        return wp_parse_id_list( $wpdb->get_col( $sql ) );
+    }
+
+}
+function get_associated_bp_docs() {
+    $meta_field = 'group_story_related_docs';
+    $post_id = get_the_ID();
+
+    // Use get_post_meta to retrieve an existing value from the database.
+    $doc_associations = get_post_meta( $post_id, $meta_field, true );
+    if ($doc_associations) {
+        echo '<h5>Associated Library Items</h5>
+        <ul>';
+        foreach ($doc_associations as $item) {
+            $doc_title = get_the_title( $item );
+            ?>
+            <li>
+                <a href="<?php echo get_permalink( $item ); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), $doc_title ) ); ?>" rel="bookmark"><?php echo $doc_title ?></a>
+            </li>
+            <?php
+        }
+        echo '</li>';
+    }
+}
+//Returns an array of WP_Post objects
+function cc_get_associatable_bp_docs( $group_id ) {
+    $docs_args = array( 'group_id' =>  array( $group_id ) );
+    $good_docs = array();
+
+    if ( bp_docs_has_docs( $docs_args ) ) :
+        while ( bp_docs_has_docs() ) : 
+            bp_docs_the_doc();
+            //Only allow the attachment docs that have read set to anyone.
+            $doc_id = get_the_ID();
+            $settings = bp_docs_get_doc_settings( $doc_id );
+            if ( $settings['read'] == 'anyone') { 
+                global $post;
+                $good_docs[] = $post;               
+            }
+            
+        endwhile;
+    endif;
+    
+    return $good_docs;
+}
+//This is only used in the "Blog Categories for Groups" form setup
+function cc_get_associatable_bp_docs_narrative_form( $group_id ) {
+
+    if ( $good_docs = cc_get_associatable_bp_docs( $group_id ) ) {
+        $attachable_docs = array();
+        foreach ($good_docs as $doc) {
+            $attachable_docs[] = array(
+                    'value' => $doc->ID,
+                    'label' => $doc->post_title,
+                );
+        }
+        return $attachable_docs;
+    } else {
+        return false;
+    }
 }
