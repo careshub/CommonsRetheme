@@ -33,7 +33,7 @@
 					</div>
 
 	</div> -->
-	<?php get_template_part( 'content' ); ?>
+	<?php get_template_part( 'content', 'group_story' ); ?>
 	<?php comments_template(); ?>
 <?php endwhile;?>
 <?php do_action( 'bp_after_group_blog_content' ) ;

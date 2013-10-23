@@ -614,7 +614,7 @@ ul.button-nav li.current a {
 .standard-form label,
 .standard-form span.label {
 	display: block;
-	font-weight: bold;
+	// font-weight: bold;
 	margin: 15px 0 5px 0;
 }
 .standard-form div.checkbox label,
@@ -1300,7 +1300,7 @@ div.item-list-tabs {
 		margin: 1em 0 0 .5em;
 	}
 }
-div.item-list-tabs#subnav {
+div.item-list-tabs {
 	//border-bottom: 1px solid @graymid;
 	ul li {
 		// margin: 0 1em 0 0;
@@ -1365,7 +1365,7 @@ div#item-nav ul li.loading a {
 div.item-list-tabs#object-nav {
 	margin-top: 0;
 }
-div.item-list-tabs#subnav {
+div.item-list-tabs {
 	background: @white;
 	//border-bottom: 1px solid @graylight;
 	//margin: -15px -19px 15px -19px;
@@ -1514,7 +1514,7 @@ div.item-list-tabs ul {
 		//float: left;
 		//margin-right: 5px;
 	}
-		div.item-list-tabs#subnav ul li a {
+		div.item-list-tabs ul li a {
 			//border: none;
 			//padding: 0;
 		}
@@ -3996,4 +3996,18 @@ body.home-page {
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+//Blog Categories for Groups
+.buddypress #content .bp-simple-post-form { 
+	h3 {
+		margin-bottom: 0;
+	}
+	label {
+		margin-top: 1em;
+	}
+	.simple-post-taxonomies-box,
+	.simple-post-custom-fields,
+	.simple-post-comment-option {
+		margin-bottom: 2em;
+	}
 }
