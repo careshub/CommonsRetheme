@@ -265,6 +265,17 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
             // comments_template( '', true );              
           endwhile; // end of the loop.     
 ?>      
+    
+         <div class="science-of-change">
+          <h3 class="screamer sagreen">Why Change?</h3>
+           <p>More than 39% of Latino kids are overweight or obese, a higher rate than all kids (32%).<br /></p>
+            <p>There are many reasons, including that Latino kids lack of afterschool physical activity options, have less access to local play facilities, have less access to healthy foods in schools and neighborhoods, are exposed to unhealthy marketing, and consume more sugary drinks than their non-Latino peers.<br /></p>
+            <p>This situation puts Latino kids at higher risk of developing obesity-related diseases, such as diabetes.<br /></p>
+            <p>Change is greatly needed because Latino children comprise 22 percent of all U.S. youth and represent the largest, fastest-growing minority group in the nation.<br /></p>
+           
+         </div>   
+       </div>
+    
       <div class="examples-of-change">
 				<h3 class="screamer sapurple">Examples of change</h3>
         <p>Here are a few examples of how people are changing their communities.</p>					  
