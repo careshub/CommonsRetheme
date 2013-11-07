@@ -165,6 +165,14 @@ function cc_wp_admin_area_stylesheet_load(){
 }
 add_action( 'admin_print_styles', 'cc_wp_admin_area_stylesheet_load', 11 );
 
+function remove_parent_theme_widgets(){
+
+  // Deregister some of the TwentyTen sidebars
+  unregister_sidebar( 'sidebar-2' );
+  unregister_sidebar( 'sidebar-3' );
+}
+add_action( 'widgets_init', 'remove_parent_theme_widgets', 11 );
+
 function notifications_counter() {
 	if (function_exists('bp_is_active')) {
 	global $bp;

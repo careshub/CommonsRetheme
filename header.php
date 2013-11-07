@@ -81,7 +81,8 @@
 					
 				<?php if (is_user_logged_in()) { //show user info if logged in ?>
 					<li class="menupop clear">
-						<span class="userx21"></span>
+						<a href="<?php echo bp_core_get_userlink( bp_loggedin_user_id(), $no_anchor = false, $just_link = true ); ?>" title="My user home">
+						<span class="userx21"></span></a>
 						<span class="visible-mini">
 						<?php echo bp_core_get_userlink( bp_loggedin_user_id() ); ?>
 						</span>
@@ -110,7 +111,7 @@
 	        		<li id="login-item" class="clear">
 		        		<a class="login-link" href="<?php echo wp_login_url( ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?></a>
 	        			<div class="pop-sub-wrapper">
-	        				<form name="login-form" id="sidebar-login-form" class="standard-form" action="<?php echo site_url( 'wp-login.php', 'login_post' ) ?>" method="post">
+	        				<form name="login-form" id="sidebar-login-form" class="standard-form" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
 								<label><?php _e( 'Username', 'buddypress' ) ?><br />
 								<input type="text" name="log" id="sidebar-user-login" class="input" value="<?php if ( isset( $user_login) ) echo esc_attr(stripslashes($user_login)); ?>" tabindex="97" /></label>
 
@@ -122,7 +123,6 @@
 								<?php do_action( 'bp_sidebar_login_form' ) ?>
 								<input type="submit" name="wp-submit" id="sidebar-wp-submit" value="<?php _e( 'Log In', 'buddypress' ); ?>" tabindex="100" /> &nbsp;&nbsp;&nbsp;&nbsp; <button id="cancel-login">Cancel</button>
 								<input type="hidden" name="redirect_to" value="<?php echo ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ?>" />
-								<input type="hidden" name="testcookie" value="1" />
 							</form>
 	        			</div>
 	        		</li>

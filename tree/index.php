@@ -1,10 +1,8 @@
 <?php
 
 /**
- * BuddyPress - Groups Directory
+ * BP Group Hierarchy - Group Tree
  *
- * @package BuddyPress
- * @subpackage bp-default
  */
 
 get_header( 'buddypress' ); ?>
@@ -19,17 +17,17 @@ get_header( 'buddypress' ); ?>
 
 		<form action="" method="post" id="groups-directory-form" class="dir-form">
 
-			<h1 class="view-title"><?php _e( 'Groups Directory', 'buddypress' ); ?>
+			<h3><?php bp_group_hierarchy_group_tree_name(); ?>
 				<?php if ( is_user_logged_in() && bp_user_can_create_groups() ) : ?> 
 					&nbsp;<a class="button" href="<?php echo trailingslashit( bp_get_root_domain() . '/' . bp_get_groups_root_slug() . '/create' ); ?>">
 				<?php _e( 'Create a Group', 'buddypress' ); ?></a>
 				
 				<?php elseif ( is_user_logged_in() ):?> 
 				
-					<!-- &nbsp;<a class="button" id="request_group_button" href="/request-a-group/">Request a Group</a> -->
+				<!-- &nbsp;<a class="button" id="request_group_button" href="/request-a-group/">Request a Group</a> -->
 				
 				<?php endif; ?>
-			</h1>
+			</h3>
 
 			<?php do_action( 'bp_before_directory_groups_content' ); ?>
 
@@ -42,12 +40,12 @@ get_header( 'buddypress' ); ?>
 			<?php do_action( 'template_notices' ); ?>
 
 			<div class="item-list-tabs" role="navigation">
-				<ul class="nav-tabs">
-					<li class="selected" id="groups-all"><a href="<?php echo trailingslashit( bp_get_root_domain() . '/' . bp_get_groups_root_slug() ); ?>"><?php printf( __( 'All Groups <span>%s</span>', 'buddypress' ), bp_get_total_group_count() ); ?></a></li>
+				<ul>
+					<li class="selected" id="tree-all"><a href="<?php echo bp_get_root_domain() . '/' . bp_get_groups_root_slug() ?>"><?php bp_group_hierarchy_group_tree_name(); ?></a></li>
 
 					<?php if ( is_user_logged_in() && bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ) : ?>
 
-						<li id="groups-personal"><a href="<?php echo trailingslashit( bp_loggedin_user_domain() . bp_get_groups_slug() . '/my-groups' ); ?>"><?php printf( __( 'My Groups <span>%s</span>', 'buddypress' ), bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
+						<li id="groups-personal"><a href="<?php echo trailingslashit( bp_loggedin_user_domain() . bp_get_groups_root_slug() . '/my-groups' ); ?>"><?php printf( __( 'My Groups <span>%s</span>', 'buddypress' ), bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
 
 					<?php endif; ?>
 
@@ -55,7 +53,7 @@ get_header( 'buddypress' ); ?>
 
 				</ul>
 			</div><!-- .item-list-tabs -->
-
+			
 			<div class="item-list-tabs" id="subnav" role="navigation">
 				<ul>
 
@@ -75,12 +73,13 @@ get_header( 'buddypress' ); ?>
 						</select>
 					</li>
 				</ul>
-			</div>
+			</div><!-- .item-list-tabs -->
 
 			<div id="groups-dir-list" class="groups dir-list">
-
-				<?php locate_template( array( 'groups/groups-loop.php' ), true ); ?>
-
+			<?php
+				$loop_template = apply_filters('bp_located_template',locate_template( array( "tree/tree-loop.php" ), false ), "tree/tree-loop.php" );
+				load_template($loop_template);
+			?>
 			</div><!-- #groups-dir-list -->
 
 			<?php do_action( 'bp_directory_groups_content' ); ?>
@@ -102,11 +101,10 @@ get_sidebar( 'groups' );
 ?>
 
 		</div><!-- .padder -->
-
 	</div><!-- #content -->
 
 	<?php do_action( 'bp_after_directory_groups_page' ); ?>
 
-
+<?php get_sidebar( 'buddypress' ); ?>
 <?php get_footer( 'buddypress' ); ?>
 
