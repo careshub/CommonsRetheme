@@ -189,3 +189,19 @@ working/parked-code.php
 page-test.php
 
 *.csv
+
+working/cim-import/CIMusers-cleaned-old.ods
+
+working/cim-import/MembershipList.xlsx
+
+working/cim-import/PartnerList.xlsx
+
+working/cim-import/import-cim-group-membership.ods
+
+working/cim-import/import-cim-users.ods
+
+working/cim-import/import-partner-groups.ods
+
+working/cim-import/new_workspace_import.ods
+
+page-cim-import.php

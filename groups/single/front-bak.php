@@ -1,5 +1,7 @@
 <div class="home-page single-group" role="main">
 
+	YEAH!
+
 <?php 	//print_r($GLOBALS['custom-group-front']);
 		// global $custom_front_query;
 		// var_dump(defined($custom_front_query));
