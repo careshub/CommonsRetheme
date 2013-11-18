@@ -42,7 +42,11 @@
 		<?php else : ?>
 		<div class="entry-content">
 			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?>
-			<?php echo get_associated_bp_docs(); ?>
+
+			<?php get_associated_bp_docs(); ?>
+			<?php get_associated_cc_maps_reports( 'map' ); ?>
+			<?php get_associated_cc_maps_reports( 'report' ); ?>
+
 			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
 		<?php endif; ?>	

@@ -281,7 +281,7 @@ function get_associated_bp_docs() {
             </li>
             <?php
         }
-        echo '</li>';
+        echo '</ul>';
     }
 }
 //Returns an array of WP_Post objects
@@ -319,5 +319,50 @@ function cc_get_associatable_bp_docs_narrative_form( $group_id ) {
         return $attachable_docs;
     } else {
         return false;
+    }
+}
+
+function cc_get_associatable_maps_reports_narrative_form( $group_id , $item_type ) {
+
+    if ( in_array( $item_type, array( 'map','report' ) ) && 
+         function_exists( 'commons_group_library_pane_get_saved_maps_reports_for_group' ) && 
+         $group_items = commons_group_library_pane_get_saved_maps_reports_for_group( $group_id, $item_type ) ) {
+
+        $attachable_items = array();
+        foreach ($group_items as $item) {
+            $attachable_items[] = array(
+                    'value' => $item['id'],
+                    'label' => $item['title'],
+                );
+        }
+    
+        return $attachable_items;
+    } else {
+        return false;
+    }
+}
+function get_associated_cc_maps_reports( $item_type ) {
+    if ( !in_array($item_type, array( 'map','report' ) ) )
+        return false;
+
+    $meta_field = 'group_story_related_'. $item_type .'s';
+    $post_id = get_the_ID();
+
+    // Use get_post_meta to retrieve an existing value from the database.
+    $map_associations = get_post_meta( $post_id, $meta_field, true );
+    if ( $map_associations ) {
+        echo '<h5>Associated '. ucwords( $item_type )  .'s </h5>
+        <ul>';
+        foreach ($map_associations as $item) {
+            // $doc_title = get_the_title( $item );
+            $single_item = commons_group_library_pane_get_single_map_report( $item, $item_type );
+            // print_r($single_item);
+            ?>
+            <li>
+                <a href="<?php echo $single_item['link']; ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), $single_item['title'] ) ); ?>"><?php echo $single_item['title']; ?></a>
+            </li>
+            <?php
+        }
+        echo '</ul>';
     }
 }
