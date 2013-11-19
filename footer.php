@@ -18,7 +18,7 @@
 	<div class="page-width">
 			
 		<div class="site-info">
-		<div class="alignleft">
+		<div class="alignleft" style="margin-bottom:1em;">
 			<?php //Add footer navigation menu 
 				$args = array(
 					'theme_location' => 'footer-nav',
@@ -62,6 +62,12 @@
 		    <a href="https://plus.google.com/117982399710195199733" rel="publisher" class="gplusx60 iconx60 alignleft"></a>
 		</div>        
 		</div><!-- .site-info -->
+                <div class="alignleft award-shelf">
+                    <h4>Awards</h4>
+                    <a href="http://healthdataconsortium.org/data-sources">
+                        <img alt="Health Data All Star Badge" src="http://www.healthdataconsortium.org/wp-content/uploads/2013/10/healthdataallstar-badge-80.png"  class="alignleft"/>
+                    </a>
+		</div>
 	</div> <!-- .page width -->
 </footer><!-- #colophon -->
 
