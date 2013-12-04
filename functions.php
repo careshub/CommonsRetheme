@@ -849,7 +849,8 @@ bp_core_remove_subnav_item( $bp->activity->slug, 'mentions' );
 add_action( 'bp_setup_nav', 'ray_remove_mention_nav', 15 );
 
 function bp_dump() {
-    global $bp;
+    // global $bp;
+    $bp = buddypress();
  
     foreach ( (array)$bp as $key => $value ) {
         echo '<pre>';

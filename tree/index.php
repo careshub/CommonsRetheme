@@ -92,19 +92,12 @@ get_header( 'buddypress' ); ?>
 	</div> <!-- End #item-body -->
 
 		<?php do_action( 'bp_after_directory_groups' ); ?>
-				<?php 
-// $class_string = get_body_class();
-// if (!in_array("full-width",$class_string)) {
-// get_sidebar( 'buddypress' ); 
-// } 
-get_sidebar( 'groups' );
-?>
+<?php get_sidebar( 'groups' );?>
 
 		</div><!-- .padder -->
 	</div><!-- #content -->
 
 	<?php do_action( 'bp_after_directory_groups_page' ); ?>
 
-<?php get_sidebar( 'buddypress' ); ?>
 <?php get_footer( 'buddypress' ); ?>
 

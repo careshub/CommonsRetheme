@@ -10,7 +10,8 @@
 ?>
 		<div id="secondary" class="widget-area" role="complementary">
 		
-		<?php if ( is_active_sidebar( 'groups-sidebar' ) ) :
+		 <?php 
+			if ( is_active_sidebar( 'groups-sidebar' ) ) :
 					dynamic_sidebar( 'groups-sidebar' ); 
 			endif;
 		?>

@@ -10,8 +10,8 @@
 ?>
 		<div id="tertiary" class="widget-area" role="complementary">
 		<?php 
-			$Path=$_SERVER['REQUEST_URI'];
-			$data_url= home_url() . $Path;
+			// $Path=$_SERVER['REQUEST_URI'];
+			// $data_url= home_url() . $Path;
 		?>
 
 		<?php if ( is_active_sidebar( 'groups-single-sidebar' ) ) :
