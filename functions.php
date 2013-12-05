@@ -813,7 +813,7 @@ function cc_improved_trim_excerpt($text) {
  * Returns a "Continue Reading" link for excerpts
  */
 function twentyeleven_continue_reading_link() {
-  return ' <a href="'. esc_url( get_permalink() ) . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) . '</a>';
+  return ' <a href="'. esc_url( get_permalink() ) . '">' . __( 'Read more', 'twentyeleven' ) . '</a>';
 }
 
 /**
