@@ -346,7 +346,7 @@ function sa_searchresources($searchresults) {
 			<div id="cc-adv-search-pane-container" class="row clear">
         <div class="cc-adv-search-option-pane third-block">
           <h4>Topic Area</h4>
-          <ul>
+          <ul style="list-style-type: none;">
             <?php 
             $ATterms = get_terms('sa_advocacy_targets');
             foreach ($ATterms as $ATterm) {
@@ -359,7 +359,7 @@ function sa_searchresources($searchresults) {
         <div class="cc-adv-search-option-pane third-block">
           <h4>Type of Resource</h4>        
           <div class="cc-adv-search-scroll-container">
-          <ul>
+          <ul style="list-style-type: none;">
             <?php 
             $CATterms = get_terms('sa_resource_cat');
             foreach ($CATterms as $CATterm) {
@@ -376,7 +376,7 @@ function sa_searchresources($searchresults) {
           $sapolicytags = get_terms('sa_policy_tags', $sat_args);
           ?>
           <div class="cc-adv-search-scroll-container">
-          <ul>
+          <ul style="list-style-type: none;">
             <?php
             foreach ($sapolicytags as $sapolicytag) {
               echo '<li><input type="checkbox" name="sa_sapolicy_tag[]" id="sa_policy_tag_' .  $sapolicytag->term_id . '" value="' . $sapolicytag->term_id . '" /> <label for="sa_policy_tag_' . $sapolicytag->term_id . '">' . $sapolicytag->name . ' (' . $sapolicytag->count . ')</label></li>';
