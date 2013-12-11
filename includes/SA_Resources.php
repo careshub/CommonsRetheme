@@ -468,19 +468,20 @@ function sa_searchresources($searchresults) {
           );
 	}
 
-    //Make the query, do the loop
-	$query2 = new WP_Query($filter_args);
-    if($query2->have_posts()) : 
-	  while($query2->have_posts()) : 
-			$query2->the_post();
-			get_template_part( 'content', 'saresources-short' ); 
+	if (isset($_POST['saps'])) {
+		//Make the query, do the loop
+		$query2 = new WP_Query($filter_args);
+		if($query2->have_posts()) : 
+		  while($query2->have_posts()) : 
+				$query2->the_post();
+				get_template_part( 'content', 'saresources-short' ); 
 
-	  endwhile;
-	  // echo "END OF SEARCH RESULTS";
-   else: 
-	  echo "No Results - Search criteria too specific";	
-   endif;
-
+		  endwhile;
+		  // echo "END OF SEARCH RESULTS";
+	   else: 
+		  echo "No Results - Search criteria too specific";	
+	   endif;
+	}
 }
 
 function SA_getting_started() 
