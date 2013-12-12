@@ -96,12 +96,28 @@ class sa_success_story_meta_box {
 
 		// Use get_post_meta to retrieve an existing value from the database.
 		$value = get_post_meta( $post->ID, 'sa_success_story_video_url', true );
-
+		
+		//****ADDED BY MIKE B.*********
+		$locvalue = get_post_meta( $post->ID, 'sa_success_story_location', true );
+		$latvalue = get_post_meta( $post->ID, 'sa_success_story_latitude', true );
+		$longvalue = get_post_meta( $post->ID, 'sa_success_story_longitude', true );
+		
 		// Display the form, using the current value.
 		?>
 		<label for="sa_success_story_video_url" class="description"><h4>Featured video URL</h4>
 			<em>e.g.: http://www.youtube.com/watch?v=UueU0-EFido</em></label><br />
 		<input type="text" id="sa_success_story_video_url" name="sa_success_story_video_url" value="<?php echo esc_attr( $value); ?>" size="75" />
+		
+		<!--****ADDED BY MIKE B.*********-->
+		<label for="sa_success_story_location" class="description"><h4>Location</h4>	
+			<em>e.g.: Houston, Texas</em></label><br />		
+		<input type="text" id="sa_success_story_location" name="sa_success_story_location" value="<?php echo esc_attr( $locvalue); ?>" size="75" />		
+		<input type="text" id="sa_success_story_latitude" name="sa_success_story_latitude" value="<?php echo esc_attr( $latvalue); ?>" /><input type="text" id="sa_success_story_longitude" name="sa_success_story_longitude" value="<?php echo esc_attr( $longvalue); ?>" />
+		
+		
+		
+		
+		
 		
 		<label for="sa_success_story_pdf" class="description"><h4>Attach the PDF version of this story</h4></label>
 		<input id="sa_success_story_pdf" type="file" name="sa_success_story_pdf" value="" size="25" />
@@ -149,6 +165,32 @@ class sa_success_story_meta_box {
 							}
 						);
 				});
+				
+				
+				//*******ADDED BY MIKE B.****************
+				$("#sa_success_story_location").blur(function() {
+					var geogterm = jQuery("#sa_success_story_location").val();
+					var dataString = 'geogstr=' + geogterm;
+				
+					 $.ajax
+						 ({
+						   type: "POST",               
+						   url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
+						   data: dataString,
+						   cache: false,               
+						   error: function() {
+							 alert("Could not compute a latitude/longitude for this location. Please modify your location.");
+						   },
+						   success: function(k)
+						   {       
+							 //alert(k);
+							 var coord = $.parseJSON(k);
+							 $("#sa_success_story_latitude").val(coord.latitude); 
+							 $("#sa_success_story_longitude").val(coord.longitude); 	
+						   } 
+						 });
+				});
+				
 
 			});
 		</script>
@@ -175,7 +217,10 @@ class sa_success_story_meta_box {
 
 			// Update the meta field.
 			update_post_meta( $post_id, 'sa_success_story_video_url', $video_url );
-
+			//***********ADDED BY MIKE B. *****************
+			update_post_meta( $post_id, 'sa_success_story_location', $_POST['sa_success_story_location'] );
+			update_post_meta( $post_id, 'sa_success_story_latitude', $_POST['sa_success_story_latitude'] );
+			update_post_meta( $post_id, 'sa_success_story_longitude', $_POST['sa_success_story_longitude'] );
 		}
 
 	}
