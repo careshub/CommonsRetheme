@@ -111,7 +111,7 @@ class sa_success_story_meta_box {
 		<!--****ADDED BY MIKE B.*********-->
 		<label for="sa_success_story_location" class="description"><h4>Location</h4>	
 			<em>e.g.: Houston, Texas</em></label><br />		
-		<input type="text" id="sa_success_story_location" name="sa_success_story_location" value="<?php echo esc_attr( $locvalue); ?>" size="75" />		
+		<input type="text" id="sa_success_story_location" name="sa_success_story_location" value="<?php echo esc_attr( $locvalue); ?>" size="75" />	<input type="button" id="sa_success_story_save_location" value="Verify Location" /> <img id="sa_success_story_save_location_check" src="http://dev.communitycommons.org/wp-content/uploads/2013/12/greencheck.png" style="vertical-align:middle;" />	
 		<input type="hidden" id="sa_success_story_latitude" name="sa_success_story_latitude" value="<?php echo esc_attr( $latvalue); ?>" /><input type="hidden" id="sa_success_story_longitude" name="sa_success_story_longitude" value="<?php echo esc_attr( $longvalue); ?>" />
 		
 		
@@ -168,7 +168,8 @@ class sa_success_story_meta_box {
 				
 				
 				//*******ADDED BY MIKE B.****************
-				$("#sa_success_story_location").blur(function() {
+				$("#sa_success_story_save_location_check").hide();
+				$("#sa_success_story_save_location").click(function() {
 					var geogterm = jQuery("#sa_success_story_location").val();
 					var dataString = 'geogstr=' + geogterm;
 				
@@ -186,7 +187,8 @@ class sa_success_story_meta_box {
 							 //alert(k);
 							 var coord = $.parseJSON(k);
 							 $("#sa_success_story_latitude").val(coord.latitude); 
-							 $("#sa_success_story_longitude").val(coord.longitude); 	
+							 $("#sa_success_story_longitude").val(coord.longitude); 
+							 $("#sa_success_story_save_location_check").show();
 						   } 
 						 });
 				});
