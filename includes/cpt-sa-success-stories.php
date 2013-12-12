@@ -112,7 +112,7 @@ class sa_success_story_meta_box {
 		<label for="sa_success_story_location" class="description"><h4>Location</h4>	
 			<em>e.g.: Houston, Texas</em></label><br />		
 		<input type="text" id="sa_success_story_location" name="sa_success_story_location" value="<?php echo esc_attr( $locvalue); ?>" size="75" />		
-		<input type="text" id="sa_success_story_latitude" name="sa_success_story_latitude" value="<?php echo esc_attr( $latvalue); ?>" /><input type="text" id="sa_success_story_longitude" name="sa_success_story_longitude" value="<?php echo esc_attr( $longvalue); ?>" />
+		<input type="hidden" id="sa_success_story_latitude" name="sa_success_story_latitude" value="<?php echo esc_attr( $latvalue); ?>" /><input type="hidden" id="sa_success_story_longitude" name="sa_success_story_longitude" value="<?php echo esc_attr( $longvalue); ?>" />
 		
 		
 		
