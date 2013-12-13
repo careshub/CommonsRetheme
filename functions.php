@@ -978,7 +978,7 @@ class DropdownSlugWalker extends Walker_CategoryDropdown {
 }
 
 // Code originally by @t31os
-add_action('pre_get_posts','users_own_attachments');
+// add_action('pre_get_posts','users_own_attachments');
 // add_action('pre-upload-ui','users_own_attachments_upload');
 
 function users_own_attachments( $wp_query_obj ) 
@@ -1148,7 +1148,7 @@ function cc_add_comment_button() {
 }
 
 //Slightly modify the lost password message.
-add_filter('retrieve_password_message', 'cc_modify_lost_password_email_message', 35, 2);
+// add_filter('retrieve_password_message', 'cc_modify_lost_password_email_message', 35, 2);
 function cc_modify_lost_password_email_message( $message, $key ) {
   
   global $wpdb;
