@@ -50,7 +50,7 @@ if (is_page('salud-americaresearch')) {
                         
 } elseif (is_page('saresourcespage')) {
   echo '<div class="entry-content">
-        <h3 class="screamer sablue">Find Resources</h2>';
+        <h3 class="screamer sablue">Want to find resources to help make change in your area?</h2>';
 
          //Display the page content before making the custom loop
           while ( have_posts() ) : the_post();
@@ -60,11 +60,22 @@ if (is_page('salud-americaresearch')) {
           ?>
    				<div class="policy-search">
   					<!--<form id="sa-policy-search" class="standard-form" method="post" action="/">-->
-
+<h3 class="screamer sayellow">Search for Resources by keyword</h3>
                 <?php if ( function_exists('sa_searchresources') ) { 
                   sa_searchresources('/search-results'); 
                 } ?>
           </div>
+<h3 class="screamer sapurple">By Topic</h3>
+						<div>
+							
+							<?php 
+							$advocacy_targets = get_terms('sa_advocacy_targets');
+							foreach ($advocacy_targets as $target) {
+								?>
+								<div class="third-block"><a href="<?php the_intersection_link( 'saresources', 'sa_advocacy_targets', $target->slug ) ?>"><span class="<?php echo $target->slug; ?>x90"></span><br /><?php echo $target->name; ?></a></div>						
+							<?php } //end foreach ?>
+							
+						</div>
 
         <?php
 
@@ -94,45 +105,150 @@ if (is_page('salud-americaresearch')) {
             if ( function_exists('SA_getting_started') ) { SA_getting_started(); }        
 } 
 
+elseif (is_page('saresources-report')) {
+		echo "<h2>Report Resources</h2>";
+		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('report'); } 
+}
+elseif (is_page('saresources-toolkit')) {
+		echo "<h2>Toolkit Resources</h2>";
+		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('toolkit'); } 
+
+
+}
+elseif (is_page('saresources-webinar')) {
+		echo "<h2>Webinar Resources</h2>";
+		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('webinar-2'); } 
+
+
+}
 elseif ( is_page('whats-new') ) {
+  
+    
+    ?>
+      <p class="intro-text" style="font-size:1.2em;padding-top:10px">More than 39 percent of Latino children ages 2-19 are overweight or obese.</p> 
+                                    
+      <p class="intro-text" style="font-size:1.2em; padding-bottom:10px">Here are the latest trends on the obesity epidemic—and the efforts going on across the nation to reduce and prevent obesity among Latino children.</p>
+      
+<div>
+<h3 class="screamer sagreen">Latest Success Stories</h3>
+<div class="row clear">
+					
 
-				//First, display the content of the page before making the custom loop.
-				while ( have_posts() ) : the_post();
-				$page_intro = get_the_content();
-				if ( !empty($page_intro) ) {
-					$page_intro = apply_filters('the_content', $page_intro); 
-					?>
-					<div class="sa-page-intro">
-						<?php echo $page_intro; ?>
-					</div>	
-	                <?php } //End if empty check
-                endwhile; // end of the main page loop. 
-   				?>
-				<div class="policy-search">
-					<form id="sa-policy-search" class="standard-form" method="get" action="/">
-					<h3 style="color: #ef4036;font-size: 1.6rem;">Search for News</h3>
-					<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Not a functional search yet." name="sa-policy">
-					<input class="sa-policy-search-button" type="submit" value="Search">
-					</form>
-				</div>        
-                          
-        <?php  
-        //4 BLOCKS FOR WHAT'S GOING ON NOW
-        // Specify the saresourcecat slugs we want to show here
-        // If specifying more than one category, make them a comma-separated list                       
-            $resource_cats = array(
-              'news, press-release',
-              'op-ed',
-              'research, report, policy-brief' 
-            );
-            ?>
+					<?php
+					//Grab the 3 most recent success stories
+						$args = array (
+								'post_type' => 'sa_success_story',
+								'posts_per_page' => 6,
+							);
+						$ssquery = new WP_Query( $args );
+						while ( $ssquery->have_posts() ) {
+							
+							$ssquery->the_post();
+							global $post;
+							setup_postdata( $post );
+							// echo '<li class="third-block"><h5>' . $target->name . '</h5>';
+							echo '<div class="third-block">';
+							?>
+								<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
 
-      <h3>Browse News by Type</h3>
-      <?php saresources_get_featured_blocks($resource_cats); ?>
+								<?php 
+								if ( has_post_thumbnail()) { 
+									the_post_thumbnail('feature-front-sub'); 
+									echo '<br />';
+									} 
 
-      <h3>Latest Resources Added</h3>
-      <?php saresources_get_related_resources($resource_cats);		
+									echo '<h5 class="entry-title">' . get_the_title() . '</h5></a>';
+									the_excerpt();
+									?>
+								</a>
+							</div>
+							 <?php
+						}
+						wp_reset_postdata();
+						?>
+</div>        
+      
+<h3 class="screamer sapurple">Recent Changes</h3>
 
+					<div class="row">
+						<?php
+						//Grab the 3 most recent success stories
+							$args = array (
+									'post_type' => 'sapolicies',
+									'posts_per_page' => 6,
+									// 'tax_query' => array(
+									// 	array(
+									// 		'taxonomy' => 'sa_resource_cat',
+									// 		'field' => 'slug',
+									// 		'terms' => array( 'success-stories' ),
+									// 	)
+									// )
+								);
+							//Grab the possible advocacy targets
+							$advocacy_targets = get_terms('sa_advocacy_targets');
+							foreach ($advocacy_targets as $target) {
+								$possible_targets[] = $target->slug;
+							}
+							$ssquery = new WP_Query( $args );
+							while ( $ssquery->have_posts() ) {
+							// print_r($possible_targets);
+
+								$ssquery->the_post();
+								global $post;
+								setup_postdata( $post );
+
+								// echo '<li class="third-block"><h5>' . $target->name . '</h5>';
+								echo '<div class="third-block">';
+								?>
+									<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
+
+									<?php 
+									if ( has_post_thumbnail()) { 
+										//Use the post thumbnail if it exists
+										the_post_thumbnail('feature-front-sub'); 
+										echo '<br />';
+									} else {
+										//Otherwise, use some stand-in images by advocacy target
+										$terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
+										if ( !empty ($terms) ) :
+											//loop through the terms to find a usable (unique) image
+											foreach ($terms as $term) {
+												if ( in_array( $term->slug, $possible_targets ) ) {
+													$advo_target = $term->slug;
+													break;
+												}
+											}
+											//If an advo_target didn't get set, we'll set one at random
+											if ( !( $advo_target ) ) {
+												$advo_target = current($possible_targets);
+												// $advo_target = next_targe;
+												// print_r(current($possible_targets));
+											}
+
+											// echo PHP_EOL . $advo_target;
+
+											//Delete that value from the possible values
+												$key_to_delete = array_search($advo_target, $possible_targets);
+												if ( false !== $key_to_delete ) {
+												    unset( $possible_targets[$key_to_delete] );
+												}
+											
+										endif; //check for empty terms
+
+										echo '<img src="' . get_stylesheet_directory_uri() . '/img/salud_america/advocacy_targets/' . $advo_target . 'x300.jpg" > ';
+										unset($advo_target);
+									}
+
+									echo '<h5 class="entry-title">' . get_the_title() . '</h5></a>';
+									the_excerpt();
+									?></div><?php
+                                                                            							}
+							wp_reset_postdata();
+							?>
+								
+                                                              
+	<?php
+                                                       
 } elseif (is_page('learn-to-make-change')) {
 
 				//First, display the content of the page before making the custom loop.

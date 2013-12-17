@@ -200,7 +200,16 @@ function saresources_get_featured_blocks($resource_cats) {
               <header class="entry-header">
                 <?php 
                   if ( function_exists('salud_get_taxonomy_images') ) {
-                   echo salud_get_taxonomy_images($resource_cat, 'sa_resource_cat');
+					$goto_pg="";
+					if ($resource_cat =="report") {
+						$goto_pg="report";
+					} elseif ($resource_cat =="toolkit") {
+						$goto_pg="toolkit";
+					} elseif ($resource_cat =="webinar-2") {
+						$goto_pg="webinar";
+					}
+					
+                   echo "<a href='saresources-" . $goto_pg . "' title='Link to " . $goto_pg . " page'>" . salud_get_taxonomy_images($resource_cat, 'sa_resource_cat') . "</a>";
                   }
                 ?>                   
                 <h4 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h4>
@@ -222,6 +231,38 @@ function saresources_get_featured_blocks($resource_cats) {
         <?php  endif; ?>                                                         
     <?php } // Ends foreach for four top blocks 
 }
+function saresources_by_cat($resource_cat) {
+		  $do_not_duplicate = array();
+          $args = array(
+	          'post_type' => 'saresources',
+	          'sa_resource_cat' => $resource_cat,	          
+	          'post__not_in' => $do_not_duplicate,
+	          );
+          $resources_results = new WP_Query( $args );
+          if ( $resources_results->have_posts() ) : ?>
+
+              <div class="<?php echo $block_class; ?>"> 
+              <?php $counter = 0;
+                 while ( $resources_results->have_posts() ) : $resources_results->the_post();
+                    ++$counter;
+                    //Add each displayed post to the do_not_duplicate array
+                    $do_not_duplicate[] = get_the_ID();
+
+              ?>
+
+              <header class="entry-header">
+                 
+                <h4 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h4>
+              </header> 
+		      <div class="entry-content"><?php the_excerpt();?></div>
+			  <?php 
+			  endwhile;
+			endif;
+
+
+
+}
+
 
 function saresources_get_related_resources($resource_cats) {
 	wp_reset_postdata();
@@ -468,20 +509,26 @@ function sa_searchresources($searchresults) {
           );
 	}
 
+	
 	if (isset($_POST['saps'])) {
-		//Make the query, do the loop
-		$query2 = new WP_Query($filter_args);
-		if($query2->have_posts()) : 
-		  while($query2->have_posts()) : 
-				$query2->the_post();
-				get_template_part( 'content', 'saresources-short' ); 
+		
 
-		  endwhile;
-		  // echo "END OF SEARCH RESULTS";
-	   else: 
-		  echo "No Results - Search criteria too specific";	
-	   endif;
-	}
+	
+    //Make the query, do the loop
+	$query2 = new WP_Query($filter_args);
+    if($query2->have_posts()) : 
+	  while($query2->have_posts()) : 
+			$query2->the_post();
+			get_template_part( 'content', 'saresources-short' ); 
+
+	  endwhile;
+	  // echo "END OF SEARCH RESULTS";
+   else: 
+	  echo "No Results - Search criteria too specific";	
+   endif;
+   
+   }
+
 }
 
 function SA_getting_started() 
