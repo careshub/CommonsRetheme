@@ -65,14 +65,14 @@ if (is_page('salud-americaresearch')) {
                   sa_searchresources('/search-results'); 
                 } ?>
           </div>
-<h3 class="screamer sapurple">By Topic</h3>
+<h3 class="screamer sapurple">Browse Resources by Topic</h3>
 						<div>
 							
 							<?php 
 							$advocacy_targets = get_terms('sa_advocacy_targets');
 							foreach ($advocacy_targets as $target) {
 								?>
-								<div class="third-block"><a href="<?php the_intersection_link( 'saresources', 'sa_advocacy_targets', $target->slug ) ?>"><span class="<?php echo $target->slug; ?>x90"></span><br /><?php echo $target->name; ?></a></div>						
+								<div class="sixth-block mini-text"><a href="<?php the_intersection_link( 'saresources', 'sa_advocacy_targets', $target->slug ) ?>"><span class="<?php echo $target->slug; ?>x90"></span><br /><?php echo $target->name; ?></a></div>						
 							<?php } //end foreach ?>
 							
 						</div>
@@ -106,17 +106,21 @@ if (is_page('salud-americaresearch')) {
 } 
 
 elseif (is_page('saresources-report')) {
-		echo "<h2>Report Resources</h2>";
-		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('report'); } 
-}
+		echo "<h3 class='screamer sayellow'>Report Resources</h3>";
+		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('report');	
+				} {
+                                get_template_part( 'content', 'saresources-short' );
+                                comments_template( '', true );}
+
+                }
 elseif (is_page('saresources-toolkit')) {
-		echo "<h2>Toolkit Resources</h2>";
+		echo "<h3 class='screamer sagreen'>Toolkit Resources</h3>";
 		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('toolkit'); } 
 
 
 }
 elseif (is_page('saresources-webinar')) {
-		echo "<h2>Webinar Resources</h2>";
+		echo "<h3 class='screamer sapurple'>Webinar Resources</h3>";
 		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('webinar-2'); } 
 
 

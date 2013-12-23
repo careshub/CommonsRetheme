@@ -1,6 +1,7 @@
 		<div class="salud-footer">	
-                   <img src="/wp-content/themes/CommonsRetheme/img/salud_america/logo-rwjf.png" style="padding-right: 10px;padding-bottom:10px;" /><br>
-                    <div><p>Salud America! The RWJF Research Network to Prevent Obesity Among Latino Children is a national program of the Robert Wood Johnson Foundation to unite and increase the number of Latino researchers, leaders, and stakeholders seeking research, environmental and policy solutions to the epidemic. The network is directed by the Institute for Health Promotion Research at The UT Health Science Center at San Antonio. For more information, visit  <a href="http://www.salud-america.org">www.salud-america.org</a>.</p>
-                    <p>Disclaimer: The information on the website is intended for educational and informative purposes. References to specific policy makers, individuals, schools, policies, or companies have been included solely to advance these purposes and do not constitute an endorsement, sponsorship, or recommendation.</p></div>
+			<p>Salud America!  is a national online network of researchers, community group leaders, decision-makers, and members of the public working together to support healthy policy and environmental changes that can help reverse obesity among Latino children.</p>
+			<p>The network, funded by the Robert Wood Johnson Foundation, is a project of <a href="http://ihpr.uthscsa.edu/"> the Institute for Health Promotion Research (IHPR)</a> at <a href="http://uthscsa.edu/">The UT Health Science Center at San Antonio</a>.</p>
+                        <p>Policies, comments, external links, and contributed stories and images are not affiliated with Salud America!, RWJF, or The UT Health Science Center at San Antonio, nor do they necessarily reflect the views of or endorsement by these organizations.</p>
+                        <a href="http://http://www.rwjf.org/"><img style="float:right" src="/wp-content/themes/CommonsRetheme/img/salud_america/logo-rwjf_small.png" ></a>
 		</div>
 	</div><!-- #primary -->
