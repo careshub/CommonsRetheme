@@ -14,19 +14,19 @@ get_header(); ?>
 					} ?>
 			<div class="entry-content">
 
-				<h3 class="screamer sagreen">How can you fight Latino childhood obesity in your area?</h2><img style="float:right;" src='http://dev.communitycommons.org/wp-content/uploads/2013/09/family-biking-cropped.jpg' alt='Map of Changes' height="200" width="300" class="no-box"> 
+				<h3 class="screamer sagreen">How can you fight Latino childhood obesity in your area?</h2><img style="float:right;" src='http://dev.communitycommons.org/wp-content/uploads/2013/09/family-biking-cropped-300x226.jpg' alt='Latino family taking a bike ride' class="no-box"> 
 
 				<p class="intro-text" style="font-size:1.2em;">Obesity threatens the health of Latino kids.</p> 
                                     
-                                <p>But how do you get involved?</p>
+                <p>But how do you get involved?</p>
  
 				<p><strong>Growing Healthy Change</strong> is here to highlight healthy<br /> changes happening in your community right now, and help you learn to start your own change.</p>
 				 
-				<p>Find the latest policies, stories, and research to reduce Latino childhood obesity -like unlocking playgrounds after school- in your city, school, county, state, and Nation. Learn the steps people take to create change, and find resources on how to do it yourself.</p>
+				<p>Find the latest policies, stories, and research to reduce Latino childhood obesity&mdash;like unlocking playgrounds after school&mdash;in your city, school, county, state, and nation. Learn the steps people take to create change, and find resources on how to do it yourself.</p>
                                 
-                                <p>And be sure to upload your own stories and videos of change.</p>
-                                
-                                <p>Get started! </p>
+                <p>And be sure to upload your own stories and videos of change.</p>
+                
+                <p>Get started! </p>
 
 				<div class="find-changes">
 					<h3 class="screamer saorange">1. Find Changes</h3>
@@ -183,20 +183,16 @@ get_header(); ?>
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">
 						<h4 style="margin-top:0;">What's Change?</h4>
-	                    <a href="http://dev.communitycommons.org/salud-america/what-is-change"><img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;"></a>
-	                     <p>Find out what "change" really means and all the science behind it.</p>
-				<form style="padding-left:110px" action="http://dev.communitycommons.org/salud-america/what-is-change">
-                                    <input type="submit" value="CHANGE">
-                                </form>
-                                        </div>
+	                    <a href="/salud-america/what-is-change"><img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;"></a>
+	                    <p>Find out what "change" really means and all the science behind it.<br />
+	                    	<a href="/salud-america/what-is-change" class="button" title="Learn what change means.">Learn more</a></p>
+                    </div>
 
 					<div class="half-block" style="margin-top:0;">
 						<h4 style="margin-top:0;">Get help to Make a Change</h4>
-	                    <a href='http://dev.communitycommons.org/salud-america/saresourcespage/'><img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/Resoucesmakechange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;"></a>
-	                    <p>Use research, toolkits, and other elements tolearn about healthy change.</p>
-                            	<form style="padding-left:110px" action="http://dev.communitycommons.org/salud-america/saresourcespage/">
-                                    <input type="submit" value="RESOURCES">
-                                </form>
+	                    <a href='/salud-america/saresourcespage/'><img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/Resoucesmakechange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;"></a>
+	                    <p>Use research, toolkits, and other elements to learn about healthy change.<br />
+	                    	<a href="/salud-america/saresourcespage/" class="button" title="Learn about healthy change.">Learn more</a></p>
 					</div>
 				</div>
 				
@@ -205,11 +201,10 @@ get_header(); ?>
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">
 						<h4 style="margin-top:0;">Be a Salud Changer</h4>
-	                    <a href='http://dev.communitycommons.org/salud-america/share-your-own-stories/'><img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png' alt='Share Your Change' style="width:32%; float:left; margin-right:5%;" class="no-box"></a>
-	                    <p>Are you making a healthy change? <br />Share your story with us and we can feature it here so others can learn from you!</p>
-                                <form style="padding-left:110px" action="http://dev.communitycommons.org/salud-america/saresourcespage/">
-                                    <input type="submit" value="UPLOAD YOUR STORY">
-                                </form>
+	                    <a href='/salud-america/share-your-own-stories/'><img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png' alt='Share Your Change' style="width:32%; float:left; margin-right:5%;" class="no-box"></a>
+	                    <p>Are you making a healthy change? <br />
+	                    	Share your story with us and we can feature it here so others can learn from you!<br />
+	                    	<a href="/salud-america/share-your-own-stories/" class="button" title="Share your story.">Share your story</a></p>
 					</div>
 
 					<div class="half-block" style="margin-top:0;">

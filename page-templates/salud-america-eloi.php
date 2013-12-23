@@ -60,7 +60,7 @@ if (is_page('salud-americaresearch')) {
           ?>
    				<div class="policy-search">
   					<!--<form id="sa-policy-search" class="standard-form" method="post" action="/">-->
-<h3 class="screamer sayellow">Search for Resources by keyword</h3>
+<h3 class="screamer sayellow">Search for Resources by Keyword</h3>
                 <?php if ( function_exists('sa_searchresources') ) { 
                   sa_searchresources('/search-results'); 
                 } ?>
@@ -105,26 +105,26 @@ if (is_page('salud-americaresearch')) {
             if ( function_exists('SA_getting_started') ) { SA_getting_started(); }        
 } 
 
-elseif (is_page('saresources-report')) {
-		echo "<h3 class='screamer sayellow'>Report Resources</h3>";
-		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('report');	
-				} {
-                                get_template_part( 'content', 'saresources-short' );
-                                comments_template( '', true );}
+// elseif (is_page('saresources-report')) {
+// 		echo "<h3 class='screamer sayellow'>Report Resources</h3>";
+// 		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('report');	
+// 				} {
+//                                 get_template_part( 'content', 'saresources-short' );
+//                                 comments_template( '', true );}
 
-                }
-elseif (is_page('saresources-toolkit')) {
-		echo "<h3 class='screamer sagreen'>Toolkit Resources</h3>";
-		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('toolkit'); } 
-
-
-}
-elseif (is_page('saresources-webinar')) {
-		echo "<h3 class='screamer sapurple'>Webinar Resources</h3>";
-		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('webinar-2'); } 
+//                 }
+// elseif (is_page('saresources-toolkit')) {
+// 		echo "<h3 class='screamer sagreen'>Toolkit Resources</h3>";
+// 		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('toolkit'); } 
 
 
-}
+// }
+// elseif (is_page('saresources-webinar')) {
+// 		echo "<h3 class='screamer sapurple'>Webinar Resources</h3>";
+// 		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('webinar-2'); } 
+
+
+// }
 elseif ( is_page('whats-new') ) {
   
     
