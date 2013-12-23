@@ -244,17 +244,13 @@ function saresources_by_cat($resource_cat) {
               <div class="<?php echo $block_class; ?>"> 
               <?php $counter = 0;
                  while ( $resources_results->have_posts() ) : $resources_results->the_post();
+                 get_template_part( 'content', 'saresources-short');
                     ++$counter;
                     //Add each displayed post to the do_not_duplicate array
                     $do_not_duplicate[] = get_the_ID();
-
+                    
               ?>
 
-              <header class="entry-header">
-                 
-                <h4 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h4>
-              </header> 
-		      <div class="entry-content"><?php the_excerpt();?></div>
 			  <?php 
 			  endwhile;
 			endif;

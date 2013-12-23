@@ -13,9 +13,7 @@
 </div>
 
 <?php 
-	if ( is_singular("saresources") ) {
-		get_sidebar( 'salud-single' ); 
-	} elseif ( is_singular("sapolicies") ) {
+	if ( is_singular('sapolicies') ) {
 		get_sidebar( 'salud-singlepolicy' ); 
 	} elseif ( is_page('salud-america') ) {
 		get_sidebar( 'salud-home' );

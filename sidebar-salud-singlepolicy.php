@@ -50,8 +50,69 @@
 				wp_nav_menu( $args );
 				?>
 		</div>
+	<?php
+		
+		$geogterm = wp_get_object_terms( $post->ID, 'geographies' );
+		if(!empty($geogterm)){
+		  if(!is_wp_error( $geogterm )){					
+			foreach($geogterm as $gterm){
 
-	<div class="policy-meta">
+			}					
+		  }
+		}
+                        
+	$geostate = substr ($gterm->description, 5, 4);
+                $geoidstate = "04000$geostate";        
+                        
+	?>
+
+    <div>
+        <strong>Percent Adults Age 18+ Obese (BMI >= 30)  by County</strong>
+        
+        <div style="padding-top:5px">
+        	<script src='http://maps.communitycommons.org/jscripts/mapWidget.js?ids=348&vm=348&w=200&h=200&geoid=<?php echo $geoidstate; ?>&l=1'></script>
+        </div>        
+    
+		<div id="dial">
+			<script src='http://maps.communitycommons.org/jscripts/dialWidget.js?geoid=<?php echo $gterm->description?>&id=779'></script>
+		</div>
+
+	
+        <input type="button" id="btnSubmit1" value="Poverty rate" onclick="changeDial('779')" />
+		<input type="button" id="btnSubmit2" value="Children in Poverty " onclick="changeDial('781')" />
+		<input type="button" id="btnSubmit3" value="Pop. With No HS Diploma" onclick="changeDial('760')" />
+	
+	
+	
+	
+		<!--**********************************************Mike's stuff**********************************-->
+		<script type="text/javascript">
+			function changeDial(id) {
+				var geoid = '<?php echo $gterm->description ?>';
+				var s = document.createElement("script");
+				s.type = "text/javascript";
+				s.src = "http://maps.communitycommons.org/jscripts/dialWidget.js?geoid=" + geoid + "&id=" + id;
+				
+                var dial = document.getElementById('dial');
+                if (!document._write) document._write = document.write;
+                document.write = function (str) {
+                    dial.innerHTML += str;
+                };
+
+                while (dial.firstChild) {  dial.removeChild(dial.firstChild); }
+                dial.appendChild(s);
+                }
+
+		</script>
+		
+		
+		
+		<!--********************************************************************************************** -->				
+	
+    </div>
+
+
+	<!-- <div class="policy-meta">
 		<div class="policy-stats">
 			<h3 class="widget-title">Regional Snapshot:<br /> Anytown</h3>
 			<div class="stat-group clear">
@@ -82,20 +143,11 @@
 				</div>
 			</div>
 
-
-
-
-			
-
 		</div>
-	</div> <!-- end .policy-meta -->
+	</div> --> <!-- end .policy-meta -->
 		<?php //if ( is_active_sidebar( 'groups-single-sidebar' ) ) :
 		// 			dynamic_sidebar( 'groups-single-sidebar' ); 
 		// 	endif;
 		?>
-		<?php 
-			// $Path=$_SERVER['REQUEST_URI'];
-			// $data_url= home_url() . $Path;
-		?>
-		<!-- <div class="sharrre alignleft button" data-url="<?= $data_url ?>" data-text="<?php wp_title( '|', true, 'right' ); ?>" data-title="share"></div> -->
+
 		</div><!-- #secondary -->
