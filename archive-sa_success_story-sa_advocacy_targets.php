@@ -11,7 +11,7 @@
 
 					//Get the page intro content, which is stored as a page with the same slug as the target area.
 					$args = array (
-						'pagename' => 'salud-america/sapolicies/' . $tax_term->slug,
+						'pagename' => 'salud-america/sa-advocacy-targets-intros/' . $tax_term->slug,
 						'post_type' => 'page'
 						);
 					// print_r($wp_query->query_vars);

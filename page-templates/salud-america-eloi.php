@@ -49,6 +49,8 @@ if (is_page('salud-americaresearch')) {
         endwhile; // end of the loop.              
                         
 } elseif (is_page('saresourcespage')) {
+	//Moved this functionality to resources archive page
+  /****** 
   echo '<div class="entry-content">
         <h3 class="screamer sablue">Want to find resources to help make change in your area?</h2>';
 
@@ -100,6 +102,7 @@ if (is_page('salud-americaresearch')) {
         </div>
       </div> <!-- end .entry-content -->
 			<?php
+			*/
 } elseif (is_page('getting-started')) {
 
             if ( function_exists('SA_getting_started') ) { SA_getting_started(); }        

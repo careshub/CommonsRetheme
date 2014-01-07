@@ -50,6 +50,7 @@ function SA_resources_init()
 	    //'has_archive' => 'sapolicies',
 	    // 'supports' => array('title','editor','excerpt','trackbacks','custom-fields','comments','revisions','thumbnail','author','page-attributes',),
 	    'supports' => array('title','editor','comments', 'thumbnail'),
+	    'has_archive' => true,
 	  	'capability_type' => 'saresources',
 	  	'map_meta_cap' => true
 		);
@@ -358,7 +359,13 @@ function sa_filter_unpromoted_saresources( $query ) {
     }
  
 }
-// add_action('pre_get_posts', 'sa_filter_unpromoted_saresources', 9999); 
+// add_action('pre_get_posts', 'sa_filter_unpromoted_saresources', 9999);
+function modify_resources_archive_main_loop( $query ) {
+    if( is_post_type_archive( 'saresources' )  && !is_admin() && $query->is_main_query() ) {   	
+        $query->set('posts_per_page', 6);
+    }
+}
+add_filter('pre_get_posts', 'modify_resources_archive_main_loop', 45);
 
 function sa_searchresources($searchresults) {
         ?>
@@ -527,6 +534,7 @@ function sa_searchresources($searchresults) {
 
 }
 
+//TODO: Fix this function.
 function SA_getting_started() 
 {
 ?>

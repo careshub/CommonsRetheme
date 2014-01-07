@@ -1,5 +1,7 @@
 <?php get_header(); ?>
-<?php get_template_part('page-templates/wrapper-salud-top'); ?>
+<?php get_template_part('page-templates/wrapper-salud-top'); 
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+?>
 
 		<div id="content" role="main">
 			<div class="padder">
@@ -7,7 +9,7 @@
 				<?php
 					//Which term is this page showing?
 					$tax_term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
-					print_r($tax_term);
+					// print_r($tax_term);
 
 					if ( $tax_term->taxonomy == 'sa_advocacy_targets' ) {
 
@@ -33,53 +35,52 @@
 
 					//Get the related dings
 
-				?>
-				<div class="clear">
-					<!-- TODO: Need to figure out what the pattern is here, or generalize it somehow! -->
-					<?php if ( $tax_term->slug == 'sa-active-play' ) { ?>
+						?>
+							<div class="clear">
+								<!-- TODO: Need to figure out what the pattern is here, or generalize it somehow! -->
+								<?php if ( $tax_term->slug == 'sa-active-play' ) { ?>
 
-						<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Play-Research-Review.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
-	                    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Play-Issue-Brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_brief.png" /><br />Issue Brief</a>
-	                    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Play-Infographic-875.jpg" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_info.png" /><br />Infographic</a>
+									<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Play-Research-Review.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
+				                    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Play-Issue-Brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_brief.png" /><br />Issue Brief</a>
+				                    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Play-Infographic-875.jpg" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_info.png" /><br />Infographic</a>
 
-                    <?php } else if ( $tax_term->slug == 'sa-active-spaces' ) { ?>
+			                    <?php } else if ( $tax_term->slug == 'sa-active-spaces' ) { ?>
 
-	                    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Spaces-Research-Review.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
-                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Spaces-Issue-Brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AS_brief2.png" />Issue Brief</a>
-                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Spaces-Infographic-875.jpg" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AS_info.png" /><br />Infographic</a>
+				                    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Spaces-Research-Review.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
+			                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Spaces-Issue-Brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AS_brief2.png" />Issue Brief</a>
+			                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Spaces-Infographic-875.jpg" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AS_info.png" /><br />Infographic</a>
 
-					<?php } else if ( $tax_term->slug == 'sa-better-food-in-neighborhoods' ) { ?>
+								<?php } else if ( $tax_term->slug == 'sa-better-food-in-neighborhoods' ) { ?>
 
-					    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/BetterFoodintheNeighborhood-ResearchReview.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
-	                    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Issue-Brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/FN_brief2.png" /><br />Issue Brief</a>
-	                    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Infographic-875.jpg" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/FN_info.png" /><br />Infographic</a>
+								    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/BetterFoodintheNeighborhood-ResearchReview.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
+				                    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Issue-Brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/FN_brief2.png" /><br />Issue Brief</a>
+				                    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Infographic-875.jpg" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/FN_info.png" /><br />Infographic</a>
 
-	                <?php } else if ( $tax_term->slug == 'sa-healthier-marketing' ) { ?>
+				                <?php } else if ( $tax_term->slug == 'sa-healthier-marketing' ) { ?>
 
-		                <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-Marketing-Research-Review.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
-                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-Marketing-Issue-Brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/HM_brief2.png" /><br />Issue Brief</a>
-                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-Marketing-Infographic-875.jpg" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/HM_info2.png" /><br />Infographic</a>
-                    
-                    <?php } else if ( $tax_term->slug == 'sa-healthier-school-snacks' ) { ?>
+					                <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-Marketing-Research-Review.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
+			                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-Marketing-Issue-Brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/HM_brief2.png" /><br />Issue Brief</a>
+			                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-Marketing-Infographic-875.jpg" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/HM_info2.png" /><br />Infographic</a>
+			                    
+			                    <?php } else if ( $tax_term->slug == 'sa-healthier-school-snacks' ) { ?>
 
-	                    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-School-Snacks-Research-Review.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
-                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-School-Snacks-Issue-Brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/SS_brief2.png" /><br />Issue Brief</a>
-                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-School-Snacks-Infographic-875.jpg" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/SS_info.png" /><br />Infographic</a>
-                    
-                    <?php } else if ( $tax_term->slug == 'sa-sugary-drinks' ) { ?>
+				                    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-School-Snacks-Research-Review.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
+			                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-School-Snacks-Issue-Brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/SS_brief2.png" /><br />Issue Brief</a>
+			                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-School-Snacks-Infographic-875.jpg" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/SS_info.png" /><br />Infographic</a>
+			                    
+			                    <?php } else if ( $tax_term->slug == 'sa-sugary-drinks' ) { ?>
 
-	                    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
-                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_brief.png" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_brief.png" /><br />Issue Brief</a>
-                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_info.png" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_info.png"  /><br />Infographic</a>
+				                    <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
+			                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_brief.png" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_brief.png" /><br />Issue Brief</a>
+			                        <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_info.png" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_info.png"  /><br />Infographic</a>
 
-                    <?php } ?>
-               </div>
+			                    <?php } ?>
+			               </div>
 
-               </article>
+		               </article>
                <?php 					
 	               endwhile; // end of the loop.
-				} //end check for taxonomy == sa_advocacy_targets 
-				?>
+	               ?>
 			    <div class="taxonomy-policies">
 	               <h3 class="screamer <?php sa_the_topic_color( $tax_term->slug ); ?>">Resources in the <?php 
 	               echo $tax_term->name; 
@@ -92,6 +93,88 @@
 					<?php endwhile; // end of the loop. ?>
 					<?php twentytwelve_content_nav( 'nav-below' ); ?>
 				</div>
+				<?php
+                //end check for taxonomy == sa_advocacy_targets 
+				} elseif( isset( $tax_term->taxonomy ) ) {
+				?>
+					<div class="taxonomy-policies">
+		                <h3 class="screamer <?php sa_the_topic_color( $tax_term->slug ); ?>">Resources in the <?php 
+		                echo $tax_term->name; 
+		                echo ( $tax_term->taxonomy == 'sa_policy_tags' ? ' tag' : ' topic' )
+		                ?></h3>
+							
+						<?php while ( have_posts() ) : the_post(); ?>
+							<?php get_template_part( 'content', 'sa-resources-short' ); ?>
+							<?php comments_template( '', true ); ?>
+						<?php endwhile; // end of the loop. ?>
+						<?php twentytwelve_content_nav( 'nav-below' ); ?>
+					</div>
+				<?php
+				} else {
+					//If no taxonomy term is set, then we want to treat this as the policy archive page. We only want to show the first few block on the first page.
+					if ( $paged == 1 ) {
+						?>
+				        <h3 class="screamer sablue">Want to find resources to help make change in your area?</h3>
+				        <?php
+				         //Display the page content before making the custom loop
+				          // while ( have_posts() ) : the_post();
+				          // 	get_template_part( 'content', 'page-notitle' );
+				          //   // comments_template( '', true );              
+				          // endwhile; // end of the loop. 
+				          ?>
+				          <p>We’ve collected a wide variety of the latest ways to get involved and find tool-kits, webinars and training opportunities to learn more.</p>
+
+		   				<div class="policy-search">
+		  					<!--<form id="sa-policy-search" class="standard-form" method="post" action="/">-->
+							<h3 class="screamer sayellow">Search for Resources by Keyword</h3>
+				                <?php if ( function_exists('sa_searchresources') ) { 
+				                  sa_searchresources('/search-results'); 
+				                } ?>
+						</div>
+
+						<h3 class="screamer sapurple">Browse Resources by Topic</h3>
+						<div>
+							
+							<?php 
+							$advocacy_targets = get_terms('sa_advocacy_targets');
+							foreach ($advocacy_targets as $target) {
+								?>
+								<div class="sixth-block mini-text"><a href="<?php the_intersection_link( 'saresources', 'sa_advocacy_targets', $target->slug ) ?>"><span class="<?php echo $target->slug; ?>x90"></span><br /><?php echo $target->name; ?></a></div>						
+							<?php } //end foreach ?>
+							
+						</div>
+
+				        <?php
+
+				        //Specify the saresourcecat slugs we want to show here 
+				        // If specifying more than one category, make them a comma-separated list               
+				        $resource_cats = array( 'report', 'toolkit','webinar-2' );
+				        ?>
+
+				        <div class="row">
+				          <h3 class="screamer sagreen">Browse Resources by Type</h3>
+				          <?php saresources_get_featured_blocks($resource_cats);?>
+				        </div>
+			        <?php 
+			    		} // end if $paged = 1 
+			        ?>
+
+			        <!-- Begin secondary loop for most recently added resources -->
+			        <div class="row taxonomy-policies">
+			          <h3 class="screamer sapink">Latest Resources Added</h3>
+			          <?php 
+			          // saresources_get_related_resources($resource_cats);
+			          // Since this is an archive page, let's let WP do the heavy lifting.
+			          while ( have_posts() ) : the_post(); 
+				          get_template_part( 'content', 'saresources-short' );
+			          endwhile; // end of the loop. 
+			          twentytwelve_content_nav( 'nav-below' );
+			          ?>
+
+			        </div>
+				<?php
+				}
+				?>
 					
 			</div> <!-- .entry-content -->
 			</div><!-- .padder -->

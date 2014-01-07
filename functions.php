@@ -647,6 +647,7 @@ function cc_custom_body_class( $classes ) {
       || is_tax('sa_resource_cat')
       || is_post_type_archive('sa_success_story')
       || is_post_type_archive('saresources')
+      || is_post_type_archive('sapolicies')
       ) {
         $classes[] = 'salud-america';
         if ( ($key = array_search('full-width', $classes) ) !== false ) {

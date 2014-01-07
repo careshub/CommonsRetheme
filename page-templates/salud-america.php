@@ -283,7 +283,8 @@ get_header(); ?>
 			                                  
 
 			} elseif (is_page('sapolicies')) {
-
+				//Moved functionality to policies archive
+				/****
 				echo '<div class="entry-content">';
                                 ?>
                                  <div class="policy-search">
@@ -340,7 +341,7 @@ get_header(); ?>
 
 				</div>
 			</div> <!-- .entry-content -->
-<?php
+<?php */
 			}  elseif (is_page('sa-policy-map-search')) {
 				sa_location_search();
 			
@@ -350,6 +351,7 @@ get_header(); ?>
                            
 				//The number above is the id of the parent page, is 11911 on the dev server.
 				//It's 150 on DC's local install
+				/***
 				 
                             if ( function_exists('SA_topics') ) {
                             	SA_topics();} 
@@ -494,6 +496,7 @@ get_header(); ?>
                                 </div>    
                                 <?php
                                 comments_template( '', true );
+             */
 
 			} else {
 
