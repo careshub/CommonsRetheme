@@ -1,5 +1,5 @@
 <div class="salud-header clear">
-	<a href="#" class="logo"><img src="/wp-content/themes/CommonsRetheme/img/salud_america/SA-logox200.png" class=""></a>
+	<a href="/salud-america/" class="logo"><img src="/wp-content/themes/CommonsRetheme/img/salud_america/SA-logox200.png" class=""></a>
 	<h1>Salud America! <br /><span class="salud-tagline">Growing Healthy Change</span></h1>
 	<h3 class="screamer saorange">
 		<div class="sa-social-icons visible-maxi">
