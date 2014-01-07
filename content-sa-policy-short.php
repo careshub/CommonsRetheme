@@ -67,11 +67,12 @@
 						}
 					?></p>
 				<div class="meter-box clear">
-					<p>This change is <?php echo $progress_label; ?>.
+					<p>This change is <?php echo $progress_label; ?>.</p>
 					<!-- <div class="meter">
 						<span style="width: <?php echo $percentage; ?>%"><span></span></span>
 					</div> -->
 				</div> <!-- end .meter-box -->
+				<p class="datestamp">Posted <?php echo get_the_date(); ?>.</p>
 				
 			</header>
 			<p><?php 

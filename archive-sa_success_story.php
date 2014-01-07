@@ -77,7 +77,7 @@
 						// echo get_the_title() . '</a></div>';
 						//Use the template with the featured image thumbnail.
                         get_template_part( 'content', 'saresources-mini');
-                        ?><a href="<?php echo get_the_intersection_link( 'sa_success_story', 'sa_advocacy_targets', $target->slug );?>" title="Link to taxonomy page.">More stories on this topic...</a><?php
+                        ?><a href="<?php echo get_the_intersection_link( 'sa_success_story', 'sa_advocacy_targets', $target->slug );?>" title="Link to taxonomy page." class="button">More stories on this topic...</a><?php
                         echo "</div> <!-- .half-block -->";
 
 						// print_r($do_not_duplicate);

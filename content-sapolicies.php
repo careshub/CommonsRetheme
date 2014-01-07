@@ -90,11 +90,12 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 						}
 					?></p>
 				<div class="meter-box clear">
-					<p>This change is <a href="/saresources/spectrum/" title="More information about policy development"><?php echo $progress_label; ?></a>.
+					<p>This change is <a href="/saresources/spectrum/" title="More information about policy development"><?php echo $progress_label; ?></a>.</p>
 					<div class="meter">
 						<span style="width: <?php echo $percentage; ?>%"></span>
 					</div>
 				</div> <!-- end .meter-box -->
+				<p class="datestamp">Posted <?php echo get_the_date(); ?>.</p>
 				
 			</header>
 
