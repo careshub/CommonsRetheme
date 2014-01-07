@@ -112,7 +112,7 @@
 		        		<a class="login-link" href="<?php echo wp_login_url( ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?></a>
 	        			<div class="pop-sub-wrapper">
 	        				<form name="login-form" id="sidebar-login-form" class="standard-form" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
-								<label><?php _e( 'Username', 'buddypress' ) ?><br />
+								<label><?php _e( 'Username or e-mail address', 'buddypress' ) ?><br />
 								<input type="text" name="log" id="sidebar-user-login" class="input" value="<?php if ( isset( $user_login) ) echo esc_attr(stripslashes($user_login)); ?>" tabindex="97" /></label>
 
 								<label><?php _e( 'Password', 'buddypress' ) ?><br />
