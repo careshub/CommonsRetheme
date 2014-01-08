@@ -6,9 +6,11 @@
 				<div class="entry-content">
 				<?php
 					//Which term is this page showing?
-					$tax_term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
+					if ( isset( $wp_query->query_vars['term'] ) ) {
+						$tax_term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
+					}
 					// print_r($tax_term);
-
+					// echo PHP_EOL;
 					//Get the page intro content, which is stored as a page with the same slug as the target area.
 					$args = array (
 						'pagename' => 'salud-america/sa-advocacy-targets-intros/' . $tax_term->slug,

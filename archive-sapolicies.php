@@ -6,11 +6,13 @@
 				<div class="entry-content">
 				<?php
 					//Which term is this page showing? Is it showing a term?
-					$tax_term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
+					if ( isset( $wp_query->query_vars['term'] ) ) {
+						$tax_term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
+					}
 					// print_r($tax_term);
 					// echo PHP_EOL;
 
-					if ( $tax_term->taxonomy == 'sa_advocacy_targets' ) {
+					if ( !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ) {
 
 						//Get the page intro content, which is stored as a page with the same slug as the target area.
 						$args = array (

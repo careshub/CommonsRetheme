@@ -361,6 +361,7 @@ function sa_filter_unpromoted_saresources( $query ) {
 }
 // add_action('pre_get_posts', 'sa_filter_unpromoted_saresources', 9999);
 function modify_resources_archive_main_loop( $query ) {
+
     if( is_post_type_archive( 'saresources' )  && !is_admin() && $query->is_main_query() ) {   	
         $query->set('posts_per_page', 6);
     }

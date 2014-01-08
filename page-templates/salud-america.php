@@ -14,7 +14,7 @@ get_header(); ?>
 					} ?>
 			<div class="entry-content">
 
-				<h3 class="screamer sagreen">How can you fight Latino childhood obesity in your area?</h2><img style="float:right;" src='http://dev.communitycommons.org/wp-content/uploads/2013/09/family-biking-cropped-300x226.jpg' alt='Latino family taking a bike ride' class="no-box"> 
+				<h3 class="screamer sagreen">How can you fight Latino childhood obesity in your area?</h2><img src='http://dev.communitycommons.org/wp-content/uploads/2013/09/family-biking-cropped-300x226.jpg' alt='Latino family taking a bike ride' class="alignright"> 
 
 				<p class="intro-text" style="font-size:1.2em;">Obesity threatens the health of Latino kids.</p> 
                                     
