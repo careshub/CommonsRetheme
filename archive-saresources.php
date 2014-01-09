@@ -151,7 +151,7 @@ $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
 				        //Specify the saresourcecat slugs we want to show here 
 				        // If specifying more than one category, make them a comma-separated list               
-				        $resource_cats = array( 'report', 'toolkit','webinar-2' );
+				        $resource_cats = array( 'report', 'toolkit','get-involved' );
 				        ?>
 
 				        <div class="row">
