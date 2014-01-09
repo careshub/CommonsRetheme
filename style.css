@@ -3449,6 +3449,21 @@ body.home-page #primary .quarter-block h3 {
   overflow: hidden;
   margin-bottom: 2em;
 }
+#content .video-container-group {
+  margin-bottom: 1.7em;
+}
+#content .video-container-group h4 {
+  margin-top: 0;
+  margin-bottom: .5em;
+}
+#content .video-container-group .video-container {
+  margin-bottom: .5em;
+}
+#content .video-container-group figcaption {
+  font-size: 11.9px;
+  font-size: 0.85rem;
+  font-style: italic;
+}
 .video-container iframe,
 .video-container object,
 .video-container embed {
@@ -4194,6 +4209,16 @@ body.home-page #primary .quarter-block h3 {
     margin-left: 5%;
     float: right;
     padding-bottom: 36%;
+  }
+  #content .video-container-group {
+    float: right;
+    width: 45%;
+    margin-left: 5%;
+    margin-bottom: 1.7em;
+  }
+  #content .video-container-group .video-container {
+    width: 100%;
+    padding-bottom: 80%;
   }
 }
 /*ZenBox styles*/

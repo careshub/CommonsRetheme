@@ -3,8 +3,8 @@ add_action( 'init', 'register_cpt_sa_success_story' );
 function register_cpt_sa_success_story() {
 
     $labels = array( 
-        'name' => _x( 'SA Success Stories', 'sa_success_story' ),
-        'singular_name' => _x( 'SA Success Story', 'sa_success_story' ),
+        'name' => _x( 'Salud Heroes', 'sa_success_story' ),
+        'singular_name' => _x( 'Salud Hero', 'sa_success_story' ),
         'add_new' => _x( 'Add New', 'sa_success_story' ),
         'add_new_item' => _x( 'Add New SA Success Story', 'sa_success_story' ),
         'edit_item' => _x( 'Edit SA Success Story', 'sa_success_story' ),
@@ -218,7 +218,11 @@ class sa_success_story_meta_box {
 			$video_url = sanitize_text_field( $_POST['sa_success_story_video_url'] );
 
 			// Update the meta field.
-			update_post_meta( $post_id, 'sa_success_story_video_url', $video_url );
+			if ( !empty( $video_url ) ) {
+				update_post_meta( $post_id, 'sa_success_story_video_url', $video_url );
+			} else {
+				delete_post_meta( $post_id, 'sa_success_story_video_url' );
+			}
 			//***********ADDED BY MIKE B. *****************
 			update_post_meta( $post_id, 'sa_success_story_location', $_POST['sa_success_story_location'] );
 			update_post_meta( $post_id, 'sa_success_story_latitude', $_POST['sa_success_story_latitude'] );

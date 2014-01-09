@@ -14,19 +14,33 @@ get_header(); ?>
 					} ?>
 			<div class="entry-content">
 
-				<h3 class="screamer sagreen">How can you fight Latino childhood obesity in your area?</h2><img src='http://dev.communitycommons.org/wp-content/uploads/2013/09/family-biking-cropped-300x226.jpg' alt='Latino family taking a bike ride' class="alignright"> 
+				<h3 class="screamer sagreen">How can you fight Latino childhood obesity in your area?</h2>
+				<?php 
+				$video_url = get_post_meta( $post->ID, 'sa_success_story_video_url', true );
+				if ( !empty( $video_url ) ) { 
+					$video_embed_code = wp_oembed_get( $video_url );
+				} else {
+					$video_embed_code = wp_oembed_get( 'http://www.youtube.com/watch?v=WZE-VHRtau8' );
+				}
+				if ( $video_embed_code ) { ?>
+				<div class="video-container-group">
+					<h4>Salud Heroes</h4>
+					<figure class="video-container">
+						<?php echo $video_embed_code; ?>
+					</figure>
+					<figcaption>See how these <a href="/sa_success_story/">Salud Heroes</a> are fighting Latino obesity…and learn how easy it is to be a Salud Hero, too!</figcaption>
+				</div>
+				<?php } ?>
 
 				<p class="intro-text" style="font-size:1.2em;">Obesity threatens the health of Latino kids.</p> 
                                     
-                <p>But how do you get involved?</p>
- 
-				<p><strong>Growing Healthy Change</strong> is here to highlight healthy<br /> changes happening in your community right now, and help you learn to start your own change.</p>
+				<p><strong>Growing Healthy Change</strong> brings you healthy changes happening in your community right now, and shows how to start your own change.</p>
 				 
-				<p>Find the latest policies, stories, and research to reduce Latino childhood obesity&mdash;like unlocking playgrounds after school&mdash;in your city, school, county, state, and nation. Learn the steps people take to create change, and find resources on how to do it yourself.</p>
+				<p>Find new policies, stories, and research to reduce Latino childhood obesity&mdash;like unlocking playgrounds after school&mdash;in your city, school, county, state, and nation.</p>
                                 
-                <p>And be sure to upload your own stories and videos of change.</p>
+                <p>See how Salud Heroes are driving these changes, and be a Salud Hero and share your own story of change.</p>
                 
-                <p>Get started! </p>
+                <p>Get started!</p>
 
 				<div class="find-changes">
 					<h3 class="screamer saorange">1. Find Changes</h3>
@@ -46,15 +60,15 @@ get_header(); ?>
 							$advocacy_targets = get_terms('sa_advocacy_targets');
 							foreach ($advocacy_targets as $target) {
 								?>
-								<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', $target->slug ) ?>"><span class="<?php echo $target->slug; ?>x90"></span><br /><?php echo $target->name; ?></a></div>						
+								<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', $target->slug ) ?>" title="<?php echo $target->description; ?>"><span class="<?php echo $target->slug; ?>x90"></span><br /><?php echo $target->name; ?></a></div>						
 							<?php } //end foreach ?>
 							
 						</div>
 
 						<div class="half-block">
 							<h4 style="margin-top:0;">By Location</h4>
-							<a href="http://dev.communitycommons.org/salud-america/sapolicies/"><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Salud_Location_Map.png' alt='Map of Changes'class="no-box"></a>
-			                <a href='http://dev.communitycommons.org/salud-america/sapolicies/'>Browse changes happening in your area</a>
+							<a href="http://dev.communitycommons.org/sapolicies/"><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Salud_Location_Map.png' alt='Map of Changes'class="no-box"></a>
+			                <a href='http://dev.communitycommons.org/sapolicies/'>Browse changes happening in your area</a>
 						</div>
 					</div>
 					<h4 style="margin-left:3%;">Recent Changes</h4>
@@ -145,7 +159,7 @@ get_header(); ?>
 
 				<h3 class="screamer sapurple">2. Learn to Create Change</h3>
 				<div class="row clear">
-					<h4 style="margin-top:0;margin-left:3%;">See How People Like You Make Change</h4>
+					<h4 style="margin-top:0;margin-left:3%;">See the Changes a Salud Hero Can Make</h4>
 
 					<?php
 					//Grab the 3 most recent success stories
@@ -196,15 +210,16 @@ get_header(); ?>
 					</div>
 				</div>
 				
-				<h3 class="screamer sablue">3. Share Your Change</h3>
+				<h3 class="screamer sablue">3. Salud Heroes</h3>
 
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">
-						<h4 style="margin-top:0;">Be a Salud Changer</h4>
+						<h4 style="margin-top:0;">Want to be a Salud hero?</h4>
 	                    <a href='/salud-america/share-your-own-stories/'><img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png' alt='Share Your Change' style="width:32%; float:left; margin-right:5%;" class="no-box"></a>
-	                    <p>Are you making a healthy change? <br />
-	                    	Share your story with us and we can feature it here so others can learn from you!<br />
-	                    	<a href="/salud-america/share-your-own-stories/" class="button" title="Share your story.">Share your story</a></p>
+	                    <p>If you or someone you know is in the middle of a change or has already made a change, let us know. <br />
+	                    	We can write it up, possibly film it, and share it nationwide!<br />
+	                    	<a href="/salud-america/share-your-own-stories/" class="button" title="Share your story.">Share your story or alert us to a change.</a>
+	                    	<!-- <a href="/salud-america/share-your-own-stories/" class="button" title="Alert us to a change.">Alert us to a change.</a> --></p>
 					</div>
 
 					<div class="half-block" style="margin-top:0;">
