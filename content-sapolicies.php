@@ -62,7 +62,7 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 	        $progress_label = 'enacted';
 	       	break;
 	    case "implementation":
-			$percentage = 75;
+			$percentage = 100;
 	        $progress_label = 'in implementation';
 	       	break;
 	    default:
