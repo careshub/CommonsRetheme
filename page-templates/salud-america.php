@@ -246,17 +246,20 @@ get_header(); ?>
 								 );
 			        //var_dump($filter_args);
 			        $query2 = new WP_Query($filter_args);
-			        if($query2->have_posts()) { 
-			      		echo '<div class="taxonomy-policies">';
-			        	while($query2->have_posts()) : 
-	                        $query2->the_post();
-	                        get_template_part( 'content', 'saresources-short' ); 
-	                    endwhile;
-	                    echo '<div>';
+					
+					//***********Mike added commented this section because saresource results were showing twice**************
+			        // if($query2->have_posts()) { 
+			      		// echo '<div class="taxonomy-policies">';
+			        	// while($query2->have_posts()) : 
+	                        // $query2->the_post();
+	                        // get_template_part( 'content', 'saresources-short' ); 
+	                    // endwhile;
+	                    // echo '<div>';
 
-			        } else { 
-	                    echo "No Results - Search criteria too specific";	
-	                }
+			        // } else { 
+	                    // echo "No Results - Search criteria too specific";	
+	                // }
+					//********************************************************************************************************
 
 
 				} else {
