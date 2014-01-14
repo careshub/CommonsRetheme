@@ -91,7 +91,7 @@ $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 	               ?></h3>
 						
 					<?php while ( have_posts() ) : the_post(); ?>
-						<?php get_template_part( 'content', 'sa-resources-short' ); ?>
+						<?php get_template_part( 'content', 'saresources-short' ); ?>
 						<?php comments_template( '', true ); ?>
 					<?php endwhile; // end of the loop. ?>
 					<?php twentytwelve_content_nav( 'nav-below' ); ?>
@@ -107,7 +107,7 @@ $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 		                ?></h3>
 							
 						<?php while ( have_posts() ) : the_post(); ?>
-							<?php get_template_part( 'content', 'sa-resources-short' ); ?>
+							<?php get_template_part( 'content', 'saresources-short' ); ?>
 							<?php comments_template( '', true ); ?>
 						<?php endwhile; // end of the loop. ?>
 						<?php twentytwelve_content_nav( 'nav-below' ); ?>
