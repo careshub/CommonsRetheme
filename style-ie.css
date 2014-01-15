@@ -3435,7 +3435,7 @@ body.home-page #primary .quarter-block h3 {
 }
 .video-container {
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 48%;
   padding-top: 30px;
   height: 0;
   overflow: hidden;
@@ -4191,7 +4191,7 @@ ul.item-list div.action {
   width: 45%;
   margin-left: 5%;
   float: right;
-  padding-bottom: 36%;
+  padding-bottom: 21%;
 }
 #content .video-container-group {
   float: right;
@@ -4201,7 +4201,7 @@ ul.item-list div.action {
 }
 #content .video-container-group .video-container {
   width: 100%;
-  padding-bottom: 80%;
+  padding-bottom: 47%;
 }
 .ie8 .primary-navigation .secondary .bp-notifications .bp-notification-list,
 .ie7 .primary-navigation .secondary .bp-notifications .bp-notification-list {

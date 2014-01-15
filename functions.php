@@ -118,7 +118,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.3
+          0.31
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }

@@ -24,7 +24,6 @@ get_header(); ?>
 				}
 				if ( $video_embed_code ) { ?>
 				<div class="video-container-group">
-					<h4>Salud Heroes</h4>
 					<figure class="video-container">
 						<?php echo $video_embed_code; ?>
 					</figure>
