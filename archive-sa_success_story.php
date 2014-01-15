@@ -39,7 +39,7 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 						?>
 
 				    <div class="taxonomy-policies">
-		               <h3 class="screamer">Success Stories in the Topic <?php echo $tax_term->name ?></h3>
+		               <h3 class="screamer saorange">Salud Heroes in the Topic <?php echo $tax_term->name ?></h3>
 							
 						<?php while ( have_posts() ) : the_post(); ?>
 							<?php get_template_part( 'content', 'sa_success_story-short' ); ?>
