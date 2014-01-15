@@ -1174,3 +1174,39 @@ function iis_friendly_bp_docs_attachment_url( $url, $attachment ) {
   
   return $url;
 }
+
+/*
+ * Create a url to a taxonomy term within a CPT
+ * 
+ * @param string $post_type
+ * @param string $taxonomy
+ * @param string $term
+ * 
+ * @return string of the url || false
+ */
+function cc_get_the_cpt_tax_intersection_link( $post_type = false, $taxonomy = false, $term = false ){
+
+  // Bail if one of the args isn't specified
+  if( !( $post_type ) || !( $taxonomy ) || !( $term ) )
+    return false;
+
+  // If that CPT doesn't exist, bail
+  if ( !$cpt_object = get_post_type_object( $post_type ) )
+    return false;
+
+    $cpt_slug = $cpt_object->name;
+
+  //Make sure the taxonomy requested is actually related to the CPT
+  if ( !in_array( $taxonomy, $cpt_object->taxonomies ) )
+    return false;
+       
+  return home_url( $cpt_slug . '/' . $taxonomy . '/' . $term );
+}
+
+  /*
+   * Call cc_get_the_cpt_tax_intersection_link and echo the result
+   * 
+   */
+  function cc_the_cpt_tax_intersection_link( $post_type = false, $taxonomy = false, $term = false ){
+    echo cc_get_the_cpt_tax_intersection_link( $post_type, $taxonomy, $term );
+  }

@@ -16,7 +16,7 @@ $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 		foreach ( $terms as $term ) {
 
 			// $advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
-			$advocacy_targets[] = '<a href="' . get_the_intersection_link( 'sapolicies', 'sa_advocacy_targets', $term->slug ) .'">'.$term->name.'</a>';
+			$advocacy_targets[] = '<a href="' . cc_get_the_cpt_tax_intersection_link( 'sapolicies', 'sa_advocacy_targets', $term->slug ) .'">'.$term->name.'</a>';
 		}
 		$advocacy_targets = join( ', ', $advocacy_targets );
 	endif; //check for empty terms
@@ -25,7 +25,7 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 	if ( !empty ($tags) ) :
 		foreach ( $tags as $tag ) {
 			// $policy_tags[] = '<a href="' . get_term_link($tag->slug, 'sa_policy_tags') .'">'.$tag->name.'</a>';
-			$policy_tags[] = '<a href="' . get_the_intersection_link( 'sapolicies', 'sa_policy_tags', $tag->slug ) .'">'.$tag->name.'</a>';
+			$policy_tags[] = '<a href="' . cc_get_the_cpt_tax_intersection_link( 'sapolicies', 'sa_policy_tags', $tag->slug ) .'">'.$tag->name.'</a>';
 		}
 
 		$policy_tags = join( ', ', $policy_tags );

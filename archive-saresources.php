@@ -1,19 +1,19 @@
 <?php get_header(); ?>
-<?php get_template_part('page-templates/wrapper-salud-top'); 
+<?php get_template_part('page-templates/wrapper-salud-top');
+
 $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+//Which term is this page showing?
+if ( isset( $wp_query->query_vars['term'] ) ) {
+	$tax_term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
+}
 ?>
 
 		<div id="content" role="main">
 			<div class="padder">
 				<div class="entry-content">
 				<?php
-					//Which term is this page showing?
-					if ( isset( $wp_query->query_vars['term'] ) ) {
-						$tax_term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
-					}
-					// print_r($tax_term);
-					// echo PHP_EOL;
-
+					
+					//First section is used if this page is an advocacy target taxonomy page. Second section renders page if tax_term is set but not advocacy target, like a resource category. Standard archives are rendered using the else section (would also be the front page).
 					if ( !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ) {
 
 					//Get the page intro content, which is stored as a page with the same slug as the target area.
@@ -142,7 +142,7 @@ $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 							$advocacy_targets = get_terms('sa_advocacy_targets');
 							foreach ($advocacy_targets as $target) {
 								?>
-								<div class="sixth-block mini-text"><a href="<?php the_intersection_link( 'saresources', 'sa_advocacy_targets', $target->slug ) ?>"><span class="<?php echo $target->slug; ?>x90"></span><br /><?php echo $target->name; ?></a></div>						
+								<div class="sixth-block mini-text"><a href="<?php cc_the_cpt_tax_intersection_link( 'saresources', 'sa_advocacy_targets', $target->slug ) ?>"><span class="<?php echo $target->slug; ?>x90"></span><br /><?php echo $target->name; ?></a></div>						
 							<?php } //end foreach ?>
 							
 						</div>

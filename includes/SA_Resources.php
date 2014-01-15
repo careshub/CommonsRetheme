@@ -210,7 +210,7 @@ function saresources_get_featured_blocks($resource_cats) {
 					// 	$goto_pg="webinar";
 					// }
 					
-                   echo '<a href="' . get_the_intersection_link( 'saresources', 'sa_resource_cat', $resource_cat ) . '">' . salud_get_taxonomy_images($resource_cat, 'sa_resource_cat') . '</a>';
+                   echo '<a href="' . cc_get_the_cpt_tax_intersection_link( 'saresources', 'sa_resource_cat', $resource_cat ) . '">' . salud_get_taxonomy_images($resource_cat, 'sa_resource_cat') . '</a>';
                   }
                 ?>                   
                 <h4 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h4>

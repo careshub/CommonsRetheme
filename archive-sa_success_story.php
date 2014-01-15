@@ -1,9 +1,54 @@
 <?php get_header(); ?>
-<?php get_template_part('page-templates/wrapper-salud-top'); ?>
+<?php get_template_part('page-templates/wrapper-salud-top'); 
+
+//Which term is this page showing? Is it showing a term?
+if ( isset( $wp_query->query_vars['term'] ) ) {
+	$tax_term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
+}
+?>
 
 		<div id="content" role="main">
 			<div class="padder">
 				<div class="entry-content">
+					<?php 
+					//First section is used if this page is an advocacy target taxonomy page. Standard archives are rendered using the else section. 
+					if ( !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ) :
+
+						//Get the page intro content, which is stored as a page with the same slug as the target area.
+						$args = array (
+							'pagename' => 'salud-america/sa-advocacy-targets-intros/' . $tax_term->slug,
+							'post_type' => 'page'
+							);
+						// print_r($wp_query->query_vars);
+						$page_intro = new WP_Query( $args );
+						// print_r($page_intro);
+						while ( $page_intro->have_posts() ) : $page_intro->the_post(); ?>
+							<article id="post-<?php the_ID(); ?>" <?php post_class('advocacy_target_introduction'); ?>>
+								<?php 
+								//Get the page header image ?>
+								<header>
+									 <img class="size-full no-box" alt="Topic header for <?php echo $tax_term->name ?>" src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/topic_headers/<?php echo $tax_term->slug ?>.jpg" />
+								 </header>
+							 <?php
+								
+								the_content(); 
+								?>
+							</article>
+						<?php
+						endwhile; // end of the loop.
+						?>
+
+				    <div class="taxonomy-policies">
+		               <h3 class="screamer">Success Stories in the Topic <?php echo $tax_term->name ?></h3>
+							
+						<?php while ( have_posts() ) : the_post(); ?>
+							<?php get_template_part( 'content', 'sa_success_story-short' ); ?>
+							<?php comments_template( '', true ); ?>
+						<?php endwhile; // end of the loop. ?>
+						<?php twentytwelve_content_nav( 'nav-below' ); ?>
+					</div>
+					
+				<?php else: // not !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ?>
 
 					<h3 class="screamer sablue">Salud Heroes</h3>
 
@@ -61,7 +106,7 @@
 								setup_postdata( $post );
 								?>
 								<div class="half-block salud-topic <?php echo $target->slug; ?>">
-									<a href="<?php echo get_the_intersection_link( 'sa_success_story', 'sa_advocacy_targets', $target->slug );?>" title="Link to taxonomy page.">
+									<a href="<?php echo cc_get_the_cpt_tax_intersection_link( 'sa_success_story', 'sa_advocacy_targets', $target->slug );?>" title="Link to taxonomy page.">
 										<span class="<?php echo $target->slug; ?>x60"></span>
 										<h4 class="icon-friendly" style="width:65%; margin-top:0; line-height:1.2;"><?php echo $target->name ?></h4>
 									</a>
@@ -76,7 +121,7 @@
 									// echo get_the_title() . '</a></div>';
 									//Use the template with the featured image thumbnail.
 			                        get_template_part( 'content', 'saresources-mini');
-			                        ?><a href="<?php echo get_the_intersection_link( 'sa_success_story', 'sa_advocacy_targets', $target->slug );?>" title="Link to taxonomy page." class="button">More stories on this topic...</a>
+			                        ?><a href="<?php echo cc_get_the_cpt_tax_intersection_link( 'sa_success_story', 'sa_advocacy_targets', $target->slug );?>" title="Link to taxonomy page." class="button">More stories on this topic...</a>
 			                    </div> <!-- .half-block -->
 			                    <?php
 								// print_r($do_not_duplicate);
@@ -86,6 +131,7 @@
 
 						} //End foreach
 				?>					
+				<?php endif; // END !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ?>
 			</div> <!-- .entry-content -->
 			</div><!-- .padder -->
 		</div><!-- #content -->

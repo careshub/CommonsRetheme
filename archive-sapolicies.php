@@ -1,18 +1,19 @@
 <?php get_header(); ?>
-<?php get_template_part('page-templates/wrapper-salud-top'); ?>
+<?php get_template_part('page-templates/wrapper-salud-top'); 
+
+//Which term is this page showing? Is it showing a term?
+if ( isset( $wp_query->query_vars['term'] ) ) {
+	$tax_term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
+}
+?>
 
 		<div id="content" role="main">
 			<div class="padder">
 				<div class="entry-content">
 				<?php
-					//Which term is this page showing? Is it showing a term?
-					if ( isset( $wp_query->query_vars['term'] ) ) {
-						$tax_term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
-					}
-					// print_r($tax_term);
-					// echo PHP_EOL;
-
-					if ( !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ) {
+					
+					//First section is used if this page is an advocacy target taxonomy page. Standard archives are rendered using the else section. 
+					if ( !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ) :
 
 						//Get the page intro content, which is stored as a page with the same slug as the target area.
 						$args = array (
@@ -95,10 +96,9 @@
 							<?php endwhile; // end of the loop. ?>
 							<?php twentytwelve_content_nav( 'nav-below' ); ?>
 						</div>
-					<?php
-						//end check for taxonomy == sa_advocacy_targets 
-					} else {
-                    ?>
+
+					<?php else: // not !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ?>
+
 	                    <div class="policy-search">
 	  					<!--<form id="sa-policy-search" class="standard-form" method="get" action="/search-results">-->
 		  					<h3 class="screamer sagreen">Search for Changes by Keyword</h3>
@@ -133,7 +133,7 @@
 									++$i;
 									?>
 								<div class="half-block salud-topic <?php echo $cat_slug; ?>">
-									<a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', $cat_slug ) ?>" class="<?php echo $cat_slug; ?>  clear">
+									<a href="<?php cc_the_cpt_tax_intersection_link( 'sapolicies', 'sa_advocacy_targets', $cat_slug ) ?>" class="<?php echo $cat_slug; ?>  clear">
 										<span class="<?php echo $cat_slug; ?>x60"></span>
 										<h4><?php echo $section_title; ?></h4>
 									</a>
@@ -151,9 +151,9 @@
 								 ?>
 
 						</div>
-				<?php
-					}
-				?>
+						
+				<?php endif; // END !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ?>
+
 			</div> <!-- .entry-content -->
 			</div><!-- .padder -->
 		</div><!-- #content -->
