@@ -407,7 +407,7 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
 	  	$tag_list = array(
 	  		'Active Play' => array( 'Recess', 'PE', 'After School Programs', 'Safe Routes to School', 'Brain Breaks'  ),
 	  		'Active Spaces' => array( 'Parks','Shared Use','Playgrounds', 'Complete Streets', 'Sidewalks' ),
-	  		'Better Food in Neighborhoods' => array( 'Corner Stores', 'Farmers\' Market', 'Community Gardens' ),
+	  		'Better Food in Neighborhoods' => array( 'Corner Stores', 'Farmers\' Markets', 'Community Gardens' ),
 	  		'Healthier Marketing' => array( 'Healthy Ad Campaigns', 'Unhealthy Ad Campaigns', 'Digital Advertising', 'TV Advertising', 'Neighborhood Advertising' ),
 	  		'Healthier School Snacks' => array( 'Healthy Lunches', 'Fundraising', 'School Wellness Policies' ),
 	  		'Sugary Drinks' => array( 'Sugar-Sweetened Beverages', 'Soda Tax', 'Water' )
@@ -428,11 +428,14 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
               <h4 class="clear"><span class="sa-<?php echo $advo_clean; ?>x60"></span><?php echo $advo_target; ?></h4>
               <ul class="no-bullets clear">
               	<?php //Loop through the tags.
-              	foreach ($tags as $tag) {
-              		$tag_clean = sanitize_title( $tag );
+              	foreach ($tags as $tag_candidate) {
+              		//Need to search for the correct term
+			  		$tag = get_term_by( 'name', $tag_candidate, 'sa_policy_tags' );
+			  		if ( $tag ) {
               		?>
-              		<li><a href="<?php cc_the_cpt_tax_intersection_link( 'sapolicies', 'sa_policy_tags', $tag_clean ); ?>" title="Link to <?php echo $tag; ?> topic archive"><?php echo $tag; ?></a></li>
+	              		<li><a href="<?php cc_the_cpt_tax_intersection_link( 'sapolicies', 'sa_policy_tags', $tag->slug ); ?>" title="Link to <?php echo $tag->name; ?> topic archive"><?php echo $tag->name; ?></a></li>
               		<?php
+	              	} // End check for $tag match
               	}
               	?>
               </ul>
