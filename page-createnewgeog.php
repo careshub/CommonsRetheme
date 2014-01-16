@@ -15,15 +15,17 @@ get_header(); ?>
         
         // Then go through each of these
         // add_geo_terms( 'counties', 1, false );
-        // add_geo_terms( 'cities', 1, true );
+        // add_geo_terms( 'cities', 1, false );
         // add_geo_terms( 'cities', 2, true );
         // add_geo_terms( 'cities', 3, true );
         // add_geo_terms( 'cities', 4, true );
-        // add_geo_terms( 'schooldistricts', 1, false );
+        // add_geo_terms( 'schooldistricts', 1, true );
         // add_geo_terms( 'schooldistricts', 2, true );
         // add_geo_terms( 'uscongressionaldistricts', 1, false );
         // add_geo_terms( 'statehousedistricts', 1, false );
-        add_geo_terms( 'statesenatedistricts', 1, false );
+        // add_geo_terms( 'statesenatedistricts', 1, false );
+
+        // Then, stop and import the policies and whatnot.
 
         // Finally, link the policies to the correct term
         // link_policies_to_geographies( true, 1 );
