@@ -645,6 +645,7 @@ function cc_custom_body_class( $classes ) {
       || is_singular('sa_success_story')
       || is_tax('sa_advocacy_targets')
       || is_tax('sa_resource_cat')
+      || is_tax('sa_policy_tags')
       || is_post_type_archive('sa_success_story')
       || is_post_type_archive('saresources')
       || is_post_type_archive('sapolicies')

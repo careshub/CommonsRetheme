@@ -13,7 +13,7 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 				<?php
 					
 					//First section is used if this page is an advocacy target taxonomy page. Standard archives are rendered using the else section. 
-					if ( !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ) :
+					if ( !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ) {
 
 						//Get the page intro content, which is stored as a page with the same slug as the target area.
 						$args = array (
@@ -97,7 +97,22 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 							<?php twentytwelve_content_nav( 'nav-below' ); ?>
 						</div>
 
-					<?php else: // not !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ?>
+					<?php } elseif( isset( $tax_term->taxonomy ) ) { //Taxonomy term is set, but not an advocacy target  ?>
+
+					<div class="taxonomy-policies">
+		                <h3 class="screamer <?php sa_the_topic_color( $tax_term->slug ); ?>">Changes in the <?php 
+		                echo $tax_term->name; 
+		                echo ( $tax_term->taxonomy == 'sa_policy_tags' ? ' tag' : ' topic' )
+		                ?></h3>
+							
+						<?php while ( have_posts() ) : the_post(); ?>
+							<?php get_template_part( 'content', 'sa-policy-short' ); ?>
+							<?php comments_template( '', true ); ?>
+						<?php endwhile; // end of the loop. ?>
+						<?php twentytwelve_content_nav( 'nav-below' ); ?>
+					</div>
+
+					<?php } else { //No taxonomy term is set ?>
 
 	                    <div class="policy-search">
 	  					<!--<form id="sa-policy-search" class="standard-form" method="get" action="/search-results">-->
@@ -152,7 +167,7 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 
 						</div>
 						
-				<?php endif; // END !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ?>
+				<?php } // END !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ?>
 
 			</div> <!-- .entry-content -->
 			</div><!-- .padder -->

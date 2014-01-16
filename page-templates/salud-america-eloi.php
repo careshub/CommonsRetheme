@@ -389,7 +389,7 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
           endwhile; // end of the loop.     
 ?>      
     
-         <div class="science-of-change">
+        <div class="science-of-change">
           <h3 class="screamer sagreen">Why Change?</h3>
            <p>More than 39% of Latino kids are overweight or obese, a higher rate than all kids (32%).<br /></p>
             <p>There are many reasons, including that Latino kids lack of afterschool physical activity options, have less access to local play facilities, have less access to healthy foods in schools and neighborhoods, are exposed to unhealthy marketing, and consume more sugary drinks than their non-Latino peers.<br /></p>
@@ -400,109 +400,90 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
        </div>
     
       <div class="examples-of-change">
-				<h3 class="screamer sapurple">Examples of change</h3>
+		<h3 class="screamer sapurple">Examples of change</h3>
         <p>Here are a few examples of how people are changing their communities.</p>					  
-          <div class="row clear">
-            <div class="third-block">
-              <h4 class="clear"><span class="sa-active-playx60"></span>Active Play</h4>
-              <ul class="no-bullets clear">
-                <li><a href="/salud-america/what-is-change/browse-change?tag=recess">Recess</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=pe">P.E.</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=after-school-program">After School Programs</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=safe-routes-to-school">Safe Routes to Schools</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=brain-breaks">Brain Breaks</a></li>
-              </ul>
-              </div>
+        
+        <?php 
+	  	$tag_list = array(
+	  		'Active Play' => array( 'Recess', 'PE', 'After School Programs', 'Safe Routes to School', 'Brain Breaks'  ),
+	  		'Active Spaces' => array( 'Parks','Shared Use','Playgrounds', 'Complete Streets', 'Sidewalks' ),
+	  		'Better Food in Neighborhoods' => array( 'Corner Stores', 'Farmers\' Market', 'Community Gardens' ),
+	  		'Healthier Marketing' => array( 'Healthy Ad Campaigns', 'Unhealthy Ad Campaigns', 'Digital Advertising', 'TV Advertising', 'Neighborhood Advertising' ),
+	  		'Healthier School Snacks' => array( 'Healthy Lunches', 'Fundraising', 'School Wellness Policies' ),
+	  		'Sugary Drinks' => array( 'Sugar-Sweetened Beverages', 'Soda Tax', 'Water' )
+	  		);
 
-            <div class="third-block">
-              <h4 class="clear"><span class="sa-active-spacesx60"></span>Active Spaces</h4>
-              <ul class="no-bullets clear">
-                <li><a href="/salud-america/what-is-change/browse-change?tag=parks">Parks
-                <li><a href="/salud-america/what-is-change/browse-change?tag=shared-use">Shared Use</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=playgrounds">Playgrounds</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=complete-streets">Complete Streets</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=sidewalks">Sidewalks</a></li>
-              </ul>
-              </div>
+		$i = 1;
 
-            <div class="third-block">
-              <h4 class="clear"><span class="sa-better-food-in-neighborhoodsx60"></span>Better Food in Neighborhoods</h4>
-              <ul class="no-bullets clear">
-                <li><a href="/salud-america/what-is-change/browse-change?tag=corner-stores">Corner Stores</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=farmers-market">Farmers' Markets</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=community-gardens-3">Community Gardens</a></li>
-              </ul>
-              </div>
-          </div> <!-- end .row -->
+	  	foreach ($tag_list as $advo_target => $tags) {
+	  		
+	  		//Start the row on i=1 and i=4
+	  		if ( $i%3 == 1 )
+	  			echo '<div class="row clear">';
 
-          <div class="row clear">
-            <div class="third-block">
-              <h4 class="clear"><span class="sa-healthier-marketingx60"></span>Healthier Marketing</h4>
+	  		$advo_clean = sanitize_title( $advo_target );
+	  		?>
+
+	  		<div class="third-block">
+              <h4 class="clear"><span class="sa-<?php echo $advo_clean; ?>x60"></span><?php echo $advo_target; ?></h4>
               <ul class="no-bullets clear">
-                <li><a href="/salud-america/what-is-change/browse-change?tag=healthy-ad-campaign">Healthy Ad Campaigns</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=unhealthy-ad-campaign">Unhealthy Ad Campaigns</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=digital-advertising">Digital Advertising 
-                <a href="/salud-america/what-is-change/browse-change?tag=tv-advertising">TV Advertising</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=neighborhood-advertising">Neighborhood Advertising</a></li>
+              	<?php //Loop through the tags.
+              	foreach ($tags as $tag) {
+              		$tag_clean = sanitize_title( $tag );
+              		?>
+              		<li><a href="<?php cc_the_cpt_tax_intersection_link( 'sapolicies', 'sa_policy_tags', $tag_clean ); ?>" title="Link to <?php echo $tag; ?> topic archive"><?php echo $tag; ?></a></li>
+              		<?php
+              	}
+              	?>
               </ul>
             </div>
 
-            <div class="third-block">
-              <h4 class="clear"><span class="sa-healthier-school-snacksx60"></span>Healthier School Snacks</h4>
-              <ul class="no-bullets clear">
-                <li><a href="/salud-america/what-is-change/browse-change?tag=healthy-lunches">Healthy Lunches</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=fundraising">Fundraising</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=school-wellness-policies">School Wellness Policies</a></li>
-              </ul>
-            </div>
+	  		<?php
+	  		//End the row on i=3 and i=6
+	  		if ( $i%3 == 0 )
+	  			echo '</div> <!-- end .row -->';
 
-            <div class="third-block">
-              <h4 class="clear"><span class="sa-sugary-drinksx60"></span>Sugary Drinks</h4>
-              <ul class="no-bullets clear">
-                <li><a href="/salud-america/what-is-change/browse-change?tag=sugar-sweetened-beverages">Sugar-Sweetened Beverages</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=soda-tax">Soda Tax</a></li>
-                <li><a href="/salud-america/what-is-change/browse-change?tag=water">Water</a></li>
-              </ul>
-            </div>
-          </div> <!-- end .row -->
-        </div> <!-- end .examples-of-change -->
-	
-                                
+	  		$i++;
+
+	  	} // END foreach ($tag_list as $advo_target => $tags)
+
+	  	?>
+	  	</div> <!-- end .examples-of-change -->
+                       
         <div class="science-of-change">
           <h3 class="screamer saorange">The Science Behind Change</h3>
-           <img class="alignleft" src="/wp-content/uploads/2013/08/time-for-change.jpg" width="350" height="150" />
+           <img class="alignleft" src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/time-for-change.jpg" alt="Photo of a clock showing the words Time for Change"/>
            <p>How far along is change in a community?<br />
             Where might you step in to make a contribution?<br />
             The answers can be found in the Salud America! <a href="/salud-america/what-is-change/the-science-behind-change/" clear="">Policy Contribution Spectra</a>.
            </p> 
-         </div>   
-       </div>
-                                    
+         </div>                              
 
-              
 <?php 
 } elseif ( is_page('browse-change') ) {
-$tag = $_GET['tag'];
+// Moved this functionality to the policies archive page - DC
 
-$term = get_term_by ('slug', $tag, 'sa_policy_tags');
+// $tag = $_GET['tag'];
 
-$policies =  get_objects_in_term ($term ->term_id, 'sa_policy_tags');
+// $term = get_term_by ('slug', $tag, 'sa_policy_tags');
+
+// $policies =  get_objects_in_term ($term ->term_id, 'sa_policy_tags');
 
 
-		$filter_args = array(
-					 'post_type' => 'sapolicies',
-					 'post__in' => $policies,
-);
-                    $query2 = new WP_Query($filter_args);
-		    if($query2->have_posts()) : 
-			  while($query2->have_posts()) : 
-					$query2->the_post();
-					get_template_part( 'content', 'sa-policy-short' ); 
+// 		$filter_args = array(
+// 					 'post_type' => 'sapolicies',
+// 					 'post__in' => $policies,
+// );
+//                     $query2 = new WP_Query($filter_args);
+// 		    if($query2->have_posts()) : 
+// 			  while($query2->have_posts()) : 
+// 					$query2->the_post();
+// 					get_template_part( 'content', 'sa-policy-short' ); 
 
-			  endwhile;
-		   else: 
-			  echo "No Results - Search criteria too specific";	
-		   endif;					
+// 			  endwhile;
+// 		   else: 
+// 			  echo "No Results - Search criteria too specific";	
+// 		   endif;					
                     
 
 
