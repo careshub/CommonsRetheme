@@ -72,16 +72,8 @@ get_header(); ?>
 							</li> -->
 						</ul>
 					</div>
-                                </div>
-                <div class="clear" style="margin-left:3%">
-                    <a href="http://healthdataconsortium.org/data-sources">
-                                <img alt="Health Data All Star Badge" src="http://www.healthdataconsortium.org/wp-content/uploads/2013/10/healthdataallstar-badge-80.png"  class="alignleft"/>
-                            </a>
-                        <p class="alignleft" style="margin-top: 0.857143rem">
-                           <strong>Community Commons is a big winner!</strong> <br />
-                            We'll need to add something descriptive since this is a pretty prominent area.
-                        </p>
                 </div>
+
                 <?php wp_reset_query(); ?>		
 
         <?php 
