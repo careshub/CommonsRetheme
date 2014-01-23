@@ -672,6 +672,7 @@ function cc_custom_body_class( $classes ) {
 
     if ( is_page( array(8622,'wotn') ) ) {
         $classes[] = 'wotn';
+        $classes[] = 'full-width';
       }
 
   return $classes;

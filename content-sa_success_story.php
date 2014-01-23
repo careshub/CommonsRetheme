@@ -36,7 +36,7 @@ $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 				// 		}
 				?>
 			</header>
-			<?php if ( $video_embed_code ) { ?>
+			<?php if ( isset($video_embed_code) ) { ?>
 			<figure class="video-container"> 
 				<?php echo $video_embed_code; ?>
 			</figure>

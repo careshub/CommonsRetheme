@@ -333,7 +333,9 @@ function insert_actions_in_success_stories( $content ) {
 		global $post;
 		$pdf_url = get_post_meta( $post->ID, 'sa_success_story_pdf', true );
 		$insertion = '<p><a href="' . $pdf_url . '" class="button">Download the PDF</a> <a class="button add-comment-link" href="#respond"><span class="comment-icon"></span>Comment</a> ';
-		$insertion .= bp_get_share_post_button();
+		if ( function_exists( 'bp_get_share_post_button' ) ) {
+			$insertion .= bp_get_share_post_button();
+		}
 		$insertion .= '</p>';
 		return insert_random_content_after_paragraph( $insertion, 1, $content );
 	}

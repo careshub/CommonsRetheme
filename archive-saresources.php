@@ -151,7 +151,7 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 
 				        //Specify the saresourcecat slugs we want to show here 
 				        // If specifying more than one category, make them a comma-separated list               
-				        $resource_cats = array( 'report', 'toolkit','get-involved' );
+				        $resource_cats = array( 'report-2', 'toolkit','get-involved' );
 				        ?>
 
 				        <div class="row">
