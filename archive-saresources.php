@@ -129,7 +129,6 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 
 		   				<div class="policy-search">
 		  					<!--<form id="sa-policy-search" class="standard-form" method="post" action="/">-->
-							<h3 class="screamer sayellow">Search for Resources by Keyword</h3>
 				                <?php if ( function_exists('sa_searchresources') ) { 
 				                  sa_searchresources('/search-results'); 
 				                } ?>
