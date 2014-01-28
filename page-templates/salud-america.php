@@ -209,15 +209,15 @@ get_header(); ?>
 					</div>
 				</div>
 				
-				<h3 class="screamer sablue">3. Salud Heroes</h3>
+				<h3 class="screamer sablue">3. Be a Salud Hero</h3>
 
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">
-						<h4 style="margin-top:0;">Want to be a Salud hero?</h4>
+						<h4 style="margin-top:0;">Making a Change?</h4>
 	                    <a href='/salud-america/share-your-own-stories/'><img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png' alt='Share Your Change' style="width:32%; float:left; margin-right:5%;" class="no-box"></a>
-	                    <p>If you or someone you know is in the middle of a change or has already made a change, let us know. <br />
+	                    <p>If you or someone you know is starting a change or already made a change, let us know. <br />
 	                    	We can write it up, possibly film it, and share it nationwide!<br />
-	                    	<a href="/salud-america/share-your-own-stories/" class="button" title="Share your story.">Share your story or alert us to a change.</a>
+	                    	<a href="/salud-america/share-your-own-stories/" class="button" title="Share your story.">Share your story or alert us to a change</a>
 	                    	<!-- <a href="/salud-america/share-your-own-stories/" class="button" title="Alert us to a change.">Alert us to a change.</a> --></p>
 					</div>
 
