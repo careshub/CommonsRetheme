@@ -37,7 +37,7 @@ get_header(); ?>
 				 
 				<p>Find new policies, stories, and research to reduce Latino childhood obesity&mdash;like unlocking playgrounds after school&mdash;in your city, school, county, state, and nation.</p>
                                 
-                <p>See how Salud Heroes are driving these changes, and be a Salud Hero and share your own story of change.</p>
+                <p>Learn from our Salud Heroes how you can make a change, too.</p>
                 
                 <p>Get started!</p>
 
