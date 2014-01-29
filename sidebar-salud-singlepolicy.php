@@ -53,16 +53,10 @@
 	<?php
 		
 		$geogterm = wp_get_object_terms( $post->ID, 'geographies' );
-		if(!empty($geogterm)){
-		  if(!is_wp_error( $geogterm )){					
-			foreach($geogterm as $gterm){
-
-			}					
-		  }
-		}
-                        
-	$geostate = substr ($gterm->description, 5, 4);
-                $geoidstate = "04000$geostate";        
+		if( !empty( $geogterm ) && !is_wp_error( $geogterm ) ){
+			$geoid = $geogterm[0]->description;
+			$geoidstate = '04000' . substr($geoid, 5, 4);
+		}        
                         
 	?>
 
@@ -70,11 +64,11 @@
         <strong>Percent Adults Age 18+ Obese (BMI >= 30)  by County</strong>
         
         <div style="padding-top:5px">
-        	<script src='http://maps.communitycommons.org/jscripts/mapWidget.js?ids=348&vm=348&w=200&h=200&geoid=<?php echo $geoidstate; ?>&l=1'></script>
+        	<script src='http://maps.communitycommons.org/jscripts/mapWidget.js?ids=348&vm=348&w=190&h=190&geoid=<?php echo $geoidstate; ?>&l=1'></script>
         </div>        
     
 		<div id="dial">
-			<script src='http://staging.maps.communitycommons.org/jscripts/dialWidget.js?geoid=<?php echo $gterm->description?>&id=779'></script>
+			<script src='http://staging.maps.communitycommons.org/jscripts/dialWidget.js?geoid=<?php echo $geoid; ?>&id=779'></script>
 		</div>
 
 	
@@ -88,7 +82,7 @@
 		<!--**********************************************Mike's stuff**********************************-->
 		<script type="text/javascript">
 			function changeDial(id) {
-				var geoid = '<?php echo $gterm->description ?>';
+				var geoid = '<?php echo $geoid; ?>';
 				var s = document.createElement("script");
 				s.type = "text/javascript";
 				s.src = "http://staging.maps.communitycommons.org/jscripts/dialWidget.js?geoid=" + geoid + "&id=" + id;
@@ -102,6 +96,15 @@
                 while (dial.firstChild) {  dial.removeChild(dial.firstChild); }
                 dial.appendChild(s);
                 }
+
+                 //Yan may handle this.
+	      //   jQuery(document).ready(function($) {
+	      //   	// Show the map legend on click
+			    // $('#_cc-maplegend1').on('click', function(e){
+			    //     $('#_cc-maplegend1-content').toggle();
+			    //     e.preventDefault();
+			    // });
+	      //   });
 
 		</script>
 		
