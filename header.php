@@ -106,7 +106,7 @@
         			<?php //bp_loggedin_user_avatar('width=24&height=24');  
         		} else { //show login and register links if not logged in ?>
 	        		<li>
-	        			<?php printf( __( '<a href="%s" title="Create an account">Register</a>', 'buddypress' ), site_url( bp_get_signup_slug() . '/' ) ) ?>
+	        			<?php printf( __( '<a href="%s" title="Create an account">Register</a>', 'buddypress' ), site_url( bp_get_signup_slug() ) ) ?>
 	        		</li>
 	        		<li id="login-item" class="clear">
 		        		<a class="login-link" href="<?php echo wp_login_url( ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?></a>

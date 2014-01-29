@@ -1855,3 +1855,42 @@ if (is_page('sa-sugary-drinks')) {
 
 <?php }
 }
+
+//Utility/helper functions
+
+// Helps identify when we're working on a salud page.
+// @returns true or false
+function cc_is_salud_page() {
+
+  $return = false;
+
+  if ( is_page_template( 'page-templates/salud-america.php' ) 
+      || is_page_template( 'page-templates/salud-america-eloi.php' ) 
+      || is_singular('sapolicies')  
+      || is_singular('saresources')
+      || is_singular('sa_success_story')
+      || is_tax('sa_advocacy_targets')
+      || is_tax('sa_resource_cat')
+      || is_tax('sa_policy_tags')
+      || is_post_type_archive('sa_success_story')
+      || is_post_type_archive('saresources')
+      || is_post_type_archive('sapolicies')
+      ) {
+        $return = true;
+        }
+        
+  return apply_filters( 'cc_is_salud_page', $return );
+
+}
+
+// Add "salud-america" as an interest if the registration originates from an SA page
+// Filters array provided by registration_form_interest_query_string
+// @returns array with new element (or not)
+add_filter( 'registration_form_interest_query_string', 'salud_add_registration_interest_parameter', 11, 1 );
+function salud_add_registration_interest_parameter( $interests ) {
+
+    if ( function_exists('cc_is_salud_page') && cc_is_salud_page() )
+      $interests[] = 'salud-america';
+
+    return $interests;
+}

@@ -13,7 +13,7 @@ get_header(); ?>
 			<?php
 			$args = array(
 			    'post_type' => 'attachment',
-			    'numberposts' => -1,
+			    'numberposts' => 10,
 			    'post_status' => null,
 			    'post_parent' => 0
 			);
@@ -22,10 +22,11 @@ get_header(); ?>
 			    foreach ($attachments as $post) {
 			        setup_postdata($post);
 			        the_attachment_link($post->ID);
-			       	print_r($post);
+			       	// print_r($post);
 			       	echo "is this useful?";
 					$uri_string = get_post_meta( $post->ID, '_wp_attached_file', true);
-											echo PHP_EOL;
+					echo PHP_EOL;
+					echo $uri_string;
 
 					
 					// Search for posts with the matching string...

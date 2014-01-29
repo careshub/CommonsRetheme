@@ -638,23 +638,11 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'buddypress';
       }
 
-    if ( is_page_template( 'page-templates/salud-america.php' ) 
-      || is_page_template( 'page-templates/salud-america-eloi.php' ) 
-      || is_singular('sapolicies')  
-      || is_singular('saresources')
-      || is_singular('sa_success_story')
-      || is_tax('sa_advocacy_targets')
-      || is_tax('sa_resource_cat')
-      || is_tax('sa_policy_tags')
-      || is_post_type_archive('sa_success_story')
-      || is_post_type_archive('saresources')
-      || is_post_type_archive('sapolicies')
-      ) {
+    if ( function_exists( 'cc_is_salud_page' ) && cc_is_salud_page() ) {
         $classes[] = 'salud-america';
         if ( ($key = array_search('full-width', $classes) ) !== false ) {
           unset( $classes[$key] );
         }
-
       }
 
     if ( is_page_template( 'page-templates/WKKF-Compass.php' ) ) {
@@ -1055,8 +1043,6 @@ function hide_group_admin_tabs($classes) {
   return $classes;
 }
 add_filter( 'body_class', 'hide_group_admin_tabs', 98 );
-add_action( 'admin_footer-post-new.php', 'idealien_mediaDefault_script' );
-add_action( 'admin_footer-post.php', 'idealien_mediaDefault_script' );
 
 add_filter("gform_field_value_uuid", "cdc_gf_uuid");
 function cdc_gf_uuid($value) {
@@ -1064,6 +1050,8 @@ function cdc_gf_uuid($value) {
     return $uuid;
 }
 
+// add_action( 'admin_footer-post-new.php', 'idealien_mediaDefault_script' );
+// add_action( 'admin_footer-post.php', 'idealien_mediaDefault_script' );
 function idealien_mediaDefault_script() {
     ?>
 <script type="text/javascript">
@@ -1212,3 +1200,74 @@ function cc_get_the_cpt_tax_intersection_link( $post_type = false, $taxonomy = f
   function cc_the_cpt_tax_intersection_link( $post_type = false, $taxonomy = false, $term = false ){
     echo cc_get_the_cpt_tax_intersection_link( $post_type, $taxonomy, $term );
   }
+
+// Adds a query string to the "register" link in certain situations
+// @filter: provides an array of elements to filter
+// @returns a query string ( ?interestA=1&interestB=1 ) or null
+add_filter( 'bp_get_signup_slug', 'cc_get_signup_interests', 34, 1 );
+function cc_get_signup_interests( $sign_up_slug ) {
+  $interests = array();
+
+  // Pass the $interest array out to allow filters to remove or add interests
+  $interests = apply_filters( 'registration_form_interest_query_string', $interests );
+
+  // Convert it to a query string
+  if ( !empty( $interests ) ) {
+    $i = 1;
+    $query_string = '';
+    foreach ( $interests as $argument ) {
+      // Append a ? before the first interest, & otherwise
+      $query_string .= ( $i == 1 ) ? '?' : '&';
+      $query_string .= $argument . '=1';
+      $i++;
+    }
+    return $sign_up_slug . '/' . $query_string;
+  }
+
+  return $sign_up_slug . '/';
+
+}
+
+// Restricted-content shortcodes. These are useful especially when content is generated via shortcode, like Gravity Forms
+// Two basic levels: [loggedin] requires user to be logged in, [visitor] only shows to non-logged-in visitors
+// More advanced uses WordPress capabilities to show content to admins only, etc.
+// From Justin Tadlock: http://justintadlock.com/archives/2009/05/09/using-shortcodes-to-show-members-only-content
+
+// Show contained to logged in only. Use in page or post content. 
+// Takes the form: [loggedin message=''] content... [/loggedin] 
+// "Message" attribute is optional. Will fall back to default. Specify message='' for no message.
+add_shortcode( 'loggedin', 'cc_member_check_shortcode' );
+function cc_member_check_shortcode( $atts, $content = null ) {
+
+  extract( shortcode_atts( array( 'message' => 'You must be <a href="/wp-login.php" title="Log in to Community Commons">logged in</a> to view this content.' ), $atts ) );
+
+  if ( is_user_logged_in() && !is_null( $content ) && !is_feed() )
+    return $content;
+  
+  return $message;
+}
+
+// Show contained to visitors only. Use in page or post content. 
+// Takes the form: [visitor] content... [/visitor]
+// Not necessary as an else with [loggedin], the other shortcode's else provides a message and a login link.
+add_shortcode( 'visitor', 'visitor_check_shortcode' );
+function visitor_check_shortcode( $atts, $content = null ) {
+   if ( ( !is_user_logged_in() && !is_null( $content ) ) || is_feed() )
+    return $content;
+  return '';
+}
+
+// Show contained to users with specific capabilities only. Use in page or post content. 
+// Takes the form: [access capability="switch_themes"] content... [/access]
+add_shortcode( 'access', 'access_check_shortcode' );
+
+function access_check_shortcode( $attr, $content = null ) {
+
+  extract( shortcode_atts( array( 'capability' => 'read' ), $attr ) );
+
+  if ( current_user_can( $capability ) && !is_null( $content ) && !is_feed() )
+    return $content;
+
+  return '';
+}
+
