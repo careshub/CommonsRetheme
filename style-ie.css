@@ -4106,6 +4106,11 @@ div#item-header .activity {
   display: inline-block;
   margin-top: 32px;
 }
+.policy-meta {
+  display: block;
+  float: left;
+  width: 90%;
+}
 .invite-anyone #invite-anyone-group-list li {
   width: 45%;
 }
