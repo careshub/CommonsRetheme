@@ -1894,3 +1894,25 @@ function salud_add_registration_interest_parameter( $interests ) {
 
     return $interests;
 }
+
+/**
+ * Extends the default WordPress body class
+ * Filter classes added to body tag to add "salud" if on a Salud America page.
+ *
+ * @param array Existing class values.
+ * @return array Filtered class values.
+ */
+/* 
+***************/
+function cc_sa_custom_body_class( $classes ) {
+
+    if ( function_exists( 'cc_is_salud_page' ) && cc_is_salud_page() ) {
+        $classes[] = 'salud-america';
+        if ( ($key = array_search('full-width', $classes) ) !== false ) {
+          unset( $classes[$key] );
+        }
+      }
+
+  return $classes;
+}
+add_filter( 'body_class', 'cc_sa_custom_body_class', 99 );

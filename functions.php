@@ -621,8 +621,7 @@ function add_this_script_footer(){ ?>
 //add_action('wp_footer', 'add_this_script_footer');
 
 /**
- * Extends the default WordPress body class to denote:
- * 1. Adds "salud-america" to pages using the SA template.
+ * Extends the default WordPress body class
  *
  *
  * @since Twenty Twelve 1.0
@@ -636,13 +635,6 @@ function cc_custom_body_class( $classes ) {
  
     if ( function_exists( 'bp_is_blog_page' ) && !bp_is_blog_page() ) {
         $classes[] = 'buddypress';
-      }
-
-    if ( function_exists( 'cc_is_salud_page' ) && cc_is_salud_page() ) {
-        $classes[] = 'salud-america';
-        if ( ($key = array_search('full-width', $classes) ) !== false ) {
-          unset( $classes[$key] );
-        }
       }
 
     if ( is_page_template( 'page-templates/WKKF-Compass.php' ) ) {
@@ -665,7 +657,7 @@ function cc_custom_body_class( $classes ) {
 
   return $classes;
 }
-add_filter( 'body_class', 'cc_custom_body_class', 99 );
+add_filter( 'body_class', 'cc_custom_body_class', 96 );
 
 // remove_filter('the_content','wpautop');
 //decide when you want to apply the auto paragraph

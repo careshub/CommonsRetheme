@@ -60,7 +60,7 @@
                         
 	?>
 
-    <div>
+    <div class="policy-meta">
         <strong>Percent Adults Age 18+ Obese (BMI >= 30)  by County</strong>
         
         <div style="padding-top:5px">

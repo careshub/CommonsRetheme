@@ -399,3 +399,67 @@ function youtube_hide_controls_filter($html, $url, $attr, $post_ID){
 add_filter('embed_oembed_html', 'youtube_hide_controls_filter', 77, 4);
 //This filter handles embeds fetched via wp_oembed_get.
 add_filter('oembed_result', 'youtube_hide_controls_filter', 77, 4);
+
+function cc_get_youtube_video_metadata( $url ) {
+
+	//Get the important part of the $video_url
+	// URLs can take the form 'http://youtu.be/WZE-VHRtau8', 'https://www.youtube.com/watch?v=e5yNGuE9qzY' OR 'https://www.youtube.com/watch?v=e5yNGuE9qzY&feature=embedded', so we've got to handle some cases
+	if ( stripos( $url, 'www.youtube.com' )  ) {
+
+		$parsed = parse_url($url);
+		$args = explode( '&', $parsed['query'] );
+		foreach ( $args as $piece ) {
+			if ( stripos( $piece, 'v=') !== false ) {
+				//Remove the leading 'v='
+				$guts = substr( $piece, 2 );
+			}
+		}
+
+	} else if ( stripos( $url, 'youtu.be' ) ) {
+
+		$parsed = parse_url($url);
+		// Remove the leading slash
+		$guts = substr( $parsed['path'], 1);
+	} else {
+		return false;
+	}
+
+	$json_output = file_get_contents( "http://gdata.youtube.com/feeds/api/videos/{$guts}?v=2&alt=json" );
+	$json = json_decode($json_output, true);
+	// print_r($json);
+
+	//This gives you the video description
+	$video_description = $json['entry']['media$group']['media$description']['$t'];
+
+	//This gives you the video views count
+	$view_count = $json['entry']['yt$statistics']['viewCount'];
+
+	//This gives you the video title
+	$video_title = $json['entry']['title']['$t'];
+
+	return array( 	'title' => $video_title, 
+					'description' => $video_description, 
+					'count' => $view_count
+					);
+}
+// Allow for another archive style that only shows the video posts.
+add_filter('pre_get_posts', 'sa_heroes_video_post_archive');
+function sa_heroes_video_post_archive( $query ) {
+ // If the "style" flag is set to video, only show stories with videos
+    if( is_archive( 'sa_success_story' ) 
+    	&& !is_admin() 
+    	&& $query->is_main_query() 
+    	&& ( isset( $_GET['style'] ) && ( $_GET['style'] == 'videos' ) )
+    	) {
+        
+        $meta_query = 	array(
+					        array(
+					           'key' => 'sa_success_story_video_url',
+					           'compare' => 'EXISTS',
+					        )
+					    );
+		$query->set( 'meta_query', $meta_query );
+		// Only load 6 at a time, since these pages are ridiculously huge.
+		$query->set( 'posts_per_page', 6 );
+    }
+}

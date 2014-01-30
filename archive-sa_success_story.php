@@ -5,14 +5,28 @@
 if ( isset( $wp_query->query_vars['term'] ) ) {
 	$tax_term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
 }
+$archive_style = ( isset( $_GET['style'] ) && $_GET['style'] == 'videos'  ) ? 'videos' : '';
 ?>
 
-		<div id="content" role="main">
-			<div class="padder">
-				<div class="entry-content">
-					<?php 
-					//First section is used if this page is an advocacy target taxonomy page. Standard archives are rendered using the else section. 
-					if ( !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ) :
+	<div id="content" role="main">
+		<div class="padder">
+			<div class="entry-content">
+				<?php 
+				if ( $archive_style == 'videos') {
+					?>
+					<h3 class="screamer sablue">Salud Heroes Video Archive</h3>
+					<?php
+
+					while ( have_posts() ) : the_post(); ?>
+						<?php get_template_part( 'content', 'sa_success_story-videos' ); ?>
+					<?php endwhile; // end of the loop. ?>
+					
+					<?php twentytwelve_content_nav( 'nav-below' );
+
+				} else {
+					// First section is if the page is the video summary version. 
+					// Second section is used if this page is an advocacy target taxonomy page.  Standard archives are rendered using the else section. 
+					if ( !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ) {
 
 						//Get the page intro content, which is stored as a page with the same slug as the target area.
 						$args = array (
@@ -48,7 +62,7 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 						<?php twentytwelve_content_nav( 'nav-below' ); ?>
 					</div>
 					
-				<?php else: // not !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ?>
+				<?php } else { // not an advocacy target archive, this is the 6-up overview page ?>
 
 					<h3 class="screamer sablue">Salud Heroes</h3>
 
@@ -79,16 +93,12 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 
 						//Loop to display the most recent changemaker featured image for each target area.
 						$advocacy_targets = get_terms('sa_advocacy_targets');
-						// echo '<pre>';
-						// print_r($advocacy_targets);
-						// echo '</pre>';
+
 						$do_not_duplicate = array();
-						foreach ($advocacy_targets as $target) {
+						foreach ( $advocacy_targets as $target ) {
 							//Build the query
 							$args = array (
 								'post_type' => 'sa_success_story',
-								// 'sa_advocacy_targets' => $target->slug,
-								// 'sa_resource_cat' => 'success-stories',
 								'posts_per_page' => 1,
 								'post__not_in' => $do_not_duplicate,
 								'tax_query' => array(
@@ -99,6 +109,7 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 									),
 								)
 								);
+
 							$ssquery = new WP_Query( $args );
 							while ( $ssquery->have_posts() ) {
 								$ssquery->the_post();
@@ -129,12 +140,13 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 							}
 							wp_reset_postdata();
 
-						} //End foreach
-				?>					
-				<?php endif; // END !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ?>
+						} //End foreach advocacy target
+				 } // END non-advocacy target version
+			} //END check for $archive_style 
+		?>
 			</div> <!-- .entry-content -->
-			</div><!-- .padder -->
-		</div><!-- #content -->
+		</div><!-- .padder -->
+	</div><!-- #content -->
 
 <?php get_template_part('page-templates/wrapper-salud-bottom'); ?>
 <?php get_footer(); ?>
