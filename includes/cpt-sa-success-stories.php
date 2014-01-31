@@ -378,7 +378,7 @@ function success_story_oembed_filter($html, $url, $attr, $post_ID) {
 }
 
 // customize embed settings
-function youtube_hide_controls_filter($html, $url, $attr, $post_ID){
+function youtube_hide_controls_filter($html){
     if( strpos($html, 'youtu.be') !== false || strpos($html, 'youtube.com') !== false ){
   //   	$towrite = PHP_EOL . '$html, before: ' . print_r($html, TRUE);
 		// $fp = fopen('oembed_bits.txt', 'a');
@@ -396,9 +396,9 @@ function youtube_hide_controls_filter($html, $url, $attr, $post_ID){
  
 // add_filter('embed_handler_html', 'custom_youtube_settings');
 //This filter handles embeds in content, etc.
-add_filter('embed_oembed_html', 'youtube_hide_controls_filter', 77, 4);
+add_filter('embed_oembed_html', 'youtube_hide_controls_filter', 77);
 //This filter handles embeds fetched via wp_oembed_get.
-add_filter('oembed_result', 'youtube_hide_controls_filter', 77, 4);
+add_filter('oembed_result', 'youtube_hide_controls_filter', 77);
 
 function cc_get_youtube_video_metadata( $url ) {
 
@@ -484,13 +484,10 @@ function sa_get_random_hero_video() {
 	$video_story = new WP_Query( $args );
 	// print_r($video_story);
 
-	while ( $video_story->have_posts() ) : $video_story->the_post();
+	// Use alternate syntax (using the_post() object messes up the outer WP_Query loop because wp_reset_postdata in this case resets the postdata to the archive page's real job, not the page intro secondary loop. 
+	foreach ($video_story->posts as $video) {
 
-	print_r( $video_story->the_post );
-
-		setup_postdata( $post );
-		
-		$video_url = get_post_meta( get_the_id(), 'sa_success_story_video_url', 'true' );
+		$video_url = get_post_meta( $video->ID, 'sa_success_story_video_url', 'true' );
 
 		if ( !empty( $video_url ) ) {
 			$video_embed_code = wp_oembed_get( $video_url );
@@ -507,8 +504,6 @@ function sa_get_random_hero_video() {
 					<figcaption>See how these <a href="/sa_success_story/">Salud Heroes</a> are fighting Latino obesity…and learn how easy it is to be a Salud Hero, too!</figcaption>
 				<?php } ?>
 			</div>
-			<?php } 
-
-	endwhile; // end of the loop.
-	wp_reset_postdata();
+			<?php } // End if $video_embed_code
+	} // End foreach 
 }

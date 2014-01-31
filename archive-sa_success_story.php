@@ -76,19 +76,15 @@ $archive_style = ( isset( $_GET['style'] ) && $_GET['style'] == 'videos'  ) ? 'v
 						while ( $page_intro->have_posts() ) : $page_intro->the_post(); ?>
 							<article id="post-<?php the_ID(); ?>" <?php post_class('clear'); ?>>
 								<?php sa_get_random_hero_video() ?>
-								<?php 
-								//Get the page header image ?>
+								<?php the_content(); ?>
 								<!-- <header>
 									 <img class="size-full wp-image-16768 no-box" alt="Topic header for <?php echo $tax_term->name ?>" src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/topic_headers/<?php echo $tax_term->slug ?>.jpg" />
 								 </header> -->
-							 <?php
-								
-								the_content(); ?>
-			               
 			                </article>
 
 							<?php
 						endwhile; // end of the loop.
+						wp_reset_postdata();
 
 						//Loop to display the most recent changemaker featured image for each target area.
 						$advocacy_targets = get_terms('sa_advocacy_targets');
