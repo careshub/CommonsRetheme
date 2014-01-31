@@ -1234,7 +1234,7 @@ function cc_member_check_shortcode( $atts, $content = null ) {
   extract( shortcode_atts( array( 'message' => 'You must be <a href="/wp-login.php" title="Log in to Community Commons">logged in</a> to view this content.' ), $atts ) );
 
   if ( is_user_logged_in() && !is_null( $content ) && !is_feed() )
-    return $content;
+    return do_shortcode( $content );
   
   return $message;
 }
@@ -1245,7 +1245,8 @@ function cc_member_check_shortcode( $atts, $content = null ) {
 add_shortcode( 'visitor', 'visitor_check_shortcode' );
 function visitor_check_shortcode( $atts, $content = null ) {
    if ( ( !is_user_logged_in() && !is_null( $content ) ) || is_feed() )
-    return $content;
+    return do_shortcode( $content );
+  
   return '';
 }
 
