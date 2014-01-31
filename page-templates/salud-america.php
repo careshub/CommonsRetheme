@@ -15,21 +15,8 @@ get_header(); ?>
 			<div class="entry-content">
 
 				<h3 class="screamer sagreen">How can you fight Latino childhood obesity in your area?</h2>
-				<?php 
-				$video_url = get_post_meta( $post->ID, 'sa_success_story_video_url', true );
-				if ( !empty( $video_url ) ) { 
-					$video_embed_code = wp_oembed_get( $video_url );
-				} else {
-					$video_embed_code = wp_oembed_get( 'http://www.youtube.com/watch?v=WZE-VHRtau8' );
-				}
-				if ( $video_embed_code ) { ?>
-				<div class="video-container-group">
-					<figure class="video-container">
-						<?php echo $video_embed_code; ?>
-					</figure>
-					<figcaption>See how these <a href="/sa_success_story/">Salud Heroes</a> are fighting Latino obesity…and learn how easy it is to be a Salud Hero, too!</figcaption>
-				</div>
-				<?php } ?>
+	
+				<?php sa_get_random_hero_video(); ?>
 
 				<p class="intro-text" style="font-size:1.2em;">Obesity threatens the health of Latino kids.</p> 
                                     

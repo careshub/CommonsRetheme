@@ -5,6 +5,7 @@
 if ( isset( $wp_query->query_vars['term'] ) ) {
 	$tax_term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
 }
+// Should we display the video archive?
 $archive_style = ( isset( $_GET['style'] ) && $_GET['style'] == 'videos'  ) ? 'videos' : '';
 ?>
 
@@ -24,8 +25,7 @@ $archive_style = ( isset( $_GET['style'] ) && $_GET['style'] == 'videos'  ) ? 'v
 					<?php twentytwelve_content_nav( 'nav-below' );
 
 				} else {
-					// First section is if the page is the video summary version. 
-					// Second section is used if this page is an advocacy target taxonomy page.  Standard archives are rendered using the else section. 
+					// First section of following if statement is used if this page is an advocacy target taxonomy page. Standard archives are rendered using the else section. 
 					if ( !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ) {
 
 						//Get the page intro content, which is stored as a page with the same slug as the target area.
@@ -65,18 +65,17 @@ $archive_style = ( isset( $_GET['style'] ) && $_GET['style'] == 'videos'  ) ? 'v
 				<?php } else { // not an advocacy target archive, this is the 6-up overview page ?>
 
 					<h3 class="screamer sablue">Salud Heroes</h3>
-
 						<?php
 						//Get the page intro content.
 						$args = array (
 							'pagename' => 'salud-america/success-stories-intro/',
 							'post_type' => 'page'
 							);
-						// print_r($wp_query->query_vars);
 						$page_intro = new WP_Query( $args );
-						// print_r($page_intro);
+
 						while ( $page_intro->have_posts() ) : $page_intro->the_post(); ?>
-							<article id="post-<?php the_ID(); ?>" <?php post_class('sa_archive_introduction'); ?>>
+							<article id="post-<?php the_ID(); ?>" <?php post_class('clear'); ?>>
+								<?php sa_get_random_hero_video() ?>
 								<?php 
 								//Get the page header image ?>
 								<!-- <header>
@@ -121,21 +120,11 @@ $archive_style = ( isset( $_GET['style'] ) && $_GET['style'] == 'videos'  ) ? 'v
 										<span class="<?php echo $target->slug; ?>x60"></span>
 										<h4 class="icon-friendly" style="width:65%; margin-top:0; line-height:1.2;"><?php echo $target->name ?></h4>
 									</a>
-								<?php
-									// echo '<div class="half-block"><span class="'. $target->slug . 'x30"></span><h5 class="screamer">' . $target->name . '</h5>';
-									// if ( has_post_thumbnail()) : ?>
-									   	<!-- <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
-									   	<?php the_post_thumbnail('feature-front-sub'); ?>
-									   	<br /> -->
 									<?php
-									// endif;
-									// echo get_the_title() . '</a></div>';
-									//Use the template with the featured image thumbnail.
 			                        get_template_part( 'content', 'saresources-mini');
 			                        ?><a href="<?php echo cc_get_the_cpt_tax_intersection_link( 'sa_success_story', 'sa_advocacy_targets', $target->slug );?>" title="Link to taxonomy page." class="button">More stories on this topic...</a>
 			                    </div> <!-- .half-block -->
 			                    <?php
-								// print_r($do_not_duplicate);
 								$do_not_duplicate[] = get_the_ID();
 							}
 							wp_reset_postdata();

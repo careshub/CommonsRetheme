@@ -445,7 +445,7 @@ function cc_get_youtube_video_metadata( $url ) {
 // Allow for another archive style that only shows the video posts.
 add_filter('pre_get_posts', 'sa_heroes_video_post_archive');
 function sa_heroes_video_post_archive( $query ) {
- // If the "style" flag is set to video, only show stories with videos
+	// If the "style" flag is set to video, only show stories with videos
     if( is_archive( 'sa_success_story' ) 
     	&& !is_admin() 
     	&& $query->is_main_query() 
@@ -462,4 +462,53 @@ function sa_heroes_video_post_archive( $query ) {
 		// Only load 6 at a time, since these pages are ridiculously huge.
 		$query->set( 'posts_per_page', 6 );
     }
+}
+
+function sa_get_random_hero_video() {
+
+	$args = array(
+		'post_type' 			=> 'sa_success_story',
+		'orderby'               => 'rand',
+		'posts_per_page'         => 1,
+		
+		//Custom Field Parameters
+		'meta_query'     => array(
+			array(
+				'key' => 'sa_success_story_video_url',
+				'compare' => 'EXISTS'
+			),
+		),
+		
+	);
+	
+	$video_story = new WP_Query( $args );
+	// print_r($video_story);
+
+	while ( $video_story->have_posts() ) : $video_story->the_post();
+
+	print_r( $video_story->the_post );
+
+		setup_postdata( $post );
+		
+		$video_url = get_post_meta( get_the_id(), 'sa_success_story_video_url', 'true' );
+
+		if ( !empty( $video_url ) ) {
+			$video_embed_code = wp_oembed_get( $video_url );
+		}
+
+		if ( $video_embed_code ) { ?>
+			<div class="video-container-group">
+				<figure class="video-container">
+					<?php echo $video_embed_code; ?>
+				</figure>
+				<?php if ( is_archive( 'sa_success_story' ) ) { ?>
+					<a href="/sa_success_story/?style=videos" title="link to the Salud Heroes video archive" class="button">Watch all videos</a> 
+				<?php } else { ?>
+					<figcaption>See how these <a href="/sa_success_story/">Salud Heroes</a> are fighting Latino obesity…and learn how easy it is to be a Salud Hero, too!</figcaption>
+				<?php } ?>
+			</div>
+			<?php } 
+
+	endwhile; // end of the loop.
+	wp_reset_postdata();
 }

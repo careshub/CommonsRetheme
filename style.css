@@ -2377,14 +2377,10 @@ ul.item-list li .share-buttons-below li {
   margin-bottom: 24px;
   margin-bottom: 1.71429rem;
   padding-bottom: 0;
+  overflow: auto;
 }
 .salud-america .site-content article:last-child {
   border-bottom: none;
-}
-.salud-america .site-content article.sa_archive_introduction,
-.salud-america .site-content article.page {
-  border-bottom: none;
-  margin-bottom: 0;
 }
 .salud-america .site-content .main-article {
   border-bottom: none;

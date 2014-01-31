@@ -135,37 +135,48 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 								$all_cats = array();
 								foreach ($categories as $cat) {
 									$all_cats[] = $cat->slug;
-								} 
-								echo '<div class="row clear">';
-								$i=0;
-
-								foreach ($all_cats as $cat_slug) { 
+								}
+								
+								$i = 1;
+								foreach ($all_cats as $cat_slug) {
+									if ( $i%2 == 1 ) {
+										// Begin the row
+										echo '<div class="row clear">';
+									}
 									//Loop through each advocacy target
 									$cat_object = get_term_by('slug', $cat_slug, 'sa_advocacy_targets');
 									// print_r($cat_object);
 									$section_title = $cat_object->name;
 									$section_description = $cat_object->description;
-									++$i;
 									?>
-								<div class="half-block salud-topic <?php echo $cat_slug; ?>">
-									<a href="<?php cc_the_cpt_tax_intersection_link( 'sapolicies', 'sa_advocacy_targets', $cat_slug ) ?>" class="<?php echo $cat_slug; ?>  clear">
-										<span class="<?php echo $cat_slug; ?>x60"></span>
-										<h4><?php echo $section_title; ?></h4>
-									</a>
-									<p><?php echo $section_description; ?></p>
-								</div>
-								<?php 
-								if ( $i%2 == 0 ) {
-									echo '</div>
-									<div class="row clear">';
-
-							}
+									<div class="half-block salud-topic <?php echo $cat_slug; ?>">
+										<a href="<?php cc_the_cpt_tax_intersection_link( 'sapolicies', 'sa_advocacy_targets', $cat_slug ) ?>" class="<?php echo $cat_slug; ?>  clear">
+											<span class="<?php echo $cat_slug; ?>x60"></span>
+											<h4><?php echo $section_title; ?></h4>
+										</a>
+										<p><?php echo $section_description; ?></p>
+									</div>
+									<?php 
+									if ( $i%2 == 0 ) {
+										// Close the row
+										echo '</div>';
+									}
+									$i++;
 
 								} // End advocacy target loop 
-								echo '</div>';
 								 ?>
-
 						</div>
+						<!-- Primary loop for most recently added policies -->
+				        <div class="row">
+							<h3 class="screamer sapink">Newest Changes</h3>
+							<?php 
+							// Since this is an archive page, let's let WP do the heavy lifting.
+							while ( have_posts() ) : the_post(); 
+							  get_template_part( 'content', 'sa-policy-short' );
+							endwhile; // end of the loop. 
+							twentytwelve_content_nav( 'nav-below' );
+							?>
+				        </div>
 						
 				<?php } // END !empty( $tax_term ) && $tax_term->taxonomy == 'sa_advocacy_targets' ?>
 
