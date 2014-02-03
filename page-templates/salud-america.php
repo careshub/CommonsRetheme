@@ -53,7 +53,7 @@ get_header(); ?>
 
 						<div class="half-block">
 							<h4 style="margin-top:0;">By Location</h4>
-							<a href="http://dev.communitycommons.org/sapolicies/"><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Salud_Location_Map.png' alt='Map of Changes'class="no-box"></a>
+							<a href="http://www.communitycommons.org/sapolicies/"><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Salud_Location_Map.png' alt='Map of Changes'class="no-box"></a>
 			                <a href='http://dev.communitycommons.org/sapolicies/'>Browse changes happening in your area</a>
 						</div>
 					</div>
