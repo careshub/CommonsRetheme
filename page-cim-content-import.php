@@ -114,7 +114,7 @@ get_header(); ?>
 						$revision_count = get_post_meta( $post_id, 'bp_docs_revision_count', true );
 						update_post_meta( $post_id, 'bp_docs_revision_count', intval( $revision_count ) + 1 );
 
-						//Add the taxonomy term for the strategic direction
+						// Add the taxonomy term for the strategic direction
 						//
 						//
 					}
@@ -153,19 +153,6 @@ get_header(); ?>
 						} else {
 							return false;
 						}
-				}
-
-				function cc_create_group_slug( $group_name ) { 
-					//Create a url-friendly slug
-					$group_name = sanitize_title( $group_name );
-
-					//Check for a group that already has that slug
-					if ( $group_id = groups_get_id( $group_name ) ) {
-						$group_name = $group_name . '-1';
-					}
-
-					return $group_name;
-
 				}
 
 				?>
