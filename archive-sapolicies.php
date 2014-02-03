@@ -72,9 +72,9 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 				                    
 				                    <?php } else if ( $tax_term->slug == 'sa-sugary-drinks' ) { ?>
 
-					                    <a href="/wp-content/uploads/2013/08/Research_review.png" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
-				                        <a href="/wp-content/uploads/2013/08/AP_brief.png" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="/wp-content/uploads/2013/08/AP_brief.png" /><br />Issue Brief</a>
-				                        <a href="/wp-content/uploads/2013/08/AP_info.png" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="/wp-content/uploads/2013/08/AP_info.png"  /><br />Infographic</a>
+					                    <a href="/wp-content/uploads/2014/02/Sugary-Drinks-research-review.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
+				                        <a href="/wp-content/uploads/2014/02/Sugary-Drinks-issue-brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="/wp-content/uploads/2013/08/AP_brief.png" /><br />Issue Brief</a>
+				                        <a href="/wp-content/uploads/2014/02/Sugary-Drinks-Infographic-875.png" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="/wp-content/uploads/2013/08/AP_info.png"  /><br />Infographic</a>
 
 				                    <?php } ?>
 				               </div>
