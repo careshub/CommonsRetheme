@@ -111,7 +111,7 @@ class sa_success_story_meta_box {
 		<!--****ADDED BY MIKE B.*********-->
 		<label for="sa_success_story_location" class="description"><h4>Location</h4>	
 			<em>e.g.: Houston, Texas</em></label><br />		
-		<input type="text" id="sa_success_story_location" name="sa_success_story_location" value="<?php echo esc_attr( $locvalue); ?>" size="75" />	<input type="button" id="sa_success_story_save_location" value="Verify Location" /> <img id="sa_success_story_save_location_check" src="http://dev.communitycommons.org/wp-content/uploads/2013/12/greencheck.png" style="vertical-align:middle;" />	
+		<input type="text" id="sa_success_story_location" name="sa_success_story_location" value="<?php echo esc_attr( $locvalue); ?>" size="75" />	<input type="button" id="sa_success_story_save_location" value="Verify Location" /> <img id="sa_success_story_save_location_check" src="/wp-content/uploads/2013/12/greencheck.png" style="vertical-align:middle;" />	
 		<input type="hidden" id="sa_success_story_latitude" name="sa_success_story_latitude" value="<?php echo esc_attr( $latvalue); ?>" /><input type="hidden" id="sa_success_story_longitude" name="sa_success_story_longitude" value="<?php echo esc_attr( $longvalue); ?>" />
 		
 		
@@ -176,7 +176,7 @@ class sa_success_story_meta_box {
 					 $.ajax
 						 ({
 						   type: "POST",               
-						   url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
+						   url: "http://www.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
 						   data: dataString,
 						   cache: false,               
 						   error: function() {

@@ -183,14 +183,14 @@ get_header(); ?>
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">
 						<h4 style="margin-top:0;">What's Change?</h4>
-	                    <a href="/salud-america/what-is-change"><img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;"></a>
+	                    <a href="/salud-america/what-is-change"><img src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;"></a>
 	                    <p>Find out what "change" really means and all the science behind it.<br />
 	                    	<a href="/salud-america/what-is-change" class="button" title="Learn what change means.">Learn more</a></p>
                     </div>
 
 					<div class="half-block" style="margin-top:0;">
 						<h4 style="margin-top:0;">Get help to Make a Change</h4>
-	                    <a href='/salud-america/saresourcespage/'><img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/Resoucesmakechange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;"></a>
+	                    <a href='/salud-america/saresourcespage/'><img src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/Resoucesmakechange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;"></a>
 	                    <p>Use research, toolkits, and other elements to learn about healthy change.<br />
 	                    	<a href="/salud-america/saresourcespage/" class="button" title="Learn about healthy change.">Learn more</a></p>
 					</div>
@@ -201,7 +201,7 @@ get_header(); ?>
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">
 						<h4 style="margin-top:0;">Making a Change?</h4>
-	                    <a href='/salud-america/share-your-own-stories/'><img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png' alt='Share Your Change' style="width:32%; float:left; margin-right:5%;" class="no-box"></a>
+	                    <a href='/salud-america/share-your-own-stories/'><img src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png' alt='Share Your Change' style="width:32%; float:left; margin-right:5%;" class="no-box"></a>
 	                    <p>If you or someone you know is starting a change or already made a change, let us know. <br />
 	                    	We can write it up, possibly film it, and share it nationwide!<br />
 	                    	<a href="/salud-america/share-your-own-stories/" class="button" title="Share your story.">Share your story or alert us to a change</a>
@@ -432,8 +432,8 @@ get_header(); ?>
                                 <div style="width:25%" class="half-block">
                                 <div style="background-color:rgb(240,240,240);border-width: 3px; border-style: solid;border-color: lightgrey;">
                                 <h3 style='text-align:center; padding-top:0px'>Start a Change</h3>
-                                <div style="padding-left:15px"><a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/">Add a change</a> in your area!<br/><br/><a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/"></div>
-                                    <img class=" wp-image-12449 aligncenter" alt="Health" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/images.jpg" width="120" height="120" /></a>
+                                <div style="padding-left:15px"><a href="/salud-america/share-your-own-stories/">Add a change</a> in your area!<br/><br/><a href="/salud-america/share-your-own-stories/"></div>
+                                    <img class=" wp-image-12449 aligncenter" alt="Health" src="/wp-content/uploads/2013/08/images.jpg" width="120" height="120" /></a>
                                 <br/>
                                 </div> 
                                   <br/>    
@@ -491,7 +491,7 @@ get_header(); ?>
 						}?></a><?php
                                      endwhile
                                          ?><br/><br/>
-                                                        <a href="http://dev.communitycommons.org/salud-america/saresourcespage/">See more</a>
+                                                        <a href="/salud-america/saresourcespage/">See more</a>
                                    <br/><br/>
                                  </div>   
                                 </div>

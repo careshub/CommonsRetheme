@@ -539,7 +539,7 @@ function sa_searchresources($searchresults) {
 function SA_getting_started() 
 {
 ?>
-<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Header1.jpg"><img class="alignright size-full wp-image-17752" alt="Header1" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Header1.jpg" width="851" height="150" /></a>
+<a href="/wp-content/uploads/2013/08/Header1.jpg"><img class="alignright size-full wp-image-17752" alt="Header1" src="/wp-content/uploads/2013/08/Header1.jpg" width="851" height="150" /></a>
 </br></br></br></br>
 
 <div class="sa-page-intro"></br></br></br>
@@ -555,7 +555,7 @@ Here’s how the site can help:</br></br></br></br>
 <span style="color: #008000;"><strong>Why are we here?</strong></span>
 </br></br>
 &nbsp;
-<a href="http://dev.communitycommons.org/wp-content/uploads/2013/03/Latino_play.jpg"><img class=" wp-image-12449 alignleft" alt="Health" src="http://dev.communitycommons.org/wp-content/uploads/2013/03/Latino_play.jpg" width="140" height="140" /></a>
+<a href="/wp-content/uploads/2013/03/Latino_play.jpg"><img class=" wp-image-12449 alignleft" alt="Health" src="/wp-content/uploads/2013/03/Latino_play.jpg" width="140" height="140" /></a>
 
 </br>
 <a href="http://ss">Learn about Latino childhood obesity issues</a></br>
@@ -569,17 +569,17 @@ Here’s how the site can help:</br></br></br></br>
 <span style="color: #008000;"><strong>Not sure where to start?</strong></span>
 </br></br>
 &nbsp;
-<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/map2.jpg"><img class=" wp-image-12449 alignleft" alt="Health" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/map2.jpg" width="140" height="140" /></a>
+<a href="/wp-content/uploads/2013/08/map2.jpg"><img class=" wp-image-12449 alignleft" alt="Health" src="/wp-content/uploads/2013/08/map2.jpg" width="140" height="140" /></a>
 
 </br>
-<a href="http://dev.communitycommons.org/salud-america/sapolicies/">Browse changes happening in your area right now</a></br>
+<a href="/salud-america/sapolicies/">Browse changes happening in your area right now</a></br>
 
 </br></br></br></br></br></br>
 &nbsp;
-<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/advocacy_targets_box.jpg"><img class=" wp-image-12449 alignleft" alt="Health" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/advocacy_targets_box.jpg" width="140" height="140" /></a>
+<a href="/wp-content/uploads/2013/08/advocacy_targets_box.jpg"><img class=" wp-image-12449 alignleft" alt="Health" src="/wp-content/uploads/2013/08/advocacy_targets_box.jpg" width="140" height="140" /></a>
 
 </br>
-<a href="http://dev.communitycommons.org/salud-america/sapolicies/">Browse changes happening by one of 6 key topic areas</a></br>
+<a href="/salud-america/sapolicies/">Browse changes happening by one of 6 key topic areas</a></br>
 
 </div>
 &nbsp;
@@ -590,17 +590,17 @@ Here’s how the site can help:</br></br></br></br>
 <span style="color: #008000;"><strong>Want to learn how you can make change?</strong></span>
 </br></br>
 &nbsp;
-<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/tools.jpg"><img class=" wp-image-12449 alignleft" alt="Health" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/tools.jpg" width="140" height="140" /></a>
+<a href="/wp-content/uploads/2013/08/tools.jpg"><img class=" wp-image-12449 alignleft" alt="Health" src="/wp-content/uploads/2013/08/tools.jpg" width="140" height="140" /></a>
 
 </br>
-<a href="http://dev.communitycommons.org/salud-america/saresourcespage/">Browse resources: toolkits, webinars, research, etc.</a></br>
+<a href="/salud-america/saresourcespage/">Browse resources: toolkits, webinars, research, etc.</a></br>
 
 </br></br></br></br></br></br></br></br>
 
-<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/change.jpg"><img class=" wp-image-12449 alignleft" alt="Health" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/change.jpg" width="140" height="140" /></a>
+<a href="/wp-content/uploads/2013/08/change.jpg"><img class=" wp-image-12449 alignleft" alt="Health" src="/wp-content/uploads/2013/08/change.jpg" width="140" height="140" /></a>
 
 </br>
-<a href="http://dev.communitycommons.org/salud-america/what-is-change/the-science-behind-change/">See the science behind change</a></br>
+<a href="/salud-america/what-is-change/the-science-behind-change/">See the science behind change</a></br>
 
 </div>
 &nbsp;
@@ -611,10 +611,10 @@ Here’s how the site can help:</br></br></br></br>
 <span style="color: #008000;"><strong>Want to see people who have made changes in their areas?</strong></span>
 </br></br>
 &nbsp;
-<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Video_thumbnail.jpg"><img class=" wp-image-12449 alignleft" alt="Health" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Video_thumbnail.jpg" width="140" height="140" /></a>
+<a href="/wp-content/uploads/2013/08/Video_thumbnail.jpg"><img class=" wp-image-12449 alignleft" alt="Health" src="/wp-content/uploads/2013/08/Video_thumbnail.jpg" width="140" height="140" /></a>
 
 </br>
-<a href="http://dev.communitycommons.org/salud-america/success-stories">See stories of successful changes</a></br>
+<a href="/salud-america/success-stories">See stories of successful changes</a></br>
 </div>
 </br></br></br></br></br></br></br></br>
 
@@ -623,17 +623,17 @@ Here’s how the site can help:</br></br></br></br>
 <span style="color: #008000;"><strong>Ready to make a change?</strong></span>
 </br></br>
 &nbsp;
-<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/images.jpg"><img class=" wp-image-12449 alignleft" alt="Health" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/images.jpg" width="140" height="140" /></a>
+<a href="/wp-content/uploads/2013/08/images.jpg"><img class=" wp-image-12449 alignleft" alt="Health" src="/wp-content/uploads/2013/08/images.jpg" width="140" height="140" /></a>
 
 </br>
-<a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/">Add a change you're making OR add a change we missed</a></br>
+<a href="/salud-america/share-your-own-stories/">Add a change you're making OR add a change we missed</a></br>
 
 </br></br></br></br></br></br></br>
 
-<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/share.png"><img class=" wp-image-12449 alignleft" alt="Health" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/share.png" width="140" height="140" /></a>
+<a href="/wp-content/uploads/2013/08/share.png"><img class=" wp-image-12449 alignleft" alt="Health" src="/wp-content/uploads/2013/08/share.png" width="140" height="140" /></a>
 
 </br>
-<a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/">Share your success story</a></br>
+<a href="/salud-america/share-your-own-stories/">Share your success story</a></br>
 
 </div>
 <?php

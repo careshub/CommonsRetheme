@@ -582,7 +582,7 @@ function refresh_sa_policy_geographies() {
 //        jQuery.ajax
 //        ({
 //          type: "POST",               
-//          url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
+//          url: "/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
 //          data: dataString2,
 //          cache: false,               
 //          error: function() {
@@ -1304,8 +1304,8 @@ function sa_location_search_old()
 
                         var map = new google.maps.Map(document.getElementById("map_sapolicies"), firstOptions);
 
-                        var firstimage = 'http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/star-3.png';
-                        //var policyimage = 'http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/doc-3.png';
+                        var firstimage = '/wp-content/themes/CommonsRetheme/img/star-3.png';
+                        //var policyimage = '/wp-content/themes/CommonsRetheme/img/doc-3.png';
                         
                         var firstmarker = new google.maps.Marker({
                             position: firstpt,
@@ -1524,7 +1524,7 @@ function SA_topics()
     <tbody>
     <tr>
 	<td colspan="2" style="text-align:left;">
-		<a href="http://dev.communitycommons.org/wp-content/uploads/2013/03/Active-Play-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="http://dev.communitycommons.org/wp-content/uploads/2013/03/Active-Play-topic-header.jpg" style="height:125px;" /></a>
+		<a href="/wp-content/uploads/2013/03/Active-Play-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="/wp-content/uploads/2013/03/Active-Play-topic-header.jpg" style="height:125px;" /></a>
 
 	</td>
     </tr>
@@ -1545,16 +1545,16 @@ function SA_topics()
 			</tr>
 			<tr>
 				<td>
-				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Play-Research-Review.pdf"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Play-Issue-Brief.pdf"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_brief.png" width="60" height="90" /></a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Play-Infographic-875.jpg"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_info.png" width="60" height="90" /></a>
+				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Active-Play-Research-Review.pdf"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Active-Play-Issue-Brief.pdf"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="/wp-content/uploads/2013/08/AP_brief.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Active-Play-Infographic-875.jpg"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="/wp-content/uploads/2013/08/AP_info.png" width="60" height="90" /></a>
 				</td>
 			</tr>
         		<tr>
 				<td>
-				   &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Play-Research-Review.pdf">Research Review</a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp;<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Play-Issue-Brief.pdf">Issue Brief</a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Play-Infographic-875.jpg">Infographic</a>
+				   &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Active-Play-Research-Review.pdf">Research Review</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Active-Play-Issue-Brief.pdf">Issue Brief</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="/wp-content/uploads/2013/08/Active-Play-Infographic-875.jpg">Infographic</a>
 				</td>
 			</tr>
 
@@ -1581,7 +1581,7 @@ if (is_page('sa-active-spaces')) {
     <tbody>
     <tr>
 	<td colspan="2" style="text-align:left;">
-		<a href="http://dev.communitycommons.org/wp-content/uploads/2013/04/Active-spaces-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="http://dev.communitycommons.org/wp-content/uploads/2013/04/Active-spaces-topic-header.jpg" style="height:125px;" /></a>
+		<a href="/wp-content/uploads/2013/04/Active-spaces-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="/wp-content/uploads/2013/04/Active-spaces-topic-header.jpg" style="height:125px;" /></a>
 
 	</td>
     </tr>
@@ -1602,16 +1602,16 @@ if (is_page('sa-active-spaces')) {
 			</tr>
 			<tr>
 				<td>
-				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Spaces-Research-Review.pdf"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Spaces-Issue-Brief.pdf"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AS_brief2.png" width="60" height="90" /></a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Spaces-Infographic-875.jpg"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AS_info.png" width="60" height="90" /></a>
+				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Active-Spaces-Research-Review.pdf"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Active-Spaces-Issue-Brief.pdf"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="/wp-content/uploads/2013/08/AS_brief2.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Active-Spaces-Infographic-875.jpg"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="/wp-content/uploads/2013/08/AS_info.png" width="60" height="90" /></a>
 				</td>
 			</tr>
         		<tr>
 				<td>
-				   &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Spaces-Research-Review.pdf">Research Review</a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp;<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Spaces-Issue-Brief.pdf">Issue Brief</a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Active-Spaces-Infographic-875.jpg">Infographic</a>
+				   &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Active-Spaces-Research-Review.pdf">Research Review</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Active-Spaces-Issue-Brief.pdf">Issue Brief</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="/wp-content/uploads/2013/08/Active-Spaces-Infographic-875.jpg">Infographic</a>
 				</td>
 			</tr>
 
@@ -1638,7 +1638,7 @@ if (is_page('sa-better-food-in-neighborhoods')) {
     <tbody>
     <tr>
 	<td colspan="2" style="text-align:left;">
-		<a href="http://dev.communitycommons.org/wp-content/uploads/2013/04/Better-Food-In-Neighborhood-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="http://dev.communitycommons.org/wp-content/uploads/2013/04/Better-Food-In-Neighborhood-topic-header.jpg" style="height:125px;" /></a>
+		<a href="/wp-content/uploads/2013/04/Better-Food-In-Neighborhood-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="/wp-content/uploads/2013/04/Better-Food-In-Neighborhood-topic-header.jpg" style="height:125px;" /></a>
 
 	</td>
     </tr>
@@ -1659,16 +1659,16 @@ if (is_page('sa-better-food-in-neighborhoods')) {
 			</tr>
 			<tr>
 				<td>
-				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/BetterFoodintheNeighborhood-ResearchReview.pdf"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Issue-Brief.pdf"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/FN_brief2.png" width="60" height="90" /></a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Infographic-875.jpg"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/FN_info.png" width="60" height="90" /></a>
+				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/BetterFoodintheNeighborhood-ResearchReview.pdf"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Issue-Brief.pdf"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="/wp-content/uploads/2013/08/FN_brief2.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Infographic-875.jpg"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="/wp-content/uploads/2013/08/FN_info.png" width="60" height="90" /></a>
 				</td>
 			</tr>
         		<tr>
 				<td>
-				   &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/BetterFoodintheNeighborhood-ResearchReview.pdf">Research Review</a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp;<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Issue-Brief.pdf">Issue Brief</a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Infographic-875.jpg">Infographic</a>
+				   &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/BetterFoodintheNeighborhood-ResearchReview.pdf">Research Review</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Issue-Brief.pdf">Issue Brief</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Infographic-875.jpg">Infographic</a>
 				</td>
 			</tr>
 
@@ -1695,7 +1695,7 @@ if (is_page('sa-healthier-marketing')) {
     <tbody>
     <tr>
 	<td colspan="2" style="text-align:left;">
-		<a href="http://dev.communitycommons.org/wp-content/uploads/2013/04/Healthier-Marketing-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="http://dev.communitycommons.org/wp-content/uploads/2013/04/Healthier-Marketing-topic-header.jpg" style="height:125px;" /></a>
+		<a href="/wp-content/uploads/2013/04/Healthier-Marketing-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="/wp-content/uploads/2013/04/Healthier-Marketing-topic-header.jpg" style="height:125px;" /></a>
 
 	</td>
     </tr>
@@ -1716,16 +1716,16 @@ if (is_page('sa-healthier-marketing')) {
 			</tr>
 			<tr>
 				<td>
-				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-Marketing-Research-Review.pdf"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-Marketing-Issue-Brief.pdf"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/HM_brief2.png" width="60" height="90" /></a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-Marketing-Infographic-875.jpg"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/HM_info2.png" width="60" height="90" /></a>
+				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Healthier-Marketing-Research-Review.pdf"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Healthier-Marketing-Issue-Brief.pdf"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="/wp-content/uploads/2013/08/HM_brief2.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Healthier-Marketing-Infographic-875.jpg"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="/wp-content/uploads/2013/08/HM_info2.png" width="60" height="90" /></a>
 				</td>
 			</tr>
         		<tr>
 				<td>
-				   &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-Marketing-Research-Review.pdf">Research Review</a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp;<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-Marketing-Issue-Brief.pdf">Issue Brief</a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-Marketing-Infographic-875.jpg">Infographic</a>
+				   &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Healthier-Marketing-Research-Review.pdf">Research Review</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Healthier-Marketing-Issue-Brief.pdf">Issue Brief</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="/wp-content/uploads/2013/08/Healthier-Marketing-Infographic-875.jpg">Infographic</a>
 				</td>
 			</tr>
 
@@ -1752,7 +1752,7 @@ if (is_page('sa-healthier-school-snacks')) {
     <tbody>
     <tr>
 	<td colspan="2" style="text-align:left;">
-		<a href="http://dev.communitycommons.org/wp-content/uploads/2013/04/Healthier-School-Snacks-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="http://dev.communitycommons.org/wp-content/uploads/2013/04/Healthier-School-Snacks-topic-header.jpg" style="height:125px;" /></a>
+		<a href="/wp-content/uploads/2013/04/Healthier-School-Snacks-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="/wp-content/uploads/2013/04/Healthier-School-Snacks-topic-header.jpg" style="height:125px;" /></a>
 
 	</td>
     </tr>
@@ -1773,16 +1773,16 @@ if (is_page('sa-healthier-school-snacks')) {
 			</tr>
 			<tr>
 				<td>
-				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-School-Snacks-Research-Review.pdf"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-School-Snacks-Issue-Brief.pdf"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/SS_brief2.png" width="60" height="90" /></a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-School-Snacks-Infographic-875.jpg"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/SS_info.png" width="60" height="90" /></a>
+				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Research-Review.pdf"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Issue-Brief.pdf"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="/wp-content/uploads/2013/08/SS_brief2.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Infographic-875.jpg"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="/wp-content/uploads/2013/08/SS_info.png" width="60" height="90" /></a>
 				</td>
 			</tr>
         		<tr>
 				<td>
-				   &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-School-Snacks-Research-Review.pdf">Research Review</a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp;<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-School-Snacks-Issue-Brief.pdf">Issue Brief</a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Healthier-School-Snacks-Infographic-875.jpg">Infographic</a>
+				   &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Research-Review.pdf">Research Review</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Issue-Brief.pdf">Issue Brief</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Infographic-875.jpg">Infographic</a>
 				</td>
 			</tr>
 
@@ -1809,7 +1809,7 @@ if (is_page('sa-sugary-drinks')) {
     <tbody>
     <tr>
 	<td colspan="2" style="text-align:left;">
-		<a href="http://dev.communitycommons.org/wp-content/uploads/2013/04/Sugary-drinks-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="http://dev.communitycommons.org/wp-content/uploads/2013/04/Sugary-drinks-topic-header.jpg" style="height:125px;" /></a>
+		<a href="/wp-content/uploads/2013/04/Sugary-drinks-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="/wp-content/uploads/2013/04/Sugary-drinks-topic-header.jpg" style="height:125px;" /></a>
 
 	</td>
     </tr>
@@ -1830,9 +1830,9 @@ if (is_page('sa-sugary-drinks')) {
 			</tr>
 			<tr>
 				<td>
-				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_brief.png"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_brief.png" width="60" height="90" /></a>
-                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_info.png"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/AP_info.png" width="60" height="90" /></a>
+				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Research_review.png"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/AP_brief.png"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="/wp-content/uploads/2013/08/AP_brief.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/AP_info.png"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="/wp-content/uploads/2013/08/AP_info.png" width="60" height="90" /></a>
 				</td>
 			</tr>
         		<tr>

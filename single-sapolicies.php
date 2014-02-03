@@ -74,7 +74,7 @@
 			            <div class="related-what-can-you-do clear">
 			                <h3 class="screamer sablue">What Can You Do?</h3>
 			                  	
-		                  	<a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/" class="column1of3 aligncenter">
+		                  	<a href="/salud-america/share-your-own-stories/" class="column1of3 aligncenter">
 			                  	<img alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png" width="100px"/><br />Start your own change!
 		                  	</a>
 		                  	
@@ -84,7 +84,7 @@
                                     </span>
                                     <!--                        	</a>-->
 
-		                  	<a href="http://dev.communitycommons.org/salud-america/what-is-change/" class="column1of3 aligncenter">
+		                  	<a href="/salud-america/what-is-change/" class="column1of3 aligncenter">
 	                            <img alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png" width="100px"/><br />See how a change is made
                         	</a>
 	                    </div>
@@ -152,15 +152,15 @@
                 <!-- <div class="related-items-sidebar">
                 <h3 class="aligncenter screamer sablue">What Can</br> You Do?</h3>
                   <table>
-                    <tr><td><a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/">
+                    <tr><td><a href="/salud-america/share-your-own-stories/">
                             <img class=" wp-image-12449 aligncenter" alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png" width="60" height="60" /></a></td>
-                        <td><h4><a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/">Start your own change!</a></td></h4></tr>
+                        <td><h4><a href="/salud-america/share-your-own-stories/">Start your own change!</a></td></h4></tr>
                   <tr><td><a href="http://##">
                             <img class=" wp-image-12449 aligncenter" alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/AddChange_icon.png" width="60" height="60" align='left' /></a></td>
                         <td><h4><a href="http://##">Connect with members in your area!</a></td></h4></tr>
-                  <tr><td><a href="http://dev.communitycommons.org/salud-america/what-is-change/">
+                  <tr><td><a href="/salud-america/what-is-change/">
                             <img class=" wp-image-12449 aligncenter" alt="Health" src="/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png" width="60" height="60" /></td>
-                        <td><h4><a href="http://dev.communitycommons.org/salud-america/what-is-change/">See how a change is made</a></td></h4></tr>
+                        <td><h4><a href="/salud-america/what-is-change/">See how a change is made</a></td></h4></tr>
                   </table>
                
                   </div> -->                            
