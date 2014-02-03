@@ -663,12 +663,10 @@ div#signup-avatar img {
   margin-top: 5px;
   outline: none;
 }
-.standard-form #basic-details-section,
-.standard-form #blog-details-section,
-.standard-form #profile-details-section {
+.register-section {
   float: none;
   width: 100%;
-  margin-bottom: 4em;
+  margin-bottom: 3em;
 }
 form#signup_form .field-visibility-settings fieldset {
   margin-top: 1em;
@@ -4063,9 +4061,7 @@ div#item-header .highlight,
 div#item-header .activity {
   margin-left: 2em;
 }
-.standard-form #basic-details-section,
-.standard-form #blog-details-section,
-.standard-form #profile-details-section {
+.register-section {
   float: left;
   width: 48%;
 }
