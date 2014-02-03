@@ -192,7 +192,7 @@ get_header(); ?>
 						<h4 style="margin-top:0;">Get help to Make a Change</h4>
 	                    <a href='/salud-america/saresourcespage/'><img src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/Resoucesmakechange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;"></a>
 	                    <p>Use research, toolkits, and other elements to learn about healthy change.<br />
-	                    	<a href="/salud-america/saresourcespage/" class="button" title="Learn about healthy change.">Learn more</a></p>
+	                    	<a href="/saresources/" class="button" title="Learn about healthy change.">Learn more</a></p>
 					</div>
 				</div>
 				
