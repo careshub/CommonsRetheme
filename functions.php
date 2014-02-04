@@ -654,6 +654,9 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'wotn';
         $classes[] = 'full-width';
       }
+    if ( is_page( 'ncr' ) ) {
+        $classes[] = 'full-width';
+      }
 
   return $classes;
 }
