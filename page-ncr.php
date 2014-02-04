@@ -6,15 +6,26 @@ get_header(); ?>
 		<div id="content" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', 'page' ); ?>
-				<?php //comments_template( '', true ); ?>
+				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+					<header id="screamer" class="entry-header screamer">
+						<h1 class="entry-title"><?php the_title(); ?></h1>
+					</header><!-- .entry-header -->
+					<div class="entry-content">
+						<?php the_content( __( 'Read more', 'twentytwelve' ) ); ?>
+					</div><!-- .entry-content -->
+
+					<?php //get_template_part( 'content', 'page' ); ?>
+					<?php //comments_template( '', true ); ?>
+				</article><!-- #post -->
 			<?php endwhile; // end of the loop. ?>
+
 			<!-- NCR Authors on the Commons -->
-			<div id="tool-group-authors" class="tool-group accent-blue">
+			<div id="tool-group-authors" class="tool-group accent-yellow">
 				<header class="entry-header clear">
 					<h1 class="entry-title">NCR Authors on the Commons</h1>
 					<div id="tool-group-header-videos" class="tool-group-header clear">
-						<img src="http://www.communitycommons.org/wp-content/uploads/2014/02/NCR-Liberty-bell-576x288.jpg" class="attachment-full" alt="Photo of the Liberty Bell">
+						<img src="http://www.communitycommons.org/wp-content/uploads/2014/02/NCR-Liberty-bell-600x200.jpg" class="attachment-full" alt="Photo of the Liberty Bell">
 						<p class="tool-group-description">Connect with movement leaders.</p>
 					</div>
 				</header>
@@ -41,7 +52,7 @@ get_header(); ?>
 				<header class="entry-header clear">
 					<h1 class="entry-title">NCR Special Issue Part 1</h1>
 					<div id="tool-group-header-videos" class="tool-group-header clear">
-						<img src="http://www.communitycommons.org/wp-content/uploads/2014/02/NCR-tyler-576x323.jpg" class="attachment-full" alt="Photo of Tyler Norris">
+						<img src="http://www.communitycommons.org/wp-content/uploads/2014/02/NCR-tyler-600x200.jpg" class="attachment-full" alt="Photo of Tyler Norris">
 						<p class="tool-group-description">Explore NCR’s Special Issue</p>
 					</div>
 				</header>
@@ -53,7 +64,7 @@ get_header(); ?>
 					</div>
 					<div class="tool-group-tool third-block guest-voices">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://www.communitycommons.org/ncr-table-of-contents-with-synopses/" title="Table of Contents">Table of Contents</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/ncr-table-of-contents-with-synopses/" title="Table of Contents">Table of Contents with Synopses</a></h3>
 						</header>
 					</div>
 					<div class="tool-group-tool third-block feature-stories">
@@ -68,7 +79,7 @@ get_header(); ?>
 				<header class="entry-header clear">
 					<h1 class="entry-title">NCR: All-America City Award</h1>
 					<div id="tool-group-header-aac" class="tool-group-header clear">
-						<img src="http://www.communitycommons.org/wp-content/uploads/2014/02/NCR-AAC-logo-576x219.jpg" class="attachment-full" alt="National Civic Review All-America City logo">
+						<img src="http://www.communitycommons.org/wp-content/uploads/2014/02/NCR-All-America-City-600x200.jpg" class="attachment-full" alt="National Civic Review All-America City logo">
 						<p class="tool-group-description">Become an All-America City.</p>
 					</div>
 				</header>
