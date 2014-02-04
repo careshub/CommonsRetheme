@@ -14,7 +14,7 @@ get_header(); ?>
 				<header class="entry-header clear">
 					<h1 class="entry-title">NCR Authors on the Commons</h1>
 					<div id="tool-group-header-videos" class="tool-group-header clear">
-						<img src="http://www.communitycommons.org/wp-content/uploads/2014/02/NCR-tyler-576x323.jpg" class="attachment-full" alt="Photo of Tyler Norris">
+						<img src="http://www.communitycommons.org/wp-content/uploads/2014/02/NCR-Liberty-bell-576x288.jpg" class="attachment-full" alt="Photo of the Liberty Bell">
 						<p class="tool-group-description">Connect with movement leaders.</p>
 					</div>
 				</header>
@@ -41,7 +41,7 @@ get_header(); ?>
 				<header class="entry-header clear">
 					<h1 class="entry-title">NCR Special Issue Part 1</h1>
 					<div id="tool-group-header-videos" class="tool-group-header clear">
-						<img src="http://www.communitycommons.org/wp-content/uploads/2014/02/NCR-Liberty-bell-576x288.jpg" class="attachment-full" alt="Photo of the Liberty Bell">
+						<img src="http://www.communitycommons.org/wp-content/uploads/2014/02/NCR-tyler-576x323.jpg" class="attachment-full" alt="Photo of Tyler Norris">
 						<p class="tool-group-description">Explore NCR’s Special Issue</p>
 					</div>
 				</header>
