@@ -656,6 +656,7 @@ function cc_custom_body_class( $classes ) {
       }
     if ( is_page( 'ncr' ) ) {
         $classes[] = 'full-width';
+        $classes[] = 'ncr';
       }
 
   return $classes;

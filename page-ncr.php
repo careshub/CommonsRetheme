@@ -18,7 +18,7 @@ get_header(); ?>
 						<p class="tool-group-description">Connect with movement leaders.</p>
 					</div>
 				</header>
-		  	    <div class="content-row">
+		  	    <div class="content-row clear">
 					<div class="tool-group-tool third-block authors">
 						<header class="entry-header clear">
 							<h3 class="entry-title"><a href="http://www.communitycommons.org/2014/01/national-civic-review/" title="Welcome from Monte Roulier">Welcome by Monte Roulier</a></h3>
@@ -34,7 +34,7 @@ get_header(); ?>
 							<h3 class="entry-title"><a href="http://www.communitycommons.org/ncr-features-stories/" title="Featured Stories">Feature Stories</a></h3>
 						</header>
 					</div>			
-				</div><!-- End .content-row -->
+				</div><!-- End .content-row clear -->
 		    </div> <!-- .tool-group -->
 		    <!-- NCR Special Issue Part 1 -->
 			<div id="tool-group-ncr-special-issue" class="tool-group accent-red">
@@ -45,7 +45,7 @@ get_header(); ?>
 						<p class="tool-group-description">Explore NCR’s Special Issue</p>
 					</div>
 				</header>
-		  	    <div class="content-row">
+		  	    <div class="content-row clear">
 					<div class="tool-group-tool third-block authors">
 						<header class="entry-header clear">
 							<h3 class="entry-title"><a href="http://onlinelibrary.wiley.com/doi/10.1002/ncr.21142/full" title="Introduction by Tyler Norris">Introduction by Tyler Norris</a></h3>
@@ -61,7 +61,7 @@ get_header(); ?>
 							<h3 class="entry-title"><a href="http://onlinelibrary.wiley.com/doi/10.1002/ncr.v102.4/issuetoc" title="Link to the National Civic Review's site">National Civic Review Online Publication</a></h3>
 						</header>
 					</div>			
-				</div><!-- End .content-row -->
+				</div><!-- End .content-row clear -->
 			</div>
 			<!-- NCL: All American City Award -->
 			<div id="tool-group-aac-award" class="tool-group accent-green">
@@ -72,7 +72,7 @@ get_header(); ?>
 						<p class="tool-group-description">Become an All-America City.</p>
 					</div>
 				</header>
-		  	    <div class="content-row">
+		  	    <div class="content-row clear">
 					<div class="tool-group-tool third-block authors">
 						<header class="entry-header clear">
 							<h3 class="entry-title"><a href="http://www.ncl.org/index.php?option=com_content&view=article&id=102&Itemid=179" title="Background Information">Background Information</a></h3>
@@ -88,7 +88,7 @@ get_header(); ?>
 							<h3 class="entry-title"><a href="http://www.ncl.org/index.php?option=com_jforms&view=form&id=2&Itemid=196" title="All-America City Application">Application</a></h3>
 						</header>
 					</div>			
-				</div><!-- End .content-row -->
+				</div><!-- End .content-row clear -->
 		    </div> <!-- .tool-group -->
  		</div><!-- #content -->
 	</div><!-- #primary -->
