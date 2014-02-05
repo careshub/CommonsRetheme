@@ -51,7 +51,7 @@ get_header(); ?>
 							<h3 class="entry-title"><a href="http://www.communitycommons.org/ncr-features-stories/" title="Featured Stories">Feature Stories</a></h3>
 						</header>
 						<div class="entry-content">
-							<p>Discover what the Healthy Communities Movements looks like around the country</p>
+							<p>Discover what the Healthy Communities Movement looks like around the country</p>
 						</div>
 					</div>			
 				</div><!-- End .content-row clear -->

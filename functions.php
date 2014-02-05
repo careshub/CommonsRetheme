@@ -1268,3 +1268,28 @@ function access_check_shortcode( $attr, $content = null ) {
   return '';
 }
 
+// Salud America isn't a group, but they need to play one on TV. So we're manually adding them to the top of the directory list.
+add_action( 'bp_before_groups_loop', 'stick_sa_to_the_top_of_the_directory' );
+function stick_sa_to_the_top_of_the_directory(){
+  
+  if ( is_page( 'groups' ) || ( bp_is_user_groups() && get_user_meta( bp_displayed_user_id(), 'salud_interest_group', true) ) ) :
+  ?>
+    <ul class="item-list compact" id="groups-list-featured">
+      <li id="featured-group-salud-america">
+        <h5>Featured Group</h5>
+        <div class="item-avatar">
+          <a href="/salud-america/" title="Link to Salud America! space"><img width="50" height="50" class="avatar no-box" alt="avatar" src="/wp-content/themes/CommonsRetheme/img/salud_america/SA-logox50.png"></a>
+        </div>
+
+        <div class="item">
+          <div class="item-title"><a href="/salud-america/" title="Link to Salud America! space">Salud America!</a></div>
+          <div class="item-desc">
+            <p>Working together to end Latino childhood obesity.</p>
+          </div>   
+        </div>
+        <div class="clear"></div>
+      </li>
+    </ul>
+  <?php
+  endif;
+}
