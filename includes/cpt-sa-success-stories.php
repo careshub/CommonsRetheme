@@ -460,7 +460,7 @@ function sa_heroes_video_post_archive( $query ) {
 					    );
 		$query->set( 'meta_query', $meta_query );
 		// Only load 6 at a time, since these pages are ridiculously huge.
-		$query->set( 'posts_per_page', 16 );
+		$query->set( 'posts_per_page', 12 );
     }
 }
 
