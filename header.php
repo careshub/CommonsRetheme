@@ -33,6 +33,8 @@
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <![endif]-->
 <?php wp_head(); ?>
+<!-- Necessary for YouTube verification for Salud America content -->
+<meta name="google-site-verification" content="uCaNxt_VDB48fPzYQTO6RCNiYbtaX8FiBW205jq8LwE" />
 </head>
 
 <body <?php body_class('js'); ?>>
