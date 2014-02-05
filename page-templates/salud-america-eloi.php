@@ -383,9 +383,13 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
         <h3 class="screamer sablue">What is Change?</h2>';
 
          //Display the page content before making the custom loop
-          while ( have_posts() ) : the_post();
-            get_template_part( 'content', 'page-notitle' );
-            // comments_template( '', true );              
+          while ( have_posts() ) : the_post(); ?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class('no-border'); ?>>
+					<div class="entry-content">
+						<?php the_content(); ?>
+					</div><!-- .entry-content -->
+				</article><!-- #post -->            
+			<?php // comments_template( '', true );              
           endwhile; // end of the loop.     
 ?>      
     
