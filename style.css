@@ -3551,6 +3551,8 @@ body.home-page #primary .quarter-block h3 {
   #primary #content .screamer {
     font-size: 19.599999999999998px;
     font-size: 1.4rem;
+  }
+  #primary #content .screamer.spacious {
     padding: 0.8em 1em;
   }
   ul.item-list div.item {
@@ -3610,10 +3612,6 @@ body.home-page #primary .quarter-block h3 {
   }
   .half-block:nth-of-type(odd) {
     clear: left;
-  }
-  .ncr #primary #content .tool-group .tool-group-description {
-    font-size: 16.8px;
-    font-size: 1.2rem;
   }
   .salud-america .salud-header h1,
   .salud-america .salud-header h3 {
