@@ -68,12 +68,12 @@ get_header(); ?>
 					}
 
 
-			    	// echo 'doc title: ' . $doc_title . PHP_EOL;
-			    	// echo 'doc content: ' . $doc_content . PHP_EOL;
-			     //    echo 'email: '. $user_email . PHP_EOL;
-			     //    echo 'user ID: ' . $user_id  . PHP_EOL;
-			     //    echo 'doc type: ' . $doc_type . PHP_EOL;
-			     //    echo 'group ID: ' . $associated_group_id . PHP_EOL;
+			    	echo 'doc title: ' . $doc_title . PHP_EOL;
+			    	echo 'doc content: ' . $doc_content . PHP_EOL;
+			        echo 'email: '. $user_email . PHP_EOL;
+			        echo 'user ID: ' . $user_id  . PHP_EOL;
+			        echo 'doc type: ' . $doc_type . PHP_EOL;
+			        echo 'group ID: ' . $associated_group_id . PHP_EOL;
 
 			        //The basic post save:
 			        $args = array(
@@ -100,10 +100,10 @@ get_header(); ?>
  							$source_url = 'http://www.cim-network.org/CIMcontent/' . $file_sitecore_partner . '/' . $file_sitecore_name_url;
 
  						// 	echo PHP_EOL . 'sitecore_name: ' . $file_sitecore_name;
-							// echo PHP_EOL . 'source_url: ' . $source_url;
+							echo PHP_EOL . 'source_url: ' . $source_url;
 							$exists = remoteFileExists( $source_url);
 							if ($exists) {
-							    // echo PHP_EOL . 'file exists' . PHP_EOL;
+							    echo PHP_EOL . 'file exists' . PHP_EOL;
 							 //    $tmp = download_url( $source_url );
 							 //    print_r($tmp);
 							 //    //BASENAME IS BROKEN WITH THIS SCHEME!! DO SOMETHING ELSE
@@ -111,7 +111,7 @@ get_header(); ?>
 								// echo "filename: " . $filename . PHP_EOL;
 								// echo "filename redux: " . sanitize_title( $file_sitecore_name ) . PHP_EOL;
 
-								// $mime = wp_check_filetype( basename($source_url) );
+								$mime = wp_check_filetype( basename($source_url) );
 								// print_r($mime);
 							} else {
 							    echo PHP_EOL . 'file does not exist: ' . $old_content_id;

@@ -2018,7 +2018,7 @@ h5 {
   clear: left;
   margin-bottom: 0;
 }
-#primary #content .screamer {
+#content .screamer {
   background-color: #008eaa;
   margin-bottom: 1.4em;
   font-size: 15.400000000000002px;
@@ -2029,31 +2029,31 @@ h5 {
   line-height: 1.6;
   padding: 0.3em 0.5em;
 }
-#primary #content .screamer.saorange {
+#content .screamer.saorange {
   background-color: #f48120;
 }
-#primary #content .screamer.sapurple {
+#content .screamer.sapurple {
   background-color: #92278f;
 }
-#primary #content .screamer.sagreen {
+#content .screamer.sagreen {
   background-color: #60b035;
 }
-#primary #content .screamer.sayellow {
+#content .screamer.sayellow {
   background-color: #fdb913;
 }
-#primary #content .screamer.sablue {
+#content .screamer.sablue {
   background-color: #0088cf;
 }
-#primary #content .screamer.sapink {
+#content .screamer.sapink {
   background-color: #eb008b;
 }
-#primary #content .screamer.ccgreen {
+#content .screamer.ccgreen {
   background-color: #869b3c;
 }
-#primary #content .screamer.ccred {
+#content .screamer.ccred {
   background-color: #df5927;
 }
-#primary #content .screamer.ccyellow {
+#content .screamer.ccyellow {
   background-color: #f7b718;
 }
 hr {
@@ -2407,6 +2407,21 @@ ul.item-list li .share-buttons-below li {
   padding-bottom: 1em;
   margin-bottom: 1em;
 }
+.salud-america .site-content h2 {
+  color: #ef4036;
+  font-size: 28px;
+  font-size: 2rem;
+}
+.salud-america .site-content h3 {
+  color: #ef4036;
+  font-size: 22.400000000000002px;
+  font-size: 1.6rem;
+}
+.salud-america .site-content h4 {
+  color: #ef4036;
+  font-size: 16.8px;
+  font-size: 1.2rem;
+}
 .salud-america .salud-header {
   width: 100%;
   position: relative;
@@ -2480,21 +2495,6 @@ ul.item-list li .share-buttons-below li {
   color: #60b035;
   font-size: 28px;
   font-size: 2rem;
-}
-.salud-america #content h2 {
-  color: #ef4036;
-  font-size: 28px;
-  font-size: 2rem;
-}
-.salud-america #content h3 {
-  color: #ef4036;
-  font-size: 22.400000000000002px;
-  font-size: 1.6rem;
-}
-.salud-america #content h4 {
-  color: #ef4036;
-  font-size: 16.8px;
-  font-size: 1.2rem;
 }
 .salud-america #content .browse-topics .salud-topic h4 {
   clear: none;
@@ -3544,15 +3544,15 @@ body.home-page #primary .quarter-block h3 {
   .widget-area {
     margin-top: 2em;
   }
-  #primary #content #screamer h1 {
+  #content #screamer h1 {
     font-size: 16.8px;
     font-size: 1.2rem;
   }
-  #primary #content .screamer {
+  #content .screamer {
     font-size: 19.599999999999998px;
     font-size: 1.4rem;
   }
-  #primary #content .screamer.spacious {
+  #content .screamer.spacious {
     padding: 0.8em 1em;
   }
   ul.item-list div.item {
