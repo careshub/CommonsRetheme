@@ -129,7 +129,7 @@
         		<?php } ?>
 					<?php notifications_counter(); ?>
 					<li>
-						<a href="https://ip3.zendesk.com/account/dropboxes/20111391">Help</a>
+						<a href="/training-resources/">Support</a>
 					</li>
 				</ul>
 			</div><!-- End nav-container -->
