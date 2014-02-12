@@ -13,7 +13,7 @@ get_header(); ?>
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
 				<?php the_post(); ?>
-				<h1 class="screamer spacious clear"><?php the_content(); ?></h1>
+				<h1 class="screamer spacious clear"><?php echo apply_filters( 'the_title', get_the_content() ); ?></h1>
 
 				<?php //get_template_part( 'content', 'page' ); ?>
 				

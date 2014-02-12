@@ -12,7 +12,7 @@ get_header(); ?>
 
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
-			<h1 class="screamer spacious clear"><?php echo get_bloginfo ( 'description' );  ?></h1>
+			<h1 class="screamer spacious clear"><?php echo get_bloginfo( 'description', 'display' );  ?></h1>
 
 <?php
 //Set up an array to contain the id of posts we've already used.
