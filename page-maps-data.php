@@ -13,9 +13,7 @@ get_header(); ?>
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
 				<?php the_post(); ?>
-				<div id="screamer" class="clear">
-					<h1><?php the_content(); ?></h1>
-				</div>
+				<h1 class="screamer clear"><?php the_content(); ?></h1>
 
 				<?php //get_template_part( 'content', 'page' ); ?>
 				
