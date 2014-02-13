@@ -2047,16 +2047,16 @@ h5 {
 #content .screamer.sapink {
   background-color: #eb008b;
 }
-#content .screamer.ca4blue {
+#content .screamer.background-ca4blue {
   background-color: #0057a7;
 }
-#content .screamer.ca4red {
+#content .screamer.background-ca4red {
   background-color: #f15a22;
 }
-#content .screamer.ca4orange {
+#content .screamer.background-ca4orange {
   background-color: #f58233;
 }
-#content .screamer.ca4gold {
+#content .screamer.background-ca4gold {
   background-color: #ffc222;
 }
 #content .screamer.ccgreen {
@@ -3536,6 +3536,18 @@ body.home-page #primary .quarter-block h3 {
 }
 .clear-none {
   clear: none;
+}
+.background-ca4blue {
+  background-color: #0057a7;
+}
+.background-ca4red {
+  background-color: #f15a22;
+}
+.background-ca4orange {
+  background-color: #f58233;
+}
+.background-ca4gold {
+  background-color: #ffc222;
 }
 @media screen and (min-width: 400px) {
   .primary-navigation .brand a {
