@@ -69,7 +69,7 @@ img.no-box {
 }
 #item-body form#whats-new-form {
   border-bottom: 1px solid #ddd;
-  margin: 20px 0 10px;
+  margin: 10px 0;
   padding-bottom: 20px;
 }
 .home-page form#whats-new-form {
@@ -178,7 +178,6 @@ body.activity-permalink li.mini .activity-meta {
   margin-top: 4px;
 }
 .activity-list li .activity-inreplyto {
-  background: url(../../plugins/buddypress/bp-themes/bp-default/_inc/images/replyto_arrow.gif ) 7px 0 no-repeat;
   color: #888;
   font-size: 11.200000000000001px;
   font-size: 0.8rem;
@@ -217,11 +216,10 @@ body.activity-permalink .activity-list li .activity-content {
   padding: 15px;
 }
 body.activity-permalink .activity-list li .activity-header > p {
-  background: url(../../plugins/buddypress/bp-themes/bp-default/_inc/images/activity_arrow.gif ) top left no-repeat;
   height: 35px;
   margin-bottom: 0;
   margin-left: -35px;
-  padding: 5px 0 0 35px;
+  padding: 5px 0 0 0px;
 }
 .buddypress #content #item-body .activity-list .activity-content .activity-header,
 .buddypress #content #item-body .activity-list .activity-content .comment-header {
@@ -452,11 +450,6 @@ div.activity-comments div#message {
   margin-top: 15px;
   margin-bottom: 0;
 }
-div.activity-comments form.loading {
-  background-image: url(../buddypress/bp-themes/bp-default/_inc/images/ajax-loader.gif );
-  background-position: 2% 95%;
-  background-repeat: no-repeat;
-}
 div.activity-comments form .ac-textarea {
   background: #fff;
   border: 1px inset #ccc;
@@ -513,9 +506,16 @@ div.activity-comments form div.ac-reply-content {
 form.dir-form {
   margin-bottom: 2em;
 }
+form.dir-form .item-list-tabs {
+  padding-bottom: 0;
+}
+form.dir-form .item-list-tabs ul li.last {
+  margin-top: 0;
+  margin-bottom: .6em;
+}
 div.dir-search {
   float: right;
-  margin: -39px 0 0 0;
+  margin-bottom: -1.7em;
 }
 div.dir-search input[type=text] {
   font-size: 11.9px;
@@ -1022,12 +1022,6 @@ table.forum tr.sticky td {
   border-top: 1px solid #ffe8c4;
   border-bottom: 1px solid #ffe8c4;
 }
-table.forum tr.closed td.td-title {
-  background-image: url(../buddypress/bp-themes/bp-default/_inc/images/closed.png );
-  background-position: 15px 50%;
-  background-repeat: no-repeat;
-  padding-left: 35px;
-}
 table.forum td p.topic-text {
   color: #888;
   font-size: 13px;
@@ -1108,9 +1102,6 @@ div#message p {
   text-decoration: none;
   background: #fbdf98;
 }
-div#item-header {
-  overflow: hidden;
-}
 div#item-header h2 {
   font-size: 24px;
   line-height: 120%;
@@ -1178,6 +1169,10 @@ div#item-header div#item-actions h3 {
 div#item-header ul {
   margin-bottom: 15px;
   overflow: hidden;
+  list-style: none;
+}
+div#item-header ul li {
+  margin: 0;
 }
 div#item-header ul img.avatar,
 div#item-header ul.avatars img.avatar {
@@ -1260,16 +1255,11 @@ div.item-list-tabs ul li a {
   height: 20px;
 }
 div.item-list-tabs form {
-  margin-top: 1em;
   float: right;
-}
-div.item-list-tabs #activity-filter-select {
-  clear: left;
-  margin: 1em 0 0 .5em;
 }
 div.item-list-tabs ul li.last {
   float: right;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 div.item-list-tabs ul li.last select {
   max-width: 175px;
@@ -1305,12 +1295,6 @@ div.item-list-tabs ul li.selected a span,
 div.item-list-tabs ul li.current a span {
   background-color: #555;
 }
-ul li.loading a {
-  background-image: url(../buddypress/bp-themes/bp-default/_inc/images/ajax-loader.gif );
-  background-position: 92% 50%;
-  background-repeat: no-repeat;
-  padding-right: 30px !important;
-}
 div#item-nav ul li.loading a {
   background-position: 88% 50%;
 }
@@ -1321,10 +1305,6 @@ div.item-list-tabs {
   background: #ffffff;
   overflow: hidden;
   /*TODO clearfix?*/
-}
-div.item-list-tabs ul li.feed a {
-  background: url(../buddypress/bp-themes/bp-default/_inc/images/rss.png ) center left no-repeat;
-  padding-left: 20px;
 }
 #admins-list li {
   overflow: auto;
@@ -1396,11 +1376,11 @@ div#message-thread div.message-options {
 /*--------------------------------------------------------------
 10 - Pagination
 --------------------------------------------------------------*/
-.padder div.pagination {
+div.pagination {
   border: none;
   color: #646464;
   height: 19px;
-  padding: 6px 20px;
+  padding: 6px 0;
   position: relative;
   font-size: 12.6px;
   font-size: 0.9rem;
@@ -1409,27 +1389,27 @@ div#message-thread div.message-options {
 #pag-top {
   border-bottom: 1px solid #dedede;
 }
-.padder div.pagination .pag-count {
+div.pagination .pag-count {
   float: left;
 }
-.padder div.pagination .pagination-links {
+div.pagination .pagination-links {
   float: right;
 }
-.padder div.pagination .pagination-links span,
-.padder div.pagination .pagination-links a {
+div.pagination .pagination-links span,
+div.pagination .pagination-links a {
   font-size: 12px;
   padding: 0 5px;
 }
-.padder div.pagination .pagination-links a:hover {
+div.pagination .pagination-links a:hover {
   font-weight: bold;
 }
-.padder div#pag-bottom {
+div#pag-bottom {
   margin-top: -1px;
 }
-.padder #nav-above {
+#nav-above {
   display: none;
 }
-.padder .paged #nav-above {
+.paged #nav-above {
   display: block;
 }
 /***
@@ -1450,6 +1430,7 @@ ul.item-list {
 ul.item-list li {
   position: relative;
   clear: left;
+  margin-left: 0;
 }
 ul.item-list div.item-avatar {
   float: left;
@@ -1474,7 +1455,6 @@ ul.item-list div.action {
  * Content Object Headers
  */
 div#item-header {
-  margin-top: 2em;
   padding-bottom: 10px;
   overflow: hidden;
   /*TODO clearfix*/
@@ -1524,9 +1504,9 @@ form#whats-new-form {
 form#whats-new-form #whats-new-avatar {
   float: left;
 }
-form#whats-new-form h5 {
+form#whats-new-form .activity-greeting {
   clear: none;
-  margin-left: 76px;
+  margin-left: 76px !important;
 }
 form#whats-new-form #whats-new-content {
   margin-left: 54px;
@@ -1713,14 +1693,6 @@ form.standard-form textarea {
   background-color: #ffffff;
 }
 /* Two rules to ensure browser recognition */
-.padder {
-  margin: .5em 0;
-  float: none;
-  width: 100%;
-}
-.full-width .padder {
-  width: 100%;
-}
 .buddypress #secondary,
 .salud-america #secondary,
 .buddypress #tertiary,
@@ -1739,20 +1711,20 @@ form.standard-form textarea {
   margin-top: 2em;
   border-top: 1px solid #aaaaaa;
 }
-.sidebar-activity-tabs {
+#secondary .sidebar-activity-tabs {
   padding-bottom: 1em;
   border-bottom: 1px solid #dedede;
 }
-.sidebar-activity-tabs ul li {
+#secondary .sidebar-activity-tabs ul li {
   display: inline-block;
   margin: 10px 10px 0 0;
 }
-.sidebar-activity-tabs ul li.selected,
-.sidebar-activity-tabs ul li.current-menu-item {
+#secondary .sidebar-activity-tabs ul li.selected,
+#secondary .sidebar-activity-tabs ul li.current-menu-item {
   font-weight: 700;
 }
-.sidebar-activity-tabs ul li.selected a,
-.sidebar-activity-tabs ul li.current-menu-item a {
+#secondary .sidebar-activity-tabs ul li.selected a,
+#secondary .sidebar-activity-tabs ul li.current-menu-item a {
   color: #454545;
   background: #fff;
   /* Old browsers */
@@ -1771,7 +1743,7 @@ form.standard-form textarea {
   background: linear-gradient(top, #ffffff 0%, #85dff1 100%);
   /* W3C */
 }
-.sidebar-activity-tabs ul li a {
+#secondary .sidebar-activity-tabs ul li a {
   display: block;
   line-height: 1.6;
   padding: .5em;
@@ -1802,7 +1774,7 @@ form.standard-form textarea {
   text-align: center;
   text-decoration: none;
 }
-.sidebar-activity-tabs ul li span {
+#secondary .sidebar-activity-tabs ul li span {
   font-weight: 400;
   display: inline;
   background-color: #aaaaaa;
@@ -1813,7 +1785,7 @@ form.standard-form textarea {
   padding: 0 6px;
   margin: 0 8px;
 }
-.sidebar-activity-tabs ul li span.alert {
+#secondary .sidebar-activity-tabs ul li span.alert {
   background-color: #00b0d3;
   color: #ffffff;
 }
@@ -1878,7 +1850,7 @@ footer[role="contentinfo"] a {
 .search-result .post {
   margin: 0 0 2em;
 }
-.padder .search-result div.pagination {
+.search-result div.pagination {
   margin-top: 0 !important;
 }
 .jump-menu {
@@ -3241,6 +3213,9 @@ body.home-page #primary .quarter-block h3 {
   margin-bottom: 0;
   width: 89%;
 }
+.buddypress article {
+  border-bottom: none;
+}
 #jumplinks h3 {
   display: inline;
   margin-right: 1em;
@@ -3872,15 +3847,21 @@ body.home-page #primary .quarter-block h3 {
     width: auto;
     float: right;
   }
-  .buddypress .site-content {
-    width: 100%;
-  }
   .buddypress #content {
     width: 100%;
   }
   .buddypress #content #item-body {
     width: 74.5%;
     float: right;
+  }
+  .directory.members .site-content,
+  .directory.groups .site-content {
+    width: 74.5%;
+    float: right;
+  }
+  .directory.members #content h1,
+  .directory.groups #content h1 {
+    margin-top: 0;
   }
   .buddypress #secondary,
   .salud-america #secondary,
@@ -3900,40 +3881,42 @@ body.home-page #primary .quarter-block h3 {
   .salud-america #tertiary .widget {
     margin-right: 12px;
   }
-  .item-list-tabs ul,
-  .nav-pills {
+  .site .item-list-tabs ul,
+  .site .nav-pills {
     *zoom: 1;
   }
-  .item-list-tabs ul:before,
-  .nav-pills:before,
-  .item-list-tabs ul:after,
-  .nav-pills:after {
+  .site .item-list-tabs ul:before,
+  .site .nav-pills:before,
+  .site .item-list-tabs ul:after,
+  .site .nav-pills:after {
     display: table;
     content: "";
     line-height: 0;
   }
-  .item-list-tabs ul:after,
-  .nav-pills:after {
+  .site .item-list-tabs ul:after,
+  .site .nav-pills:after {
     clear: both;
   }
-  .item-list-tabs ul > li,
-  .nav-pills > li {
+  .site .item-list-tabs ul > li,
+  .site .nav-pills > li {
     float: left;
   }
-  .item-list-tabs ul > li > a,
-  .nav-pills > li > a {
+  .site .item-list-tabs ul > li > a,
+  .site .nav-pills > li > a {
     padding-right: 12px;
     padding-left: 12px;
     margin-right: 2px;
     line-height: 14px;
   }
-  .item-list-tabs ul {
+  .site .item-list-tabs ul {
     border-bottom: 1px solid #aaaaaa;
+    margin-bottom: 0;
   }
-  .item-list-tabs ul > li {
+  .site .item-list-tabs ul > li {
     margin-bottom: -1px;
+    margin-left: 0;
   }
-  .item-list-tabs ul > li > a {
+  .site .item-list-tabs ul > li > a {
     padding-top: 8px;
     padding-bottom: 8px;
     line-height: 20px;
@@ -3942,28 +3925,28 @@ body.home-page #primary .quarter-block h3 {
     -moz-border-radius: 4px 4px 0 0;
     border-radius: 4px 4px 0 0;
   }
-  .item-list-tabs ul > li > a:hover {
+  .site .item-list-tabs ul > li > a:hover {
     border-color: #dedede #dedede #aaaaaa;
   }
-  .item-list-tabs ul > .selected > a,
-  .item-list-tabs ul > .current > a,
-  .item-list-tabs ul > .selected > a:hover,
-  .item-list-tabs ul > .current > a:hover {
+  .site .item-list-tabs ul > .selected > a,
+  .site .item-list-tabs ul > .current > a,
+  .site .item-list-tabs ul > .selected > a:hover,
+  .site .item-list-tabs ul > .current > a:hover {
     color: #454545;
     background-color: #ffffff;
     border: 1px solid #aaaaaa;
     border-bottom-color: transparent;
     cursor: default;
   }
-  .sidebar-activity-tabs {
+  #secondary .sidebar-activity-tabs {
     margin-top: .5em;
     border-bottom: none;
   }
-  .sidebar-activity-tabs ul {
+  #secondary .sidebar-activity-tabs ul {
     margin: 0 0 .5em 0;
     padding: 0;
   }
-  .sidebar-activity-tabs ul li {
+  #secondary .sidebar-activity-tabs ul li {
     margin: 0 0 0.2em -3.5em;
     display: block;
     -webkit-border-radius: 4px 0 0 4px;
@@ -3975,8 +3958,8 @@ body.home-page #primary .quarter-block h3 {
     border-width: 1px;
     margin-right: -1px;
   }
-  .sidebar-activity-tabs ul li.selected,
-  .sidebar-activity-tabs ul li.current-menu-item {
+  #secondary .sidebar-activity-tabs ul li.selected,
+  #secondary .sidebar-activity-tabs ul li.current-menu-item {
     -webkit-box-shadow: -2px 1px 2px 0 rgba(0, 0, 0, 0.1);
     -moz-box-shadow: -2px 1px 2px 0 rgba(0, 0, 0, 0.1);
     box-shadow: -2px 1px 2px 0 rgba(0, 0, 0, 0.1);
@@ -3985,18 +3968,18 @@ body.home-page #primary .quarter-block h3 {
     border-color: #aaaaaa #ffffff #aaaaaa #aaaaaa;
     font-weight: 700;
   }
-  .sidebar-activity-tabs ul li.selected a,
-  .sidebar-activity-tabs ul li.current-menu-item a {
+  #secondary .sidebar-activity-tabs ul li.selected a,
+  #secondary .sidebar-activity-tabs ul li.current-menu-item a {
     color: #454545;
     border: none;
     background: none;
     padding-top: 1em;
     padding-bottom: 1em;
   }
-  .sidebar-activity-tabs ul li:hover {
+  #secondary .sidebar-activity-tabs ul li:hover {
     background-color: #ffffff;
   }
-  .sidebar-activity-tabs ul li a {
+  #secondary .sidebar-activity-tabs ul li a {
     text-align: left;
     padding: .5em 1.5em .5em 3.6em;
     border: none;
@@ -4004,7 +3987,7 @@ body.home-page #primary .quarter-block h3 {
     font-size: 14px;
     font-size: 1rem;
   }
-  .sidebar-activity-tabs ul li span {
+  #secondary .sidebar-activity-tabs ul li span {
     font-weight: 400;
     display: inline;
     background-color: #aaaaaa;
@@ -4015,7 +3998,7 @@ body.home-page #primary .quarter-block h3 {
     padding: 0 6px;
     margin: 0 8px;
   }
-  .sidebar-activity-tabs ul li span.alert {
+  #secondary .sidebar-activity-tabs ul li span.alert {
     background-color: #00b0d3;
     color: #ffffff;
   }

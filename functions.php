@@ -64,7 +64,7 @@ function bp_support_theme_setup() {
       add_action( 'bp_directory_blogs_actions',  'bp_blogs_visit_blog_button' );
   }
 }
-add_action( 'after_setup_theme', 'bp_support_theme_setup', 11 );
+// add_action( 'after_setup_theme', 'bp_support_theme_setup', 11 );
 
 /**
  * Enqueues BuddyPress JS and related AJAX functions
@@ -109,7 +109,7 @@ function bp_support_enqueue_scripts() {
   // Localize the JS strings
   wp_localize_script( 'dtheme-ajax-js', 'BP_DTheme', $params );
 }
-add_action( 'wp_enqueue_scripts', 'bp_support_enqueue_scripts' );
+// add_action( 'wp_enqueue_scripts', 'bp_support_enqueue_scripts' );
 
 add_action( 'wp_enqueue_scripts', 'custom_childtheme_stylesheet_load', 99 );
 function custom_childtheme_stylesheet_load(){
@@ -634,9 +634,9 @@ function add_this_script_footer(){ ?>
 ***************/
 function cc_custom_body_class( $classes ) {
  
-    if ( function_exists( 'bp_is_blog_page' ) && !bp_is_blog_page() ) {
-        $classes[] = 'buddypress';
-      }
+    // if ( function_exists( 'bp_is_blog_page' ) && !bp_is_blog_page() ) {
+    //     // $classes[] = 'buddypress';
+    //   }
 
     if ( is_page_template( 'page-templates/salud-america.php' ) 
       || is_page_template( 'page-templates/salud-america-eloi.php' ) 

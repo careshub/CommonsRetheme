@@ -75,7 +75,7 @@ img.no-box {
 }
 #item-body form#whats-new-form {
 	border-bottom: 1px solid #ddd;
-	margin: 20px 0 10px;
+	margin: 10px 0;
 	padding-bottom: 20px;
 }
 .home-page form#whats-new-form {
@@ -186,7 +186,7 @@ body.activity-permalink li.mini .activity-meta {
 	margin-top: 4px;
 }
 .activity-list li .activity-inreplyto {
-	background: url( ../../plugins/buddypress/bp-themes/bp-default/_inc/images/replyto_arrow.gif ) 7px 0 no-repeat;
+	// background: url( ../../plugins/buddypress/bp-themes/bp-default/_inc/images/replyto_arrow.gif ) 7px 0 no-repeat;
 	color: #888;
 	.font-size(.8);
 	//margin-left: 5px;
@@ -225,11 +225,11 @@ body.activity-permalink .activity-list li .activity-content {
 	padding: 15px;
 }
 body.activity-permalink .activity-list li .activity-header > p {
-	background: url( ../../plugins/buddypress/bp-themes/bp-default/_inc/images/activity_arrow.gif ) top left no-repeat;
+	// background: url( ../../plugins/buddypress/bp-themes/bp-default/_inc/images/activity_arrow.gif ) top left no-repeat;
 	height: 35px;
 	margin-bottom: 0;
 	margin-left: -35px;
-	padding: 5px 0 0 35px;
+	padding: 5px 0 0 0px;
 }
 .buddypress #content #item-body { 
 	.activity-list .activity-content .activity-header,
@@ -461,9 +461,9 @@ div.activity-comments div#message {
 	margin-bottom: 0;
 }
 div.activity-comments form.loading {
-	background-image: url( ../buddypress/bp-themes/bp-default/_inc/images/ajax-loader.gif );
-	background-position: 2% 95%;
-	background-repeat: no-repeat;
+	// background-image: url( ../buddypress/bp-themes/bp-default/_inc/images/ajax-loader.gif );
+	// background-position: 2% 95%;
+	// background-repeat: no-repeat;
 }
 div.activity-comments form .ac-textarea {
 	background: #fff;
@@ -523,10 +523,17 @@ div.activity-comments form div.ac-reply-content {
 --------------------------------------------------------------*/
 form.dir-form {
 	margin-bottom: 2em;
+	.item-list-tabs {
+		padding-bottom: 0;
+		ul li.last {
+			margin-top: 0;
+			margin-bottom: .6em;
+		}
+	}
 }
 div.dir-search {
 	float: right;
-	margin: -39px 0 0 0;
+	margin-bottom: -1.7em;
 }
 div.dir-search input[type=text] {
 	.font-size(.85);
@@ -1037,10 +1044,10 @@ table.forum tr.sticky td {
 	border-bottom: 1px solid #ffe8c4;
 }
 table.forum tr.closed td.td-title {
-	background-image: url( ../buddypress/bp-themes/bp-default/_inc/images/closed.png );
-	background-position: 15px 50%;
-	background-repeat: no-repeat;
-	padding-left: 35px;
+	// background-image: url( ../buddypress/bp-themes/bp-default/_inc/images/closed.png );
+	// background-position: 15px 50%;
+	// background-repeat: no-repeat;
+	// padding-left: 35px;
 }
 table.forum td p.topic-text {
 	color: #888;
@@ -1128,7 +1135,7 @@ div#message p {
 	// background-image: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
 }
 div#item-header {
-	overflow: hidden;
+	// overflow: hidden;
 }
 div#item-header div#item-header-content {
 	//margin-left: 170px;
@@ -1201,14 +1208,15 @@ div#item-header div#item-actions h3 {
 div#item-header ul {
 	margin-bottom: 15px;
 	overflow: hidden;
+	list-style: none;
+	li {
+		margin: 0;
+	}
 }
 div#item-header ul h5,
 div#item-header ul span,
 div#item-header ul hr {
 	//display: none; //Not sure if this rule is important
-}
-div#item-header ul li {
-	// float: right;
 }
 div#item-header ul img.avatar,
 div#item-header ul.avatars img.avatar {
@@ -1235,6 +1243,7 @@ ul.item-list li {
 }
 ul.item-list.activity-list li {
 	padding-bottom: 0;
+	// margin-left: 0;
 }
 ul.single-line li {
 	border: none;
@@ -1308,12 +1317,12 @@ div.item-list-tabs {
 		}
 	}
 	form {
-		margin-top: 1em;
+		// margin-top: 1em;
 		float: right;
 	}
 	#activity-filter-select {
-		clear:left;
-		margin: 1em 0 0 .5em;
+		// clear:left;
+		// margin: 1em 0 0 .5em;
 	}
 }
 div.item-list-tabs {
@@ -1324,7 +1333,7 @@ div.item-list-tabs {
 		//float: left;
 		&.last{
 			float: right;
-			margin-top: 4px;
+			margin-top: 8px;
 		}
 	}
 }
@@ -1370,10 +1379,10 @@ div.item-list-tabs ul li.current a span {
 	background-color: #555;
 }
 ul li.loading a {
-	background-image: url( ../buddypress/bp-themes/bp-default/_inc/images/ajax-loader.gif );
-	background-position: 92% 50%;
-	background-repeat: no-repeat;
-	padding-right: 30px !important;
+	// background-image: url( ../buddypress/bp-themes/bp-default/_inc/images/ajax-loader.gif );
+	// background-position: 92% 50%;
+	// background-repeat: no-repeat;
+	// padding-right: 30px !important;
 }
 div#item-nav ul li.loading a {
 	background-position: 88% 50%;
@@ -1390,8 +1399,8 @@ div.item-list-tabs {
 	overflow: hidden; /*TODO clearfix?*/
 }
 div.item-list-tabs ul li.feed a {
-	background: url( ../buddypress/bp-themes/bp-default/_inc/images/rss.png ) center left no-repeat;
-	padding-left: 20px;
+	// background: url( ../buddypress/bp-themes/bp-default/_inc/images/rss.png ) center left no-repeat;
+	// padding-left: 20px;
 }
 #admins-list li {
 	overflow: auto;
@@ -1467,14 +1476,14 @@ div#message-thread div.message-options {
 /*--------------------------------------------------------------
 10 - Pagination
 --------------------------------------------------------------*/
-.padder div.pagination {
+div.pagination {
 	//background: @graylight;
 	border: none;
 	color: lighten(@graydark,12);
 	//font-size: 11px;
 	height: 19px;
 	//margin: -20px -19px 0px -19px;
-	padding: 6px 20px;
+	padding: 6px 0;
 	position: relative;
 	.font-size(.9);
 	font-style: italic;
@@ -1485,27 +1494,27 @@ div#message-thread div.message-options {
 #pag-bottom {
 	//border-top: 1px solid @graylight;
 }
-.padder div.pagination .pag-count {
+div.pagination .pag-count {
 	float: left;
 }
-.padder div.pagination .pagination-links {
+div.pagination .pagination-links {
 	float: right;
 }
-.padder div.pagination .pagination-links span,
-.padder div.pagination .pagination-links a {
+div.pagination .pagination-links span,
+div.pagination .pagination-links a {
 	font-size: 12px;
 	padding: 0 5px;
 }
-.padder div.pagination .pagination-links a:hover {
+div.pagination .pagination-links a:hover {
 	font-weight: bold;
 }
-.padder div#pag-bottom {
+div#pag-bottom {
 	margin-top: -1px;
 }
-.padder #nav-above {
+#nav-above {
 	display: none;
 }
-.padder .paged #nav-above {
+.paged #nav-above {
 	display: block;
 }
 
@@ -1550,6 +1559,7 @@ ul.item-list {
 	ul.item-list li { 
 		position: relative;
 		clear: left;
+		margin-left: 0;
 	}
 	ul.item-list div.item-avatar {
 		float: left;
@@ -1591,7 +1601,7 @@ div#item-header {
 	//width: 77.4%;
 	// width: 100%;
 	//float: right;
-	margin-top: 2em;
+	// margin-top: 2em;
 
 	.outliner();
 	padding-bottom: 10px;
@@ -1673,9 +1683,9 @@ form#whats-new-form {
 		float: left;
 	}
 
-	form#whats-new-form h5 {
+	form#whats-new-form .activity-greeting {
 		clear: none;
-		margin-left: 76px;
+		margin-left: 76px !important;
 	}
 
 	form#whats-new-form #whats-new-content {
@@ -1939,15 +1949,15 @@ form.dir-form div.dir-search {
 
 //BuddyPress pages
 //use vertical nav list
-.padder {
-	margin:.5em 0;
-	float:none;
-	width: 100%;
-}
+// .padder {
+// 	margin:.5em 0;
+// 	float:none;
+// 	width: 100%;
+// }
 .full-width {
-	.padder {
-		width: 100%;
-	}
+	// .padder {
+	// 	width: 100%;
+	// }
 	.widget-area {
 		//display: none;
 	}
@@ -1969,7 +1979,7 @@ form.dir-form div.dir-search {
 		border-top: 1px solid @graymid;
 	}
 }
-.sidebar-activity-tabs { //sub navigation on member and group pages
+#secondary .sidebar-activity-tabs { //sub navigation on member and group pages
 		// margin-top: 2em;
 		padding-bottom:1em;
 		border-bottom: 1px solid @graylight;
@@ -2117,7 +2127,7 @@ footer[role="contentinfo"] {
 	margin: 0 0 4em;
 	.post {margin: 0 0 2em;}
 }
-.padder .search-result div.pagination {margin-top: 0 !important;}
+.search-result div.pagination {margin-top: 0 !important;}
 .jump-menu {
 	a {
 	  border-right: 1px solid @graylight;
@@ -2173,7 +2183,10 @@ img.avatar {
 
 //GROUPS
 .buddypress {
-	.site-content { width: 100%; }
+	.site-content { 
+		width: 100%;
+		// margin: 0;
+	}
 	#content {
 		width:100%;
 		// float: right;
@@ -3770,6 +3783,9 @@ body.home-page {
 			}
 		}
 	}
+}
+.buddypress article {
+	border-bottom: none;
 }
 
 #jumplinks { //sub navigation on member and group pages
