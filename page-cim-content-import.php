@@ -21,16 +21,22 @@ get_header(); ?>
 	    require_once(ABSPATH . '/wp-admin/includes/image.php');
 	    require_once(ABSPATH . 'wp-admin/includes/misc.php' );
 
-		add_cim_content( false );
+		add_cim_content( false, 1 );
 		// add_ca4health_content( false );
 
-		function add_cim_content( $run_for_real ) {
+		function add_cim_content( $run_for_real, $portion ) {
 			global $parent_post_id;
 			//Sort the import records by user email or group id for slight efficiency
 			$last_user_email = '';
 			$last_group_iw_id = '';
+
+			//Files version, 4 parts
+			// $csv = get_stylesheet_directory_uri() . '/working/cim-content-files-' . $portion . '.csv'; 
+			//Links source file version, 4 parts
+			$csv = get_stylesheet_directory_uri() . '/working/cim-content-links-' . $portion . '.csv'; 
+
 			
-		    if ( ( $handle = fopen( get_stylesheet_directory_uri() . '/working/cim-content-files.csv', "r" ) ) !== FALSE ) {
+		    if ( ( $handle = fopen( $csv, "r" ) ) !== FALSE ) {
 
 			    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 			    	// echo PHP_EOL . '<hr>';
@@ -64,7 +70,11 @@ get_header(); ?>
 
 					// If the thingy is a link, add it to the end of the content
 					if ( $doc_type == 'Hyperlink' ) {
-						$doc_content = $doc_content . '<br /> ' . PHP_EOL . $file_attachment;						
+						if ( !empty($doc_content) ) {
+							$doc_content = $doc_content . '<br /> ' . PHP_EOL . $file_attachment;
+						} else {
+							$doc_content = $file_attachment;
+						}						
 					}
 
 
@@ -174,14 +184,17 @@ get_header(); ?>
 
 						// Handle file attachments
 						if ( $doc_type == 'File' ) {
-							//Set the url
-							// $source_url = 'http://phds.ca4health.org/CA4Health_Content/Resources/' . rawurlencode( $file_attachment );
-							// $file_attach_pieces = explode( '/', $file_attachment ); 
-							// $file_sitecore_guid = $file_attach_pieces[0];
-							// $file_sitecore_name = $file_attach_pieces[1];
- 						// 	$file_sitecore_name_url = rawurlencode( $file_attach_pieces[1] );
- 						// 	$source_url = 'http://phds.ca4health.org/CA4Health_Content/Resources/' . $file_sitecore_guid . '/' . $file_sitecore_name_url;
-							// import_media_content( $source_url, $file_sitecore_name, $parent_post_id, $user_id );
+							$file_attach_pieces = explode( '/', $file_attachment ); 
+							// print_r($file_attach_pieces);
+							$file_sitecore_partner = $file_attach_pieces[2];
+							$file_sitecore_name = $file_attach_pieces[3];
+							// We encode special characters in the filename, because there are lots of special characters in these filenames.
+ 							$file_sitecore_name_url = rawurlencode( $file_attach_pieces[3] );
+ 							$source_url = 'http://www.cim-network.org/CIMcontent/' . $file_sitecore_partner . '/' . $file_sitecore_name_url;
+
+							echo PHP_EOL . 'source_url: ' . $source_url;
+							
+							import_media_content( $source_url, $file_sitecore_name, $parent_post_id, $user_id );
 						}
 
 					} //if post_id

@@ -119,14 +119,10 @@ function sa_resource_meta_box()
 	</select>
 	
 	<script type="text/javascript">
-
-	var $j = jQuery.noConflict();
-    $j(document).ready(function()
-    {
-        $j("#saresource_date").datepicker();        
-	});
-	</script>
-	
+		jQuery(document).ready(function(){
+		    jQuery("#saresource_date").datepicker();
+		});
+	</script>	
 	
 	<?php
 }

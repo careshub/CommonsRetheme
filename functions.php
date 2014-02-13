@@ -165,6 +165,12 @@ function cc_wp_admin_area_stylesheet_load(){
 }
 add_action( 'admin_print_styles', 'cc_wp_admin_area_stylesheet_load', 11 );
 
+// With WordPress 3.8 jqueryui-datepicker isn't reliably loaded
+function cc_load_datepicker_script() {
+        wp_enqueue_script( 'jquery-ui-datepicker' );
+}
+add_action( 'admin_enqueue_scripts', 'cc_load_datepicker_script', 22 );
+
 function remove_parent_theme_widgets(){
 
   // Deregister some of the TwentyTen sidebars
@@ -965,11 +971,10 @@ class DropdownSlugWalker extends Walker_CategoryDropdown {
         $output .= "</option>\n";
     }
 }
-
-// Code originally by @t31os
+// Limit media shown in media library for non-admin users
+// If the user isn't a site admin, limit the media items shown in the upload dialog and the media library to items the user uploaded.
+// From code originally by @t31os
 // add_action('pre_get_posts','users_own_attachments');
-// add_action('pre-upload-ui','users_own_attachments_upload');
-
 function users_own_attachments( $wp_query_obj ) 
 {
     global $current_user, $pagenow;
@@ -977,19 +982,8 @@ function users_own_attachments( $wp_query_obj )
     if( !is_a( $current_user, 'WP_User') )
         return;
 
-    if( 'upload.php' != $pagenow && 'media-new.php' != $pagenow && 'async-upload.php' != $pagenow)
-        return;
-
-    if( !current_user_can('delete_pages') )
-        $wp_query_obj->set('author', $current_user->id );
-
-    return;
-}
-function users_own_attachments_upload( $wp_query_obj ) 
-{
-    global $current_user, $pagenow;
-
-    if( !is_a( $current_user, 'WP_User') )
+    // "upload" is the wp-admin media library, "media-new" is the wp-admin media uploader, "async-upload" is called when uploading media from a post edit screen in wp-admin or on the front, like our group home edit page.
+    if( 'upload.php' != $pagenow && 'media-new.php' != $pagenow && 'async-upload.php' != $pagenow )
         return;
 
     if( !current_user_can('delete_pages') )

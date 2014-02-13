@@ -905,14 +905,6 @@ function sapolicy_save_taxonomy_field($tax_field) {
     }
 }
 
-
-//Not needed, WP includes jQuery UI
-// add_action('init', 'sapolicy_jquery'); 
-function sapolicy_jquery(){
-    wp_enqueue_script('jquery-ui-datepicker');
-    wp_enqueue_style('sticky_post-admin-ui-css','http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/base/jquery-ui.css',false,"1.9.0",false);
-    }
-
 function sa_searchpolicies( $searchresults ) {
         ?>
 <div id="cc-adv-search" class="clear">
