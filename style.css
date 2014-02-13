@@ -3549,6 +3549,18 @@ body.home-page #primary .quarter-block h3 {
 .background-ca4gold {
   background-color: #ffc222;
 }
+.text-ca4blue {
+  color: #0057a7;
+}
+.text-ca4red {
+  color: #f15a22;
+}
+.text-ca4orange {
+  color: #f58233;
+}
+.text-ca4gold {
+  color: #ffc222;
+}
 @media screen and (min-width: 400px) {
   .primary-navigation .brand a {
     font-size: 16.8px;
