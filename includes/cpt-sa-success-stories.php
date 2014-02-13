@@ -3,8 +3,8 @@ add_action( 'init', 'register_cpt_sa_success_story' );
 function register_cpt_sa_success_story() {
 
     $labels = array( 
-        'name' => _x( 'SA Success Stories', 'sa_success_story' ),
-        'singular_name' => _x( 'SA Success Story', 'sa_success_story' ),
+        'name' => _x( 'Salud Heroes', 'sa_success_story' ),
+        'singular_name' => _x( 'Salud Hero', 'sa_success_story' ),
         'add_new' => _x( 'Add New', 'sa_success_story' ),
         'add_new_item' => _x( 'Add New SA Success Story', 'sa_success_story' ),
         'edit_item' => _x( 'Edit SA Success Story', 'sa_success_story' ),
@@ -111,7 +111,7 @@ class sa_success_story_meta_box {
 		<!--****ADDED BY MIKE B.*********-->
 		<label for="sa_success_story_location" class="description"><h4>Location</h4>	
 			<em>e.g.: Houston, Texas</em></label><br />		
-		<input type="text" id="sa_success_story_location" name="sa_success_story_location" value="<?php echo esc_attr( $locvalue); ?>" size="75" />	<input type="button" id="sa_success_story_save_location" value="Verify Location" /> <img id="sa_success_story_save_location_check" src="http://dev.communitycommons.org/wp-content/uploads/2013/12/greencheck.png" style="vertical-align:middle;" />	
+		<input type="text" id="sa_success_story_location" name="sa_success_story_location" value="<?php echo esc_attr( $locvalue); ?>" size="75" />	<input type="button" id="sa_success_story_save_location" value="Verify Location" /> <img id="sa_success_story_save_location_check" src="/wp-content/uploads/2013/12/greencheck.png" style="vertical-align:middle;" />	
 		<input type="hidden" id="sa_success_story_latitude" name="sa_success_story_latitude" value="<?php echo esc_attr( $latvalue); ?>" /><input type="hidden" id="sa_success_story_longitude" name="sa_success_story_longitude" value="<?php echo esc_attr( $longvalue); ?>" />
 		
 		
@@ -176,7 +176,7 @@ class sa_success_story_meta_box {
 					 $.ajax
 						 ({
 						   type: "POST",               
-						   url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
+						   url: "http://www.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
 						   data: dataString,
 						   cache: false,               
 						   error: function() {
@@ -218,7 +218,11 @@ class sa_success_story_meta_box {
 			$video_url = sanitize_text_field( $_POST['sa_success_story_video_url'] );
 
 			// Update the meta field.
-			update_post_meta( $post_id, 'sa_success_story_video_url', $video_url );
+			if ( !empty( $video_url ) ) {
+				update_post_meta( $post_id, 'sa_success_story_video_url', $video_url );
+			} else {
+				delete_post_meta( $post_id, 'sa_success_story_video_url' );
+			}
 			//***********ADDED BY MIKE B. *****************
 			update_post_meta( $post_id, 'sa_success_story_location', $_POST['sa_success_story_location'] );
 			update_post_meta( $post_id, 'sa_success_story_latitude', $_POST['sa_success_story_latitude'] );
@@ -329,7 +333,9 @@ function insert_actions_in_success_stories( $content ) {
 		global $post;
 		$pdf_url = get_post_meta( $post->ID, 'sa_success_story_pdf', true );
 		$insertion = '<p><a href="' . $pdf_url . '" class="button">Download the PDF</a> <a class="button add-comment-link" href="#respond"><span class="comment-icon"></span>Comment</a> ';
-		$insertion .= bp_get_share_post_button();
+		if ( function_exists( 'bp_get_share_post_button' ) ) {
+			$insertion .= bp_get_share_post_button();
+		}
 		$insertion .= '</p>';
 		return insert_random_content_after_paragraph( $insertion, 1, $content );
 	}
@@ -355,10 +361,149 @@ function insert_random_content_after_paragraph( $insertion, $paragraph_id, $cont
 	return implode( '', $paragraphs );
 }
 
-add_filter( 'embed_oembed_html', 'success_story_oembed_filter', 10, 4 ) ;
+// add_filter( 'embed_oembed_html', 'success_story_oembed_filter', 10, 4 ) ;
 function success_story_oembed_filter($html, $url, $attr, $post_ID) {
+	// $towrite = PHP_EOL . '$html: ' . print_r($html, TRUE);
+	// $towrite .= PHP_EOL . '$url: ' . print_r($url, TRUE);
+	// $towrite .= PHP_EOL . '$attr: ' . print_r($attr, TRUE);
+	// $towrite .= PHP_EOL . '$post_id: ' . print_r($post_ID, TRUE);
+	// $fp = fopen('oembed_bits.txt', 'a');
+	// fwrite($fp, $towrite);
+	// fclose($fp);
+
 	if ( is_singular('sa_success_story') ) {
 	    $html = '<figure class="video-container">'.$html.'</figure>';
 	}
     return $html;
+}
+
+// customize embed settings
+function youtube_hide_controls_filter($html){
+    if( strpos($html, 'youtu.be') !== false || strpos($html, 'youtube.com') !== false ){
+  //   	$towrite = PHP_EOL . '$html, before: ' . print_r($html, TRUE);
+		// $fp = fopen('oembed_bits.txt', 'a');
+		// fwrite($fp, $towrite);
+		// fclose($fp);
+        $html = preg_replace("@src=\"(.+?)\?(.+?)\"\s@", "src=\"$1?$2&showinfo=0&rel=0&autohide=1\" ", $html);
+  //   	$towrite = PHP_EOL . '$html, after: ' . print_r($html, TRUE);
+		// $fp = fopen('oembed_bits.txt', 'a');
+		// fwrite($fp, $towrite);
+		// fclose($fp);
+        return $html;
+    }
+    return $html;
+}
+ 
+// add_filter('embed_handler_html', 'custom_youtube_settings');
+//This filter handles embeds in content, etc.
+add_filter('embed_oembed_html', 'youtube_hide_controls_filter', 77);
+//This filter handles embeds fetched via wp_oembed_get.
+add_filter('oembed_result', 'youtube_hide_controls_filter', 77);
+
+function cc_get_youtube_video_metadata( $url ) {
+
+	//Get the important part of the $video_url
+	// URLs can take the form 'http://youtu.be/WZE-VHRtau8', 'https://www.youtube.com/watch?v=e5yNGuE9qzY' OR 'https://www.youtube.com/watch?v=e5yNGuE9qzY&feature=embedded', so we've got to handle some cases
+	if ( stripos( $url, 'www.youtube.com' )  ) {
+
+		$parsed = parse_url($url);
+		$args = explode( '&', $parsed['query'] );
+		foreach ( $args as $piece ) {
+			if ( stripos( $piece, 'v=') !== false ) {
+				//Remove the leading 'v='
+				$guts = substr( $piece, 2 );
+			}
+		}
+
+	} else if ( stripos( $url, 'youtu.be' ) ) {
+
+		$parsed = parse_url($url);
+		// Remove the leading slash
+		$guts = substr( $parsed['path'], 1);
+	} else {
+		return false;
+	}
+
+	$json_output = file_get_contents( "http://gdata.youtube.com/feeds/api/videos/{$guts}?v=2&alt=json" );
+	$json = json_decode($json_output, true);
+	// print_r($json);
+
+	//This gives you the video description
+	$video_description = $json['entry']['media$group']['media$description']['$t'];
+
+	//This gives you the video views count
+	$view_count = $json['entry']['yt$statistics']['viewCount'];
+
+	//This gives you the video title
+	$video_title = $json['entry']['title']['$t'];
+
+	return array( 	'title' => $video_title, 
+					'description' => $video_description, 
+					'count' => $view_count
+					);
+}
+// Allow for another archive style that only shows the video posts.
+add_filter('pre_get_posts', 'sa_heroes_video_post_archive');
+function sa_heroes_video_post_archive( $query ) {
+	// If the "style" flag is set to video, only show stories with videos
+    if( is_archive( 'sa_success_story' ) 
+    	&& !is_admin() 
+    	&& $query->is_main_query() 
+    	&& ( isset( $_GET['style'] ) && ( $_GET['style'] == 'videos' ) )
+    	) {
+        
+        $meta_query = 	array(
+					        array(
+					           'key' => 'sa_success_story_video_url',
+					           'compare' => 'EXISTS',
+					        )
+					    );
+		$query->set( 'meta_query', $meta_query );
+		// Only load 6 at a time, since these pages are ridiculously huge.
+		$query->set( 'posts_per_page', 12 );
+    }
+}
+
+function sa_get_random_hero_video() {
+
+	$args = array(
+		'post_type' 			=> 'sa_success_story',
+		'orderby'               => 'rand',
+		'posts_per_page'         => 1,
+		
+		//Custom Field Parameters
+		'meta_query'     => array(
+			array(
+				'key' => 'sa_success_story_video_url',
+				'compare' => 'EXISTS'
+			),
+		),
+		
+	);
+	
+	$video_story = new WP_Query( $args );
+	// print_r($video_story);
+
+	// Use alternate syntax (using the_post() object messes up the outer WP_Query loop because wp_reset_postdata in this case resets the postdata to the archive page's real job, not the page intro secondary loop. 
+	foreach ($video_story->posts as $video) {
+
+		$video_url = get_post_meta( $video->ID, 'sa_success_story_video_url', 'true' );
+
+		if ( !empty( $video_url ) ) {
+			$video_embed_code = wp_oembed_get( $video_url );
+		}
+
+		if ( $video_embed_code ) { ?>
+			<div class="video-container-group">
+				<figure class="video-container">
+					<?php echo $video_embed_code; ?>
+				</figure>
+				<?php if ( is_archive( 'sa_success_story' ) ) { ?>
+					<a href="/sa_success_story/?style=videos" title="link to the Salud Heroes video archive" class="button">Watch all videos</a> 
+				<?php } else { ?>
+					<figcaption>See how these <a href="/sa_success_story/">Salud Heroes</a> are fighting Latino obesity…and learn how easy it is to be a Salud Hero, too!</figcaption>
+				<?php } ?>
+			</div>
+			<?php } // End if $video_embed_code
+	} // End foreach 
 }

@@ -235,10 +235,10 @@ body.home-page {
 		}
 	}
 .content-row {
-			border-bottom: 1px solid @graylight;
+			// border-bottom: 1px solid @graylight;
 			width:100%;
 			&:after { 
-				clear: both;
+				// clear: both;
 			}
 			&:before, &:after { 
 				display: table;
@@ -498,6 +498,9 @@ body.home-page {
 }
 .data-vis-tool-group {
 	.entry-header{
+		h1 {
+			.font-size(1.8);
+		}
 		p {
 			float:left;
 			width: 36%;
@@ -512,6 +515,9 @@ body.home-page {
 //Generalized
 .tool-group {
 	.entry-header{
+		h1 {
+			.font-size(1.8);
+		}
 		p {
 			float:left;
 			width: 36%;
@@ -581,6 +587,10 @@ div#item-header {
 .standard-form #basic-details-section,
 .standard-form #blog-details-section,
 .standard-form #profile-details-section {
+	// float: left;
+	// width: 48%;
+}
+.register-section {
 	float: left;
 	width: 48%;
 }
@@ -654,6 +664,11 @@ div#item-header {
 		// }
 
 	}
+}
+.policy-meta {
+	display: block;
+	float: left;
+	width: 90%;
 }
 
 // Invite Anyone style updates

@@ -118,7 +118,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.3
+          0.32
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
@@ -164,6 +164,12 @@ function cc_wp_admin_area_stylesheet_load(){
     wp_enqueue_style( 'cc_wp_admin_area_jquery_ui' );
 }
 add_action( 'admin_print_styles', 'cc_wp_admin_area_stylesheet_load', 11 );
+
+// With WordPress 3.8 jqueryui-datepicker isn't reliably loaded
+function cc_load_datepicker_script() {
+        wp_enqueue_script( 'jquery-ui-datepicker' );
+}
+add_action( 'admin_enqueue_scripts', 'cc_load_datepicker_script', 22 );
 
 function remove_parent_theme_widgets(){
 
@@ -621,8 +627,7 @@ function add_this_script_footer(){ ?>
 //add_action('wp_footer', 'add_this_script_footer');
 
 /**
- * Extends the default WordPress body class to denote:
- * 1. Adds "salud-america" to pages using the SA template.
+ * Extends the default WordPress body class
  *
  *
  * @since Twenty Twelve 1.0
@@ -637,24 +642,6 @@ function cc_custom_body_class( $classes ) {
     // if ( function_exists( 'bp_is_blog_page' ) && !bp_is_blog_page() ) {
     //     // $classes[] = 'buddypress';
     //   }
-
-    if ( is_page_template( 'page-templates/salud-america.php' ) 
-      || is_page_template( 'page-templates/salud-america-eloi.php' ) 
-      || is_singular('sapolicies')  
-      || is_singular('saresources')
-      || is_singular('sa_success_story')
-      || is_tax('sa_advocacy_targets')
-      || is_tax('sa_resource_cat')
-      || is_post_type_archive('sa_success_story')
-      || is_post_type_archive('saresources')
-      || is_post_type_archive('sapolicies')
-      ) {
-        $classes[] = 'salud-america';
-        if ( ($key = array_search('full-width', $classes) ) !== false ) {
-          unset( $classes[$key] );
-        }
-
-      }
 
     if ( is_page_template( 'page-templates/WKKF-Compass.php' ) ) {
         $classes[] = 'full-width';
@@ -671,11 +658,16 @@ function cc_custom_body_class( $classes ) {
 
     if ( is_page( array(8622,'wotn') ) ) {
         $classes[] = 'wotn';
+        $classes[] = 'full-width';
+      }
+    if ( is_page( 'ncr' ) ) {
+        $classes[] = 'full-width';
+        $classes[] = 'ncr';
       }
 
   return $classes;
 }
-add_filter( 'body_class', 'cc_custom_body_class', 99 );
+add_filter( 'body_class', 'cc_custom_body_class', 96 );
 
 // remove_filter('the_content','wpautop');
 //decide when you want to apply the auto paragraph
@@ -979,11 +971,10 @@ class DropdownSlugWalker extends Walker_CategoryDropdown {
         $output .= "</option>\n";
     }
 }
-
-// Code originally by @t31os
-// add_action('pre_get_posts','users_own_attachments');
-// add_action('pre-upload-ui','users_own_attachments_upload');
-
+// Limit media shown in media library for non-admin users
+// If the user isn't a site admin, limit the media items shown in the upload dialog and the media library to items the user uploaded.
+// From code originally by @t31os
+add_action('pre_get_posts','users_own_attachments');
 function users_own_attachments( $wp_query_obj ) 
 {
     global $current_user, $pagenow;
@@ -991,19 +982,8 @@ function users_own_attachments( $wp_query_obj )
     if( !is_a( $current_user, 'WP_User') )
         return;
 
-    if( 'upload.php' != $pagenow && 'media-new.php' != $pagenow && 'async-upload.php' != $pagenow)
-        return;
-
-    if( !current_user_can('delete_pages') )
-        $wp_query_obj->set('author', $current_user->id );
-
-    return;
-}
-function users_own_attachments_upload( $wp_query_obj ) 
-{
-    global $current_user, $pagenow;
-
-    if( !is_a( $current_user, 'WP_User') )
+    // "upload" is the wp-admin media library, "media-new" is the wp-admin media uploader, "async-upload" is called when uploading media from a post edit screen in wp-admin or on the front, like our group home edit page.
+    if( 'upload.php' != $pagenow && 'media-new.php' != $pagenow )
         return;
 
     if( !current_user_can('delete_pages') )
@@ -1053,8 +1033,6 @@ function hide_group_admin_tabs($classes) {
   return $classes;
 }
 add_filter( 'body_class', 'hide_group_admin_tabs', 98 );
-add_action( 'admin_footer-post-new.php', 'idealien_mediaDefault_script' );
-add_action( 'admin_footer-post.php', 'idealien_mediaDefault_script' );
 
 add_filter("gform_field_value_uuid", "cdc_gf_uuid");
 function cdc_gf_uuid($value) {
@@ -1062,6 +1040,8 @@ function cdc_gf_uuid($value) {
     return $uuid;
 }
 
+// add_action( 'admin_footer-post-new.php', 'idealien_mediaDefault_script' );
+// add_action( 'admin_footer-post.php', 'idealien_mediaDefault_script' );
 function idealien_mediaDefault_script() {
     ?>
 <script type="text/javascript">
@@ -1173,4 +1153,137 @@ function iis_friendly_bp_docs_attachment_url( $url, $attachment ) {
   $url = $attachment->guid;
   
   return $url;
+}
+
+/*
+ * Create a url to a taxonomy term within a CPT
+ * 
+ * @param string $post_type
+ * @param string $taxonomy
+ * @param string $term
+ * 
+ * @return string of the url || false
+ */
+function cc_get_the_cpt_tax_intersection_link( $post_type = false, $taxonomy = false, $term = false ){
+
+  // Bail if one of the args isn't specified
+  if( !( $post_type ) || !( $taxonomy ) || !( $term ) )
+    return false;
+
+  // If that CPT doesn't exist, bail
+  if ( !$cpt_object = get_post_type_object( $post_type ) )
+    return false;
+
+    $cpt_slug = $cpt_object->name;
+
+  //Make sure the taxonomy requested is actually related to the CPT
+  if ( !in_array( $taxonomy, $cpt_object->taxonomies ) )
+    return false;
+       
+  return home_url( $cpt_slug . '/' . $taxonomy . '/' . $term );
+}
+
+  /*
+   * Call cc_get_the_cpt_tax_intersection_link and echo the result
+   * 
+   */
+  function cc_the_cpt_tax_intersection_link( $post_type = false, $taxonomy = false, $term = false ){
+    echo cc_get_the_cpt_tax_intersection_link( $post_type, $taxonomy, $term );
+  }
+
+// Adds a query string to the "register" link in certain situations
+// @filter: provides an array of elements to filter
+// @returns a query string ( ?interestA=1&interestB=1 ) or null
+add_filter( 'bp_get_signup_slug', 'cc_get_signup_interests', 34, 1 );
+function cc_get_signup_interests( $sign_up_slug ) {
+  $interests = array();
+
+  // Pass the $interest array out to allow filters to remove or add interests
+  $interests = apply_filters( 'registration_form_interest_query_string', $interests );
+
+  // Convert it to a query string
+  if ( !empty( $interests ) ) {
+    $i = 1;
+    $query_string = '';
+    foreach ( $interests as $argument ) {
+      // Append a ? before the first interest, & otherwise
+      $query_string .= ( $i == 1 ) ? '?' : '&';
+      $query_string .= $argument . '=1';
+      $i++;
+    }
+    return $sign_up_slug . '/' . $query_string;
+  }
+
+  return $sign_up_slug . '/';
+
+}
+
+// Restricted-content shortcodes. These are useful especially when content is generated via shortcode, like Gravity Forms
+// Two basic levels: [loggedin] requires user to be logged in, [visitor] only shows to non-logged-in visitors
+// More advanced uses WordPress capabilities to show content to admins only, etc.
+// From Justin Tadlock: http://justintadlock.com/archives/2009/05/09/using-shortcodes-to-show-members-only-content
+
+// Show contained to logged in only. Use in page or post content. 
+// Takes the form: [loggedin message=''] content... [/loggedin] 
+// "Message" attribute is optional. Will fall back to default. Specify message='' for no message.
+add_shortcode( 'loggedin', 'cc_member_check_shortcode' );
+function cc_member_check_shortcode( $atts, $content = null ) {
+
+  extract( shortcode_atts( array( 'message' => 'You must be <a href="/wp-login.php" title="Log in to Community Commons">logged in</a> to view this content.' ), $atts ) );
+
+  if ( is_user_logged_in() && !is_null( $content ) && !is_feed() )
+    return do_shortcode( $content );
+  
+  return $message;
+}
+
+// Show contained to visitors only. Use in page or post content. 
+// Takes the form: [visitor] content... [/visitor]
+// Not necessary as an else with [loggedin], the other shortcode's else provides a message and a login link.
+add_shortcode( 'visitor', 'visitor_check_shortcode' );
+function visitor_check_shortcode( $atts, $content = null ) {
+   if ( ( !is_user_logged_in() && !is_null( $content ) ) || is_feed() )
+    return do_shortcode( $content );
+  
+  return '';
+}
+
+// Show contained to users with specific capabilities only. Use in page or post content. 
+// Takes the form: [access capability="switch_themes"] content... [/access]
+add_shortcode( 'access', 'access_check_shortcode' );
+
+function access_check_shortcode( $attr, $content = null ) {
+
+  extract( shortcode_atts( array( 'capability' => 'read' ), $attr ) );
+
+  if ( current_user_can( $capability ) && !is_null( $content ) && !is_feed() )
+    return $content;
+
+  return '';
+}
+
+// Salud America isn't a group, but they need to play one on TV. So we're manually adding them to the top of the directory list.
+add_action( 'bp_before_groups_loop', 'stick_sa_to_the_top_of_the_directory' );
+function stick_sa_to_the_top_of_the_directory(){
+  
+  if ( is_page( 'groups' ) || ( bp_is_user_groups() && get_user_meta( bp_displayed_user_id(), 'salud_interest_group', true) ) ) :
+  ?>
+    <ul class="item-list compact" id="groups-list-featured">
+      <li id="featured-group-salud-america">
+        <h5>Featured Group</h5>
+        <div class="item-avatar">
+          <a href="/salud-america/" title="Link to Salud America! space"><img width="50" height="50" class="avatar no-box" alt="avatar" src="/wp-content/themes/CommonsRetheme/img/salud_america/SA-logox50.png"></a>
+        </div>
+
+        <div class="item">
+          <div class="item-title"><a href="/salud-america/" title="Link to Salud America! space">Salud America!</a></div>
+          <div class="item-desc">
+            <p>Working together to end Latino childhood obesity.</p>
+          </div>   
+        </div>
+        <div class="clear"></div>
+      </li>
+    </ul>
+  <?php
+  endif;
 }

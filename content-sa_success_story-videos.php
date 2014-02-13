@@ -1,15 +1,12 @@
 <?php
 /**
- * The template used for displaying page content in page.php
+ * The template used for displaying posts on the salud heroes videos page
  *
  * @package WordPress
  * @subpackage Twenty_Twelve
  * @since Twenty Twelve 1.0
  */
-
-//print_r($post);
-// echo 'META:';
-$video_url = get_post_meta( $post->ID, 'sa_success_story_video_url', true );
+$video_url = get_post_meta( $post->ID, 'sa_success_story_video_url', 'true' );
 if ( !empty( $video_url ) ) { 
 	$video_embed_code = wp_oembed_get( $video_url );
 }
@@ -25,24 +22,27 @@ $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 
 	}
 
+$video_meta = cc_get_youtube_video_metadata( $video_url );
+$description = apply_filters( 'the_content', $video_meta['description'] );
+$video_title = apply_filters( 'the_title', $video_meta['title'] );
+
 ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class( 'main-article' ); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'salud-hero-video-summary' ); ?>>
 		<div class="entry-content">
 			<header class="entry-header clear">
-				<span class="<?php echo $first_advo_target; ?>x90"></span><h1 class="entry-title icon-friendly"><?php the_title(); ?></h1>
-				<?php //if (function_exists('salud_the_target_icons')) {
-				// 		salud_the_target_icons();
-				// 		}
-				?>
+				<span class="<?php echo $first_advo_target; ?>x60"></span><h3 class="entry-title icon-friendly"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
 			</header>
+			<h5 class="video-title">
+				<?php echo $video_title; ?>
+			</h5>
 			<?php if ( isset($video_embed_code) ) { ?>
-			<figure class="video-container"> 
+			<figure> 
 				<?php echo $video_embed_code; ?>
 			</figure>
 			<?php } ?>
-
-			<?php the_content(); ?>
+			<?php echo $description; ?>
+			
 
 			<?php if ( isset($advocacy_targets) ) { ?>
 			<p class="sa-policy-meta">Advocacy targets:
@@ -51,9 +51,9 @@ $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 			<?php } ?>
 
 			<?php if ( isset($resource_categories) ) { ?>
-				<p class="sa-policy-meta">Categories :
+				<!-- <p class="sa-policy-meta">Categories :
 					<?php echo $resource_categories; ?>
-				</a></p>
+				</a></p> -->
 			<?php } ?>
 			<!-- <p class="sa-policy-meta">This policy is of the type: <a href="#">
 				<?php //echo $custom_fields['sa_policytype'][0];
@@ -61,14 +61,14 @@ $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 				?>
 			</a></p> -->
 			<?php 
-				if ( function_exists('cc_add_comment_button') ) { 
-					cc_add_comment_button(); 
-				} 
+				// if ( function_exists('cc_add_comment_button') ) { 
+				// 	cc_add_comment_button(); 
+				// } 
 			?>
 			<?php 
-				if ( function_exists('bp_share_post_button') ) { 
-					bp_share_post_button(); 
-				} 
+				// if ( function_exists('bp_share_post_button') ) { 
+				// 	bp_share_post_button(); 
+				// } 
 			?>
 
 			<div class="clear"></div>			
@@ -76,7 +76,4 @@ $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 
 			<?php //wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
-		<footer class="entry-meta">
-			<?php edit_post_link( __( 'Edit', 'twentytwelve' ), '<span class="edit-link">', '</span>' ); ?>
-		</footer><!-- .entry-meta -->
 	</article><!-- #post -->

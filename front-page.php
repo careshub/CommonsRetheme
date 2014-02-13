@@ -12,9 +12,7 @@ get_header(); ?>
 
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
-			<div id="screamer" class="clear">
-				<h1><?php echo get_bloginfo ( 'description' );  ?></h1>
-			</div>
+			<h1 class="screamer spacious clear"><?php echo get_bloginfo( 'description', 'display' );  ?></h1>
 
 <?php
 //Set up an array to contain the id of posts we've already used.
@@ -56,7 +54,7 @@ $do_not_duplicate = array();
 			// echo '<br />';
 
 		    //$related_tag = $post->tag ?>
-		    <h4 class="clear-none"><a href="/blog/" title="Article archive" class="button">Browse all articles.</a></h4>
+		    <h4 class="clear-none"><a href="/blog/" title="Article archive" class="button">Browse all Commons articles.</a></h4>
 		</div> <!-- end #top-story -->
 
 		<?php endwhile; 
@@ -158,8 +156,8 @@ for ($i = 1; $i <= 4; $i++) {
 	if ( $main_query ) : 
 		while ( $main_query->have_posts() ) : $main_query->the_post();
 			$layout_location = 'secondary';
-			if ( $i%2 !== 0 ) {
-				//echo '<div class="content-row">';
+			if ( $i%2 == 1 ) {
+				echo '<div class="content-row">';
 			}
 			?>
 		<div id="story-block-<?php echo $i; ?>" class="quarter-block" class="clear">
@@ -272,8 +270,8 @@ for ($i = 1; $i <= 4; $i++) {
 
   <?php 
   if ( $i%2 == 0 ) {
-				//echo '</div> <!-- End .content-row -->';
-			}
+		echo '</div> <!-- End .content-row -->';
+	}
 	endif; //ends if ( main_query )
 
 } //ends for loop iteration

@@ -14,19 +14,19 @@ get_header(); ?>
 					} ?>
 			<div class="entry-content">
 
-				<h3 class="screamer sagreen">How can you fight Latino childhood obesity in your area?</h2><img src='http://dev.communitycommons.org/wp-content/uploads/2013/09/family-biking-cropped-300x226.jpg' alt='Latino family taking a bike ride' class="alignright"> 
+				<h3 class="screamer sagreen">How can you fight Latino childhood obesity in your area?</h2>
+	
+				<?php sa_get_random_hero_video(); ?>
 
 				<p class="intro-text" style="font-size:1.2em;">Obesity threatens the health of Latino kids.</p> 
                                     
-                <p>But how do you get involved?</p>
- 
-				<p><strong>Growing Healthy Change</strong> is here to highlight healthy<br /> changes happening in your community right now, and help you learn to start your own change.</p>
+				<p><strong>Growing Healthy Change</strong> brings you healthy changes happening in your community right now, and shows how to start your own change.</p>
 				 
-				<p>Find the latest policies, stories, and research to reduce Latino childhood obesity&mdash;like unlocking playgrounds after school&mdash;in your city, school, county, state, and nation. Learn the steps people take to create change, and find resources on how to do it yourself.</p>
+				<p>Find new policies, stories, and research to reduce Latino childhood obesity&mdash;like unlocking playgrounds after school&mdash;in your city, school, county, state, and nation.</p>
                                 
-                <p>And be sure to upload your own stories and videos of change.</p>
+                <p>Learn from our Salud Heroes how you can make a change, too.</p>
                 
-                <p>Get started! </p>
+                <p>Get started!</p>
 
 				<div class="find-changes">
 					<h3 class="screamer saorange">1. Find Changes</h3>
@@ -46,15 +46,15 @@ get_header(); ?>
 							$advocacy_targets = get_terms('sa_advocacy_targets');
 							foreach ($advocacy_targets as $target) {
 								?>
-								<div class="column1of3 mini-text"><a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', $target->slug ) ?>"><span class="<?php echo $target->slug; ?>x90"></span><br /><?php echo $target->name; ?></a></div>						
+								<div class="column1of3 mini-text"><a href="<?php cc_the_cpt_tax_intersection_link( 'sapolicies', 'sa_advocacy_targets', $target->slug ) ?>" title="<?php echo $target->description; ?>"><span class="<?php echo $target->slug; ?>x90"></span><br /><?php echo $target->name; ?></a></div>						
 							<?php } //end foreach ?>
 							
 						</div>
 
 						<div class="half-block">
 							<h4 style="margin-top:0;">By Location</h4>
-							<a href="http://dev.communitycommons.org/salud-america/sapolicies/"><img src='http://dev.communitycommons.org/wp-content/uploads/2013/08/Salud_Location_Map.png' alt='Map of Changes'class="no-box"></a>
-			                <a href='http://dev.communitycommons.org/salud-america/sapolicies/'>Browse changes happening in your area</a>
+							<a href="http://staging.maps.communitycommons.org/policymap/" title="link to interactive map of changes"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/salud_location_map.png" alt='Map of Changes' class="no-box"></a>
+			                <a href="http://staging.maps.communitycommons.org/policymap/">Browse changes happening in your area</a>
 						</div>
 					</div>
 					<h4 style="margin-left:3%;">Recent Changes</h4>
@@ -145,7 +145,7 @@ get_header(); ?>
 
 				<h3 class="screamer sapurple">2. Learn to Create Change</h3>
 				<div class="row clear">
-					<h4 style="margin-top:0;margin-left:3%;">See How People Like You Make Change</h4>
+					<h4 style="margin-top:0;margin-left:3%;">See the Changes a Salud Hero Can Make</h4>
 
 					<?php
 					//Grab the 3 most recent success stories
@@ -183,28 +183,29 @@ get_header(); ?>
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">
 						<h4 style="margin-top:0;">What's Change?</h4>
-	                    <a href="/salud-america/what-is-change"><img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;"></a>
+	                    <a href="/salud-america/what-is-change"><img src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;"></a>
 	                    <p>Find out what "change" really means and all the science behind it.<br />
 	                    	<a href="/salud-america/what-is-change" class="button" title="Learn what change means.">Learn more</a></p>
                     </div>
 
 					<div class="half-block" style="margin-top:0;">
 						<h4 style="margin-top:0;">Get help to Make a Change</h4>
-	                    <a href='/salud-america/saresourcespage/'><img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/Resoucesmakechange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;"></a>
+	                    <a href='/salud-america/saresourcespage/'><img src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/Resoucesmakechange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;"></a>
 	                    <p>Use research, toolkits, and other elements to learn about healthy change.<br />
-	                    	<a href="/salud-america/saresourcespage/" class="button" title="Learn about healthy change.">Learn more</a></p>
+	                    	<a href="/saresources/" class="button" title="Learn about healthy change.">Learn more</a></p>
 					</div>
 				</div>
 				
-				<h3 class="screamer sablue">3. Share Your Change</h3>
+				<h3 class="screamer sablue">3. Be a Salud Hero</h3>
 
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">
-						<h4 style="margin-top:0;">Be a Salud Changer</h4>
-	                    <a href='/salud-america/share-your-own-stories/'><img src='http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png' alt='Share Your Change' style="width:32%; float:left; margin-right:5%;" class="no-box"></a>
-	                    <p>Are you making a healthy change? <br />
-	                    	Share your story with us and we can feature it here so others can learn from you!<br />
-	                    	<a href="/salud-america/share-your-own-stories/" class="button" title="Share your story.">Share your story</a></p>
+						<h4 style="margin-top:0;">Making a Change?</h4>
+	                    <a href='/salud-america/share-your-own-stories/'><img src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png' alt='Share Your Change' style="width:32%; float:left; margin-right:5%;" class="no-box"></a>
+	                    <p>If you or someone you know is starting a change or already made a change, let us know. <br />
+	                    	We can write it up, possibly film it, and share it nationwide!<br />
+	                    	<a href="/salud-america/share-your-own-stories/" class="button" title="Share your story.">Share your story or alert us to a change</a>
+	                    	<!-- <a href="/salud-america/share-your-own-stories/" class="button" title="Alert us to a change.">Alert us to a change.</a> --></p>
 					</div>
 
 					<div class="half-block" style="margin-top:0;">
@@ -231,17 +232,20 @@ get_header(); ?>
 								 );
 			        //var_dump($filter_args);
 			        $query2 = new WP_Query($filter_args);
-			        if($query2->have_posts()) { 
-			      		echo '<div class="taxonomy-policies">';
-			        	while($query2->have_posts()) : 
-	                        $query2->the_post();
-	                        get_template_part( 'content', 'saresources-short' ); 
-	                    endwhile;
-	                    echo '<div>';
+					
+					//***********Mike added commented this section because saresource results were showing twice**************
+			        // if($query2->have_posts()) { 
+			      		// echo '<div class="taxonomy-policies">';
+			        	// while($query2->have_posts()) : 
+	                        // $query2->the_post();
+	                        // get_template_part( 'content', 'saresources-short' ); 
+	                    // endwhile;
+	                    // echo '<div>';
 
-			        } else { 
-	                    echo "No Results - Search criteria too specific";	
-	                }
+			        // } else { 
+	                    // echo "No Results - Search criteria too specific";	
+	                // }
+					//********************************************************************************************************
 
 
 				} else {
@@ -322,7 +326,7 @@ get_header(); ?>
 							++$i;
 							?>
 						<div class="half-block salud-topic <?php echo $cat_slug; ?>">
-							<a href="<?php the_intersection_link( 'sapolicies', 'sa_advocacy_targets', $cat_slug ) ?>" class="<?php echo $cat_slug; ?>  clear">
+							<a href="<?php cc_the_cpt_tax_intersection_link( 'sapolicies', 'sa_advocacy_targets', $cat_slug ) ?>" class="<?php echo $cat_slug; ?>  clear">
 								<span class="<?php echo $cat_slug; ?>x60"></span>
 								<h4><?php echo $section_title; ?></h4>
 							</a>
@@ -428,8 +432,8 @@ get_header(); ?>
                                 <div style="width:25%" class="half-block">
                                 <div style="background-color:rgb(240,240,240);border-width: 3px; border-style: solid;border-color: lightgrey;">
                                 <h3 style='text-align:center; padding-top:0px'>Start a Change</h3>
-                                <div style="padding-left:15px"><a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/">Add a change</a> in your area!<br/><br/><a href="http://dev.communitycommons.org/salud-america/share-your-own-stories/"></div>
-                                    <img class=" wp-image-12449 aligncenter" alt="Health" src="http://dev.communitycommons.org/wp-content/uploads/2013/08/images.jpg" width="120" height="120" /></a>
+                                <div style="padding-left:15px"><a href="/salud-america/share-your-own-stories/">Add a change</a> in your area!<br/><br/><a href="/salud-america/share-your-own-stories/"></div>
+                                    <img class=" wp-image-12449 aligncenter" alt="Health" src="/wp-content/uploads/2013/08/images.jpg" width="120" height="120" /></a>
                                 <br/>
                                 </div> 
                                   <br/>    
@@ -487,7 +491,7 @@ get_header(); ?>
 						}?></a><?php
                                      endwhile
                                          ?><br/><br/>
-                                                        <a href="http://dev.communitycommons.org/salud-america/saresourcespage/">See more</a>
+                                                        <a href="/salud-america/saresourcespage/">See more</a>
                                    <br/><br/>
                                  </div>   
                                 </div>

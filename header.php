@@ -33,6 +33,8 @@
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <![endif]-->
 <?php wp_head(); ?>
+<!-- Necessary for YouTube verification for Salud America content -->
+<meta name="google-site-verification" content="uCaNxt_VDB48fPzYQTO6RCNiYbtaX8FiBW205jq8LwE" />
 </head>
 
 <body <?php body_class('js'); ?>>
@@ -106,7 +108,7 @@
         			<?php //bp_loggedin_user_avatar('width=24&height=24');  
         		} else { //show login and register links if not logged in ?>
 	        		<li>
-	        			<?php printf( __( '<a href="%s" title="Create an account">Register</a>', 'buddypress' ), site_url( bp_get_signup_slug() . '/' ) ) ?>
+	        			<?php printf( __( '<a href="%s" title="Create an account">Register</a>', 'buddypress' ), site_url( bp_get_signup_slug() ) ) ?>
 	        		</li>
 	        		<li id="login-item" class="clear">
 		        		<a class="login-link" href="<?php echo wp_login_url( ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?></a>
@@ -129,7 +131,7 @@
         		<?php } ?>
 					<?php notifications_counter(); ?>
 					<li>
-						<a href="https://ip3.zendesk.com/account/dropboxes/20111391">Help</a>
+						<a href="/training-resources/">Support</a>
 					</li>
 				</ul>
 			</div><!-- End nav-container -->

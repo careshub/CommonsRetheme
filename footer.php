@@ -62,12 +62,7 @@
 		    <a href="https://plus.google.com/117982399710195199733" rel="publisher" class="gplusx60 iconx60 alignleft"></a>
 		</div>        
 		</div><!-- .site-info -->
-                <div class="alignleft award-shelf">
-                    <h4>Awards</h4>
-                    <a href="http://healthdataconsortium.org/data-sources">
-                        <img alt="Health Data All Star Badge" src="http://www.healthdataconsortium.org/wp-content/uploads/2013/10/healthdataallstar-badge-80.png"  class="alignleft"/>
-                    </a>
-		</div>
+
 	</div> <!-- .page width -->
 </footer><!-- #colophon -->
 

@@ -243,7 +243,7 @@ get_header(); ?>
 	jQuery(function () {
 		  // Load modal dialog on click
 		  jQuery('.open-quickstart-kids-modal').click(function (k) {
-		    jQuery('#wotn-quickstart-kids-modal').modal({overlayClose:true, minHeight:500});
+		    jQuery('#wotn-quickstart-kids-modal').modal({overlayClose:true, minHeight:500, autoResize:true});
 		    return false;
 		  });
 		  jQuery('.open-quickstart-modal').click(function (g) {

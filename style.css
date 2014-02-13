@@ -671,12 +671,10 @@ div#signup-avatar img {
   margin-top: 5px;
   outline: none;
 }
-.standard-form #basic-details-section,
-.standard-form #blog-details-section,
-.standard-form #profile-details-section {
+.register-section {
   float: none;
   width: 100%;
-  margin-bottom: 4em;
+  margin-bottom: 3em;
 }
 form#signup_form .field-visibility-settings fieldset {
   margin-top: 1em;
@@ -1427,6 +1425,12 @@ ul.item-list {
   padding: 0;
   list-style: none;
 }
+ul.item-list.compact {
+  margin: 0;
+}
+ul.item-list.compact li {
+  padding: 0;
+}
 ul.item-list li {
   position: relative;
   clear: left;
@@ -1958,8 +1962,8 @@ h5 {
   margin-bottom: 2em;
 }
 #content #screamer h1 {
-  font-size: 14px;
-  font-size: 1rem;
+  font-size: 15.400000000000002px;
+  font-size: 1.1rem;
   font-weight: 400;
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
@@ -1986,32 +1990,55 @@ h5 {
   clear: left;
   margin-bottom: 0;
 }
-#primary #content .screamer {
+#content .screamer {
   background-color: #008eaa;
   margin-bottom: 1.4em;
+  font-size: 15.400000000000002px;
+  font-size: 1.1rem;
   font-weight: 400;
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-  line-height: 1.4;
+  line-height: 1.6;
   padding: 0.3em 0.5em;
 }
-#primary #content .screamer.saorange {
+#content .screamer.saorange {
   background-color: #f48120;
 }
-#primary #content .screamer.sapurple {
+#content .screamer.sapurple {
   background-color: #92278f;
 }
-#primary #content .screamer.sagreen {
+#content .screamer.sagreen {
   background-color: #60b035;
 }
-#primary #content .screamer.sayellow {
+#content .screamer.sayellow {
   background-color: #fdb913;
 }
-#primary #content .screamer.sablue {
+#content .screamer.sablue {
   background-color: #0088cf;
 }
-#primary #content .screamer.sapink {
+#content .screamer.sapink {
   background-color: #eb008b;
+}
+#content .screamer.background-ca4blue {
+  background-color: #0057a7;
+}
+#content .screamer.background-ca4red {
+  background-color: #f15a22;
+}
+#content .screamer.background-ca4orange {
+  background-color: #f58233;
+}
+#content .screamer.background-ca4gold {
+  background-color: #ffc222;
+}
+#content .screamer.ccgreen {
+  background-color: #869b3c;
+}
+#content .screamer.ccred {
+  background-color: #df5927;
+}
+#content .screamer.ccyellow {
+  background-color: #f7b718;
 }
 hr {
   background-color: #96ad43;
@@ -2349,14 +2376,13 @@ ul.item-list li .share-buttons-below li {
   margin-bottom: 24px;
   margin-bottom: 1.71429rem;
   padding-bottom: 0;
+  overflow: auto;
 }
 .salud-america .site-content article:last-child {
   border-bottom: none;
 }
-.salud-america .site-content article.sa_archive_introduction,
-.salud-america .site-content article.page {
+.salud-america .site-content article.no-border {
   border-bottom: none;
-  margin-bottom: 0;
 }
 .salud-america .site-content .main-article {
   border-bottom: none;
@@ -2364,6 +2390,21 @@ ul.item-list li .share-buttons-below li {
 .salud-america .site-content .comments-area {
   padding-bottom: 1em;
   margin-bottom: 1em;
+}
+.salud-america .site-content h2 {
+  color: #ef4036;
+  font-size: 28px;
+  font-size: 2rem;
+}
+.salud-america .site-content h3 {
+  color: #ef4036;
+  font-size: 22.400000000000002px;
+  font-size: 1.6rem;
+}
+.salud-america .site-content h4 {
+  color: #ef4036;
+  font-size: 16.8px;
+  font-size: 1.2rem;
 }
 .salud-america .salud-header {
   width: 100%;
@@ -2438,21 +2479,6 @@ ul.item-list li .share-buttons-below li {
   color: #60b035;
   font-size: 28px;
   font-size: 2rem;
-}
-.salud-america #content h2 {
-  color: #ef4036;
-  font-size: 28px;
-  font-size: 2rem;
-}
-.salud-america #content h3 {
-  color: #ef4036;
-  font-size: 22.400000000000002px;
-  font-size: 1.6rem;
-}
-.salud-america #content h4 {
-  color: #ef4036;
-  font-size: 16.8px;
-  font-size: 1.2rem;
 }
 .salud-america #content .browse-topics .salud-topic h4 {
   clear: none;
@@ -2601,7 +2627,12 @@ ul.item-list li .share-buttons-below li {
 .salud-america #content .learn-from-success-stories .half-block,
 .salud-america #content .find-changes .half-block,
 .salud-america #content .examples-of-change .half-block {
-  margin-bottom: 0;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  border-bottom: none;
+}
+.salud-america #content .salud-hero-video-summary h3 {
+  margin-top: 0;
 }
 .salud-america .salud-success-stories-sidebar {
   width: 90%;
@@ -3062,6 +3093,7 @@ body.home-page #primary .quarter-block h3 {
   margin-bottom: 2em;
   padding-bottom: 2em;
   width: 100%;
+  border-bottom: 1px solid #dedede;
 }
 .half-block {
   margin-bottom: 2em;
@@ -3228,8 +3260,8 @@ body.home-page #primary .quarter-block h3 {
   margin: 14px 10px 0 0;
 }
 .data-vis-tool-group .entry-header h1 {
-  font-size: 28px;
-  font-size: 2rem;
+  font-size: 19.599999999999998px;
+  font-size: 1.4rem;
 }
 .data-vis-tool-group .entry-header .data-vis-header {
   zoom: 1;
@@ -3281,8 +3313,8 @@ body.home-page #primary .quarter-block h3 {
   background-color: #008eaa;
 }
 .tool-group .entry-header h1 {
-  font-size: 28px;
-  font-size: 2rem;
+  font-size: 19.599999999999998px;
+  font-size: 1.4rem;
 }
 .tool-group .entry-header .data-vis-header {
   zoom: 1;
@@ -3325,6 +3357,21 @@ body.home-page #primary .quarter-block h3 {
   font-size: 14px;
   font-size: 1rem;
   width: 93%;
+}
+.ncr #primary #content article {
+  margin-bottom: 14px;
+  margin-bottom: 1rem;
+}
+.ncr #primary #content .content-row {
+  margin-bottom: 42px;
+  margin-bottom: 3rem;
+}
+.ncr #primary #content .third-block {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.ncr #primary #content .third-block .entry-header {
+  margin-bottom: 0;
 }
 #content .bpfb_toolbarItem {
   display: block;
@@ -3418,11 +3465,26 @@ body.home-page #primary .quarter-block h3 {
 }
 .video-container {
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 48%;
   padding-top: 30px;
   height: 0;
   overflow: hidden;
   margin-bottom: 2em;
+}
+#content .video-container-group {
+  margin-bottom: 1.7em;
+}
+#content .video-container-group h4 {
+  margin-top: 0;
+  margin-bottom: .5em;
+}
+#content .video-container-group .video-container {
+  margin-bottom: .5em;
+}
+#content .video-container-group figcaption {
+  font-size: 11.9px;
+  font-size: 0.85rem;
+  font-style: italic;
 }
 .video-container iframe,
 .video-container object,
@@ -3450,6 +3512,30 @@ body.home-page #primary .quarter-block h3 {
 .clear-none {
   clear: none;
 }
+.background-ca4blue {
+  background-color: #0057a7;
+}
+.background-ca4red {
+  background-color: #f15a22;
+}
+.background-ca4orange {
+  background-color: #f58233;
+}
+.background-ca4gold {
+  background-color: #ffc222;
+}
+.text-ca4blue {
+  color: #0057a7;
+}
+.text-ca4red {
+  color: #f15a22;
+}
+.text-ca4orange {
+  color: #f58233;
+}
+.text-ca4gold {
+  color: #ffc222;
+}
 @media screen and (min-width: 400px) {
   .primary-navigation .brand a {
     font-size: 16.8px;
@@ -3472,6 +3558,13 @@ body.home-page #primary .quarter-block h3 {
   #content #screamer h1 {
     font-size: 16.8px;
     font-size: 1.2rem;
+  }
+  #content .screamer {
+    font-size: 19.599999999999998px;
+    font-size: 1.4rem;
+  }
+  #content .screamer.spacious {
+    padding: 0.8em 1em;
   }
   ul.item-list div.item {
     width: 80%;
@@ -3604,7 +3697,7 @@ body.home-page #primary .quarter-block h3 {
     margin-top: 32px;
   }
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 768px) {
   /* Main navigation
 *******************/
   .primary-navigation {
@@ -3805,11 +3898,7 @@ body.home-page #primary .quarter-block h3 {
     clear: none;
   }
   .content-row {
-    border-bottom: 1px solid #dedede;
     width: 100%;
-  }
-  .content-row:after {
-    clear: both;
   }
   .content-row:before,
   .content-row:after {
@@ -4010,6 +4099,10 @@ body.home-page #primary .quarter-block h3 {
   .maps-data #primary #content .quicklinks {
     margin-top: 1.5em;
   }
+  .data-vis-tool-group .entry-header h1 {
+    font-size: 25.2px;
+    font-size: 1.8rem;
+  }
   .data-vis-tool-group .entry-header p {
     float: left;
     width: 36%;
@@ -4018,6 +4111,10 @@ body.home-page #primary .quarter-block h3 {
   .data-vis-tool-group .entry-header img {
     float: left;
     width: 60%;
+  }
+  .tool-group .entry-header h1 {
+    font-size: 25.2px;
+    font-size: 1.8rem;
   }
   .tool-group .entry-header p {
     float: left;
@@ -4048,9 +4145,7 @@ body.home-page #primary .quarter-block h3 {
   div#item-header .activity {
     margin-left: 2em;
   }
-  .standard-form #basic-details-section,
-  .standard-form #blog-details-section,
-  .standard-form #profile-details-section {
+  .register-section {
     float: left;
     width: 48%;
   }
@@ -4089,6 +4184,11 @@ body.home-page #primary .quarter-block h3 {
     display: inline-block;
     margin-top: 32px;
   }
+  .policy-meta {
+    display: block;
+    float: left;
+    width: 90%;
+  }
   .invite-anyone #invite-anyone-group-list li {
     width: 45%;
   }
@@ -4110,9 +4210,6 @@ body.home-page #primary .quarter-block h3 {
 @media screen and (min-width: 1000px) {
   .content-row {
     border-bottom: none;
-  }
-  .content-row:after {
-    clear: none;
   }
   .content-row:before,
   .content-row:after {
@@ -4176,7 +4273,17 @@ body.home-page #primary .quarter-block h3 {
     width: 45%;
     margin-left: 5%;
     float: right;
-    padding-bottom: 36%;
+    padding-bottom: 21%;
+  }
+  #content .video-container-group {
+    float: right;
+    width: 45%;
+    margin-left: 5%;
+    margin-bottom: 1.7em;
+  }
+  #content .video-container-group .video-container {
+    width: 100%;
+    padding-bottom: 47%;
   }
 }
 /*ZenBox styles*/
