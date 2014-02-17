@@ -1700,20 +1700,30 @@ form.standard-form textarea {
 .buddypress #secondary,
 .salud-america #secondary,
 .buddypress #tertiary,
-.salud-america #tertiary {
+.salud-america #tertiary,
+.buddypress #item-buttons,
+.salud-america #item-buttons {
   width: 100%;
   clear: both;
 }
 .buddypress #secondary .widget,
 .salud-america #secondary .widget,
 .buddypress #tertiary .widget,
-.salud-america #tertiary .widget {
+.salud-america #tertiary .widget,
+.buddypress #item-buttons .widget,
+.salud-america #item-buttons .widget {
   margin-top: 1.5em;
 }
 .buddypress #tertiary,
-.salud-america #tertiary {
+.salud-america #tertiary,
+.buddypress #item-buttons,
+.salud-america #item-buttons {
   margin-top: 2em;
   border-top: 1px solid #aaaaaa;
+}
+.buddypress .action-buttons,
+.salud-america .action-buttons {
+  padding-top: 1em;
 }
 #secondary .sidebar-activity-tabs {
   padding-bottom: 1em;
@@ -3955,7 +3965,9 @@ body.home-page #primary .quarter-block h3 {
   .buddypress #secondary,
   .salud-america #secondary,
   .buddypress #tertiary,
-  .salud-america #tertiary {
+  .salud-america #tertiary,
+  .buddypress #item-buttons,
+  .salud-america #item-buttons {
     clear: none;
     float: left;
     width: 22%;
@@ -3967,7 +3979,9 @@ body.home-page #primary .quarter-block h3 {
   .buddypress #secondary .widget,
   .salud-america #secondary .widget,
   .buddypress #tertiary .widget,
-  .salud-america #tertiary .widget {
+  .salud-america #tertiary .widget,
+  .buddypress #item-buttons .widget,
+  .salud-america #item-buttons .widget {
     margin-right: 12px;
   }
   .site .item-list-tabs ul,

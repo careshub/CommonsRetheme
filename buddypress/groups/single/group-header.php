@@ -57,11 +57,11 @@ do_action( 'bp_before_group_header' );
 
 		<?php bp_group_description(); ?>
 
-		<div id="item-buttons">
+		<!-- <div id="item-buttons">
 
 			<?php do_action( 'bp_group_header_actions' ); ?>
 
-		</div><!-- #item-buttons -->
+		</div> --><!-- #item-buttons -->
 
 		<?php do_action( 'bp_group_header_meta' ); ?>
 

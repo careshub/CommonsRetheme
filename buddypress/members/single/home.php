@@ -65,4 +65,12 @@
 
 	<?php do_action( 'bp_after_member_home_content' ); ?>
 
+	<div id="item-buttons">
+
+		<?php do_action( 'bp_member_header_actions' ); ?>
+
+	</div><!-- #item-buttons -->
+
+	<?php get_sidebar( 'members-single' ); ?>
+
 </div><!-- #buddypress -->

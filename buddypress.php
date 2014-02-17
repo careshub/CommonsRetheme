@@ -21,5 +21,8 @@ get_header(); ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 
-<?php get_sidebar(); ?>
+<?php // Don't include a sidebar if on single member or single group sidebar
+if ( !( bp_is_group_single() || bp_is_user() ) )
+	get_sidebar( $sidebar );
+ ?>
 <?php get_footer(); ?>

@@ -1,22 +1,19 @@
 <?php
 /**
- * The sidebar containing the group sub nav and widget area.
+ * The sidebar used on a single group page.
  *
  *
  * @package WordPress
- * @subpackage Twenty_Twelve
- * @since Twenty Twelve 1.0
+ * @subpackage Commons Retheme
+ * @since 1.0
  */
 ?>
 		<div id="tertiary" class="widget-area" role="complementary">
-		<?php 
-			// $Path=$_SERVER['REQUEST_URI'];
-			// $data_url= home_url() . $Path;
-		?>
 
-		<?php if ( is_active_sidebar( 'groups-single-sidebar' ) ) :
-					dynamic_sidebar( 'groups-single-sidebar' ); 
-			endif;
+		<?php 
+			if ( is_active_sidebar( 'groups-single-sidebar' ) ) {
+				dynamic_sidebar( 'groups-single-sidebar' ); 
+			}
 		?>
 
 		</div><!-- #tertiary -->

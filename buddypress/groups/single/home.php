@@ -102,6 +102,15 @@
 
 	<?php do_action( 'bp_after_group_home_content' ); ?>
 
+	<!-- Item buttons are things like "Request Membership" and "Leave Group" -->
+	<div id="item-buttons" class="action-buttons">
+
+		<?php do_action( 'bp_group_header_actions' ); ?>
+
+	</div><!-- #item-buttons -->
+
 	<?php endwhile; endif; ?>
 
+	<?php get_sidebar( 'groups-single' ); ?>
+	
 </div><!-- #buddypress -->

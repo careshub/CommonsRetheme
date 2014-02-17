@@ -1,11 +1,11 @@
 <?php
 /**
- * The sidebar containing the group sub nav and widget area.
+ * The sidebar used on the groups directory page.
  *
  *
  * @package WordPress
- * @subpackage Twenty_Twelve
- * @since Twenty Twelve 1.0
+ * @subpackage Commons Retheme
+ * @since 1.0
  */
 ?>
 		<div id="secondary" class="widget-area" role="complementary">
