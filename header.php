@@ -83,8 +83,9 @@
 					
 				<?php if (is_user_logged_in()) { //show user info if logged in ?>
 					<li class="menupop clear">
-						<a href="<?php echo bp_core_get_userlink( bp_loggedin_user_id(), $no_anchor = false, $just_link = true ); ?>" title="My user home">
-						<span class="userx21"></span></a>
+						<a href="<?php echo bp_core_get_userlink( bp_loggedin_user_id(), $no_anchor = false, $just_link = true ); ?>" class="user-home-link" title="My user home">
+							<span class="userx21"></span>
+						</a>
 						<span class="visible-mini">
 						<?php echo bp_core_get_userlink( bp_loggedin_user_id() ); ?>
 						</span>
@@ -107,10 +108,7 @@
 					</li>
         			<?php //bp_loggedin_user_avatar('width=24&height=24');  
         		} else { //show login and register links if not logged in ?>
-	        		<li>
-	        			<?php printf( __( '<a href="%s" title="Create an account">Register</a>', 'buddypress' ), site_url( bp_get_signup_slug() ) ) ?>
-	        		</li>
-	        		<li id="login-item" class="clear">
+	        		<li id="login-item" class="separator clear">
 		        		<a class="login-link" href="<?php echo wp_login_url( ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?></a>
 	        			<div class="pop-sub-wrapper">
 	        				<form name="login-form" id="sidebar-login-form" class="standard-form" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
@@ -128,9 +126,12 @@
 							</form>
 	        			</div>
 	        		</li>
+	        		<li class="separator">
+	        			<?php printf( __( '<a href="%s" title="Create an account">Register</a>', 'buddypress' ), site_url( bp_get_signup_slug() ) ) ?>
+	        		</li>
         		<?php } ?>
 					<?php notifications_counter(); ?>
-					<li>
+					<li class="separator">
 						<a href="/training-resources/">Support</a>
 					</li>
 				</ul>

@@ -777,6 +777,9 @@ div.generic-button a:hover,
 #item-buttons {
   margin-top: 1em;
 }
+#item-buttons .generic-button {
+  float: left;
+}
 #item-buttons .generic-button a {
   margin: 0 10px 10px 0;
 }
@@ -1682,24 +1685,18 @@ form.standard-form textarea {
 .buddypress #secondary,
 .salud-america #secondary,
 .buddypress #tertiary,
-.salud-america #tertiary,
-.buddypress #item-buttons,
-.salud-america #item-buttons {
+.salud-america #tertiary {
   width: 100%;
   clear: both;
 }
 .buddypress #secondary .widget,
 .salud-america #secondary .widget,
 .buddypress #tertiary .widget,
-.salud-america #tertiary .widget,
-.buddypress #item-buttons .widget,
-.salud-america #item-buttons .widget {
+.salud-america #tertiary .widget {
   margin-top: 1.5em;
 }
 .buddypress #tertiary,
-.salud-america #tertiary,
-.buddypress #item-buttons,
-.salud-america #item-buttons {
+.salud-america #tertiary {
   margin-top: 2em;
   border-top: 1px solid #aaaaaa;
 }
@@ -1787,7 +1784,7 @@ form.standard-form textarea {
 }
 #colophon {
   max-width: 100%;
-  background-color: #dedede;
+  background-color: #d6d6d6;
   overflow: auto;
   /*TODO clearfix*/
 }
@@ -1928,6 +1925,41 @@ img.avatar {
 .buddypress #content h4 {
   font-size: 15.400000000000002px;
   font-size: 1.1rem;
+}
+.buddypress .single-group-footer {
+  float: left;
+  background-color: #ebebeb;
+  margin-top: 2em;
+  width: 100%;
+}
+.buddypress .single-group-footer .group-visibility {
+  display: block;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.buddypress .single-group-footer .group-visibility span {
+  display: block;
+  margin: .4em 1.4em;
+}
+.buddypress .single-group-footer .group-visibility.ccred {
+  background-color: #df5927;
+}
+.buddypress .single-group-footer .group-visibility.ccblue {
+  background-color: #008eaa;
+}
+.buddypress .single-group-footer .group-visibility.ccgreen {
+  background-color: #869b3c;
+}
+.buddypress .single-group-footer #item-meta {
+  margin: 0 1.4em 1.4em;
+}
+.buddypress .single-group-footer ul {
+  list-style-type: none;
+  margin-bottom: 0;
+}
+.buddypress .single-group-footer ul li {
+  margin-left: 0;
+  display: inline-block;
 }
 h5 {
   font-size: 12.6px;
@@ -2889,6 +2921,9 @@ ul.item-list li .share-buttons-below li {
   display: inline-block;
   text-decoration: none;
 }
+.primary-navigation .user-home-link {
+  display: none;
+}
 .primary-navigation .nav-container {
   display: block;
   clear: both;
@@ -2918,14 +2953,20 @@ ul.item-list li .share-buttons-below li {
 .primary-navigation .links {
   margin-top: 12px;
   margin-left: 0px;
+  border-top: 1px solid #454545;
+}
+.primary-navigation .links li {
+  border-bottom: 1px solid #454545;
 }
 .primary-navigation .secondary {
-  border-top: 1px solid #454545;
   float: left;
 }
 .primary-navigation .secondary li {
   width: 100%;
   margin: 0;
+}
+.primary-navigation .secondary .separator {
+  border-bottom: 1px solid #454545;
 }
 .primary-navigation .secondary a {
   color: #35c0db;
@@ -2957,6 +2998,7 @@ ul.item-list li .share-buttons-below li {
 .primary-navigation .secondary .bp-notifications {
   float: none;
   clear: both;
+  overflow: auto;
 }
 .primary-navigation .secondary .bp-notifications li {
   margin-left: 12px;
@@ -2980,11 +3022,12 @@ ul.item-list li .share-buttons-below li {
   width: auto;
 }
 .primary-navigation .secondary .bp-notifications span.alert {
+  display: none;
   background-color: #00b0d3;
   color: #ffffff;
 }
 .primary-navigation .secondary .bp-notifications h5 {
-  color: #737373;
+  color: #858585;
   margin-left: 12px;
   margin-top: 6px;
 }
@@ -3091,6 +3134,10 @@ body.home-page #primary .quarter-block h3 {
   margin-bottom: 2em;
   padding-bottom: 2em;
   width: 100%;
+}
+.half-block.compact {
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 .half-block img {
   max-width: 90%;
@@ -3607,11 +3654,15 @@ ul.item-list div.action {
   border-bottom: none;
   margin-right: 3%;
   margin-left: 3%;
-  width: 42.9%;
+  width: 45.9%;
   float: left;
 }
 .half-block:nth-of-type(odd) {
   clear: left;
+  margin-left: 0;
+}
+.half-block:nth-of-type(even) {
+  margin-right: 0;
 }
 .salud-america .salud-header h1,
 .salud-america .salud-header h3 {
@@ -3744,6 +3795,9 @@ ul.item-list div.action {
   border-left: none;
   border-top: solid 6px #008eaa;
 }
+.primary-navigation .user-home-link {
+  display: inline-block;
+}
 .primary-navigation .secondary {
   float: right;
   margin: 5px 7px 0 0;
@@ -3758,6 +3812,9 @@ ul.item-list div.action {
 .primary-navigation .secondary li a {
   color: #ffffff;
   line-height: 3;
+}
+.primary-navigation .secondary .separator {
+  border-bottom: none;
 }
 .primary-navigation .secondary .bp-notifications {
   clear: none;
@@ -3925,8 +3982,12 @@ body.home-page #primary #top-story h2 {
   width: 100%;
 }
 .buddypress #content #item-body {
-  width: 74.5%;
+  width: 80.5%;
   float: right;
+}
+.directory.members #secondary,
+.directory.groups #secondary {
+  width: 22%;
 }
 .directory.members .site-content,
 .directory.groups .site-content {
@@ -3940,12 +4001,10 @@ body.home-page #primary #top-story h2 {
 .buddypress #secondary,
 .salud-america #secondary,
 .buddypress #tertiary,
-.salud-america #tertiary,
-.buddypress #item-buttons,
-.salud-america #item-buttons {
+.salud-america #tertiary {
   clear: none;
   float: left;
-  width: 22%;
+  width: 16%;
   border-right: 1px solid #aaaaaa;
   clear: left;
   border-top: none;
@@ -3954,9 +4013,7 @@ body.home-page #primary #top-story h2 {
 .buddypress #secondary .widget,
 .salud-america #secondary .widget,
 .buddypress #tertiary .widget,
-.salud-america #tertiary .widget,
-.buddypress #item-buttons .widget,
-.salud-america #item-buttons .widget {
+.salud-america #tertiary .widget {
   margin-right: 12px;
 }
 .site .item-list-tabs ul,
@@ -4143,7 +4200,7 @@ div#item-header .activity {
 }
 .salud-america .site-content {
   float: right;
-  width: 74%;
+  width: 80%;
 }
 .salud-america .widget-area {
   float: left;

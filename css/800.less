@@ -74,7 +74,9 @@
 		// 	background-color: @ccblue;
 		// }
 	}
-
+	.user-home-link {
+    	display: inline-block;
+    }
 	.secondary {
 		float: right;
 		margin: 5px 7px 0 0;
@@ -88,10 +90,13 @@
 			color: @white;
 			//margin:0 1em;
 			line-height: 3;
+			}
+			
 		}
-		
-	}
-	.bp-notifications {
+		.separator {
+			border-bottom: none;
+		}
+		.bp-notifications {
 			clear:none;
 			float: right;
 			span { display:inline-block; }
@@ -297,7 +302,7 @@ body.home-page {
 		//padding-left: 2%;
 		//border-left: 1px solid #CCC;
 		#item-body {
-			width: 74.5%;
+			width: 80.5%;
 			float: right;
 		}
 		#item-body p, .main-column p, .page p  {
@@ -325,6 +330,9 @@ body.home-page {
 	}
 }
 .directory.members, .directory.groups {
+	#secondary {
+		width: 22%;
+	}
 	.site-content {
 		width: 74.5%;
 		float: right;
@@ -337,10 +345,10 @@ body.home-page {
 }
 
 .buddypress, .salud-america {
-	#secondary, #tertiary, #item-buttons  {
+	#secondary, #tertiary  {
 		clear:none;
 		float:left;
-		width: 22%;
+		width: 16%;
 		// padding-right: 1%; //causes problems for most sidebars.
 		border-right: 1px solid @graymid;
 		clear: left;
@@ -601,7 +609,7 @@ div#item-header {
 .salud-america {
 	.site-content { 
 		float: right;
-		width: 74%;
+		width: 80%;
 	}
 	.widget-area { 
 		float: left; 

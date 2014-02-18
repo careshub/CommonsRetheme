@@ -810,8 +810,11 @@ div.generic-button a:hover,
 }
 #item-buttons {
 	margin-top: 1em;
-	.generic-button a {
-		margin: 0 10px 10px 0;
+	.generic-button {
+		float: left;
+		a {
+			margin: 0 10px 10px 0;
+		}
 	}
 }
 
@@ -1986,7 +1989,7 @@ form.dir-form div.dir-search {
 	}
 }
 .buddypress, .salud-america {
-	 #secondary, #tertiary, #item-buttons  {
+	 #secondary, #tertiary {
 		width: 100%;
 		clear: both;
 		.widget {
@@ -1996,7 +1999,7 @@ form.dir-form div.dir-search {
 			//margin-top: 0 ;
 		}
 	}
-	#tertiary, #item-buttons {
+	#tertiary {
 		margin-top: 2em;
 		// padding-top: 1em;
 		border-top: 1px solid @graymid;
@@ -2094,7 +2097,7 @@ form.dir-form div.dir-search {
 	}
 #colophon {
 	max-width:100%;
-	background-color: @graylight;
+	background-color: darken(@graylight, 3%);
 	overflow: auto; /*TODO clearfix*/
 	.footer-nav {
 		width: 100%;
@@ -2242,15 +2245,56 @@ img.avatar {
 		 //    text-transform: uppercase;
 		}
 	}
+	.single-group-footer {
+		float: left;
+		background-color: lighten( @graylight, 5%);
+		margin-top: 2em;
+		// padding: 2%;
+		width: 100%;
+		.group-visibility {
+			display: block;
+			color: @white;
+		    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+			// padding: .5em 1.2em;
+			span {
+				display: block;
+				margin: .4em 1.4em;
+			}
+			&.ccred {
+				// border-top: 3px solid @ccred;
+				background-color: @ccred;
+			}
+			&.ccblue {
+				// border-top: 3px solid @ccblue;
+				background-color: @ccblue;
+			}
+			&.ccgreen {
+				// border-top: 3px solid @ccgreen;
+				background-color: @ccgreen;
+			}
+		}
+		#item-meta {
+			margin: 0 1.4em 1.4em;
+		}
+		ul {
+			list-style-type: none;
+			margin-bottom: 0;
+			li {
+				// padding: 0;
+				margin-left: 0;
+				display: inline-block;
+			}
+		}
+	}
 }
 h5 {
-			.font-size(0.9);
-			color: @graydark;
-		    //font-size: 0.785714rem;
-		    font-weight: 700;
-		    line-height: 2.18182;
-		    text-transform: uppercase;
-		}
+	.font-size(0.9);
+	color: @graydark;
+    //font-size: 0.785714rem;
+    font-weight: 700;
+    line-height: 2.18182;
+    text-transform: uppercase;
+}
 //Group home pages
 .group_home_page {
 	border-top: 2px solid @graylight;
@@ -3391,8 +3435,12 @@ ul.item-list li .share-buttons-below li {
 	display: inline-block;
 	//position: fixed;
 	//.gradient(lighten(@black, 10), @black);
-	a{ display: inline-block;
+	a { 
+		display: inline-block;
     	text-decoration: none;
+    }
+    .user-home-link {
+    	display: none;
     }
 
 
@@ -3431,16 +3479,22 @@ ul.item-list li .share-buttons-below li {
 	.links {
 		margin-top:12px;
 		margin-left: 0px;
+		border-top: 1px solid @graydark;
+		li {
+			border-bottom: 1px solid @graydark;
+		}
 
 	}
 	.secondary {
-		border-top: 1px solid @graydark;
+		// border-bottom: 1px solid @graydark;
 		float: left;
 		li {
 			// float: none;
 			width: 100%;
 			margin:0;
-			
+		}
+		.separator {
+			border-bottom: 1px solid @graydark;
 		}
 		a {
 			color:desaturate(lighten(@ccblue,20%),30%);
@@ -3458,10 +3512,12 @@ ul.item-list li .share-buttons-below li {
 			ul {
 				float: left;
 				width: 66%;
-				li{ margin:0;
-					a { width:100%;
-					float: left; 
-					line-height: 2;
+				li{ 
+					margin:0;
+					a { 
+						width:100%;
+						float: left; 
+						line-height: 2;
 					}
 				}
 			}
@@ -3469,7 +3525,9 @@ ul.item-list li .share-buttons-below li {
 		.bp-notifications {
 			float: none;
 			clear:both;
-			li {margin-left:12px;
+			overflow: auto;
+			li {
+				margin-left:12px;
 				&.no-notices {
 					width:95%;
 					line-height: 2;
@@ -3488,12 +3546,13 @@ ul.item-list li .share-buttons-below li {
 				width: auto;
 				//border:solid 1px @white;
 				&.alert {
+					display: none;
 					background-color: lighten(@ccblue,8) ;
 					color:@white;
 					}
 			}
 			h5 {
-				color:lighten(@graydark,18%);
+				color:lighten(@graydark,25%);
 				margin-left: 12px;
 				margin-top: 6px;
 
@@ -3670,6 +3729,10 @@ body.home-page {
 	// display: inline-block;
 	// text-align: left;
 	// padding:.6em;
+	&.compact {
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
 	img {
 		max-width:90%;
 	}

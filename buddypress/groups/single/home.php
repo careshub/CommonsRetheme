@@ -24,7 +24,7 @@
 
 	<div id="item-body">
 
-		<?php do_action( 'bp_before_group_body' );
+		<?php //do_action( 'bp_before_group_body' );
 
 		/**
 		 * Does this next bit look familiar? If not, go check out WordPress's
@@ -102,15 +102,12 @@
 
 	<?php do_action( 'bp_after_group_home_content' ); ?>
 
-	<!-- Item buttons are things like "Request Membership" and "Leave Group" -->
-	<div id="item-buttons" class="action-buttons">
+	<!-- CAVEAT - putting this sidebar inside the group loop means that you can't use any widgets that use the group loop -->
+	<?php get_sidebar( 'groups-single' ); ?>
 
-		<?php do_action( 'bp_group_header_actions' ); ?>
-
-	</div><!-- #item-buttons -->
+	<?php bp_get_template_part( 'groups/single/footer'); ?>
 
 	<?php endwhile; endif; ?>
 
-	<?php get_sidebar( 'groups-single' ); ?>
 	
 </div><!-- #buddypress -->

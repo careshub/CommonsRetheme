@@ -191,7 +191,7 @@ function notifications_counter() {
 	$notifications = bp_core_get_notifications_for_user( $user );
 	$count = !empty( $notifications ) ? count( $notifications ) : 0;
 	$alert_class = (int) $count > 0 ? 'pending-count alert' : 'count no-alert';
-	$output = '<li class="menupop bp-notifications">' 
+	$output = '<li class="menupop bp-notifications separator">' 
 			   . '<span class="';
 	$output .= $alert_class;
 	$output .= '">' . $count . '</span><h5>Notifications:</h5>';
@@ -1285,5 +1285,24 @@ function stick_sa_to_the_top_of_the_directory(){
       </li>
     </ul>
   <?php
+  endif;
+}
+
+add_action( 'after_setup_theme', 'cc_bp_support_theme_setup', 11 );
+function cc_bp_support_theme_setup() {
+
+    // Group buttons
+    if ( bp_is_active( 'groups' ) ) {
+      add_action( 'bp_group_header_actions',     'cc_group_rss_feed_link' );
+    }
+
+}
+function cc_group_rss_feed_link() {
+  if ( bp_is_group_home() || bp_is_group_activity() ) : ?>
+    <div class="generic-button">
+      <a href="<?php bp_group_activity_feed_link(); ?>" title="<?php _e( 'RSS Feed', 'buddypress' ); ?>" class="button"><?php _e( 'RSS', 'buddypress' ); ?></a>
+    </div>
+
+    <?php do_action( 'bp_group_activity_syndication_options' ); 
   endif;
 }
