@@ -20,6 +20,15 @@ form#login p.status{
 			li {
 				margin-bottom: 0.8em;
 			}
+			&.acfb-holder {
+				list-style-type: none;
+				li {
+					margin-left: 0;
+					input {
+						width: 100%;
+					}
+				}
+			}
 		}
 	}
 
@@ -807,29 +816,32 @@ div.generic-button a:hover,
 }
 
 // Specific for invite users pane
-#send-invite-form, #group-create-body {
-	.left-menu {
-		float:left;
-		width: 27%;
-		margin-bottom: 1em;
-	}
-	.main-column {
-		float: left;
-	    margin-left: 3%;
-	    margin-top: 10px;
-	    width: 70%;
-	}
-}
+// #send-invite-form, #group-create-body {
+// 	.left-menu {
+// 		float:left;
+// 		width: 27%;
+// 		margin-bottom: 1em;
+// 	}
+// 	.main-column {
+// 		float: left;
+// 	    margin-left: 3%;
+// 	    margin-top: 10px;
+// 	    width: 70%;
+// 	    #message {
+// 			display: none;
+// 		}
+// 	}
+// }
 // Invite Anyone style updates
 .accept-invitation #message {
 	margin-top: 2em;
 }
-.invite-anyone #invite-anyone-group-list li {
-	width:90%;
-	label span {
-		line-height: 1.4em;
-	}
-}
+// .invite-anyone #invite-anyone-group-list li {
+// 	width:90%;
+// 	label span {
+// 		line-height: 1.4em;
+// 	}
+// }
 //Make "Leave a Reply button" use CC link color
 #comments #respond h3 {
 	color: @ccblue;

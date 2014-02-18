@@ -23,6 +23,15 @@ form#login p.status {
 .site-content .entry-content ul li {
   margin-bottom: 0.8em;
 }
+.site-content .entry-content ul.acfb-holder {
+  list-style-type: none;
+}
+.site-content .entry-content ul.acfb-holder li {
+  margin-left: 0;
+}
+.site-content .entry-content ul.acfb-holder li input {
+  width: 100%;
+}
 .site-content p {
   line-height: 1.71429;
   margin: 0 0 24px;
@@ -779,27 +788,8 @@ div.generic-button a:hover,
 #item-buttons .generic-button a {
   margin: 0 10px 10px 0;
 }
-#send-invite-form .left-menu,
-#group-create-body .left-menu {
-  float: left;
-  width: 27%;
-  margin-bottom: 1em;
-}
-#send-invite-form .main-column,
-#group-create-body .main-column {
-  float: left;
-  margin-left: 3%;
-  margin-top: 10px;
-  width: 70%;
-}
 .accept-invitation #message {
   margin-top: 2em;
-}
-.invite-anyone #invite-anyone-group-list li {
-  width: 90%;
-}
-.invite-anyone #invite-anyone-group-list li label span {
-  line-height: 1.4em;
 }
 #comments #respond h3 {
   color: #008eaa;
@@ -4202,23 +4192,6 @@ body.home-page #primary .quarter-block h3 {
     display: block;
     float: left;
     width: 90%;
-  }
-  .invite-anyone #invite-anyone-group-list li {
-    width: 45%;
-  }
-  .invite-anyone #invite-anyone-group-list li label {
-    width: 85%;
-  }
-  .invite-anyone #send-invite-form .left-menu p {
-    margin: .5em 0 0 !important;
-  }
-  .invite-anyone #send-invite-form .main-column {
-    float: right;
-    width: 65%;
-    margin-left: 0 !important;
-  }
-  .invite-anyone #send-invite-form .main-column #message {
-    display: none;
   }
 }
 @media screen and (min-width: 1000px) {
