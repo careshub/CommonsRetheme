@@ -3006,7 +3006,6 @@ ul.item-list li .share-buttons-below li {
 .primary-navigation .secondary .bp-notifications {
   float: none;
   clear: both;
-  overflow: auto;
 }
 .primary-navigation .secondary .bp-notifications li {
   margin-left: 12px;
@@ -3042,9 +3041,6 @@ ul.item-list li .share-buttons-below li {
 .primary-navigation .secondary .bp-notifications a {
   padding: 0;
   line-height: 2;
-}
-.primary-navigation .secondary .bp-notifications .pop-sub-wrapper {
-  float: left;
 }
 .primary-navigation .secondary .menupop .pop-sub-wrapper {
   display: block;
@@ -3146,9 +3142,6 @@ body.home-page #primary .quarter-block h3 {
 .half-block.compact {
   margin-bottom: 0;
   padding-bottom: 0;
-}
-.half-block img {
-  max-width: 90%;
 }
 .sixth-block {
   float: left;
@@ -3652,7 +3645,7 @@ body.home-page #primary .quarter-block h3 {
     border-bottom: none;
     margin-right: 2%;
     margin-left: 2%;
-    width: 28.9%;
+    width: 30.5%;
     float: left;
   }
   .third-block img {
@@ -3660,6 +3653,11 @@ body.home-page #primary .quarter-block h3 {
   }
   .third-block:nth-of-type(3n+1) {
     clear: left;
+    margin-left: 0;
+  }
+  .third-block:nth-of-type(3n) {
+    clear: left;
+    margin-right: 0;
   }
   .half-block {
     border-bottom: none;
@@ -3756,8 +3754,12 @@ body.home-page #primary .quarter-block h3 {
   }
   .primary-navigation .links {
     float: left;
+    border-top: none;
     margin-left: 12px;
     margin-top: 0;
+  }
+  .primary-navigation .links li {
+    border-bottom: none;
   }
   .primary-navigation .nav-container {
     clear: none;
@@ -3964,13 +3966,17 @@ body.home-page #primary .quarter-block h3 {
   }
   .quarter-block {
     border-bottom: none;
-    margin-right: 2.9%;
-    margin-left: 2.9%;
-    width: 44%;
+    margin-right: 3%;
+    margin-left: 3%;
+    width: 45.9%;
     float: left;
   }
-  .quarter-block img {
-    width: 92%;
+  .quarter-block:nth-of-type(odd) {
+    clear: left;
+    margin-left: 0;
+  }
+  .quarter-block:nth-of-type(even) {
+    margin-right: 0;
   }
   .quarter-block.button {
     margin-right: 1%;
@@ -4261,9 +4267,23 @@ body.home-page #primary .quarter-block h3 {
     content: "";
   }
   .quarter-block {
-    margin-right: 1.9%;
-    margin-left: 1.9%;
-    width: 21%;
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 21.9%;
+  }
+  .quarter-block:nth-of-type(odd) {
+    clear: none;
+    margin-left: 2%;
+  }
+  .quarter-block:nth-of-type(even) {
+    margin-right: 2%;
+  }
+  .quarter-block:nth-of-type(4n+1) {
+    clear: left;
+    margin-left: 0;
+  }
+  .quarter-block:nth-of-type(4n) {
+    margin-right: 0;
   }
   .quarter-block.button {
     margin-right: 1.8%;

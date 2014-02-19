@@ -156,7 +156,7 @@ for ($i = 1; $i <= 4; $i++) {
 	if ( $main_query ) : 
 		while ( $main_query->have_posts() ) : $main_query->the_post();
 			$layout_location = 'secondary';
-			if ( $i%2 == 1 ) {
+			if ( $i%4 == 1 ) {
 				echo '<div class="content-row">';
 			}
 			?>
@@ -269,7 +269,7 @@ for ($i = 1; $i <= 4; $i++) {
 		</div> <!-- End .quarter-block -->
 
   <?php 
-  if ( $i%2 == 0 ) {
+  if ( $i%4 == 0 ) {
 		echo '</div> <!-- End .content-row -->';
 	}
 	endif; //ends if ( main_query )

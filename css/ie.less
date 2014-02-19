@@ -27,9 +27,20 @@
 		margin-right: auto;
 	}
 	// .widget img {width:100%;}
+	// Set widths for column blocks, since our normal widths assume some nth-of-type selectors
+	.half-block {
+		width: 42.9%;
+	}
+	.third-block {
+		width: 28.9%;
+	}
+	.quarter-block {
+		width: 20.9%;
+	}
 }
 .ie7 #cc-primary-search #cc-navbar-search .cc-nav-input {
 	background-color: @white;
 	}
 //hasLayout hack for IE7
 body.home-page #primary #top-story { height:1%; }
+//TODO: overrides for half-block, etc.
