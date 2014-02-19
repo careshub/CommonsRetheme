@@ -4359,6 +4359,16 @@ ul.item-list div.action {
 .ie7 .quarter-block {
   width: 20.9%;
 }
+.ie8 img.wp-post-image,
+.ie7 img.wp-post-image,
+.ie8 .entry-content img,
+.ie7 .entry-content img,
+.ie8 .comment-content img,
+.ie7 .comment-content img,
+.ie8 .widget img,
+.ie7 .widget img {
+  width: inherit;
+}
 .ie7 #cc-primary-search #cc-navbar-search .cc-nav-input {
   background-color: #ffffff;
 }

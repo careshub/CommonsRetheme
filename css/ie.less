@@ -26,7 +26,6 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
-	// .widget img {width:100%;}
 	// Set widths for column blocks, since our normal widths assume some nth-of-type selectors
 	.half-block {
 		width: 42.9%;
@@ -36,6 +35,10 @@
 	}
 	.quarter-block {
 		width: 20.9%;
+	}
+	// Image fixes -- IE8 and below don't like max-width
+	img.wp-post-image, .entry-content img, .comment-content img, .widget img {
+		width: inherit;
 	}
 }
 .ie7 #cc-primary-search #cc-navbar-search .cc-nav-input {
