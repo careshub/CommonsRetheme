@@ -15,21 +15,29 @@ do_action( 'bp_before_group_header' );
 </div> --><!-- #item-header-avatar -->
 
 <div id="item-header-content">
-	<div id="item-header-avatar">
-		<?php bp_group_avatar() ?>
-	</div>
-	<p class="group-breadcrumbs"><em>Group Tree:</em> <?php if (function_exists('bp_group_hierarchy_get_breadcrumbs'))  { echo bp_group_hierarchy_get_breadcrumbs('&ensp;&gt;&ensp;', false); } ?></p>
+
+	<!-- <p class="group-breadcrumbs"><em>Group Tree:</em> <?php // if (function_exists('bp_group_hierarchy_get_breadcrumbs'))  { echo bp_group_hierarchy_get_breadcrumbs('&ensp;&gt;&ensp;', false); } ?></p> -->
+
+	<!-- <div class="group-visibility <?php cc_group_visibility_class(); ?>">
+		<span class="group-type"><?php bp_group_type(); ?></span>
+	</div> -->
+
+
 
 	<div class="noms clear">
-		<h2><a href="<?php bp_group_permalink(); ?>" title="<?php bp_group_name(); ?>"><?php bp_group_name(); ?></a></h2>
+		<h2>	
+			<div id="item-header-avatar">
+				<?php bp_group_avatar( 'width=80&height=80' ) ?>
+			</div>
+			<a href="<?php bp_group_permalink(); ?>" title="<?php bp_group_name(); ?>"><?php bp_group_name(); ?></a></h2>
 	</div>
 
 	<!-- <span class="highlight clear"><?php bp_group_type(); ?></span>  -->
 	<!-- <span class="activity clear"><?php printf( __( 'active %s', 'buddypress' ), bp_get_group_last_active() ); ?></span> -->
 
-	<?php do_action( 'bp_before_group_header_meta' ); ?>
+	<?php //do_action( 'bp_before_group_header_meta' ); ?>
 
-	<div id="item-meta">
+	<!-- <div id="item-meta"> -->
 		<?php /* ?>
 		<div id="item-actions">
 
@@ -57,7 +65,7 @@ do_action( 'bp_before_group_header' );
 		</div><!-- #item-actions -->
 		<?php */ ?>
 
-		<?php bp_group_description(); ?>
+		<?php //bp_group_description(); ?>
 
 		<?php /* ?>
 		<div id="item-buttons">
@@ -68,9 +76,9 @@ do_action( 'bp_before_group_header' );
 		<?php */ ?>
 
 
-		<?php do_action( 'bp_group_header_meta' ); ?>
+		<?php //do_action( 'bp_group_header_meta' ); ?>
 
-	</div>
+	<!-- </div> -->
 </div><!-- #item-header-content -->
 
 <?php

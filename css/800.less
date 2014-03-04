@@ -135,51 +135,53 @@
 		}
 	}
 	.menupop{
-	.pop-sub-wrapper {
-		display: none;
-		min-width:20em;
-		margin: 26px 0 0 -1px;
-		padding: 6px 0;
-		// -webkit-box-shadow: 0 4px 4px rgba(0,0,0,0.2);
-		// box-shadow: 0 4px 4px rgba(0,0,0,0.2);
-		.drop-shadow();
-		background: #fff;
-		position: absolute;
-		float: none;
-		right:0;
-		border-width: 0 1px 1px 1px;
-		border-style: solid;
-		border-color: #dfdfdf;
-		z-index: 999;
-		color: @graymid;
-		
-		ul {
-		
-		li {
-			float: left;
-			width:98%;
-			padding-left: 2%;
-			&:hover {	
-				background-color: desaturate(lighten(@ccblue, 60%), 50%);
+		.pop-sub-wrapper {
+			display: none;
+			min-width:20em;
+			margin: 26px 0 0 -1px;
+			padding: 6px 0;
+			// -webkit-box-shadow: 0 4px 4px rgba(0,0,0,0.2);
+			// box-shadow: 0 4px 4px rgba(0,0,0,0.2);
+			.drop-shadow();
+			background: #fff;
+			position: absolute;
+			float: none;
+			right:0;
+			border-width: 0 1px 1px 1px;
+			border-style: solid;
+			border-color: #dfdfdf;
+			z-index: 999;
+			color: @graymid;
+			
+			ul {
+			
+				li {
+					float: left;
+					width:98%;
+					padding-left: 2%;
+					&:hover {	
+						background-color: desaturate(lighten(@ccblue, 60%), 50%);
+					}
+				}
+				
+				a { 
+					color:@ccblue; 
+					line-height: 1.4;
+					padding: 3%;
+					width: 93.99%
+				}
 			}
 		}
-		
-		a { 
-			color:@ccblue; 
-			line-height: 1.4;
-			padding:2% 2% 2% 0;
-			width: 95.99%
-			}
-		}
-		}
-		&:hover { background-color: lighten(@black,30%);}
-		&:hover .pop-sub-wrapper {
-			display: inline-block;
-			right:-1px;
-			top:12px;
-			// min-width: 800%;
-			a { margin:0;}
-			}	
+			&:hover { 
+				background-color: lighten(@black,30%);
+				.pop-sub-wrapper {
+					display: inline-block;
+					right:-1px;
+					top:12px;
+					// min-width: 800%;
+					a { margin:0;}
+					}	
+				}
 		}
 
 	}//end secondary
@@ -308,8 +310,8 @@ body.home-page {
 		//padding-left: 2%;
 		//border-left: 1px solid #CCC;
 		#item-body {
-			width: 80.5%;
-			float: right;
+			// width: 80.5%;
+			// float: right;
 		}
 		#item-body p, .main-column p, .page p  {
 			// line-height: 1.71429;
@@ -350,12 +352,10 @@ body.home-page {
 	}
 }
 
-.buddypress, .salud-america {
+.salud-america {
 	#secondary, #tertiary  {
-		clear:none;
 		float:left;
 		width: 16%;
-		// padding-right: 1%; //causes problems for most sidebars.
 		border-right: 1px solid @graymid;
 		clear: left;
 		border-top: none;
@@ -367,68 +367,11 @@ body.home-page {
 		
 	}
 }
-
-// Twitter Bootstrap nav tabs
-.site {
-	.item-list-tabs ul,
-	.nav-pills {
-	  *zoom: 1;
-	}
-	.item-list-tabs ul:before,
-	.nav-pills:before,
-	.item-list-tabs ul:after,
-	.nav-pills:after {
-	  display: table;
-	  content: "";
-	  line-height: 0;
-	}
-	.item-list-tabs ul:after,
-	.nav-pills:after {
-	  clear: both;
-	}
-	.item-list-tabs ul > li,
-	.nav-pills > li {
-	  float: left;
-	}
-	.item-list-tabs ul > li > a,
-	.nav-pills > li > a {
-	  padding-right: 12px;
-	  padding-left: 12px;
-	  margin-right: 2px;
-	  line-height: 14px;
-	}
-	.item-list-tabs ul {
-	  border-bottom: 1px solid @graymid;
-	  margin-bottom: 0;
-	}
-	.item-list-tabs ul > li {
-	  margin-bottom: -1px;
-	  margin-left: 0;
-	}
-	.item-list-tabs ul > li > a {
-	  padding-top: 8px;
-	  padding-bottom: 8px;
-	  line-height: 20px;
-	  border: 1px solid transparent;
-	  -webkit-border-radius: 4px 4px 0 0;
-	  -moz-border-radius: 4px 4px 0 0;
-	  border-radius: 4px 4px 0 0;
-	}
-	.item-list-tabs ul > li > a:hover {
-	  border-color: @graylight @graylight @graymid;
-	}
-	.item-list-tabs ul > .selected > a,
-	.item-list-tabs ul > .current > a,
-	.item-list-tabs ul > .selected > a:hover,
-	.item-list-tabs ul > .current > a:hover {
-	  color: @graydark;
-	  background-color: @white;
-	  border: 1px solid @graymid;
-	  border-bottom-color: transparent;
-	  cursor: default;
+.buddypress {
+	#secondary, #tertiary  {		
 	}
 }
-#secondary .sidebar-activity-tabs { //sub navigation on member and group pages
+.salud-america #secondary .sidebar-activity-tabs { //sub navigation on member and group pages
 		margin-top: .5em;
 		//padding-bottom:1.5em;
 		border-bottom: none;
@@ -456,7 +399,8 @@ body.home-page {
 				    //padding-left: 5.3em;
 				    font-weight: 700;
 				    a {
-				    	color: @graydark;
+				    	color: @graydark;		    		    
+				    	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 				    	border:none;
 				    	background: none;
    					    padding-top: 1em;

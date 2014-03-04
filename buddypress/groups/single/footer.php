@@ -1,24 +1,22 @@
 <footer id="single-group-footer" class="single-group-footer clear">
 
-	<?php 
-	// Get group visibility to display and set footer header bar color.
-	$group_type =  bp_get_group_type();
-	switch ( $group_type ) {
-		case 'Hidden Group':
-			$visibility_class = 'ccred';
-			break;
-		case 'Private Group':
-			$visibility_class = 'ccblue';
-			break;
-		default:
-			$visibility_class = 'ccgreen';
-			break;
-	}
-	?>
-
-	<div class="group-visibility clear <?php echo $visibility_class; ?>"><span><?php bp_group_type(); ?></span></div> 
+	<div class="group-visibility clear <?php cc_group_visibility_class(); ?>">
+		<span class="group-type"><?php bp_group_type();?></span><span class="group-tree">
+		<?php
+		if ( function_exists('bp_group_hierarchy_get_breadcrumbs') )  {
+			echo 'Group Tree: </em>'; 
+			echo bp_group_hierarchy_get_breadcrumbs('&ensp;&gt;&ensp;', false); 
+		}
+	?></span></div> 
 
 	<div id="item-meta">
+		
+		<!-- <p class="group-breadcrumbs"><em>Group Tree:</em> <?php //if (function_exists('bp_group_hierarchy_get_breadcrumbs'))  { echo bp_group_hierarchy_get_breadcrumbs('&ensp;&gt;&ensp;', false); } ?></p> -->
+
+		<div class="group-description">
+			<?php bp_group_description(); ?>
+		</div>
+
 		<div id="item-actions" class="clear">
 
 		<?php if ( bp_group_is_visible() ) : ?>

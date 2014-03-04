@@ -111,9 +111,26 @@ function bp_support_enqueue_scripts() {
 }
 // add_action( 'wp_enqueue_scripts', 'bp_support_enqueue_scripts' );
 
+/* Javascript library and style enqueues
+*  I'm joining the various scripts into one via CodeKit.
+**************/
+add_action( 'wp_enqueue_scripts', 'cc_common_js_load', 14 );
+function cc_common_js_load(){
+  wp_register_script('cc-common-scripts', get_stylesheet_directory_uri().'/js/cc-common-scripts-ck.js">', array('jquery'), '1.0', true  ); 
+  wp_enqueue_script('cc-common-scripts'); 
+}
+
+add_action( 'wp_enqueue_scripts', 'cc_dequeue_parent_theme_scripts', 91 );
+function cc_dequeue_parent_theme_scripts(){
+  wp_dequeue_style( 'twentytwelve-style' );
+  wp_deregister_style( 'twentytwelve-style' );
+
+  wp_dequeue_script( 'twentytwelve-navigation' );
+  wp_deregister_script( 'twentytwelve-navigation' );
+}
+
 add_action( 'wp_enqueue_scripts', 'custom_childtheme_stylesheet_load', 99 );
 function custom_childtheme_stylesheet_load(){
-  wp_deregister_style( 'twentytwelve-style' );
   wp_register_style(
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
@@ -172,7 +189,6 @@ function cc_load_datepicker_script() {
 add_action( 'admin_enqueue_scripts', 'cc_load_datepicker_script', 22 );
 
 function remove_parent_theme_widgets(){
-
   // Deregister some of the TwentyTen sidebars
   unregister_sidebar( 'sidebar-2' );
   unregister_sidebar( 'sidebar-3' );
@@ -187,15 +203,14 @@ function notifications_counter() {
 	if ( !is_user_logged_in() )
 		return ;
 
-  $user = bp_loggedin_user_id();
-	$notifications = bp_core_get_notifications_for_user( $user );
+	$notifications = bp_notifications_get_notifications_for_user( bp_loggedin_user_id() );
 	$count = !empty( $notifications ) ? count( $notifications ) : 0;
 	$alert_class = (int) $count > 0 ? 'pending-count alert' : 'count no-alert';
 	$output = '<li class="menupop bp-notifications separator">' 
 			   . '<span class="';
 	$output .= $alert_class;
 	$output .= '">' . $count . '</span><h5>Notifications:</h5>';
-	$output .= print_notifications_list($notifications,$count);
+	$output .= print_notifications_list( $notifications, $count );
 	$output .='</li>';
 
 	echo $output;
@@ -203,7 +218,7 @@ function notifications_counter() {
 
 }
 
-function print_notifications_list($notifications,$count){
+function print_notifications_list( $notifications, $count ){
     $output = '<div class="pop-sub-wrapper"><ul class="bp-notification-list">';
         
 	if ( $count !== 0 ) {
@@ -241,15 +256,15 @@ register_sidebar( array (
         'description' => __( 'Group page sub nav sidebar', 'ccommons' )
     ) );
 
-register_sidebar( array (
-        'name' => __( 'Single group sidebar', 'ccommons' ),
-        'id' => 'groups-single-sidebar',
-        'before_widget' => '<nav id="%1$s" class="widget %2$s">',
-        'after_widget' => "</nav>",
-        'before_title' => '<h3 class="widget-title">',
-        'after_title' => '</h3>',
-        'description' => __( 'Single group page sub nav sidebar', 'ccommons' )
-    ) );
+// register_sidebar( array (
+//         'name' => __( 'Single group sidebar', 'ccommons' ),
+//         'id' => 'groups-single-sidebar',
+//         'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+//         'after_widget' => "</nav>",
+//         'before_title' => '<h3 class="widget-title">',
+//         'after_title' => '</h3>',
+//         'description' => __( 'Single group page sub nav sidebar', 'ccommons' )
+//     ) );
 
 register_sidebar( array (
         'name' => __( 'Members sidebar', 'ccommons' ),
@@ -261,15 +276,16 @@ register_sidebar( array (
         'description' => __( 'Members page sub nav sidebar', 'ccommons' )
     ) );
 
-register_sidebar( array (
-        'name' => __( 'Single Member sidebar', 'ccommons' ),
-        'id' => 'members-single-sidebar',
-        'before_widget' => '<nav id="%1$s" class="widget %2$s">',
-        'after_widget' => "</nav>",
-        'before_title' => '<h3 class="widget-title">',
-        'after_title' => '</h3>',
-        'description' => __( 'Individual member page sub nav sidebar', 'ccommons' )
-    ) );
+// register_sidebar( array (
+//         'name' => __( 'Single Member sidebar', 'ccommons' ),
+//         'id' => 'members-single-sidebar',
+//         'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+//         'after_widget' => "</nav>",
+//         'before_title' => '<h3 class="widget-title">',
+//         'after_title' => '</h3>',
+//         'description' => __( 'Individual member page sub nav sidebar', 'ccommons' )
+//     ) );
+
 register_sidebar( array(
 		'name' => __( 'Geo Search SA Policies Widget Area', 'ccommons' ),
 		'id' => 'sa_geosearch_widget',
@@ -367,42 +383,42 @@ add_filter('login_headertitle', 'change_wp_login_title');
 
 /* Javascript library enqueues
 **************/
-function localscroll_js_load(){
+// function localscroll_js_load(){
 
-  wp_register_script('scrollTo', get_stylesheet_directory_uri().'/js/jquery.scrollTo-1.4.3.1-min.js">', array('jquery'), '1.4.3.1' ); 
-  wp_enqueue_script('scrollTo'); 
-  wp_register_script('localScroll', get_stylesheet_directory_uri().'/js/jquery.localscroll-1.2.7-min.js">', array('jquery', 'scrollTo'), '1.2.7', true );  
-  wp_enqueue_script('localScroll'); 
+//   wp_register_script('scrollTo', get_stylesheet_directory_uri().'/js/jquery.scrollTo-1.4.3.1-min.js">', array('jquery'), '1.4.3.1' ); 
+//   wp_enqueue_script('scrollTo'); 
+//   wp_register_script('localScroll', get_stylesheet_directory_uri().'/js/jquery.localscroll-1.2.7-min.js">', array('jquery', 'scrollTo'), '1.2.7', true );  
+//   wp_enqueue_script('localScroll'); 
 
-}
-add_action('wp_enqueue_scripts', 'localscroll_js_load');
+// }
+// add_action('wp_enqueue_scripts', 'localscroll_js_load');
 
-function hoverIntent_js_load(){
+// function hoverIntent_js_load(){
 
-  wp_register_script('hoverIntent', get_stylesheet_directory_uri().'/js/jquery.hoverIntent.minified.js">', array('jquery'), 'r6', true ); 
-  wp_enqueue_script('hoverIntent'); 
+//   wp_register_script('hoverIntent', get_stylesheet_directory_uri().'/js/jquery.hoverIntent.minified.js">', array('jquery'), 'r6', true ); 
+//   wp_enqueue_script('hoverIntent'); 
 
-}
-add_action('wp_enqueue_scripts', 'hoverIntent_js_load');
+// }
+// add_action('wp_enqueue_scripts', 'hoverIntent_js_load');
 
 
-function cc_nav_header_js_load(){
+// function cc_nav_header_js_load(){
 
-  wp_register_script('ccNavHeaderToggle', get_stylesheet_directory_uri().'/js/cc-nav-header-toggle-ck.js">', array('jquery', 'hoverIntent'), '1.0', true  ); 
-  wp_enqueue_script('ccNavHeaderToggle'); 
+//   wp_register_script('ccNavHeaderToggle', get_stylesheet_directory_uri().'/js/cc-nav-header-toggle-ck.js">', array('jquery', 'hoverIntent'), '1.0', true  ); 
+//   wp_enqueue_script('ccNavHeaderToggle'); 
 
-}
-add_action('wp_enqueue_scripts', 'cc_nav_header_js_load');
+// }
+// add_action('wp_enqueue_scripts', 'cc_nav_header_js_load');
 
-function wotn_modal_interruptus_js_load(){
+// function wotn_modal_interruptus_js_load(){
 
-  if ( is_page('wotn') ) {
-    wp_register_script('jqSimpleModal', get_stylesheet_directory_uri().'/js/jquery.simplemodal.1.4.4.min.js">', array('jquery'), '1.4.4', true  ); 
-    wp_enqueue_script('jqSimpleModal');
-  }
+//   if ( is_page('wotn') ) {
+//     wp_register_script('jqSimpleModal', get_stylesheet_directory_uri().'/js/jquery.simplemodal.1.4.4.min.js">', array('jquery'), '1.4.4', true  ); 
+//     wp_enqueue_script('jqSimpleModal');
+//   }
 
-}
-add_action('wp_enqueue_scripts', 'wotn_modal_interruptus_js_load');
+// }
+// add_action('wp_enqueue_scripts', 'wotn_modal_interruptus_js_load');
 
 
 
@@ -1027,12 +1043,19 @@ function hide_group_admin_tabs($classes) {
     //Hmmm. The group admin tabs aren't accessible by css selector
     if ( current_user_can('manage_options') ) {
       //Only site admins have this capability
-     $classes[] = 'site-administrator';;
+     $classes[] = 'site-administrator';
     }
   }
   return $classes;
 }
 add_filter( 'body_class', 'hide_group_admin_tabs', 98 );
+
+function cc_replace_default_group_avatar( $avatar ) {
+  // The filter we're using ensures we'll only catch the group avatars
+  // Default looks like: <img src="/wp-content/plugins/buddypress/bp-core/images/mystery-man.jpg" alt="avatar" class="avatar" width="80" height="80">
+  return str_replace( 'plugins/buddypress/bp-core/images/mystery-man', 'themes/CommonsRetheme/img/cc-group-default-avatar', $avatar );
+}
+add_filter( 'bp_get_group_avatar', 'cc_replace_default_group_avatar' );
 
 add_filter("gform_field_value_uuid", "cdc_gf_uuid");
 function cdc_gf_uuid($value) {
@@ -1306,3 +1329,22 @@ function cc_group_rss_feed_link() {
     <?php do_action( 'bp_group_activity_syndication_options' ); 
   endif;
 }
+function cc_group_visibility_class() {
+  echo cc_get_group_visibility_class();
+}
+  function cc_get_group_visibility_class() {
+    // Get group visibility to display and set footer header bar color.
+    $group_type = bp_get_group_type();
+    switch ( $group_type ) {
+      case 'Hidden Group':
+        $visibility_class = 'hidden';
+        break;
+      case 'Private Group':
+        $visibility_class = 'private';
+        break;
+      default:
+        $visibility_class = 'public';
+        break;
+    }
+    return $visibility_class;
+  }

@@ -21,7 +21,7 @@
 
 <div id="item-header-content">
 	<div id="item-header-avatar">
-		<a href="<?php bp_user_link(); ?>"><?php bp_displayed_user_avatar( 'type=full' ); ?></a>
+		<a href="<?php bp_user_link(); ?>"><?php bp_displayed_user_avatar( 'width=100&height=100' ); ?></a>
 	</div><!-- #item-header-avatar -->
 	<div class="noms">
 		<h2>

@@ -11,7 +11,7 @@
 	</div><!-- #item-header -->
 
 	<div id="secondary">
-		<div class="sidebar-activity-tabs no-ajax" id="object-nav" role="navigation">
+		<div class="item-list-tabs no-ajax clear" id="object-nav" role="navigation">
 			<ul>
 
 				<?php bp_get_options_nav(); ?>
@@ -103,7 +103,7 @@
 	<?php do_action( 'bp_after_group_home_content' ); ?>
 
 	<!-- CAVEAT - putting this sidebar inside the group loop means that you can't use any widgets that use the group loop -->
-	<?php get_sidebar( 'groups-single' ); ?>
+	<?php //get_sidebar( 'groups-single' ); ?>
 
 	<?php bp_get_template_part( 'groups/single/footer'); ?>
 

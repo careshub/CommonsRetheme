@@ -9,7 +9,7 @@
 	</div><!-- #item-header -->
 	
 	<div id="secondary" class="widget-area" role="complementary">
-		<div class="sidebar-activity-tabs no-ajax" id="object-nav" role="navigation">
+		<div class="item-list-tabs no-ajax clear" id="object-nav" role="navigation">
 			<ul>
 
 				<?php bp_get_displayed_user_nav(); ?>
@@ -65,12 +65,21 @@
 
 	<?php do_action( 'bp_after_member_home_content' ); ?>
 
-	<div id="item-buttons">
+	<?php if ( !bp_is_my_profile() ) : ?>
+	<footer id="single-member-footer" class="single-member-footer clear">
+		<span class="member-footer-header">Connect with this Commons member</span> 
 
-		<?php do_action( 'bp_member_header_actions' ); ?>
+		<div id="item-meta">
+			<div id="item-buttons">
 
-	</div><!-- #item-buttons -->
+				<?php do_action( 'bp_member_header_actions' ); ?>
 
-	<?php get_sidebar( 'members-single' ); ?>
+			</div><!-- #item-buttons -->
+		</div>
+
+	</footer>
+	<?php endif; ?>
+
+	<?php //get_sidebar( 'members-single' ); ?>
 
 </div><!-- #buddypress -->
