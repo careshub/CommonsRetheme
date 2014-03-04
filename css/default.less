@@ -167,9 +167,10 @@ img.no-box {
 /*--------------------------------------------------------------
 1.1 - Activity Listing
 --------------------------------------------------------------*/
-.activity-list  {
+.activity .activity-list  {
 	margin: 0;
 	padding: 0;
+	list-style-type: none;
 	li {
 		overflow: visible;
 		padding: 15px 0;
@@ -1354,7 +1355,7 @@ ul.single-line li {
 				a { 
 					.border-radius(3px);
 					border: 1px solid @graymid;
-					.gradient( lighten( @graylight, 10% ), lighten( @graylight, 5% ) );
+					.gradient( lighten( @graylight, 20% ), lighten( @graylight, 8% ) );
 					// text-decoration: none; 
 					// display: block;
 					// line-height: 1.6;
@@ -1571,15 +1572,15 @@ div#pag-bottom {
 		margin-left: 0;
 		.avatar {
 			float: left;
-			margin: 0 10px 0 2px;
+			margin-right: 1em;
 		}
 		.item-title, h4 {
 			font-weight: normal;
 			//.font-size(1.14);
 			margin: 0 0 0.6em 0;
-			width: 100%;
+			// width: 100%;
 			// clear:none;
-			float: left;
+			float: none;
 			line-height: 1.4;
 		}
 		.item-title span {
@@ -1592,20 +1593,29 @@ div#pag-bottom {
 			line-height:1.4; 
 			margin-top: 10px;
 			// width: 75%;
-			float: left;
+			float: none;
 		}
 		.meta {
 			color: #888;
 			.font-size(.8);
 			margin-top: 10px;
 		}
-		h5  { 
-			clear: none;
+		.name { 
+			display: inline-block;
+			// clear: none;
+			margin: 0;
+			.font-size(1.1);
+			a {
+				text-decoration: none;
+			}
 			span.small {
 				float: right;
 				.font-size(.9);
 				font-weight: normal;
 			}
+		}
+		.activity {
+			display: none;
 		}
 	}
 	&.activity-list li {
@@ -1629,8 +1639,10 @@ div#pag-bottom {
 		// top: 0;
 		// right: 15px;
 		float: left;
+		clear: left;
 		text-align: left;
 		width: 100%;
+		margin-top: 1em;
 		// clear: right;
 		a {
 			// float: left;
@@ -1839,7 +1851,7 @@ form.dir-form div.dir-search {
 }
 
 //Post attachments
-#content .entry-content { 
+.site-content .entry-content { 
 	.attachments-header {
 		margin: 2em 0 .4em 0;
 	}
@@ -2020,7 +2032,7 @@ footer[role="contentinfo"] {
 }
 
 //BuddyPress signup and profile pages
-.buddypress #content .page {
+.buddypress .site-content .page {
 	.field-visibility-settings-notoggle, .field-visibility-settings-toggle, .standard-form .description {
 	.font-size(.9);
 	color:@graydark;
@@ -2065,11 +2077,11 @@ img.avatar {
 
 //GROUPS
 .buddypress {
-	.site-content { 
-		width: 100%;
-		// margin: 0;
-	}
-	#content {
+	.site-content {
+		#content { 
+			width: 100%;
+			// margin: 0;
+		}
 		width:100%;
 		// float: right;
 		// width: 75.4%;
@@ -2181,7 +2193,7 @@ h5 {
 }
 
 //Headers
-#content {
+.site-content {
 	h1, h2, h3, h4, h5, h6 {
 		margin: 1em 0;
 	}
@@ -2221,7 +2233,7 @@ h5 {
 	clear: left;
 	margin-bottom: 0;
 }
-#content .screamer {
+.site-content .screamer {
 	background-color: @ccblue;
 	margin-bottom: 1.4em;
 	.font-size(1.1);
@@ -2777,7 +2789,7 @@ ul.item-list li .share-buttons-below li {
 		}
 
 	}
-	#content {
+	.site-content {
 		.salud-banner { 
 			border-bottom:1px solid @saorange;
 			margin-bottom: 2em;
@@ -3058,7 +3070,7 @@ ul.item-list li .share-buttons-below li {
 		}
 	}
 }
-#content .entry-header .meter-box {
+.site-content .entry-header .meter-box {
 	//border: 1px solid desaturate(lighten(@ccblue,40),20);
 	overflow: hidden;
 	width: 95%;
@@ -3664,7 +3676,7 @@ body.home-page {
 }
 
 //Maps & Data page content
-.maps-data #primary #content {
+.maps-data #primary {
 	article {
 	margin-bottom: 24px;
 	margin-bottom: 1.7rem;

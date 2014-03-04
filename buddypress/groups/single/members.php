@@ -33,16 +33,16 @@
 		<?php while ( bp_group_members() ) : bp_group_the_member(); ?>
 
 			<li>
-				<a href="<?php bp_group_member_domain(); ?>">
+				
+				<div class="item">
+					<a href="<?php bp_group_member_domain(); ?>">
+						<?php bp_group_member_avatar_thumb(); ?>
+					</a>
+					<div class="item-title"><?php bp_group_member_link(); ?></div>
+					<span class="activity"><?php bp_group_member_joined_since(); ?></span>
 
-					<?php bp_group_member_avatar_thumb(); ?>
-
-				</a>
-
-				<h5><?php bp_group_member_link(); ?></h5>
-				<span class="activity"><?php bp_group_member_joined_since(); ?></span>
-
-				<?php do_action( 'bp_group_members_list_item' ); ?>
+					<?php do_action( 'bp_group_members_list_item' ); ?>
+				</div>
 
 				<?php if ( bp_is_active( 'friends' ) ) : ?>
 
