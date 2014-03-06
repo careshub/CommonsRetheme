@@ -242,3 +242,30 @@
 	}
 
 }
+// Plugin styling
+// bbPress styling overrides 
+#bbpress-forums {
+	.bbp-template-notice.info {
+		p {
+			.font-size(.9);
+		}
+	}
+	li.bbp-header, li.bbp-footer {
+		.font-size(1);
+		#subscription-toggle, #favorite-toggle {
+		}
+	}
+	li.bbp-body {
+		.bbp-topic-title {
+			.font-size(.9);
+		}
+		.bbp-topic-voice-count, 
+		.bbp-topic-reply-count {
+			.font-size(.9);
+			line-height: 3;
+			span {
+				padding: 3px 8px;
+			}
+		}
+	}
+}

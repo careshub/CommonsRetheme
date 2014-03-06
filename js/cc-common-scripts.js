@@ -1,5 +1,3 @@
-
-
 /* **********************************************
      Begin cc-nav-header-toggle.js
 ********************************************** */
@@ -45,6 +43,15 @@ jQuery(document).ready(function() {
 
 
 });
+
+/*********************
+* Odds and ends 
+**********************/
+jQuery(document).ready(function() {
+  jQuery(".bpfb_toolbar_container a").addClass("button");
+  jQuery("#bpfb_addDocuments").hide();
+  
+  });
 
 /* **********************************************
      Begin jquery.hoverIntent.js
