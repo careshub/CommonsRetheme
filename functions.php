@@ -205,6 +205,23 @@ function cc_load_datepicker_script() {
 }
 add_action( 'admin_enqueue_scripts', 'cc_load_datepicker_script', 22 );
 
+//Add Google Analytics Universal tracking
+// add_action( 'wp_head', 'cc_add_google_analytics_universal_code', 92 );
+function cc_add_google_analytics_universal_code() {
+?>
+  <!-- <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-22609831-9', 'communitycommons.org');
+    ga('send', 'pageview');
+
+  </script> -->
+<?php
+}
+
 /*
 * Override some parent theme bits
 ***********************************/
