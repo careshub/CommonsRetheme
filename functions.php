@@ -409,6 +409,10 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'full-width';
         $classes[] = 'ncr';
       }
+    if ( is_archive( 'bp-doc' ) ) {
+        $classes[] = 'full-width';
+      }
+
 
   return $classes;
 }
@@ -855,7 +859,7 @@ function bp_docs_default_settings_for_child_groups($settings) {
   return $settings;
 }
 
-add_filter('bp_docs_attachment_url_base', 'iis_friendly_bp_docs_attachment_url', 35, 2);
+// add_filter('bp_docs_attachment_url_base', 'iis_friendly_bp_docs_attachment_url', 35, 2);
 function iis_friendly_bp_docs_attachment_url( $url, $attachment ) {
   
   $url = $attachment->guid;

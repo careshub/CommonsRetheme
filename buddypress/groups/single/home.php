@@ -39,9 +39,27 @@
 			// Looking at home location
 			if ( bp_is_group_home() ) :
 
-				// Use custom front if one exists
+				//Check if this group has a post set to be its custom front page.
+				$group_id = bp_get_group_id();
+				$args =  array(
+				   'post_type'   => 'group_home_page',
+				   'posts_per_page' => '1',
+				   'meta_query'  => array(
+				                       array(
+				                        'key'           => 'group_home_page_association',
+				                        'value'         => $group_id,
+				                        'compare'       => '=',
+				                        'type'          => 'NUMERIC'
+				                        )
+				                    )
+				); 
+				// The Query
+				$custom_front_query = new WP_Query( $args );
+				$GLOBALS['custom-group-front'] = $custom_front_query;
+
+				// Use custom front if one exists and the group has a front page.
 				$custom_front = bp_locate_template( array( 'groups/single/front.php' ), false, true );
-				if     ( ! empty( $custom_front   ) ) : load_template( $custom_front, true );
+				if     ( ! empty( $custom_front ) && $custom_front_query->have_posts()) : load_template( $custom_front, true );
 
 				// Default to activity
 				elseif ( bp_is_active( 'activity' ) ) : bp_get_template_part( 'groups/single/activity' );

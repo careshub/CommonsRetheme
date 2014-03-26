@@ -21,8 +21,10 @@ get_header(); ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 
-<?php // Don't include a sidebar if on single member or single group sidebar
-if ( !( bp_is_group_single() || bp_is_user() ) )
+<?php 
+// Don't include a sidebar if on single member, single group, BuddyPress docs archive page
+// We achieve the full-width look by modifying the body class in functions.php::cc_custom_body_class()
+if ( ! ( bp_is_group_single() || bp_is_user() || is_archive( 'bp-doc' ) ) )
 	get_sidebar( $sidebar );
 ?>
 <?php get_footer(); ?>
