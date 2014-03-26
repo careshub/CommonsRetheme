@@ -1159,3 +1159,17 @@ function get_ID_by_slug($page_slug) {
 
 // }
 // add_action('wp_enqueue_scripts', 'wotn_modal_interruptus_js_load');
+
+// Analytics/Metrics work
+// Provide the user's login name for use by Google Tag Manager
+add_action( 'wp_header', 'cc_user_login_name_for_gtm', 77 );
+function cc_user_login_name_for_gtm() {
+  global $current_user;
+  get_currentuserinfo();
+  $user_login = !empty( $current_user->user_login ) ? $current_user->user_login : 'not logged in';
+  ?>
+  <script type="text/javascript">
+   var cc_user_login = "<?php echo $user_login; ?>";
+  </script>
+  <?php
+}

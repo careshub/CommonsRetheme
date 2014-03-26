@@ -22,11 +22,9 @@ get_header(); ?>
 						<h2><a href="http://maps.communitycommons.org"><span class="map"></span>Make a Map</a></h2>
 						<ul>
 							<li>
-								<h4><a href="http://maps.communitycommons.org">Map Room Beta</a></h4>
+								<h4><a href="http://maps.communitycommons.org">Map Room</a></h4>
 								<!-- <a href="http://maps.communitycommons.org" class="button">Try the new tool</a> -->
-                                <p>Visit the newly redesigned maproom currently in Beta. 
-                                    Check out our <a href="http://maps.communitycommons.org/viewer/datalist.aspx">data list</a> or see <a href="http://maps.communitycommons.org/news.aspx">what's new</a>. 
-                                    Create a map. Save it. Share it!</p>
+                                <p>Visit the newly redesigned maproom. Create a map. Save it. Share it!</p>
 							</li>
 							<li>
 								<h4><a href="http://initiatives.communitycommons.org/tool/CC/Default.aspx?url=../maps/default.aspx">Map Room Classic</a></h4>
@@ -39,9 +37,8 @@ get_header(); ?>
 								<p>Browse and open maps created by users of the Commons.</p>
 							</li>
 							<li>
-								<h4><a href="http://maps.communitycommons.org/MOM/">Map of the Movement</a></h4>
-								<!-- <a href="http://maps.communitycommons.org/MOM/" class="button">Visit the map</a> -->
-								<p>Search for initiatives.</p>
+								<h4><a href="http://maps.communitycommons.org/viewer/datalist.aspx" title="Link to a list of Community Commons' data sets">Data</a></h4>
+								<p>Check out our <a href="http://maps.communitycommons.org/viewer/datalist.aspx">data list</a> or see <a href="http://maps.communitycommons.org/news.aspx">what's new</a>.</p>
 							</li>
 						</ul>
 					</div>
@@ -54,7 +51,7 @@ get_header(); ?>
 								<p>Identify assets and potential disparities in your county/region related to community health and well-being.</p>
 							</li>
 							<li>
-								<h4><a href="http://assessment.communitycommons.org/Footprint/">Vulnerable Population Footprint</a></h4>
+								<h4><a href="http://assessment.communitycommons.org/Footprint/">Vulnerable Populations Footprint</a></h4>
 								<!-- <a href="http://assessment.communitycommons.org/Footprint/" class="button">Start a report</a> -->
 								<p>Find areas in your community with low educational attainment and high poverty.</p>
 							</li>

@@ -7,7 +7,9 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 	$tax_term = get_term_by( 'slug', $wp_query->query_vars['term'], $wp_query->query_vars['taxonomy'] );
 }
 ?>
-
+<style>
+	.pad {margin-bottom:10px;}
+</style>
 		<div id="content" role="main">
 			<div class="padder">
 				<div class="entry-content">
@@ -42,40 +44,101 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 							<div class="clear">
 								<!-- TODO: Need to figure out what the pattern is here, or generalize it somehow! -->
 								<?php if ( $tax_term->slug == 'sa-active-play' ) { ?>
-
-									<a href="/wp-content/uploads/2013/08/Active-Play-Research-Review.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
-				                    <a href="/wp-content/uploads/2013/08/Active-Play-Issue-Brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="/wp-content/uploads/2013/08/AP_brief.png" /><br />Issue Brief</a>
-				                    <a href="/wp-content/uploads/2013/08/Active-Play-Infographic-875.jpg" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="/wp-content/uploads/2013/08/AP_info.png" /><br />Infographic</a>
+                                                                
+                                                                <div class="column1of3 aligncenter">
+                                                                   <img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" /><b>Research Review</b><br /><br />
+                                                                    <a href="/wp-content/uploads/2013/08/Active-Play-Research-Review.pdf" class=" button  aligncenter">Download</a></p>
+                                                                </div>    
+                                                                <div class="column1of3 aligncenter">
+                				                    <img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="/wp-content/uploads/2013/08/AP_brief.png" /><b>Issue Brief</b><br /><br />
+                                                                    <div class="pad"><a href="/wp-content/uploads/2013/08/Active-Play-Issue-Brief.pdf" class=" button  aligncenter">Download in English</a></div>
+                                                                    <div class="pad"><a href="/wp-content/uploads/2014/02/SpanishActive-Play-Issue-Brief.pdf" class=" button  aligncenter">Download in Spanish</a></div>
+                                                                </div>
+                                                                <div class="column1of3 aligncenter">
+                                                                    <img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="/wp-content/uploads/2013/08/AP_info.png" /><b>Infographic</b><br /><br />
+                                                                    <div class="pad"><a href="/wp-content/uploads/2013/08/Active-Play-Infographic-875.jpg" class=" button  aligncenter">Download in English</a></div>
+                                                                    <div class="pad"><a href="wp-content/uploads/2014/02/ActivePlay_Infographic_SPN_sml.jpg" class=" button  aligncenter">Download in Spanish</a></div>
+                                                                </div>  
 
 			                    <?php } else if ( $tax_term->slug == 'sa-active-spaces' ) { ?>
-
-				                    <a href="/wp-content/uploads/2013/08/Active-Spaces-Research-Review.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
-			                        <a href="/wp-content/uploads/2013/08/Active-Spaces-Issue-Brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="/wp-content/uploads/2013/08/AS_brief2.png" />Issue Brief</a>
-			                        <a href="/wp-content/uploads/2013/08/Active-Spaces-Infographic-875.jpg" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="/wp-content/uploads/2013/08/AS_info.png" /><br />Infographic</a>
-
-								<?php } else if ( $tax_term->slug == 'sa-better-food-in-neighborhoods' ) { ?>
-
-								    <a href="/wp-content/uploads/2013/08/BetterFoodintheNeighborhood-ResearchReview.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
-				                    <a href="/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Issue-Brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="/wp-content/uploads/2013/08/FN_brief2.png" /><br />Issue Brief</a>
-				                    <a href="/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Infographic-875.jpg" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="/wp-content/uploads/2013/08/FN_info.png" /><br />Infographic</a>
+                                                                                                                                <div class="column1of3 aligncenter">
+                                                                    <img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" /></a><b>Research Review</b><br /><br />
+                                                                    <a href="/wp-content/uploads/2013/08/Active-Spaces-Research-Review.pdf" class=" button  aligncenter">Download</a></p>
+                                                                </div>    
+                                                                <div class="column1of3 aligncenter">
+                				                    <img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="/wp-content/uploads/2013/08/AS_brief2.png" /><b>Issue Brief</b><br /><br />
+                                                                    <div class="pad"><a href="/wp-content/uploads/2013/08/Active-Spaces-Issue-Brief.pdf" class=" button  aligncenter">Download in English</a></div>
+                                                                    <div class="pad"><a href="/wp-content/uploads/2014/02/SpanishActive-Spaces-Issue-Brief.pdf" class=" button  aligncenter">Download in Spanish</a></div>
+                                                                </div>
+                                                                <div class="column1of3 aligncenter">
+                                                                    <img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="/wp-content/uploads/2013/08/AS_info.png" /><b>Infographic</b><br /><br />
+                                                                    <div class="pad"><a href="/wp-content/uploads/2013/08/Active-Spaces-Infographic-875.jpg" class=" button  aligncenter">Download in English</a></div>
+                                                                    <div class="pad"><a href="/wp-content/uploads/2014/02/Salud_ActiveSpaces_Infographic_SPN_sml.jpg" class=" button  aligncenter">Download in Spanish</a></div>
+                                                                </div> 
+                                                                
+                                            <?php } else if ( $tax_term->slug == 'sa-better-food-in-neighborhoods' ) { ?>
+                                                                <div class="column1of3 aligncenter">
+                                                                    <img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" /></a><b>Research Review</b><br /><br />
+                                                                    <a href="/wp-content/uploads/2013/08/BetterFoodintheNeighborhood-ResearchReview.pdf" class=" button  aligncenter">Download</a></p>
+                                                                </div>    
+                                                                <div class="column1of3 aligncenter">
+                				                    <img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="/wp-content/uploads/2013/08/FN_brief2.png" /><b>Issue Brief</b><br /><br />
+                                                                    <div class="pad"><a href="/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Issue-Brief.pdf" class=" button  aligncenter">Download in English</a></div>
+                                                                    <div class="pad"><a href="/wp-content/uploads/2014/02/SpanishBetter-Food-in-Neighborhoods-Issue-Brief.pdf" class=" button  aligncenter">Download in Spanish</a></div>
+                                                                </div>
+                                                                <div class="column1of3 aligncenter">
+                                                                    <img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="/wp-content/uploads/2013/08/FN_info.png" /><b>Infographic</b><br /><br />
+                                                                    <div class="pad"><a href="/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Infographic-875.jpg" class=" button  aligncenter">Download in English</a></div>
+                                                                    <div class="pad"><a href="/wp-content/uploads/2014/02/Salud_BetterFoods_Infographic_SPN_sml_0.jpg" class=" button  aligncenter">Download in Spanish</a></div>
+                                                                </div> 
 
 				                <?php } else if ( $tax_term->slug == 'sa-healthier-marketing' ) { ?>
+                                                                <div class="column1of3 aligncenter">
+                                                                    <img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" /></a><b>Research Review</b><br /><br />
+                                                                    <a href="/wp-content/uploads/2013/08/Healthier-Marketing-Research-Review.pdf" class=" button  aligncenter">Download</a></p>
+                                                                </div>    
+                                                                <div class="column1of3 aligncenter">
+                				                    <img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="/wp-content/uploads/2013/08/HM_brief2.png" /><b>Issue Brief</b><br /><br />
+                                                                    <div class="pad"><a href="/wp-content/uploads/2013/08/Healthier-Marketing-Issue-Brief.pdf" class=" button  aligncenter">Download in English</a></div>
+                                                                    <div class="pad"><a href="/wp-content/uploads/2014/02/SpanishHealthier-Marketing-Issue-Brief.pdf" class=" button  aligncenter">Download in Spanish</a></div>
+                                                                </div>
+                                                                <div class="column1of3 aligncenter">
+                                                                    <img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="/wp-content/uploads/2013/08/HM_info2.png" /><b>Infographic</b><br /><br />
+                                                                    <div class="pad"><a href="/wp-content/uploads/2013/08/Healthier-Marketing-Infographic-875.jpg" class=" button  aligncenter">Download in English</a></div>
+                                                                    <div class="pad"><a href="/wp-content/uploads/2014/02/Salud_HealthierMarketing_Infographic_SPN_sml.jpg" class=" button  aligncenter">Download in Spanish</a></div>
+                                                                </div> 
 
-					                <a href="/wp-content/uploads/2013/08/Healthier-Marketing-Research-Review.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
-			                        <a href="/wp-content/uploads/2013/08/Healthier-Marketing-Issue-Brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="/wp-content/uploads/2013/08/HM_brief2.png" /><br />Issue Brief</a>
-			                        <a href="/wp-content/uploads/2013/08/Healthier-Marketing-Infographic-875.jpg" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="/wp-content/uploads/2013/08/HM_info2.png" /><br />Infographic</a>
-			                    
 			                    <?php } else if ( $tax_term->slug == 'sa-healthier-school-snacks' ) { ?>
+                                                                <div class="column1of3 aligncenter">
+                                                                    <img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" /></a><b>Research Review</b><br /><br />
+                                                                    <a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Research-Review.pdf" class=" button  aligncenter">Download</a></p>
+                                                                </div>    
+                                                                <div class="column1of3 aligncenter">
+                				                    <img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="/wp-content/uploads/2013/08/SS_brief2.png" /><b>Issue Brief</b><br /><br />
+                                                                    <div class="pad"><a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Issue-Brief.pdf" class=" button  aligncenter">Download in English</a></div>
+                                                                    <div class="pad"><a href="/wp-content/uploads/2014/02/SpanishHealthier-School-Snacks-Issue-Brief.pdf" class=" button  aligncenter">Download in Spanish</a></div>
+                                                                </div>
+                                                                <div class="column1of3 aligncenter">
+                                                                    <img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="/wp-content/uploads/2013/08/SS_info.png" /><b>Infographic</b><br /><br />
+                                                                    <div class="pad"><a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Infographic-875.jpg" class=" button  aligncenter">Download in English</a></div>
+                                                                    <div class="pad"><a href="/wp-content/uploads/2014/02/Healthy-school-sancks-spn-875.jpg" class=" button  aligncenter">Download in Spanish</a></div>
+                                                                </div> 
 
-				                    <a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Research-Review.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
-			                        <a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Issue-Brief.pdf" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="/wp-content/uploads/2013/08/SS_brief2.png" /><br />Issue Brief</a>
-			                        <a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Infographic-875.jpg" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="/wp-content/uploads/2013/08/SS_info.png" /><br />Infographic</a>
-			                    
 			                    <?php } else if ( $tax_term->slug == 'sa-sugary-drinks' ) { ?>
-
-				                    <a href="/wp-content/uploads/2013/08/Research_review.png" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" /><br />Research Review</a>
-			                        <a href="/wp-content/uploads/2013/08/AP_brief.png" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="/wp-content/uploads/2013/08/AP_brief.png" /><br />Issue Brief</a>
-			                        <a href="/wp-content/uploads/2013/08/AP_info.png" class="column1of3 aligncenter"><img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="/wp-content/uploads/2013/08/AP_info.png"  /><br />Infographic</a>
+                                                                <div class="column1of3 aligncenter">
+                                                                    <img class="size-full no-box wp-image-18047 aligncenter" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" /></a><b>Research Review</b><br /><br />
+                                                                    <a href="wp-content/uploads/2014/02/Sugary-Drinks-research-review.pdf" class=" button  aligncenter">Download</a></p>
+                                                                </div>    
+                                                                <div class="column1of3 aligncenter">
+                				                    <img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="/wp-content/uploads/2014/02/SD_brief2.png" /><b>Issue Brief</b><br /><br />
+                                                                    <div class="pad"><a href="/wp-content/uploads/2014/02/Sugary-Drinks-issue-brief.pdf" class=" button  aligncenter">Download in English</a></div>
+                                                                    <div class="pad"><a href="/wp-content/uploads/2014/02/SpanishSugary-Drinks-Issue-Brief.pdf" class=" button  aligncenter">Download in Spanish</a></div>
+                                                                </div>
+                                                                <div class="column1of3 aligncenter">
+                                                                    <img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="/wp-content/uploads/2014/02/SD_info.png" /><b>Infographic</b><br /><br />
+                                                                    <div class="pad"><a href="/wp-content/uploads/2014/02/Sugary-Drinks-Infographic-875.png" class=" button  aligncenter">Download in English</a></div>
+                                                                    <div class="pad"><a href="/wp-content/uploads/2014/02/Salud_SugaryDrinks_Infographic_SPN_sml.jpg" class=" button  aligncenter">Download in Spanish</a></div>
+                                                                </div> 
 
 			                    <?php } ?>
 			               </div>
