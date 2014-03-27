@@ -137,7 +137,7 @@ function cc_dequeue_other_css_and_scripts(){
 }
 
 // Add needed scripts and styles, public-facing pages
-add_action( 'wp_enqueue_scripts', 'custom_childtheme_stylesheet_load', 99 );
+add_action( 'wp_print_styles', 'custom_childtheme_stylesheet_load', 99 );
 function custom_childtheme_stylesheet_load(){
   wp_register_style(
           'commons_retheme_stylesheet',
@@ -164,7 +164,7 @@ function commons_ie_stylesheet_load(){
     // $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lt IE 9' );
 }
 
-add_action( 'wp_enqueue_scripts', 'parent_stylesheet_load', 1 );
+add_action( 'wp_print_styles', 'parent_stylesheet_load', 1 );
 function parent_stylesheet_load(){
     wp_register_style(
             '2012_parent_stylesheet',
@@ -409,7 +409,7 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'full-width';
         $classes[] = 'ncr';
       }
-    if ( is_archive( 'bp-doc' ) ) {
+    if ( is_singular( 'bp-docs' ) ) {
         $classes[] = 'full-width';
       }
 

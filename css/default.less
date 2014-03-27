@@ -117,6 +117,13 @@ img.no-box {
 .widget-title {
 	.font-size(1.2);
 }
+.entry-content th {
+    color: #636363;
+    font-size: 0.785714rem;
+    font-weight: bold;
+    line-height: 2.18182;
+    text-transform: none;
+}
 
 //Buddypress Styles
 /*--------------------------------------------------------------
@@ -3808,6 +3815,7 @@ body.home-page {
 }
 .buddypress article {
 	border-bottom: none;
+	margin-bottom: 0;
 }
 
 #jumplinks { //sub navigation on member and group pages
@@ -3980,47 +3988,39 @@ body.home-page {
 
 }
 
-//Plugin Overrides
-#content {
-	.bpfb_toolbarItem  {
-	    //border: medium none;
-	    display: block;
-	    float: left;
-	    height: auto;
-	    margin-right: 1em;
-	    overflow: hidden;
-	    // text-decoration: none;
-	    width: auto;
-		span {
-		position: relative;
-		left:0;  
-		display:inline;
-		}
-	}
-	#bpfb_addPhotos,
-	#bpfb_addVideos,
-	#bpfb_addLinks,
-	#bpfb_addDocuments {
-	    background-image: none;
-	    background: #fff; /* Old browsers */
-		background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Opera11.10+ */
-		background: -ms-linear-gradient(top, #ffffff 0%,#ededed 100%); /* IE10+ */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
-		background: linear-gradient(top, #ffffff 0%,#ededed 100%); /* W3C */
-		border: 1px solid #ccc;
-	}
-	.bpfb_form_container {
-		background-color: transparent;
-	}
-}
 //Weight of the Nation
 .wotn .site-content article {
 	margin-bottom: 24px;
 	margin-bottom: 1.7rem;
 }
+
+// CA4Health styles
+// color styles will only work on elements that don't have background colors, like .half-block.
+.background-ca4blue{
+		background-color: @ca4blue;
+	}
+.background-ca4red{
+	background-color: @ca4red;
+}
+.background-ca4orange{
+	background-color: @ca4orange;
+}
+.background-ca4gold{
+	background-color: @ca4gold;
+}
+.text-ca4blue{
+	color: @ca4blue;
+}
+.text-ca4red{
+	color: @ca4red;
+}
+.text-ca4orange{
+	color: @ca4orange;
+}
+.text-ca4gold{
+	color: @ca4gold;
+}
+
 //SimpleModal
 /* Overlay */
 .modal-content {
@@ -4112,6 +4112,44 @@ body.home-page {
 	width: 100%;
 	height: 100%;
 }
+
+//Plugin Overrides
+#content {
+	.bpfb_toolbarItem  {
+	    //border: medium none;
+	    display: block;
+	    float: left;
+	    height: auto;
+	    margin-right: 1em;
+	    overflow: hidden;
+	    // text-decoration: none;
+	    width: auto;
+		span {
+		position: relative;
+		left:0;  
+		display:inline;
+		}
+	}
+	#bpfb_addPhotos,
+	#bpfb_addVideos,
+	#bpfb_addLinks,
+	#bpfb_addDocuments {
+	    background-image: none;
+	    background: #fff; /* Old browsers */
+		background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Opera11.10+ */
+		background: -ms-linear-gradient(top, #ffffff 0%,#ededed 100%); /* IE10+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+		background: linear-gradient(top, #ffffff 0%,#ededed 100%); /* W3C */
+		border: 1px solid #ccc;
+	}
+	.bpfb_form_container {
+		background-color: transparent;
+	}
+}
+
 //Blog Categories for Groups
 .buddypress #content .bp-simple-post-form { 
 	h3 {
@@ -4133,33 +4171,6 @@ body.home-page {
 //Miscellany
 .clear-none {
 	clear: none;
-}
-
-// CA4Health styles
-// color styles will only work on elements that don't have background colors, like .half-block.
-.background-ca4blue{
-		background-color: @ca4blue;
-	}
-.background-ca4red{
-	background-color: @ca4red;
-}
-.background-ca4orange{
-	background-color: @ca4orange;
-}
-.background-ca4gold{
-	background-color: @ca4gold;
-}
-.text-ca4blue{
-	color: @ca4blue;
-}
-.text-ca4red{
-	color: @ca4red;
-}
-.text-ca4orange{
-	color: @ca4orange;
-}
-.text-ca4gold{
-	color: @ca4gold;
 }
 
 /* Plugin css style dequeueing: 
@@ -4215,6 +4226,125 @@ body.home-page {
 				border: 1px solid @graymid;
 				padding: 2px 6px;
 				.border-radius(18px);
+			}
+		}
+	}
+}
+//BuddyPress Docs overrides
+div.docs-info-header {
+    // background: none repeat scroll 0 0 #EAEAEA;
+    p.currently-viewing {
+    	.font-size(.9);
+    }
+}
+#buddypress {
+	.doc-tabs ul li {
+		margin-bottom: 0;
+	}
+	#bp-docs-all-docs {
+		// margin-bottom: 1em;
+		overflow: auto;
+		li {
+			display: inline-block;
+			margin: 10px 10px 0 0;
+			&.current{
+			    font-weight: 700;
+			    a {
+			    	color: @white;
+			    	background: @ccblue;
+					border: 1px solid @ccblue;
+	    		    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+			    }
+			}
+			a { 
+				.border-radius(3px);
+				border: 1px solid @graymid;
+				.gradient( lighten( @graylight, 20% ), lighten( @graylight, 8% ) );			
+			}
+		}
+		#bp-create-doc-button {
+			margin-top: 10px;
+		}
+	}
+	#bp-create-doc-button {
+		margin-right: 0;
+		margin-bottom: 1em;
+		font-weight: normal;
+		.font-size(1);
+	}
+	.item-list-tabs {
+		#bp-create-doc-button {
+			margin-top: 0;
+		}
+	}
+	.bp-docs-attachment-drawer {
+		h4 {
+			font-weight: normal;
+		}
+		&>ul {
+			&>li {
+				margin-bottom: 0;
+			}
+		}
+	}
+	table.doctable {
+		border: 1px solid #EEEEEE;
+		tr {
+			&:nth-child(even) {
+				background-color: #fbfbfb;
+			}
+			th {
+			background-color: #EAEAEA;
+			.font-size(1);
+			font-weight: normal;
+				a {
+					text-decoration: none;
+				}
+			}
+		}
+		.title-cell {
+			width: 30%;
+			a {
+				display: inline-block;
+				.font-size(1);
+				line-height: 1.4;
+			    margin-bottom: 0.5em;
+			}
+			.row-actions a {
+				.font-size(.9);
+				margin-bottom: 0;
+			}
+		}
+		.attachment-clip-cell {
+			width: 4%;
+		}
+		.author-cell, .created-date-cell, .edited-date-cell {
+			text-align: center;
+			width: 13%;
+		}
+
+		.groups-cell {
+			padding-left: 10px;
+			width: 13%;
+
+			ul {
+				list-style-type: none;
+				padding-left: 0;
+
+				li {
+					margin-bottom: .5em;
+					margin-left: 0;
+
+					a {
+						vertical-align: middle;
+						font-size: .85em;
+					}
+
+					img.avatar {
+						display: block;
+						// vertical-align: middle;
+					}
+				}
 			}
 		}
 	}
