@@ -2285,7 +2285,6 @@ ul.item-list li .share-buttons-below li {
   margin-bottom: 2em;
 }
 .policy-meta {
-  display: none;
   float: left;
   width: 100%;
   margin-top: 4em;
@@ -2306,6 +2305,12 @@ ul.item-list li .share-buttons-below li {
   margin-bottom: .4em;
   font-size: 13.299999999999999px;
   font-size: 0.95rem;
+}
+.policy-meta iframe {
+  margin: 10px auto 0;
+}
+.policy-meta #dial #gauge-widget {
+  font-weight: bold;
 }
 .site-content .entry-header .meter-box {
   overflow: hidden;
@@ -3971,8 +3976,6 @@ div#item-header .activity {
 }
 .policy-meta {
   display: block;
-  float: left;
-  width: 90%;
 }
 #bbpress-forums li.bbp-body .bbp-topic-title {
   font-size: 14px;
