@@ -31,7 +31,7 @@ get_header(); ?>
 				<div class="find-changes">
 					<h3 class="screamer saorange">1. Find Changes</h3>
 
-						<div style="margin-bottom:1.6em; margin-left:3%;">
+						<div style="margin-bottom:1.6em;">
 							<h4 style="margin-top:0;">By Keyword</h4>
 							<?php if ( function_exists('sa_searchpolicies') ) { 
                         	sa_searchpolicies('/search-results'); 
@@ -57,7 +57,7 @@ get_header(); ?>
 			                <a href="http://staging.maps.communitycommons.org/policymap/">Browse changes happening in your area</a>
 						</div>
 					</div>
-					<h4 style="margin-left:3%;">Recent Changes</h4>
+					<h4>Recent Changes</h4>
 					<div class="row">
 						<?php
 						//Grab the 3 most recent success stories
@@ -145,7 +145,7 @@ get_header(); ?>
 
 				<h3 class="screamer sapurple">2. Learn to Create Change</h3>
 				<div class="row clear">
-					<h4 style="margin-top:0;margin-left:3%;">See the Changes a Salud Hero Can Make</h4>
+					<h4 style="margin-top:0;">See the Changes a Salud Hero Can Make</h4>
 
 					<?php
 					//Grab the 3 most recent success stories
@@ -183,14 +183,14 @@ get_header(); ?>
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">
 						<h4 style="margin-top:0;">What's Change?</h4>
-	                    <a href="/salud-america/what-is-change"><img src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;"></a>
+	                    <a href="/salud-america/what-is-change"><img src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/WhatsChange_icon.png' alt='Active Play' class="no-box" style="width:25%; float:left; margin-right:5%;"></a>
 	                    <p>Find out what "change" really means and all the science behind it.<br />
 	                    	<a href="/salud-america/what-is-change" class="button" title="Learn what change means.">Learn more</a></p>
                     </div>
 
 					<div class="half-block" style="margin-top:0;">
 						<h4 style="margin-top:0;">Get help to Make a Change</h4>
-	                    <a href='/salud-america/saresourcespage/'><img src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/Resoucesmakechange_icon.png' alt='Active Play' class="no-box" style="width:30%; float:left; margin-right:5%;"></a>
+	                    <a href='/salud-america/saresourcespage/'><img src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/Resoucesmakechange_icon.png' alt='Active Play' class="no-box" style="width:25%; float:left; margin-right:5%;"></a>
 	                    <p>Use research, toolkits, and other elements to learn about healthy change.<br />
 	                    	<a href="/saresources/" class="button" title="Learn about healthy change.">Learn more</a></p>
 					</div>
@@ -201,7 +201,7 @@ get_header(); ?>
 				<div class="row">
 					<div class="half-block" style="margin-top:0;">
 						<h4 style="margin-top:0;">Making a Change?</h4>
-	                    <a href='/salud-america/share-your-own-stories/'><img src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png' alt='Share Your Change' style="width:32%; float:left; margin-right:5%;" class="no-box"></a>
+	                    <a href='/salud-america/share-your-own-stories/'><img src='/wp-content/themes/CommonsRetheme/img/salud_america/Salud_Platform_WebReady_files/BeaStar_icon.png' alt='Share Your Change' style="width:25%; float:left; margin-right:5%;" class="no-box"></a>
 	                    <p>If you or someone you know is starting a change or already made a change, let us know. <br />
 	                    	We can write it up, possibly film it, and share it nationwide!<br />
 	                    	<a href="/salud-america/share-your-own-stories/" class="button" title="Share your story.">Share your story or alert us to a change</a>

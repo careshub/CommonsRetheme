@@ -8,6 +8,73 @@
 				<?php get_template_part( 'content', 'sapolicies' ); ?>
 				<?php comments_template( '', true ); ?>
 			<?php endwhile; // end of the loop. ?>
+
+			<?php
+		
+				$geogterm = wp_get_object_terms( $post->ID, 'geographies' );
+				if( !empty( $geogterm ) && !is_wp_error( $geogterm ) ){
+					$geoid = $geogterm[0]->description;
+					$geoidstate = '04000' . substr($geoid, 5, 4);
+				}        
+		                        
+			?>
+
+			<div class="policy-meta">
+				<h3 class="screamer sapink">Related Data for this Region</h3>
+		        
+		        <div class="half-block">
+		        	<h6 style="margin-top:0;">Percent Adults Age 18+ Obese (BMI >= 30)  by County</h6>
+		        	<script src='http://maps.communitycommons.org/jscripts/mapWidget.js?ids=348&vm=348&w=190&h=190&geoid=<?php echo $geoidstate; ?>&l=1'></script>
+		        </div>        
+		    	
+		    	<div class="half-block">
+					<div id="dial">
+						<script src='http://staging.maps.communitycommons.org/jscripts/dialWidget.js?geoid=<?php echo $geoid; ?>&id=779'></script>
+					</div>
+
+				
+			        <input type="button" id="btnSubmit1" value="Poverty rate" onclick="changeDial('779')" />
+					<input type="button" id="btnSubmit2" value="Children in Poverty " onclick="changeDial('781')" />
+					<input type="button" id="btnSubmit3" value="Pop. With No HS Diploma" onclick="changeDial('760')" />
+				</div>
+			
+			
+			
+			
+				<!--**********************************************Mike's stuff**********************************-->
+				<script type="text/javascript">
+					function changeDial(id) {
+						var geoid = '<?php echo $geoid; ?>';
+						var s = document.createElement("script");
+						s.type = "text/javascript";
+						s.src = "http://staging.maps.communitycommons.org/jscripts/dialWidget.js?geoid=" + geoid + "&id=" + id;
+						
+		                var dial = document.getElementById('dial');
+		                if (!document._write) document._write = document.write;
+		                document.write = function (str) {
+		                    dial.innerHTML += str;
+		                };
+
+		                while (dial.firstChild) {  dial.removeChild(dial.firstChild); }
+		                dial.appendChild(s);
+		                }
+
+		                 //Yan may handle this.
+			      //   jQuery(document).ready(function($) {
+			      //   	// Show the map legend on click
+					    // $('#_cc-maplegend1').on('click', function(e){
+					    //     $('#_cc-maplegend1-content').toggle();
+					    //     e.preventDefault();
+					    // });
+			      //   });
+
+				</script>
+				
+				
+				
+				<!--********************************************************************************************** -->				
+			
+		    </div>
 			<div class="related-policies">
 				<?php //Get related posts by topic
 				$source_post_id = $post->ID;

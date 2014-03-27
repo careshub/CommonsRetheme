@@ -52,14 +52,14 @@
 		</div>
 	<?php
 		
-		$geogterm = wp_get_object_terms( $post->ID, 'geographies' );
-		if( !empty( $geogterm ) && !is_wp_error( $geogterm ) ){
-			$geoid = $geogterm[0]->description;
-			$geoidstate = '04000' . substr($geoid, 5, 4);
-		}        
+		// $geogterm = wp_get_object_terms( $post->ID, 'geographies' );
+		// if( !empty( $geogterm ) && !is_wp_error( $geogterm ) ){
+		// 	$geoid = $geogterm[0]->description;
+		// 	$geoidstate = '04000' . substr($geoid, 5, 4);
+		// }        
                         
 	?>
-
+	<?php /*?>
     <div class="policy-meta">
         <strong>Percent Adults Age 18+ Obese (BMI >= 30)  by County</strong>
         
@@ -113,6 +113,7 @@
 		<!--********************************************************************************************** -->				
 	
     </div>
+    	<?php */?>
 
 
 	<!-- <div class="policy-meta">

@@ -2148,6 +2148,10 @@ ul.item-list li .share-buttons-below li {
 .salud-america .site-content .browse-topics .salud-topic.sa-sugary-drinks p {
   border-left-color: #92278f;
 }
+.salud-america .site-content .salud-topic .topic-header-link {
+  display: block;
+  overflow: auto;
+}
 .salud-america .site-content .policy-search {
   margin-bottom: 1em;
 }
