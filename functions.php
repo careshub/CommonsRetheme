@@ -147,8 +147,8 @@ function custom_childtheme_stylesheet_load(){
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
-
-add_action( 'wp_enqueue_scripts', 'commons_ie_stylesheet_load', 99 );
+//Having to hard code this call into the header. In order to add conditionals, you have to use wp_enqueue_scripts, but our main stylesheets must appear after some plugin stylesheets, which are included later at wp_print_styles.
+// add_action( 'wp_enqueue_scripts', 'commons_ie_stylesheet_load', 99 );
 function commons_ie_stylesheet_load(){
     global $wp_styles;
     wp_register_style(
