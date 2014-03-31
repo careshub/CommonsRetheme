@@ -53,8 +53,8 @@ get_header(); ?>
 
 						<div class="half-block">
 							<h4 style="margin-top:0;">By Location</h4>
-							<a href="http://staging.maps.communitycommons.org/policymap/" title="link to interactive map of changes"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/salud_location_map.png" alt='Map of Changes' class="no-box"></a>
-			                <a href="http://staging.maps.communitycommons.org/policymap/">Browse changes happening in your area</a>
+							<a href="http://maps.communitycommons.org/policymap/" title="link to interactive map of changes"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/salud_location_map.png" alt='Map of Changes' class="no-box"></a>
+			                <a href="http://maps.communitycommons.org/policymap/">Browse changes happening in your area</a>
 						</div>
 					</div>
 					<h4>Recent Changes</h4>
