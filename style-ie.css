@@ -3361,6 +3361,25 @@ div.docs-info-header p.currently-viewing {
 #buddypress table.doctable .groups-cell ul li img.avatar {
   display: block;
 }
+.group-subscription-div .gemail_icon {
+  background-position: left 4px;
+}
+.group-subscription-options {
+  background-color: #FFF;
+  border: 1px solid #aaaaaa;
+  border-top: 4px solid #869b3c;
+  padding: 8px;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+}
+.group-subscription-options a {
+  margin-bottom: 10px;
+}
+.group-subscription-options a.group-subscription-close {
+  height: auto;
+  text-transform: capitalize;
+}
 .primary-navigation .brand a {
   font-size: 16.8px;
   font-size: 1.2rem;
