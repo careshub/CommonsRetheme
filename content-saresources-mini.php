@@ -47,10 +47,10 @@
 				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark">
 					<?php 
 					if ( has_post_thumbnail() ) {
-						the_post_thumbnail('feature-front-sub'); 
+						the_post_thumbnail('feature-large'); 
 						}
 					?>
-				<h4 class="entry-title"><?php the_title(); ?></h4></a>
+				<h5 class="entry-title"><?php the_title(); ?></h5></a>
 				<?php //echo "<br />"; ?>
 				<?php //if ( isset( $target_icons ) ) {
 					// 	foreach ($target_icons as $target_icon) {

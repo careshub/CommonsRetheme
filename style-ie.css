@@ -2286,6 +2286,10 @@ ul.item-list li .share-buttons-below li {
 .salud-america .video-container-group figcaption input {
   margin-right: .5em;
 }
+.salud-america.post-type-archive-sa_success_story .salud-topic .entry-title {
+  font-size: 14px;
+  font-size: 1rem;
+}
 .tax-sa_advocacy_targets .advocacy_target_introduction {
   border-bottom: none !important;
 }
@@ -4171,6 +4175,23 @@ ul.item-list div.action {
 #content .video-container-group .video-container {
   width: 100%;
   padding-bottom: 47%;
+}
+#_cc-maplegend {
+  display: none;
+}
+#_cc-mapwidget {
+  float: left;
+}
+#_cc-maplegend-content {
+  float: left;
+  margin-left: 5%;
+  width: 45%;
+}
+.gaugechart img {
+  float: left;
+}
+.gaugechart .gaugelegend {
+  float: left;
 }
 .ie8 .primary-navigation .secondary .bp-notifications .bp-notification-list,
 .ie7 .primary-navigation .secondary .bp-notifications .bp-notification-list {
