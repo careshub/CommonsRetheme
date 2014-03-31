@@ -53,7 +53,7 @@ get_header(); ?>
 
 						<div class="half-block">
 							<h4 style="margin-top:0;">By Location</h4>
-							<a href="http://maps.communitycommons.org/policymap/" title="link to interactive map of changes"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/salud_location_map.png" alt='Map of Changes' class="no-box"></a>
+							<a href="http://maps.communitycommons.org/policymap/" title="link to interactive map of changes"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/policy-map-sm.jpg" alt='Map of Changes' class="no-box"></a><br />
 			                <a href="http://maps.communitycommons.org/policymap/">Browse changes happening in your area</a>
 						</div>
 					</div>
@@ -210,7 +210,7 @@ get_header(); ?>
 
 					<div class="half-block" style="margin-top:0;">
 			
-	                    <iframe width="450" height="180" src="//www.youtube.com/embed/8I4T08MONBA?rel=0;showinfo=0;controls=0" frameborder="0" allowfullscreen></iframe>
+	                    <iframe width="450" height="250" src="//www.youtube.com/embed/8I4T08MONBA?rel=0;showinfo=0;controls=0" frameborder="0" allowfullscreen></iframe>
 	                         	</div>
 				</div>
 			</div>

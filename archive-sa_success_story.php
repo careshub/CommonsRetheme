@@ -113,8 +113,8 @@ $archive_style = ( isset( $_GET['style'] ) && $_GET['style'] == 'videos'  ) ? 'v
 								?>
 								<div class="half-block salud-topic <?php echo $target->slug; ?>">
 									<a href="<?php cc_the_cpt_tax_intersection_link( 'sa_success_story', 'sa_advocacy_targets', $target->slug );?>" class="topic-header-link" title="Link to taxonomy page.">
-										<span class="<?php echo $target->slug; ?>x60"></span>
-										<h4 class="icon-friendly" style="width:65%; margin-top:0; line-height:1.2;"><?php echo $target->name ?></h4>
+										<span class="<?php echo $target->slug; ?>x90"></span>
+										<h3 class="icon-friendly" style="width:65%; margin-top:0; line-height:1.2;"><?php echo $target->name ?></h3>
 									</a>
 									<?php
 			                        get_template_part( 'content', 'saresources-mini');

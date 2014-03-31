@@ -1113,11 +1113,11 @@ function sa_location_search() {
       <h3 class="screamer sapurple">Search for Changes in Progress by Location</h3>
         
         <div>
-          <form method="GET" action="http://staging.maps.communitycommons.org/policymap/" name="sa_ls" enctype="multipart/form-data"> 
+          <form method="GET" action="http://maps.communitycommons.org/policymap/" name="sa_ls" enctype="multipart/form-data"> 
               <input type="text" id="address" size="70" Placeholder="e.g. Mosinee, Wisconsin" name="address" />
               <input type="submit" name="submit" value="Search"/>
           </form>
-          <a href="http://staging.maps.communitycommons.org/policymap/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/policy-map.jpg" class="alignnone" alt="Use the maproom to find changes in your area." style="margin:1.4em 0;"></a>
+          <a href="http://maps.communitycommons.org/policymap/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/policy-map.jpg" class="alignnone" alt="Use the maproom to find changes in your area." style="margin:1.4em 0;"></a>
         </div>
 
 <?php

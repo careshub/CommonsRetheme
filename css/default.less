@@ -2839,12 +2839,12 @@ ul.item-list li .share-buttons-below li {
 				// display: inline-block;
 				// text-align: left;
 				// padding:.6em;
-				h4 {
+				h3, h4 {
 					clear: none;
 				    float: left;
 				    padding-left: 4%;
 				    width: 68%;
-				    .font-size(1.3);
+				    // .font-size(1.3);
 				    margin-top: .5em;
 				    margin-bottom: 0;
 				    line-height: 1.4;
@@ -2966,6 +2966,9 @@ ul.item-list li .share-buttons-below li {
 		margin-bottom: 1.71429rem;
 		padding-bottom: 24px;
 		padding-bottom: 1.71429rem;
+		.column1of3.aligncenter > img {
+		    margin: 1em;
+		}
 	}
 	.sa-item-short-form {
 			.entry-content {
@@ -3043,6 +3046,15 @@ ul.item-list li .share-buttons-below li {
 	// .video-container {
 	// 		margin-bottom: 2em;
 	// 	}
+	.video-container-group {
+		figcaption {
+			text-align: center;
+			input {
+				margin-right: .5em;
+			}
+		}
+	}
+
 }
 
 .tax-sa_advocacy_targets {
@@ -4181,6 +4193,9 @@ body.home-page {
 //Miscellany
 .clear-none {
 	clear: none;
+}
+.clear-both {
+	clear: both;
 }
 
 /* Plugin css style dequeueing: 

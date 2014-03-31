@@ -40,7 +40,7 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 								//Get the related dings
 
 								?>
-								<div class="clear">
+								<div class="clear clear-both">
 								<!-- TODO: Need to figure out what the pattern is here, or generalize it somehow! -->
 								<?php if ( $tax_term->slug == 'sa-active-play' ) { ?>
                                                                 
@@ -214,8 +214,8 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 									?>
 									<div class="half-block salud-topic <?php echo $cat_slug; ?>">
 										<a href="<?php cc_the_cpt_tax_intersection_link( 'sapolicies', 'sa_advocacy_targets', $cat_slug ) ?>" class="<?php echo $cat_slug; ?>  clear">
-											<span class="<?php echo $cat_slug; ?>x60"></span>
-											<h4><?php echo $section_title; ?></h4>
+											<span class="<?php echo $cat_slug; ?>x90 alignleft"></span>
+											<h3><?php echo $section_title; ?></h3>
 										</a>
 										<p><?php echo $section_description; ?></p>
 									</div>

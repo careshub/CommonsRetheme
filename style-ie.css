@@ -2110,13 +2110,12 @@ ul.item-list li .share-buttons-below li {
   font-size: 28px;
   font-size: 2rem;
 }
+.salud-america .site-content .browse-topics .salud-topic h3,
 .salud-america .site-content .browse-topics .salud-topic h4 {
   clear: none;
   float: left;
   padding-left: 4%;
   width: 68%;
-  font-size: 18.2px;
-  font-size: 1.3rem;
   margin-top: .5em;
   margin-bottom: 0;
   line-height: 1.4;
@@ -2223,6 +2222,9 @@ ul.item-list li .share-buttons-below li {
   padding-bottom: 24px;
   padding-bottom: 1.71429rem;
 }
+.salud-america .site-content .related-what-can-you-do .column1of3.aligncenter > img {
+  margin: 1em;
+}
 .salud-america .site-content .sa-item-short-form .entry-content .entry-header h2 {
   margin-bottom: 0.7em;
 }
@@ -2277,6 +2279,12 @@ ul.item-list li .share-buttons-below li {
 .salud-america .salud-success-stories-sidebar li h5 {
   line-height: 1.2;
   margin-bottom: .4em;
+}
+.salud-america .video-container-group figcaption {
+  text-align: center;
+}
+.salud-america .video-container-group figcaption input {
+  margin-right: .5em;
 }
 .tax-sa_advocacy_targets .advocacy_target_introduction {
   border-bottom: none !important;
@@ -3182,6 +3190,9 @@ body.home-page #primary .quarter-block h3 {
 }
 .clear-none {
   clear: none;
+}
+.clear-both {
+  clear: both;
 }
 /* Plugin css style dequeueing: 
 *  So we can dequeue some small css files reducing http requests. 

@@ -41,7 +41,7 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
 					//Get the related dings
 
 						?>
-							<div class="clear">
+							<div class="clear clear-both">
 								<!-- TODO: Need to figure out what the pattern is here, or generalize it somehow! -->
 								<?php if ( $tax_term->slug == 'sa-active-play' ) { ?>
                                                                 
