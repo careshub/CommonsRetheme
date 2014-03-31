@@ -30,6 +30,7 @@
 <?php wp_head(); ?>
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
+<link rel='stylesheet' id='twentytwelve-ie-css'  href='<?php echo get_template_directory_uri(); ?>/css/ie.css?ver=20121010' type='text/css' media='all' />
 <link rel='stylesheet' id='commons_ie_stylesheet-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/style-ie.css?ver=0.32' type='text/css' media='all' />
 <![endif]-->
 </head>

@@ -542,7 +542,7 @@ div.generic-button a,
   /* Opera 11.10+ */
   background: linear-gradient(to bottom, #ffffff, #ededed);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@startColor', endColorstr='@endColor', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0);
   /* IE6-9 */
   border: 1px solid #ccc;
   -webkit-border-radius: 3px;
@@ -584,7 +584,7 @@ div.generic-button a:hover,
   /* Opera 11.10+ */
   background: linear-gradient(to bottom, #ffffff, #e0e0e0);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@startColor', endColorstr='@endColor', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e0e0e0', GradientType=0);
   /* IE6-9 */
   border: 1px solid #bbb;
   color: #555;
@@ -685,7 +685,7 @@ a.disabled:hover {
   /* Opera 11.10+ */
   background: linear-gradient(to bottom, #ffffff, #ededed);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@startColor', endColorstr='@endColor', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0);
   /* IE6-9 */
   border-color: #eee;
   color: #bbb;
@@ -935,7 +935,7 @@ ul.single-line li {
   /* Opera 11.10+ */
   background: linear-gradient(to bottom, #ffffff, #f2f2f2);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@startColor', endColorstr='@endColor', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f2f2f2', GradientType=0);
   /* IE6-9 */
 }
 #secondary .item-list-tabs ul li span {
@@ -3281,7 +3281,7 @@ div.docs-info-header p.currently-viewing {
   /* Opera 11.10+ */
   background: linear-gradient(to bottom, #ffffff, #f2f2f2);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@startColor', endColorstr='@endColor', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f2f2f2', GradientType=0);
   /* IE6-9 */
 }
 #buddypress #bp-docs-all-docs #bp-create-doc-button {
