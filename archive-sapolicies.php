@@ -67,12 +67,12 @@ if ( isset( $wp_query->query_vars['term'] ) ) {
                                                                 <div class="column1of3 aligncenter">
                 				                    <img class="size-full no-box wp-image-18049 aligncenter" alt="AP_brief_2" src="/wp-content/uploads/2013/08/AS_brief2.png" /><b>Issue Brief</b><br /><br />
                                                                     <div class="pad"><a href="/wp-content/uploads/2013/08/Active-Spaces-Issue-Brief.pdf" class=" button  aligncenter">Download in English</a></div>
-                                                                    <div class="pad"><a href="/wp-content/uploads/2014/02/SpanishActive-Spaces-Issue-Brief.pdf" class=" button  aligncenter">Download in Spanish</a></div>
+                                                                    <div class="pad"><a href="/wp-content/uploads/2014/04/SpanishActive-Spaces_Issue-Brief.pdf" class=" button  aligncenter">Download in Spanish</a></div>
                                                                 </div>
                                                                 <div class="column1of3 aligncenter">
                                                                     <img class="size-full no-box wp-image-18050 aligncenter" alt="AP_info_2" src="/wp-content/uploads/2013/08/AS_info.png" /><b>Infographic</b><br /><br />
                                                                     <div class="pad"><a href="/wp-content/uploads/2013/08/Active-Spaces-Infographic-875.jpg" class=" button  aligncenter">Download in English</a></div>
-                                                                    <div class="pad"><a href="/wp-content/uploads/2014/02/Salud_ActiveSpaces_Infographic_SPN_sml.jpg" class=" button  aligncenter">Download in Spanish</a></div>
+                                                                    <div class="pad"><a href="/wp-content/uploads/2014/04/Salud_ActiveSpaces_Infographic_SPN_hirez.jpg" class=" button  aligncenter">Download in Spanish</a></div>
                                                                 </div> 
                                                                 
                                             <?php } else if ( $tax_term->slug == 'sa-better-food-in-neighborhoods' ) { ?>
