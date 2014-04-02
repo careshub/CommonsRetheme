@@ -350,12 +350,13 @@ ul.item-list div.action {
 }
 //Map and dial widgets
 #_cc-maplegend {
-	display: none;	
+	// display: none;	
 }
-#_cc-mapwidget {
+.map-widget-image {
 	float: left;
 }
-#_cc-maplegend-content {
+.policy-meta .map-widget-legend {
+	display: block;
 	float: left;
 	margin-left: 5%;
 	width: 45%;
@@ -366,8 +367,11 @@ ul.item-list div.action {
 		float: left
 	}	
 	.gaugelegend {
-	    // display: inline-block;
+	    // display: block;
 	    float: left;
 	    // vertical-align: middle;
+	    div {
+	    	margin-bottom: .8em;
+	    }
     }
 }

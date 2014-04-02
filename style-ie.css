@@ -4176,13 +4176,11 @@ ul.item-list div.action {
   width: 100%;
   padding-bottom: 47%;
 }
-#_cc-maplegend {
-  display: none;
-}
-#_cc-mapwidget {
+.map-widget-image {
   float: left;
 }
-#_cc-maplegend-content {
+.policy-meta .map-widget-legend {
+  display: block;
   float: left;
   margin-left: 5%;
   width: 45%;
@@ -4192,6 +4190,9 @@ ul.item-list div.action {
 }
 .gaugechart .gaugelegend {
   float: left;
+}
+.gaugechart .gaugelegend div {
+  margin-bottom: .8em;
 }
 .ie8 .primary-navigation .secondary .bp-notifications .bp-notification-list,
 .ie7 .primary-navigation .secondary .bp-notifications .bp-notification-list {
