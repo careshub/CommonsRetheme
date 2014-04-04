@@ -126,8 +126,10 @@ function cc_dequeue_parent_theme_scripts(){
   wp_dequeue_script( 'twentytwelve-navigation' );
   wp_deregister_script( 'twentytwelve-navigation' );
 
+  if(function_exists('is_bbpress')){
   if ( !is_bbpress() && !bp_is_current_action( 'forum' )  )
     wp_dequeue_style( 'bbp-default' );
+	}
 }
 
 add_action( 'wp_print_styles', 'cc_dequeue_other_css_and_scripts', 91 );
