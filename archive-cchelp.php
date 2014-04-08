@@ -28,7 +28,13 @@ $args = array(
 $group_posts = new WP_Query($args);
 
 ?>
-
+	<style type="text/css">
+		.shadow:hover {
+-webkit-box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 0.79);
+-moz-box-shadow:    0px 0px 18px 0px rgba(50, 50, 50, 0.79);
+box-shadow:         0px 0px 18px 0px rgba(50, 50, 50, 0.79);
+		}
+	</style>
 	<section id="primary" class="site-content">
 		<div id="content" role="main">
 		<a href="/cchelp/" style="text-decoration:none;color:#000000;"><p style="font-weight:bold;font-size:21pt;">Support | Community Commons</p></a>
@@ -39,23 +45,23 @@ $group_posts = new WP_Query($args);
 			$array = array(
 				'Daniel' => array(
 							'color' => '#008EAA',
-							'text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...',
-							'image' => 'http://dev.communitycommons.org/wp-content/uploads/2014/04/male.jpg',
+							'text' => 'Daniel is a researcher who often serves as evaluation support for community health initiatives. He is an invited or contracted team member of the community coalition who holds a commitment to letting the data inform the work.',
+							'image' => 'http://dev.communitycommons.org/wp-content/uploads/2014/04/Daniel_Avatar.jpg',
 							),
 				'Tonya' => array(
 							'color' => '#df5827',
-							'text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...',
-							'image' => 'http://dev.communitycommons.org/wp-content/uploads/2014/04/female.jpg',
+							'text' => 'Tonya is a community organizer and advocate. She is a member of the healthy community coalition who has a deep understanding of the community’s history, desires and needs.',
+							'image' => 'http://dev.communitycommons.org/wp-content/uploads/2014/04/Tonya_Avatar.jpg',
 							),
 				'Sara' => array(
 							'color' => '#f9b715',
-							'text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...',
-							'image' => 'http://dev.communitycommons.org/wp-content/uploads/2014/04/female.jpg',
+							'text' => 'Sara provides leadership for a local agency focused on serving a wide range of community needs. She often convenes local stakeholders to create conditions that help advance strategy implementation of local coalitions.',
+							'image' => 'http://dev.communitycommons.org/wp-content/uploads/2014/04/Sara_Avatar.jpg',
 							),
 				'Maria' => array(
 							'color' => '#879c3c',
-							'text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...',
-							'image' => 'http://dev.communitycommons.org/wp-content/uploads/2014/04/female.jpg',
+							'text' => 'Maria works for a local agency focused on improving health outcomes across communities in need. She serves as co-chair of the healthy community coalition providing coordination support and community health strategy expertise.',
+							'image' => 'http://dev.communitycommons.org/wp-content/uploads/2014/04/Maria_Avatar.jpg',
 							)
 				);
 			$typearray = array(
@@ -68,7 +74,7 @@ $group_posts = new WP_Query($args);
 								);
 						
 				?>
-				<div style="width:100%;height:100px;padding:10px;margin-bottom:25px;background-color:<?php echo $array[$persona]['color']; ?>">
+				<div style="width:100%;padding:10px;margin-bottom:25px;background-color:<?php echo $array[$persona]['color']; ?>">
 					<table>
 						<tr>
 							<td>
@@ -133,33 +139,33 @@ $group_posts = new WP_Query($args);
 						if($term->slug == "ccgroup-association-54" && $COGIScount < 1) {
 							$COGIScount = 1;
 						?>
-							<div style="width:895px;height:285px;background-color:#ffffff;border:solid 1px #008eaa;padding:25px;">
-								<div style="float:left;width:50%;height:100%;vertical-align:top;text-align:left;">
-									<img src="http://dev.communitycommons.org/wp-content/uploads/2014/04/cogistitle.jpg" />
-									<p style="margin-right:20px;font-size:11pt;">The Childhood Obesity GIS collaboration space on the Commons has a variety of tools and applications to turn complex data into maps and other easy-to-understand visualizations, revealing the relationships, patterns, and trends that help tell a story.</p><p style="margin-right:20px;font-size:11pt;">The four personas on the right represent different ways people use the Commons to make a positive change in their community. Click on the ones that resonates with you to learn more.</p>
+							<div style="width:895px;height:400px;background-color:#ffffff;border:solid 1px #008eaa;padding:25px;">
+								<div style="float:left;width:50%;height:100%;vertical-align:top;text-align:left;font-size:13pt;">
+									<img src="http://dev.communitycommons.org/wp-content/uploads/2014/04/cogistitle.jpg" /><br /><br />
+									<p>The Childhood Obesity GIS collaboration space on the Commons has a variety of tools and applications to turn complex data into maps and other easy-to-understand visualizations, revealing the relationships, patterns, and trends that help tell a story.</p><p>The four personas on the right represent different ways people use the Commons to make a positive change in their community. Click on the ones that resonates with you to learn more.</p>
 								</div>
 								<div style="float:right;width:50%;background-color:#888888;height:100%;" >
 									<div style="height:50%;">
-										<div id="divTonya" style="cursor:pointer;width:50%;height:100%;float:left;background-color:#df5827;" title="Go to Tonya's help page">
+										<div class="shadow" id="divTonya" style="cursor:pointer;width:50%;height:100%;float:left;background-color:#df5827;" title="Go to Tonya's help page">
 											<div style="padding:12px;">
 												<table>
 													<tr>
 														<td>
-															<img style="float:left;" src="http://dev.communitycommons.org/wp-content/uploads/2014/04/female.jpg" width="60px;" />
+															<img style="float:left;" src="http://dev.communitycommons.org/wp-content/uploads/2014/04/Tonya_Avatar.jpg" width="60px;" />
 														</td>
 														<td style="color:#ffffff;font-weight:bold;font-size:18pt;">
 															Tonya
 														</td>
 													</tr>
 													<tr>
-														<td colspan="2">
-															Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...
+														<td colspan="2" style="font-size:9pt;">
+															Tonya is a community organizer and advocate. She is a member of the healthy community coalition who has a deep understanding of the community’s history, desires and needs. 
 														</td>
 													</tr>
 												</table>											
 											</div>
 										</div>
-										<div id="divSara" style="cursor:pointer;width:50%;height:100%;float:right;background-color:#f9b715;" title="Go to Sara's help page">
+										<div class="shadow" id="divSara" style="cursor:pointer;width:50%;height:100%;float:right;background-color:#f9b715;" title="Go to Sara's help page">
 											<div style="padding:12px;">
 												<table>
 													<tr>
@@ -167,12 +173,12 @@ $group_posts = new WP_Query($args);
 															Sara
 														</td>
 														<td>
-															<img style="float:right;" src="http://dev.communitycommons.org/wp-content/uploads/2014/04/female.jpg" width="60px;" />
+															<img style="float:right;" src="http://dev.communitycommons.org/wp-content/uploads/2014/04/Sara_Avatar.jpg" width="60px;" />
 														</td>
 													</tr>
 													<tr>
-														<td colspan="2">
-															Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...
+														<td colspan="2" style="font-size:9pt;">
+															Sara provides leadership for a local agency focused on serving a wide range of community needs. She often convenes local stakeholders to create conditions that help advance strategy implementation of local coalitions. 
 														</td>
 													</tr>
 												</table>											
@@ -180,26 +186,26 @@ $group_posts = new WP_Query($args);
 										</div>								
 									</div>
 									<div style="height:50%;">
-										<div id="divDaniel" style="cursor:pointer;width:50%;height:100%;float:left;background-color:#008eaa;" title="Go to Daniel's help page">
+										<div class="shadow" id="divDaniel" style="cursor:pointer;width:50%;height:100%;float:left;background-color:#008eaa;" title="Go to Daniel's help page">
 											<div style="padding:12px;">
 												<table>
 													<tr>
 														<td>
-															<img style="float:left;" src="http://dev.communitycommons.org/wp-content/uploads/2014/04/male.jpg" width="60px;" />
+															<img style="float:left;" src="http://dev.communitycommons.org/wp-content/uploads/2014/04/Daniel_Avatar.jpg" width="60px;" />
 														</td>
 														<td style="color:#ffffff;font-weight:bold;font-size:18pt;">
 															Daniel
 														</td>
 													</tr>
 													<tr>
-														<td colspan="2">
-															Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...
+														<td colspan="2" style="font-size:9pt;">
+															Daniel is a researcher who often serves as evaluation support for community health initiatives. He is an invited or contracted team member of the community coalition who holds a commitment to letting the data inform the work.
 														</td>
 													</tr>
 												</table>											
 											</div>
 										</div>
-										<div id="divMaria" style="cursor:pointer;width:50%;height:100%;float:right;background-color:#879c3c;" title="Go to Maria's help page">
+										<div class="shadow" id="divMaria" style="cursor:pointer;width:50%;height:100%;float:right;background-color:#879c3c;" title="Go to Maria's help page">
 											<div style="padding:12px;">
 												<table>
 													<tr>
@@ -207,12 +213,12 @@ $group_posts = new WP_Query($args);
 															Maria
 														</td>
 														<td>
-															<img style="float:right;" src="http://dev.communitycommons.org/wp-content/uploads/2014/04/female.jpg" width="60px;" />
+															<img style="float:right;" src="http://dev.communitycommons.org/wp-content/uploads/2014/04/Maria_Avatar.jpg" width="60px;" />
 														</td>
 													</tr>
 													<tr>
-														<td colspan="2">
-															Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...
+														<td colspan="2" style="font-size:9pt;">
+															Maria works for a local agency focused on improving health outcomes across communities in need. She serves as co-chair of the healthy community coalition providing coordination support and community health strategy expertise. 
 														</td>
 													</tr>
 												</table>											
