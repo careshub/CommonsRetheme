@@ -31,7 +31,7 @@ $group_posts = new WP_Query($args);
 
 	<section id="primary" class="site-content">
 		<div id="content" role="main">
-		<p style="font-weight:bold;font-size:21pt;">Support | Community Commons</p>
+		<a href="/cchelp/" style="text-decoration:none;color:#000000;"><p style="font-weight:bold;font-size:21pt;">Support | Community Commons</p></a>
 <?php
 		if ( !empty( $tax_term ) && $tax_term->taxonomy == 'cchelp_personas' ) {
 			$persona = $tax_term->name;
@@ -58,6 +58,15 @@ $group_posts = new WP_Query($args);
 							'image' => 'http://dev.communitycommons.org/wp-content/uploads/2014/04/female.jpg',
 							)
 				);
+			$typearray = array(
+								'Getting Started' => 'getting-started',
+								'Maps' => 'maps-2',
+								'Reports' => 'reports',
+								'Data' => 'data-2',
+								'Groups' => 'groups-2',
+								'Administrators' => 'administrators'
+								);
+						
 				?>
 				<div style="width:100%;height:100px;padding:10px;margin-bottom:25px;background-color:<?php echo $array[$persona]['color']; ?>">
 					<table>
@@ -73,26 +82,36 @@ $group_posts = new WP_Query($args);
 					</table>
 				</div>
 				<?php
-					$args = array( 
-					'post_type' => 'cchelp',	
-					'tax_query' => array(
-							array(
-								'taxonomy' => 'cchelp_personas',
-								'field' => 'slug',
-								'terms' => $persona_slug
+					foreach ($typearray as $typekey => $typevalue) {
+						$args = array( 
+						'post_type' => 'cchelp',	
+						'tax_query' => array(
+								'relation' => 'AND',
+								array(
+									'taxonomy' => 'cchelp_personas',
+									'field' => 'slug',
+									'terms' => $persona_slug
+								),
+								array(
+									'taxonomy' => 'cc_help_types',
+									'field' => 'slug',
+									'terms' => $typevalue
+								)
 							)
-						)
-					);
-				$loop = new WP_Query( $args );
-				echo "<div class='helpContent' id='div1'>";
-				while ( $loop->have_posts() ) : $loop->the_post();			
-				?>	
-							
-					<div style='margin-left:60px;margin-bottom:15px;'><?php the_content(); ?></div>
-				
-			<?php
-				endwhile;
-				echo "</div>";				
+						);
+						$loop = new WP_Query( $args );						
+
+						if ($loop->have_posts()) {
+							echo "<div id='" . $typevalue . "' style='background-color:#e0e0e0;padding:10px;margin-bottom:25px;width:100%;'>";
+								echo "<p style='font-weight:bold;font-size:12pt;'>" . $typekey . "</p>";						
+								while ( $loop->have_posts() ) : $loop->the_post();							
+									echo '<div class="entry-content" style="margin-left:15px;">';
+										the_content();
+									echo '</div>';						
+								endwhile;
+							echo "</div>";
+						}
+					}	
 		} 
 		elseif (!empty( $tax_term ) && $tax_term->taxonomy == 'cc_help_types') 
 		{
@@ -117,7 +136,7 @@ $group_posts = new WP_Query($args);
 							<div style="width:895px;height:285px;background-color:#ffffff;border:solid 1px #008eaa;padding:25px;">
 								<div style="float:left;width:50%;height:100%;vertical-align:top;text-align:left;">
 									<img src="http://dev.communitycommons.org/wp-content/uploads/2014/04/cogistitle.jpg" />
-									<p style="margin-right:20px;font-size:12pt;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+									<p style="margin-right:20px;font-size:11pt;">The Childhood Obesity GIS collaboration space on the Commons has a variety of tools and applications to turn complex data into maps and other easy-to-understand visualizations, revealing the relationships, patterns, and trends that help tell a story.</p><p style="margin-right:20px;font-size:11pt;">The four personas on the right represent different ways people use the Commons to make a positive change in their community. Click on the ones that resonates with you to learn more.</p>
 								</div>
 								<div style="float:right;width:50%;background-color:#888888;height:100%;" >
 									<div style="height:50%;">
@@ -237,6 +256,7 @@ $group_posts = new WP_Query($args);
 				
 				
 			<div>
+				<br /><br />
 				<h3>Search Support</h3>
 				<form action="<?php the_permalink(); ?>" method="POST" name="cchelpsearch">			 
 								<input type="text" id="cchelpterms" name="cchelpterms" style="width:350px;" placeholder="Enter keywords"/>			 
@@ -246,13 +266,13 @@ $group_posts = new WP_Query($args);
 			</div>
 			<?php
 			if (isset($_POST['cchelpterms'])) {
-				$args = array( 
+				$args2 = array( 
 				'post_type' => 'cchelp', 
 				'posts_per_page' => 10, 
 				's' => $_POST['cchelpterms'] 
 				);
-				$loop = new WP_Query( $args );
-				while ( $loop->have_posts() ) : $loop->the_post();
+				$loop2 = new WP_Query( $args2 );
+				while ( $loop2->have_posts() ) : $loop2->the_post();
 			?>
 					<div class="entry-content">
 					<header class="entry-header clear">
@@ -352,6 +372,38 @@ $group_posts = new WP_Query($args);
 		?>
 		</div><!-- #content -->
 	</section><!-- #primary -->
+	<?php 
+		if ( !empty( $tax_term ) && $tax_term->taxonomy == 'cchelp_personas' ) {
+	?>
+		<section style="float:right;width:275px;margin-top:100px;">
+	<?php
+		foreach ($typearray as $typekey => $typevalue) {
+						$args = array( 
+						'post_type' => 'cchelp',	
+						'tax_query' => array(
+								'relation' => 'AND',
+								array(
+									'taxonomy' => 'cchelp_personas',
+									'field' => 'slug',
+									'terms' => $persona_slug
+								),
+								array(
+									'taxonomy' => 'cc_help_types',
+									'field' => 'slug',
+									'terms' => $typevalue
+								)
+							)
+						);
+						$loop = new WP_Query( $args );						
 
+						if ($loop->have_posts()) {							
+							echo "<p><a href='#" . $typevalue . "'>" . $typekey . "</a></p><br />";		
+						}			
+		}
+	?>
+		</section>
 
-<?php get_footer(); ?>
+	<?php 
+		}
+	get_footer(); 
+	?>
