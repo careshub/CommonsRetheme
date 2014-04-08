@@ -142,7 +142,7 @@ box-shadow:         0px 0px 18px 0px rgba(50, 50, 50, 0.79);
 							<div style="width:895px;height:400px;background-color:#ffffff;border:solid 1px #008eaa;padding:25px;">
 								<div style="float:left;width:50%;height:100%;vertical-align:top;text-align:left;font-size:13pt;">
 									<img src="http://dev.communitycommons.org/wp-content/uploads/2014/04/cogistitle.jpg" /><br /><br />
-									<p>The Childhood Obesity GIS collaboration space on the Commons has a variety of tools and applications to turn complex data into maps and other easy-to-understand visualizations, revealing the relationships, patterns, and trends that help tell a story.</p><p>The four personas on the right represent different ways people use the Commons to make a positive change in their community. Click on the ones that resonates with you to learn more.</p>
+									<p>The Childhood Obesity GIS collaboration space on the Commons has a variety of tools and applications to turn complex data into maps and other easy-to-understand visualizations, revealing the relationships, patterns, and trends that help tell a story.</p><p>The four personas on the right represent different ways people use the Commons to make a positive change in their community. Click on the ones that resonate with you to learn more.</p>
 								</div>
 								<div style="float:right;width:50%;background-color:#888888;height:100%;" >
 									<div style="height:50%;">
