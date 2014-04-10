@@ -306,8 +306,9 @@ function cc_get_associatable_bp_docs( $group_id ) {
     return $good_docs;
 }
 //This is only used in the "Blog Categories for Groups" form setup
-function cc_get_associatable_bp_docs_narrative_form( $group_id ) {
-
+function cc_get_associatable_bp_docs_narrative_form( $group_id = false ) {
+    $group_id = !( $group_id ) ? bp_get_current_group_id() : $group_id ;
+    
     if ( $good_docs = cc_get_associatable_bp_docs( $group_id ) ) {
         $attachable_docs = array();
         foreach ($good_docs as $doc) {

@@ -412,6 +412,10 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'full-width';
         $classes[] = 'ncr';
       }
+    if ( is_page( 'ebw' ) ) {
+        $classes[] = 'full-width';
+        $classes[] = 'ebw';
+      }
     if ( is_singular( 'bp-docs' ) ) {
         $classes[] = 'full-width';
       }
