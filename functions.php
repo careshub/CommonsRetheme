@@ -416,6 +416,10 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'full-width';
         $classes[] = 'ebw';
       }
+    if ( is_page( 'dch-foa' ) ) {
+        $classes[] = 'full-width';
+        $classes[] = 'dch-foa';
+      }
     if ( is_singular( 'bp-docs' ) ) {
         $classes[] = 'full-width';
       }

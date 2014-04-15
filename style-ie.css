@@ -1628,6 +1628,10 @@ h5 {
   line-height: 1.6;
   padding: 0.3em 0.5em;
 }
+.site-content .screamer a {
+  color: white;
+  text-decoration: underline;
+}
 .site-content .screamer.spacious {
   padding: .6em 1.2em;
 }
@@ -3012,25 +3016,35 @@ body.home-page #primary .quarter-block h3 {
 .tool-group.accent-yellow .tool-group-header {
   background-color: #f7b718;
 }
+.tool-group .tool-group-tool.no-description {
+  margin-bottom: 0;
+}
+.tool-group .tool-group-tool .entry-header {
+  margin-bottom: 1.2em;
+}
+.tool-group .tool-group-tool .entry-header .entry-title {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 .quicklinks a {
   font-size: 14px;
   font-size: 1rem;
   width: 93%;
 }
-.ncr #primary #content article {
+.ncr #primary #content article,
+.ebw #primary #content article {
   margin-bottom: 14px;
   margin-bottom: 1rem;
 }
-.ncr #primary #content .content-row {
+.ncr #primary #content .content-row,
+.ebw #primary #content .content-row {
   margin-bottom: 42px;
   margin-bottom: 3rem;
 }
-.ncr #primary #content .third-block {
+.ncr #primary #content .third-block,
+.ebw #primary #content .third-block {
   margin-bottom: 0;
   padding-bottom: 0;
-}
-.ncr #primary #content .third-block .entry-header {
-  margin-bottom: 0;
 }
 .wotn .site-content article {
   margin-bottom: 24px;
@@ -3394,6 +3408,9 @@ div.docs-info-header p.currently-viewing {
 .group-subscription-options a.group-subscription-close {
   height: auto;
   text-transform: capitalize;
+}
+.rwd-break-1000 {
+  display: none;
 }
 .primary-navigation .brand a {
   font-size: 16.8px;
@@ -3816,6 +3833,9 @@ body.home-page #primary #top-story h2 {
   margin-left: 1%;
   width: 43.5%;
 }
+.quarter-block.screamer {
+  width: 43.5%;
+}
 .widget-area {
   margin-top: 2em;
 }
@@ -4117,6 +4137,19 @@ div#item-header .activity {
   margin-left: 1.8%;
   width: 19%;
 }
+.quarter-block.screamer {
+  width: 19.9%;
+}
+.quarter-block.table-cell {
+  display: table-cell;
+  margin-left: 0;
+  margin-right: 0;
+  border: 10px solid white;
+  float: none;
+}
+.quarter-block.table-cell.vertical-centered {
+  vertical-align: middle;
+}
 ul.item-list div.item {
   width: 65%;
 }
@@ -4193,6 +4226,9 @@ ul.item-list div.action {
 }
 .gaugechart .gaugelegend div {
   margin-bottom: .8em;
+}
+.rwd-break-1000 {
+  display: block;
 }
 .ie8 .primary-navigation .secondary .bp-notifications .bp-notification-list,
 .ie7 .primary-navigation .secondary .bp-notifications .bp-notification-list {

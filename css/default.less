@@ -2260,6 +2260,11 @@ h5 {
 	line-height: 1.6;
 	// margin: 0.8em 1em;
 	padding: 0.3em 0.5em;
+	//Anchors can't be the normal color, so we'll use white, but let them have an underline to show they're an anchor
+	a {
+		color: white;
+		text-decoration: underline;
+	}
 	&.spacious {
 		padding: .6em 1.2em;
 	}
@@ -3985,6 +3990,18 @@ body.home-page {
 		background-color: @ccyellow;	
 		}
 	}
+	.tool-group-tool {
+		&.no-description {
+			margin-bottom: 0;
+		}
+		.entry-header {
+			margin-bottom: 1.2em;
+			.entry-title {
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+		}
+	}
 }
 .quicklinks {
 	a {
@@ -3993,24 +4010,25 @@ body.home-page {
 	}
 }
 
-.ncr #primary #content {
-	article {
-		margin-bottom: 14px;
-		margin-bottom: 1rem;
-		// padding-bottom: 0;
-	}
-	.content-row {
-		margin-bottom: 42px;
-		margin-bottom: 3rem;
-	}
-	.third-block {
-		margin-bottom: 0;
-		padding-bottom: 0;
-		.entry-header {
+.ncr, .ebw {
+	#primary #content {
+		article {
+			margin-bottom: 14px;
+			margin-bottom: 1rem;
+			// padding-bottom: 0;
+		}
+		.content-row {
+			margin-bottom: 42px;
+			margin-bottom: 3rem;
+		}
+		.third-block {
 			margin-bottom: 0;
+			padding-bottom: 0;
+			.entry-header {
+				// margin-bottom: 0;
+			}
 		}
 	}
-
 }
 
 //Weight of the Nation
@@ -4396,4 +4414,9 @@ div.docs-info-header {
 			text-transform: capitalize;
 		}
 	}
+}
+
+//Responsive line break
+.rwd-break-1000 {
+	display: none;
 }
