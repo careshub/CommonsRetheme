@@ -17,8 +17,14 @@
 		<header class="entry-header">
 			<?php if ( is_single() ) : ?>
 				<?php //the_post_thumbnail(); ?>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
+				<h1 class="entry-title screamer"><?php the_title(); ?></h1>
 			<?php else : ?>
+				<?php 
+				//Don't add the category flag if we're in a category
+				if ( ! is_category() ) {
+					echo '<span class="category-links visible-1000">' . get_the_category_list( __( ', ', 'twentytwelve' ) ) . '</span>';
+				}
+				?>
 				<?php if ( has_post_thumbnail()) : ?>
 				   	<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
 				   	<?php the_post_thumbnail('feature-large'); ?>

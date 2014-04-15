@@ -114,6 +114,127 @@
 	//   cursor: default;
 	// }
 }
+//alternative layout for blog page
+//.blog is listing, .single-post is single view
+body.blog, body.category, body.tag, body.single-post {
+	.site {
+		box-shadow: none;
+		background-color: transparent;
+		// padding: 0;
+		.site-content {
+		    width: 68.1%;
+			article {
+				background-color: @white;
+				padding: 0 2em 2em;
+				margin-left: -2em;
+				border-bottom: none;
+				border-top: 3px solid @ccblue;
+				.drop-shadow(0, 1px, 3px, 0, 0.25);
+				.entry-header {
+					.category-links {
+						// display: block;
+						margin-left: -28px;
+						margin-left: -2rem;
+						margin-bottom: 1.2em;
+						a {	
+							// display: inline-block;
+							// color: @white;
+							// background-color: @ccblue;
+							.font-size(1);
+							// line-height: 2;
+							// text-transform: uppercase;
+							padding: 0 1em;
+						}
+						// &+.entry-title {
+						// 	margin-top: 2em;
+						// }
+					}
+				}
+				.entry-meta {
+					// .category-links {
+					// 	margin-left: 0;
+					// 	a {
+					// 		padding
+					// 	}
+					// }
+				}
+			}
+		}
+		.widget-area {
+			background-color: @white;
+			padding: 0 1em;
+			.drop-shadow(0, 1px, 3px, 0, 0.25);
+		}
+	}
+}
+body.single-post {
+	.site {
+		.site-content {
+			article {
+				margin-bottom: 2em;
+				.entry-header {
+					margin: 0 -28px;
+					h1 {
+						padding-left: 28px;
+					}
+					.category-links {
+						a {	
+						}
+					}
+				}
+				.entry-meta {
+				}
+			}
+			.nav-single {
+				margin-left: -28px;
+				.nav-previous {
+				}
+				a {
+					display: inline-block;
+					background-color: @white;
+					padding: .4em 1em;
+					border: 1px solid @graymid;
+				}
+			}
+		}
+		.widget-area {
+		}
+		.comments-area {
+			margin-left: -28px;
+			.comment-respond {
+				// border: 1px solid @graymid;
+				.drop-shadow(0, 1px, 3px, 0, 0.25);
+				background-color: @white;
+				padding: 2em;
+			}
+		}
+	}
+}
+body.category, body.tag {
+	.archive-header {
+		background-color: @ccblue;
+		border-bottom: none;
+		margin-left: -28px;
+		padding-bottom: 0;
+		.archive-title {
+			color: @white;
+			padding-left: 28px;
+			margin: 0;
+		}
+	}
+}
+body.category {
+	.site {
+		.site-content {
+			article {
+				.entry-header {
+					margin-top: 2em;
+				}
+			}
+			
+		}
+	}
+}
 
 .content-row {
 			border-bottom: none;
@@ -292,6 +413,14 @@ ul.item-list div.action {
 	}
 }
 
+.tool-group {
+	.tool-group-tool {
+		&.no-description {
+			margin-bottom: 2em;
+		}
+	}
+}
+
 //Salud America
 .salud-america {
 	.salud-header {
@@ -391,5 +520,8 @@ ul.item-list div.action {
 }
 //Responsive line break
 .rwd-break-1000 {
+	display: block;
+}
+.visible-1000 {
 	display: block;
 }

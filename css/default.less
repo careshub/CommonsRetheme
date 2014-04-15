@@ -53,6 +53,45 @@ form#login p.status{
 		margin-bottom: 0.6em;
 		}
 	}
+	article {
+		border-bottom: 2px solid @ccblue;
+		// border-top: 2px solid @ccblue;
+		.entry-header {
+			.category-links {
+				// display: block;
+				margin-bottom: 1.2em;
+				a {	
+					display: inline-block;
+					color: @white;
+				    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+					background-color: @ccblue;
+					.font-size(.9);
+					line-height: 2;
+					text-transform: uppercase;
+					padding: 0 0.8em;
+				}
+			}
+			img {
+				// margin-top: 2em;
+			}
+		}
+		.entry-meta {
+			// line-height: 2;
+			.category-links {
+				// display: block;
+				// margin-bottom: 1em;
+				a {	
+					display: inline-block;
+					color: @white;
+					background-color: @ccblue;
+					.border-radius(12px);
+					.font-size(.9);
+					// line-height: 2;
+					padding: 0 0.8em;
+				}
+			}
+		}
+	}
 }
 
 .login_overlay{
@@ -2234,21 +2273,21 @@ h5 {
 		vertical-align: middle;
 		}
 }
+.entry-header .entry-title, .archive-header .archive-title {
+		margin-top: 0;
+		.font-size(1.4);
+		// line-height: 1.6;
+		font-weight: normal;
+}
 .entry-header {
+	.datestamp {
+		font-style: italic;
+		clear: left;
+		margin-bottom: 0;
+	}
 	&.min-bottom-margin {
 		margin-bottom: 0;
 	}
-	.entry-title, .archive-header .archive-title {
-	font-size: 20px;
-	font-size: 1.428571429rem;
-	line-height: 1.2;
-	font-weight: normal;
-	}
-}
-.entry-header .datestamp{
-	font-style: italic;
-	clear: left;
-	margin-bottom: 0;
 }
 .site-content .screamer {
 	background-color: @ccblue;
@@ -2701,6 +2740,9 @@ ul.item-list li .share-buttons-below li {
 }
 .visible-maxi {
 	display:none;
+}
+.visible-1000 {
+	display: none;
 }
 
 //Salud America subsection
@@ -3992,7 +4034,8 @@ body.home-page {
 	}
 	.tool-group-tool {
 		&.no-description {
-			margin-bottom: 0;
+			margin-bottom: 1em;
+			padding-bottom: 0;
 		}
 		.entry-header {
 			margin-bottom: 1.2em;
@@ -4419,4 +4462,54 @@ div.docs-info-header {
 //Responsive line break
 .rwd-break-1000 {
 	display: none;
+}
+
+//Entry meta tag styling, from Twenty Fourteen
+/* Tag links style */
+
+.entry-meta .tag-links a {
+	background-color: lighten( @graydark, 20% );
+	// border-radius: 0 2px 2px 0;
+	color: @white;
+	display: inline-block;
+	font-size: 11px;
+	// font-weight: 700;
+	line-height: 1.2727272727;
+	margin: 2px 4px 2px 10px;
+	padding: 3px 7px;
+	position: relative;
+	// text-transform: uppercase;
+}
+
+.entry-meta .tag-links a:hover {
+	background-color: @ccblue;
+	color: @white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.entry-meta .tag-links a:before {
+	border-top: 10px solid transparent;
+	border-right: 8px solid lighten( @graydark, 20% );
+	border-bottom: 10px solid transparent;
+	content: "";
+	height: 0;
+	position: absolute;
+	top: 0;
+	left: -8px;
+	width: 0;
+}
+
+.entry-meta .tag-links a:hover:before {
+	border-right-color: @ccblue;
+}
+
+.entry-meta .tag-links a:after {
+	background-color: @white;
+	border-radius: 50%;
+	content: "";
+	height: 4px;
+	position: absolute;
+	top: 8px;
+	left: -2px;
+	width: 4px;
 }
