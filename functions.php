@@ -690,10 +690,10 @@ function twentytwelve_entry_meta() {
 
   $output = '';
   if ( $categories_list ) {
-    $output .= 'Categories: <span class="category-links">'. $categories_list . '</span> <br />';
+    $output .= 'Categories <span class="category-links">'. $categories_list . '</span> <br />';
   }
   if ( $tag_list ) {
-    $output .= 'Tags: <span class="tag-links">'. $tag_list . '</span> <br />';
+    $output .= 'Tags <span class="tag-links">'. $tag_list . '</span> <br />';
   }
   if ( $date && $author ) {
     $output .= 'Posted on ' . $date . '<span class="by-author"> by ' . $author . '</span>.';

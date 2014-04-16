@@ -2279,6 +2279,7 @@ h5 {
 		// line-height: 1.6;
 		font-weight: normal;
 }
+
 .entry-header {
 	.datestamp {
 		font-style: italic;
@@ -4468,7 +4469,7 @@ div.docs-info-header {
 /* Tag links style */
 
 .entry-meta .tag-links a {
-	background-color: lighten( @graydark, 20% );
+	background-color: lighten( @graydark, 35% );
 	// border-radius: 0 2px 2px 0;
 	color: @white;
 	display: inline-block;
@@ -4479,37 +4480,69 @@ div.docs-info-header {
 	padding: 3px 7px;
 	position: relative;
 	// text-transform: uppercase;
+	&:hover {
+		background-color: @ccblue;
+		color: @white;
+	    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	}
+	&:before {
+		border-top: 10px solid transparent;
+		border-right: 8px solid lighten( @graydark, 35% );
+		border-bottom: 10px solid transparent;
+		content: "";
+		height: 0;
+		position: absolute;
+		top: 0;
+		left: -8px;
+		width: 0;
+	}
+	&:hover:before {
+		border-right-color: @ccblue;
+	}
+	&:after {
+		background-color: @white;
+		border-radius: 50%;
+		content: "";
+		height: 4px;
+		position: absolute;
+		top: 8px;
+		left: -2px;
+		width: 4px;
+	}
 }
 
-.entry-meta .tag-links a:hover {
+//Tag archive header
+body.tag .archive-header .archive-title {
 	background-color: @ccblue;
+	// border-radius: 0 2px 2px 0;
 	color: @white;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-}
-
-.entry-meta .tag-links a:before {
-	border-top: 10px solid transparent;
-	border-right: 8px solid lighten( @graydark, 20% );
-	border-bottom: 10px solid transparent;
-	content: "";
-	height: 0;
-	position: absolute;
-	top: 0;
-	left: -8px;
-	width: 0;
-}
-
-.entry-meta .tag-links a:hover:before {
-	border-right-color: @ccblue;
-}
-
-.entry-meta .tag-links a:after {
-	background-color: @white;
-	border-radius: 50%;
-	content: "";
-	height: 4px;
-	position: absolute;
-	top: 8px;
-	left: -2px;
-	width: 4px;
+	display: inline-block;
+	font-size: 24px;
+	// font-weight: 700;
+	line-height: 1.2727272727;
+	margin: 2px 4px 2px 10px;
+	padding: 6px 14px;
+	position: relative;
+	// text-transform: uppercase;
+	&:before {
+		border-top: 22px solid transparent;
+		border-right: 16px solid @ccblue;
+		border-bottom: 22px solid transparent;
+		content: "";
+		height: 0;
+		position: absolute;
+		top: 0;
+		left: -16px;
+		width: 0;
+	}
+	&:after {
+		background-color: @white;
+		border-radius: 50%;
+		content: "";
+		height: 6px;
+		position: absolute;
+		top: 19px;
+		left: -6px;
+		width: 6px;
+	}
 }
