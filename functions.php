@@ -659,7 +659,7 @@ add_filter('excerpt_length', 'salud_excerpt_length', 999);
  */
 function twentytwelve_entry_meta() {
   // Translators: used between list items, there is a space after the comma.
-  $categories_list = get_the_category_list( __( ', ', 'twentytwelve' ) );
+  $categories_list = get_the_category_list( __( ' ', 'twentytwelve' ) );
 
   // Translators: used between list items, there is a space after the comma.
   $tag_list = get_the_tag_list( '', __( ' ', 'twentytwelve' ) );
@@ -672,7 +672,9 @@ function twentytwelve_entry_meta() {
   );
 
   $author = sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
-    esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+    // esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+    //Use the BuddyPress profile instead
+    esc_url( bp_core_get_user_domain( get_the_author_meta( 'ID' ) ) ),
     esc_attr( sprintf( __( 'View all posts by %s', 'twentytwelve' ), get_the_author() ) ),
     get_the_author()
   );

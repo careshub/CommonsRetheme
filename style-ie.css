@@ -4239,7 +4239,7 @@ body.category .site .widget-area,
 body.tag .site .widget-area,
 body.single-post .site .widget-area {
   background-color: #ffffff;
-  padding: 0 1em;
+  padding: 1em;
   -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
@@ -4287,6 +4287,10 @@ body.tag .archive-header .archive-title {
 }
 body.category .site .site-content article .entry-header {
   margin-top: 2em;
+}
+body.home .quarter-block .entry-header .entry-title {
+  font-size: 22.400000000000002px;
+  font-size: 1.6rem;
 }
 .content-row {
   border-bottom: none;
