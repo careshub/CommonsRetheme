@@ -22,7 +22,7 @@
 				<?php 
 				//Don't add the category flag if we're in a category
 				if ( ! is_category() ) {
-					echo '<span class="category-links visible-1000">' . get_the_category_list( __( ', ', 'twentytwelve' ) ) . '</span>';
+					echo '<span class="category-links visible-1000">' . get_the_category_list( __( '&#8203;', 'twentytwelve' ) ) . '</span>';
 				}
 				?>
 				<?php if ( has_post_thumbnail()) : ?>
