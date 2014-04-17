@@ -3490,6 +3490,20 @@ div.docs-info-header p.currently-viewing {
 .third-block:nth-of-type(3n) {
   margin-right: 0;
 }
+.third-block.screamer {
+  width: 28.5%;
+}
+.third-block.table-cell {
+  display: table-cell;
+  margin-left: 0;
+  margin-right: 0;
+  border: 10px solid white;
+  width: 20%;
+  float: none;
+}
+.third-block.table-cell.vertical-centered {
+  vertical-align: middle;
+}
 .half-block {
   border-bottom: none;
   margin-right: 3%;
