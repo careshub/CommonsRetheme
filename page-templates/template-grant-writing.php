@@ -91,7 +91,7 @@ get_header(); ?>
 					<h1 class="entry-title">STEP 1: Select Your Target Intervention Area</h1>
 					<div id="tool-group-header-ebw" class="tool-group-header clear">
 						<img src="http://www.communitycommons.org/wp-content/uploads/2014/04/kc-map-target-geography.jpg" class="attachment-full" alt="Logo for Every Body Walk! initiative">
-						<p class="tool-group-description">Target Areas Intervention Tool</p>
+						<p class="tool-group-description">Target Intervention Area Tool</p>
 					</div>
 				</header>
 				<div class="content-row clear">
@@ -134,7 +134,7 @@ get_header(); ?>
 			<!-- Community Stories and Case Examples -->
 			<div id="community-stories" class="tool-group accent-red">
 				<header class="entry-header clear">
-					<h1 class="entry-title">STEP 2: Starter Maps and Community Stories</h1>
+					<h1 class="entry-title">STEP 2: Starter Maps</h1>
 					<div id="tool-group-header-ebw" class="tool-group-header clear">
 						<img src="http://www.communitycommons.org/wp-content/uploads/2014/04/walking-on-a-one-way.jpg" class="attachment-full" alt="Logo for Every Body Walk! initiative">
 						<p class="tool-group-description">Add your target intervention area to food data starter maps and read community stories for inspiration.</p>
@@ -143,7 +143,7 @@ get_header(); ?>
 				<div class="content-row clear">
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://www.communitycommons.org/healthy-eating-stories-and-maps/" title="How the Tool Can Help">Healthy Eating</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/healthy-eating-stories-and-maps/" title="How the Tool Can Help">Health Equity</a></h3>
 						</header>
 						<!-- <div class="entry-content">
 							<p>Discover how communities are making walking more visible and accessible</p>
@@ -167,7 +167,7 @@ get_header(); ?>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="#" title="Step-by-step Guides">Tobacco</a></h3>
+							<h3 class="entry-title"><a href="#" title="Step-by-step Guides">Tobacco Free</a></h3>
 						</header>
 						<!-- <div class="entry-content">
 							<p>Discover how communities are making walking more visible and accessible</p>
@@ -187,14 +187,14 @@ get_header(); ?>
 					</div>
 				</header>
 				<div class="content-row clear">
-					<div class="tool-group-tool no-description quarter-block">
+					<!-- <div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
 							<h3 class="entry-title"><a href="#" title="How the Tool Can Help">Overview</a></h3>
 						</header>
 						<div class="entry-content">
 							<p>Access a brief overview of how to use Community Commons maps and data to enhance grant writing.</p>
 						</div>
-					</div>
+					</div> -->
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
 							<h3 class="entry-title"><a href="http://maps.communitycommons.org/viewer/" title="Community Commons Map Room">Map My <br class="rwd-break-1000" />Community Context</a></h3>
@@ -205,11 +205,19 @@ get_header(); ?>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://assessment.communitycommons.org/CHNA/SelectArea.aspx?reporttype=libraryCHNA" title="Community Health Needs Assessment">Community Indicator Reports</a></h3>
+							<h3 class="entry-title"><a href="http://assessment.communitycommons.org/CHNA/SelectArea.aspx?reporttype=libraryCHNA" title="Community Health Needs Assessment">Community Health Needs Reports</a></h3>
 						</header>
 						<div class="entry-content">
 							<p>Click <a href="http://assessment.communitycommons.org/CHNA/SelectArea.aspx?reporttype=libraryCHNA" title="Community Health Needs Assessment">here</a> to explore a data report for your target intervention area.</p>
 						</div>
+					</div>
+					<div class="tool-group-tool no-description quarter-block">
+						<header class="entry-header clear">
+							<h3 class="entry-title"><a href="http://www.countyhealthrankings.org/policies" title="Tutorial Videos">Intervention Case Examples</a></h3>
+						</header>
+						<!-- <div class="entry-content">
+							<p>Discover how communities are making walking more visible and accessible</p>
+						</div> -->
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
@@ -226,7 +234,7 @@ get_header(); ?>
 		    <!-- National Funding Opportunity and Resources -->
 			<div id="funding-opportunities" class="tool-group accent-blue">
 				<header class="entry-header clear">
-					<h1 class="entry-title">National Funding Opportunity and Resources</h1>
+					<h1 class="entry-title">Resources for Funding Opportunities</h1>
 					<div id="tool-group-header-ebw" class="tool-group-header clear">
 						<img src="http://www.communitycommons.org/wp-content/uploads/2014/04/meeting-notes.jpg" class="attachment-full" alt="Logo for Every Body Walk! initiative">
 						<p class="tool-group-description">Resource Links</p>
@@ -235,7 +243,7 @@ get_header(); ?>
 				<div class="content-row clear">
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="#" title="How the Tool Can Help">Call for Proposals</a></h3>
+							<h3 class="entry-title"><a href="#" title="How the Tool Can Help">Open Proposals</a></h3>
 						</header>
 						<!-- <div class="entry-content">
 							<p>Discover how communities are making walking more visible and accessible</p>
@@ -243,7 +251,7 @@ get_header(); ?>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="#" title="Vulnerable Populations Tools">Proposal FAQs</a></h3>
+							<h3 class="entry-title"><a href="#" title="Vulnerable Populations Tools">FAQs</a></h3>
 						</header>
 						<!-- <div class="entry-content">
 							<p>Discover how communities are making walking more visible and accessible</p>
@@ -251,7 +259,7 @@ get_header(); ?>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://www.countyhealthrankings.org/policies" title="Tutorial Videos">RWJF What Works <br class="rwd-break-1000" />for Health</a></h3>
+							<h3 class="entry-title"><a href="#" title="Step-by-step Guides">Archived Webinars</a></h3>
 						</header>
 						<!-- <div class="entry-content">
 							<p>Discover how communities are making walking more visible and accessible</p>
@@ -259,7 +267,7 @@ get_header(); ?>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="#" title="Step-by-step Guides">Past and Upcoming Webinars</a></h3>
+							<h3 class="entry-title"><a href="#" title="Step-by-step Guides">Upcoming Webinars</a></h3>
 						</header>
 						<!-- <div class="entry-content">
 							<p>Discover how communities are making walking more visible and accessible</p>
