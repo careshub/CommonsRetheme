@@ -29,7 +29,7 @@
 		    	
 		    	<div class="half-block">
 					<div id="dial">
-						<script src='http://staging.maps.communitycommons.org/jscripts/dialWidget.js?geoid=<?php echo $geoid; ?>&id=779'></script>
+						<script src='http://maps.communitycommons.org/jscripts/dialWidget.js?geoid=<?php echo $geoid; ?>&id=779'></script>
 					</div>
 
 				
@@ -47,7 +47,7 @@
 						var geoid = '<?php echo $geoid; ?>';
 						var s = document.createElement("script");
 						s.type = "text/javascript";
-						s.src = "http://staging.maps.communitycommons.org/jscripts/dialWidget.js?geoid=" + geoid + "&id=" + id;
+						s.src = "http://maps.communitycommons.org/jscripts/dialWidget.js?geoid=" + geoid + "&id=" + id;
 						
 		                var dial = document.getElementById('dial');
 		                if (!document._write) document._write = document.write;

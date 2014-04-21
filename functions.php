@@ -416,9 +416,9 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'full-width';
         $classes[] = 'ebw';
       }
-    if ( is_page( 'dch-foa' ) ) {
+    if ( is_page( 'grant-writing' ) ) {
         $classes[] = 'full-width';
-        $classes[] = 'dch-foa';
+        $classes[] = 'grant-writing';
       }
     if ( is_singular( 'bp-docs' ) ) {
         $classes[] = 'full-width';
