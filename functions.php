@@ -1184,3 +1184,9 @@ function cc_user_login_name_for_gtm() {
   </script>
   <?php
 }
+
+// Invite Anyone uses a check on the number of users to decide if it should build the list of users with checkboxes on the group's "send invites" page. The list is too long for us, but under WP's definition of a large network. So we filter the result to true.
+add_filter( 'invite_anyone_is_large_network', 'change_ia_large_network_value', 22, 2 );
+function change_ia_large_network_value( $is_large, $count ) {
+  return true;
+}
