@@ -4012,7 +4012,12 @@ div#item-header .activity {
   width: 20%;
   float: right;
   clear: right;
-  width: inherit;
+}
+.item-list#groups-list .action {
+  float: left;
+  clear: left;
+  width: 80%;
+  margin-left: 95px;
 }
 .register-section {
   float: left;
@@ -4171,6 +4176,15 @@ div#item-header .activity {
 }
 .item-list .action {
   width: 20%;
+}
+.item-list#groups-list .item {
+  width: 65%;
+}
+.item-list#groups-list .action {
+  width: 20%;
+  float: right;
+  clear: right;
+  margin-left: 0;
 }
 .maps-data #primary #content .choose-tool {
   border-bottom: none;
