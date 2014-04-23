@@ -207,3 +207,5 @@ working/cim-import/new_workspace_import.ods
 page-cim-import.php
 
 page-check-users.php
+
+*.codekit

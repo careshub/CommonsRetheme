@@ -11,7 +11,7 @@
 // Begin BP 1.2 code
 
 	?>
-	
+
 	<?php do_action( 'bp_before_group_send_invites_content' ) ?>
 
 	<?php if ( invite_anyone_access_test() && !bp_is_group_create() ) : ?>
@@ -31,15 +31,17 @@
 			</li>
 		</ul>
 
-		<!-- <p><?php _e( 'Select members from the directory:', 'bp-invite-anyone' ) ?></p> -->
+		<?php wp_nonce_field( 'groups_invite_uninvite_user', '_wpnonce_invite_uninvite_user' ) ?>
 
-		<!-- <div id="invite-anyone-member-list"> -->
-			<!-- <ul>
-				<?php //bp_new_group_invite_member_list() ?>
-			</ul> -->
+		<?php if ( ! invite_anyone_is_large_network( 'users' ) ) : ?>
+			<p><?php _e( 'Select members from the directory:', 'bp-invite-anyone' ) ?></p>
 
-			<?php wp_nonce_field( 'groups_invite_uninvite_user', '_wpnonce_invite_uninvite_user' ) ?>
-		<!-- </div> -->
+			<div id="invite-anyone-member-list">
+				<ul>
+					<?php bp_new_group_invite_member_list() ?>
+				</ul>
+			</div>
+		<?php endif ?>
 	</div>
 
 	<div class="main-column">
