@@ -4203,7 +4203,6 @@ div#item-header .activity {
   display: block;
   padding-right: 8px;
   padding-left: 8px;
-  margin-right: 2px;
   line-height: 20px;
 }
 .site #secondary .item-list-tabs {
@@ -4310,9 +4309,8 @@ body.single-post .site .site-content .nav-single {
 }
 body.single-post .site .site-content .nav-single a {
   display: inline-block;
-  background-color: #ffffff;
+  background-color: #EEE;
   padding: .4em 1em;
-  border: 1px solid #aaaaaa;
 }
 body.single-post .site .comments-area {
   margin-left: -28px;
