@@ -13,7 +13,8 @@ form#login p.status {
   display: none;
 }
 .site-content .entry-content ul li {
-  margin-bottom: 0.8em;
+  margin-bottom: 0.4em;
+  padding-bottom: 0.4em;
 }
 .site-content .entry-content ul.acfb-holder {
   list-style-type: none;
@@ -208,7 +209,7 @@ img.no-box {
   list-style-type: none;
 }
 .activity .activity-list li {
-  overflow: visible;
+  overflow: auto;
   padding: 15px 0;
 }
 .activity .activity-list li p {
@@ -241,8 +242,11 @@ span.highlight {
   margin: 10px 0 0;
   overflow: hidden;
 }
-.activity-list li.load-more {
-  background: #f0f0f0 !important;
+.activity-list li.load-more a,
+.activity-list li.load-newest a {
+  display: block;
+  background: #f0f0f0;
+  border: 1px solid #008eaa;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -250,6 +254,12 @@ span.highlight {
   margin: 15px 0 !important;
   padding: 10px 15px !important;
   text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.activity-list li.load-more a:hover,
+.activity-list li.load-newest a:hover {
+  color: #ffffff;
+  background-color: #008eaa;
 }
 /*--------------------------------------------------------------
 1.2 - Activity Comments
@@ -932,6 +942,7 @@ ul.single-line li {
 #secondary .item-list-tabs ul li {
   display: inline-block;
   margin: 10px 10px 0 0;
+  padding-bottom: 0;
 }
 #secondary .item-list-tabs ul li.selected,
 #secondary .item-list-tabs ul li.current-menu-item {
@@ -1158,9 +1169,6 @@ div#pag-bottom {
 }
 .item-list li .activity {
   display: none;
-}
-.item-list.activity-list li {
-  padding-bottom: 0;
 }
 .item-list .item-avatar {
   float: left;
@@ -3548,12 +3556,6 @@ body.tag .archive-header .archive-title:after {
   font-size: 22.400000000000002px;
   font-size: 1.6rem;
 }
-.item-list .item {
-  width: 80%;
-}
-.item-list .action {
-  width: 80%;
-}
 .maps-data .site-content #jumplinks {
   border-top: 1px solid #008eaa;
   padding-top: 12px;
@@ -4129,9 +4131,10 @@ div#item-header .activity {
   margin-left: 2em;
 }
 .item-list .item {
-  width: 70%;
+  width: 75%;
 }
 .item-list .action {
+  width: 20%;
   float: right;
   clear: right;
   width: inherit;
@@ -4392,13 +4395,11 @@ body.home .quarter-block .entry-header .entry-title {
 .quarter-block.table-cell.vertical-centered {
   vertical-align: middle;
 }
-ul.item-list div.item {
-  width: 65%;
+.item-list .item {
+  width: 75%;
 }
-ul.item-list div.action {
-  float: right;
+.item-list .action {
   width: 20%;
-  margin-left: 0;
 }
 .maps-data #primary #content .choose-tool {
   border-bottom: none;
