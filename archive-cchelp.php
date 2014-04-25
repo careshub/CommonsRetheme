@@ -135,7 +135,7 @@ $group_posts = new WP_Query($args);
 					foreach ($topicarray as $topickey => $topicvalue) {
 						foreach ($typearray as $typekey => $typevalue) {
 								$args = array( 
-								'post_type' => 'cchelp',	
+								'post_type' => 'cchelp',							
 								'tax_query' => array(
 										'relation' => 'AND',
 										array(
@@ -190,8 +190,10 @@ $group_posts = new WP_Query($args);
 											}
 										endwhile;
 									echo "</div>";
-									
+								
+
 							}
+
 						}
 					}	
 		} 
@@ -210,10 +212,99 @@ $group_posts = new WP_Query($args);
 					</table>
 				</div>	
 			<?php
-					
-						foreach ($typearray as $typekey => $typevalue) {
+				// IF QUERY STRING EXISTS THEN SHOW ALL POSTS OF THAT CATEGORY, ELSE JUST SHOW 3 POSTS
+					if (isset($_GET["type"])) {					
+						
 								$args = array( 
 								'post_type' => 'cchelp',	
+								'tax_query' => array(
+										'relation' => 'AND',
+										array(
+											'taxonomy' => 'cc_help_topics',
+											'field' => 'slug',
+											'terms' => $topicarray[$topic]['slug']
+										),
+										array(
+											'taxonomy' => 'cc_help_types',
+											'field' => 'slug',
+											'terms' => $_GET["type"]							
+										)
+									)
+								);
+							
+								$loop = new WP_Query( $args );						
+
+								if ($loop->have_posts()) {	
+									if ($_GET["type"] == "faqs") {
+										$cchelptype = "FAQs";
+									} else {									
+										$cchelptype = ucwords($_GET["type"]);
+									}
+
+									echo "<div id='" . $topicarray[$topic]['text'] . "-" . $_GET["type"] . "' style='padding:10px;width:100%;'>";
+										echo "<p style='font-weight:bold;font-size:15pt;border-bottom: solid 1px #000000;'>" . $cchelptype . "</p>";						
+										while ( $loop->have_posts() ) : $loop->the_post();	
+										
+										if ($_GET["type"] == "faqs") {
+												echo "<p>";											
+													echo "<a id='click-";
+														the_ID();
+														echo "' href='#' onclick='javascript:toggle(";
+														the_ID();
+														echo "); return false;' style='cursor:pointer;'>[+] ";
+														the_title();
+														echo "</a>";
+												echo "</p>";
+												echo "<div id='cchelp-";
+													the_ID();
+												echo "' class='entry-content' style='margin-left:15px;display:none;'>";
+													the_content();
+												echo '</div>';													
+											} else {
+												echo "<p style='font-weight:bold;'>";
+													the_title(); 											
+												echo "</p>";
+												echo "<div id='cchelp-";
+													the_ID();
+												echo "' class='entry-content' style='margin-left:15px;'>";
+													the_content();
+												echo '</div>';
+											}
+										endwhile;
+									echo "</div>";
+							
+							}
+									
+					} else {
+					
+						foreach ($typearray as $typekey => $typevalue) {
+								//GET THE COUNT OF POSTS IN EACH CATEGORY IN ORDER TO DISPLAY VIEW ALL BUTTON
+								$argsall = array(
+								'post_type' => 'cchelp',							
+								'meta_key' => 'cchelp_sticky', 
+								'meta_value' => 'sticky',									
+								'tax_query' => array(
+										'relation' => 'AND',
+										array(
+											'taxonomy' => 'cc_help_topics',
+											'field' => 'slug',
+											'terms' => $topicarray[$topic]['slug']
+										),
+										array(
+											'taxonomy' => 'cc_help_types',
+											'field' => 'slug',
+											'terms' => $typevalue								
+										)
+									)
+								);									
+								$loopall = new WP_Query( $argsall );
+								$allcount = $loopall->post_count;
+														
+								$args = array( 
+								'post_type' => 'cchelp',	
+								'posts_per_page' => 3,
+								'meta_key' => 'cchelp_sticky', 
+								'meta_value' => 'sticky',									
 								'tax_query' => array(
 										'relation' => 'AND',
 										array(
@@ -229,11 +320,11 @@ $group_posts = new WP_Query($args);
 									)
 								);
 								$loop = new WP_Query( $args );						
-
+								
 								if ($loop->have_posts()) {		
 							
-									echo "<div id='" . $topicvalue . "-" . $typevalue . "' style='padding:10px;margin-bottom:25px;width:100%;'>";
-										echo "<p style='font-weight:bold;font-size:15pt;border-bottom: solid 1px #000000;'>" . $topickey . " [" . $typekey . "]</p>";						
+									echo "<div id='" . $topicarray[$topic]['text'] . "-" . $typevalue . "' style='padding:10px;width:100%;'>";
+										echo "<p style='font-weight:bold;font-size:15pt;border-bottom: solid 1px #000000;'>" . $typekey . "</p>";						
 										while ( $loop->have_posts() ) : $loop->the_post();	
 										
 										if ($typevalue == "faqs") {
@@ -263,10 +354,16 @@ $group_posts = new WP_Query($args);
 											}
 										endwhile;
 									echo "</div>";
-									
+									if ( $allcount > 3 ) {
+										?>
+										<div style="width:100%;height:50px;">
+											<input type="button" value="View All" style="float:right;" onclick="javascript:viewAll('<?php echo $topicarray[$topic]['slug']; ?>','<?php echo $typevalue; ?>');">
+										</div>									
+										<?php	
+									}
 							}
 						}
-					
+					}
 					
 			
 			cchelp_footer_buttons();
@@ -513,7 +610,7 @@ $group_posts = new WP_Query($args);
 					foreach ($topicarray as $topickey => $topicvalue) {
 						foreach ($typearray as $typekey => $typevalue) {
 								$args = array( 
-								'post_type' => 'cchelp',	
+								'post_type' => 'cchelp',								
 								'tax_query' => array(
 										'relation' => 'AND',
 										array(
@@ -570,6 +667,9 @@ $group_posts = new WP_Query($args);
 				}
 				
 			} 		
+			function viewAll(topic,type) {			
+				document.location.href='/cchelp/cc_help_topics/' + topic + '/?type=' + type;
+			}
 			</script>		
 
 
@@ -611,6 +711,7 @@ function cchelp_search() {
 	
 function cchelp_footer_buttons() {
 ?>	
+		<br /><br />
 			<div style="width:895px;">
 				<div id="guideTraining" class="guidebook2" title="Training">
 					<span class="guidebook2-text">View a recorded training webinar, sign up for our next one<br />-OR-<br />Contact us for customized training solutions</span>
