@@ -570,16 +570,16 @@ $group_posts = new WP_Query($args);
 						window.location.href = '/cchelp/cc_help_topics/getting-started/';
 					});
 					$( "#guideMaps" ).click(function() {
-						window.location.href = '/cchelp/cc_help_topics/maps-2/';
+						window.location.href = '/cchelp/cc_help_topics/maps-3/';
 					});
 					$( "#guideData" ).click(function() {
-						window.location.href = '/cchelp/cc_help_topics/data-2/';
+						window.location.href = '/cchelp/cc_help_topics/data-3/';
 					});
 					$( "#guideReports" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/reports/';
 					});
 					$( "#guideGroups" ).click(function() {
-						window.location.href = '/cchelp/cc_help_topics/groups-2/';
+						window.location.href = '/cchelp/cc_help_topics/groups-3/';
 					});
 					$( "#guideAdmin" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/administrators/';
