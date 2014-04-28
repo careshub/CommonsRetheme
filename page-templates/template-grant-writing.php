@@ -58,7 +58,7 @@ get_header(); ?>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://staging.maps.communitycommons.org/Footprint/CAR.aspx" title="Vulnerable Populations Tools">Vulnerable Populations Tools</a></h3>
+							<h3 class="entry-title"><a href="http://maps.communitycommons.org/footprint/targetarea.aspx" title="Vulnerable Populations Tools">Vulnerable Populations Tools</a></h3>
 						</header>
 						<!-- <div class="entry-content">
 							<p>Discover how communities are making walking more visible and accessible</p>
@@ -105,10 +105,10 @@ get_header(); ?>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://staging.maps.communitycommons.org/Footprint/CAR.aspx" title="Vulnerable Populations Tools">Access Target Intervention Area Tool</a></h3>
+							<h3 class="entry-title"><a href="http://maps.communitycommons.org/footprint/targetarea.aspx" title="Vulnerable Populations Tools">Access Target Intervention Area Tool</a></h3>
 						</header>
 						<div class="entry-content">
-							<p>Click <a href="http://staging.maps.communitycommons.org/Footprint/CAR.aspx" title="Vulnerable Populations Tools">here</a> to define your target intervention areas</p>
+							<p>Click <a href="http://maps.communitycommons.org/footprint/targetarea.aspx" title="Vulnerable Populations Tools">here</a> to define your target intervention areas</p>
 						</div>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
