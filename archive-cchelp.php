@@ -749,6 +749,7 @@ function cchelp_footer_buttons() {
 					-webkit-box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 0.79);
 					-moz-box-shadow:    0px 0px 18px 0px rgba(50, 50, 50, 0.79);
 					box-shadow:         0px 0px 18px 0px rgba(50, 50, 50, 0.79);
+					background-color:#ebebeb;
 				}	
 	</style>
 	<script type="text/javascript">
