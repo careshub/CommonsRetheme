@@ -46,7 +46,7 @@ $group_posts = new WP_Query($args);
 												'text' => 'Getting Started'
 												),
 						'Maps' => array(
-										'slug' => 'maps-2',
+										'slug' => 'maps-3',
 										'color' => '#008eaa',
 										'text' => 'Mapping'
 										),
@@ -56,12 +56,12 @@ $group_posts = new WP_Query($args);
 										'text' => 'Reporting'
 										),
 						'Data' => array(
-										'slug' => 'data-2',
+										'slug' => 'data-3',
 										'color' => '#df5827',
 										'text' => 'Commons Data and Uploading Local Data'
 										),
 						'Groups' => array(
-										'slug' => 'groups-2',
+										'slug' => 'groups-3',
 										'color' => '#df5827',
 										'text' => 'Using the Collaboration Spaces'
 										),
