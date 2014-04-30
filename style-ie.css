@@ -2147,10 +2147,17 @@ ul.item-list li .share-buttons-below li {
 .salud-america .site-content .saresources .icon {
   margin-right: 2%;
 }
+.salud-america .site-content .sapolicies .entry-header .header-meta,
+.salud-america .site-content .saresources .entry-header .header-meta {
+  background-color: #f0f0f0;
+  padding: 1em;
+  margin-top: -1.4em;
+}
 .salud-america .site-content .sapolicies .sa-policy-meta,
 .salud-america .site-content .saresources .sa-policy-meta {
   font-size: 12.6px;
   font-size: 0.9rem;
+  margin-bottom: .4em;
 }
 .salud-america .site-content .sapolicies #sa_associated_resources,
 .salud-america .site-content .saresources #sa_associated_resources {
@@ -4013,6 +4020,65 @@ div#item-header .activity {
 }
 .policy-meta {
   display: block;
+}
+ol.progtrckr {
+  margin: 0;
+  margin-bottom: 1em;
+  padding: 0;
+  list-style-type: none;
+}
+ol.progtrckr li {
+  display: inline-block;
+  text-align: center;
+  margin-left: 0;
+}
+ol.progtrckr[data-progtrckr-steps="2"] li {
+  width: 49%;
+}
+ol.progtrckr[data-progtrckr-steps="3"] li {
+  width: 33%;
+}
+ol.progtrckr[data-progtrckr-steps="4"] li {
+  width: 24%;
+}
+ol.progtrckr[data-progtrckr-steps="5"] li {
+  width: 19%;
+}
+ol.progtrckr[data-progtrckr-steps="6"] li {
+  width: 16%;
+}
+ol.progtrckr[data-progtrckr-steps="7"] li {
+  width: 14%;
+}
+ol.progtrckr li.progtrckr-done {
+  color: black;
+  border-bottom: 4px solid yellowgreen;
+}
+ol.progtrckr li.progtrckr-todo {
+  color: silver;
+  border-bottom: 4px solid silver;
+}
+ol.progtrckr li:before {
+  position: relative;
+  bottom: -13px;
+  float: right;
+  line-height: 24px;
+  border-radius: 20px;
+}
+ol.progtrckr li.progtrckr-done:before {
+  content: "\2713";
+  color: white;
+  height: 24px;
+  width: 24px;
+  background-color: yellowgreen;
+  border: none;
+}
+ol.progtrckr li.progtrckr-todo:before {
+  content: " ";
+  height: 18px;
+  width: 18px;
+  border: 3px solid silver;
+  background-color: white;
 }
 #bbpress-forums li.bbp-body .bbp-topic-title {
   font-size: 14px;

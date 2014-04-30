@@ -1908,3 +1908,46 @@ function cc_sa_custom_body_class( $classes ) {
   return $classes;
 }
 add_filter( 'body_class', 'cc_sa_custom_body_class', 99 );
+/**
+ * Template tag that outputs the structure for the policy tracker progress bar
+ *
+ * @param string Progress value.
+ * @return html 
+ */
+function cc_the_policy_progress_tracker( $progress ) {
+
+  switch ($progress) {
+    case "emergence":
+      $percentage = 25;
+      $progress_label = 'in emergence';
+      break; 
+    case "development":
+      $percentage = 50;
+      $progress_label = 'in development';
+      break;
+    case "enactment":
+      $percentage = 75;
+      $progress_label = 'enacted';
+      break;
+    case "implementation":
+      $percentage = 100;
+      $progress_label = 'in implementation';
+      break;
+    default:
+      $percentage = 0;
+      $progress_label = 'in emergence';
+     break;
+    }
+?>
+
+<div class="meter-box clear">
+  <p class="visible-mini">This change is <a href="/saresources/spectrum/" title="More information about policy development"><?php echo $progress_label; ?></a>.</p>
+  <ol class="progtrckr visible-maxi" data-progtrckr-steps="4">
+    <li class="<?php echo ( in_array($progress, array('emergence', 'development', 'enactment', 'implementation')) ) ? "progtrckr-done" : "progtrckr-todo"; ?>"><a clear="" href="/salud-america/what-is-change/the-science-behind-change/">Emergence</a></li><!--
+    --><li class="<?php echo ( in_array($progress, array('development', 'enactment', 'implementation')) ) ? "progtrckr-done" : "progtrckr-todo"; ?>"><a clear="" href="/salud-america/what-is-change/the-science-behind-change/">Development</a></li><!--
+    --><li class="<?php echo ( in_array($progress, array('enactment', 'implementation')) ) ? "progtrckr-done" : "progtrckr-todo"; ?>"><a clear="" href="/salud-america/what-is-change/the-science-behind-change/">Enactment</a></li><!--
+    --><li class="<?php echo ( in_array($progress, array('implementation')) ) ? "progtrckr-done" : "progtrckr-todo"; ?>"><a clear="" href="/salud-america/what-is-change/the-science-behind-change/">Implementation</a></li>
+  </ol>
+</div> <!-- end .meter-box -->
+<?php
+}
