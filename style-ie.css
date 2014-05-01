@@ -1756,7 +1756,7 @@ ul.item-list li .share-buttons-below li {
 .meter {
   height: 10px;
   /* Can be anything */
-  width: 90%;
+  width: 100%;
   position: relative;
   float: left;
   background: #dedede;
@@ -2159,6 +2159,11 @@ ul.item-list li .share-buttons-below li {
   font-size: 0.9rem;
   margin-bottom: .4em;
 }
+.salud-america .site-content .sapolicies .sa-policy-date,
+.salud-america .site-content .saresources .sa-policy-date {
+  color: #777;
+  margin-left: 2em;
+}
 .salud-america .site-content .sapolicies #sa_associated_resources,
 .salud-america .site-content .saresources #sa_associated_resources {
   list-style: none;
@@ -2306,7 +2311,7 @@ ul.item-list li .share-buttons-below li {
 }
 .site-content .entry-header .meter-box {
   overflow: hidden;
-  width: 95%;
+  width: 100%;
   float: left;
 }
 .site-content .entry-header .meter-box .meter {
@@ -4039,7 +4044,7 @@ ol.progtrckr[data-progtrckr-steps="3"] li {
   width: 33%;
 }
 ol.progtrckr[data-progtrckr-steps="4"] li {
-  width: 24%;
+  width: 24.9%;
 }
 ol.progtrckr[data-progtrckr-steps="5"] li {
   width: 19%;

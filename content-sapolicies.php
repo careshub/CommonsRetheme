@@ -89,7 +89,7 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 							if (function_exists('salud_the_location')) {
 								salud_the_location();
 							}
-						?></p>
+						?><span class="sa-policy-date">Posted <?php echo get_the_date(); ?>.</span></p>
 				<!-- <div class="meter-box clear">
 					<p>This change is <a href="/saresources/spectrum/" title="More information about policy development"><?php echo $progress_label; ?></a>.</p>
 					<div class="meter">
@@ -106,8 +106,6 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 
 
 			<?php the_content(); ?>
-
-			<p class="sa-policy-meta">Posted <?php echo get_the_date(); ?>.</p>
 
 			<?php 
 			if (isset($advocacy_targets)) { 
