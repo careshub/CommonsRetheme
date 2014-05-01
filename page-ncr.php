@@ -62,7 +62,7 @@ get_header(); ?>
 					<h1 class="entry-title">NCR Special Issue Part 1</h1>
 					<div id="tool-group-header-videos" class="tool-group-header clear">
 						<img src="http://www.communitycommons.org/wp-content/uploads/2014/02/NCR-tyler-600x200.jpg" class="attachment-full" alt="Photo of Tyler Norris">
-						<p class="tool-group-description">Explore NCR’s Special Issue 1.</p>
+						<p class="tool-group-description">Explore NCR’s Special Issue 1</p>
 					</div>
 				</header>
 		  	    <div class="content-row clear">
