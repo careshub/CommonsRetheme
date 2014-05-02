@@ -72,9 +72,9 @@ $group_posts = new WP_Query($args);
 										)
 						);
 		$typearray = array(
-						'FAQs' => 'faqs',
-						'How-to Exercises' => 'how-to-exercises',
 						'Videos' => 'videos',
+						'How-to Exercises' => 'how-to-exercises',
+						'FAQs' => 'faqs',						
 						'Webinars' => 'webinars'
 						);
 
