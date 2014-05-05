@@ -45,7 +45,6 @@
       } else { //Is the narrative list
         // echo "is list";
         // bp_get_template_part( 'ccgn/narrative-list.php' );
- 
 			?>
 			<!-- This is the narrative list template, narrative list portion. -->
 			<?php $q=new WP_Query( ccgn_get_query() );?>

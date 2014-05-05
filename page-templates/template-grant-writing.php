@@ -30,12 +30,12 @@ get_header(); ?>
 				</article><!-- #post -->
 			<?php endwhile; // end of the loop. ?>
 
-			<div class="content-row" style="margin-bottom:3em;">
+			<!-- <div class="content-row" style="margin-bottom:3em;">
 				<div class="third-block table-cell screamer ccblue aligncenter vertical-centered">Why Map <br class="rwd-break-1000" />Your Community</div>
 				<div class="third-block table-cell screamer ccred aligncenter vertical-centered">Step-by-step Guide</div>
 				<div class="third-block table-cell screamer ccyellow aligncenter vertical-centered">Model Map &amp; <br class="rwd-break-1000" />Report Example</div> 
 
-			</div>
+			</div> -->
 
 			<!-- Achieving Greater Health Equity -->
 			<?php /* ?>
@@ -58,7 +58,7 @@ get_header(); ?>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://staging.maps.communitycommons.org/Footprint/CAR.aspx" title="Vulnerable Populations Tools">Vulnerable Populations Tools</a></h3>
+							<h3 class="entry-title"><a href="http://maps.communitycommons.org/footprint/targetarea.aspx" title="Vulnerable Populations Tools">Vulnerable Populations Tools</a></h3>
 						</header>
 						<!-- <div class="entry-content">
 							<p>Discover how communities are making walking more visible and accessible</p>
@@ -88,7 +88,7 @@ get_header(); ?>
 		    <!-- Defining Your Target Geography for Intervention -->
 			<div id="target-geography" class="tool-group accent-green">
 				<header class="entry-header clear">
-					<h1 class="entry-title">STEP 1: Select Your Target Intervention Area</h1>
+					<h1 class="entry-title">Step 1: Select Your Target Intervention Area</h1>
 					<div id="tool-group-header-ebw" class="tool-group-header clear">
 						<img src="http://www.communitycommons.org/wp-content/uploads/2014/04/kc-map-target-geography.jpg" class="attachment-full" alt="Logo for Every Body Walk! initiative">
 						<p class="tool-group-description">Target Intervention Area Tool</p>
@@ -97,34 +97,34 @@ get_header(); ?>
 				<div class="content-row clear">
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="#" title="How the Tool Can Help">How the Tool <br class="rwd-break-1000" />Can Help</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/target-area-intervention-tool-planning-guide/" title="How the Tool Can Help" target="_blank">How the Tool <br class="rwd-break-1000" />Can Help</a></h3>
 						</header>
 						<div class="entry-content">
-							<p>Click here to access background information on targeting priority populations for interventions.</p>
+							<p><a href="http://www.communitycommons.org/target-area-intervention-tool-planning-guide/" title="How the Tool Can Help" target="_blank">Review</a> and print the Target Area Tool overview</p>
 						</div>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://staging.maps.communitycommons.org/Footprint/CAR.aspx" title="Vulnerable Populations Tools">Access Target Intervention Area Tool</a></h3>
+							<h3 class="entry-title"><a href="http://assessment.communitycommons.org/footprint/targetarea.aspx" title="Vulnerable Populations Tools" target="_blank">Access Target Intervention Area Tool</a></h3>
 						</header>
 						<div class="entry-content">
-							<p>Click <a href="http://staging.maps.communitycommons.org/Footprint/CAR.aspx" title="Vulnerable Populations Tools">here</a> to define your target intervention areas</p>
+							<p><a href="http://assessment.communitycommons.org/footprint/targetarea.aspx" title="Vulnerable Populations Tools" target="_blank">Define</a> your community</p>
 						</div>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://www.communitycommons.org/target-intervention-areas/" title="Tutorial Videos">Tutorial Videos</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/target-intervention-areas/" title="Tutorial Videos" target="_blank">Tutorial Videos</a></h3>
 						</header>
 						<div class="entry-content">
-							<p>Access training videos on selecting target intervention areas</p>
+							<p><a href="http://www.communitycommons.org/target-intervention-areas/" title="Tutorial Videos" target="_blank">Access</a> training videos on selecting target intervention areas</p>
 						</div>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="#" title="Step-by-step Guides">Step-by-step Guides</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/how-to-guides_dch/" title="Step-by-step Guides" target="_blank">Step-by-step Guides</a></h3>
 						</header>
 						<div class="entry-content">
-							<p>Find step-by-step guides on how to use the Target Intervention Area Tool</p>
+							<p><a href="http://www.communitycommons.org/how-to-guides_dch/" title="Step-by-step Guides" target="_blank">Find</a> step-by-step guides on how to use the Target Intervention Area Tool</p>
 						</div>
 					</div>	
 				</div><!-- End .content-row clear -->
@@ -134,45 +134,45 @@ get_header(); ?>
 			<!-- Community Stories and Case Examples -->
 			<div id="community-stories" class="tool-group accent-red">
 				<header class="entry-header clear">
-					<h1 class="entry-title">STEP 2: Starter Maps</h1>
+					<h1 class="entry-title">Step 2: Explore Your Community Assets and Opportunities </h1>
 					<div id="tool-group-header-ebw" class="tool-group-header clear">
 						<img src="http://www.communitycommons.org/wp-content/uploads/2014/04/walking-on-a-one-way.jpg" class="attachment-full" alt="Logo for Every Body Walk! initiative">
-						<p class="tool-group-description">Add your target intervention area to food data starter maps and read community stories for inspiration.</p>
+						<p class="tool-group-description">Map your target area in context</p>
 					</div>
 				</header>
 				<div class="content-row clear">
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://www.communitycommons.org/healthy-eating-stories-and-maps/" title="How the Tool Can Help">Health Equity</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/planning-guide-part-2_dch" title="How the Tool Can Help" target="_blank">How the Tool <br class="rwd-break-1000" />Can Help</a></h3>
 						</header>
-						<!-- <div class="entry-content">
-							<p>Discover how communities are making walking more visible and accessible</p>
-						</div> -->
+						<div class="entry-content">
+							<p><a href="http://www.communitycommons.org/planning-guide-part-2_dch" title="How the Tool Can Help" target="_blank">Access</a> a planning guide for exploring community context</p>
+						</div>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="#" title="Vulnerable Populations Tools">Physical Activity</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/health-equity-starter-maps/" title="How the Tool Can Help" target="_blank">Health Equity</a></h3>
 						</header>
-						<!-- <div class="entry-content">
-							<p>Discover how communities are making walking more visible and accessible</p>
-						</div> -->
+						<div class="entry-content">
+							<p><a href="http://www.communitycommons.org/health-equity-starter-maps/" title="How the Tool Can Help" target="_blank">Explore</a> housing and transportation</p>
+						</div>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="#" title="Tutorial Videos">Built Environment</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/active-living-starter-maps_dch/" title="Active Living Starter Maps" target="_blank">Active Living</a></h3>
 						</header>
-						<!-- <div class="entry-content">
-							<p>Discover how communities are making walking more visible and accessible</p>
-						</div> -->
+						<div class="entry-content">
+							<p><a href="http://www.communitycommons.org/active-living-starter-maps_dch/" title="Active Living Starter Maps" target="_blank">Explore</a> parks and walkability</p>
+						</div>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="#" title="Step-by-step Guides">Tobacco Free</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/healthy-eating-stories-and-maps/" title="Tutorial Videos" target="_blank">Healthy Eating</a></h3>
 						</header>
-						<!-- <div class="entry-content">
-							<p>Discover how communities are making walking more visible and accessible</p>
-						</div> -->
-					</div>	
+						<div class="entry-content">
+							<p><a href="http://www.communitycommons.org/healthy-eating-stories-and-maps/" title="Tutorial Videos" target="_blank">Explore</a> food access and free and reduced lunch</p>
+						</div>
+					</div>
 				</div><!-- End .content-row clear -->
 		  	    
 		    </div> <!-- .tool-group -->
@@ -197,34 +197,34 @@ get_header(); ?>
 					</div> -->
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://maps.communitycommons.org/viewer/" title="Community Commons Map Room">Map My <br class="rwd-break-1000" />Community Context</a></h3>
+							<h3 class="entry-title"><a href="http://maps.communitycommons.org/viewer/" title="Community Commons Map Room" target="_blank">Map My <br class="rwd-break-1000" />Community Context</a></h3>
 						</header>
 						<div class="entry-content">
-							<p>Click <a href="http://maps.communitycommons.org/viewer/" title="Community Commons Map Room">here</a> to map your target intervention area with other community data.</p>
+							<p><a href="http://maps.communitycommons.org/viewer/" title="Community Commons Map Room" target="_blank">Map</a> your target intervention area with other community data.</p>
 						</div>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://assessment.communitycommons.org/CHNA/SelectArea.aspx?reporttype=libraryCHNA" title="Community Health Needs Assessment">Community Health Needs Reports</a></h3>
+							<h3 class="entry-title"><a href="http://assessment.communitycommons.org/CHNA/SelectArea.aspx?reporttype=libraryCHNA" title="Community Health Needs Assessment" target="_blank">Community Health Needs Reports</a></h3>
 						</header>
 						<div class="entry-content">
-							<p>Click <a href="http://assessment.communitycommons.org/CHNA/SelectArea.aspx?reporttype=libraryCHNA" title="Community Health Needs Assessment">here</a> to explore a data report for your target intervention area.</p>
+							<p><a href="http://assessment.communitycommons.org/CHNA/SelectArea.aspx?reporttype=libraryCHNA" title="Community Health Needs Assessment" target="_blank">Create</a> a data report for your target intervention area</p>
 						</div>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://www.countyhealthrankings.org/policies" title="Tutorial Videos">Intervention Case Examples</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/effective-intervention-strategies/" title="Intervention Strategies" target="_blank">Effective Intervention Strategies</a></h3>
 						</header>
 						<div class="entry-content">
-							<p>Click <a href="http://assessment.communitycommons.org/CHNA/SelectArea.aspx?reporttype=libraryCHNA" title="Community Health Needs Assessment">here</a> to explore a data report for your target intervention area.</p>
+							<p><a href="http://www.communitycommons.org/effective-intervention-strategies/" title="Intervention Strategies" target="_blank">Explore</a> intervention strategies</p>
 						</div>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://www.communitycommons.org/mapping-and-reporting-community-context/" title="Step-by-step Guides">Tutorials</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/mapping-and-reporting-community-context/" title="Step-by-step Guides" target="_blank">Tutorials</a></h3>
 						</header>
 						<div class="entry-content">
-							<p>Access training videos and step-by-step guides on using Community Commons mapping and reporting tools.</p>
+							<p><a href="http://www.communitycommons.org/mapping-and-reporting-community-context/" title="Step-by-step Guides" target="_blank">Access</a> training videos and step-by-step guides on using Community Commons mapping and reporting tools</p>
 						</div>
 					</div>	
 				</div><!-- End .content-row clear -->
@@ -243,35 +243,35 @@ get_header(); ?>
 				<div class="content-row clear">
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="#" title="How the Tool Can Help">Open Proposals</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/open-proposals_grant-support-page/" title="View open proposals" target="_blank">Open Proposals</a></h3>
 						</header>
-						<!-- <div class="entry-content">
-							<p>Discover how communities are making walking more visible and accessible</p>
-						</div> -->
+						<div class="entry-content">
+							<p><a href="http://www.communitycommons.org/open-proposals_grant-support-page/" title="View open proposals" target="_blank">View</a> open calls for proposals</p>
+						</div>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="#" title="Vulnerable Populations Tools">FAQs</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/grant-support-faqs/" title="Frequently Asked Questions" target="_blank">FAQs</a></h3>
 						</header>
-						<!-- <div class="entry-content">
-							<p>Discover how communities are making walking more visible and accessible</p>
-						</div> -->
+						<div class="entry-content">
+							<p><a href="http://www.communitycommons.org/grant-support-faqs/" title="Frequently Asked Questions" target="_blank">Access</a> frequently asked questions about the grant support tools and process</p>
+						</div>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="#" title="Step-by-step Guides">Archived Webinars</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/archived-webinars_grant-support/" title="Archived Webinars" target="_blank">Archived Webinars</a></h3>
 						</header>
-						<!-- <div class="entry-content">
-							<p>Discover how communities are making walking more visible and accessible</p>
-						</div> -->
+						<div class="entry-content">
+							<p><a href="http://www.communitycommons.org/archived-webinars_grant-support/" title="Archived Webinars" target="_blank">View</a> recordings of past webinars</p>
+						</div>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="#" title="Step-by-step Guides">Upcoming Webinars</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/upcoming-webinars_grant-support/" title="Upcoming Webinars" target="_blank">Upcoming Webinars</a></h3>
 						</header>
-						<!-- <div class="entry-content">
-							<p>Discover how communities are making walking more visible and accessible</p>
-						</div> -->
+						<div class="entry-content">
+							<p><a href="http://www.communitycommons.org/upcoming-webinars_grant-support/" title="Upcoming Webinars" target="_blank">Enroll</a> in upcoming training opportunities</p>
+						</div>
 					</div>	
 				</div><!-- End .content-row clear -->
 		  	    

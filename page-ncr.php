@@ -26,7 +26,7 @@ get_header(); ?>
 					<h1 class="entry-title">NCR Authors on the Commons</h1>
 					<div id="tool-group-header-videos" class="tool-group-header clear">
 						<img src="http://www.communitycommons.org/wp-content/uploads/2014/02/NCR-Liberty-bell-600x200.jpg" class="attachment-full" alt="Photo of the Liberty Bell">
-						<p class="tool-group-description">Connect with movement leaders.</p>
+						<p class="tool-group-description">Connect with Movement Leaders</p>
 					</div>
 				</header>
 		  	    <div class="content-row clear">
@@ -62,7 +62,7 @@ get_header(); ?>
 					<h1 class="entry-title">NCR Special Issue Part 1</h1>
 					<div id="tool-group-header-videos" class="tool-group-header clear">
 						<img src="http://www.communitycommons.org/wp-content/uploads/2014/02/NCR-tyler-600x200.jpg" class="attachment-full" alt="Photo of Tyler Norris">
-						<p class="tool-group-description">Explore NCR’s Special Issue.</p>
+						<p class="tool-group-description">Explore NCR’s Special Issue 1</p>
 					</div>
 				</header>
 		  	    <div class="content-row clear">
@@ -76,7 +76,7 @@ get_header(); ?>
 					</div>
 					<div class="tool-group-tool third-block guest-voices">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://www.communitycommons.org/ncr-table-of-contents-with-synopses/" title="Table of Contents">Table of Contents with Synopses</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/ncr-table-of-contents-with-synopses/" title="Table of Contents">Table of Contents <br class="rwd-break-1000" />with Synopses</a></h3>
 						</header>
 						<div class="entry-content">
 							<p>Browse the titles and an overview of each article</p>
@@ -84,16 +84,52 @@ get_header(); ?>
 					</div>
 					<div class="tool-group-tool third-block feature-stories">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://onlinelibrary.wiley.com/doi/10.1002/ncr.v102.4/issuetoc" title="Link to the National Civic Review's site">National Civic Review Online Publication</a></h3>
+							<h3 class="entry-title"><a href="http://onlinelibrary.wiley.com/doi/10.1002/ncr.v102.4/issuetoc" title="Link to the National Civic Review's site">National Civic Review <br class="rwd-break-1000" />Online Publication</a></h3>
 						</header>
 						<div class="entry-content">
-							<p>Access individual abstracts, articles, and citations</p>
+							<p>Access individual abstracts, articles, and citations for Special Issue 1</p>
 						</div>
 					</div>			
 				</div><!-- End .content-row clear -->
 			</div>
-			<!-- NCL: All American City Award -->
-			<div id="tool-group-aac-award" class="tool-group accent-yellow">
+			<!-- NCR Special Issue Part 2 -->
+			<div id="tool-group-spec-issue-2" class="tool-group accent-yellow">
+				<header class="entry-header clear">
+					<h1 class="entry-title">NCR Special Issue Part 2</h1>
+					<div id="tool-group-header-aac" class="tool-group-header clear">
+						<img src="http://www.communitycommons.org/wp-content/uploads/2014/04/NCR-video-still-shot-b.jpg" class="attachment-full" alt="A still from a video produced by the National Civic Review">
+						<p class="tool-group-description">Examine NCR's Special Issue 2</p>
+					</div>
+				</header>
+		  	    <div class="content-row clear">
+					<div class="tool-group-tool third-block">
+						<header class="entry-header clear">
+							<h3 class="entry-title"><a href="http://www.allamericacityaward.com/2014/04/28/25-years-of-healthy-communities-part-ii/" title="Introduction by Mike McGrath">Introduction by Mike McGrath</a></h3>
+						</header>
+						<div class="entry-content">
+							<p>Read the editor’s comments about this second issue on healthy communities</p>
+						</div>
+					</div>
+					<div class="tool-group-tool third-block">
+						<header class="entry-header clear">
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/table-of-contents-with-synopsis-part-2/" title="Table of Contents with Synopses">Table of Contents <br class="rwd-break-1000" />with Synopses</a></h3>
+						</header>
+						<div class="entry-content">
+							<p>Browse the titles and an overview of each article</p>
+						</div>
+					</div>
+					<div class="tool-group-tool third-block">
+						<header class="entry-header clear">
+							<h3 class="entry-title"><a href="http://onlinelibrary.wiley.com/doi/10.1002/ncr.v103.1/issuetoc" title="National Civic Review Online Publication">National Civic Review <br class="rwd-break-1000" />Online Publication</a></h3>
+						</header>
+						<div class="entry-content">
+							<p>Access individual abstracts, articles, and citations for Special Issue 2</p>
+						</div>
+					</div>			
+				</div><!-- End .content-row clear -->
+		    </div> <!-- .tool-group -->
+
+		    <?php /* ?><div id="tool-group-aac-award" class="tool-group accent-yellow">
 				<header class="entry-header clear">
 					<h1 class="entry-title">NCR: All-America City Award</h1>
 					<div id="tool-group-header-aac" class="tool-group-header clear">
@@ -128,6 +164,7 @@ get_header(); ?>
 					</div>			
 				</div><!-- End .content-row clear -->
 		    </div> <!-- .tool-group -->
+		    <?php */ ?>
  		</div><!-- #content -->
 	</div><!-- #primary -->
 

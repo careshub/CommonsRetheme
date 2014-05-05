@@ -135,7 +135,7 @@ $group_posts = new WP_Query($args);
 					foreach ($topicarray as $topickey => $topicvalue) {
 						foreach ($typearray as $typekey => $typevalue) {
 								$args = array( 
-								'post_type' => 'cchelp',	
+								'post_type' => 'cchelp',							
 								'tax_query' => array(
 										'relation' => 'AND',
 										array(
@@ -178,7 +178,17 @@ $group_posts = new WP_Query($args);
 												echo "' class='entry-content' style='margin-left:15px;display:none;'>";
 													the_content();
 												echo '</div>';													
-											} else {
+											} elseif ($typevalue == "videos") {
+												echo "<p style='font-weight:bold;'>";
+													the_title(); 											
+												echo "</p>";
+												echo "<div id='cchelp-";
+													the_ID();
+												echo "' class='entry-content' style='margin-left:15px;'>";
+													the_content();
+												echo '</div>';													
+											}
+											else {
 												echo "<p style='font-weight:bold;'>";
 													the_title(); 											
 												echo "</p>";
@@ -190,8 +200,10 @@ $group_posts = new WP_Query($args);
 											}
 										endwhile;
 									echo "</div>";
-									
+								
+
 							}
+
 						}
 					}	
 		} 
@@ -210,8 +222,9 @@ $group_posts = new WP_Query($args);
 					</table>
 				</div>	
 			<?php
-					
-						foreach ($typearray as $typekey => $typevalue) {
+				// IF QUERY STRING EXISTS THEN SHOW ALL POSTS OF THAT CATEGORY, ELSE JUST SHOW 3 POSTS
+					if (isset($_GET["type"])) {					
+						
 								$args = array( 
 								'post_type' => 'cchelp',	
 								'tax_query' => array(
@@ -224,19 +237,25 @@ $group_posts = new WP_Query($args);
 										array(
 											'taxonomy' => 'cc_help_types',
 											'field' => 'slug',
-											'terms' => $typevalue								
+											'terms' => $_GET["type"]							
 										)
 									)
 								);
+							
 								$loop = new WP_Query( $args );						
 
-								if ($loop->have_posts()) {		
-							
-									echo "<div id='" . $topicvalue . "-" . $typevalue . "' style='padding:10px;margin-bottom:25px;width:100%;'>";
-										echo "<p style='font-weight:bold;font-size:15pt;border-bottom: solid 1px #000000;'>" . $topickey . " [" . $typekey . "]</p>";						
+								if ($loop->have_posts()) {	
+									if ($_GET["type"] == "faqs") {
+										$cchelptype = "FAQs";
+									} else {									
+										$cchelptype = ucwords($_GET["type"]);
+									}
+
+									echo "<div id='" . $topicarray[$topic]['text'] . "-" . $_GET["type"] . "' style='padding:10px;width:100%;'>";
+										echo "<p style='font-weight:bold;font-size:15pt;border-bottom: solid 1px #000000;'>" . $cchelptype . "</p>";						
 										while ( $loop->have_posts() ) : $loop->the_post();	
 										
-										if ($typevalue == "faqs") {
+										if ($_GET["type"] == "faqs") {
 												echo "<p>";											
 													echo "<a id='click-";
 														the_ID();
@@ -263,10 +282,115 @@ $group_posts = new WP_Query($args);
 											}
 										endwhile;
 									echo "</div>";
+							
+							}
 									
+					} else {
+					
+						foreach ($typearray as $typekey => $typevalue) {
+								//GET THE COUNT OF POSTS IN EACH CATEGORY IN ORDER TO DISPLAY VIEW ALL BUTTON
+								$argsall = array(
+								'post_type' => 'cchelp',							
+								'meta_key' => 'cchelp_sticky', 
+								'meta_value' => 'sticky',									
+								'tax_query' => array(
+										'relation' => 'AND',
+										array(
+											'taxonomy' => 'cc_help_topics',
+											'field' => 'slug',
+											'terms' => $topicarray[$topic]['slug']
+										),
+										array(
+											'taxonomy' => 'cc_help_types',
+											'field' => 'slug',
+											'terms' => $typevalue								
+										)
+									)
+								);									
+								$loopall = new WP_Query( $argsall );
+								$allcount = $loopall->post_count;
+														
+								$args = array( 
+								'post_type' => 'cchelp',	
+								'posts_per_page' => 3,
+								'meta_key' => 'cchelp_sticky', 
+								'meta_value' => 'sticky',									
+								'tax_query' => array(
+										'relation' => 'AND',
+										array(
+											'taxonomy' => 'cc_help_topics',
+											'field' => 'slug',
+											'terms' => $topicarray[$topic]['slug']
+										),
+										array(
+											'taxonomy' => 'cc_help_types',
+											'field' => 'slug',
+											'terms' => $typevalue								
+										)
+									)
+								);
+								$loop = new WP_Query( $args );						
+								
+								if ($loop->have_posts()) {		
+							
+									echo "<div id='" . $topicarray[$topic]['text'] . "-" . $typevalue . "' style='padding:10px;width:100%;'>";
+										echo "<p style='font-weight:bold;font-size:15pt;border-bottom: solid 1px #000000;'>" . $typekey . "</p>";
+										if ($typevalue == "videos") {
+												echo "<table><tr>";
+										}
+										while ( $loop->have_posts() ) : $loop->the_post();	
+										
+										if ($typevalue == "faqs") {
+												echo "<p>";											
+													echo "<a id='click-";
+														the_ID();
+														echo "' href='#' onclick='javascript:toggle(";
+														the_ID();
+														echo "); return false;' style='cursor:pointer;'>[+] ";
+														the_title();
+														echo "</a>";
+												echo "</p>";
+												echo "<div id='cchelp-";
+													the_ID();
+												echo "' class='entry-content' style='margin-left:15px;display:none;'>";
+													the_content();
+												echo '</div>';													
+											} elseif ($typevalue == "videos") {
+												echo "<td align='center' style='text-align:center;font-weight:bold;width:33%;vertical-align:bottom;'>";
+													
+														the_title(); 											
+													echo "<br /><br />";
+													
+														
+													
+														the_content();
+																									
+												echo "</td>";
+											} else {
+												echo "<p style='font-weight:bold;'>";
+													the_title(); 											
+												echo "</p>";
+												echo "<div id='cchelp-";
+													the_ID();
+												echo "' class='entry-content' style='margin-left:15px;'>";
+													the_content();
+												echo '</div>';
+											}
+										endwhile;
+										if ($typevalue == "videos") {
+												echo "</tr></table>";
+										}										
+									echo "</div>";
+									if ( $allcount > 3 ) {
+										?>
+										<div style="width:100%;height:50px;">
+											<input type="button" value="View All" style="float:right;" onclick="javascript:viewAll('<?php echo $topicarray[$topic]['slug']; ?>','<?php echo $typevalue; ?>');">
+										</div>									
+										<?php	
+									}
 							}
 						}
-					
+					}
 					
 			
 			cchelp_footer_buttons();
@@ -513,7 +637,7 @@ $group_posts = new WP_Query($args);
 					foreach ($topicarray as $topickey => $topicvalue) {
 						foreach ($typearray as $typekey => $typevalue) {
 								$args = array( 
-								'post_type' => 'cchelp',	
+								'post_type' => 'cchelp',								
 								'tax_query' => array(
 										'relation' => 'AND',
 										array(
@@ -570,6 +694,9 @@ $group_posts = new WP_Query($args);
 				}
 				
 			} 		
+			function viewAll(topic,type) {			
+				document.location.href='/cchelp/cc_help_topics/' + topic + '/?type=' + type;
+			}
 			</script>		
 
 
@@ -611,27 +738,31 @@ function cchelp_search() {
 	
 function cchelp_footer_buttons() {
 ?>	
+		<br /><br />
 			<div style="width:895px;">
-				<div id="guideTraining" class="guidebook2" title="Training">
+				<!--<div id="guideTraining" class="guidebook2" title="Training">
 					<span class="guidebook2-text">View a recorded training webinar, sign up for our next one<br />-OR-<br />Contact us for customized training solutions</span>
-				</div>
+				</div>-->
 				<div id="guideContact" class="guidebook2" title="Contact Us">
 					<span class="guidebook2-text"><strong>Still stuck?</strong><br /><br />Contact us here</span>
 				</div>
-				<div id="guideInspiration" class="guidebook2" title="Inspiration">
+				<!--<div id="guideInspiration" class="guidebook2" title="Inspiration">
 					<span class="guidebook2-text">Need some inspiration?<br />How to use the Commons to create real change in your community</span>
-				</div>
+				</div>-->
 			</div>	
 	<style type="text/css">
 				.guidebook2
 				{
-					width:225px;
-					height:300px;			
+					//width:225px;
+					//height:300px;	
+					width:795px;
+					height:100px;					
 					text-align:center;
 					padding:10px;
 					margin-right:35px;	
 					margin-bottom:35px;	
-					background-color:#ffffff;
+					//background-color:#ffffff;
+					background-color:#008eaa;
 					cursor:pointer;
 					border:solid 2px #008eaa;
 					float:left;			
@@ -639,15 +770,18 @@ function cchelp_footer_buttons() {
 				.guidebook2-text
 				{
 					position:relative;
-					top:50px;
-					color:#008eaa;
+					//top:50px;
+					top:20px;
+					//color:#008eaa;
+					color:#ffffff;
 					font-size:16pt;	
-					line-height:30px;		
+					//line-height:30px;		
 				}		
 				.guidebook2:hover {
 					-webkit-box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 0.79);
 					-moz-box-shadow:    0px 0px 18px 0px rgba(50, 50, 50, 0.79);
 					box-shadow:         0px 0px 18px 0px rgba(50, 50, 50, 0.79);
+					//background-color:#ebebeb;
 				}	
 	</style>
 	<script type="text/javascript">
@@ -656,7 +790,7 @@ function cchelp_footer_buttons() {
 						window.location.href = '/cchelp/cc_help_topics/getting-started/';
 					});
 					$( "#guideContact" ).click(function() {
-						window.location.href = '/cchelp/cc_help_topics/maps-2/';
+						window.location.href = 'https://ip3.zendesk.com/account/dropboxes/20111391';
 					});
 					$( "#guideInspiration" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/data-2/';
