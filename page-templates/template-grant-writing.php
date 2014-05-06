@@ -16,7 +16,7 @@ get_header(); ?>
 		<div id="content" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>
-				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+				<article id="post-<?php the_ID(); ?>" <?php post_class( 'compact' ); ?>>
 
 					<header class="entry-header">
 						<h1 class="screamer spacious entry-title"><?php the_title(); ?></h1>
@@ -97,12 +97,20 @@ get_header(); ?>
 				<div class="content-row clear">
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://www.communitycommons.org/target-area-intervention-tool-planning-guide/" title="How the Tool Can Help" target="_blank">How the Tool <br class="rwd-break-1000" />Can Help</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/target-area-intervention-tool-planning-guide/" title="Why Use This Tool" target="_blank">Why Use This Tool</a></h3>
 						</header>
 						<div class="entry-content">
 							<p><a href="http://www.communitycommons.org/target-area-intervention-tool-planning-guide/" title="How the Tool Can Help" target="_blank">Review</a> and print the Target Area Tool overview</p>
 						</div>
 					</div>
+					<div class="tool-group-tool no-description quarter-block">
+						<header class="entry-header clear">
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/how-to-guides_dch/" title="How to Use This Tool" target="_blank">How to Use This Tool</a></h3>
+						</header>
+						<div class="entry-content">
+							<p><a href="http://www.communitycommons.org/how-to-guides_dch/" title="Step-by-step Guides" target="_blank">Find</a> step-by-step guides on how to use the Target Intervention Area Tool</p>
+						</div>
+					</div>	
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
 							<h3 class="entry-title"><a href="http://assessment.communitycommons.org/footprint/targetarea.aspx" title="Vulnerable Populations Tools" target="_blank">Access Target Intervention Area Tool</a></h3>
@@ -119,14 +127,6 @@ get_header(); ?>
 							<p><a href="http://www.communitycommons.org/target-intervention-areas/" title="Tutorial Videos" target="_blank">Access</a> training videos on selecting target intervention areas</p>
 						</div>
 					</div>
-					<div class="tool-group-tool no-description quarter-block">
-						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://www.communitycommons.org/how-to-guides_dch/" title="Step-by-step Guides" target="_blank">Step-by-step Guides</a></h3>
-						</header>
-						<div class="entry-content">
-							<p><a href="http://www.communitycommons.org/how-to-guides_dch/" title="Step-by-step Guides" target="_blank">Find</a> step-by-step guides on how to use the Target Intervention Area Tool</p>
-						</div>
-					</div>	
 				</div><!-- End .content-row clear -->
 		  	    
 		    </div> <!-- .tool-group -->
@@ -143,7 +143,7 @@ get_header(); ?>
 				<div class="content-row clear">
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://www.communitycommons.org/planning-guide-part-2_dch" title="How the Tool Can Help" target="_blank">How the Tool <br class="rwd-break-1000" />Can Help</a></h3>
+							<h3 class="entry-title"><a href="http://www.communitycommons.org/planning-guide-part-2_dch" title="Why and How to Use Starter Maps" target="_blank">Why and How to Use <br class="rwd-break-1000" />Starter Maps</a></h3>
 						</header>
 						<div class="entry-content">
 							<p><a href="http://www.communitycommons.org/planning-guide-part-2_dch" title="How the Tool Can Help" target="_blank">Access</a> a planning guide for exploring community context</p>

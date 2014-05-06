@@ -74,10 +74,7 @@
 			// bcg_loop_start();//please do not remove it
 			while($q->have_posts()):$q->the_post();
 			// var_dump($post);
-				//If the post is a draft, and the current user can't edit it, don't show it.
-				if ( 'draft' == $post->post_status && ! ccgn_current_user_can_post() )
-					continue;
-					?>
+			?>
 
 				<?php get_template_part( 'content', 'narrative' ); ?>
 

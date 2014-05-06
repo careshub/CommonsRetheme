@@ -12,6 +12,10 @@ form#login {
 form#login p.status {
   display: none;
 }
+.site-content article.compact {
+  margin-bottom: 24px;
+  margin-bottom: 1.71429rem;
+}
 .site-content .entry-content ul li {
   margin-bottom: 0.4em;
   padding-bottom: 0.4em;
@@ -3011,11 +3015,6 @@ body.home-page #primary .quarter-block h3 {
   font-size: 14px;
   font-size: 1rem;
   width: 93%;
-}
-.ncr #primary #content article,
-.ebw #primary #content article {
-  margin-bottom: 14px;
-  margin-bottom: 1rem;
 }
 .ncr #primary #content .content-row,
 .ebw #primary #content .content-row {
