@@ -111,25 +111,23 @@ $group_posts = new WP_Query($args);
 						
 				?>
 				<div style="width:100%;padding:10px;margin-bottom:25px;background-color:<?php echo $array[$persona]['color']; ?>">
-					<table>
-						<tr>
-							<td>
-								<img src="<?php echo $array[$persona]['image']; ?>" width="75px" />
-							</td>
-							<td>
+					<div>
+						<div style="float:left;width:20%;vertical-align:middle;">
+							<img src="<?php echo $array[$persona]['image']; ?>" width="75px" />
+						</div>
+						<div style="float:right;width:80%;">
+							<div>
 								<h1><span style="color:#ffffff;font-weight:bold;font-size:21pt;"><?php echo $persona; ?></span></h1>
+							</div>
+							<div>
 								<?php echo $array[$persona]['text']; ?>
-								<br /><br />
-							</td>
-						</tr>
-						<tr>
-							<td>
-							</td>
-							<td>
-								<?php echo $array[$persona]['video']; ?>
-							</td>
-						</tr>
-					</table>
+								<br /><br />							
+							</div>							
+						</div>					
+					</div>
+					<div style="width:100%;text-align:center;">
+						<?php echo $array[$persona]['video']; ?>
+					</div>
 				</div>
 				<?php
 					foreach ($topicarray as $topickey => $topicvalue) {
@@ -213,13 +211,9 @@ $group_posts = new WP_Query($args);
 			$topic_slug = $tax_term->slug;		
 			?>
 				<div style="width:100%;padding:10px;background-color:<?php echo $topicarray[$topic]['color']; ?>">
-					<table>
-						<tr>
-							<td>
-								<h1><span style="color:#ffffff;font-weight:bold;font-size:21pt;"><?php echo $topicarray[$topic]['text']; ?></span></h1>																
-							</td>
-						</tr>
-					</table>
+					<div style="width:100%;text-align:center;">
+						<h1><span style="color:#ffffff;font-weight:bold;font-size:21pt;"><?php echo $topicarray[$topic]['text']; ?></span></h1>
+					</div>
 				</div>	
 			<?php
 				// IF QUERY STRING EXISTS THEN SHOW ALL POSTS OF THAT CATEGORY, ELSE JUST SHOW 3 POSTS
@@ -419,80 +413,64 @@ $group_posts = new WP_Query($args);
 									<div style="height:50%;">
 										<div class="shadow" id="divTonya" style="cursor:pointer;width:50%;height:100%;float:left;background-color:#df5827;" title="Go to Tonya's help page">
 											<div style="padding:12px;">
-												<table>
-													<tr>
-														<td>
-															<img style="float:left;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Tonya_Avatar.jpg" width="60px;" />
-														</td>
-														<td style="color:#ffffff;font-weight:bold;font-size:18pt;">
-															Tonya
-														</td>
-													</tr>
-													<tr>
-														<td colspan="2" style="font-size:9pt;">
-															Tonya is a community organizer and advocate. She is a member of the healthy community coalition who has a deep understanding of the community’s history, desires and needs. 
-														</td>
-													</tr>
-												</table>											
+												<div>
+													<div style="width:50%;float:left;vertical-align:middle;">
+														<img style="float:left;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Tonya_Avatar.jpg" width="60px;" />
+													</div>
+													<div style="width:50%;float:right;color:#ffffff;font-weight:bold;font-size:18pt;">
+														Tonya
+													</div>
+													<div style="width:100%;float:left;font-size:9pt;margin-top:15px;">
+														Tonya is a community organizer and advocate. She is a member of the healthy community coalition who has a deep understanding of the community’s history, desires and needs. 
+													</div>
+												</div>
 											</div>
 										</div>
 										<div class="shadow" id="divSara" style="cursor:pointer;width:50%;height:100%;float:right;background-color:#f9b715;" title="Go to Sara's help page">
 											<div style="padding:12px;">
-												<table>
-													<tr>
-														<td style="color:#ffffff;font-weight:bold;font-size:18pt;">
-															Sara
-														</td>
-														<td>
-															<img style="float:right;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Sara_Avatar.jpg" width="60px;" />
-														</td>
-													</tr>
-													<tr>
-														<td colspan="2" style="font-size:9pt;">
-															Sara provides leadership for a local agency focused on serving a wide range of community needs. She often convenes local stakeholders to create conditions that help advance strategy implementation of local coalitions. 
-														</td>
-													</tr>
-												</table>											
+												<div>
+													<div style="width:50%;float:left;color:#ffffff;font-weight:bold;font-size:18pt;">
+														Sara
+													</div>
+													<div style="width:50%;float:left;vertical-align:middle;">
+														<img style="float:right;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Sara_Avatar.jpg" width="60px;" />
+													</div>													
+													<div style="width:100%;float:left;font-size:9pt;margin-top:15px;">
+														Sara provides leadership for a local agency focused on serving a wide range of community needs. She often convenes local stakeholders to create conditions that help advance strategy implementation of local coalitions. 
+													</div>
+												</div>										
 											</div>
 										</div>								
 									</div>
 									<div style="height:50%;">
 										<div class="shadow" id="divDaniel" style="cursor:pointer;width:50%;height:100%;float:left;background-color:#008eaa;" title="Go to Daniel's help page">
 											<div style="padding:12px;">
-												<table>
-													<tr>
-														<td>
-															<img style="float:left;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Daniel_Avatar.jpg" width="60px;" />
-														</td>
-														<td style="color:#ffffff;font-weight:bold;font-size:18pt;">
-															Daniel
-														</td>
-													</tr>
-													<tr>
-														<td colspan="2" style="font-size:9pt;">
-															Daniel is a researcher who often serves as evaluation support for community health initiatives. He is an invited or contracted team member of the community coalition who holds a commitment to letting the data inform the work.
-														</td>
-													</tr>
-												</table>											
+												<div>
+													<div style="width:50%;float:left;vertical-align:middle;">
+														<img style="float:left;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Daniel_Avatar.jpg" width="60px;" />
+													</div>
+													<div style="width:50%;float:right;color:#ffffff;font-weight:bold;font-size:18pt;">
+														Daniel
+													</div>
+													<div style="width:100%;float:left;font-size:9pt;margin-top:15px;">
+														Daniel is a researcher who often serves as evaluation support for community health initiatives. He is an invited or contracted team member of the community coalition who holds a commitment to letting the data inform the work. 
+													</div>
+												</div>										
 											</div>
 										</div>
 										<div class="shadow" id="divMaria" style="cursor:pointer;width:50%;height:100%;float:right;background-color:#879c3c;" title="Go to Maria's help page">
 											<div style="padding:12px;">
-												<table>
-													<tr>
-														<td style="color:#ffffff;font-weight:bold;font-size:18pt;">
-															Maria
-														</td>
-														<td>
-															<img style="float:right;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Maria_Avatar.jpg" width="60px;" />
-														</td>
-													</tr>
-													<tr>
-														<td colspan="2" style="font-size:9pt;">
-															Maria works for a local agency focused on improving health outcomes across communities in need. She serves as co-chair of the healthy community coalition providing coordination support and community health strategy expertise. 
-														</td>
-													</tr>
-												</table>											
+												<div>
+													<div style="width:50%;float:left;color:#ffffff;font-weight:bold;font-size:18pt;">
+														Maria
+													</div>
+													<div style="width:50%;float:left;vertical-align:middle;">
+														<img style="float:right;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Maria_Avatar.jpg" width="60px;" />
+													</div>													
+													<div style="width:100%;float:left;font-size:9pt;margin-top:15px;">
+														Maria works for a local agency focused on improving health outcomes across communities in need. She serves as co-chair of the healthy community coalition providing coordination support and community health strategy expertise.  
+													</div>
+												</div>										
 											</div>
 										</div>							
 									</div>
