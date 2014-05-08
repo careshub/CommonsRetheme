@@ -721,9 +721,9 @@ function cchelp_footer_buttons() {
 				<!--<div id="guideTraining" class="guidebook2" title="Training">
 					<span class="guidebook2-text">View a recorded training webinar, sign up for our next one<br />-OR-<br />Contact us for customized training solutions</span>
 				</div>-->
-				<div id="guideContact" class="guidebook2" title="Contact Us">
+				<a href="https://ip3.zendesk.com/account/dropboxes/20111391" target="_blank"><div id="guideContact" class="guidebook2" title="Contact Us">
 					<span class="guidebook2-text"><strong>Still stuck?</strong><br /><br />Contact us here</span>
-				</div>
+				</div></a>
 				<!--<div id="guideInspiration" class="guidebook2" title="Inspiration">
 					<span class="guidebook2-text">Need some inspiration?<br />How to use the Commons to create real change in your community</span>
 				</div>-->
@@ -767,9 +767,9 @@ function cchelp_footer_buttons() {
 					$( "#guideTraining" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/getting-started/';
 					});
-					$( "#guideContact" ).click(function() {
-						window.location.href = 'https://ip3.zendesk.com/account/dropboxes/20111391';
-					});
+					// $( "#guideContact" ).click(function() {
+						// window.location.href = 'https://ip3.zendesk.com/account/dropboxes/20111391';
+					// });
 					$( "#guideInspiration" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/data-2/';
 					});		
