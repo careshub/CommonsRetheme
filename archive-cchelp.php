@@ -507,7 +507,7 @@ $group_posts = new WP_Query($args);
 			endforeach;
 			wp_reset_postdata();	
 
-			cchelp_search();
+			
 			?>	
 				
 				
@@ -716,7 +716,9 @@ function cchelp_search() {
 	
 function cchelp_footer_buttons() {
 ?>	
-		<br /><br />
+		<br />
+		<?php cchelp_search(); ?>
+		<br />
 			<div style="width:895px;">
 				<!--<div id="guideTraining" class="guidebook2" title="Training">
 					<span class="guidebook2-text">View a recorded training webinar, sign up for our next one<br />-OR-<br />Contact us for customized training solutions</span>
