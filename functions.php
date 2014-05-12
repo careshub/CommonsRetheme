@@ -416,9 +416,9 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'full-width';
         $classes[] = 'ebw';
       }
-    if ( is_page( 'grant-writing' ) ) {
+    if ( is_page_template( 'page-templates/template-grant-writing.php' ) ) {
         $classes[] = 'full-width';
-        $classes[] = 'grant-writing';
+        $classes[] = 'chi-planning';
       }
     if ( is_singular( 'bp-docs' ) ) {
         $classes[] = 'full-width';
