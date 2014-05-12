@@ -46,7 +46,7 @@ $group_posts = new WP_Query($args);
 												'text' => 'Getting Started'
 												),
 						'Maps' => array(
-										'slug' => 'maps-2',
+										'slug' => 'maps-3',
 										'color' => '#008eaa',
 										'text' => 'Mapping'
 										),
@@ -56,12 +56,12 @@ $group_posts = new WP_Query($args);
 										'text' => 'Reporting'
 										),
 						'Data' => array(
-										'slug' => 'data-2',
+										'slug' => 'data-3',
 										'color' => '#df5827',
 										'text' => 'Commons Data and Uploading Local Data'
 										),
 						'Groups' => array(
-										'slug' => 'groups-2',
+										'slug' => 'groups-3',
 										'color' => '#df5827',
 										'text' => 'Using the Collaboration Spaces'
 										),
@@ -285,8 +285,8 @@ $group_posts = new WP_Query($args);
 								//GET THE COUNT OF POSTS IN EACH CATEGORY IN ORDER TO DISPLAY VIEW ALL BUTTON
 								$argsall = array(
 								'post_type' => 'cchelp',							
-								'meta_key' => 'cchelp_sticky', 
-								'meta_value' => 'sticky',									
+								//'meta_key' => 'cchelp_sticky', 
+								//'meta_value' => 'sticky',									
 								'tax_query' => array(
 										'relation' => 'AND',
 										array(
@@ -575,16 +575,16 @@ $group_posts = new WP_Query($args);
 						window.location.href = '/cchelp/cc_help_topics/getting-started/';
 					});
 					$( "#guideMaps" ).click(function() {
-						window.location.href = '/cchelp/cc_help_topics/maps-2/';
+						window.location.href = '/cchelp/cc_help_topics/maps-3/';
 					});
 					$( "#guideData" ).click(function() {
-						window.location.href = '/cchelp/cc_help_topics/data-2/';
+						window.location.href = '/cchelp/cc_help_topics/data-3/';
 					});
 					$( "#guideReports" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/reports/';
 					});
 					$( "#guideGroups" ).click(function() {
-						window.location.href = '/cchelp/cc_help_topics/groups-2/';
+						window.location.href = '/cchelp/cc_help_topics/groups-3/';
 					});
 					$( "#guideAdmin" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/administrators/';
