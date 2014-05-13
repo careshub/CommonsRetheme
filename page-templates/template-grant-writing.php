@@ -135,7 +135,7 @@ get_header(); ?>
 					<h1 class="entry-title">Community Health Needs Reports and Additional Resources</h1>
 					<div id="tool-group-header-ebw" class="tool-group-header clear">
 						<img src="http://www.communitycommons.org/wp-content/uploads/2014/04/chattanooga-map-chna.jpg" class="attachment-full" alt="Logo for Every Body Walk! initiative">
-						<p class="tool-group-description">Reporting community needs </p>
+						<p class="tool-group-description">Reporting community needs</p>
 					</div>
 				</header>
 				<div class="content-row clear">
@@ -165,7 +165,7 @@ get_header(); ?>
 					</div>
 					<div class="tool-group-tool no-description quarter-block">
 						<header class="entry-header clear">
-							<h3 class="entry-title"><a href="http://maps.communitycommons.org/viewer/" title="Community Commons Map Room" target="_blank">Map My <br class="rwd-break-1000" />Community Context</a></h3>
+							<h3 class="entry-title"><a href="http://maps.communitycommons.org/viewer/" title="Community Commons Map Room" target="_blank">Map Additional Community Conditions</a></h3>
 						</header>
 						<div class="entry-content">
 							<p><a href="http://maps.communitycommons.org/viewer/" title="Community Commons Map Room" target="_blank">Map</a> your target intervention area with additional community data.</p>
