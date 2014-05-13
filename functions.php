@@ -395,7 +395,7 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'full-width';
       }
 
-    if ( is_page_template( 'page-templates/full-width-no-title.php' ) ) {
+    if ( is_page_template( 'page-templates/full-width-no-title.php' ) || is_page_template( 'page-templates/full-width-screamer-title.php' ) ) {
         $classes[] = 'full-width';
       }
 
