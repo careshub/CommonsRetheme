@@ -67,8 +67,13 @@ $group_posts = new WP_Query($args);
 										),
 						'Administrators' => array(
 										'slug' => 'administrators',
-										'color' => '#879c3c',
+										'color' => '#008eaa',
 										'text' => 'Being an Administrator'
+										),
+						'CHI and Grant Planning' => array(
+										'slug' => 'chi-grant-planning',
+										'color' => '#879c3c',
+										'text' => 'CHI and Grant Planning'
 										)
 						);
 		$typearray = array(
@@ -207,7 +212,7 @@ $group_posts = new WP_Query($args);
 		} 
 		elseif (!empty( $tax_term ) && $tax_term->taxonomy == 'cc_help_topics') 
 		{
-			$topic = $tax_term->name;
+			$topic = $tax_term->name;			
 			$topic_slug = $tax_term->slug;		
 			?>
 				<div style="width:100%;padding:10px;background-color:<?php echo $topicarray[$topic]['color']; ?>">
@@ -507,7 +512,9 @@ $group_posts = new WP_Query($args);
 			endforeach;
 			wp_reset_postdata();	
 
-			
+			//Get current logged-in user's BuddyPress role
+			$uid = bp_loggedin_user_id();
+			$bp_user_role = cchelp_get_user_role($uid);			
 			?>	
 				
 				
@@ -531,14 +538,24 @@ $group_posts = new WP_Query($args);
 				<div id="guideGroups" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to the Collaboration Guidebook">
 					<span class="guidebook-text">Using the Collaboration Spaces</span>
 				</div>
-				<div id="guideAdmin" class="guidebook" style="background-color:#879c3c;cursor:pointer;border:solid 2px #879c3c;" title="Go to the Administrator Guidebook">
-					<span class="guidebook-text">Being an Administrator</span>
+				<div id="guideCHI" class="guidebook" style="background-color:#879c3c;cursor:pointer;border:solid 2px #879c3c;" title="Go to the CHI and Grant Planning Guidebook">
+					<span class="guidebook-text">CHI and Grant Planning</span>
 				</div>
 				<div id="guideData" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to the Data Guidebook">
 					<span class="guidebook-text">Commons Data and Uploading Local Data</span>
 				</div>
 			</div>	
-			
+			<?php 
+			if ($bp_user_role == 'administrator') {
+			?>
+			<div style="width:895px;">
+				<div id="guideAdmin" class="guidebook" style="background-color:#008eaa;cursor:pointer;border:solid 2px #008eaa;" title="Go to the Administrator Guidebook">
+					<span class="guidebook-text">Being an Administrator</span>
+				</div>			
+			</div>
+			<?php
+			}
+			?>
 
 			
 			<style type="text/css">
@@ -588,7 +605,10 @@ $group_posts = new WP_Query($args);
 					});
 					$( "#guideAdmin" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/administrators/';
-					});			
+					});	
+					$( "#guideCHI" ).click(function() {
+						window.location.href = '/cchelp/cc_help_topics/chi-grant-planning/';
+					});
 				});
 			</script>					
 
@@ -779,4 +799,20 @@ function cchelp_footer_buttons() {
 	</script>
 <?php
 }
+
+function cchelp_get_user_role($user_id){
+    global $wpdb;
+    $user = get_userdata( $user_id );
+    $capabilities = $user->{$wpdb->prefix . 'capabilities'};
+    if ( !isset( $wp_roles ) ){
+        $wp_roles = new WP_Roles();
+    }
+    foreach ( $wp_roles->role_names as $role => $name ) {
+        if ( array_key_exists( $role, $capabilities ) ) {
+            return $role;
+        }
+    }
+    return false;
+}
+
 	?>
