@@ -2964,7 +2964,7 @@ body.home-page #primary .quarter-block h3 {
   font-size: 19.599999999999998px;
   font-size: 1.4rem;
 }
-.tool-group .entry-header .data-vis-header {
+.tool-group .entry-header .tool-group-header {
   zoom: 1;
 }
 .tool-group .entry-header p {
@@ -4325,6 +4325,9 @@ ol.progtrckr li.progtrckr-todo:before {
 .ie8 .widget img,
 .ie7 .widget img {
   width: inherit;
+}
+.ie7 #cc-primary-search {
+  margin-top: 0;
 }
 .ie7 #cc-primary-search #cc-navbar-search .cc-nav-input {
   background-color: #ffffff;

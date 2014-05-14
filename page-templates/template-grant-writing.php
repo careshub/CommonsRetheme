@@ -41,8 +41,8 @@ get_header(); ?>
 			<div id="target-geography" class="tool-group accent-green">
 				<header class="entry-header clear">
 					<h1 class="entry-title">Step 1: Select Your Target Intervention Area</h1>
-					<div id="tool-group-header-ebw" class="tool-group-header clear">
-						<img src="http://www.communitycommons.org/wp-content/uploads/2014/04/kc-map-target-geography.jpg" class="attachment-full" alt="Map of Kansas City">
+					<div id="tool-group-header-select-area" class="tool-group-header clear">
+						<img src="http://www.communitycommons.org/wp-content/uploads/2014/04/kc-map-target-geography.jpg" class="attachment-full" alt="Map of Kansas City" width="600" height="200">
 						<p class="tool-group-description">Target Intervention Area Tool</p>
 					</div>
 				</header>
@@ -87,8 +87,8 @@ get_header(); ?>
 			<div id="explore-target-community" class="tool-group accent-red">
 				<header class="entry-header clear">
 					<h1 class="entry-title">Step 2: Explore Your Target Community More Broadly</h1>
-					<div id="tool-group-header-ebw" class="tool-group-header clear">
-						<img src="http://www.communitycommons.org/wp-content/uploads/2014/04/walking-on-a-one-way.jpg" class="attachment-full" alt="Image of person walking on the shoulder of a road">
+					<div id="tool-group-header-explore-area" class="tool-group-header clear">
+						<img src="http://www.communitycommons.org/wp-content/uploads/2014/04/walking-on-a-one-way.jpg" class="attachment-full" alt="Image of person walking on the shoulder of a road" width="600" height="200">
 						<p class="tool-group-description">Visualize the conditions impacting health </p>
 					</div>
 				</header>
@@ -133,8 +133,8 @@ get_header(); ?>
 			<div id="contextual-maps" class="tool-group accent-yellow">
 				<header class="entry-header clear">
 					<h1 class="entry-title">Community Health Needs Reports and Additional Resources</h1>
-					<div id="tool-group-header-ebw" class="tool-group-header clear">
-						<img src="http://www.communitycommons.org/wp-content/uploads/2014/04/chattanooga-map-chna.jpg" class="attachment-full" alt="Maps of community needs in Chattanooga, Tennessee">
+					<div id="tool-group-header-chna" class="tool-group-header clear">
+						<img src="http://www.communitycommons.org/wp-content/uploads/2014/04/chattanooga-map-chna.jpg" class="attachment-full" alt="Maps of community needs in Chattanooga, Tennessee" width="600" height="200">
 						<p class="tool-group-description">Reporting community needs</p>
 					</div>
 				</header>
@@ -179,8 +179,8 @@ get_header(); ?>
 			<div id="funding-opportunities" class="tool-group accent-blue">
 				<header class="entry-header clear">
 					<h1 class="entry-title">Resources for Funding Opportunities</h1>
-					<div id="tool-group-header-ebw" class="tool-group-header clear">
-						<img src="http://www.communitycommons.org/wp-content/uploads/2014/04/meeting-notes.jpg" class="attachment-full" alt="Image of notes scattered on a meeting room table">
+					<div id="tool-group-header-funding" class="tool-group-header clear">
+						<img src="http://www.communitycommons.org/wp-content/uploads/2014/04/meeting-notes.jpg" class="attachment-full" alt="Image of notes scattered on a meeting room table" width="600" height="200">
 						<p class="tool-group-description">Resource Links</p>
 					</div>
 				</header>
