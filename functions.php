@@ -991,6 +991,22 @@ function access_check_shortcode( $attr, $content = null ) {
   return '';
 }
 
+// Show contained to users that are members of a group only. Use in group environment without an id (assumes current group) or with an id elsewhere. 
+// Takes the form: [group_member group_id="3"] content... [/group_member]
+add_shortcode( 'group_member', 'group_member_check_shortcode' );
+
+function group_member_check_shortcode( $attr, $content = null ) {
+
+  extract( shortcode_atts( array( 'group_id' => 0 ), $attr ) );
+  // If no group id was specified, try to get the current group's id
+  $group_id = ( $group_id ) ? $group_id : bp_get_current_group_id();
+
+  if ( ( ( $group_id && groups_is_user_member( get_current_user_id(), $group_id ) ) ||current_user_can( 'activate_plugins' ) ) && !is_null( $content ) && !is_feed() )
+    return $content;
+
+  return '';
+}
+
 /* Group-specific modifications
 /* Center for Disease Control -- CDC
 ***********************/
