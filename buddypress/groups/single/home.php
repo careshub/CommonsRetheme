@@ -57,15 +57,19 @@
 				$custom_front_query = new WP_Query( $args );
 				$GLOBALS['custom-group-front'] = $custom_front_query;
 
-				// Use custom front if one exists and the group has a front page.
-				$custom_front = bp_locate_template( array( 'groups/single/front.php' ), false, true );
-				if     ( ! empty( $custom_front ) && $custom_front_query->have_posts()) : load_template( $custom_front, true );
+				//Check if this group has a post set to be its custom front page.
+				$front_page_post = cc_get_group_home_page_post();
+
+				if ( $front_page_post && $front_page_post->have_posts()) : 
+					bp_get_template_part( 'groups/single/front' );
 
 				// Default to activity
-				elseif ( bp_is_active( 'activity' ) ) : bp_get_template_part( 'groups/single/activity' );
+				elseif ( bp_is_active( 'activity' ) ) : 
+					bp_get_template_part( 'groups/single/activity' );
 
 				// Otherwise show members
-				elseif ( bp_is_active( 'members'  ) ) : bp_get_template_part( 'groups/single/members'  );
+				elseif ( bp_is_active( 'members'  ) ) : 
+					bp_get_template_part( 'groups/single/members'  );
 
 				endif;
 				
@@ -96,8 +100,27 @@
 		// Group is not visible
 		elseif ( ! bp_group_is_visible() ) :
 
+			// Looking at home location
+			if ( bp_is_group_home() ) :
+
+				//Check if this group has a post set to be its custom front page.
+				$front_page_post = cc_get_group_home_page_post();
+
+				if ( $front_page_post && $front_page_post->have_posts() ) {
+					bp_get_template_part( 'groups/single/front' );
+				} else {
+					// No custom home page is set, just show the no access message
+					do_action( 'bp_before_group_status_message' ); ?>
+
+					<div id="message" class="info">
+						<p><?php bp_group_status_message(); ?></p>
+					</div>
+
+					<?php do_action( 'bp_after_group_status_message' );
+				}
+
 			// Membership request
-			if ( bp_is_group_membership_request() ) :
+			elseif ( bp_is_group_membership_request() ) :
 				bp_get_template_part( 'groups/single/request-membership' );
 
 			// The group is not visible, show the status message
