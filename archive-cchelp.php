@@ -258,7 +258,7 @@ $group_posts = new WP_Query($args);
 										echo "<div id='" . $topicarray[$topic]['text'] . "-" . $_GET["type"] . "' style='padding:10px;width:100%;'>";
 										echo "<p style='font-weight:bold;font-size:15pt;border-bottom: solid 1px #000000;'>" . $cchelptype . "</p>";						
 										if ($_GET["type"] == "videos" || $_GET["type"] == "how-to-exercises") {
-											echo "<table>";
+											echo "<div style='width:100%;'>";
 										}										
 										$cellcount = 0;
 										
@@ -281,16 +281,14 @@ $group_posts = new WP_Query($args);
 												echo '</div>';													
 											} elseif ($_GET["type"] == "videos" || $_GET["type"] == "how-to-exercises") {
 													if ($cellcount %3 == 0) {
-														echo "<tr>";
+														//echo "<br />";
 													}
-													echo "<td align='center' style='text-align:center;font-weight:bold;width:33%;vertical-align:bottom;'>";													
+													echo "<div style='float:left;text-align:center;font-weight:bold;width:33%;vertical-align:bottom;'>";													
 														the_title(); 											
 													echo "<br /><br />";													
 														the_content();																									
-													echo "</td>";
-													if ($cellcount %3 == 0) {
-														echo "</tr>";
-													}													
+													echo "</div>";
+																									
 											} else {
 												echo "<p style='font-weight:bold;'>";
 													the_title(); 											
@@ -303,7 +301,7 @@ $group_posts = new WP_Query($args);
 											}
 										endwhile;
 										if ($_GET["type"] == "videos" || $_GET["type"] == "how-to-exercises") {
-											echo "</table>";
+											echo "</div>";
 										}										
 									echo "</div>";
 							
@@ -358,7 +356,7 @@ $group_posts = new WP_Query($args);
 									echo "<div id='" . $topicarray[$topic]['text'] . "-" . $typevalue . "' style='padding:10px;width:100%;'>";
 										echo "<p style='font-weight:bold;font-size:15pt;border-bottom: solid 1px #000000;'>" . $typekey . "</p>";
 										if ($typevalue == "videos" || $typevalue == "how-to-exercises") {
-											echo "<table>";
+											echo "<div style='width:100%;'>";
 										}
 										$cellcount = 0;
 										while ( $loop->have_posts() ) : $loop->the_post();	
@@ -380,16 +378,14 @@ $group_posts = new WP_Query($args);
 												echo '</div>';													
 											} elseif ($typevalue == "videos" || $typevalue == "how-to-exercises") {
 													if ($cellcount %3 == 0) {
-														echo "<tr>";
+														//echo "<br />";
 													}
-													echo "<td align='center' style='text-align:center;font-weight:bold;width:33%;vertical-align:bottom;'>";													
+													echo "<div style='float:left;text-align:center;font-weight:bold;width:33%;vertical-align:bottom;'>";													
 														the_title(); 											
 													echo "<br /><br />";													
 														the_content();																									
-													echo "</td>";
-													if ($cellcount %3 == 0) {
-														echo "</tr>";
-													}													
+													echo "</div>";
+												
 											} else {
 												echo "<p style='font-weight:bold;'>";
 													the_title(); 											
@@ -402,7 +398,7 @@ $group_posts = new WP_Query($args);
 											}
 										endwhile;
 										if ($typevalue == "videos" || $typevalue == "how-to-exercises") {
-												echo "</table>";
+												echo "</div>";
 										}										
 									echo "</div>";
 									if ( $allcount > 6 ) {
