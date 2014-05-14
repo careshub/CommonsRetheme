@@ -53,13 +53,18 @@ $group_posts = new WP_Query($args);
 						'Reports' => array(
 										'slug' => 'reports',
 										'color' => '#f9b715',
-										'text' => 'Reporting'
+										'text' => 'Reporting and the CHNA'
 										),
 						'Data' => array(
 										'slug' => 'data-3',
 										'color' => '#df5827',
-										'text' => 'Commons Data and Uploading Local Data'
+										'text' => 'Commons Data'
 										),
+						'Uploading Local Data' => array(
+										'slug' => 'uploadlocaldata',
+										'color' => '#f9b715',
+										'text' => 'Uploading Local Data'
+										),										
 						'Groups' => array(
 										'slug' => 'groups-3',
 										'color' => '#df5827',
@@ -70,10 +75,10 @@ $group_posts = new WP_Query($args);
 										'color' => '#008eaa',
 										'text' => 'Being an Administrator'
 										),
-						'CHI and Grant Planning' => array(
+						'Target Intervention Area Tool' => array(
 										'slug' => 'chi-grant-planning',
 										'color' => '#879c3c',
-										'text' => 'CHI and Grant Planning'
+										'text' => 'Target Intervention Area Tool'
 										)
 						);
 		$typearray = array(
@@ -250,10 +255,15 @@ $group_posts = new WP_Query($args);
 										$cchelptype = ucwords($_GET["type"]);
 									}
 
-									echo "<div id='" . $topicarray[$topic]['text'] . "-" . $_GET["type"] . "' style='padding:10px;width:100%;'>";
+										echo "<div id='" . $topicarray[$topic]['text'] . "-" . $_GET["type"] . "' style='padding:10px;width:100%;'>";
 										echo "<p style='font-weight:bold;font-size:15pt;border-bottom: solid 1px #000000;'>" . $cchelptype . "</p>";						
-										while ( $loop->have_posts() ) : $loop->the_post();	
+										if ($_GET["type"] == "videos" || $_GET["type"] == "how-to-exercises") {
+											echo "<table>";
+										}										
+										$cellcount = 0;
 										
+										while ( $loop->have_posts() ) : $loop->the_post();	
+										$cellcount = $cellcount + 1;
 										if ($_GET["type"] == "faqs") {
 												echo "<p>";											
 													echo "<a id='click-";
@@ -269,6 +279,18 @@ $group_posts = new WP_Query($args);
 												echo "' class='entry-content' style='margin-left:15px;display:none;'>";
 													the_content();
 												echo '</div>';													
+											} elseif ($_GET["type"] == "videos" || $_GET["type"] == "how-to-exercises") {
+													if ($cellcount %3 == 0) {
+														echo "<tr>";
+													}
+													echo "<td align='center' style='text-align:center;font-weight:bold;width:33%;vertical-align:bottom;'>";													
+														the_title(); 											
+													echo "<br /><br />";													
+														the_content();																									
+													echo "</td>";
+													if ($cellcount %3 == 0) {
+														echo "</tr>";
+													}													
 											} else {
 												echo "<p style='font-weight:bold;'>";
 													the_title(); 											
@@ -280,6 +302,9 @@ $group_posts = new WP_Query($args);
 												echo '</div>';
 											}
 										endwhile;
+										if ($_GET["type"] == "videos" || $_GET["type"] == "how-to-exercises") {
+											echo "</table>";
+										}										
 									echo "</div>";
 							
 							}
@@ -289,9 +314,7 @@ $group_posts = new WP_Query($args);
 						foreach ($typearray as $typekey => $typevalue) {
 								//GET THE COUNT OF POSTS IN EACH CATEGORY IN ORDER TO DISPLAY VIEW ALL BUTTON
 								$argsall = array(
-								'post_type' => 'cchelp',							
-								//'meta_key' => 'cchelp_sticky', 
-								//'meta_value' => 'sticky',									
+								'post_type' => 'cchelp',									
 								'tax_query' => array(
 										'relation' => 'AND',
 										array(
@@ -311,7 +334,7 @@ $group_posts = new WP_Query($args);
 														
 								$args = array( 
 								'post_type' => 'cchelp',	
-								'posts_per_page' => 3,
+								'posts_per_page' => 6,
 								'meta_key' => 'cchelp_sticky', 
 								'meta_value' => 'sticky',									
 								'tax_query' => array(
@@ -334,12 +357,13 @@ $group_posts = new WP_Query($args);
 							
 									echo "<div id='" . $topicarray[$topic]['text'] . "-" . $typevalue . "' style='padding:10px;width:100%;'>";
 										echo "<p style='font-weight:bold;font-size:15pt;border-bottom: solid 1px #000000;'>" . $typekey . "</p>";
-										if ($typevalue == "videos") {
-												echo "<table><tr>";
+										if ($typevalue == "videos" || $typevalue == "how-to-exercises") {
+											echo "<table>";
 										}
+										$cellcount = 0;
 										while ( $loop->have_posts() ) : $loop->the_post();	
-										
-										if ($typevalue == "faqs") {
+											$cellcount = $cellcount + 1;
+											if ($typevalue == "faqs") {
 												echo "<p>";											
 													echo "<a id='click-";
 														the_ID();
@@ -354,17 +378,18 @@ $group_posts = new WP_Query($args);
 												echo "' class='entry-content' style='margin-left:15px;display:none;'>";
 													the_content();
 												echo '</div>';													
-											} elseif ($typevalue == "videos") {
-												echo "<td align='center' style='text-align:center;font-weight:bold;width:33%;vertical-align:bottom;'>";
-													
+											} elseif ($typevalue == "videos" || $typevalue == "how-to-exercises") {
+													if ($cellcount %3 == 0) {
+														echo "<tr>";
+													}
+													echo "<td align='center' style='text-align:center;font-weight:bold;width:33%;vertical-align:bottom;'>";													
 														the_title(); 											
-													echo "<br /><br />";
-													
-														
-													
-														the_content();
-																									
-												echo "</td>";
+													echo "<br /><br />";													
+														the_content();																									
+													echo "</td>";
+													if ($cellcount %3 == 0) {
+														echo "</tr>";
+													}													
 											} else {
 												echo "<p style='font-weight:bold;'>";
 													the_title(); 											
@@ -376,11 +401,11 @@ $group_posts = new WP_Query($args);
 												echo '</div>';
 											}
 										endwhile;
-										if ($typevalue == "videos") {
-												echo "</tr></table>";
+										if ($typevalue == "videos" || $typevalue == "how-to-exercises") {
+												echo "</table>";
 										}										
 									echo "</div>";
-									if ( $allcount > 3 ) {
+									if ( $allcount > 6 ) {
 										?>
 										<div style="width:100%;height:50px;">
 											<input type="button" value="View All" style="float:right;" onclick="javascript:viewAll('<?php echo $topicarray[$topic]['slug']; ?>','<?php echo $typevalue; ?>');">
@@ -394,7 +419,8 @@ $group_posts = new WP_Query($args);
 			
 			cchelp_footer_buttons();
 		} else {
-
+			cchelp_search();
+			echo "<br /><br />";
 			$COGIScount = 0;
 			$PRIMEcount = 0;
 			foreach ($group_posts->posts as $post) :
@@ -517,11 +543,16 @@ $group_posts = new WP_Query($args);
 			$bp_user_role = cchelp_get_user_role($uid);			
 			?>	
 				
+			<br /><br />
+			<?php 
+			if ($bp_user_role == 'administrator') {
+			?>			
+				<a href="#publictools">Guidebooks</a>&nbsp;&nbsp;&nbsp;<a href="#subscribertools">Subscriber Tools</a><br />
+			<?php
+			}
+			?>
 				
-				
-	
-				
-			<br /><h1>Check Out a Guidebook</h1><br />
+			<br /><span id="publictools"><h1>Guidebooks</h1></span><br />
 			<div style="width:895px;">
 				<div id="guideStart" class="guidebook" style="background-color:#879c3c;cursor:pointer;border:solid 2px #879c3c;" title="Go to the Getting Started Guidebook">
 					<span class="guidebook-text">Getting Started</span>
@@ -530,32 +561,43 @@ $group_posts = new WP_Query($args);
 					<span class="guidebook-text">Mapping</span>
 				</div>
 				<div id="guideReports" class="guidebook" style="background-color:#f9b715;cursor:pointer;border:solid 2px #f9b715;" title="Go to the Reporting Guidebook">
-					<span class="guidebook-text">Reporting</span>
+					<span class="guidebook-text">Reporting and the CHNA</span>
 				</div>	
 			</div>
 			
 			<div style="width:895px;">
+				<div id="guideCHI" class="guidebook" style="background-color:#879c3c;cursor:pointer;border:solid 2px #879c3c;" title="Go to the CHI and Grant Planning Guidebook">
+					<span class="guidebook-text">Target Intervention Area Tool</span>
+				</div>
+				<div id="guideData" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to the Data Guidebook">
+					<span class="guidebook-text">Commons Data</span>
+				</div>
+			</div>	
+			
+			<?php 
+			if ($bp_user_role == 'administrator') {
+			?>			
+			
+			<span id="subscribertools"><h1>Subscriber Tools</h1></span>
+			<div style="width:895px;">
 				<div id="guideGroups" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to the Collaboration Guidebook">
 					<span class="guidebook-text">Using the Collaboration Spaces</span>
 				</div>
-				<div id="guideCHI" class="guidebook" style="background-color:#879c3c;cursor:pointer;border:solid 2px #879c3c;" title="Go to the CHI and Grant Planning Guidebook">
-					<span class="guidebook-text">CHI and Grant Planning</span>
-				</div>
-				<div id="guideData" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to the Data Guidebook">
-					<span class="guidebook-text">Commons Data and Uploading Local Data</span>
-				</div>
-			</div>	
-			<?php 
-			if ($bp_user_role == 'administrator') {
-			?>
-			<div style="width:895px;">
 				<div id="guideAdmin" class="guidebook" style="background-color:#008eaa;cursor:pointer;border:solid 2px #008eaa;" title="Go to the Administrator Guidebook">
 					<span class="guidebook-text">Being an Administrator</span>
-				</div>			
-			</div>
+				</div>
+				<div id="guideUploadingData" class="guidebook" style="background-color:#f9b715;cursor:pointer;border:solid 2px #f9b715;" title="Go to the Data Guidebook">
+					<span class="guidebook-text">Uploading Local Data</span>
+				</div>
+			</div>	
 			<?php
 			}
 			?>
+			
+			
+			
+			
+
 
 			
 			<style type="text/css">
@@ -597,6 +639,9 @@ $group_posts = new WP_Query($args);
 					$( "#guideData" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/data-3/';
 					});
+					$( "#guideUploadingData" ).click(function() {
+						window.location.href = '/cchelp/cc_help_topics/uploadlocaldata/';
+					});					
 					$( "#guideReports" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/reports/';
 					});
@@ -706,12 +751,13 @@ function cchelp_search() {
 			<div>
 				<br /><br />
 				<h3>Search Support</h3>
-				<form action="" method="POST" name="cchelpsearch">			 
+				<form action="#searchresults" method="POST" name="cchelpsearch">			 
 								<input type="text" id="cchelpterms" name="cchelpterms" style="width:350px;" placeholder="Enter keywords"/>			 
 								<input type="hidden" name="cc_post_type" value="post" /> <!-- // hidden 'your_custom_post_type' value -->			 
 								<input type="submit" alt="Search" value="Search" />			 
 				</form>
 			</div>
+			<div id="searchresults">
 			<?php
 			if (isset($_POST['cchelpterms'])) {
 				$args2 = array( 
@@ -720,10 +766,18 @@ function cchelp_search() {
 				);
 				$loop2 = new WP_Query( $args2 );
 				while ( $loop2->have_posts() ) : $loop2->the_post();
+				$helpterms = get_the_terms(get_the_ID(), 'cc_help_types');
+				if( $helpterms && ! is_wp_error( $helpterms ) )
+				{
+					foreach( $helpterms as $ht )
+					{
+						$helptype = $ht->name;
+					}
+				}
 			?>
 					<div class="entry-content">
 					<header class="entry-header clear">
-						<h4 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'CommonsRetheme' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h4>
+						<h4 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'CommonsRetheme' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?><?php echo " [" . $helptype . "]"; ?></a></h4>
 						
 						<?php the_excerpt(); ?>
 					</header>
@@ -732,12 +786,19 @@ function cchelp_search() {
 			<?php
 				endwhile;
 			}	
+			?>
+			</div>
+			<?php
 }	
 	
 function cchelp_footer_buttons() {
 ?>	
 		<br />
-		<?php cchelp_search(); ?>
+		<div id="search_box">
+		<?php 		
+			cchelp_search(); 		
+		?>
+		<div>
 		<br />
 			<div style="width:895px;">
 				<!--<div id="guideTraining" class="guidebook2" title="Training">
@@ -794,8 +855,14 @@ function cchelp_footer_buttons() {
 					// });
 					$( "#guideInspiration" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/data-2/';
-					});		
+					});	
+					var pathname = window.location.pathname;
+					if (pathname == '/cchelp/') {
+						$("#search_box").hide();
+					}
+
 				});		
+
 	</script>
 <?php
 }
