@@ -220,7 +220,7 @@ $group_posts = new WP_Query($args);
 			$topic = $tax_term->name;			
 			$topic_slug = $tax_term->slug;		
 			?>
-				<div style="width:100%;padding:10px;background-color:<?php echo $topicarray[$topic]['color']; ?>">
+				<div style="width:795px;padding:10px;background-color:<?php echo $topicarray[$topic]['color']; ?>">
 					<div style="width:100%;text-align:center;">
 						<h1><span style="color:#ffffff;font-weight:bold;font-size:21pt;"><?php echo $topicarray[$topic]['text']; ?></span></h1>
 					</div>
@@ -255,7 +255,7 @@ $group_posts = new WP_Query($args);
 										$cchelptype = ucwords($_GET["type"]);
 									}
 
-										echo "<div id='" . $topicarray[$topic]['text'] . "-" . $_GET["type"] . "' style='padding:10px;width:100%;'>";
+										echo "<div id='" . $topicarray[$topic]['text'] . "-" . $_GET["type"] . "' style='padding:10px;width:795px;'>";
 										echo "<p style='font-weight:bold;font-size:15pt;border-bottom: solid 1px #000000;'>" . $cchelptype . "</p>";						
 										if ($_GET["type"] == "videos" || $_GET["type"] == "how-to-exercises") {
 											echo "<div style='width:100%;'>";
@@ -353,7 +353,7 @@ $group_posts = new WP_Query($args);
 								
 								if ($loop->have_posts()) {		
 							
-									echo "<div id='" . $topicarray[$topic]['text'] . "-" . $typevalue . "' style='padding:10px;width:100%;'>";
+									echo "<div id='" . $topicarray[$topic]['text'] . "-" . $typevalue . "' style='padding:10px;width:795px;'>";
 										echo "<p style='font-weight:bold;font-size:15pt;border-bottom: solid 1px #000000;'>" . $typekey . "</p>";
 										if ($typevalue == "videos" || $typevalue == "how-to-exercises") {
 											echo "<div style='width:100%;'>";
@@ -403,7 +403,7 @@ $group_posts = new WP_Query($args);
 									echo "</div>";
 									if ( $allcount > 6 ) {
 										?>
-										<div style="width:100%;height:50px;">
+										<div style="width:795px;height:50px;">
 											<input type="button" value="View All" style="float:right;" onclick="javascript:viewAll('<?php echo $topicarray[$topic]['slug']; ?>','<?php echo $typevalue; ?>');">
 										</div>									
 										<?php	
@@ -543,7 +543,7 @@ $group_posts = new WP_Query($args);
 			<?php 
 			if ($bp_user_role == 'administrator') {
 			?>			
-				<a href="#publictools">Guidebooks</a>&nbsp;&nbsp;&nbsp;<a href="#subscribertools">Subscriber Tools</a><br />
+				
 			<?php
 			}
 			?>
@@ -574,7 +574,7 @@ $group_posts = new WP_Query($args);
 			if ($bp_user_role == 'administrator') {
 			?>			
 			
-			<span id="subscribertools"><h1>Subscriber Tools</h1></span>
+			
 			<div style="width:895px;">
 				<div id="guideGroups" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to the Collaboration Guidebook">
 					<span class="guidebook-text">Using the Collaboration Spaces</span>
@@ -587,6 +587,7 @@ $group_posts = new WP_Query($args);
 				</div>
 			</div>	
 			<?php
+				cchelp_footer_buttons();
 			}
 			?>
 			
@@ -654,7 +655,7 @@ $group_posts = new WP_Query($args);
 			</script>					
 
 		<?php	
-			cchelp_footer_buttons();		
+					
 			//echo "<br /><h1>GENERIC POSTS:</h1><br />";	
 
 			// if(have_posts()) : while(have_posts()) : the_post();
@@ -794,14 +795,14 @@ function cchelp_footer_buttons() {
 		<?php 		
 			cchelp_search(); 		
 		?>
-		<div>
+		</div>
 		<br />
 			<div style="width:895px;">
 				<!--<div id="guideTraining" class="guidebook2" title="Training">
 					<span class="guidebook2-text">View a recorded training webinar, sign up for our next one<br />-OR-<br />Contact us for customized training solutions</span>
 				</div>-->
-				<a href="https://ip3.zendesk.com/account/dropboxes/20111391" target="_blank"><div id="guideContact" class="guidebook2" title="Contact Us">
-					<span class="guidebook2-text"><strong>Still stuck?</strong><br /><br />Contact us here</span>
+				<a href="https://ip3.zendesk.com/account/dropboxes/20111391" target="_blank"><div id="guideContact" class="guidebook2" style="height:40px;" title="Contact Us">
+					<span class="guidebook2-text" style="top:10px;"><strong>Still stuck? Contact us here</strong></span>
 				</div></a>
 				<!--<div id="guideInspiration" class="guidebook2" title="Inspiration">
 					<span class="guidebook2-text">Need some inspiration?<br />How to use the Commons to create real change in your community</span>
