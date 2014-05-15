@@ -33,7 +33,7 @@ $group_posts = new WP_Query($args);
 			-webkit-box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 0.79);
 			-moz-box-shadow:    0px 0px 18px 0px rgba(50, 50, 50, 0.79);
 			box-shadow:         0px 0px 18px 0px rgba(50, 50, 50, 0.79);
-		}
+		}	
 	</style>
 	<section id="primary" class="site-content">
 		<div id="content" role="main">
@@ -353,7 +353,7 @@ $group_posts = new WP_Query($args);
 								
 								if ($loop->have_posts()) {		
 							
-									echo "<div id='" . $topicarray[$topic]['text'] . "-" . $typevalue . "' style='padding:10px;width:795px;'>";
+									echo "<div class='content-row clear' id='" . $topicarray[$topic]['text'] . "-" . $typevalue . "' style='padding:10px;width:795px;'>";
 										echo "<p style='font-weight:bold;font-size:15pt;border-bottom: solid 1px #000000;'>" . $typekey . "</p>";
 										if ($typevalue == "videos" || $typevalue == "how-to-exercises") {
 											echo "<div style='width:100%;'>";
@@ -380,7 +380,7 @@ $group_posts = new WP_Query($args);
 													if ($cellcount %3 == 0) {
 														//echo "<br />";
 													}
-													echo "<div style='float:left;text-align:center;font-weight:bold;width:33%;vertical-align:bottom;'>";													
+													echo "<div class='third-block'>";													
 														the_title(); 											
 													echo "<br /><br />";													
 														the_content();																									
