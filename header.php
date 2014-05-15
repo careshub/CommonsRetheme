@@ -141,7 +141,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         		<?php } ?>
 					<?php notifications_counter(); ?>
 					<li class="separator">
-						<a href="/training-resources/">Support</a>
+						<a href="/cchelp/">Support</a>
 					</li>
 				</ul>
 			</div><!-- End nav-container -->
