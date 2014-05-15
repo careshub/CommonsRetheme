@@ -1007,6 +1007,16 @@ function group_member_check_shortcode( $attr, $content = null ) {
   return '';
 }
 
+// Gravity Forms
+// Autofill fields with the property 'logged_in_user_email'
+add_filter('gform_field_value_logged_in_user_email', 'cc_gravity_form_user_email_populate');
+function cc_gravity_form_user_email_populate(){
+    $current_user = wp_get_current_user();
+
+    if ( $current_user )
+      return $current_user->user_email;
+}
+
 /* Group-specific modifications
 /* Center for Disease Control -- CDC
 ***********************/
