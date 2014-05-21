@@ -1951,3 +1951,17 @@ function cc_the_policy_progress_tracker( $progress ) {
 </div> <!-- end .meter-box -->
 <?php
 }
+/* Filter the page title for certain Salud America page.
+*  filters value in wp_title
+*/
+add_filter( 'wp_title', 'cc_salud_title_filter', 20, 2 ); 
+function cc_salud_title_filter( $title, $sep ) {
+
+  if ( is_feed() )
+    return $title;
+
+  if ( is_page( 'take-action' ) )
+    $title = get_the_title() . ' ' . $sep . ' Salud America' ;
+
+  return $title;
+}
