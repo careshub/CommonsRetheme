@@ -38,6 +38,10 @@ $group_posts = new WP_Query($args);
 	<section id="primary" class="site-content">
 		<div id="content" role="main">
 		<a href="/cchelp/" style="text-decoration:none;color:#000000;"><p style="font-weight:bold;font-size:21pt;">Support | Community Commons</p></a>
+		
+		<div class="clear" id="screamer" style="background-color: #889c3b;width:800px;">
+		<h1><span style="color: #ffffff;">We're glad you're here to use the latest technology and tools to make lasting community change. We'd like to offer some support.</span></h1>
+		</div>		
 <?php
 		$topicarray = array(
 						'Getting Started' => array(
