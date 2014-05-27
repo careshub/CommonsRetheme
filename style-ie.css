@@ -3998,6 +3998,10 @@ div#item-header .activity {
 .standard-form #profile-details-section {
   float: right;
 }
+.register-section.alignright {
+  float: right;
+  clear: right;
+}
 .salud-america .salud-header h1 {
   width: 65%;
 }
