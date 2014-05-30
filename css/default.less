@@ -19,22 +19,6 @@ form#login p.status{
 		margin-bottom: 1.71429rem;
 	}
 	.entry-content {
-		ul {
-			// list-style-type: none;
-			li {
-				margin-bottom: 0.4em;
-				padding-bottom: 0.4em;
-			}
-			&.acfb-holder {
-				list-style-type: none;
-				li {
-					margin-left: 0;
-					input {
-						width: 100%;
-					}
-				}
-			}
-		}
 	}
 
 	p {
@@ -48,14 +32,32 @@ form#login p.status{
 	}
 	ul {
 		// margin-top: .6em;
+		li {
+			margin-bottom: 0.4em;
+			padding-bottom: 0.4em;
+		}
 		&.no-bullets {
 			list-style-type: none;
 			li {
 				margin-left: 0.8em;
 			}
 		}
-		li {
-		margin-bottom: 0.6em;
+		&.horizontal {
+			overflow: auto;
+			li {
+				float: left;
+				margin-left: 0;
+				margin-right: 1.6em;
+			}
+		}
+		&.acfb-holder {
+			list-style-type: none;
+			li {
+				margin-left: 0;
+				input {
+					width: 100%;
+				}
+			}
 		}
 	}
 }
@@ -121,6 +123,11 @@ img.no-box {
 }
 .widget-title {
 	.font-size(1.2);
+	.supplemental {
+		.font-size(.9);
+		font-weight: normal;
+		text-transform: none;
+	}
 }
 .entry-content th {
     color: #636363;
@@ -616,8 +623,8 @@ form.dir-form {
 	}
 }
 div.dir-search {
-	float: right;
-	margin-bottom: -1.7em;
+	float: left;
+	// margin-bottom: -1.7em;
 }
 div.dir-search input[type=text] {
 	.font-size(.85);
@@ -1300,51 +1307,61 @@ ul.single-line li {
 #groups-list .group-subscription-div {
     margin-bottom: 1em;
 }
-
+// Item-list-tabs is used for object navs (members, groups) and also for subnavs, so we've got a few special cases
 .item-list-tabs {
-	//background: #eaeaea;
-	// clear: both;
-	//margin: 25px -19px 20px -19px;
-	//overflow: hidden;
-	#object-nav {
-		margin-top: 0;
-	}
+	margin-bottom: .4em;
+	padding-bottom: .4em;
+	border-bottom: 1px solid @graylight;
 	ul {
 		margin: 0;
 		width: 100%;
 		li {
-		float: left;
-		list-style-type: none;
-		margin-left: 0;
-		//width: 100%;
-		a, span {
-			display: block; //increases tap target sizes
-			padding: 5px 10px;
-			text-decoration: none;
-			line-height: 20px;
-		}
-		a {
-			span {
-				background: @ccgreen;
-				.border-radius(10px);
-				color: #fff;
-				display: inline;
-				font-size: 90%;
-				margin-left: 2px;
-				padding: 0 6px;
+			display: inline-block;
+			list-style-type: none;
+			margin: 10px 10px 0 0;
+			padding-bottom: 0;
+			a {
+				display: block; //increases tap target sizes
+				.border-radius(3px);
+				border: 1px solid @graymid;
+				.gradient( lighten( @graylight, 20% ), lighten( @graylight, 8% ) );
+				text-decoration: none;
+				padding: 5px 10px;
+				line-height: 20px;
+
+				span {
+					display: inline;
+					color: @white;
+					background-color: @ccgreen;
+					.border-radius(10px);
+					display: inline;
+					font-size: 90%;
+					margin-left: 2px;
+					padding: 0 6px;
+					font-weight: 400;
+					&.alert {
+						background-color: lighten(@ccblue,8) ;
+						// color: @white;	
+					}
+				}
 			}
-		}
-		&.selected a, .current a {
-			font-weight: 700;
-			color: @black;
-		}
-		&.last{
-			float: right;
-			margin-top: 8px;
-			select {
-				max-width: 175px;
+			&.selected, &.current-menu-item, &.current {
+			    font-weight: 700;
+			    a {
+			    	color: @white;
+			    	background: @ccblue;
+					border: 1px solid @ccblue;
+	    		    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	    		    text-decoration: none;
+			    }
 			}
-		}
+			&.last{
+				float: right;
+				margin-top: 8px;
+				select {
+					max-width: 175px;
+				}
+			}
 		}
 	}
 	form {
@@ -1362,80 +1379,26 @@ ul.single-line li {
 	    display: table;
 	}
 }
-// Special case for group/user primary nav
-#secondary .item-list-tabs {
-		// margin-top: 2em;
-		padding-bottom:1em;
-		border-bottom: 1px solid @graylight;
-		ul {
-			// margin: 0 0 2em 0;
-			// padding: 0;
-			li {
-				display: inline-block;
-				// .outliner();
-				// //padding: .8em 1.5em .8em 6em;
-				// margin-left: -3.5em;
-				margin: 10px 10px 0 0;
-				padding-bottom: 0;
-				&.selected, &.current-menu-item {
-				    font-weight: 700;
-				    a {
-				    	color: @white;
-				    	background: @ccblue;
-						border: 1px solid @ccblue;
-		    		    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-				    }
-				}
-				a { 
-					.border-radius(3px);
-					border: 1px solid @graymid;
-					.gradient( lighten( @graylight, 20% ), lighten( @graylight, 8% ) );
-					// text-decoration: none; 
-					// display: block;
-					// line-height: 1.6;
-				 //    padding: .5em;
-					// background: #fff; /* Old browsers */
-					// background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%); /* FF3.6+ */
-					// background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
-					// background: -webkit-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Chrome10+,Safari5.1+ */
-					// background: -o-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Opera11.10+ */
-					// background: -ms-linear-gradient(top, #ffffff 0%,#ededed 100%); /* IE10+ */
-					// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
-					// background: linear-gradient(top, #ffffff 0%,#ededed 100%); /* W3C */
-					// border: 1px solid #ccc;
-					// -moz-border-radius: 3px;
-					// -webkit-border-radius: 3px;
-					// border-radius: 3px;
-					// color: @ccblue;
-					// // cursor: pointer;
-					// //font: normal 12px/20px Arial, Tahoma, Verdana, sans-serif;
-					// .font-size(.9);
-					// // outline: none;
-					// padding: .3em .6em;
-					// text-align: center;
-					// text-decoration: none;
-					// // line-height: 14px;
-					// // -moz-box-sizing: border-box; 
-					// // -webkit-box-sizing: border-box; 
-					// // box-sizing: border-box;				
-				}
-				span { 
-					font-weight: 400;
-					display: inline;
-					//line-height: 3;
-					background-color: @graymid;
-					.border-radius(10px);
-					color: @white;
-					&.alert {
-						background-color: lighten(@ccblue,8) ;
-						color:@white;
-						
-						}
-					}
-			}
+//Unhappily we've got to do some undoing. :not() isn't supported by old IE
+.item-list-tabs#subnav ul {
+	// padding-bottom: 1em;
+	// border-bottom: 1px solid @graylight;
+	li {
+		margin: 0 .8em .2em 0;
+		a {
+			.border-radius(0);
+			background: none;
+			border: none;
+			padding: 5px;
+		}
+		&.selected, &.current-menu-item, &.current {
+		    a {
+		    	color: @black;
+		    	text-shadow: none;
+		    }
 		}
 	}
-
+}
 
 #admins-list li {
 	overflow: auto;
@@ -3472,13 +3435,17 @@ ul.item-list li .share-buttons-below li {
 		}
 		a {
 			color:desaturate(lighten(@ccblue,20%),30%);
-			&:hover {color:@white;}
+			&:hover {
+				color:@white;
+			}
 		}
 		#login-item {
 			.login-link {display: none;}
 		}
 		.user-quicklinks {
-			.avatar {float: left;}
+			.avatar {
+				float: left;
+			}
 			a {
 				width:auto;
 				// border:1px solid @ccgreen;
@@ -3552,22 +3519,21 @@ ul.item-list li .share-buttons-below li {
 			color: @white;
 			
 			ul {
-			
-			li {
-				// float: left;
-				// width:100%;
-				// &:hover {	
-				// 	background-color: desaturate(lighten(@ccblue, 60%), 50%);
-				// }
-			}
-			
-			a { 
-				// color:@ccblue; 
-				// line-height: 1.4;
-				// padding:2%;
-				// width: 95.99%
+				li {
+					// float: left;
+					// width:100%;
+					// &:hover {	
+					// 	background-color: desaturate(lighten(@ccblue, 60%), 50%);
+					// }
 				}
-		}
+				
+				a { 
+					// color:@ccblue; 
+					// line-height: 1.4;
+					// padding:2%;
+					// width: 95.99%
+					}
+			}
 		}
 		// &:hover { background-color: lighten(@black,30%);}
 		// &:hover .pop-sub-wrapper {
@@ -4321,19 +4287,12 @@ div.docs-info-header {
 		li {
 			display: inline-block;
 			margin: 10px 10px 0 0;
+			background: none;
 			&.current{
-			    font-weight: 700;
 			    a {
-			    	color: @white;
-			    	background: @ccblue;
-					border: 1px solid @ccblue;
-	    		    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 			    }
 			}
-			a { 
-				.border-radius(3px);
-				border: 1px solid @graymid;
-				.gradient( lighten( @graylight, 20% ), lighten( @graylight, 8% ) );			
+			a { 	
 			}
 		}
 		#bp-create-doc-button {
