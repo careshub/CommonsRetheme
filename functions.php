@@ -429,6 +429,16 @@ function cc_custom_body_class( $classes ) {
 }
 add_filter( 'body_class', 'cc_custom_body_class', 96 );
 
+/* Filter <article> classes created by post_class()
+***************/
+function cc_custom_article_class( $classes ) {
+    if ( ( is_page_template( 'page-templates/full-width-no-title.php' ) || is_page_template( 'page-templates/full-width-screamer-title.php' ) ) && comments_open() == FALSE ) {
+        $classes[] = 'ultra-compact';
+        $classes[] = 'no-divider';
+      }
+  return $classes;
+}
+add_filter( 'post_class', 'cc_custom_article_class', 96 );
 
 function cc_group_visibility_class() {
   echo cc_get_group_visibility_class();
