@@ -1226,3 +1226,37 @@ add_filter( 'invite_anyone_is_large_network', 'change_ia_large_network_value', 2
 function change_ia_large_network_value( $is_large, $count ) {
   return true;
 }
+function cc_dump_ajax_querystring( $query_string, $object ) {
+
+  //Only record initial pageload
+  if ( !is_admin() ) {
+    global $dcs_priorities;
+    $priority = array_shift( $dcs_priorities );
+
+    $towrite = "Query string at " . print_r( $priority, TRUE ) . ": " . print_r( $query_string, TRUE ) . PHP_EOL;
+    $towrite .= "Object: " . print_r( $object, TRUE ) . PHP_EOL;
+    // The channel filter data is stored as a cookie and passed along with the post request
+    if ( ! empty( $_POST['cookie'] ) ) {
+      $post_cookie = wp_parse_args( str_replace( '; ', '&', urldecode( $_POST['cookie'] ) ) );
+    } else {
+      $post_cookie = &$_COOKIE;
+    }
+    // $towrite .= "Cookie data: " . print_r( $post_cookie, TRUE ) . PHP_EOL;
+    $fp = fopen('bp_ajax_querystring.txt', 'a');
+    fwrite($fp, $towrite);
+    fclose($fp);
+  }
+
+  return $query_string;
+}
+
+function loop_ajax_query_reporting() {
+  global $dcs_priorities;
+  $dcs_priorities = array(8, 12, 22, 62, 102);
+
+  foreach ($dcs_priorities as $val) {
+    add_filter( 'bp_ajax_querystring', 'cc_dump_ajax_querystring', $val, 2 );
+  }
+
+}
+// add_action( 'bp_init', 'loop_ajax_query_reporting' );

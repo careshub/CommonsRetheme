@@ -58,7 +58,9 @@
 				$GLOBALS['custom-group-front'] = $custom_front_query;
 
 				//Check if this group has a post set to be its custom front page.
-				$front_page_post = cc_get_group_home_page_post();
+				$front_page_post = '';
+				if ( function_exists('cc_get_group_home_page_post') )
+					$front_page_post = cc_get_group_home_page_post();
 
 				if ( $front_page_post && $front_page_post->have_posts()) : 
 					bp_get_template_part( 'groups/single/front' );
