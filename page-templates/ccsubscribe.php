@@ -28,9 +28,9 @@ function cc_subscribe_matrix() {
 		<div style="float:right;">
 			<?php		
 			if ( is_user_logged_in() ) {
-				echo '<input type="button" value="Sign Up" onclick="gotoForm()" />';
+				echo '<a href="/subscribeform/" class="button">Sign Up</a>';
 			} else {
-				echo '<input type="button" value="Register" onclick="gotoRegister()" />&nbsp;<input type="button" value="Log In" onclick="gotoLogin()" />';
+				echo '<a href="/register/" class="button">Register</a>&nbsp;<a href="/wp-login.php" class="button">Log In</a>';
 			}		
 			?>		
 			<input type="button" value="Request Quote" />
@@ -39,16 +39,6 @@ function cc_subscribe_matrix() {
 		</div>
 	</div>
 	
-	<script type="text/javascript">
-	function gotoForm() {
-		window.location.href="/subscribeform/";		
-	}
-	function gotoLogin() {
-		window.location.href="/wp-login.php";
-	}
-	function gotoRegister() {
-		window.location.href="/register/";
-	}	
-	</script>
+
 <?php	
 }
