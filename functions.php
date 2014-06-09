@@ -30,90 +30,6 @@ require_once('includes/WKKF_scorecard.php');
 require_once('includes/site-search-functions.php');
 
 
-function bp_support_theme_setup() {
-  global $bp;
-
-  // Load the default BuddyPress AJAX functions if it isn't explicitly disabled or if it isn't already included in a custom theme
-  if ( ! function_exists( 'bp_dtheme_ajax_querystring' ) )
-    require_once( BP_PLUGIN_DIR . '/bp-themes/bp-default/_inc/ajax.php' );
-
-  // Let's tell BP that we support it!
-  add_theme_support( 'buddypress' );
-
-  if ( ! is_admin() ) {
-    // Register buttons for the relevant component templates
-    // Friends button
-    if ( bp_is_active( 'friends' ) )
-      add_action( 'bp_member_header_actions',    'bp_add_friend_button' );
-
-    // Activity button
-    if ( bp_is_active( 'activity' ) )
-      add_action( 'bp_member_header_actions',    'bp_send_public_message_button' );
-
-    // Messages button
-    if ( bp_is_active( 'messages' ) )
-      add_action( 'bp_member_header_actions',    'bp_send_private_message_button' );
-
-    // Group buttons
-    if ( bp_is_active( 'groups' ) ) {
-      add_action( 'bp_group_header_actions',     'bp_group_join_button' );
-      add_action( 'bp_group_header_actions',     'bp_group_new_topic_button' );
-      add_action( 'bp_directory_groups_actions', 'bp_group_join_button' );
-    }
-
-    // Blog button
-    if ( bp_is_active( 'blogs' ) )
-      add_action( 'bp_directory_blogs_actions',  'bp_blogs_visit_blog_button' );
-  }
-}
-// add_action( 'after_setup_theme', 'bp_support_theme_setup', 11 );
-
-/**
- * Enqueues BuddyPress JS and related AJAX functions
- *
- * @since 1.2
- */
-function bp_support_enqueue_scripts() {
-
-  // Add words that we need to use in JS to the end of the page so they can be translated and still used.
-  $params = array(
-    'my_favs'           => __( 'My Favorites', 'buddypress' ),
-    'accepted'          => __( 'Accepted', 'buddypress' ),
-    'rejected'          => __( 'Rejected', 'buddypress' ),
-    'show_all_comments' => __( 'Show all comments for this thread', 'buddypress' ),
-    'show_all'          => __( 'Show all', 'buddypress' ),
-    'comments'          => __( 'comments', 'buddypress' ),
-    'close'             => __( 'Close', 'buddypress' ),
-    'leave_group_confirm'   => __( 'Are you sure you want to leave this group?', 'buddypress' ),
-
-  );
-
-  // BP 1.5+
-  if ( version_compare( BP_VERSION, '1.3', '>' ) ) {
-    // Bump this when changes are made to bust cache
-    $version = '20120412';
-
-    $params['view']        = __( 'View', 'buddypress' );
-    $params['mark_as_fav'] = __( 'Favorite', 'buddypress' );
-    $params['remove_fav']  = __( 'Remove Favorite', 'buddypress' );
-  }
-  // BP 1.2.x
-  else {
-    $version = '20110729';
-
-    if ( bp_displayed_user_id() )
-      $params['mention_explain'] = sprintf( __( "%s is a unique identifier for %s that you can type into any message on this site. %s will be sent a notification and a link to your message any time you use it.", 'buddypress' ), '@' . bp_get_displayed_user_username(), bp_get_user_firstname( bp_get_displayed_user_fullname() ), bp_get_user_firstname( bp_get_displayed_user_fullname() ) );
-  }
-
-  // Enqueue the global JS - Ajax will not work without it
-  wp_enqueue_script( 'dtheme-ajax-js', BP_PLUGIN_URL . 'bp-themes/bp-default/_inc/global.js', array( 'jquery' ), $version );
-
-  // Localize the JS strings
-  wp_localize_script( 'dtheme-ajax-js', 'BP_DTheme', $params );
-}
-// add_action( 'wp_enqueue_scripts', 'bp_support_enqueue_scripts' );
-
-
 /* Javascript library and style enqueues
 *  
 *********************************/
@@ -249,16 +165,6 @@ register_sidebar( array (
         'description' => __( 'Group page sub nav sidebar', 'ccommons' )
     ) );
 
-// register_sidebar( array (
-//         'name' => __( 'Single group sidebar', 'ccommons' ),
-//         'id' => 'groups-single-sidebar',
-//         'before_widget' => '<nav id="%1$s" class="widget %2$s">',
-//         'after_widget' => "</nav>",
-//         'before_title' => '<h3 class="widget-title">',
-//         'after_title' => '</h3>',
-//         'description' => __( 'Single group page sub nav sidebar', 'ccommons' )
-//     ) );
-
 register_sidebar( array (
         'name' => __( 'Members sidebar', 'ccommons' ),
         'id' => 'members-sidebar',
@@ -268,16 +174,6 @@ register_sidebar( array (
         'after_title' => '</h3>',
         'description' => __( 'Members page sub nav sidebar', 'ccommons' )
     ) );
-
-// register_sidebar( array (
-//         'name' => __( 'Single Member sidebar', 'ccommons' ),
-//         'id' => 'members-single-sidebar',
-//         'before_widget' => '<nav id="%1$s" class="widget %2$s">',
-//         'after_widget' => "</nav>",
-//         'before_title' => '<h3 class="widget-title">',
-//         'after_title' => '</h3>',
-//         'description' => __( 'Individual member page sub nav sidebar', 'ccommons' )
-//     ) );
 
 register_sidebar( array(
 		'name' => __( 'Geo Search SA Policies Widget Area', 'ccommons' ),
@@ -537,18 +433,6 @@ function cc_get_signup_interests( $sign_up_slug ) {
   return $sign_up_slug . '/';
 
 }
-
-//Add our custom post types to the archives page
-function cc_add_custom_types( $query ) {
-  if( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {
-    $query->set( 'post_type', array(
-     'post',
-     'sapolicies'
-    ));
-    return $query;
-  }
-}
-// add_filter( 'pre_get_posts', 'cc_add_custom_types' );
 
 //Show a list of attachments after the post, for sa policies only
 add_filter( 'the_content', 'list_attachments_content_filter' );
@@ -880,45 +764,11 @@ function bp_docs_default_settings_for_child_groups($settings) {
   return $settings;
 }
 
-// add_filter('bp_docs_attachment_url_base', 'iis_friendly_bp_docs_attachment_url', 35, 2);
-function iis_friendly_bp_docs_attachment_url( $url, $attachment ) {
-  
-  $url = $attachment->guid;
-  
-  return $url;
-}
-
-//Include specific categories from the blog page
-// add_filter('pre_get_posts', 'modify_blog_page_posts');
-function modify_blog_page_posts() {
- // Order tunes by title
-    if( is_page( 'blog' ) && ( !is_admin() ) && ( $query->is_main_query() )  ) {
-        
-        $query->set('orderby', 'title');
-        $query->set('order', 'ASC');
-    }
-}
-
 //Add comment button to appear next to share button
 function cc_add_comment_button() {
-  // ob_start();
-
-  // our wrapper DIV
-  // echo '<div class="love-it-wrapper">';
-
-  // only show the Love It link if the user has NOT previously loved this item
   if ( is_singular() && comments_open() ) {
     echo '<a href="#respond" class="button add-comment-link"><span class="comment-icon"></span>Comment</a>';
   }
-
-  // close our wrapper DIV
-  // echo '</div>';
-
-  // if ( $echo )
-  //   echo apply_filters( 'lip_links', ob_get_clean() );
-  // else
-  //   return apply_filters( 'lip_links', ob_get_clean() );
-
 }
 
 /*
@@ -1147,79 +997,6 @@ function get_ID_by_slug($page_slug) {
         return 'not found';
     }
 }
-
-// Things that might go away
-/*Remove Gravatars for testing on localhost
-*/
-// function bp_remove_gravatar ($image, $params, $item_id, $avatar_dir, $css_id, $html_width, $html_height, $avatar_folder_url, $avatar_folder_dir) {
-//     //$default = get_stylesheet_directory_uri() .'/_inc/images/bp_default_avatar.jpg';
-//     $default = '/wp-content/plugins/buddypress/bp-core/images/mystery-man.jpg';
-
-//     if( $image && strpos( $image, "gravatar.com" ) ){
-//         return '<img src="' . $default . '" alt="avatar" class="avatar" ' . $html_width . $html_height . ' />';
-//     } else {
-//         return $image;
-//     }
-// }
-
-// add_filter('bp_core_fetch_avatar', 'bp_remove_gravatar', 1, 9 );
-
-// function remove_gravatar ($avatar, $id_or_email, $size, $default, $alt) {
-//  //$default = get_stylesheet_directory_uri() .'/_inc/images/bp_default_avatar.jpg';
-//     $default = '/wp-content/plugins/buddypress/bp-core/images/mystery-man.jpg';
-//     return "<img alt='{$alt}' src='{$default}' class='avatar avatar-{$size} photo avatar-default' height='{$size}' width='{$size}' />";
-// }
-// add_filter('get_avatar', 'remove_gravatar', 1, 5);
-
-// function bp_remove_signup_gravatar ($image) {
-//  //$default = get_stylesheet_directory_uri() .'/_inc/images/bp_default_avatar.jpg';
-//     $default = '/wp-content/plugins/buddypress/bp-core/images/mystery-man.jpg';
-//     if( $image && strpos( $image, "gravatar.com" ) ){
-//         return '<img src="' . $default . '" alt="avatar" class="avatar" width="150" height="150" />';
-//     } else {
-//         return $image;
-//     }
-// }
-// add_filter('bp_get_signup_avatar', 'bp_remove_signup_gravatar', 1, 1 );
-
-/* Javascript library enqueues
-**************/
-// function localscroll_js_load(){
-
-//   wp_register_script('scrollTo', get_stylesheet_directory_uri().'/js/jquery.scrollTo-1.4.3.1-min.js">', array('jquery'), '1.4.3.1' ); 
-//   wp_enqueue_script('scrollTo'); 
-//   wp_register_script('localScroll', get_stylesheet_directory_uri().'/js/jquery.localscroll-1.2.7-min.js">', array('jquery', 'scrollTo'), '1.2.7', true );  
-//   wp_enqueue_script('localScroll'); 
-
-// }
-// add_action('wp_enqueue_scripts', 'localscroll_js_load');
-
-// function hoverIntent_js_load(){
-
-//   wp_register_script('hoverIntent', get_stylesheet_directory_uri().'/js/jquery.hoverIntent.minified.js">', array('jquery'), 'r6', true ); 
-//   wp_enqueue_script('hoverIntent'); 
-
-// }
-// add_action('wp_enqueue_scripts', 'hoverIntent_js_load');
-
-
-// function cc_nav_header_js_load(){
-
-//   wp_register_script('ccNavHeaderToggle', get_stylesheet_directory_uri().'/js/cc-nav-header-toggle-ck.js">', array('jquery', 'hoverIntent'), '1.0', true  ); 
-//   wp_enqueue_script('ccNavHeaderToggle'); 
-
-// }
-// add_action('wp_enqueue_scripts', 'cc_nav_header_js_load');
-
-// function wotn_modal_interruptus_js_load(){
-
-//   if ( is_page('wotn') ) {
-//     wp_register_script('jqSimpleModal', get_stylesheet_directory_uri().'/js/jquery.simplemodal.1.4.4.min.js">', array('jquery'), '1.4.4', true  ); 
-//     wp_enqueue_script('jqSimpleModal');
-//   }
-
-// }
-// add_action('wp_enqueue_scripts', 'wotn_modal_interruptus_js_load');
 
 // Analytics/Metrics work
 // Provide the user's login name for use by Google Tag Manager
