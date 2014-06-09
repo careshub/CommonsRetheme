@@ -201,7 +201,7 @@
 	display:block;
 }
 
-	//even/odd row coloring
+//even/odd row coloring
 .alt {
 	&:nth-child(odd) {
 		background-color: desaturate(lighten(@ccblue, 63%), 50%);
@@ -759,6 +759,14 @@ ol.progtrckr li.progtrckr-todo:before {
 // 		}
 // 	}
 // }
+
+//Comments
+// WP also uses the class "alt", which we don't want in this case
+.comments-area .alt {
+	&:nth-child(odd) {
+		background-color: transparent;
+	}
+}
 
 //bbPress styling overrides 
 #bbpress-forums {
