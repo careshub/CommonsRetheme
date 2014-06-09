@@ -1226,3 +1226,17 @@ add_filter( 'invite_anyone_is_large_network', 'change_ia_large_network_value', 2
 function change_ia_large_network_value( $is_large, $count ) {
   return true;
 }
+
+add_filter("gform_field_value_email", "ccsubscribe_populate_email");
+function ccsubscribe_populate_email($value){
+	$current_user = wp_get_current_user();
+	$useremail = $current_user->user_email;
+    return $useremail;
+}
+
+add_filter("gform_field_value_name", "ccsubscribe_populate_name");
+function ccsubscribe_populate_name($value){
+	$current_user = wp_get_current_user();
+	$displayname = $current_user->display_name;
+    return $displayname;
+}
