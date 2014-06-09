@@ -33,11 +33,15 @@ $group_posts = new WP_Query($args);
 			-webkit-box-shadow: 0px 0px 18px 0px rgba(50, 50, 50, 0.79);
 			-moz-box-shadow:    0px 0px 18px 0px rgba(50, 50, 50, 0.79);
 			box-shadow:         0px 0px 18px 0px rgba(50, 50, 50, 0.79);
-		}
+		}	
 	</style>
 	<section id="primary" class="site-content">
 		<div id="content" role="main">
 		<a href="/cchelp/" style="text-decoration:none;color:#000000;"><p style="font-weight:bold;font-size:21pt;">Support | Community Commons</p></a>
+		
+		<div class="clear" id="screamer" style="background-color: #889c3b;width:800px;">
+		<h1><span style="color: #ffffff;">We're glad you're here to use the latest technology and tools to make lasting community change. We'd like to offer some support.</span></h1>
+		</div>		
 <?php
 		$topicarray = array(
 						'Getting Started' => array(
@@ -46,35 +50,45 @@ $group_posts = new WP_Query($args);
 												'text' => 'Getting Started'
 												),
 						'Maps' => array(
-										'slug' => 'maps-2',
+										'slug' => 'maps-3',
 										'color' => '#008eaa',
 										'text' => 'Mapping'
 										),
 						'Reports' => array(
 										'slug' => 'reports',
 										'color' => '#f9b715',
-										'text' => 'Reporting'
+										'text' => 'Reporting and the CHNA'
 										),
 						'Data' => array(
-										'slug' => 'data-2',
+										'slug' => 'data-3',
 										'color' => '#df5827',
-										'text' => 'Commons Data and Uploading Local Data'
+										'text' => 'Commons Data'
 										),
+						'Uploading Local Data' => array(
+										'slug' => 'uploadlocaldata',
+										'color' => '#f9b715',
+										'text' => 'Uploading Local Data'
+										),										
 						'Groups' => array(
-										'slug' => 'groups-2',
+										'slug' => 'groups-3',
 										'color' => '#df5827',
 										'text' => 'Using the Collaboration Spaces'
 										),
 						'Administrators' => array(
 										'slug' => 'administrators',
-										'color' => '#879c3c',
+										'color' => '#008eaa',
 										'text' => 'Being an Administrator'
+										),
+						'Target Intervention Area Tool' => array(
+										'slug' => 'chi-grant-planning',
+										'color' => '#879c3c',
+										'text' => 'Target Intervention Area Tool'
 										)
 						);
 		$typearray = array(
-						'FAQs' => 'faqs',
-						'How-to Exercises' => 'how-to-exercises',
 						'Videos' => 'videos',
+						'How-to Exercises' => 'how-to-exercises',
+						'FAQs' => 'faqs',						
 						'Webinars' => 'webinars'
 						);
 
@@ -111,25 +125,23 @@ $group_posts = new WP_Query($args);
 						
 				?>
 				<div style="width:100%;padding:10px;margin-bottom:25px;background-color:<?php echo $array[$persona]['color']; ?>">
-					<table>
-						<tr>
-							<td>
-								<img src="<?php echo $array[$persona]['image']; ?>" width="75px" />
-							</td>
-							<td>
+					<div>
+						<div style="float:left;width:20%;vertical-align:middle;">
+							<img src="<?php echo $array[$persona]['image']; ?>" width="75px" />
+						</div>
+						<div style="float:right;width:80%;">
+							<div>
 								<h1><span style="color:#ffffff;font-weight:bold;font-size:21pt;"><?php echo $persona; ?></span></h1>
+							</div>
+							<div>
 								<?php echo $array[$persona]['text']; ?>
-								<br /><br />
-							</td>
-						</tr>
-						<tr>
-							<td>
-							</td>
-							<td>
-								<?php echo $array[$persona]['video']; ?>
-							</td>
-						</tr>
-					</table>
+								<br /><br />							
+							</div>							
+						</div>					
+					</div>
+					<div style="width:100%;text-align:center;">
+						<?php echo $array[$persona]['video']; ?>
+					</div>
 				</div>
 				<?php
 					foreach ($topicarray as $topickey => $topicvalue) {
@@ -209,17 +221,13 @@ $group_posts = new WP_Query($args);
 		} 
 		elseif (!empty( $tax_term ) && $tax_term->taxonomy == 'cc_help_topics') 
 		{
-			$topic = $tax_term->name;
+			$topic = $tax_term->name;			
 			$topic_slug = $tax_term->slug;		
 			?>
-				<div style="width:100%;padding:10px;background-color:<?php echo $topicarray[$topic]['color']; ?>">
-					<table>
-						<tr>
-							<td>
-								<h1><span style="color:#ffffff;font-weight:bold;font-size:21pt;"><?php echo $topicarray[$topic]['text']; ?></span></h1>																
-							</td>
-						</tr>
-					</table>
+				<div style="width:795px;padding:10px;background-color:<?php echo $topicarray[$topic]['color']; ?>">
+					<div style="width:100%;text-align:center;">
+						<h1><span style="color:#ffffff;font-weight:bold;font-size:21pt;"><?php echo $topicarray[$topic]['text']; ?></span></h1>
+					</div>
 				</div>	
 			<?php
 				// IF QUERY STRING EXISTS THEN SHOW ALL POSTS OF THAT CATEGORY, ELSE JUST SHOW 3 POSTS
@@ -251,10 +259,15 @@ $group_posts = new WP_Query($args);
 										$cchelptype = ucwords($_GET["type"]);
 									}
 
-									echo "<div id='" . $topicarray[$topic]['text'] . "-" . $_GET["type"] . "' style='padding:10px;width:100%;'>";
+										echo "<div id='" . $topicarray[$topic]['text'] . "-" . $_GET["type"] . "' style='padding:10px;width:795px;'>";
 										echo "<p style='font-weight:bold;font-size:15pt;border-bottom: solid 1px #000000;'>" . $cchelptype . "</p>";						
-										while ( $loop->have_posts() ) : $loop->the_post();	
+										if ($_GET["type"] == "videos" || $_GET["type"] == "how-to-exercises") {
+											echo "<div style='width:100%;'>";
+										}										
+										$cellcount = 0;
 										
+										while ( $loop->have_posts() ) : $loop->the_post();	
+										$cellcount = $cellcount + 1;
 										if ($_GET["type"] == "faqs") {
 												echo "<p>";											
 													echo "<a id='click-";
@@ -270,6 +283,16 @@ $group_posts = new WP_Query($args);
 												echo "' class='entry-content' style='margin-left:15px;display:none;'>";
 													the_content();
 												echo '</div>';													
+											} elseif ($_GET["type"] == "videos" || $_GET["type"] == "how-to-exercises") {
+													if ($cellcount %3 == 0) {
+														//echo "<br />";
+													}
+													echo "<div style='float:left;text-align:center;font-weight:bold;width:33%;vertical-align:bottom;'>";													
+														the_title(); 											
+													echo "<br /><br />";													
+														the_content();																									
+													echo "</div>";
+																									
 											} else {
 												echo "<p style='font-weight:bold;'>";
 													the_title(); 											
@@ -281,6 +304,9 @@ $group_posts = new WP_Query($args);
 												echo '</div>';
 											}
 										endwhile;
+										if ($_GET["type"] == "videos" || $_GET["type"] == "how-to-exercises") {
+											echo "</div>";
+										}										
 									echo "</div>";
 							
 							}
@@ -290,9 +316,7 @@ $group_posts = new WP_Query($args);
 						foreach ($typearray as $typekey => $typevalue) {
 								//GET THE COUNT OF POSTS IN EACH CATEGORY IN ORDER TO DISPLAY VIEW ALL BUTTON
 								$argsall = array(
-								'post_type' => 'cchelp',							
-								'meta_key' => 'cchelp_sticky', 
-								'meta_value' => 'sticky',									
+								'post_type' => 'cchelp',									
 								'tax_query' => array(
 										'relation' => 'AND',
 										array(
@@ -312,7 +336,7 @@ $group_posts = new WP_Query($args);
 														
 								$args = array( 
 								'post_type' => 'cchelp',	
-								'posts_per_page' => 3,
+								'posts_per_page' => 6,
 								'meta_key' => 'cchelp_sticky', 
 								'meta_value' => 'sticky',									
 								'tax_query' => array(
@@ -333,14 +357,15 @@ $group_posts = new WP_Query($args);
 								
 								if ($loop->have_posts()) {		
 							
-									echo "<div id='" . $topicarray[$topic]['text'] . "-" . $typevalue . "' style='padding:10px;width:100%;'>";
+									echo "<div class='content-row clear' id='" . $topicarray[$topic]['text'] . "-" . $typevalue . "' style='padding:10px;width:795px;'>";
 										echo "<p style='font-weight:bold;font-size:15pt;border-bottom: solid 1px #000000;'>" . $typekey . "</p>";
-										if ($typevalue == "videos") {
-												echo "<table><tr>";
+										if ($typevalue == "videos" || $typevalue == "how-to-exercises") {
+											echo "<div style='width:100%;'>";
 										}
+										$cellcount = 0;
 										while ( $loop->have_posts() ) : $loop->the_post();	
-										
-										if ($typevalue == "faqs") {
+											$cellcount = $cellcount + 1;
+											if ($typevalue == "faqs") {
 												echo "<p>";											
 													echo "<a id='click-";
 														the_ID();
@@ -355,17 +380,16 @@ $group_posts = new WP_Query($args);
 												echo "' class='entry-content' style='margin-left:15px;display:none;'>";
 													the_content();
 												echo '</div>';													
-											} elseif ($typevalue == "videos") {
-												echo "<td align='center' style='text-align:center;font-weight:bold;width:33%;vertical-align:bottom;'>";
-													
+											} elseif ($typevalue == "videos" || $typevalue == "how-to-exercises") {
+													if ($cellcount %3 == 0) {
+														//echo "<br />";
+													}
+													echo "<div class='third-block'>";													
 														the_title(); 											
-													echo "<br /><br />";
-													
-														
-													
-														the_content();
-																									
-												echo "</td>";
+													echo "<br /><br />";													
+														the_content();																									
+													echo "</div>";
+												
 											} else {
 												echo "<p style='font-weight:bold;'>";
 													the_title(); 											
@@ -377,13 +401,13 @@ $group_posts = new WP_Query($args);
 												echo '</div>';
 											}
 										endwhile;
-										if ($typevalue == "videos") {
-												echo "</tr></table>";
+										if ($typevalue == "videos" || $typevalue == "how-to-exercises") {
+												echo "</div>";
 										}										
 									echo "</div>";
-									if ( $allcount > 3 ) {
+									if ( $allcount > 6 ) {
 										?>
-										<div style="width:100%;height:50px;">
+										<div style="width:795px;height:50px;">
 											<input type="button" value="View All" style="float:right;" onclick="javascript:viewAll('<?php echo $topicarray[$topic]['slug']; ?>','<?php echo $typevalue; ?>');">
 										</div>									
 										<?php	
@@ -395,7 +419,8 @@ $group_posts = new WP_Query($args);
 			
 			cchelp_footer_buttons();
 		} else {
-
+			cchelp_search();
+			echo "<br /><br />";
 			$COGIScount = 0;
 			$PRIMEcount = 0;
 			foreach ($group_posts->posts as $post) :
@@ -419,80 +444,64 @@ $group_posts = new WP_Query($args);
 									<div style="height:50%;">
 										<div class="shadow" id="divTonya" style="cursor:pointer;width:50%;height:100%;float:left;background-color:#df5827;" title="Go to Tonya's help page">
 											<div style="padding:12px;">
-												<table>
-													<tr>
-														<td>
-															<img style="float:left;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Tonya_Avatar.jpg" width="60px;" />
-														</td>
-														<td style="color:#ffffff;font-weight:bold;font-size:18pt;">
-															Tonya
-														</td>
-													</tr>
-													<tr>
-														<td colspan="2" style="font-size:9pt;">
-															Tonya is a community organizer and advocate. She is a member of the healthy community coalition who has a deep understanding of the community’s history, desires and needs. 
-														</td>
-													</tr>
-												</table>											
+												<div>
+													<div style="width:50%;float:left;vertical-align:middle;">
+														<img style="float:left;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Tonya_Avatar.jpg" width="60px;" />
+													</div>
+													<div style="width:50%;float:right;color:#ffffff;font-weight:bold;font-size:18pt;">
+														Tonya
+													</div>
+													<div style="width:100%;float:left;font-size:9pt;margin-top:15px;">
+														Tonya is a community organizer and advocate. She is a member of the healthy community coalition who has a deep understanding of the community’s history, desires and needs. 
+													</div>
+												</div>
 											</div>
 										</div>
 										<div class="shadow" id="divSara" style="cursor:pointer;width:50%;height:100%;float:right;background-color:#f9b715;" title="Go to Sara's help page">
 											<div style="padding:12px;">
-												<table>
-													<tr>
-														<td style="color:#ffffff;font-weight:bold;font-size:18pt;">
-															Sara
-														</td>
-														<td>
-															<img style="float:right;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Sara_Avatar.jpg" width="60px;" />
-														</td>
-													</tr>
-													<tr>
-														<td colspan="2" style="font-size:9pt;">
-															Sara provides leadership for a local agency focused on serving a wide range of community needs. She often convenes local stakeholders to create conditions that help advance strategy implementation of local coalitions. 
-														</td>
-													</tr>
-												</table>											
+												<div>
+													<div style="width:50%;float:left;color:#ffffff;font-weight:bold;font-size:18pt;">
+														Sara
+													</div>
+													<div style="width:50%;float:left;vertical-align:middle;">
+														<img style="float:right;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Sara_Avatar.jpg" width="60px;" />
+													</div>													
+													<div style="width:100%;float:left;font-size:9pt;margin-top:15px;">
+														Sara provides leadership for a local agency focused on serving a wide range of community needs. She often convenes local stakeholders to create conditions that help advance strategy implementation of local coalitions. 
+													</div>
+												</div>										
 											</div>
 										</div>								
 									</div>
 									<div style="height:50%;">
 										<div class="shadow" id="divDaniel" style="cursor:pointer;width:50%;height:100%;float:left;background-color:#008eaa;" title="Go to Daniel's help page">
 											<div style="padding:12px;">
-												<table>
-													<tr>
-														<td>
-															<img style="float:left;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Daniel_Avatar.jpg" width="60px;" />
-														</td>
-														<td style="color:#ffffff;font-weight:bold;font-size:18pt;">
-															Daniel
-														</td>
-													</tr>
-													<tr>
-														<td colspan="2" style="font-size:9pt;">
-															Daniel is a researcher who often serves as evaluation support for community health initiatives. He is an invited or contracted team member of the community coalition who holds a commitment to letting the data inform the work.
-														</td>
-													</tr>
-												</table>											
+												<div>
+													<div style="width:50%;float:left;vertical-align:middle;">
+														<img style="float:left;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Daniel_Avatar.jpg" width="60px;" />
+													</div>
+													<div style="width:50%;float:right;color:#ffffff;font-weight:bold;font-size:18pt;">
+														Daniel
+													</div>
+													<div style="width:100%;float:left;font-size:9pt;margin-top:15px;">
+														Daniel is a researcher who often serves as evaluation support for community health initiatives. He is an invited or contracted team member of the community coalition who holds a commitment to letting the data inform the work. 
+													</div>
+												</div>										
 											</div>
 										</div>
 										<div class="shadow" id="divMaria" style="cursor:pointer;width:50%;height:100%;float:right;background-color:#879c3c;" title="Go to Maria's help page">
 											<div style="padding:12px;">
-												<table>
-													<tr>
-														<td style="color:#ffffff;font-weight:bold;font-size:18pt;">
-															Maria
-														</td>
-														<td>
-															<img style="float:right;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Maria_Avatar.jpg" width="60px;" />
-														</td>
-													</tr>
-													<tr>
-														<td colspan="2" style="font-size:9pt;">
-															Maria works for a local agency focused on improving health outcomes across communities in need. She serves as co-chair of the healthy community coalition providing coordination support and community health strategy expertise. 
-														</td>
-													</tr>
-												</table>											
+												<div>
+													<div style="width:50%;float:left;color:#ffffff;font-weight:bold;font-size:18pt;">
+														Maria
+													</div>
+													<div style="width:50%;float:left;vertical-align:middle;">
+														<img style="float:right;" src="http://www.communitycommons.org/wp-content/uploads/2014/04/Maria_Avatar.jpg" width="60px;" />
+													</div>													
+													<div style="width:100%;float:left;font-size:9pt;margin-top:15px;">
+														Maria works for a local agency focused on improving health outcomes across communities in need. She serves as co-chair of the healthy community coalition providing coordination support and community health strategy expertise.  
+													</div>
+												</div>										
 											</div>
 										</div>							
 									</div>
@@ -529,14 +538,21 @@ $group_posts = new WP_Query($args);
 			endforeach;
 			wp_reset_postdata();	
 
-			cchelp_search();
+			//Get current logged-in user's BuddyPress role
+			$uid = bp_loggedin_user_id();
+			$bp_user_role = cchelp_get_user_role($uid);			
 			?>	
 				
+			<br /><br />
+			<?php 
+			if ($bp_user_role == 'administrator') {
+			?>			
 				
+			<?php
+			}
+			?>
 				
-	
-				
-			<br /><h1>Check Out a Guidebook</h1><br />
+			<br /><span id="publictools"><h1>Guidebooks</h1></span><br />
 			<div style="width:895px;">
 				<div id="guideStart" class="guidebook" style="background-color:#879c3c;cursor:pointer;border:solid 2px #879c3c;" title="Go to the Getting Started Guidebook">
 					<span class="guidebook-text">Getting Started</span>
@@ -545,22 +561,44 @@ $group_posts = new WP_Query($args);
 					<span class="guidebook-text">Mapping</span>
 				</div>
 				<div id="guideReports" class="guidebook" style="background-color:#f9b715;cursor:pointer;border:solid 2px #f9b715;" title="Go to the Reporting Guidebook">
-					<span class="guidebook-text">Reporting</span>
+					<span class="guidebook-text">Reporting and the CHNA</span>
 				</div>	
 			</div>
+			
+			<div style="width:895px;">
+				<div id="guideCHI" class="guidebook" style="background-color:#879c3c;cursor:pointer;border:solid 2px #879c3c;" title="Go to the CHI and Grant Planning Guidebook">
+					<span class="guidebook-text">Target Intervention Area Tool</span>
+				</div>
+				<div id="guideData" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to the Data Guidebook">
+					<span class="guidebook-text">Commons Data</span>
+				</div>
+			</div>	
+			
+			<?php 
+			if ($bp_user_role == 'administrator') {
+			?>			
+			
 			
 			<div style="width:895px;">
 				<div id="guideGroups" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to the Collaboration Guidebook">
 					<span class="guidebook-text">Using the Collaboration Spaces</span>
 				</div>
-				<div id="guideAdmin" class="guidebook" style="background-color:#879c3c;cursor:pointer;border:solid 2px #879c3c;" title="Go to the Administrator Guidebook">
+				<div id="guideAdmin" class="guidebook" style="background-color:#008eaa;cursor:pointer;border:solid 2px #008eaa;" title="Go to the Administrator Guidebook">
 					<span class="guidebook-text">Being an Administrator</span>
 				</div>
-				<div id="guideData" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to the Data Guidebook">
-					<span class="guidebook-text">Commons Data and Uploading Local Data</span>
+				<div id="guideUploadingData" class="guidebook" style="background-color:#f9b715;cursor:pointer;border:solid 2px #f9b715;" title="Go to the Data Guidebook">
+					<span class="guidebook-text">Uploading Local Data</span>
 				</div>
 			</div>	
+			<?php
+				cchelp_footer_buttons();
+			}
+			?>
 			
+			
+			
+			
+
 
 			
 			<style type="text/css">
@@ -597,25 +635,31 @@ $group_posts = new WP_Query($args);
 						window.location.href = '/cchelp/cc_help_topics/getting-started/';
 					});
 					$( "#guideMaps" ).click(function() {
-						window.location.href = '/cchelp/cc_help_topics/maps-2/';
+						window.location.href = '/cchelp/cc_help_topics/maps-3/';
 					});
 					$( "#guideData" ).click(function() {
-						window.location.href = '/cchelp/cc_help_topics/data-2/';
+						window.location.href = '/cchelp/cc_help_topics/data-3/';
 					});
+					$( "#guideUploadingData" ).click(function() {
+						window.location.href = '/cchelp/cc_help_topics/uploadlocaldata/';
+					});					
 					$( "#guideReports" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/reports/';
 					});
 					$( "#guideGroups" ).click(function() {
-						window.location.href = '/cchelp/cc_help_topics/groups-2/';
+						window.location.href = '/cchelp/cc_help_topics/groups-3/';
 					});
 					$( "#guideAdmin" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/administrators/';
-					});			
+					});	
+					$( "#guideCHI" ).click(function() {
+						window.location.href = '/cchelp/cc_help_topics/chi-grant-planning/';
+					});
 				});
 			</script>					
 
 		<?php	
-			cchelp_footer_buttons();		
+					
 			//echo "<br /><h1>GENERIC POSTS:</h1><br />";	
 
 			// if(have_posts()) : while(have_posts()) : the_post();
@@ -708,12 +752,13 @@ function cchelp_search() {
 			<div>
 				<br /><br />
 				<h3>Search Support</h3>
-				<form action="" method="POST" name="cchelpsearch">			 
+				<form action="#searchresults" method="POST" name="cchelpsearch">			 
 								<input type="text" id="cchelpterms" name="cchelpterms" style="width:350px;" placeholder="Enter keywords"/>			 
 								<input type="hidden" name="cc_post_type" value="post" /> <!-- // hidden 'your_custom_post_type' value -->			 
 								<input type="submit" alt="Search" value="Search" />			 
 				</form>
 			</div>
+			<div id="searchresults">
 			<?php
 			if (isset($_POST['cchelpterms'])) {
 				$args2 = array( 
@@ -722,10 +767,18 @@ function cchelp_search() {
 				);
 				$loop2 = new WP_Query( $args2 );
 				while ( $loop2->have_posts() ) : $loop2->the_post();
+				$helpterms = get_the_terms(get_the_ID(), 'cc_help_types');
+				if( $helpterms && ! is_wp_error( $helpterms ) )
+				{
+					foreach( $helpterms as $ht )
+					{
+						$helptype = $ht->name;
+					}
+				}
 			?>
 					<div class="entry-content">
 					<header class="entry-header clear">
-						<h4 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'CommonsRetheme' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h4>
+						<h4 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'CommonsRetheme' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?><?php echo " [" . $helptype . "]"; ?></a></h4>
 						
 						<?php the_excerpt(); ?>
 					</header>
@@ -734,18 +787,27 @@ function cchelp_search() {
 			<?php
 				endwhile;
 			}	
+			?>
+			</div>
+			<?php
 }	
 	
 function cchelp_footer_buttons() {
 ?>	
-		<br /><br />
+		<br />
+		<div id="search_box">
+		<?php 		
+			cchelp_search(); 		
+		?>
+		</div>
+		<br />
 			<div style="width:895px;">
 				<!--<div id="guideTraining" class="guidebook2" title="Training">
 					<span class="guidebook2-text">View a recorded training webinar, sign up for our next one<br />-OR-<br />Contact us for customized training solutions</span>
 				</div>-->
-				<div id="guideContact" class="guidebook2" title="Contact Us">
-					<span class="guidebook2-text"><strong>Still stuck?</strong><br /><br />Contact us here</span>
-				</div>
+				<a href="https://ip3.zendesk.com/account/dropboxes/20111391" target="_blank"><div id="guideContact" class="guidebook2" style="height:40px;" title="Contact Us">
+					<span class="guidebook2-text" style="top:10px;"><strong>Still stuck? Contact us here</strong></span>
+				</div></a>
 				<!--<div id="guideInspiration" class="guidebook2" title="Inspiration">
 					<span class="guidebook2-text">Need some inspiration?<br />How to use the Commons to create real change in your community</span>
 				</div>-->
@@ -789,14 +851,36 @@ function cchelp_footer_buttons() {
 					$( "#guideTraining" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/getting-started/';
 					});
-					$( "#guideContact" ).click(function() {
-						window.location.href = 'https://ip3.zendesk.com/account/dropboxes/20111391';
-					});
+					// $( "#guideContact" ).click(function() {
+						// window.location.href = 'https://ip3.zendesk.com/account/dropboxes/20111391';
+					// });
 					$( "#guideInspiration" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/data-2/';
-					});		
+					});	
+					var pathname = window.location.pathname;
+					if (pathname == '/cchelp/') {
+						$("#search_box").hide();
+					}
+
 				});		
+
 	</script>
 <?php
 }
+
+function cchelp_get_user_role($user_id){
+    global $wpdb;
+    $user = get_userdata( $user_id );
+    $capabilities = $user->{$wpdb->prefix . 'capabilities'};
+    if ( !isset( $wp_roles ) ){
+        $wp_roles = new WP_Roles();
+    }
+    foreach ( $wp_roles->role_names as $role => $name ) {
+        if ( array_key_exists( $role, $capabilities ) ) {
+            return $role;
+        }
+    }
+    return false;
+}
+
 	?>
