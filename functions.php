@@ -1051,3 +1051,16 @@ function loop_ajax_query_reporting() {
 
 }
 // add_action( 'bp_init', 'loop_ajax_query_reporting' );
+
+// Add filter to remove "Create a Group" at the top of the Groups directory
+// add_filter('bp_get_group_create_button', 'cc_remove_create_a_group_button');
+function cc_remove_create_a_group_button( $args ){
+  return false;
+}
+
+add_filter('bp_restrict_group_creation', 'cc_control_group_creation');
+function cc_control_group_creation(){
+  // True means creation is restricted
+  return true;
+}
+

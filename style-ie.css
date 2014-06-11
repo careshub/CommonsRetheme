@@ -4159,6 +4159,17 @@ ol.progtrckr li.progtrckr-todo:before {
   padding-bottom: 0.4em;
   border-bottom: 1px solid #dedede;
 }
+.item-list-tabs#group-create-tabs ul li {
+  float: left;
+  margin-right: 8px;
+  padding: 8px;
+}
+.item-list-tabs#group-create-tabs ul li a {
+  padding: 0;
+}
+.item-list-tabs#group-create-tabs ul li > a {
+  padding: 0;
+}
 .content-row {
   border-bottom: none;
 }

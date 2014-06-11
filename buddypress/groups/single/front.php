@@ -18,6 +18,10 @@
 		// $meta = get_post_meta( get_the_ID(),'group_home_page_association',false );
 		//print_r($meta);
 	endwhile;
+
+	// Add a hook for plugins to inject content
+	do_action( 'cc_group_home_page_after_content', bp_get_current_group_id() );
+
 ?>
 
 </div>

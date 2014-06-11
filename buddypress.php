@@ -30,7 +30,8 @@ if ( ! ( bp_is_group_single()
 	|| bp_is_user() 
 	|| is_archive( 'bp-doc' )
 	|| bp_is_register_page()
-	|| ( ! bp_displayed_user_id() && bp_is_activity_component() && ! bp_current_action() ) 
+	|| ( ! bp_displayed_user_id() && bp_is_activity_component() && ! bp_current_action() )
+	|| bp_is_group_create() 
 	) )
 	get_sidebar( $sidebar );
 ?>
