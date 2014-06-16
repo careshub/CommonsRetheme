@@ -52,10 +52,10 @@
 				<input class="cc-footer-search-button" type="submit" value="Search">
 				</form>
 			</div>
-	    	<div>
+	    	<!-- <div>
 	    		<h5>Subscribe to our newsletter</h5>
 				<a href="http://visitor.r20.constantcontact.com/d.jsp?llr=dikmfnjab&p=oi&m=1109617158403" title="Subscribe to our newsletter" class="button">Sign up now</a>
-	    	</div>
+	    	</div> -->
 		    <a href="http://www.facebook.com/CommunityCommons" class="facebookx60 iconx60 alignleft"></a>
 		    <a href="https://twitter.com/communitycommon" class="twitterx60 iconx60 alignleft"></a>
 		    <a href="http://www.linkedin.com/company/3194585" class="linkedinx60 iconx60 alignleft"></a>
