@@ -40,7 +40,7 @@
 					);
 				wp_nav_menu( $args );
 				?>
-			<p>Community Commons is inspired by <a href="http://www.advancingthemovement.org">Advancing the Movement</a>, and is powered by <a href="http://www.i-p3.org">IP3</a>.</p>
+			<p>Community Commons is powered by <a href="http://www.i-p3.org">IP3</a> and <a href="http://www.cares.missouri.edu">CARES - University of Missouri</a> .</p>
 			<p>&copy; Community Commons &amp; IP3 | All Rights Reserved.</p>
 			<p>Read our <a href="/terms-of-service">Terms of Service.</a></p>
 		</div>
