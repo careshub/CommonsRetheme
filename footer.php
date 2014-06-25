@@ -40,7 +40,7 @@
 					);
 				wp_nav_menu( $args );
 				?>
-			<p>Community Commons is inspired by <a href="http://www.advancingthemovement.org">Advancing the Movement</a>, and is powered by <a href="http://www.i-p3.org">IP3</a>.</p>
+			<p>Community Commons is powered by <a href="http://www.i-p3.org">IP3</a> and <a href="http://www.cares.missouri.edu">CARES - University of Missouri</a> .</p>
 			<p>&copy; Community Commons &amp; IP3 | All Rights Reserved.</p>
 			<p>Read our <a href="/terms-of-service">Terms of Service.</a></p>
 		</div>
@@ -52,10 +52,10 @@
 				<input class="cc-footer-search-button" type="submit" value="Search">
 				</form>
 			</div>
-	    	<div>
+	    	<!-- <div>
 	    		<h5>Subscribe to our newsletter</h5>
 				<a href="http://visitor.r20.constantcontact.com/d.jsp?llr=dikmfnjab&p=oi&m=1109617158403" title="Subscribe to our newsletter" class="button">Sign up now</a>
-	    	</div>
+	    	</div> -->
 		    <a href="http://www.facebook.com/CommunityCommons" class="facebookx60 iconx60 alignleft"></a>
 		    <a href="https://twitter.com/communitycommon" class="twitterx60 iconx60 alignleft"></a>
 		    <a href="http://www.linkedin.com/company/3194585" class="linkedinx60 iconx60 alignleft"></a>

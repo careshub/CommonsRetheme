@@ -42,10 +42,14 @@ function cc_dequeue_parent_theme_scripts(){
   wp_dequeue_script( 'twentytwelve-navigation' );
   wp_deregister_script( 'twentytwelve-navigation' );
 
-  if(function_exists('is_bbpress')){
-  if ( !is_bbpress() && !bp_is_current_action( 'forum' )  )
-    wp_dequeue_style( 'bbp-default' );
+  //Dequeue bbPress styles if not on forum
+  if( function_exists( 'is_bbpress' ) ){
+    if ( !is_bbpress() && !bp_is_current_action( 'forum' )  )
+      wp_dequeue_style( 'bbp-default' );
 	}
+
+  //Dequeue BuddyPress child theme style -- our styles are in our main style sheets
+    // wp_dequeue_style( 'bp-child-css' );
 }
 
 add_action( 'wp_print_styles', 'cc_dequeue_other_css_and_scripts', 91 );
@@ -61,7 +65,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.33
+          0.34
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
@@ -788,43 +792,6 @@ add_filter( 'body_class', 'hide_group_admin_tabs', 98 );
 
 /* Plugin-specific modifications
 *******************/
-// BuddyPress Docs
-//Setting some defaults for child groups
-add_filter('bp_docs_force_enable_at_group_creation', 'setup_bp_docs_for_child_groups', 10, 1);
-function setup_bp_docs_for_child_groups() {
-  //If this new group is a child group of another group, we'll set up BP docs to match the parent group's setup. This piece disables the docs create step if the new group has a parent group.
-  if ( isset( $_COOKIE["bp_new_group_parent_id"] ) ) {
-    return true;
-  } else { 
-    return false;
-  }
-}
-
-add_filter('bp_docs_default_group_settings', 'bp_docs_default_settings_for_child_groups', 10, 1);
-function bp_docs_default_settings_for_child_groups($settings) {
-  //If this new group is a child group of another group, we'll set up BP docs to match the parent group's setup. This step copies the parent group's attributes over to the child group.
-  //This happens outside the groups environment, so we may have to get the parent ID from the cookie 'bp_new_group_parent_id'
-    $parent_id_cookie = $_COOKIE["bp_new_group_parent_id"] ;
-    $parent_settings = groups_get_groupmeta( $parent_id_cookie, 'bp-docs');
-    
-    if ( !empty($parent_settings) ) {
-      $settings = array(
-          'group-enable'  => isset( $parent_settings['group-enable'] ) ? $parent_settings['group-enable'] : 0,
-          'can-create'  => isset( $parent_settings['can-create'] ) ? $parent_settings['can-create'] : 'admin'
-        );
-    }
-
-    $towrite = PHP_EOL . 'Parent ID from cookie:';
-    $towrite .= print_r($parent_id_cookie, TRUE);
-    $towrite .= PHP_EOL;
-    $towrite .= print_r($settings, TRUE);    
-    $fp = fopen('bp_docs_create.txt', 'a');
-    fwrite($fp, $towrite);
-    fclose($fp);
-
-  return $settings;
-}
-
 //Add comment button to appear next to share button
 function cc_add_comment_button() {
   if ( is_singular() && comments_open() ) {
@@ -1078,37 +1045,3 @@ add_filter( 'invite_anyone_is_large_network', 'change_ia_large_network_value', 2
 function change_ia_large_network_value( $is_large, $count ) {
   return true;
 }
-function cc_dump_ajax_querystring( $query_string, $object ) {
-
-  //Only record initial pageload
-  if ( !is_admin() ) {
-    global $dcs_priorities;
-    $priority = array_shift( $dcs_priorities );
-
-    $towrite = "Query string at " . print_r( $priority, TRUE ) . ": " . print_r( $query_string, TRUE ) . PHP_EOL;
-    $towrite .= "Object: " . print_r( $object, TRUE ) . PHP_EOL;
-    // The channel filter data is stored as a cookie and passed along with the post request
-    if ( ! empty( $_POST['cookie'] ) ) {
-      $post_cookie = wp_parse_args( str_replace( '; ', '&', urldecode( $_POST['cookie'] ) ) );
-    } else {
-      $post_cookie = &$_COOKIE;
-    }
-    // $towrite .= "Cookie data: " . print_r( $post_cookie, TRUE ) . PHP_EOL;
-    $fp = fopen('bp_ajax_querystring.txt', 'a');
-    fwrite($fp, $towrite);
-    fclose($fp);
-  }
-
-  return $query_string;
-}
-
-function loop_ajax_query_reporting() {
-  global $dcs_priorities;
-  $dcs_priorities = array(8, 12, 22, 62, 102);
-
-  foreach ($dcs_priorities as $val) {
-    add_filter( 'bp_ajax_querystring', 'cc_dump_ajax_querystring', $val, 2 );
-  }
-
-}
-// add_action( 'bp_init', 'loop_ajax_query_reporting' );
