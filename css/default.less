@@ -66,17 +66,58 @@ img.no-box {
 
 // layout basics
 .site-content {
-	article.compact {
-		margin-bottom: 24px;
-		margin-bottom: 1.71429rem;
+	article {
+	 	border-bottom: 2px solid @ccblue;
+	 	// border-top: 2px solid @ccblue;
+	 	.entry-header {
+	 		.category-links {
+	 			// display: block;
+	 			margin-bottom: 1.2em;
+	 			a {	
+	 				display: inline-block;
+	 				color: @white;
+	 			    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	 				background-color: @ccblue;
+	 				.font-size(.9);
+	 				line-height: 2;
+	 				text-transform: uppercase;
+	 				padding: 0 0.8em;
+	 			}
+	 		}
+	 		img {
+	 			// margin-top: 2em;
+	 		}
+	 	}
+	 	.entry-meta {
+	 		line-height: 2.2;
+	 		.category-links {
+	 			// display: block;
+	 			// margin-bottom: 1em;
+	 			a {	
+	 				display: inline-block;
+	 				color: @white;
+	 				background-color: @ccblue;
+	 				.border-radius(12px);
+	 				.font-size(.9);
+	 				line-height: 1.8;
+	 				padding: 0 0.8em;
+	 			}
+	 		}
+	 	}
+ 		&.compact {
+			margin-bottom: 24px;
+			margin-bottom: 1.71429rem;
+		}
+		&.ultra-compact {
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+		&.no-divider {
+			border-bottom: none;
+		}
 	}
-	article.ultra-compact {
-		margin-bottom: 0;
-		padding-bottom: 0;
-	}
-	article.no-divider {
-		border-bottom: none;
-	}
+
+
 	.entry-content {
 		// Post attachments -- used in Salud area
 		.attachments-header {

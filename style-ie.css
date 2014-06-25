@@ -1793,6 +1793,38 @@ img.no-box {
   line-height: 2.18182;
   text-transform: none;
 }
+.site-content article {
+  border-bottom: 2px solid #008eaa;
+}
+.site-content article .entry-header .category-links {
+  margin-bottom: 1.2em;
+}
+.site-content article .entry-header .category-links a {
+  display: inline-block;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  background-color: #008eaa;
+  font-size: 12.6px;
+  font-size: 0.9rem;
+  line-height: 2;
+  text-transform: uppercase;
+  padding: 0 0.8em;
+}
+.site-content article .entry-meta {
+  line-height: 2.2;
+}
+.site-content article .entry-meta .category-links a {
+  display: inline-block;
+  color: #ffffff;
+  background-color: #008eaa;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  font-size: 12.6px;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  padding: 0 0.8em;
+}
 .site-content article.compact {
   margin-bottom: 24px;
   margin-bottom: 1.71429rem;
