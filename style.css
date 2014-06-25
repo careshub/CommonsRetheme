@@ -2763,7 +2763,7 @@ body.home-page #primary .quarter-block h3 {
   font-weight: normal;
 }
 .maps-data #primary .choose-tool li {
-  margin-bottom: 2em;
+  padding-bottom: 0;
 }
 .maps-data #primary .choose-tool h4 {
   font-size: 15.400000000000002px;
@@ -2801,7 +2801,7 @@ body.home-page #primary .quarter-block h3 {
   clear: none;
   margin-top: 0;
   margin-bottom: 0;
-  width: 89%;
+  width: 87%;
 }
 #jumplinks h3 {
   display: inline;
