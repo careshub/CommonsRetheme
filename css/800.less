@@ -50,8 +50,36 @@
 	}
 	}//ul
 	#cc-primary-search {
-		display:inline-block;
+		display: inline-block;
 		margin-top: 4px;
+		margin-left: 0;
+		#cc-navbar-search {
+			height: 32px;
+			padding: 0 2px;
+			.cc-nav-input {
+				background-color: rgba( 255, 255, 255, 0 );
+				width: 30px;
+				-webkit-transition-duration: 400ms;
+				-webkit-transition-property: width, background;
+				-webkit-transition-timing-function: ease;
+				-moz-transition-duration: 400ms;
+				-moz-transition-property: width, background;
+				-moz-transition-timing-function: ease;
+				-o-transition-duration: 400ms;
+				-o-transition-property: width, background;
+				-o-transition-timing-function: ease;
+				transition-duration: 400ms;
+				transition-property: width, background;
+				transition-timing-function: ease;
+				&:focus {
+					color: @graydark;
+					width: 200px;
+					background-color: rgba( 255, 255, 255, 0.9 );
+					cursor: text;
+					.inner-glow();
+				}
+			}
+		}
 	}
 
 	.menu-toggler {
@@ -79,7 +107,7 @@
 		// }
 	}
 	.user-home-link {
-    	display: inline-block;
+    	display: block;
     }
 	.secondary {
 		float: right;
@@ -304,150 +332,7 @@ body.home-page {
 		float: right;
 	}
 }
-//GROUPS
-.buddypress {
-	// .site-content { width: 100%; }
-	#content {
-		// float: none;
-		width: 100%;
-		//padding-left: 2%;
-		//border-left: 1px solid #CCC;
-		#item-body {
-			// width: 80.5%;
-			// float: right;
-		}
-		#item-body p, .main-column p, .page p  {
-			// line-height: 1.71429;
-			// margin: 0 0 24px;
-		 //    margin: 0 0 1.71429rem;
-		}
-		h2 {
-			// .font-size(1.5);
-		}
-		h3 {
-			// .font-size(1.3);
-		}
-		h4 {
-			// .font-size(1.1);
-		}
-		h5 {
-			// .font-size(1.0);
-			// color: #636363;
-		 //    //font-size: 0.785714rem;
-		 //    font-weight: bold;
-		 //    line-height: 2.18182;
-		 //    text-transform: uppercase;
-		}
-	}
-}
-.directory.members, .directory.groups {
-	#secondary {
-		width: 22%;
-		float: right;
-		clear: none;
-	}
-	.site-content {
-		width: 74.5%;
-		float: left;
-	}
-	#content {
-		h1 {
-			margin-top: 0;
-		}
-	}
-}
-div.dir-search {
-    margin-top: -3.8em;
-}
 
-// .salud-america {
-// 	#secondary, #tertiary  {
-// 		float:left;
-// 		width: 16%;
-// 		border-right: 1px solid @graymid;
-// 		clear: left;
-// 		border-top: none;
-// 		margin-top: 0;
-		
-// 		.widget {
-// 			margin-right:12px;
-// 		}
-		
-// 	}
-// }
-.buddypress {
-	#secondary, #tertiary  {		
-	}
-}
-.salud-america #secondary .sidebar-activity-tabs { //sub navigation on member and group pages
-		margin-top: .5em;
-		//padding-bottom:1.5em;
-		border-bottom: none;
-		ul {
-			margin: 0 0 .5em 0;
-			padding: 0;
-			li {
-				.outliner();
-				//padding: .8em 1.5em .8em 6em;
-				margin:0 0 .2em -3.5em;
-				//margin: 0 1.5em;
-				display: block;
-				// background-color: @white;
-				.border-radius-variable(4px, 0, 0, 4px);
-				background-color: lighten(@graylight,11);
-				border-color: @graylight @graymid @graylight @graylight ;
-				border-style: solid;
-				border-width: 1px;
-				margin-right: -1px;
-				&.selected, &.current-menu-item {
-					.drop-shadow(-2px, 1px, 2px, 0, 0.1);
-					margin-right: -1px;
-					background-color: @white;
-				    border-color: @graymid @white @graymid @graymid;
-				    //padding-left: 5.3em;
-				    font-weight: 700;
-				    a {
-				    	color: @graydark;		    		    
-				    	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-				    	border:none;
-				    	background: none;
-   					    padding-top: 1em;
-   					    padding-bottom: 1em;
-
-				    }
-				}
-				&:hover {
-					background-color: @white;
-				}
-				a { 
-					// text-decoration: none; 
-					text-align: left;
-					// display: block;
-				    padding: .5em 1.5em .5em 3.6em;
-				    border:none;
-				    background: none;
-				    .font-size(1);
-				}
-				span { 
-					font-weight: 400;
-					display: inline;
-					//line-height: 3;
-					background-color: @graymid;
-					.border-radius(10px);
-					color: @white;
-					padding: 0 6px;
-					margin:0 8px;
-
-					//border:solid 1px @white;
-					&.alert {
-						background-color: lighten(@ccblue,8) ;
-						color:@white;
-						
-						}
-					}
-			}
-		}
-	}
 //Maps & Data page content
 .maps-data #primary #content {
 	article {
@@ -521,228 +406,6 @@ div.dir-search {
 		}
 	}
 }
-
-/***
- * Content Object Headers
- */
-
-div#item-header {
-	div#item-actions {
-		float: right;
-		margin: 0 0 15px 15px;
-	}
-	div#item-header-avatar {
-		img {
-		}
-	}
-
-	#item-header-content {
-		.group-breadcrumbs {
-		}
-		.noms {
-			}
-			.user-nicename {}
-		}
-	.highlight, .activity {
-		margin-left: 2em;
-	}
-	#item-meta {
-	}
-}
-
-.item-list {
-	.item {
-		width: 75%;
-	}
-	.action {
-		width: 20%;
-		float: right;
-		clear: right;
-	}
-	&#groups-list {
-		.item {
-		}
-		.action {
-			float: left;
-			clear: left;
-			width: 80%;
-			margin-left: 95px;
-		}
-	}
-}
-//Registration page
-.standard-form #basic-details-section,
-.standard-form #blog-details-section,
-.standard-form #profile-details-section {
-	// float: left;
-	// width: 48%;
-}
-.register-section {
-	float: left;
-	width: 48%;
-}
-.standard-form #profile-details-section {
-	float: right;
-}
-.register-section.alignright {
-	float: right;
-	clear: right;
-}
-//Salud America
-.salud-america {
-	// .site-content { 
-	// 	float: right;
-	// 	width: 80%;
-	// }
-	// .widget-area { 
-	// 	float: left; 
-	// 	margin-top:3.4em;
-	// }
-	.salud-header {
-		h1 {
-			width: 65%;
-		}
-		.logo {
-			top: 12px;
-			left: -19px;
-			width: 17%;
-		}
-		.sa-kids-photo {
-			display: block;
-			position: absolute;
-			right:-12px;
-			top: 0;
-			z-index: 1;
-			width: 32%;
-			// background: url(img/salud_america/sa-kids-335.png) no-repeat left bottom;
-			img {
-				display: block;
-				width: 100%;
-			}
-		}
-		.social-icons {
-			display:inline-block; 
-			margin-top:32px;
-		}
-	}
-	#content {
-	// embed,
-	// iframe,
-	// object,
-	// video {
-	// 	max-height: 206px;
-	// }
-
-	}
-}
-.tax-sa_advocacy_targets {
-	.advocacy_target_introduction {
-		// header {
-		// 	margin-bottom: 2em;
-		// }
-		// p {
-		// 	width: 45%;
-		// 	float: left;
-		// }
-		// embed,
-		// iframe,
-		// object,
-		// video {
-		// 	width: 45%;
-		// 	float:right;
-		// 	height: auto;
-		// 	margin-left: 5%;
-		// }
-
-	}
-}
-.policy-meta {
-	display: block;
-	// float: left;
-	// width: 90%;
-}
-
-ol.progtrckr {
-    margin: 0;
-    margin-bottom: 1em;
-    padding: 0;
-    list-style-type: none;
-}
-ol.progtrckr li {
-    display: inline-block;
-    text-align: center;
-    margin-left: 0;
-    // line-height: 2em;
-}
-ol.progtrckr[data-progtrckr-steps="2"] li { width: 49%; }
-ol.progtrckr[data-progtrckr-steps="3"] li { width: 33%; }
-ol.progtrckr[data-progtrckr-steps="4"] li { width: 24.9%; }
-ol.progtrckr[data-progtrckr-steps="5"] li { width: 19%; }
-ol.progtrckr[data-progtrckr-steps="6"] li { width: 16%; }
-ol.progtrckr[data-progtrckr-steps="7"] li { width: 14%; }
-
-ol.progtrckr li.progtrckr-done {
-    color: black;
-    border-bottom: 4px solid yellowgreen;
-}
-ol.progtrckr li.progtrckr-todo {
-    color: silver; 
-    border-bottom: 4px solid silver;
-}
-// ol.progtrckr li:after {
-//     content: "\00a0\00a0";
-// }
-ol.progtrckr li:before {
-    position: relative;
-    bottom: -13px;
-    // float: left;
-    // left: 50%;
-    float: right;
-    line-height: 24px;
-    border-radius: 20px;
-}
-ol.progtrckr li.progtrckr-done:before {
-    content: "\2713";
-    color: white;
-	height: 24px;
-    width: 24px;
-    background-color: yellowgreen;
-    border: none;
-}
-ol.progtrckr li.progtrckr-todo:before {
-    content: " ";
-	height: 18px;
-    width: 18px;
-    // color: silver;
-    border: 3px solid silver;
-    background-color: white;
-    // font-size: 1.5em;
-    // bottom: -1.6em;
-}
-
-// Invite Anyone style updates
-
-// .invite-anyone {
-// 	#invite-anyone-group-list li {
-// 		width:45%;
-// 		label {
-// 			width: 85%;
-// 		}
-// 	}
-// 	#send-invite-form {
-// 		.left-menu {
-// 			p {
-// 				margin: .5em 0 0 !important; 
-// 			}
-// 		}
-// 		.main-column {
-// 			float:right;
-// 			width: 65%;
-// 			margin-left: 0 !important;
-// 			// margin-top: 6em;
-// 		}
-// 	}
-// }
 
 //bbPress styling overrides 
 #bbpress-forums {
