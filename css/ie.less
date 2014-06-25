@@ -1,18 +1,27 @@
 @import "less-mixins";
 
+// SA means Salud America
+@import "sa-default";
+// BP means BuddyPress
+@import "bp-default";
 @import "default";
 
 @import "400"; 
 
+@import "sa-600";
 @import "600";
 
 @import "700";
 
+@import "sa-800";
+@import "bp-800";
 @import "800"; 
 
+@import "sa-1000";
 @import "1000";
 
 //IE fixes
+
 .ie8, .ie7 {
 	.primary-navigation .secondary .bp-notifications .bp-notification-list {
 		margin-top:12px;
@@ -41,10 +50,21 @@
 		width: inherit;
 	}
 }
+// Styles for main nav bar search input
 .ie7 #cc-primary-search {
 	margin-top: 0;
 	#cc-navbar-search .cc-nav-input {
-	background-color: @white;
+		margin-top: 1px;
+		width: 150px;
+		line-height: 32px;
+		background-color: @white;
+	}
+}
+.ie8 #cc-primary-search #cc-navbar-search .cc-nav-input {
+	background-color: @black;
+	line-height: 32px;
+	&:focus {
+		background-color: @white;
 	}
 }
 //hasLayout hack for IE7
