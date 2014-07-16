@@ -210,7 +210,7 @@ if ( function_exists( 'register_nav_menus' ) ) {
 //Add new image sizes for front page
 if ( function_exists( 'add_image_size' ) ) { 
   add_image_size( 'feature-front', '576', '600', false ); //not hard cropped, resized proportionally
-  add_image_size( 'feature-large', '625', '350', true ); // hard cropped
+  add_image_size( 'feature-large', '682', '350', true ); // hard cropped
   add_image_size( 'feature-front-sub', '300', '200', true ); // hard cropped
 }
 
