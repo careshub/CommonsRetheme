@@ -51,6 +51,10 @@ img.no-box {
 img.img-border {
 	border: 1px solid @graymid;
 }
+// Hack to stretch old, undersized images to fill post "cards" on blog/cat listings
+.attachment-feature-large {
+	width: 100%;
+}
 .widget-title {
 	.font-size(1.2);
 	.supplemental {
@@ -70,7 +74,7 @@ img.img-border {
 // layout basics
 .site-content {
 	article {
-	 	border-bottom: 2px solid @ccblue;
+	 	// border-bottom: 2px solid @ccblue;
 	 	// border-top: 2px solid @ccblue;
 	 	.entry-header {
 	 		.category-links {
@@ -181,6 +185,11 @@ img.img-border {
 		}
 	}
 }
+ .blog, .archive{
+ 	article {
+	 	border-bottom: 2px solid @ccblue;
+ 	}
+ }
 
 button,
 a.button,
@@ -1760,7 +1769,21 @@ div.docs-info-header {
 		width: 4px;
 	}
 }
-
+//Category archive header
+body.category {
+	.archive-header {
+		background-color: @ccblue;
+		border-bottom: none;
+		padding-bottom: 0;
+		.archive-title {
+			.font-size(1.2);
+			color: @white;
+		    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+			padding-left: 4%;
+			margin: 0;
+		}
+	}
+}
 //Tag archive header
 body.tag .archive-header .archive-title {
 	background-color: @ccblue;
