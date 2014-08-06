@@ -4,7 +4,7 @@
 		<span class="group-type"><?php bp_group_type();?></span><span class="group-tree">
 		<?php
 		if ( function_exists('bp_group_hierarchy_get_breadcrumbs') )  {
-			echo 'Group Tree: </em>'; 
+			echo 'Hub Tree: </em>'; 
 			echo bp_group_hierarchy_get_breadcrumbs('&ensp;&gt;&ensp;', false); 
 		}
 	?></span></div> 
@@ -41,7 +41,7 @@
 
 					do_action( 'bp_before_group_menu_mods' ); ?>
 
-					<h5><?php _e( 'Group Moderators' , 'buddypress' ); ?></h5>
+					<h5><?php _e( 'Hub Moderators' , 'buddypress' ); ?></h5>
 
 					<?php bp_group_list_mods();
 
