@@ -159,6 +159,10 @@ img.img-border {
 		li {
 			margin-bottom: 0.4em;
 			padding-bottom: 0.4em;
+			ul {
+				list-style-type: circle;
+				margin-top: 1em;
+			}
 		}
 		&.no-bullets {
 			list-style-type: none;
@@ -172,6 +176,11 @@ img.img-border {
 				float: left;
 				margin-left: 0;
 				margin-right: 1.6em;
+				&.alignright {
+					float: right;
+					margin-right: 0;
+					margin-left: 1.6em;
+				}
 			}
 		}
 		&.acfb-holder {
@@ -684,6 +693,41 @@ h5 {
 hr {
     margin: 24px 0 24px;
 }
+.message {
+	margin: 0 0 15px;
+	&.info {
+		background-color: lighten(@ccyellow, 40%);
+		border: 1px solid @ccyellow;
+		padding: 1em;
+	}
+	&.error p {
+		background-color: @ccred;
+		border-color: darken(@ccred, 15%);
+		clear: left;
+		color: @white;
+	}
+	&.updated {
+		clear: both;
+		p {
+			background-color: @ccgreen;
+			border-color: darken(@ccgreen, 15%);
+			color: @white;
+		}
+	}
+}
+
+//Toggling 
+.toggleable {
+	.toggle-switch {
+		margin-bottom: 0;
+	}
+	&.toggle-closed .toggle-content {
+		display: none;
+	}
+	&.toggle-open .toggle-content {
+		display: block;
+	}
+}
 
 //Sharing buttons
 .bp-share-it-container {
@@ -1008,6 +1052,15 @@ body.home-page {
 	img {
 		max-width: 80%;
 	}
+}
+
+.text-columns-three{
+	-moz-column-count: 3;
+	-moz-column-gap: 5%;
+	-webkit-column-count: 3;
+	-webkit-column-gap: 5%;
+	column-count: 3;
+	column-gap: 5%;
 }
 
 //Responsive line break
