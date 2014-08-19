@@ -5,38 +5,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/wp-load.php');
 
 $selstate = $_POST['selstate'];
 $geog = $_POST['geog'];
-$geogstr = "";
 
- if ($geog === 'County') {     
-     $geogstr="counties-";
- }
- 
-if ($geog === 'City') {     
-     $geogstr="cities-";
- }
- 
-if ($geog === 'School District') {     
-    $geogstr="schooldistricts-";
-}
- 
-if ($geog === 'US Congressional District') {     
-    $geogstr="uscongressionaldistricts-";
- }
- 
-if ($geog === 'State House District') {     
-    $geogstr="statehousedistricts-";
- }
- 
-if ($geog === 'State Senate District') {     
-    $geogstr="statesenatedistricts-";
- }
+$geog_str_prefix = sa_get_geography_prefix($geog);
 
-
-
-if($selstate)
+if( $selstate )
 {
+    //get the selected state slug
+    $state_term = get_term_by('id', $selstate, 'geographies');
+    //Trim the "-state" from the end of the state slug
+    $state_clean = substr( $state_term->slug, 0, -6);
+
     if ($geog) {     
-        $thisid = $geogstr . $selstate;
+        $thisid = $geog_str_prefix . $state_clean;
         $geoterm = get_term_by('slug', $thisid, 'geographies'); 
         $tid = $geoterm->term_id;
             $args = array(
@@ -46,20 +26,8 @@ if($selstate)
             $terms = get_terms( 'geographies', $args );
             if ( $terms ) {                    
                     foreach ( $terms as $term ) {
-                            printf( '<option value="' . $term->name . '">' . $term->name . '</option>' );
+                            printf( '<option value="' . $term->term_id . '">' . $term->name . '</option>' );
                     }
             }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-?>

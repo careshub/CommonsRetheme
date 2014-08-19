@@ -1,11 +1,10 @@
 <?php 
-function add_custom_taxonomies() {
+add_action( 'init', 'register_taxonomy_sa_geographies' );
+
+function register_taxonomy_sa_geographies() {
 	// Add new "Geographies" taxonomy to Salud America Policies
-	register_taxonomy('geographies', 'sapolicies', array(
-		// Hierarchical taxonomy (like categories)
-		'hierarchical' => true,
-		// This array of options controls the labels displayed in the WordPress Admin UI
-		'labels' => array(
+
+$labels = array(
 			'name' => _x( 'Geographies', 'taxonomy general name' ),
 			'singular_name' => _x( 'Geography', 'taxonomy singular name' ),
 			'search_items' =>  __( 'Search Geographies' ),
@@ -17,15 +16,24 @@ function add_custom_taxonomies() {
 			'add_new_item' => __( 'Add New Geography' ),
 			'new_item_name' => __( 'New Geography Name' ),
 			'menu_name' => __( 'Geographies' ),
-		),
-		// Control the slugs used for this taxonomy
+		);
+ 
+$args = array( 
+        'labels' => $labels,
+        'public' => false,
+        // 'show_in_nav_menus' => false,
+        // 'show_ui' => false,
+        'show_tagcloud' => false,
+        'show_admin_column' => false,
+        'hierarchical' => true,
 		'rewrite' => array(
-			'slug' => 'geographies', // This controls the base slug that will display before each term
-			'with_front' => false, // Don't display the category base before "/locations/"
-			'hierarchical' => true // This will allow URL's like "/locations/boston/cambridge/"
-		),
-                'show_ui' => false,
-	));
+					'slug' => 'geographies', // This controls the base slug that will display before each term
+					'with_front' => false, // Don't display the category base before "/locations/"
+					'hierarchical' => true // This will allow URL's like "/locations/boston/cambridge/"
+				),
+       // 'query_var' => true
+    );
+
+    register_taxonomy( 'geographies', 'sapolicies', $args );
         
 }
-add_action( 'init', 'add_custom_taxonomies', 0 );

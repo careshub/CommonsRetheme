@@ -9,25 +9,35 @@
 
 //print_r($post);
 // echo 'META:';
-
+ 
 $custom_fields = get_post_custom($post->ID);
 $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
-	foreach ( $terms as $term ) {
-		$advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
-		$target_icons[] = $term->slug;
-	}
-	$advocacy_targets = join( ', ', $advocacy_targets );
+	if ( !empty ($terms) ) :
+		foreach ( $terms as $term ) {
+
+			// $advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
+			$advocacy_targets[] = '<a href="' . cc_get_the_cpt_tax_intersection_link( 'sapolicies', 'sa_advocacy_targets', $term->slug ) .'">'.$term->name.'</a>';
+		}
+		$advocacy_targets = join( ', ', $advocacy_targets );
+	endif; //check for empty terms
 
 $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
-	foreach ( $tags as $tag ) {
-		$policy_tags[] = '<a href="' . get_term_link($tag->slug, 'sa_policy_tags') .'">'.$tag->name.'</a>';
-	}
-	$policy_tags = join( ', ', $policy_tags );
+	if ( !empty ($tags) ) :
+		foreach ( $tags as $tag ) {
+			// $policy_tags[] = '<a href="' . get_term_link($tag->slug, 'sa_policy_tags') .'">'.$tag->name.'</a>';
+			$policy_tags[] = '<a href="' . cc_get_the_cpt_tax_intersection_link( 'sapolicies', 'sa_policy_tags', $tag->slug ) .'">'.$tag->name.'</a>';
+		}
+
+		$policy_tags = join( ', ', $policy_tags );
+	endif; //check for empty tags
+
 // print_r($tags);
 // echo $policy_tags;
 
 // echo '<pre>';
-// print_r($custom_fields); 
+// print_r($terms); 
+// echo PHP_EOL . $post->ID . PHP_EOL;
+// print_r($advocacy_targets_id_array);
 // echo '</pre>';
 
 // echo "<br />";
@@ -38,59 +48,72 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 
 //Progress meter
 	$progress = $custom_fields['sa_policystage'][0];
-		switch ($progress) {
-	    case "Pre Policy":
-	        $percentage = 25;
-	        $progress_label = "in pre-policy";
-	        break;
-	    case "Develop Policy":
-			$percentage = 50;
-	        $progress_label = 'in development';
-	        break;
-	    case "Enact Policy":
-			$percentage = 75;
-	        $progress_label = 'enacted';
-	       	break;
-	    case "Post Policy":
-			$percentage = 75;
-	        $progress_label = 'in post-policy';
-	       	break;
-		}
+		// switch ($progress) {
+	 //    case "emergence":
+	 //        $percentage = 25;
+	 //        $progress_label = 'in emergence';
+	 //        break;
+	 //    case "development":
+		// 	$percentage = 50;
+	 //        $progress_label = 'in development';
+	 //        break;
+	 //    case "enactment":
+		// 	$percentage = 75;
+	 //        $progress_label = 'enacted';
+	 //       	break;
+	 //    case "implementation":
+		// 	$percentage = 100;
+	 //        $progress_label = 'in implementation';
+	 //       	break;
+	 //    default:
+		//     $percentage = 0;
+	 //        $progress_label = 'in emergence';
+		// 	break;
+
+		// }
 	//echo $progress_label . " " . $percentage;
 
 ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( 'main-article' ); ?>>
 		<div class="entry-content">
 			<header class="entry-header clear">
-				<h1 class="entry-title"><?php the_title(); ?></h1>
+				<h1 class="entry-title screamer sapurple"><?php the_title(); ?></h1>
 				<?php //echo "<br />"; ?>
-				<?php if ( isset( $target_icons ) ) {
-						foreach ($target_icons as $target_icon) {
-							echo '<span class="' . $target_icon . 'x30"></span>';
-						}
-					}
-				?>
-				<p class="location"><?php //echo $location; 
-						if (function_exists('salud_the_location')) {
-							salud_the_location();
-						}
-					?></p>
-				<div class="meter-box clear">
-					<p>This change is <a href="/saresources/spectrum/" title="More information about policy development"><?php echo $progress_label; ?></a>.
-					<div class="meter nostripes">
-						<span style="width: <?php echo $percentage; ?>%"><span></span></span>
+				<div class="header-meta clear">
+					<?php if (function_exists('salud_the_target_icons')) {
+							salud_the_target_icons();
+							}
+					?>
+					<p class="location"><?php //echo $location; 
+							if (function_exists('salud_the_location')) {
+								salud_the_location();
+							}
+						?><span class="sa-policy-date">Posted <?php echo get_the_date(); ?>.</span></p>
+				<!-- <div class="meter-box clear">
+					<p>This change is <a href="/saresources/spectrum/" title="More information about policy development"><?php echo $progress_label; ?></a>.</p>
+					<div class="meter">
+						<span style="width: <?php echo $percentage; ?>%"></span>
 					</div>
-				</div> <!-- end .meter-box -->
+				</div> --> <!-- end .meter-box -->
+
+					<?php cc_the_policy_progress_tracker( $progress ); ?>
+				</div>	
+
+				<!-- <p class="datestamp">Posted <?php echo get_the_date(); ?>.</p> -->
 				
 			</header>
 
 
 			<?php the_content(); ?>
 
+			<?php 
+			if (isset($advocacy_targets)) { 
+					?>
 			<p class="sa-policy-meta">Topics:
 				<?php echo $advocacy_targets; ?>
 			</a></p>
+			<?php } ?>
 			<?php 
 			if (isset($policy_tags)) { 
 					?>
@@ -98,12 +121,21 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 					<?php echo $policy_tags; ?>
 				</a></p>
 			<?php } ?>
+			<?php 
+			if ( !empty( $custom_fields['sa_policytype'][0] ) ) { 
+					?>
 			<p class="sa-policy-meta">This change is of the type: <a href="#">
 				<?php echo $custom_fields['sa_policytype'][0];
 				// echo $advocacy_targets;
 				?>
 			</a></p>
+			<?php } ?>
 
+			<?php 
+				if ( function_exists('cc_add_comment_button') ) { 
+					cc_add_comment_button(); 
+				} 
+			?>
 			<?php 
 				if ( function_exists('bp_share_post_button') ) { 
 					bp_share_post_button(); 
@@ -193,8 +225,7 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 
 			<?php //wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
-		<footer class="entry-meta">
-                    
-			<?php edit_post_link( __( 'Edit', 'twentytwelve' ), '<span class="edit-link">', '</span>' ); ?>
-		</footer><!-- .entry-meta -->
+		<!-- <footer class="entry-meta"> -->
+			<?php //edit_post_link( __( 'Edit', 'twentytwelve' ), '<span class="edit-link">', '</span>' ); ?>
+		<!-- </footer> --><!-- .entry-meta -->
 	</article><!-- #post -->

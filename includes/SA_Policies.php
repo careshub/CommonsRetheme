@@ -32,9 +32,9 @@ function SA_policies_init()
     'show_in_menu' => true,
     // 'menu_position' => 22,
     'taxonomies' => array('sa_advocacy_targets', 'sa_policy_tags'),
-    //'has_archive' => 'sapolicies',
     // 'supports' => array('title','editor','excerpt','trackbacks','custom-fields','comments','revisions','thumbnail','author','page-attributes',),
-    'supports' => array('title','editor','comments'),
+    'has_archive' => true,
+    'supports' => array('title','editor','comments', 'thumbnail'),
   	'capability_type' => 'sapolicies',
   	'map_meta_cap' => true
 	);
@@ -132,16 +132,28 @@ function sapolicy_remove_metas() {
 function sa_geog_meta_box()
 {
     global $post;
-    $custom = get_post_custom($post->ID);
-    $geog = $custom["sa_geog"][0];
-    $state = $custom["sa_state"][0];
-    $selectedgeog = $custom["sa_finalgeog"][0];
-    $sa_latitude = $custom["sa_latitude"][0];
-    $sa_longitude = $custom["sa_longitude"][0];
-    $sa_nelat = $custom["sa_nelat"][0];
-    $sa_nelng = $custom["sa_nelng"][0];
-	$sa_swlat = $custom["sa_swlat"][0];
-    $sa_swlng = $custom["sa_swlng"][0];
+   //  $custom = get_post_custom($post->ID);
+   //  $geog = $custom["sa_geog"][0];
+   //  $state = $custom["sa_state"][0];
+   //  $selectedgeog = $custom["sa_finalgeog"][0];
+   //  $sa_latitude = $custom["sa_latitude"][0];
+   //  $sa_longitude = $custom["sa_longitude"][0];
+   //  $sa_nelat = $custom["sa_nelat"][0];
+   //  $sa_nelng = $custom["sa_nelng"][0];
+  	// $sa_swlat = $custom["sa_swlat"][0];
+   //  $sa_swlng = $custom["sa_swlng"][0];
+
+    //Walk up the geographies taxonomy from the selected geography
+    //Get the Geography term for this post
+    $geo_tax = wp_get_object_terms( $post->ID, 'geographies' );
+    $geo_tax_id = $geo_tax[0]->term_id;
+
+    //Helper function returns the type of geography we're working with.
+    $geo_type = cc_get_the_geo_tax_type();
+
+    //Get the state name in human-readable format
+    $geo_tax_state = cc_get_the_geo_tax_state();
+
 ?>
 <style type="text/css">
     #leftcolumn, #rightcolumn, #leftcolumn2, #rightcolumn2  { width: 44%; margin-right: 3%; float: left; }
@@ -150,47 +162,68 @@ function sa_geog_meta_box()
 <div id="leftcolumn">
     <!-- <h4>Geography</h4> -->
     <ul id="sa_geog_select">
-      <li><input type="radio" name="sa_geog" id="sa_geog_national" value="National" <?php checked( $geog, 'National' ); ?>> <label for="sa_geog_national">National</label></li>
-      <li><input type="radio" name="sa_geog" id="sa_geog_state" value="State" <?php checked( $geog, 'State' ); ?>> <label for="sa_geog_state">State</label></li>
-      <li><input type="radio" name="sa_geog" id="sa_geog_county" value="County" <?php checked( $geog, 'County' ); ?>> <label for="sa_geog_county">County</label></li>
-      <li><input type="radio" name="sa_geog" id="sa_geog_city" value="City" <?php checked( $geog, 'City' ); ?>> <label for="sa_geog_city">City</label></li>
-      <li><input type="radio" name="sa_geog" id="sa_geog_school_district" value="School District" <?php checked( $geog, 'School District' ); ?>> <label for="sa_geog_school_district">School District</label></li>
-      <li><input type="radio" name="sa_geog" id="sa_geog_us_congress" value="US Congressional District" <?php checked( $geog, 'US Congressional District' ); ?>> <label for="sa_geog_us_congress">US Congressional District</label></li>
-      <li><input type="radio" name="sa_geog" id="sa_geog_state_house" value="State House District" <?php checked( $geog, 'State House District' ); ?>> <label for="sa_geog_state_house">State House District</label></li>
-      <li><input type="radio" name="sa_geog" id="sa_geog_state_senate" value="State Senate District" <?php checked( $geog, 'State Senate District' ); ?>> <label for="sa_geog_state_senate">State Senate District</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_national" value="National" <?php checked( $geo_type, 'National' ); ?>> <label for="sa_geog_national">National</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_state" value="State" <?php checked( $geo_type, 'State' ); ?>> <label for="sa_geog_state">State</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_county" value="County" <?php checked( $geo_type, 'County' ); ?>> <label for="sa_geog_county">County</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_city" value="City" <?php checked( $geo_type, 'City' ); ?>> <label for="sa_geog_city">City</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_school_district" value="School District" <?php checked( $geo_type, 'School District' ); ?>> <label for="sa_geog_school_district">School District</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_us_congress" value="US Congressional District" <?php checked( $geo_type, 'US Congressional District' ); ?>> <label for="sa_geog_us_congress">US Congressional District</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_state_house" value="State House District" <?php checked( $geo_type, 'State House District' ); ?>> <label for="sa_geog_state_house">State House District</label></li>
+      <li><input type="radio" name="sa_geog" id="sa_geog_state_senate" value="State Senate District" <?php checked( $geo_type, 'State Senate District' ); ?>> <label for="sa_geog_state_senate">State Senate District</label></li>
     </ul>
+   <!-- <p> Geography:<pre>
+      <?php print_r($geo_tax);
+      echo PHP_EOL . $geo_tax_id;  ?>
+    </pre>
+    </p>
+    <p> Geography type:<pre>
+      <?php print_r($geo_type_terms); 
+        echo PHP_EOL . $geo_type; ?>
+    </pre>
+    </p>
+    <p> State:<pre>
+      <?php print_r($geo_tax_state); ?>
+    </pre>
+    </p> -->
 
 </div>
 <div id="rightcolumn">
     <div id="states">
-        <?php
-  //Populate States selectbox 
-	$args5 = array(
-                'parent' => 718,
-                'hide_empty' => 0      
-	);
-        
-	$terms = get_terms( 'geographies', $args5 );
+  <?php
+    //Set up geographies
+    //Get the terms, starting by finding the starting pointsave
+    $geo_tax_top_level_term_id = get_geo_tax_top_level_term_id();
+    // print_r($geo_tax_top_level_term_id);
+
+    //Populate States selectbox, states are direct descendants of the top level geography term
+    $state_args = array(
+                  'parent' => $geo_tax_top_level_term_id,
+                  'hide_empty' => 0      
+    );
+          
+    $state_terms = get_terms( 'geographies', $state_args );
   // echo '<pre>';
   // print_r($geog);
   // print_r($state);
   // print_r($selectedgeog);
+  // print_r($top_level_geo);
+  // print_r($state_args);
   // echo '</pre>';
         
-	if ( $terms ) {
+	if ( $state_terms ) {
     echo '<select name="sa_state" id="sa_state" class="sa_state">';
 
-  		foreach ( $terms as $term ) {
-        echo '<option value="' . $term->name . '"' ;
-        if (!empty($state)) {
-          echo ( $state == $term->name ? ' selected="selected"' : '' );
+  		foreach ( $state_terms as $state_term ) {
+        echo '<option value="' . $state_term->term_id . '"' ;
+        if (!empty( $geo_tax_state )) {
+          echo ( ( $geo_tax_state == $state_term->name ) ? ' selected="selected"' : '' );
         }
-        echo '>'. $term->name . '</option>';
+        echo '>'. $state_term->name . '</option>';
   		}
 		echo '</select>';
 	} else {
-            print('no terms');
-        }
+    print('no terms');
+  }
 
         ?>   
 
@@ -201,10 +234,10 @@ function sa_geog_meta_box()
                 <select name="sa_selectedgeog" id="sa_selectedgeog" class="sa_selectedgeog">
                 <?php
                 //Don't bother to try to load options if the geog value is empty or national or state.
-                 if ( !empty($geog) && !in_array($geog, array ('National','State')) ) {
-                    $geog_str_prefix = sa_get_geography_prefix($geog);
+                 if ( !empty( $geo_type ) && !in_array( $geo_type, array ('National','State') ) ) {
+                    $geog_str_prefix = sa_get_geography_prefix($geo_type);
 
-                    $geo_search_slug = $geog_str_prefix . $state;
+                    $geo_search_slug = $geog_str_prefix . $geo_tax_state;
                     $geoterm = get_term_by('slug', $geo_search_slug, 'geographies'); 
                     $tid = $geoterm->term_id;
                         $args = array(
@@ -212,11 +245,12 @@ function sa_geog_meta_box()
                                 'hide_empty' => 0,
                         );
                         $terms = get_terms( 'geographies', $args );
+                        //The old way stored the final choice as text.
                         if ( $terms ) {                    
                                 foreach ( $terms as $term ) {
-                                   echo '<option value="' . $term->name . '"' ;
-                                    if (!empty($selectedgeog)) {
-                                      echo ( $selectedgeog == $term->name ? ' selected="selected"' : '' );
+                                   echo '<option value="' . $term->term_id . '"' ;
+                                    if (!empty( $geo_tax_id )) {
+                                      echo ( ( $geo_tax_id == $term->term_id )  ? ' selected="selected"' : '' );
                                     }
                                     echo '>'. $term->name . '</option>';
                                     }
@@ -228,14 +262,16 @@ function sa_geog_meta_box()
                  ?>                   
                     
                 </select>
-                <input type="hidden" id="sa_finalgeog" value="<?php echo $selectedgeog; ?>" name="sa_finalgeog" />
-                <input type="hidden" id="sa_latitude" value="<?php echo $sa_latitude; ?>" name="sa_latitude">
-                <input type="hidden" id="sa_longitude" value="<?php echo $sa_longitude; ?>" name="sa_longitude">
-				
-				<input type="hidden" id="sa_nelat" value="<?php echo $sa_nelat; ?>" name="sa_nelat">
-				<input type="hidden" id="sa_nelng" value="<?php echo $sa_nelng; ?>" name="sa_nelng">
-				<input type="hidden" id="sa_swlat" value="<?php echo $sa_swlat; ?>" name="sa_swlat">
-				<input type="hidden" id="sa_swlng" value="<?php echo $sa_swlng; ?>" name="sa_swlng">
+                <!-- <input id="sa_finalgeog" value="<?php echo $selectedgeog; ?>" name="sa_finalgeog" />
+                <input id="sa_state-check" disabled="disabled" value="<?php echo $state; ?>" name="sa_finalgeog" /> -->
+                <!-- <div id="geography_coords">
+                  <input id="sa_latitude" value="<?php echo $sa_latitude; ?>" name="sa_latitude">
+                  <input id="sa_longitude" value="<?php echo $sa_longitude; ?>" name="sa_longitude">
+                  <input id="sa_nelat" value="<?php echo $sa_nelat; ?>" name="sa_nelat">
+                  <input id="sa_nelng" value="<?php echo $sa_nelng; ?>" name="sa_nelng">
+                  <input id="sa_swlat" value="<?php echo $sa_swlat; ?>" name="sa_swlat">
+                  <input id="sa_swlng" value="<?php echo $sa_swlng; ?>" name="sa_swlng">
+                </div> -->
             </div>            
         </div>
 </div>
@@ -269,6 +305,10 @@ function sa_policy_meta_box() {
     $post3 = $custom["sa_post3"][0];
     $dateenacted = $custom["sa_dateenacted"][0];
     $dateimplemented = $custom["sa_dateimplemented"][0];
+    $emergencedatestg = $custom["sa_emergencedate_stg"][0];
+    $developmentdatestg = $custom["sa_developmentdate_stg"][0];
+    $enactmentdatestg = $custom["sa_enactmentdate_stg"][0];
+    $implementationdatestg = $custom["sa_implementationdate_stg"][0];
 
 
    
@@ -280,30 +320,55 @@ function sa_policy_meta_box() {
         }
        
 ?> 
-<!-- TODO: switch types to a taxonomy -->
+<!-- TODO: switch types to a taxonomy 
+      Also use sensible select select-->
     <strong>Type:</strong><br>
     <select name="sa_policytype">
-      <option selected="true" value="<?php echo $sapolicy_type; ?>"><?php echo $ptdef; ?></option>
-      <option value="Legislation/Ordinance">Legislation/Ordinance</option>
-      <option value="Resolution">Resolution</option>
-      <option value="Tax Ordinance">Tax Ordinance</option>
-      <option value="Internal Policy">Internal Policy</option>
-      <option value="Executive Order">Executive Order</option>
-      <option value="Plan">Plan</option>
-      <option value="Design Manual">Design Manual</option>
-      <option value="Other">Other</option>  
+      <option <?php selected( $sapolicy_type, "Legislation/Ordinance" ); ?> value="Legislation/Ordinance">Legislation/Ordinance</option>
+      <option <?php selected( $sapolicy_type, "Resolution" ); ?> value="Resolution">Resolution</option>
+      <option <?php selected( $sapolicy_type, "Tax Ordinance" ); ?> value="Tax Ordinance">Tax Ordinance</option>
+      <option <?php selected( $sapolicy_type, "Internal Policy" ); ?> value="Internal Policy">Internal Policy</option>
+      <option <?php selected( $sapolicy_type, "Executive Order" ); ?> value="Executive Order">Executive Order</option>
+      <option <?php selected( $sapolicy_type, "Design Manual" ); ?> value="Design Manual">Plan</option>
+      <option <?php selected( $sapolicy_type, "Design Manual" ); ?> value="Design Manual">Design Manual</option>
+      <option <?php selected( $sapolicy_type, "Other" ); ?> value="Other">Other</option>  
     </select>
     <br><br>
 <div id="leftcolumn2">
     <h4>Stage:</h4>
     <ul id="policy_stage_select">
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_pre_policy" value="emergence" <?php checked( $sapolicy_stage, 'emergence' ); ?>> <label for="sa_policystage_pre_policy">Emergence</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_pre_policy" value="emergence" <?php checked( $sapolicy_stage, 'emergence' ); ?> > <label for="sa_policystage_pre_policy">Emergence</label><br />
+        <input type="text" id="sa_emergencedate_stg" name="sa_emergencedate_stg" placeholder="Emergence start date" value="<?php 
+                if ($emergencedatestg != "") {
+                    echo $emergencedatestg;
+                }
+           ?>"/></li>
 
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_develop_policy" value="development" <?php checked( $sapolicy_stage, 'development' ); ?>> <label for="sa_policystage_develop_policy">Development</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_develop_policy" value="development" <?php checked( $sapolicy_stage, 'development' ); ?>> <label for="sa_policystage_develop_policy">Development</label><br />
+        <input type="text" id="sa_developmentdate_stg" name="sa_developmentdate_stg" placeholder="Development start date" value="<?php 
+                if ($developmentdatestg != "") {
+                    echo $developmentdatestg;
+                }
+           ?>"/></li>
       
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_enact_policy" value="enactment" <?php checked( $sapolicy_stage, 'enactment' ); ?>> <label for="sa_policystage_enact_policy">Enactment</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_enact_policy" value="enactment" <?php checked( $sapolicy_stage, 'enactment' ); ?>> <label for="sa_policystage_enact_policy">Enactment</label><br />
+        <input type="text" id="sa_enactmentdate_stg" name="sa_enactmentdate_stg" placeholder="Enactment date" value="<?php 
+                if ($enactmentdatestg != "") {
+                    echo $enactmentdatestg;
+                }
+           ?>"/></li>
       
-      <li><input type="radio" name="sa_policystage" id="sa_policystage_post_policy" value="implementation" <?php checked( $sapolicy_stage, 'implementation' ); ?>> <label for="sa_policystage_post_policy">Implementation</label></li>
+      <li><input type="radio" name="sa_policystage" id="sa_policystage_post_policy" value="implementation" <?php checked( $sapolicy_stage, 'implementation' ); ?>> <label for="sa_policystage_post_policy">Implementation</label><br />
+        <!-- <input type="text" id="sa_implementationdate_stg" placeholder="Enter date here" value="<?php 
+                if ($implementationdatestg != "") {
+                    echo $implementationdatestg;
+                }
+           ?>"/> -->
+           <input id="sa_dateimplemented" name="sa_dateimplemented" placeholder="Implementation start date" value="<?php 
+                if ($dateimplemented != "") {
+                    echo $dateimplemented;
+                }
+           ?>"></li>
     </ul>
 
 </div>
@@ -338,7 +403,7 @@ function sa_policy_meta_box() {
                    > <label for="sa_enact2">Frame Policy</label><br />
             <input type="checkbox" id="sa_enact3" name="sa_enact3" value='Pass Policy or Legislation' <?php checked( $enact3, 'Pass Policy or Legislation' ); ?>              
                    > <label for="sa_enact3">Pass Policy or Legislation</label><br />
-            <label for="sa_dateenacted">Date Enacted<label><br />
+            <label for="sa_dateenacted">Date Enacted <em>legal date</em><label><br />
             <input id="sa_dateenacted" name="sa_dateenacted" value="<?php 
                 if ($dateenacted != "") {
                     echo $dateenacted;
@@ -351,12 +416,12 @@ function sa_policy_meta_box() {
             <input type="checkbox" id="sa_post1" name="sa_post1" value='Implement Policy' <?php checked( $post1, 'Implement Policy' ); ?>> <label for="sa_post1">Implement Policy</label><br />
             <input type="checkbox" id="sa_post2" name="sa_post2" value='Ensure Access and Equity' <?php checked( $post2, 'Ensure Access and Equity' ); ?>> <label for="sa_post2">Ensure Access and Equity</label><br />
             <input type="checkbox" id="sa_post3" name="sa_post3" value='Sustain, Change, Abandon'<?php checked( $post2, 'Sustain, Change, Abandon' ); ?>> <label for="sa_post3">Sustain, Change, Abandon</label><br />  
-            <label for="sa_dateimplemented">Date Implemented</label><br />
-            <input id="sa_dateimplemented" name="sa_dateimplemented" value="<?php 
+            <!-- <label for="sa_dateimplemented">Date Implemented</label><br /> -->
+            <!-- <input id="sa_dateimplemented" name="sa_dateimplemented" value="<?php 
                 if ($dateimplemented != "") {
                     echo $dateimplemented;
                 }
-           ?>"><br />          
+           ?>"> --><br />          
         </div>    
     </div>
 </div>
@@ -370,7 +435,8 @@ jQuery(document).ready(function(){
       refresh_sa_policy_stage_vis_setting();
 
       //On click, refresh the visibility. Hide them all, then show the selected one
-        jQuery('#policy_stage_select input').live( 'change', function() {     refresh_sa_policy_stage_vis_setting();            
+        jQuery('#policy_stage_select input').live( 'change', function() {     
+          refresh_sa_policy_stage_vis_setting();            
           } );
 });
 
@@ -398,12 +464,27 @@ function refresh_sa_policy_stage_vis_setting() {
 </script>
 
 <script type="text/javascript">
-    //Handle the geography input form
+//Handle the geography input form
 jQuery(document).ready(function(){
       //On page load, update the inputs that are enabled
         refresh_sa_policy_enable_geog_inputs();
-		//TODO Refresh lat/longs on page load if they don't exist
-		//TODO Refresh bounding box coordinates (nelat,nelng,swlat,swlng) if they don't exist
+
+      //If a geography has been selected, but not copied over to #final_geog, do it.
+      //TODO: Why are we using final_geog again?
+        // if ( ( jQuery('#sa_finalgeog').val() == '' ) && ( jQuery('#sa_selectedgeog').val() !== '' )  ) {
+        //   jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog").val());
+        // }
+
+      //Refresh lat/longs on page load if any are empty
+      // var emptyCoords = jQuery('#geography_coords input').filter(function() { return this.value == ""; });
+
+      //emptyCoords will return an object of objects if it finds any empty inputs
+      // if (emptyCoords.length > 0) {
+      //     //This function will only run if #sa_finalgeog isn't empty
+      //     // get_sa_geog_lat_lon();
+      // } else {
+      //   // console.log('No need to run the function');
+      // }
 
       //On change, refresh the option list and option list visibility
       //The page load setup is handled via php, so the js only has to handle the updates
@@ -416,10 +497,10 @@ jQuery(document).ready(function(){
             refresh_sa_policy_geographies();          
           });
 
-        jQuery("#sa_selectedgeog").live( 'change', function() {
-            jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog").val());
-            get_sa_geog_lat_lon();
-           });
+        // jQuery("#sa_selectedgeog").live( 'change', function() {
+        //     jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog").val());
+        //     // get_sa_geog_lat_lon();
+        //    });
 
 });
 
@@ -456,71 +537,97 @@ function refresh_sa_policy_geographies() {
             break;
           case ('National'):
           case ('State'):
-          case ('State Senate District'):
-            //TODO: State senate districts aren't behaving correctly - no terms seem to be available?
-            //Clear finalgeog and lat/lon values
-            //TODO: Why aren't we setting points for states?
-            jQuery("#sa_finalgeog,#sa_latitude,#sa_longitude").val('');
+            // jQuery("#sa_finalgeog,#sa_latitude,#sa_longitude").val('');
             break;
           default:
           //Fetch the subdivisions if they're needed.
             if (sa_state_geography !== "") {
-              var dataString = 'selstate=' + sa_state_geography + '&geog=' + sa_major_geography;
-          
-                 jQuery.ajax
-                 ({
-                   type: "POST",               
-                   url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/geography.php",
-                   data: dataString,
-                   cache: false,               
-                   error: function() {
-                     alert("I'm having trouble setting up the geographies list.");
-                   },
-                   success: function(k)
-                   {       
-                     //alert(k);
-                     jQuery("#sa_selectedgeog").html(k);
-                     //set finalgeo and lat/lon, in case the desired option is the first option... otherwise 'change' will never fire :)
-                     jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog option:first").val());
-                      get_sa_geog_lat_lon();         
-
-                   } 
-                 });
+             
+                 //Getting the geographies list via WP AJAX request
+                  var data = {
+                    action: 'get_geographies_list',
+                    // post_attachment_to_delete: <?php echo $post->ID; ?>,
+                    selstate: sa_state_geography,
+                    geog: sa_major_geography,
+                    security: '<?php echo wp_create_nonce( 'get_geographies_list' ); ?>'
+                  };
+                 // since WP 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+                  jQuery.post(
+                        ajaxurl, 
+                        data, 
+                        function(response) {
+                          // console.log(response)
+                          if ( response != -1 ) {
+                            //If we got a response, update the geography select.
+                           jQuery("#sa_selectedgeog").html(response);
+                           //set finalgeo and lat/lon, in case the desired option is the first option... otherwise 'change' will never fire :)
+                           // jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog option:first").val());
+                            // get_sa_geog_lat_lon();
+                          }
+                        }
+                      );
 
              }
+             break;
            }             
  }
 
-function get_sa_geog_lat_lon(){
-    if (jQuery("#sa_finalgeog").val() !== '') {  
-      //  alert(jQuery("#sa_finalgeog").val());
+// function get_sa_geog_lat_lon(){
+//     if (jQuery("#sa_finalgeog").val() !== '') {  
+//       //  alert(jQuery("#sa_finalgeog").val());
 
-      var dataString2 = 'finalgeog=' + jQuery("#sa_finalgeog").val() + '&geog=' + jQuery("#sa_geog").val() + '&state=' + jQuery("#sa_state").val();  
-      //TODO: Make this a typical WP ajax request
-       jQuery.ajax
-       ({
-         type: "POST",               
-         url: "http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
-         data: dataString2,
-         cache: false,               
-         error: function() {
-           alert("I can't calculate the lat & long.");
-         },
-         success: function(p)
-         {       
-           // console.log(p);
-           // jQuery("#sa_latlongs").html(p);
-           var coord = jQuery.parseJSON(p);
-            jQuery("#sa_latitude").val(coord.latitude);
-            jQuery("#sa_longitude").val(coord.longitude);
-			jQuery("#sa_nelat").val(coord.nelat);
-			jQuery("#sa_nelng").val(coord.nelng);
-			jQuery("#sa_swlat").val(coord.swlat);
-			jQuery("#sa_swlng").val(coord.swlng);
-         } 
-       });
-   }
-}
+//       var dataString2 = 'finalgeog=' + jQuery("#sa_finalgeog").val() + '&geog=' + jQuery("#sa_geog").val() + '&state=' + jQuery("#sa_state").val();
+//       console.log(dataString2);
+//       //TODO: Make this a typical WP ajax request
+//        jQuery.ajax
+//        ({
+//          type: "POST",               
+//          url: "/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
+//          data: dataString2,
+//          cache: false,               
+//          error: function() {
+//            alert("I can't calculate the lat & long.");
+//          },
+//          success: function(p)
+//          {       
+//            // console.log(p);
+//            // jQuery("#sa_latlongs").html(p);
+//            var coord = jQuery.parseJSON(p);
+//             jQuery("#sa_latitude").val(coord.latitude);
+//             jQuery("#sa_longitude").val(coord.longitude);
+//       			jQuery("#sa_nelat").val(coord.nelat);
+//       			jQuery("#sa_nelng").val(coord.nelng);
+//       			jQuery("#sa_swlat").val(coord.swlat);
+//       			jQuery("#sa_swlng").val(coord.swlng);
+//          } 
+//        });
+
+//        //Getting the geographies list via WP AJAX request
+//        //  var data = {
+//        //    action: 'get_geography_lat_lon',
+//        //    // post_attachment_to_delete: <?php echo $post->ID; ?>,
+//        //    finalgeog: jQuery("#sa_finalgeog").val(),
+//        //    geog: jQuery("#sa_geog").val(),
+//        //    state: jQuery("#sa_state").val(), 
+//        //    security: '<?php echo wp_create_nonce( 'get_geography_lat_lon' ); ?>'
+//        //  };
+//        // // since WP 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+//        //  jQuery.post(
+//        //        ajaxurl, 
+//        //        data, 
+//        //        function(response) {
+//        //          // console.log(response)
+//        //          if ( response != -1 ) {
+//        //            //If we got a response, update the geography select.
+//        //           jQuery("#sa_selectedgeog").html(response);
+//        //           //set finalgeo and lat/lon, in case the desired option is the first option... otherwise 'change' will never fire :)
+//        //           jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog option:first").val());
+//        //            get_sa_geog_lat_lon();
+//        //          }
+//        //        }
+//        //      );
+//    }
+// }
 
 </script>
 
@@ -528,10 +635,55 @@ function get_sa_geog_lat_lon(){
   jQuery(document).ready(function(){
     jQuery("#sa_dateenacted").datepicker();
     jQuery("#sa_dateimplemented").datepicker();
+    jQuery("#sa_emergencedate_stg").datepicker();
+    jQuery("#sa_developmentdate_stg").datepicker();
+    jQuery("#sa_enactmentdate_stg").datepicker();
+    // jQuery("#sa_implementationdate_stg").datepicker();
   });
 </script>
 
 <?php }
+
+add_action( 'wp_ajax_get_geographies_list', 'ajax_get_geographies_list' );
+function ajax_get_geographies_list() {
+    global $wpdb; // this is how you get access to the database
+
+    if( wp_verify_nonce( $_REQUEST['security'], 'get_geographies_list' ) ) {
+           
+      $selstate = (int)$_POST['selstate'];
+      $geog = $_POST['geog'];
+
+      $geog_str_prefix = sa_get_geography_prefix($geog);
+
+      if( $selstate ) {
+          //get the selected state slug
+          $state_term = get_term_by('id', $selstate, 'geographies');
+          //Trim the "-state" from the end of the state slug
+          $state_clean = substr( $state_term->slug, 0, -6);
+
+          if ( $geog ) {     
+              $thisid = $geog_str_prefix . $state_clean;
+              $geoterm = get_term_by('slug', $thisid, 'geographies'); 
+              $tid = $geoterm->term_id;
+                  $args = array(
+                          'parent' => $tid,
+                          'hide_empty' => 0,
+                  );
+                  $terms = get_terms( 'geographies', $args );
+                  if ( $terms ) {                    
+                          foreach ( $terms as $term ) {
+                                  $result .= '<option value="' . $term->term_id . '">' . $term->name . '</option> ';
+                          }
+                  }
+          }
+      }
+      //return the result
+      die( $result );
+
+    } else {
+      die('-1');
+    }
+}
 
 function sa_get_geography_prefix($geog){
    switch ($geog) {
@@ -556,7 +708,105 @@ function sa_get_geography_prefix($geog){
    }
    return $geog_str_prefix;
 }
+
+function get_geo_tax_top_level_term_id() {
+  //The top level term is the only term in geographies with a parent of 0
+  $geo_starting_point = array(
+                  'parent' => 0,
+                  'hide_empty' => 0     
+                  );
+  $top_level_geo = get_terms( 'geographies', $geo_starting_point );
+
+  return (int) $top_level_geo[0]->term_id;
+}
+
   
+function cc_get_the_geo_tax_type() {
+  global $post;
+  //Get the Geography term for this post
+    $geo_tax = wp_get_object_terms( $post->ID, 'geographies' );
+    // $geo_tax_id = $geo_tax[0]->term_id;
+
+    //Figure out which level of geography we're dealing with here. Get the term's parent, which will give us the type of geography.
+    if ( !empty( $geo_tax ) )      
+      $geo_type_terms = get_term_by( 'id', $geo_tax[0]->parent, 'geographies' );
+        // Possible Values of $geo_type_terms->name:
+        // United States (parent term of all states)
+        // Counties
+        // Cities
+        // School Districts
+        // US Congressional Districts
+        // State House Districts
+        // State Senate Districts
+
+    switch ($geo_type_terms->name) {
+      case 'United States':
+        $geo_type = 'State';
+        break;
+      case 'Counties':
+        $geo_type = 'County';
+        break;
+      case 'Cities':
+        $geo_type = 'City';
+        break;
+      case 'School Districts':
+        $geo_type = 'School District';
+        break;
+      case 'US Congressional Districts':
+        $geo_type = 'US Congressional District';
+        break;
+      case 'State House Districts':
+        $geo_type = 'State House District';
+        break;
+      case 'State Senate Districts':
+        $geo_type = 'State Senate District';
+        break;
+      default:
+        $geo_type = 'National';
+        break;
+    }
+
+    return $geo_type;
+}
+
+function cc_get_the_geo_tax_name(){
+  global $post;
+  $geo_tax = wp_get_object_terms( $post->ID, 'geographies' );
+  
+  $locality_name = $geo_tax[0]->name;
+
+  return $locality_name;
+
+}
+
+function cc_get_the_geo_tax_state(){
+  global $post;
+  $geo_tax = wp_get_object_terms( $post->ID, 'geographies' );
+  $geo_tax_type = cc_get_the_geo_tax_type();
+
+  switch ($geo_tax_type) {
+      case 'State':
+        $geo_tax_state = $geo_tax[0]->name;
+        break;
+      case 'County':
+      case 'City':
+      case 'School District':
+      case 'US Congressional District':
+      case 'State House District':
+      case 'State Senate District':
+        $geo_parent_term = get_term_by( 'id', $geo_tax[0]->parent, 'geographies' );
+        $geo_grandparent_term = get_term_by( 'id', $geo_parent_term->parent, 'geographies' );
+        $geo_tax_state = $geo_grandparent_term->name;
+        break;
+      default:
+        $geo_tax_state = '';
+        break;
+    }
+
+  return $geo_tax_state;
+
+}
+
 add_action( 'save_post', 'sapolicy_save' );
 function sapolicy_save() { 
  
@@ -580,30 +830,32 @@ function sapolicy_save() {
        sapolicy_save_event_field("sa_post2");
        sapolicy_save_event_field("sa_post3");       
        sapolicy_save_event_field("sa_dateenacted");
-       sapolicy_save_event_field("sa_dateimplemented");       
+       sapolicy_save_event_field("sa_dateimplemented");
+       sapolicy_save_event_field("sa_emergencedate_stg");  
+       sapolicy_save_event_field("sa_developmentdate_stg");  
+       sapolicy_save_event_field("sa_enactmentdate_stg");  
+       // sapolicy_save_event_field("sa_implementationdate_stg");  
 
 
     }
 }
 
-add_action( 'save_post', 'sa_geog_save' );
+// add_action( 'save_post', 'sa_geog_save' );
 function sa_geog_save() {   
    global $post;
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
       return;
 
     if ($post->post_type == 'sapolicies') {
-       sapolicy_save_event_field("sa_latitude");
-       sapolicy_save_event_field("sa_longitude");  
-
-		sapolicy_save_event_field("sa_nelat"); 
-		sapolicy_save_event_field("sa_nelng"); 
-		sapolicy_save_event_field("sa_swlat"); 
-		sapolicy_save_event_field("sa_swlng"); 	   
-	
-       sapolicy_save_event_field("sa_geog");
-       sapolicy_save_event_field("sa_state");
-       sapolicy_save_event_field("sa_finalgeog");
+        sapolicy_save_event_field("sa_latitude");
+        sapolicy_save_event_field("sa_longitude");  
+        sapolicy_save_event_field("sa_nelat"); 
+        sapolicy_save_event_field("sa_nelng"); 
+        sapolicy_save_event_field("sa_swlat"); 
+        sapolicy_save_event_field("sa_swlng");
+        sapolicy_save_event_field("sa_geog");
+        sapolicy_save_event_field("sa_state");
+        sapolicy_save_event_field("sa_finalgeog");
     }
 }
 
@@ -618,162 +870,222 @@ function sapolicy_save_event_field($event_field) {
     }
 }
 
-//Not needed, WP includes jQuery UI
-// add_action('init', 'sapolicy_jquery'); 
-function sapolicy_jquery(){
-    wp_enqueue_script('jquery-ui-datepicker');
-    wp_enqueue_style('sticky_post-admin-ui-css','http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/base/jquery-ui.css',false,"1.9.0",false);
-    }
+add_action( 'save_post', 'sa_geog_tax_save' );
+function sa_geog_tax_save() {   
+   global $post;
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+      return;
+    if ( $post->post_type == 'sapolicies' ) {
+      //Try to save the more specific option first
+      if ( !empty( $_POST["sa_selectedgeog"] ) ) {
+        sapolicy_save_taxonomy_field("sa_selectedgeog");
 
-function sa_searchpolicies() {
+      } elseif ( !empty( $_POST["sa_state"] ) ) {
+        //Save the state term if a more specific term isn't set
+        sapolicy_save_taxonomy_field("sa_state");
+
+      } else {
+        //if that fails, set the terms as 'national'
+        $term_ids = array( intval( get_geo_tax_top_level_term_id() ) );
+        wp_set_object_terms( $post->ID, $term_ids, 'geographies' );
+      }
+
+    }
+}
+
+function sapolicy_save_taxonomy_field($tax_field) {
+    global $post;
+    //Don't save empty metas
+    if ( !empty($_POST[$tax_field]) ) {
+      $term_ids = array( $_POST[$tax_field] );
+      //Make sure the terms IDs are integers:
+      $term_ids = array_map('intval', $term_ids);
+      $term_ids = array_unique( $term_ids );
+      wp_set_object_terms( $post->ID, $term_ids, 'geographies' );
+    }
+}
+
+function sa_searchpolicies( $searchresults ) {
         ?>
-	<form action="" method="POST" enctype="multipart/form-data" name="sa_ps">
-			<input type="text" id="saps" name="saps" size="70" Placeholder="Enter search terms here" value="<?php 
-			if(isset($_POST['saps'])) {
-				echo $_POST['saps']; 
-			}
-			elseif(isset($_GET['qs'])) {
-				
-					echo $_GET['qs'];
-				
-			}
-				?>" />
+<div id="cc-adv-search" class="clear">
+	<form action="/salud-america<?php echo $searchresults; ?>" method="POST" enctype="multipart/form-data" name="sa_ps">
+			<div class="row">
+        <input type="text" id="saps" name="saps" Placeholder="Enter search terms here" value="<?php 
+    			if (isset($_POST['saps'])) {
+    				echo $_POST['saps']; 
+    			}	elseif (isset($_GET['qs'])) {
+    					echo $_GET['qs'];	
+    			}
+    				?>" />
+        <!-- Hidden input to set post type for search-->
+        <input type="hidden" name="requested_content" value="sapolicies" />
 			
-			<input id="searchsubmit" type="submit" alt="Search" value="Search" />
+  			<input id="searchsubmit" type="submit" alt="Search" value="Search" />
+      </div>
 	
-<br><br>
-	
-	<a href="#" id="toggle">+ Advanced Search</a>
-	<br><br>
-    <div id="advancedsearch" style="width:800px;height:200px;display:none;">
-		
-			<div style="float:left;">
-				<h4>Advocacy Targets</h4>
-				<?php 
-				
-				$ATterms = get_terms('sa_advocacy_targets');
-				foreach ($ATterms as $ATterm) {
-					echo "<input type='checkbox' name='sa_advocacy_target[]' value='" . $ATterm->term_id . "' /> " . substr($ATterm->name, 0, 25) . "...<br>";
-				}
-				?>
-			</div>
-			<div style="float:left;padding-left:20px;">
-				<h4>Policy Stages</h4>
-        
-				<input type="checkbox" name="policy_stages[]" value="emergence" /> Emergence<br>
-				<input type="checkbox" name="policy_stages[]" value="development" /> Development<br>
-				<input type="checkbox" name="policy_stages[]" value="enactment" /> Enactment<br>
-				<input type="checkbox" name="policy_stages[]" value="implementation" /> Implementation
-			</div>
-			<div style="float:left;padding-left:20px;">
-				<h4>Tags</h4>
-				<?php $sat_args = array('orderby' => count, 'order' => DESC);
-				$sapolicytags = get_terms('sa_policy_tags', $sat_args);
-				echo "<div style='height:150px;width:225px;overflow:auto;'>";
-				foreach ($sapolicytags as $sapolicytag) {
-					echo "<input type='checkbox' name='sa_sapolicy_tag[]' value='" . $sapolicytag->term_id . "' /> " . $sapolicytag->name . " (" . $sapolicytag->count . ")<br>";
-				}	
-					echo "</div>";
-				?>
-			</div>
+	<a role="button" id="cc_advanced_search_toggle" class="clear" >+ Advanced Search</a>
+		 
+			<div id="cc-adv-search-pane-container" class="row clear">
+        <div class="cc-adv-search-option-pane third-block">
+          <h4>Topic Area</h4>
+          <ul>
+            <?php 
+            $ATterms = get_terms('sa_advocacy_targets');
+            foreach ($ATterms as $ATterm) {
+              echo '<li><input type="checkbox" name="sa_advocacy_target[]" id="sa_adv_target_' . $ATterm->term_id . '" value="' . $ATterm->term_id . '" /> <label for="sa_adv_target_' . $ATterm->term_id . '">' . $ATterm->name . '</label></li>';
+            }
+            ?>
+          </ul>
+        </div> <!-- End option pane -->
+      
+        <div class="cc-adv-search-option-pane third-block">
+          <h4>Stage of Change</h4>        
+          <ul>
+            <li><input type="checkbox" name="policy_stages[]" id="policy-stage-emergence" value="emergence" /> <label for="policy-stage-emergence">Emergence</label></li>
+            <li><input type="checkbox" name="policy_stages[]" id="policy-stage-develop" value="development" /> <label for="policy-stage-develop">Development</label></li>
+            <li><input type="checkbox" name="policy_stages[]" id="policy-stage-enact" value="enactment" /> <label for="policy-stage-enact">Enactment</label></li>
+            <li><input type="checkbox" name="policy_stages[]" id="policy-stage-implement" value="implementation" /> <label for="policy-stage-implement">Implementation</label></li>
+          </ul>
+        </div> <!-- End option pane -->
+      
+        <div class="cc-adv-search-option-pane third-block">
+          <h4>Tags</h4>
+          <?php $sat_args = array('orderby' => count, 'order' => DESC);
+          $sapolicytags = get_terms('sa_policy_tags', $sat_args);
+          ?>
+          <div class="cc-adv-search-scroll-container">
+          <ul>
+            <?php
+            foreach ($sapolicytags as $sapolicytag) {
+              echo '<li><input type="checkbox" name="sa_sapolicy_tag[]" id="sa_policy_tag_' .  $sapolicytag->term_id . '" value="' . $sapolicytag->term_id . '" /> <label for="sa_policy_tag_' . $sapolicytag->term_id . '">' . $sapolicytag->name . ' (' . $sapolicytag->count . ')</label></li>';
+            } 
+            ?>
+          </ul>
+          </div> <!-- End scroll container -->
+        </div> <!-- End option pane -->
+      </div>
 			
 		</form>	
 		
 	</div>
-<br>
 	<script type="text/javascript">
 		var $j = jQuery.noConflict();
 		
 		$j(document).ready(function(){
 
-
-		   $j('#advancedsearch').hide();	
-		   $j('#toggle').click(function(){
-				$j('#advancedsearch').slideToggle('slow');
-				if ($j("#toggle").text() == "+ Advanced Search") {
-					$j("#toggle").text("- Advanced Search");
-				}
-				else {
-					$j("#toggle").text("+ Advanced Search");
-				}
+		   $j('#cc-adv-search-pane-container').hide();	
+		   $j('#cc_advanced_search_toggle').click(function(){
+  				$j('#cc-adv-search-pane-container').slideToggle('fast');
+  				if ($j("#cc_advanced_search_toggle").text() == "+ Advanced Search") {
+  					$j("#cc_advanced_search_toggle").text("- Advanced Search");
+  				}
+  				else {
+  					$j("#cc_advanced_search_toggle").text("+ Advanced Search");
+  				}
 		   });
 
-		});	
-		
-		
-		
-		
+		});
     
 	</script>
 
 <?php
-	global $wpdb; 
+	 global $wpdb; 
 
-	if(isset($_POST['sa_advocacy_target']))
-	 {
-		 $chk1 = $_POST['sa_advocacy_target'];	 
-	 }
-	if(isset($_POST['policy_stages']))
-	 {
-		 $chk2 = $_POST['policy_stages'];			
-	 }	
-	if(isset($_POST['sa_sapolicy_tag']))
-	 {
-		 $chk3 = $_POST['sa_sapolicy_tag'];		
-	 }
+	 if(isset($_POST['sa_advocacy_target']))
+	  {
+	 	 $chk1 = $_POST['sa_advocacy_target'];	 
+	  }
+	 if(isset($_POST['policy_stages']))
+	  {
+	 	 $chk2 = $_POST['policy_stages'];			
+	  }	
+	 if(isset($_POST['sa_sapolicy_tag']))
+	  {
+	 	 $chk3 = $_POST['sa_sapolicy_tag'];		
+	  }
 	 
-	if(isset($_POST['sa_advocacy_target']) || isset($_POST['policy_stages']) || isset($_POST['sa_sapolicy_tag'])) {
-		$post_ids = get_objects_in_term($chk1, 'sa_advocacy_targets');
-		$post_ids2 = get_objects_in_term($chk3, 'sa_policy_tags');
-		$post_ids3 = array_merge($post_ids,$post_ids2);
-		$filter_args = array(
-					 'post_type' => 'sapolicies',
-					 's' => $_POST['saps'],
-					 'post__in' => $post_ids3,
-					 
-					 'meta_query' => array(
-										array(
-											'key' => 'sa_policystage',
-											'value' => $chk2
-											 )
-					 
-					 )
-					 
-					 );
-			//var_dump($filter_args);
-			$query2 = new WP_Query($filter_args);
-		    if($query2->have_posts()) : 
-			  while($query2->have_posts()) : 
-					$query2->the_post();
-					get_template_part( 'content', 'sa-policy-short' ); 
+	 if(isset($_POST['sa_advocacy_target']) || isset($_POST['policy_stages']) || isset($_POST['sa_sapolicy_tag'])) {
+	 	$post_ids = get_objects_in_term($chk1, 'sa_advocacy_targets');
+	 	$post_ids2 = get_objects_in_term($chk3, 'sa_policy_tags');
+	 	$post_ids3 = array_merge($post_ids,$post_ids2);
+	 	
+                $tax_query = array();
+                    if (!empty($chk1)) {
+                        $tax_query[] = array(
+                           'taxonomy' => 'sa_advocacy_targets',
+                           'field' => 'term_id',
+                           'terms' => $chk1
+                        );
+                    }
+                               
+                    if (!empty($chk3)) {
+                        $tax_query[] = array(
+                           'taxonomy' => 'sa_policy_tags',
+                           'field' => 'term_id',
+                           'terms' => $chk3
+                        );
+                    }    
+                
+                $meta_query = array();
+                    if (!empty($chk2)) {
+                        $meta_query[] = array(
+                           'key' => 'sa_policystage',
+                           'value' => $chk2
+                        );
+                    }
+                
+                  $filter_args = array(
+                      'post_type' => 'sapolicies',
+                      's' => $_POST['saps'],
+                      'relation' => 'AND',
+                      'tax_query'=> $tax_query,
+                      'meta_query' => $meta_query,
+                      'posts_per_page' => -1,
+                      );
+                
+//                $filter_args = array(
+//	 				 'post_type' => 'sapolicies',
+//	 				 's' => $_POST['saps'],
+//	 				 'post__in' => $post_ids3,					 
+//	 				 'meta_query' => array(
+//	 									array(
+//	 										'key' => 'sa_policystage',
+//	 										'value' => $chk2
+//	 										 )
+//	 				 					 )
+//					 
+//	 				 );
+	 		//var_dump($filter_args);
+	 		$query2 = new WP_Query($filter_args);
+	 	    if($query2->have_posts()) : 
+	 		  while($query2->have_posts()) : 
+	 				$query2->the_post();
+	 				get_template_part( 'content', 'sa-policy-short' ); 
 
-			  endwhile;
-		   else: 
-			  echo "No Results - Search criteria too specific";	
-		   endif;						
-    } else {
-		if(isset($_POST['saps']))
-		{		           
-				$saps = $_POST['saps']; 			
+	 		  endwhile;
+	 	   else: 
+	 		  echo "No Results - Search criteria too specific";	
+	 	   endif;						
+     } else {
+   		if(isset($_POST['saps']))
+   		{		           
+   				$saps = $_POST['saps']; 			
 
-				$query = new WP_Query( array(
-						's' => $saps, 
-						'post_type' => 'sapolicies'));
-				
-				if($query->have_posts()) : 
-				  while($query->have_posts()) : 
-						$query->the_post();
-						get_template_part( 'content', 'sa-policy-short' );  
+   				$query = new WP_Query( array(
+   						's' => $saps, 
+   						'post_type' => 'sapolicies'));
+  				
+   				if($query->have_posts()) : 
+   				  while($query->have_posts()) : 
+   						$query->the_post();
+   						get_template_part( 'content', 'sa-policy-short' );  
 
-				  endwhile;
-			   else: 
-				  echo "No Results - Search criteria too specific";	
-			   endif;	
-		}	
-	
-	
-	
-	}
+   				  endwhile;
+   			   else: 
+   				  echo "No Results - Search criteria too specific";	
+   			   endif;	
+   		}		
+	 }
 }
 
 function sa_highlight_search_results($saps,$text) {
@@ -783,13 +1095,39 @@ function sa_highlight_search_results($saps,$text) {
 				return $text2;
 }
 
+function sa_searchpolicies_single() 
+{ 
+?>     <div id="cc-adv-search" class="clear">
+	<form action="search-results" method="POST" enctype="multipart/form-data" name="sa_ps_single">
+			<div class="row">
+        <input type="text" id="saps" name="saps" Placeholder="Enter search terms here" value="" />
 
+  			<input id="searchsubmit" type="submit" alt="Search" value="Search" />
+      </div>	
 
-function sa_location_search()
+<?php }
+
+function sa_location_search() { 
+        ?>
+    
+      <h3 class="screamer sapurple">Search for Changes in Progress by Location</h3>
+        
+        <div>
+          <form method="GET" action="http://maps.communitycommons.org/policymap/" name="sa_ls" enctype="multipart/form-data"> 
+              <input type="text" id="address" size="70" Placeholder="e.g. Mosinee, Wisconsin" name="address" />
+              <input type="submit" name="submit" value="Search"/>
+          </form>
+          <a href="http://maps.communitycommons.org/policymap/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/policy-map.jpg" class="alignnone" alt="Use the maproom to find changes in your area." style="margin:1.4em 0;"></a>
+        </div>
+
+<?php
+}
+
+function sa_location_search_old()
 { 
         ?>
 		
-			<h4>Search for Changes in Progress</h4>
+			<h3 class="screamer sapurple">Search for Changes in Progress by Location</h3>
 				
         <form method="POST" action="" name="sa_ls" enctype="multipart/form-data"> 
             <input type="text" id="locationtxt" size="70" Placeholder="Type in location here" name="locationtxt" />
@@ -797,7 +1135,7 @@ function sa_location_search()
         </form>
 <br><br>
 <?php
-        if(isset($_POST['locationtxt']))
+        if(isset($_POST['locationtxt']) && strlen($_POST['locationtxt'])>1)
     {
         global $wpdb;    
         $loc = $_POST['locationtxt'];  
@@ -830,43 +1168,109 @@ function sa_location_search()
         
         $results = $wpdb->get_results($query);
 		
-         if (!$results) {
-		 
+        if (!$results) {
           die("Invalid query: " . $wpdb->show_errors());
         } else {
             //var_dump($results);
             echo "<div style='margin-bottom:12px;'>Your search: " . $loc . "</div>";
             ?>
             <div id="contact-content">
-	
-
-                    <div class="map">
+            	   <div class="map">
                         <style type="text/css">
-                        #map_sapolicies img {
-                           max-width: none;
-                           border-width:0px;
-                           -webkit-box-shadow: none;
-                           -moz-box-shadow: none;
-                           box-shadow: none;                           
-                        }
+                          #map_sapolicies img {
+                             max-width: none;
+                             border-width:0px;
+                             -webkit-box-shadow: none;
+                             -moz-box-shadow: none;
+                             box-shadow: none;                           
+                          }
                         </style>
                         <div id="map_sapolicies" style="width: 600px; height: 600px"></div><br><br>  
-
                     </div>
 
                 </div>  
-
-
             <?php
+            global $post;
 
-            foreach ($results as $result){
-			
-			
-                echo "<div style='color:#fe9600;font-weight:bold;font-size:13pt;'><a href='" . get_permalink($result->ID) . "'>" . $result->post_title . "</a></div><br>";
-				echo "<div>" . $result->post_content . "</div><div style='font-style:italic;'>Distance from search center: " . round($result->distance, 2) . " miles</div><br>";			
-            
+            foreach ($results as $post){
+              //This is the policy short template. Sending results through the template doesn't work with get_results
+              setup_postdata( $post );
+              $custom_fields = get_post_custom($post->ID);
+              $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
+              if ( !empty ($terms) ) {
+                $advocacy_targets = array();
+                foreach ( $terms as $term ) {
+                  $advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
+                }
+                $advocacy_targets = join( ', ', $advocacy_targets );
+              } //check for empty terms
 
-            }   
+            //Progress meter
+              $progress = $custom_fields['sa_policystage'][0];
+                switch ($progress) {
+                  case "emergence":
+                      $percentage = 25;
+                      $progress_label = "in emergence";
+                      break;
+                  case "development":
+                  $percentage = 50;
+                      $progress_label = 'in development';
+                      break;
+                  case "enactment":
+                  $percentage = 75;
+                      $progress_label = 'enacted';
+                      break;
+                  case "implementation":
+                  $percentage = 75;
+                      $progress_label = 'in implementation';
+                      break;
+                    default:
+                    $percentage = 0;
+                      $progress_label = 'in emergence';
+                  break;
+                }
+            ?>
+
+              <article id="post-<?php echo $post->ID; ?>" <?php post_class(); ?>>
+                <div class="entry-content">
+                  <header class="entry-header clear">
+                    <h2 class="entry-title">
+                    <a href="<?php echo get_permalink( $post->ID ); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+                    </h2>
+                    <?php if (function_exists('salud_the_target_icons')) {
+                        salud_the_target_icons();
+                        }
+                    ?>
+                    <p class="location"><?php //echo $location; 
+                        if (function_exists('salud_the_location')) {
+                          salud_the_location();
+                        }
+                      ?></p>
+                    <div class="meter-box clear">
+                      <p>This change is <?php echo $progress_label; ?>.
+                      <!-- <div class="meter">
+                        <span style="width: <?php echo $percentage; ?>%"><span></span></span>
+                      </div> -->
+                    </div> <!-- end .meter-box -->
+                    
+                  </header>
+                  <p><?php 
+                  // $excerpt = get_the_excerpt();
+                  // the_excerpt();
+                    $content = ellipsis( $post->post_content, 400 );
+                    $content = $content . ' <a href="' . get_permalink( $post->ID ) . '">Continue reading.</a>';
+                    $content = apply_filters( 'the_content', $content );
+                    echo $content;
+                  
+                  ?></p>
+
+                  <div class="clear"></div>     
+                </div><!-- .entry-content -->
+    
+              </article><!-- #post -->
+              <?php //     echo "<div style='color:#fe9600;font-weight:bold;font-size:13pt;'><a href='" . get_permalink($result->ID) . "'>" . $result->post_title . "</a></div><br>";
+              // echo "<div>" . $result->post_content . "</div><div style='font-style:italic;'>Distance from search center: " . round($result->distance, 2) . " miles</div><br>";     
+            }  
             
         }
 		?>
@@ -878,7 +1282,7 @@ function sa_location_search()
 				samap_initialize();
 			});	                       
 			
-                    function samap_initialize() {
+            function samap_initialize() {
 						var markers = []; 
                         var firstpt = new google.maps.LatLng(<?php echo $lat ?>, <?php echo $lng ?>);
 
@@ -892,8 +1296,8 @@ function sa_location_search()
 
                         var map = new google.maps.Map(document.getElementById("map_sapolicies"), firstOptions);
 
-                        var firstimage = 'http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/star-3.png';
-                        var policyimage = 'http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/doc-3.png';
+                        var firstimage = '/wp-content/themes/CommonsRetheme/img/star-3.png';
+                        //var policyimage = '/wp-content/themes/CommonsRetheme/img/doc-3.png';
                         
                         var firstmarker = new google.maps.Marker({
                             position: firstpt,
@@ -908,14 +1312,24 @@ function sa_location_search()
                                 $theTitle = $result->post_title;
                                 $theLat = $result->latitude;
                                 $theLng = $result->longitude;
-                                $pl = get_permalink($result->ID);    
+                                $pl = get_permalink($result->ID);
+                                 //discover sa_advocacy_target terms, assign image
+                                $terms = get_the_terms( $result->ID, 'sa_advocacy_targets' );
+                                if ( empty( $terms ) || count( $terms ) > 1 ) {
+                                    $point_icon = get_stylesheet_directory_uri() . '/img/salud_america/map_icons/multiple_adv_targets.png' ;
+                                  } else {
+                                      //If count of terms = 1 we can set an icon
+                                      foreach ( $terms as $term ) {
+                                        $point_icon = get_stylesheet_directory_uri() . '/img/salud_america/map_icons/' . $term->slug . '.png';
+                                      }
+                                  }     
                                 
                         ?>
                       
                         var marker = new google.maps.Marker({
                             position: new google.maps.LatLng(<?php echo $theLat . ", " . $theLng ?>),
                             map: map,
-                            icon: policyimage,
+                            icon: '<?php echo $point_icon; ?>',
                             html: "<b><a href='<?php echo $pl; ?>'><?php echo $theTitle; ?></a></b><br>"
                           });
                         markers.push(marker);
@@ -939,10 +1353,615 @@ function sa_location_search()
                         google.maps.event.addListener(firstmarker, 'click', function() {
                             infowindow1.open(map,firstmarker);
                         });
-
                     }			
 		</script>		
 		<?php
 		
+    } else {
+		$args5 = array(
+			'post_type' => 'sapolicies',
+			'post_status' => 'publish',
+			'posts_per_page' => -1,
+			'caller_get_posts'=> 1,
+			'meta_query' => array(
+					array(
+						'key' => 'sa_latitude',	
+						'compare' => 'EXISTS'
+					),
+					array(
+						'key' => 'sa_longitude',
+						'compare' => 'EXISTS'
+					)
+				)			  
+		
+		);
+	
+        $my_query = new WP_Query($args5);
+
+	?>
+	    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript">		
+			var $j = jQuery.noConflict();
+			
+			$j(document).ready(function(){				
+				samap_start();
+			});	                       
+			
+          function samap_start() {
+	  
+
+						var markers = []; 
+						var gMap = new google.maps.Map(document.getElementById('map_sastart')); 
+						gMap.setZoom(4);      // This will trigger a zoom_changed on the map
+						gMap.setCenter(new google.maps.LatLng(38.195279, -96.031494));
+						gMap.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+						
+						var infowindow = new google.maps.InfoWindow({
+                            content: "loading..."
+                        });
+						var mbstr="";
+                        <?php 
+							if( $my_query->have_posts() ) {
+							  while ($my_query->have_posts()) : $my_query->the_post();
+                  //discover sa_advocacy_target terms, assign image
+                  $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
+                  if ( empty( $terms ) || count( $terms ) > 1 ) {
+                      $point_icon = get_stylesheet_directory_uri() . '/img/salud_america/map_icons/multiple_adv_targets.png' ;
+                    } else {
+                        //If count of terms = 1 we can set an icon
+                        foreach ( $terms as $term ) {
+                          $point_icon = get_stylesheet_directory_uri() . '/img/salud_america/map_icons/' . $term->slug . '.png';
+                        }
+                    }
+
+    								  $theLat2 = get_post_meta(get_the_ID(), 'sa_latitude', true);
+    								  $theLng2 = get_post_meta(get_the_ID(), 'sa_longitude', true); 
+    								  
+    								  if ($theLat2 != null && $theLng2 != null) {
+    					    ?>
+    								mbstr=mbstr + <?php echo $theLat2 ?> + ","; 
+    								var marker = new google.maps.Marker({
+    									position: new google.maps.LatLng(<?php echo $theLat2 . ", " . $theLng2 ?>),
+    									//position: new google.maps.LatLng(42,-90),
+    									map: gMap,
+    									icon: '<?php echo $point_icon; ?>',
+    									html: "<strong><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></strong><br />"
+    								  });
+    								markers.push(marker);
+    								google.maps.event.addListener(marker, 'click', function () {
+    									infowindow.setContent(this.html);
+    									infowindow.open(gMap, this);
+								});
+							<?php 
+							}
+							  endwhile;
+							
+							}
+						?>						
+						//alert(mbstr);
+
+					}
+					
+		</script>
+		 <div id="map_sastart" style="width: 700px; height: 400px"></div><br><br>
+	<?php
+	}
+}
+
+//Make the menus reflect where we are
+//Apply current-menu-item class to nav items when child pages, related tax or CPT is active
+add_filter('nav_menu_css_class' , 'cc_filter_nav_class' , 10 , 2);
+function cc_filter_nav_class($classes, $item){
+    
+     if ( ( is_child(150) || is_singular( 'sapolicies' ) ) && $item->title == "Changes in Progress" )
+        $classes[] = "current-menu-item";
+
+     return $classes;
+}
+
+// Some query filters for archive pages
+// add_action('pre_get_posts', 'sa_taxonomy_filter_queries', 9999);
+function sa_taxonomy_filter_queries( $query ) {
+
+    // Show only policies for the main query
+    if( is_tax( 'sa_advocacy_targets' ) && ( !is_admin() ) && ( $query->is_main_query() )  ) {
+        
+        $query->set('post_type', 'sapolicies');
     }
+ 
+}
+function sa_the_topic_color ( $tax_term ) {
+  echo sa_get_topic_color( $tax_term );
+}
+
+function sa_get_topic_color( $tax_term ){
+  switch ( $tax_term ) {
+          case 'sa-active-play':
+            $topic_color = 'sayellow';
+            break;
+        case 'sa-active-spaces':
+            $topic_color = 'sablue';
+            break;
+        case 'sa-better-food-in-neighborhoods':
+            $topic_color = 'saorange';
+            break;
+        case 'sa-healthier-marketing':
+            $topic_color = 'sapink';
+            break;
+        case 'sa-healthier-school-snacks':
+            $topic_color = 'sagreen';
+            break;
+        case 'sa-sugary-drinks':
+            $topic_color = 'sapurple';
+            break;
+        default:
+            $topic_color = 'saorange';
+            break;
+                  }
+  return $topic_color;
+}
+
+
+function SA_topics() 
+{
+    
+ if (is_page('sa-active-play')) {    
+    ?>
+    <style type="text/css">
+    img.alignright, .wp-caption.alignright {
+    margin: 0px 0px 0px 0px;
+    }
+    </style>
+    <table border="1" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr>
+	<td colspan="2" style="text-align:left;">
+		<a href="/wp-content/uploads/2013/03/Active-Play-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="/wp-content/uploads/2013/03/Active-Play-topic-header.jpg" style="height:125px;" /></a>
+
+	</td>
+    </tr>
+    <tr>
+	<td valign="top" width="345" style="vertical-align:top;"><div class="content-sapolicies entry-content"><p>Studies suggest that Latino children are less likely to meet the recommendations for daily physical activity and more likely to engage in sedentary behaviors than White children. Improving Latino parents’ perceptions about healthy weight and increasing their skills for monitoring and reinforcing their child’s activity may improve physical activity levels among Latino children. Addressing neighborhood and environmental barriers to active transport may improve active transport to recreation and physical activity sites. Structured school- and community-based programs that are culturally relevant have demonstrated some success in increasing physical activity among Latino children.</p></div></td>
+	<td valign="top" width="345" style="vertical-align:top;">
+		<table>
+			<tr>
+				<td>
+					<iframe width="350" height="300" src="//www.youtube.com/embed/itk2uIjjX0o?rel=0" frameborder="0" allowfullscreen></iframe>
+				
+				</td>
+			</tr>
+                       <tr>
+				<td>
+				<br/>	
+				</td>
+			</tr>
+			<tr>
+				<td>
+				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Active-Play-Research-Review.pdf"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Active-Play-Issue-Brief.pdf"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="/wp-content/uploads/2013/08/AP_brief.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Active-Play-Infographic-875.jpg"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="/wp-content/uploads/2013/08/AP_info.png" width="60" height="90" /></a>
+				</td>
+			</tr>
+        		<tr>
+				<td>
+				   &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Active-Play-Research-Review.pdf">Research Review</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Active-Play-Issue-Brief.pdf">Issue Brief</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="/wp-content/uploads/2013/08/Active-Play-Infographic-875.jpg">Infographic</a>
+				</td>
+			</tr>
+
+
+		</table>
+	</td>
+
+
+    </tr>
+    </tbody>
+    </table>
+    &nbsp;
+
+<?php }
+
+if (is_page('sa-active-spaces')) {    
+    ?>
+    <style type="text/css">
+    img.alignright, .wp-caption.alignright {
+    margin: 0px 0px 0px 0px;
+    }
+    </style>
+    <table border="1" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr>
+	<td colspan="2" style="text-align:left;">
+		<a href="/wp-content/uploads/2013/04/Active-spaces-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="/wp-content/uploads/2013/04/Active-spaces-topic-header.jpg" style="height:125px;" /></a>
+
+	</td>
+    </tr>
+    <tr>
+	<td valign="top" width="345" style="vertical-align:top;"><div class="content-sapolicies entry-content"><p>Physical activity is important for maintaining a healthy weight, yet Latino children in underserved communities often have limited access to safe places where they can be active. Shared use of “active spaces,” including gyms, athletic fields, and playgrounds, can help increase access to school facilities and other public sites for physical activity among Latino youths. Street-level improvements, such as repairing sidewalks and installing street lights and bike lanes, can help families and children walk and bike more safely to active spaces. Improving access to active spaces may help Latino youths become more physically active and maintain a healthy weight.</p></div></td>
+	<td valign="top" width="345" style="vertical-align:top;">
+		<table>
+			<tr>
+				<td>
+					<iframe src="//www.youtube.com/embed/pbrRgCb5z64?rel=0" width="350" height="300" allowfullscreen="" frameborder="0"></iframe>
+				
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<br/>	
+				</td>
+			</tr>
+			<tr>
+				<td>
+				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Active-Spaces-Research-Review.pdf"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Active-Spaces-Issue-Brief.pdf"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="/wp-content/uploads/2013/08/AS_brief2.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Active-Spaces-Infographic-875.jpg"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="/wp-content/uploads/2013/08/AS_info.png" width="60" height="90" /></a>
+				</td>
+			</tr>
+        		<tr>
+				<td>
+				   &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Active-Spaces-Research-Review.pdf">Research Review</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Active-Spaces-Issue-Brief.pdf">Issue Brief</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="/wp-content/uploads/2013/08/Active-Spaces-Infographic-875.jpg">Infographic</a>
+				</td>
+			</tr>
+
+
+		</table>
+	</td>
+
+
+    </tr>
+    </tbody>
+    </table>
+    &nbsp;
+
+<?php }
+
+if (is_page('sa-better-food-in-neighborhoods')) {    
+    ?>
+    <style type="text/css">
+    img.alignright, .wp-caption.alignright {
+    margin: 0px 0px 0px 0px;
+    }
+    </style>
+    <table border="1" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr>
+	<td colspan="2" style="text-align:left;">
+		<a href="/wp-content/uploads/2013/04/Better-Food-In-Neighborhood-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="/wp-content/uploads/2013/04/Better-Food-In-Neighborhood-topic-header.jpg" style="height:125px;" /></a>
+
+	</td>
+    </tr>
+    <tr>
+	<td valign="top" width="345" style="vertical-align:top;"><div class="content-sapolicies entry-content"><p>Many Latino families do not have access to healthy affordable foods. In Latino neighborhoods, convenience stores (or small grocers like bodegas) and fast-food restaurants are widespread, but supermarkets and farmers’ markets, which can offer affordable fresh fruits and vegetables, whole-grain products, low-fat milk, and other healthy options, are scarce. Unhealthy diets can contribute to obesity. However, a variety of policy initiatives may improve the food environment and economy in underserved communities. Healthy food financing initiatives include tax credits, zoning incentives, funding, technical assistance, or equipment to spur supermarkets and farmers’ markets to locate in underserved areas. In addition, several government financing initiatives encourage corner stores to expand their offerings of healthy affordable foods. Other financing initiatives include food subsidies to expand demand and purchasing power for healthy foods by low-income consumers.</p></div></td>
+	<td valign="top" width="345" style="vertical-align:top;">
+		<table>
+			<tr>
+				<td>
+					<iframe width="350" height="300" src="//www.youtube.com/embed/lDGyClnLujI?rel=0" frameborder="0" allowfullscreen></iframe>
+				
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<br/>	
+				</td>
+			</tr>
+			<tr>
+				<td>
+				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/BetterFoodintheNeighborhood-ResearchReview.pdf"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Issue-Brief.pdf"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="/wp-content/uploads/2013/08/FN_brief2.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Infographic-875.jpg"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="/wp-content/uploads/2013/08/FN_info.png" width="60" height="90" /></a>
+				</td>
+			</tr>
+        		<tr>
+				<td>
+				   &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/BetterFoodintheNeighborhood-ResearchReview.pdf">Research Review</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Issue-Brief.pdf">Issue Brief</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="/wp-content/uploads/2013/08/Better-Food-in-the-Neighborhood-Infographic-875.jpg">Infographic</a>
+				</td>
+			</tr>
+
+
+		</table>
+	</td>
+
+
+    </tr>
+    </tbody>
+    </table>
+    &nbsp;
+
+<?php }
+
+if (is_page('sa-healthier-marketing')) {    
+    ?>
+    <style type="text/css">
+    img.alignright, .wp-caption.alignright {
+    margin: 0px 0px 0px 0px;
+    }
+    </style>
+    <table border="1" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr>
+	<td colspan="2" style="text-align:left;">
+		<a href="/wp-content/uploads/2013/04/Healthier-Marketing-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="/wp-content/uploads/2013/04/Healthier-Marketing-topic-header.jpg" style="height:125px;" /></a>
+
+	</td>
+    </tr>
+    <tr>
+	<td valign="top" width="345" style="vertical-align:top;"><div class="content-sapolicies entry-content"><p>Many environmental, social, and cultural factors—including food and beverage marketing—may contribute to Latino youths’ dietary practices, a central component to weight status. Food industry marketing to youths is a big business, with nearly $2 billion spent annually to target this market segment. Ethnic-minority children, such as Latino youths, present a particularly attractive target to food marketers because of their increasing population size, spending power, and media exposure. However, the vast majority of food products advertised to youths are unhealthy and Latino youths are disproportionately targeted with unhealthy food ads. As concerns regarding the role food marketing plays in Latino youths’ diets as obesity increases, demand for industry regulation also is rising.</p></div></td>
+	<td valign="top" width="345" style="vertical-align:top;">
+		<table>
+			<tr>
+				<td>
+					<iframe width="350" height="300" src="//www.youtube.com/embed/tSnPol_LB-E?rel=0" frameborder="0" allowfullscreen></iframe>
+				
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<br/>	
+				</td>
+			</tr>
+			<tr>
+				<td>
+				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Healthier-Marketing-Research-Review.pdf"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Healthier-Marketing-Issue-Brief.pdf"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="/wp-content/uploads/2013/08/HM_brief2.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Healthier-Marketing-Infographic-875.jpg"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="/wp-content/uploads/2013/08/HM_info2.png" width="60" height="90" /></a>
+				</td>
+			</tr>
+        		<tr>
+				<td>
+				   &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Healthier-Marketing-Research-Review.pdf">Research Review</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Healthier-Marketing-Issue-Brief.pdf">Issue Brief</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="/wp-content/uploads/2013/08/Healthier-Marketing-Infographic-875.jpg">Infographic</a>
+				</td>
+			</tr>
+
+
+		</table>
+	</td>
+
+
+    </tr>
+    </tbody>
+    </table>
+    &nbsp;
+
+<?php }
+
+if (is_page('sa-healthier-school-snacks')) {    
+    ?>
+    <style type="text/css">
+    img.alignright, .wp-caption.alignright {
+    margin: 0px 0px 0px 0px;
+    }
+    </style>
+    <table border="1" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr>
+	<td colspan="2" style="text-align:left;">
+		<a href="/wp-content/uploads/2013/04/Healthier-School-Snacks-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="/wp-content/uploads/2013/04/Healthier-School-Snacks-topic-header.jpg" style="height:125px;" /></a>
+
+	</td>
+    </tr>
+    <tr>
+	<td valign="top" width="345" style="vertical-align:top;"><div class="content-sapolicies entry-content"><p>Children and adolescents consume a high proportion of their daily calories at school. Latino students are widely exposed to snacks and drinks sold in school à la carte lines, vending machines, stores, snack bars, and other venues. These items are sometimes called competitive foods because they are sold in competition with the reimbursable school meal. These snacks and drinks are often are high in fat, calories, sugar and/or salt, and offer little nutritional value. Access to snack foods and beverages in schools has a disproportionately negative health influence among Latino students, and schools with a higher proportion of Latino students tend to have weaker policies regarding access to these items. Implementing and enforcing stronger nutrition standards for snacks and drinks sold in school can help ensure Latino students have healthier choices at school and may help this growing population maintain a healthy weight.</p></div></td>
+	<td valign="top" width="345" style="vertical-align:top;">
+		<table>
+			<tr>
+				<td>
+					<iframe width="350" height="300" src="//www.youtube.com/embed/pbrRgCb5z64?rel=0" frameborder="0" allowfullscreen></iframe>
+				
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<br/>	
+				</td>
+			</tr>
+			<tr>
+				<td>
+				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Research-Review.pdf"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Issue-Brief.pdf"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="/wp-content/uploads/2013/08/SS_brief2.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Infographic-875.jpg"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="/wp-content/uploads/2013/08/SS_info.png" width="60" height="90" /></a>
+				</td>
+			</tr>
+        		<tr>
+				<td>
+				   &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Research-Review.pdf">Research Review</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Issue-Brief.pdf">Issue Brief</a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="/wp-content/uploads/2013/08/Healthier-School-Snacks-Infographic-875.jpg">Infographic</a>
+				</td>
+			</tr>
+
+
+		</table>
+	</td>
+
+
+    </tr>
+    </tbody>
+    </table>
+    &nbsp;
+
+<?php }
+
+if (is_page('sa-sugary-drinks')) {    
+    ?>
+    <style type="text/css">
+    img.alignright, .wp-caption.alignright {
+    margin: 0px 0px 0px 0px;
+    }
+    </style>
+    <table border="1" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr>
+	<td colspan="2" style="text-align:left;">
+		<a href="/wp-content/uploads/2013/04/Sugary-drinks-topic-header.jpg"><img class="alignright size-full wp-image-16764" alt="Active Play topic header" src="/wp-content/uploads/2013/04/Sugary-drinks-topic-header.jpg" style="height:125px;" /></a>
+
+	</td>
+    </tr>
+    <tr>
+	<td valign="top" width="345" style="vertical-align:top;"><div class="content-sapolicies entry-content"><p>Latino youths’ consumption of sugary drinks—soft drinks, sports drinks, fruit-flavored drinks, and other caloric but non-nutritious beverages—is higher than the overall average, which contributes to increased rates of obesity, diabetes, and other health issues that disproportionately affect the Latino community. Pricing interventions, including sugary drink taxes, exclusion of sugary drinks from food assistance programs, and subsidization of healthier beverages have been proposed to reduce sugary drink consumption. Among these, sugary drink taxes have been proposed in several jurisdictions, with many earmarking the new revenues for obesity-prevention and other health-promotion efforts.</p></div></td>
+	<td valign="top" width="345" style="vertical-align:top;">
+		<table>
+			<tr>
+				<td>
+					<iframe src="//www.youtube.com/embed/pbrRgCb5z64?rel=0" width="350" height="300" allowfullscreen="" frameborder="0"></iframe>
+				
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<br/>	
+				</td>
+			</tr>
+			<tr>
+				<td>
+				   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/Research_review.png"><img class="size-full no-box wp-image-18047 alignnone" alt="research-review-icon_again2" src="/wp-content/uploads/2013/08/Research_review.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="/wp-content/uploads/2013/08/AP_brief.png"><img class="size-full no-box wp-image-18049 alignnone" alt="AP_brief_2" src="/wp-content/uploads/2013/08/AP_brief.png" width="60" height="90" /></a>
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="/wp-content/uploads/2013/08/AP_info.png"><img class="size-full no-box wp-image-18050 alignnone" alt="AP_info_2" src="/wp-content/uploads/2013/08/AP_info.png" width="60" height="90" /></a>
+				</td>
+			</tr>
+        		<tr>
+				<td>
+				   &nbsp; &nbsp; Research Review
+                                   &nbsp;&nbsp; &nbsp; &nbsp;Issue Brief
+                                   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Infographic
+				</td>
+			</tr>
+
+
+		</table>
+	</td>
+
+
+    </tr>
+    </tbody>
+    </table>
+    &nbsp;
+
+<?php }
+}
+
+//Utility/helper functions
+
+// Helps identify when we're working on a salud page.
+// @returns true or false
+function cc_is_salud_page() {
+
+  $return = false;
+
+  if ( is_page_template( 'page-templates/salud-america.php' ) 
+      || is_page_template( 'page-templates/salud-america-eloi.php' ) 
+      || is_singular('sapolicies')  
+      || is_singular('saresources')
+      || is_singular('sa_success_story')
+      || is_tax('sa_advocacy_targets')
+      || is_tax('sa_resource_cat')
+      || is_tax('sa_policy_tags')
+      || is_post_type_archive('sa_success_story')
+      || is_post_type_archive('saresources')
+      || is_post_type_archive('sapolicies')
+      ) {
+        $return = true;
+        }
+        
+  return apply_filters( 'cc_is_salud_page', $return );
+
+}
+
+// Add "salud-america" as an interest if the registration originates from an SA page
+// Filters array provided by registration_form_interest_query_string
+// @returns array with new element (or not)
+add_filter( 'registration_form_interest_query_string', 'salud_add_registration_interest_parameter', 11, 1 );
+function salud_add_registration_interest_parameter( $interests ) {
+
+    if ( function_exists('cc_is_salud_page') && cc_is_salud_page() )
+      $interests[] = 'salud-america';
+
+    return $interests;
+}
+
+/**
+ * Extends the default WordPress body class
+ * Filter classes added to body tag to add "salud" if on a Salud America page.
+ *
+ * @param array Existing class values.
+ * @return array Filtered class values.
+ */
+/* 
+***************/
+function cc_sa_custom_body_class( $classes ) {
+
+    if ( function_exists( 'cc_is_salud_page' ) && cc_is_salud_page() ) {
+        $classes[] = 'salud-america';
+        if ( ($key = array_search('full-width', $classes) ) !== false ) {
+          unset( $classes[$key] );
+        }
+      }
+
+  return $classes;
+}
+add_filter( 'body_class', 'cc_sa_custom_body_class', 99 );
+/**
+ * Template tag that outputs the structure for the policy tracker progress bar
+ *
+ * @param string Progress value.
+ * @return html 
+ */
+function cc_the_policy_progress_tracker( $progress ) {
+
+  switch ($progress) {
+    case "emergence":
+      $percentage = 25;
+      $progress_label = 'in emergence';
+      break; 
+    case "development":
+      $percentage = 50;
+      $progress_label = 'in development';
+      break;
+    case "enactment":
+      $percentage = 75;
+      $progress_label = 'enacted';
+      break;
+    case "implementation":
+      $percentage = 100;
+      $progress_label = 'in implementation';
+      break;
+    default:
+      $percentage = 0;
+      $progress_label = 'in emergence';
+     break;
+    }
+?>
+
+<div class="meter-box clear">
+  <p class="visible-mini">This change is <a href="/saresources/spectrum/" title="More information about policy development"><?php echo $progress_label; ?></a>.</p>
+  <ol class="progtrckr visible-maxi" data-progtrckr-steps="4">
+    <li class="<?php echo ( in_array($progress, array('emergence', 'development', 'enactment', 'implementation')) ) ? "progtrckr-done" : "progtrckr-todo"; ?>"><a clear="" href="/salud-america/what-is-change/the-science-behind-change/">Emergence</a></li><!--
+    --><li class="<?php echo ( in_array($progress, array('development', 'enactment', 'implementation')) ) ? "progtrckr-done" : "progtrckr-todo"; ?>"><a clear="" href="/salud-america/what-is-change/the-science-behind-change/">Development</a></li><!--
+    --><li class="<?php echo ( in_array($progress, array('enactment', 'implementation')) ) ? "progtrckr-done" : "progtrckr-todo"; ?>"><a clear="" href="/salud-america/what-is-change/the-science-behind-change/">Enactment</a></li><!--
+    --><li class="<?php echo ( in_array($progress, array('implementation')) ) ? "progtrckr-done" : "progtrckr-todo"; ?>"><a clear="" href="/salud-america/what-is-change/the-science-behind-change/">Implementation</a></li>
+  </ol>
+</div> <!-- end .meter-box -->
+<?php
+}
+/* Filter the page title for certain Salud America page.
+*  filters value in wp_title
+*/
+add_filter( 'wp_title', 'cc_salud_title_filter', 20, 2 ); 
+function cc_salud_title_filter( $title, $sep ) {
+
+  if ( is_feed() )
+    return $title;
+
+  if ( is_page( 'take-action' ) )
+    $title = get_the_title() . ' ' . $sep . ' Salud America' ;
+
+  return $title;
 }

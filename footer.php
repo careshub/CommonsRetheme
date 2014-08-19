@@ -18,7 +18,7 @@
 	<div class="page-width">
 			
 		<div class="site-info">
-		<div class="alignleft">
+		<div class="alignleft" style="margin-bottom:1em;">
 			<?php //Add footer navigation menu 
 				$args = array(
 					'theme_location' => 'footer-nav',
@@ -40,7 +40,7 @@
 					);
 				wp_nav_menu( $args );
 				?>
-			<p>Community Commons is inspired by <a href="http://www.advancingthemovement.org">Advancing the Movement</a>, and is powered by <a href="http://www.i-p3.org">IP3</a>.</p>
+			<p>Community Commons is powered by <a href="http://www.i-p3.org">IP3</a> and <a href="http://www.cares.missouri.edu">CARES - University of Missouri</a> .</p>
 			<p>&copy; Community Commons &amp; IP3 | All Rights Reserved.</p>
 			<p>Read our <a href="/terms-of-service">Terms of Service.</a></p>
 		</div>
@@ -52,14 +52,17 @@
 				<input class="cc-footer-search-button" type="submit" value="Search">
 				</form>
 			</div>
-	    	<div>
+	    	<!-- <div>
 	    		<h5>Subscribe to our newsletter</h5>
 				<a href="http://visitor.r20.constantcontact.com/d.jsp?llr=dikmfnjab&p=oi&m=1109617158403" title="Subscribe to our newsletter" class="button">Sign up now</a>
-	    	</div>
+	    	</div> -->
 		    <a href="http://www.facebook.com/CommunityCommons" class="facebookx60 iconx60 alignleft"></a>
 		    <a href="https://twitter.com/communitycommon" class="twitterx60 iconx60 alignleft"></a>
+		    <a href="http://www.linkedin.com/company/3194585" class="linkedinx60 iconx60 alignleft"></a>
+		    <a href="https://plus.google.com/117982399710195199733" rel="publisher" class="gplusx60 iconx60 alignleft"></a>
 		</div>        
 		</div><!-- .site-info -->
+
 	</div> <!-- .page width -->
 </footer><!-- #colophon -->
 

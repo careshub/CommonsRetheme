@@ -21,7 +21,7 @@
 			<?php else : ?>
 				<?php if ( has_post_thumbnail()) : ?>
 				   	<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
-				   	<?php the_post_thumbnail('post_thumbnail'); ?>
+				   	<?php the_post_thumbnail('feature-large'); ?>
 				   	</a>
 			   	<?php endif; ?>
 			<h1 class="entry-title">
@@ -41,7 +41,7 @@
 		</div><!-- .entry-summary -->
 		<?php else : ?>
 		<div class="entry-content">
-			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?>
+			<?php the_content( __( 'Read more', 'twentytwelve' ) ); ?>
 			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
 		<?php endif; ?>	
@@ -49,7 +49,12 @@
 		// if ( function_exists('bp_share_favorite_post_button') ) {
 		// 		bp_share_favorite_post_button( $post->ID );
 		// 	}
-
+		if ( function_exists('cc_add_comment_button') ) { 
+					cc_add_comment_button(); 
+			}
+		if ( function_exists('love_it_button') ) { 
+				love_it_button(); 
+			}
 		if ( function_exists('bp_share_post_button') ) { 
 				bp_share_post_button(); 
 			} ?>

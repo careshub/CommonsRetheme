@@ -1,22 +1,72 @@
+@import "less-mixins";
+
+// SA means Salud America
+@import "sa-default";
+// BP means BuddyPress
+@import "bp-default";
 @import "default";
 
 @import "400"; 
 
-@import "600"; 
+@import "sa-600";
+@import "600";
 
+@import "700";
+
+@import "sa-800";
+@import "bp-800";
 @import "800"; 
 
+@import "sa-1000";
 @import "1000";
 
 //IE fixes
+
 .ie8, .ie7 {
 	.primary-navigation .secondary .bp-notifications .bp-notification-list {
 		margin-top:12px;
 	}
-	// .widget img {width:100%;}
-}
-.ie7 #cc-primary-search #cc-navbar-search .cc-nav-input {
-	background-color: @white;
+	input[type="password"] {
+	    font-family: Arial;
 	}
+	.site {
+		width:960px;
+		margin-top: 48px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	// Set widths for column blocks, since our normal widths assume some nth-of-type selectors
+	.half-block {
+		width: 42.9%;
+	}
+	.third-block {
+		width: 28.9%;
+	}
+	.quarter-block {
+		width: 20.9%;
+	}
+	// Image fixes -- IE8 and below don't like max-width
+	img.wp-post-image, .entry-content img, .comment-content img, .widget img {
+		width: inherit;
+	}
+}
+// Styles for main nav bar search input
+.ie7 #cc-primary-search {
+	margin-top: 0;
+	#cc-navbar-search .cc-nav-input {
+		margin-top: 1px;
+		width: 150px;
+		line-height: 32px;
+		background-color: @white;
+	}
+}
+.ie8 #cc-primary-search #cc-navbar-search .cc-nav-input {
+	background-color: @black;
+	line-height: 32px;
+	&:focus {
+		background-color: @white;
+	}
+}
 //hasLayout hack for IE7
 body.home-page #primary #top-story { height:1%; }
+//TODO: overrides for half-block, etc.

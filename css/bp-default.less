@@ -1,0 +1,1274 @@
+//Buddypress Styles
+/*--------------------------------------------------------------
+1 - Activity
+--------------------------------------------------------------*/
+// #activity-stream {
+// 	margin-top: -5px;
+// }
+#whats-new-form {
+	margin: 10px 0;
+	clear: both;
+	overflow: hidden;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #ddd;
+	#whats-new-avatar {
+		float: left;
+	}
+	.activity-greeting {
+		clear: none;
+		margin-left: 76px !important;
+	}
+	#whats-new-content {
+		margin-left: 54px;
+		padding-left: 22px;
+	}
+	#whats-new-textarea {
+		margin-bottom: 10px;
+	}
+	textarea {
+		width: 97.6%;
+		height: 60px;
+		border: 1px solid #ccc;
+		.font-size(.9);
+		font-family: inherit;
+		color: #555;
+		border: none;
+		margin: 0;
+		padding: 1%;
+		.inner-shadow();
+		&:focus {
+			.inner-glow();
+		}
+	}
+	#whats-new-options {
+		overflow: auto;
+		height: 0;
+		// select {
+		// 	max-width: 200px;
+		// 	margin-top: 12px;
+		// }
+	}
+	#whats-new-submit {
+		float: right;
+		margin: 0;
+	}
+}
+
+/*--------------------------------------------------------------
+1.1 - Activity Listing
+--------------------------------------------------------------*/
+.activity .activity-list  {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	li {
+		overflow: auto;
+		padding: 15px 0;
+		p {
+			margin-bottom: 0;
+		}
+		.activity-content {
+			margin-left: 75px;
+		}
+	}
+}
+.activity-list li .activity-inreplyto {
+	// background: url( ../../plugins/buddypress/bp-themes/bp-default/_inc/images/replyto_arrow.gif ) 7px 0 no-repeat;
+	color: #888;
+	.font-size(.8);
+	//margin-left: 5px;
+	margin-top: 5px;
+	padding-left: 25px;
+}
+.activity-list .activity-content .activity-header img.avatar {
+	float: none !important;
+	margin: 0 5px -8px 0 !important;
+}
+a.bp-secondary-action,
+span.highlight {
+	font-size: 11px;
+	padding: 0;
+	margin-right: 5px;
+	text-decoration: none;
+	display: inline-block;
+}
+.activity-list .activity-content .activity-inner,
+.activity-list .activity-content blockquote {
+	margin: 10px 0 0;
+	overflow: hidden;
+}
+.activity-list li.load-more a, .activity-list li.load-newest a {
+	display: block;
+	background: #f0f0f0;
+	// background-color: lighten(@ccgreen, 50%);
+	border: 1px solid @ccblue;
+	.border-radius(4px);
+	font-size: 1.2em;
+	margin: 15px 0 !important;
+	padding: 10px 15px !important;
+	text-align: center;
+	transition: background-color 0.3s ease,
+				color 0.3s ease;
+	&:hover {
+		color: @white;
+		background-color: @ccblue;
+	}
+	&.loading {
+	}
+}
+.activity-list li.load-more a {
+	// color: #4D4D4D;
+}
+
+/*--------------------------------------------------------------
+1.2 - Activity Comments
+--------------------------------------------------------------*/
+div.activity-meta {
+	margin: 18px 0;
+}
+// body.activity-permalink div.activity-meta {
+// 	margin-bottom: 6px;
+// }
+div.activity-meta a {
+	.font-size(.8);
+	// padding: 4px 8px;
+}
+a.activity-time-since {
+	color: #aaa;
+	text-decoration: none;
+	&:hover {
+		color: #888;
+		text-decoration: underline;
+	}
+}
+a.bp-primary-action,
+#reply-title small a {
+	font-size: 11px;
+	margin-right: 5px;
+	text-decoration: none;
+	span {
+		background: #999;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		border-radius: 3px;
+		color: #fff;
+		font-size: 90%;
+		margin-left: 2px;
+		padding: 0 5px;
+	}
+}
+
+a.bp-primary-action:hover span,
+#reply-title small a:hover span {
+	background: #555;
+	color: #fff;
+}
+.activity-comments {
+	margin: 0 0 14px 70px;
+	overflow: hidden; /* IE fix */
+	position: relative;
+	width: auto;
+	clear: both;
+	.avatar {
+		width: 25px;
+		height: 25px;
+	}
+	& > ul {
+		background: #f5f5f5;
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;
+		border-radius: 4px;
+		padding: 0 0 0 10px;
+	}
+	ul {
+		list-style-type: none;
+		clear: both;
+		li {
+			border-top: 2px solid #fff;
+			border-bottom: none;
+			padding: 10px 0 0;
+			&:first-child {
+				border-top: none;
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
+			& > ul {
+				margin-left: 30px;
+				margin-top: 0;
+				padding-left: 10px;
+			}
+		}
+	}
+	.acomment-content {
+		.font-size(.9);
+		margin: 5px 0 0 35px;
+	}
+	.acomment-meta {
+		color: #888;
+		.font-size(.9);
+		margin-left: 35px;
+	}
+}
+div.activity-comments form.ac-form {
+	background: #fafafa;
+	border: 1px solid #ddd;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	display: none;
+	margin: 0 0 15px 33px;
+	padding: 8px;
+}
+div.activity-comments li form.ac-form {
+	margin-right: 15px;
+	clear: both;
+}
+div.activity-comments form.root {
+	margin-left: 0;
+}
+div.activity-comments div#message {
+	margin-top: 15px;
+	margin-bottom: 0;
+}
+div.activity-comments form.loading {
+	// background-image: url( ../buddypress/bp-themes/bp-default/_inc/images/ajax-loader.gif );
+	// background-position: 2% 95%;
+	// background-repeat: no-repeat;
+}
+div.activity-comments form .ac-textarea {
+	background: #fff;
+	border: 1px inset #ccc;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	padding: 8px;
+}
+div.activity-comments form textarea {
+	border: none;
+	color: #555;
+	font-family: inherit;
+	font-size: 11px;
+	height: 60px;
+	padding: 1%;
+	width: 97.9%;
+}
+div.activity-comments form input {
+	margin-top: 5px;
+}
+div.activity-comments form div.ac-reply-avatar {
+	float: left;
+}
+div.ac-reply-avatar img {
+	border: 2px solid #fff !important;
+}
+div.activity-comments form div.ac-reply-content {
+	color: #888;
+	font-size: 11px;
+	margin-left: 50px;
+	padding-left: 15px;
+}
+.acomment-options {
+	float: left;
+	margin: 5px 0 5px 40px;
+	a {
+		color: #999;
+		&:hover {
+			color: inherit;
+		}
+	}
+}
+
+
+
+/*--------------------------------------------------------------
+2 - Admin Bar
+--------------------------------------------------------------*/
+#wp-admin-bar .padder {
+	width: 95% !important; /* Line up the admin bar with the content body in this theme */
+}
+
+
+/*--------------------------------------------------------------
+3 - Directories - Members, Groups, Blogs, Forums
+--------------------------------------------------------------*/
+form.dir-form {
+	margin-bottom: 2em;
+	.item-list-tabs {
+		padding-bottom: 0;
+		ul li.last {
+			margin-top: 0;
+			margin-bottom: .6em;
+		}
+	}
+}
+div.dir-search {
+	float: left;
+	// margin-bottom: -1.7em;
+}
+div.dir-search input[type=text] {
+	.font-size(.85);
+	font-style: italic;
+	//padding: 1px 3px;
+}
+
+
+/*--------------------------------------------------------------
+4 - Errors / Success Messages
+--------------------------------------------------------------*/
+#message {
+	margin: 0 0 15px;
+	p {
+		font-size: 12px;
+		display: block;
+		padding: 10px 15px;
+	}
+	&.info {
+		margin-bottom: 0;
+	}
+	&.error p {
+		background-color: @ccred;
+		border-color: darken(@ccred, 15%);
+		clear: left;
+		color: @white;
+	}
+	&.updated {
+		clear: both;
+		p {
+			background-color: @ccgreen;
+			border-color: darken(@ccgreen, 15%);
+			color: @white;
+		}
+	}
+}
+
+.standard-form#signup_form .error {
+	background: @ccred;
+	.border-radius(3px);
+	color: #fff;
+	margin: 0 0 10px 0;
+	padding: 6px;
+	width: 90%;
+}
+div.accept,
+div.reject {
+	float: left;
+	margin-left: 10px;
+}
+ul.button-nav li {
+	float: left;
+	margin: 0 10px 10px 0;
+}
+ul.button-nav li.current a {
+	font-weight: bold;
+}
+
+
+/*--------------------------------------------------------------
+5 - Forms
+--------------------------------------------------------------*/
+.standard-form#signup_form input[type=text],
+.standard-form#signup_form textarea,
+.form-allowed-tags,
+#commentform input[type=text],
+#commentform textarea {
+	width: 90%;
+}
+.standard-form .submit {
+	float: right;
+	clear: both;
+	padding: 15px 0 0 0;
+	input {
+		margin-right: 15px;
+	}
+}
+.register-section {
+	float: none;
+	width: 100%;
+	margin-bottom: 3em;
+}
+form#signup_form .field-visibility-settings {
+	display: none;
+	fieldset {
+		margin-top: 1em;
+		ul {
+			list-style-type: none;
+			li {
+				margin-left: 1em;
+			}
+		}
+		label {
+		    margin: 8px 0 5px;
+		    font-weight: normal;
+		}
+	}
+}
+
+// .standard-form input:focus,
+// .standard-form textarea:focus,
+// .standard-form select:focus {
+// 	background: #fafafa;
+// 	color: #555;
+// }
+#send-invite-form {
+	margin-top: 20px;
+}
+#invite-list {
+	background: lighten( @graylight, 10% );
+	border: 1px solid @graymid;
+	.border-radius(3px);
+	height: 400px;
+	margin: 0 0 10px;
+	overflow: auto;
+	padding: 5px;
+	// width: 160px;
+}
+
+// Invite Anyone style updates
+.accept-invitation #message {
+	margin-top: 2em;
+}
+
+/*--------------------------------------------------------------
+6.6 - Ajax Loading
+--------------------------------------------------------------*/
+a.loading,
+input.loading {
+	-webkit-animation: loader-pulsate .5s infinite ease-in-out alternate;
+	-moz-animation: loader-pulsate .5s infinite ease-in-out alternate;
+	border-color: #aaa;
+	.outer-glow();
+}
+@-webkit-keyframes loader-pulsate {
+	from {
+		border-color: #aaa;
+		.outer-glow();
+	}
+	to {
+		border-color: #ccc;
+		.outer-glow(0, 0, 3px, 0, lighten(@ccblue, 15) )
+	}
+}
+@-moz-keyframes loader-pulsate {
+	from {
+		border-color: #aaa;
+		.outer-glow();
+	}
+	to {
+		border-color: #ccc;
+		.outer-glow(0, 0, 3px, 0, lighten(@ccblue, 15) )
+	}
+}
+
+a.loading:hover, input.loading:hover {
+    color: #777;
+}
+input[type="submit"].pending,
+input[type="button"].pending,
+input[type="reset"].pending,
+input[type="submit"].disabled,
+input[type="button"].disabled,
+input[type="reset"].disabled,
+button.pending,
+button.disabled,
+div.pending a,
+a.disabled {
+    border-color: #eee;
+    color: #bbb;
+    cursor: default;
+}
+input[type="submit"]:hover.pending,
+input[type="button"]:hover.pending,
+input[type="reset"]:hover.pending,
+input[type="submit"]:hover.disabled,
+input[type="button"]:hover.disabled,
+input[type="reset"]:hover.disabled,
+button.pending:hover,
+button.disabled:hover,
+div.pending a:hover,
+a.disabled:hover {
+	.gradient( @white, #ededed );
+    border-color: #eee;
+    color: #bbb;
+}
+
+
+/*--------------------------------------------------------------
+7 - Forums, Tables and Topics
+--------------------------------------------------------------*/
+ul#topic-post-list {
+	margin: 0px -19px 15px;
+	width: auto;
+}
+ul#topic-post-list li {
+	padding: 15px;
+	position: relative;
+}
+ul#topic-post-list li.alt {
+	background: #f5f5f5;
+}
+ul#topic-post-list li div.poster-meta {
+	color: #888;
+	margin-bottom: 10px;
+}
+ul#topic-post-list li div.post-content {
+	margin-left: 54px;
+}
+div.topic-tags {
+	font-size: 11px;
+	float: right;
+	margin-top: -25px;
+}
+div.admin-links {
+	color: #888;
+	font-size: 11px;
+	position: absolute;
+	top: 15px;
+	right: 25px;
+}
+div#topic-meta {
+	margin: -10px -19px;
+	padding: 5px 19px 30px;
+	position: relative;
+}
+div#topic-meta div.admin-links {
+	right: 19px;
+	top: -36px;
+}
+div#topic-meta h3 {
+	font-size: 20px;
+	margin: 5px 0;
+}
+div#new-topic-post {
+	display: none;
+	margin: 20px 0 0 0;
+	padding: 1px 0 0 0;
+}
+table {
+	width: 100%;
+}
+table thead tr {
+	background: #eaeaea;
+}
+table#message-threads {
+	margin: 0 -19px;
+	width: auto;
+}
+table.profile-fields {
+	margin-bottom: 20px;
+}
+table.profile-fields:last-child {
+	margin-bottom: 0;
+}
+table.profile-fields p {
+	margin-top: 15px;
+}
+table.profile-fields p:last-child {
+	margin-top: 0;
+}
+div#sidebar table {
+	margin: 0 -16px;
+	width: 117%;
+}
+table tr td,
+table tr th {
+	vertical-align: middle;
+}
+table tr td.label {
+	border-right: 1px solid #eaeaea;
+	font-weight: bold;
+	width: 25%;
+}
+table tr td.thread-info p {
+	margin: 0;
+}
+table tr td.thread-info p.thread-excerpt {
+	color: #888;
+	font-size: 11px;
+	margin-top: 3px;
+}
+div#sidebar table td,
+table.forum td {
+	text-align: center;
+}
+table tr.alt td {
+	background: #f5f5f5;
+}
+table.notification-settings {
+	margin-bottom: 20px;
+	text-align: left;
+}
+#groups-notification-settings {
+	margin-bottom: 0;
+}
+table.notification-settings th.icon,
+table.notification-settings td:first-child {
+	display: none;
+}
+table.notification-settings th.title {
+	width: 80%;
+}
+table.notification-settings .yes,
+table.notification-settings .no {
+	text-align: center;
+	width: 40px;
+}
+
+/*--------------------------------------------------------------
+8 - Headers, Lists and Tabs - Activity, Groups, Blogs, Forums
+--------------------------------------------------------------*/
+.item-body {
+	margin: 20px 0;
+}
+span.activity {
+	display: inline-block;
+	font-size: 11px;
+	opacity: 0.8;
+	padding: 6px 6px;
+}
+span.user-nicename {
+	color: #777;
+	display: inline-block;
+	font-size: 16px;
+	font-weight: bold;
+}
+span.activity,
+div#message p {
+	border: 1px solid @ccyellow;
+	.border-radius(3px);
+	font-weight: normal;
+	margin-top: 8px;
+	text-decoration: none;
+	background: lighten(@ccyellow, 26%);
+	// background-image: -webkit-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
+	// background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255, 255, 255, .5)), color-stop(100%,rgba(255, 255, 255, 0))); /* Chrome,Safari4+ */
+	// background-image: -moz-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
+	// background-image: -ms-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
+	// background-image: -o-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
+	// background-image: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
+}
+ul.single-line li {
+	border: none;
+}
+
+#groups-dir-list .group-subscription-div, 
+#groups-list .group-subscription-div {
+    margin-bottom: 1em;
+}
+// Item-list-tabs is used for object navs (members, groups) and also for subnavs, so we've got a few special cases
+.item-list-tabs {
+	margin-bottom: .4em;
+	padding-bottom: .4em;
+	border-bottom: 1px solid @graylight;
+	ul {
+		margin: 0;
+		width: 100%;
+		li {
+			display: inline-block;
+			list-style-type: none;
+			margin: 10px 10px 0 0;
+			padding-bottom: 0;
+			a {
+				display: block; //increases tap target sizes
+				.border-radius(3px);
+				border: 1px solid @graymid;
+				.gradient( lighten( @graylight, 20% ), lighten( @graylight, 8% ) );
+				text-decoration: none;
+				padding: 5px 10px;
+				line-height: 20px;
+
+				span {
+					color: @white;
+					background-color: @ccgreen;
+					.border-radius(10px);
+					font-size: 90%;
+					margin-left: 2px;
+					padding: 0 6px;
+					line-height: 1;
+					&.alert {
+						background-color: lighten(@ccblue,8) ;
+						// color: @white;	
+					}
+				}
+			}
+			&.selected, &.current-menu-item, &.current {
+			    font-weight: 700;
+			    a {
+			    	color: @white;
+			    	background: @ccblue;
+					border: 1px solid @ccblue;
+	    		    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	    		    text-decoration: none;
+			    }
+			}
+			&.last{
+				float: right;
+				margin-top: 8px;
+				select {
+					max-width: 175px;
+				}
+			}
+		}
+	}
+	form {
+		// margin-top: 1em;
+		float: right;
+	}
+	#activity-filter-select {
+		// clear:left;
+		// margin: 1em 0 0 .5em;
+	}
+	//Clearing
+	&:after, &:before {
+		clear: both;
+		content: "";
+	    display: table;
+	}
+}
+//Unhappily we've got to do some undoing. :not() isn't supported by old IE
+.item-list-tabs#subnav ul {
+	// padding-bottom: 1em;
+	// border-bottom: 1px solid @graylight;
+	li {
+		margin: 0 .8em .2em 0;
+		a {
+			.border-radius(0);
+			background: none;
+			border: none;
+			padding: 5px;
+		}
+		&.selected, &.current-menu-item, &.current {
+		    a {
+		    	color: @black;
+		    	text-shadow: none;
+		    }
+		}
+	}
+}
+
+#admins-list li {
+	overflow: auto;
+}
+
+
+/*--------------------------------------------------------------
+9 - Private Messaging Threads
+--------------------------------------------------------------*/
+table#message-threads tr.unread td {
+	background: #fff9db;
+	border-top: 1px solid #ffe8c4;
+	border-bottom: 1px solid #ffe8c4;
+	font-weight: bold;
+}
+li span.unread-count,
+tr.unread span.unread-count {
+	background: #dd0000;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	color: #fff;
+	font-weight: bold;
+	padding: 2px 8px;
+}
+div.item-list-tabs ul li a span.unread-count {
+	padding: 1px 6px;
+	color: #fff;
+}
+div.messages-options-nav {
+	background: #eee;
+	font-size: 11px;
+	margin: 0 -19px;
+	padding: 5px 15px;
+	text-align: right;
+}
+div#message-thread div.message-box {
+	margin: 0 -19px;
+	padding: 15px;
+}
+div#message-thread div.alt {
+	background: #f4f4f4;
+}
+div#message-thread p#message-recipients {
+	margin: 10px 0 20px 0;
+}
+div#message-thread img.avatar {
+	float: left;
+	margin: 0 10px 0 2px;
+	vertical-align: middle;
+}
+div#message-thread strong {
+	font-size: 16px;
+	margin: 0;
+}
+div#message-thread strong a {
+	text-decoration: none;
+}
+div#message-thread strong span.activity {
+	margin: 4px 0 0 10px;
+}
+div#message-thread div.message-metadata {
+	overflow: hidden;
+}
+div#message-thread div.message-content {
+	margin-left: 45px;
+}
+div#message-thread div.message-options {
+	text-align: right;
+}
+
+
+/*--------------------------------------------------------------
+10 - Pagination
+--------------------------------------------------------------*/
+div.pagination {
+	//background: @graylight;
+	border: none;
+	color: lighten(@graydark,12);
+	//font-size: 11px;
+	height: 19px;
+	//margin: -20px -19px 0px -19px;
+	padding: 6px 0;
+	position: relative;
+	.font-size(.9);
+	font-style: italic;
+}
+#pag-top {
+	border-bottom: 1px solid @graylight;
+}
+#pag-bottom {
+	//border-top: 1px solid @graylight;
+}
+div.pagination .pag-count {
+	float: left;
+}
+div.pagination .pagination-links {
+	float: right;
+}
+div.pagination .pagination-links span,
+div.pagination .pagination-links a {
+	font-size: 12px;
+	padding: 0 5px;
+}
+div.pagination .pagination-links a:hover {
+	font-weight: bold;
+}
+div#pag-bottom {
+	margin-top: -1px;
+}
+#nav-above {
+	display: none;
+}
+.paged #nav-above {
+	display: block;
+}
+
+/***
+ * Object Lists (groups/members/forums/blogs)
+ */
+
+.item-list {
+	margin: 20px 0;
+	padding: 0;
+	list-style: none;
+	width: 100%;
+	&.compact {
+		margin: 0;
+		li {
+			padding: 0;
+		}
+	}
+	li {
+		border-bottom: 1px solid @graylight;
+		padding: 15px 0;
+		position: relative;
+		overflow: auto;
+		clear: left;
+		margin-left: 0;
+		// .activity-avatar {
+		// 	float: left;
+		// 	margin-right: 1em;
+		// }
+		.avatar {
+			float: left;
+			margin-right: 1em;
+		}
+		.item-title, h4 {
+			font-weight: normal;
+			//.font-size(1.14);
+			margin: 0 0 0.6em 0;
+			// width: 100%;
+			// clear:none;
+			float: none;
+			line-height: 1.4;
+		}
+		.item-title span {
+			color: #999;
+			.font-size(1);
+		}
+		.item-desc {
+			color: @graydark;
+			.font-size(.9);
+			line-height:1.4; 
+			margin-top: 10px;
+			// width: 75%;
+			float: none;
+		}
+		.meta {
+			color: #888;
+			.font-size(.8);
+			margin-top: 10px;
+		}
+		.name { 
+			display: inline-block;
+			// clear: none;
+			margin: 0;
+			.font-size(1.1);
+			a {
+				text-decoration: none;
+			}
+			span.small {
+				float: right;
+				.font-size(.9);
+				font-weight: normal;
+			}
+		}
+		.activity {
+			display: none;
+		}
+	}
+	&.activity-list li {
+		// padding-bottom: 0;
+		// margin-left: 0;
+	}
+	.item {
+		float: left;
+		width: 100%;
+		.item-meta {
+			.activity {
+				display: none;
+			}
+		}
+	}
+	.action {
+		// position: absolute;
+		// top: 0;
+		// right: 15px;
+		float: left;
+		clear: left;
+		text-align: left;
+		width: 100%;
+		margin-top: 1em;
+		// clear: right;
+		a {
+			// float: left;
+			// display: inline;
+		}
+	}
+	.subitem {
+		margin-top: 1em;
+		border-width: 1px 1px 1px 10px;
+		.item-list {
+			margin-left: .5em;
+		}
+	}
+}
+// General case for widgets and such
+.item-avatar {
+	float: left;
+}
+
+/***
+ * Content Object Headers
+ */
+
+#item-header {
+	padding-bottom: 1.7em;
+	margin-bottom: 1.7em
+	overflow: hidden; /*TODO clearfix*/
+	#item-actions {
+		float: right;
+	}
+	.group-visibility {
+		display: block;
+		margin-bottom: 1em;
+		&.public {
+			background-color: @ccgreen;
+		}
+		&.private {
+			background-color: @ccblue;
+		}
+		&.hidden {
+			background-color: @ccred;
+		}
+		span {
+			font-weight: normal;
+		}
+	}
+	#item-header-avatar {
+		float: left;
+		// width: 25%;
+		// max-width: 100px;
+		margin-right: .6em;
+
+		img {
+			display: block;
+			// width:100%;
+			height: auto;
+		}
+	}
+	#item-header-content {
+		float: left;
+		margin-bottom: 1.7em;
+		//margin-left: 2em;
+		.outliner();
+		// float: left;
+		width: 100%;
+		// .group-breadcrumbs {
+		// 	//background-color: @graylight;
+		// 	background-color: #EEEEEE;
+		//     .font-size(0.85);
+		//     margin-bottom: 12px;
+		//     padding: 6px;
+		// }
+		.noms {
+			display: inline-block;
+			h2 {
+			// display: inline-block;
+			// clear:none;
+			// float:none;
+			margin-top: 0;
+			margin-bottom: 0;
+			.font-size(2);
+				a {
+					text-decoration: none;
+					&:visited {
+						color: @ccblue;
+					}
+				}
+			}
+			.user-nicename { float:none; }
+		}
+		.activity {
+			// float:right;
+			// width: 40%;
+		}
+		#item-meta {
+			// float: left;
+		}
+		//Color coding for group visibility, green for public, blue for private, red for hidden
+		&.public {
+			border-top: 5px solid @ccgreen;
+			padding-top: 1em;
+		}
+		&.private {
+			border-top: 5px solid @ccblue;
+		}
+		&.hidden {
+			border-top: 5px solid @ccred;
+		}
+	}
+}
+#item-nav {
+	width: 20%; 
+	float: left;
+	.outliner();
+
+}
+#item-body {
+	// width: 77.4%;
+	// padding-left: 2%;
+	// float: left;
+	.left-menu {
+
+	}
+}
+
+/***
+ * Input Forms
+ */
+
+/* Activity comment forms */
+
+form.ac-form { display: none; } /* JS will show this */
+
+div.activity-comments form {
+	display: none;
+	margin: 10px 0 10px 33px;
+	padding: 8px;
+}
+
+	div.activity-comments div#message {
+		margin-top: 15px;
+		margin-bottom: 0;
+	}
+
+	div.activity-comments form.loading {
+		background-image: url( ../images/ajax-loader.gif );
+		background-position: 2% 95%;
+		background-repeat: no-repeat;
+	}
+
+	div.activity-comments form .ac-textarea {
+		padding: 8px;
+		border: 1px inset #ccc;
+		margin-bottom: 10px;
+	}
+	div.activity-comments form input {
+		margin-top: 5px;
+	}
+
+	div.activity-comments form div.ac-reply-avatar {
+		float: left;
+	}
+
+	div.activity-comments form div.ac-reply-content {
+		margin-left: 25px;
+		padding-left: 15px;
+	}
+
+/* Standard Input Forms */
+
+form.standard-form label, form.standard-form span.label {
+	display: block;
+	margin: 35px 0 5px 0;
+}
+	form.standard-form div.checkbox label,
+	form.standard-form div.radio label {
+		font-weight: normal;
+		margin: 5px 0 0 0;
+	}
+
+	form.standard-form textarea {
+		width: 75%;
+		height: 120px;
+	}
+
+
+/* Directory search forms */
+form.dir-form div.dir-search {
+	//float: right;
+	//width: 45%;
+	//margin: 0 0 25px 0;
+}
+
+//BuddyPress signup and profile pages
+.buddypress .site-content .page {
+	.field-visibility-settings-notoggle, .field-visibility-settings-toggle, .standard-form .description {
+	.font-size(.9);
+	color:@graydark;
+	font-style: italic;
+	margin: 0.2em 0 0;
+	}
+}
+//GROUPS
+.buddypress {
+	article {
+		border-bottom: none;
+		margin-bottom: 0;
+	}
+	.site-content {
+		#content { 
+			width: 100%;
+			// margin: 0;
+		}
+		width:100%;
+		h2 {
+			.font-size(1.5);
+		}
+		h3 {
+			.font-size(1.3);
+		}
+		h4 {
+			.font-size(1.1);
+		}
+		h5 {}
+	}
+	.single-group-footer, .single-member-footer {
+		float: left;
+		background-color: lighten( @graylight, 5%);
+		margin-top: 2em;
+		// padding: 2%;
+		width: 100%;
+		.group-visibility {
+			background-color: darken( @graylight, 0% );
+			&.public {
+				border-top: 3px solid @ccgreen;
+				.group-type {
+					background-color: @ccgreen;
+				}
+			}
+			&.private {
+				border-top: 3px solid @ccblue;
+				.group-type {
+					background-color: @ccblue;
+				}
+			}
+			&.hidden {
+				border-top: 3px solid @ccred;
+				.group-type {
+					background-color: @ccred;
+				}
+			}
+		}
+		#item-meta {
+			margin: 1.4em;
+			.group-description p {
+				font-style: italic;
+			}
+		}
+		ul {
+			list-style-type: none;
+			margin-bottom: 0;
+			li {
+				// padding: 0;
+				margin-left: 0;
+				display: inline-block;
+			}
+		}
+		.member-footer-header{
+			display: block;
+			padding: .4em 1.4em;
+			color: @white;
+			background-color: @ccblue;
+			text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+		}
+	}
+}
+.group-visibility {
+	span {
+		display: inline-block;
+		padding: .4em 1.4em;
+		&.group-type {
+			color: @white;
+			// font-weight: 600;
+			text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+			letter-spacing: .2px;
+		}
+		&.group-tree {
+			font-style: italic;
+			color: lighten( @black, 10%);
+		}
+	}
+}
+//Group home pages
+.group_home_page {
+	// border-top: 2px solid @graylight;
+	padding-top: 24px;
+}
+
+//Hiding group admin tabs from non-site admins. This is a cheesy hack.
+.group-admin .item-list-tabs li > a[href$="/admin/blog-categories/"],
+.group-admin .item-list-tabs li > a[href$="/admin/narrative/"],
+.group-admin .item-list-tabs li > a[href$="/admin/docs/"],
+.group-admin .item-list-tabs li > a[href$="/admin/hierarchy/"],
+.group-admin .item-list-tabs li > a[href$="/admin/forum/"] { 
+	display: none;
+}
+.site-administrator.group-admin .item-list-tabs li > a[href$="/admin/blog-categories/"],
+.site-administrator.group-admin .item-list-tabs li > a[href$="/admin/narrative/"],
+.site-administrator.group-admin .item-list-tabs li > a[href$="/admin/docs/"],
+.site-administrator.group-admin .item-list-tabs li > a[href$="/admin/hierarchy/"],
+.site-administrator.group-admin .item-list-tabs li > a[href$="/admin/forum/"] { 
+	display: block;
+}

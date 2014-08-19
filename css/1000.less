@@ -1,59 +1,167 @@
-// New magazine-style home page
-body.home-page {
-	#primary {
-		img { 
-			}
-		#top-story {
-			// background-color: #FAB;
-			// margin-bottom: 0;
-			// border-bottom: 1px solid @graylight;
-			// height:1%;
-			img { 
-				// margin-bottom: 8px;
-				// margin-bottom: .6rem;
-				width:60%;
-				// float: left;
-				margin-right: 2em;
-				margin-bottom: 2em;
-
-			}		
-			h2 {
-				// width: 36%;
-				// float: left;
-				// clear: none;
-				// .font-size(1.4);
-				a { 
-					// text-decoration: none; 
+// Group and User nav
+// Twitter Bootstrap nav tabs
+.item-list-tabs ul,
+.nav-pills {
+  	*zoom: 1;
+  	&:before, &:after {
+		display: table;
+		content: "";
+		line-height: 0;
+  	}
+  	&:after {
+  		clear: both;
+  	}
+  	li {
+  		float: left;
+  		a {	
+  			display: block;
+  			padding-right: 8px;
+			padding-left: 8px;
+			// margin-right: 2px;
+			line-height: 20px;
+  		}
+  	}
+}
+.item-list-tabs {
+	border-bottom: 0;
+	ul {
+  	border-bottom: 1px solid @graymid;
+  	margin-bottom: 0;
+	  	li {
+		  	margin: 0 3px -1px 0; 
+		  	padding-bottom: 0;
+		  	a {
+		  		padding-top: 8px;
+	  			padding-bottom: 8px;
+	  			// line-height: 20px;
+			  	border: 1px solid @graylight;
+			  	border-top: 4px solid @graylight;
+			  	background-color: lighten( @graylight, 8% );
+			  	border-bottom-color: @graymid;
+			  	// .gradient( lighten( @graylight, 10% ), lighten( @graylight, 5% ) );
+				.border-radius-variable(4px, 4px, 0, 0);
+				&:hover {
+					border-color: @ccgreen @graymid @graymid;
 				}
-				
-			}
-		}
-		
+		  	}
+		  	&.selected, &.current, &.current-menu-item {
+		  		a, a:hover {
+		  			color: @graydark;
+					background: @white;
+					// .gradient( @white, @white );
+	    		    text-shadow: none;
+					border: 1px solid @graymid;
+					border-top: 4px solid @ccblue;
+					border-bottom-color: transparent;
+					cursor: default;
+		  		}
+		  	}
+	  	}
 	}
 }
-.content-row {
-			border-bottom: none;
-			&:after { 
-				clear: none;
-			}
-			&:before, &:after { 
-				display: table;
-				content: ""; 
-			}
+.item-list-tabs#subnav ul {
+	padding-bottom: 0.4em;
+	border-bottom: 1px solid @graylight;
+	li {
+		a {
+
 		}
+		&.selected, &.current-menu-item, &.current {
+		    a {
+		    }
+		}
+	}
+}
+.item-list-tabs#group-create-tabs ul {
+  	li {
+  		float: left;
+  		margin-right: 8px;
+  		padding: 8px;
+  		a {
+  			padding: 0;
+  		}
+  		&> a {
+  			padding:0;
+  		}
+  	}
+}
+.content-row {
+	border-bottom: none;
+	&:after { 
+		// clear: none;
+	}
+	&:before, &:after { 
+		display: table;
+		content: ""; 
+	}
+}
 
 .quarter-block {
-	// margin-bottom: 24px;
-	// margin-bottom: 1.7rem;
-	border-bottom: none;
 	margin-right: 2%;
 	margin-left: 2%;
-    width: 21%;
-    float: left;
-    // &:nth-child(even) {
-    // 	clear:left;
-    // }
+    width: 21.9%;
+    &:nth-of-type(odd) {
+		clear: none;
+		margin-left: 2%;
+	}
+	&:nth-of-type(even) {
+		margin-right: 2%;
+	}
+    &:nth-of-type(4n+1) {
+		clear: left;
+		margin-left: 0;
+	}
+	&:nth-of-type(4n) {
+		margin-right: 0;
+	}
+    &.button { 
+		margin-right: 1.8%;
+		margin-left: 1.8%;
+		width:19%; 
+	}
+	&.screamer {
+		width: 19.9%;
+	}
+	&.table-cell {
+		display: table-cell;
+		margin-left: 0;
+		margin-right: 0;
+		border: 10px solid white;
+		// width: 22%;
+		float: none;
+		&.vertical-centered {
+			vertical-align: middle;
+		}
+	}
 }
+
+.item-list {
+	.item {
+		width: 75%;
+		.item-title, .item-desc {
+			// float: left;
+			// width: 76%;
+		}
+	}
+	.action {
+		// float: right;
+		width: 20%;
+		// margin-left: 0;
+	}
+	&#groups-list {
+		.item {
+			width: 65%;
+		}
+		.action {
+			width: 20%;
+			float: right;
+			clear: right;
+			margin-left: 0;
+		}
+	}
+	
+}
+
 //Maps & Data page content
 .maps-data #primary #content {
 	article {
@@ -160,10 +268,10 @@ body.home-page {
 .salud-america {
 	.salud-header {
 		.logo {
-			top: -22px;
+			top: 5px;
 			// left: -19px;
 			// display: inline-block;
-			width: 19%;
+			width: 16%;
 		}
 		.sa-kids-photo {
 			// right:-12px;
@@ -174,14 +282,86 @@ body.home-page {
 	#content {
 		.sa-resource-header-icon {
 			// background-color: transparent;
-		span {
-		  bottom: 0;
-		  .font-size(1.1);
-		  // font-weight: bold;
+			span {
+			  // bottom: 0;
+			  // .font-size(1.1);
+			  // font-weight: bold;
+			}
+			img {
+				// display: block;
+			}
 		}
-		img {
-			// display: block;
-		}
+		// .related-policies {
+		// 	width: 68%;
+		// 	float: left;
+		// }
+		// .related-items-sidebar {
+		// 	display: block;
+		// 	width: 25%; 
+		// 	float:right; 
+		// 	background-color: lighten( @graylight, 5);
+		// 	h3 {
+		// 		margin-top: 0;
+		// 	}
+		// }
 	}
+}
+.tax-sa_advocacy_targets {
+	.advocacy_target_introduction {
+		// .video-container {
+		// 	width: 45%;
+		// 	margin-left: 5%;
+		// 	float: right;
+		// 	padding-bottom: 36%;
+		// }
 	}
+}
+
+.video-container {
+	width: 45%;
+	margin-left: 5%;
+	float: right;
+	padding-bottom: 21%;
+}
+#content .video-container-group {
+	float: right;
+	width: 45%;
+	margin-left: 5%;
+	margin-bottom: 1.7em;
+	.video-container {
+		width: 100%;
+		padding-bottom: 47%;
+		// margin-bottom: .5em;
+	}
+}
+//Map and dial widgets
+#_cc-maplegend {
+	// display: none;	
+}
+.map-widget-image {
+	float: left;
+}
+.policy-meta .map-widget-legend {
+	display: block;
+	float: left;
+	margin-left: 5%;
+	width: 45%;
+}
+
+.gaugechart {
+	img {
+		float: left
+	}	
+	.gaugelegend {
+	    // display: block;
+	    float: left;
+	    // vertical-align: middle;
+	    div {
+	    	margin-bottom: .8em;
+	    }
+    }
+}
+//Responsive line break
+.rwd-break-1000 {
+	display: block;
 }

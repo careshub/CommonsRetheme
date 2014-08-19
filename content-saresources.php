@@ -13,8 +13,8 @@
 $custom_fields = get_post_custom($post->ID);
 $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 	foreach ( $terms as $term ) {
-		$advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
-		$target_icons[] = $term->slug;
+		// $advocacy_targets[] = '<a href="' .get_term_link($term->slug, 'sa_advocacy_targets') .'">'.$term->name.'</a>';
+		$advocacy_targets[] = '<a href="' . cc_get_the_cpt_tax_intersection_link( 'saresources', 'sa_advocacy_targets', $term->slug ) .'">'.$term->name.'</a>';
 	}
 	$advocacy_targets = join( ', ', $advocacy_targets );
 
@@ -46,11 +46,9 @@ $resource_cats = get_the_terms( $post->ID, 'sa_resource_cat' );
 			<header class="entry-header clear">
 				<h1 class="entry-title"><?php the_title(); ?></h1>
 				<?php //echo "<br />"; ?>
-				<?php if ( isset( $target_icons ) ) {
-						foreach ($target_icons as $target_icon) {
-							echo '<span class="' . $target_icon . 'x30"></span>';
+				<?php if (function_exists('salud_the_target_icons')) {
+						salud_the_target_icons();
 						}
-					}
 				?>
 				<!-- <p class="location">
 					<?php 
@@ -82,7 +80,11 @@ $resource_cats = get_the_terms( $post->ID, 'sa_resource_cat' );
 				// echo $advocacy_targets;
 				?>
 			</a></p> -->
-
+			<?php 
+				if ( function_exists('cc_add_comment_button') ) { 
+					cc_add_comment_button(); 
+				} 
+			?>
 			<?php 
 				if ( function_exists('bp_share_post_button') ) { 
 					bp_share_post_button(); 
