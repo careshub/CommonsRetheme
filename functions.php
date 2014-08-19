@@ -65,7 +65,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.34
+          0.35
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
@@ -929,6 +929,9 @@ function cdc_gf_uuid($value) {
 }
 
 function cdcdch_users() {
+  if ( ! class_exists('RGFormsModel') )
+    return;
+
   if ( is_page('cdc_dch1') ) {
         $form_id = 2;        
         $cdcusers = RGFormsModel::get_leads($form_id, '5', 'ASC');

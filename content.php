@@ -74,8 +74,10 @@
 				}
 			if ( function_exists('bp_share_post_button') ) { 
 					bp_share_post_button(); 
-				} ?>
-
+				}
+		endif; // is single()
+		// if ( is_single() ) :
+				?>
 			<footer class="entry-meta">
 				<?php twentytwelve_entry_meta(); ?>
 				<?php edit_post_link( __( 'Edit', 'twentytwelve' ), '<span class="edit-link">', '</span>' ); ?>
@@ -96,5 +98,5 @@
 					</div><!-- .author-info -->
 				<?php endif; ?>
 			</footer><!-- .entry-meta -->
-		<?php endif; // is_single ?>
+		<?php //endif; // is_single ?>
 	</article><!-- #post -->
