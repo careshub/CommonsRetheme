@@ -209,3 +209,5 @@ page-cim-import.php
 page-check-users.php
 
 *.codekit
+
+node_modules/**

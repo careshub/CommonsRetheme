@@ -100,7 +100,7 @@ function parent_stylesheet_load(){
 // I'm joining the various scripts into one via CodeKit.
 add_action( 'wp_enqueue_scripts', 'cc_common_js_load', 14 );
 function cc_common_js_load(){
-  wp_register_script('cc-common-scripts', get_stylesheet_directory_uri().'/js/cc-common-scripts-ck.js">', array('jquery'), '1.0', true  ); 
+  wp_register_script('cc-common-scripts', get_stylesheet_directory_uri().'/js/commons.min.js">', array('jquery'), '1.0', true  ); 
   wp_enqueue_script('cc-common-scripts'); 
 }
 
