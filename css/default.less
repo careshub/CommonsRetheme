@@ -51,6 +51,14 @@ img.no-box {
 img.img-border {
 	border: 1px solid @graymid;
 }
+.entry-content img, .comment-content img, .widget img, img.header-image, .author-avatar img, img.wp-post-image {
+    border-radius: 0;
+    box-shadow: none;
+}
+// Hack to stretch old, undersized images to fill post "cards" on blog/cat listings
+.attachment-feature-large {
+	width: 100%;
+}
 .widget-title {
 	.font-size(1.2);
 	.supplemental {
@@ -69,17 +77,61 @@ img.img-border {
 
 // layout basics
 .site-content {
-	article.compact {
-		margin-bottom: 24px;
-		margin-bottom: 1.71429rem;
+	article {
+	 	// border-bottom: 2px solid @ccblue;
+	 	// border-top: 2px solid @ccblue;
+	 	.entry-header {
+	 		.category-links {
+	 			// display: block;
+	 			margin-bottom: 1.2em;
+	 			a {	
+	 				display: inline-block;
+	 				color: @white;
+	 			    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	 				background-color: @ccblue;
+	 				.font-size(.9);
+	 				line-height: 2;
+	 				text-transform: uppercase;
+	 				padding: 0 0.8em;
+	 			}
+	 		}
+	 		img {
+	 			// margin-top: 2em;
+	 		}
+	 		.entry-title {
+				margin-top: 0;
+	 		}
+	 	}
+	 	.entry-meta {
+	 		line-height: 2.2;
+	 		.category-links {
+	 			// display: block;
+	 			// margin-bottom: 1em;
+	 			a {	
+	 				display: inline-block;
+	 				color: @white;
+	 				background-color: @ccblue;
+	 				.border-radius(12px);
+	 				.font-size(.9);
+	 				line-height: 1.8;
+	 				padding: 0 0.8em;
+	 			}
+	 		}
+	 	}
+ 		&.compact {
+			margin-bottom: 24px;
+			margin-bottom: 1.71429rem;
+		}
+		&.ultra-compact {
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+		&.no-divider {
+			border-bottom: none;
+		}
 	}
-	article.ultra-compact {
-		margin-bottom: 0;
-		padding-bottom: 0;
-	}
-	article.no-divider {
-		border-bottom: none;
-	}
+
+
 	.entry-content {
 		// Post attachments -- used in Salud area
 		.attachments-header {
@@ -146,6 +198,11 @@ img.img-border {
 		}
 	}
 }
+ .blog, .archive{
+ 	article {
+	 	border-bottom: 2px solid @ccblue;
+ 	}
+ }
 
 button,
 a.button,
@@ -345,8 +402,7 @@ div.generic-button a:hover,
 				color: @white;
 			}
 		}
-	}//end secondary
-
+	} // end secondary
 	ul { width: 100% }
 	li {
 		float: none;
@@ -523,9 +579,12 @@ caption, th, td {
  padding: 4px 6px;
 }
 img.avatar {
-	.border-radius(3px);
-	.drop-shadow(0, 1px, 2px, 0, 0.25);
+	// .border-radius(3px);
+	// .drop-shadow(0, 1px, 2px, 0, 0.25);
 	margin:2px;
+}
+.visible-1000 {
+	display: none;
 }
 
 h5 {
@@ -1304,7 +1363,8 @@ body.home-page {
 	}
 	.tool-group-tool {
 		&.no-description {
-			margin-bottom: 0;
+			margin-bottom: 1em;
+			padding-bottom: 0;
 		}
 		.entry-header {
 			margin-bottom: 1.2em;
@@ -1720,6 +1780,103 @@ div.docs-info-header {
 	}
 }
 
+//Entry meta tag styling, from Twenty Fourteen
+/* Tag links style */
+
+.entry-meta .tag-links a {
+	background-color: lighten( @graydark, 35% );
+	// border-radius: 0 2px 2px 0;
+	color: @white;
+	display: inline-block;
+	font-size: 11px;
+	// font-weight: 700;
+	line-height: 1.2727272727;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	margin: 2px 4px 2px 10px;
+	padding: 3px 7px;
+	position: relative;
+	// text-transform: uppercase;
+	&:hover {
+		background-color: @ccblue;
+		color: @white;
+	    // text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	}
+	&:before {
+		border-top: 10px solid transparent;
+		border-right: 8px solid lighten( @graydark, 35% );
+		border-bottom: 10px solid transparent;
+		content: "";
+		height: 0;
+		position: absolute;
+		top: 0;
+		left: -8px;
+		width: 0;
+	}
+	&:hover:before {
+		border-right-color: @ccblue;
+	}
+	&:after {
+		background-color: @white;
+		border-radius: 50%;
+		content: "";
+		height: 4px;
+		position: absolute;
+		top: 8px;
+		left: -2px;
+		width: 4px;
+	}
+}
+//Category archive header
+body.category {
+	.archive-header {
+		background-color: @ccblue;
+		border-bottom: none;
+		padding-bottom: 0;
+		.archive-title {
+			.font-size(1.2);
+			color: @white;
+		    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+			padding-left: 4%;
+			margin: 0;
+		}
+	}
+}
+//Tag archive header
+body.tag .archive-header .archive-title {
+	background-color: @ccblue;
+	// border-radius: 0 2px 2px 0;
+	color: @white;
+	display: inline-block;
+	font-size: 24px;
+	// font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	line-height: 1.2727272727;
+	margin: 2px 4px 2px 10px;
+	padding: 6px 14px;
+	position: relative;
+	// text-transform: uppercase;
+	&:before {
+		border-top: 22px solid transparent;
+		border-right: 16px solid @ccblue;
+		border-bottom: 22px solid transparent;
+		content: "";
+		height: 0;
+		position: absolute;
+		top: 0;
+		left: -16px;
+		width: 0;
+	}
+	&:after {
+		background-color: @white;
+		border-radius: 50%;
+		content: "";
+		height: 6px;
+		position: absolute;
+		top: 19px;
+		left: -6px;
+		width: 6px;
+	}
+}
 // Invite Anyone style updates
 .accept-invitation #message {
 	margin-top: 2em;

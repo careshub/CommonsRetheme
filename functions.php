@@ -65,7 +65,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.34
+          0.35
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
@@ -210,7 +210,7 @@ if ( function_exists( 'register_nav_menus' ) ) {
 //Add new image sizes for front page
 if ( function_exists( 'add_image_size' ) ) { 
   add_image_size( 'feature-front', '576', '600', false ); //not hard cropped, resized proportionally
-  add_image_size( 'feature-large', '625', '350', true ); // hard cropped
+  add_image_size( 'feature-large', '682', '350', true ); // hard cropped
   add_image_size( 'feature-front-sub', '300', '200', true ); // hard cropped
 }
 
@@ -223,14 +223,13 @@ function notifications_counter() {
   if ( !is_user_logged_in() )
     return ;
 
-  $notifications = bp_notifications_get_notifications_for_user( bp_loggedin_user_id() );
-  $count = !empty( $notifications ) ? count( $notifications ) : 0;
+  $notifications = bp_notifications_get_notifications_for_user( bp_loggedin_user_id(), 'object' );
+  $count = ! empty( $notifications ) ? count( $notifications ) : 0;
   $alert_class = (int) $count > 0 ? 'pending-count alert' : 'count no-alert';
   $output = '<li class="menupop bp-notifications separator">' 
-         . '<span class="';
-  $output .= $alert_class;
-  $output .= '">' . $count . '</span><h5>Notifications:</h5>';
-  $output .= print_notifications_list( $notifications, $count );
+         . '<a href="' . trailingslashit( bp_loggedin_user_domain() . bp_get_notifications_slug() ) . '"><span class="'. $alert_class . '">' . $count . '</span></a>';
+  $output .= '<h5>Notifications:</h5>';
+  $output .= print_notifications_list( $notifications );
   $output .='</li>';
 
   echo $output;
@@ -238,21 +237,17 @@ function notifications_counter() {
 
 }
 
-function print_notifications_list( $notifications, $count ){
+function print_notifications_list( $notifications ){
     $output = '<div class="pop-sub-wrapper"><ul class="bp-notification-list">';
         
-  if ( $count !== 0 ) {
-    $counter = 0;
-    for ( $i = 0; $i < $count; $i++ ) {
-    $alt = ( 0 == $counter % 2 ) ? ' alt' : '';
-
-    $output .= '<li class="' . $alt . '">' . $notifications[$i] .'</li>';
-
-    $counter++;
+  if ( ! empty( $notifications ) ) {
+    foreach ( (array) $notifications as $notification ) {
+      $output .= '<li id="cc-notification-' . $notification->id . '">';
+      $output .= '<a href="' . $notification->href . '">' . $notification->content . '</a></li>';
     }
   } else {
 
-  $output .= '<li class="no-notices">You don&rsquo;t have any new notifications.</li>';
+  $output .= '<li class="no-notices">No new notifications.</li>';
 
   }
 
@@ -545,6 +540,67 @@ function salud_excerpt_length($length) {
   }
 }
 add_filter('excerpt_length', 'salud_excerpt_length', 999);
+
+/**
+ * Set up post entry meta.
+ *
+ * Prints HTML with meta information for current post: categories, tags, permalink, author, and date.
+ *
+ * Create your own twentytwelve_entry_meta() to override in a child theme.
+ *
+ * @since Twenty Twelve 1.0
+ */
+function twentytwelve_entry_meta() {
+  // Translators: used between list items, there is a space after the comma.
+  $categories_list = get_the_category_list( __( ' ', 'twentytwelve' ) );
+
+  // Translators: used between list items, there is a space after the comma.
+  $tag_list = get_the_tag_list( '', __( ' ', 'twentytwelve' ) );
+
+  $date = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a>',
+    esc_url( get_permalink() ),
+    esc_attr( get_the_time() ),
+    esc_attr( get_the_date( 'c' ) ),
+    esc_html( get_the_date() )
+  );
+
+  $author = sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+    // esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+    //Use the BuddyPress profile instead
+    esc_url( bp_core_get_user_domain( get_the_author_meta( 'ID' ) ) ),
+    esc_attr( sprintf( __( 'View all posts by %s', 'twentytwelve' ), get_the_author() ) ),
+    get_the_author()
+  );
+
+  // Translators: 1 is category, 2 is tag, 3 is the date and 4 is the author's name.
+  // if ( $tag_list ) {
+  //   $utility_text = __( 'Categories: <span class="category-links">%1$s <br />Tags: %2$s <br />Posted on %3$s<span class="by-author"> by %4$s</span>.', 'twentytwelve' );
+  // } elseif ( $categories_list ) {
+  //   $utility_text = __( 'Categories: <span class="category-links">%1$s on %3$s<span class="by-author"> by %4$s</span>.', 'twentytwelve' );
+  // } else {
+  //   $utility_text = __( 'This entry was posted on %3$s<span class="by-author"> by %4$s</span>.', 'twentytwelve' );
+  // }
+
+  $output = '';
+  if ( $categories_list ) {
+    $output .= 'Categories <span class="category-links">'. $categories_list . '</span> <br />';
+  }
+  if ( $tag_list ) {
+    $output .= 'Tags <span class="tag-links">'. $tag_list . '</span> <br />';
+  }
+  if ( $date && $author ) {
+    $output .= 'Posted on ' . $date . '<span class="by-author"> by ' . $author . '</span>.';
+  }
+  echo $output;
+
+  // printf(
+  //   $utility_text,
+  //   $categories_list,
+  //   $tag_list,
+  //   $date,
+  //   $author
+  // );
+}
 
 //Removes mentions pane from profile activity (doesn't remove mention functionality)
 function ray_remove_mention_nav() {
@@ -868,6 +924,9 @@ function cdc_gf_uuid($value) {
 }
 
 function cdcdch_users() {
+  if ( ! class_exists('RGFormsModel') )
+    return;
+
   if ( is_page('cdc_dch1') ) {
         $form_id = 2;        
         $cdcusers = RGFormsModel::get_leads($form_id, '5', 'ASC');
