@@ -229,7 +229,7 @@
 	display:block;
 }
 
-	//even/odd row coloring
+//even/odd row coloring
 .alt {
 	&:nth-child(odd) {
 		background-color: desaturate(lighten(@ccblue, 63%), 50%);
@@ -333,6 +333,29 @@ body.home-page {
 	}
 }
 
+//Posts display
+.entry-header .entry-title, .archive-header .archive-title {
+	.font-size(1.8);
+	&.screamer {
+		.font-size(1.6);
+	}
+}
+//Category archive header
+body.category {
+	.archive-header {
+		.archive-title {
+			.font-size(1.8);
+		}
+	}
+}
+//Tag archive header
+body.tag .archive-header {
+	border-bottom: none;
+	.archive-title {
+		font-size: 25.2px;
+	}
+}
+
 //Maps & Data page content
 .maps-data #primary #content {
 	article {
@@ -404,6 +427,14 @@ body.home-page {
 		// line-height: 1.6;
 		// margin: 0.8em 1em;
 		}
+	}
+}
+
+//Comments
+// WP also uses the class "alt", which we don't want in this case
+.comments-area .alt {
+	&:nth-child(odd) {
+		background-color: transparent;
 	}
 }
 

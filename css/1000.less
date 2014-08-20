@@ -72,6 +72,167 @@
 		}
 	}
 }
+
+//alternative layout for blog page
+//.blog is listing, .single-post is single view
+body.blog, body.category, body.tag, body.single-post {
+	.site {
+		box-shadow: none;
+		background-color: transparent;
+		// padding: 0;
+		.site-content {
+		    width: 68.1%;
+			article {
+				background-color: @white;
+				padding: 0 2em 2em;
+				margin-left: -2em;
+				border-bottom: none;
+				border-top: 3px solid @ccblue;
+				.drop-shadow(0, 1px, 3px, 0, 0.25);
+				.entry-header {
+					margin-left: -28px;
+					margin-left: -2rem;
+					margin-right: -28px;
+					margin-right: -2rem;
+
+					.category-links {
+						// display: block;
+						// margin-left: -28px;
+						// margin-left: -2rem;
+						// margin-bottom: 1.2em;
+						position: absolute;
+						a {	
+							// display: inline-block;
+							// color: @white;
+							// background-color: @ccblue;
+							.font-size(1);
+							// line-height: 2;
+							// text-transform: uppercase;
+							padding: 0 1em;
+						}
+						// &+.entry-title {
+						// 	margin-top: 2em;
+						// }
+					}
+					img {
+						box-shadow: none;
+						border-radius: 0;
+					}
+					.entry-title {
+						margin-left: 28px;
+						margin-left: 2rem;
+						margin-right: 28px;
+						margin-right: 2rem;
+						margin-top: 0;
+						&.no-thumbnail {
+							margin-top: 42px;
+							margin-top: 3rem;
+						}
+					}
+				}
+				.entry-meta {
+					// background-color: lighten( @graylight, 4% );
+					// margin: 0 -2em -2em;
+					// padding: .5em 2em 2em;
+					// .category-links {
+					// 	margin-left: 0;
+					// 	a {
+					// 		padding
+					// 	}
+					// }
+				}
+			}
+		}
+		.widget-area {
+			background-color: @white;
+			padding: 1em;
+			.drop-shadow(0, 1px, 3px, 0, 0.25);
+		}
+	}
+}
+body.single-post {
+	.site {
+		.site-content {
+			article {
+				margin-bottom: 2em;
+				.entry-header {
+					margin: 0 -28px;
+					h1 {
+						padding-left: 28px;
+					}
+					.category-links {
+						a {	
+						}
+					}
+				}
+				.entry-meta {
+				}
+			}
+			.nav-single {
+				margin-left: -28px;
+				.nav-previous {
+				}
+				a {
+					display: inline-block;
+					background-color: #EEE;
+					padding: .4em 1em;
+					// border: 1px solid @graymid;
+				}
+			}
+		}
+		.widget-area {
+		}
+		.comments-area {
+			margin-left: -28px;
+			.comment-respond {
+				// border: 1px solid @graymid;
+				.drop-shadow(0, 1px, 3px, 0, 0.25);
+				background-color: @white;
+				padding: 2em;
+			}
+			article {
+				margin-left: 0;
+				padding-top: 2em;
+			}
+		}
+	}
+}
+//Category archive header
+body.category {
+	.archive-header {
+		margin-left: -28px;
+		.archive-title {
+		}
+	}
+}
+body.tag {
+	.archive-header {
+		padding-bottom: 0;
+		.archive-title {
+			margin: 0;
+		}
+	}
+}
+body.category {
+	.site {
+		.site-content {
+			article {
+				.entry-header {
+					// margin-top: 2em;
+				}
+			}
+			
+		}
+	}
+}
+//Front page
+body.home {
+	//Font size for blocks below top story
+	.quarter-block .entry-header .entry-title {
+		.font-size(1.6);
+	}
+}
+
 .item-list-tabs#group-create-tabs ul {
   	li {
   		float: left;
@@ -85,6 +246,7 @@
   		}
   	}
 }
+
 .content-row {
 	border-bottom: none;
 	&:after { 
@@ -264,6 +426,14 @@
 	}
 }
 
+.tool-group {
+	.tool-group-tool {
+		&.no-description {
+			margin-bottom: 2em;
+		}
+	}
+}
+
 //Salud America
 .salud-america {
 	.salud-header {
@@ -363,5 +533,8 @@
 }
 //Responsive line break
 .rwd-break-1000 {
+	display: block;
+}
+.visible-1000 {
 	display: block;
 }
