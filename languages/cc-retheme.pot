@@ -1,0 +1,1619 @@
+# Copyright (C) 2014 David Cavins, WordPress and bbPress teams
+# This file is distributed under the same license as the Community Commons (Twenty Twelve) package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Community Commons (Twenty Twelve) 0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/theme/functions\n"
+"POT-Creation-Date: 2014-08-20 19:44:35+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Community Commons <info@communitycommons.org>\n"
+"Language-Team: ENGLISH <info@communitycommons.org>\n"
+"X-Generator: grunt-wp-i18n 0.4.7\n"
+
+#: archive-cchelp.php:781 content-group_story.php:28
+#: content-sa-policy-short.php:57 content-sa_success_story-short.php:43
+#: content-sa_success_story-short.php:45 content-sa_success_story-videos.php:34
+#: content-saresources-mini.php:47 content-saresources-short.php:47
+#: content-stories-brief.php:22 content-stories-brief.php:24
+#: content-stories-brief.php:36 content.php:44 includes/SA_Policies.php:1238
+#: includes/cpt-group-stories.php:280 includes/cpt-group-stories.php:363
+#: single-sapolicies.php:120 single-sapolicies.php:199
+msgid "Permalink to %s"
+msgstr ""
+
+#: bbpress/loop-single-topic.php:60
+msgid "Started by: %1$s"
+msgstr ""
+
+#: bbpress/loop-single-topic.php:68
+msgid "in: <a href=\"%1$s\">%2$s</a>"
+msgstr ""
+
+#: bcg/blog.php:28 bcg/blog.php:34 bcg/single-post.php:18
+#: bcg/single-post.php:24
+msgid "by %s"
+msgstr ""
+
+#: bcg/blog.php:32 bcg/single-post.php:22
+msgid "Permanent Link to"
+msgstr ""
+
+#: bcg/blog.php:34 bcg/single-post.php:24
+msgid "in"
+msgstr ""
+
+#: bcg/blog.php:40 bcg/single-post.php:32
+msgid "Tags: "
+msgstr ""
+
+#: bcg/blog.php:40 bcg/single-post.php:32 search-loop.php:20
+msgid "No Comments &#187;"
+msgstr ""
+
+#: bcg/blog.php:40 bcg/single-post.php:32 search-loop.php:20
+msgid "1 Comment &#187;"
+msgstr ""
+
+#: bcg/blog.php:40 bcg/single-post.php:32 search-loop.php:20
+msgid "% Comments &#187;"
+msgstr ""
+
+#: bcg/blog.php:54 buddypress/groups/single/narratives.php:89
+msgid "This group has no Blog posts."
+msgstr ""
+
+#: bcg/single-post.php:27
+msgid "Read the rest of this entry &rarr;"
+msgstr ""
+
+#: bcg/single-post.php:29
+msgid "<p><strong>Pages:</strong> "
+msgstr ""
+
+#: bcg/single-post.php:46 buddypress/groups/single/narratives.php:35
+msgid "That post does not appear to exist."
+msgstr ""
+
+#: buddypress/activity/activity-loop-unisearch.php:41
+msgid "Load More"
+msgstr ""
+
+#: buddypress/activity/activity-loop-unisearch.php:55
+msgid "Sorry, there was no activity found. Please try a different filter."
+msgstr ""
+
+#: buddypress/activity/post-form.php:23
+msgid "What's new in %s, %s?"
+msgstr ""
+
+#: buddypress/activity/post-form.php:25
+msgid "What's new, %s?"
+msgstr ""
+
+#: buddypress/activity/post-form.php:35
+msgid "Post Update"
+msgstr ""
+
+#: buddypress/activity/post-form.php:42
+msgid "Post in"
+msgstr ""
+
+#: buddypress/activity/post-form.php:45
+#: buddypress/members/single/profile/profile-wp.php:8
+msgid "My Profile"
+msgstr ""
+
+#: buddypress/groups/create.php:29
+msgid "Group Name (required)"
+msgstr ""
+
+#: buddypress/groups/create.php:34
+msgid "Group Description (required)"
+msgstr ""
+
+#: buddypress/groups/create.php:51
+msgid "Privacy Options"
+msgstr ""
+
+#: buddypress/groups/create.php:55
+msgid "This is a public group"
+msgstr ""
+
+#: buddypress/groups/create.php:57
+msgid "Any site member can join this group."
+msgstr ""
+
+#: buddypress/groups/create.php:58 buddypress/groups/create.php:67
+msgid "This group will be listed in the groups directory and in search results."
+msgstr ""
+
+#: buddypress/groups/create.php:59
+msgid "Group content and activity will be visible to any site member."
+msgstr ""
+
+#: buddypress/groups/create.php:64
+msgid "This is a private group"
+msgstr ""
+
+#: buddypress/groups/create.php:66
+msgid "Only users who request membership and are accepted can join the group."
+msgstr ""
+
+#: buddypress/groups/create.php:68 buddypress/groups/create.php:77
+msgid "Group content and activity will only be visible to members of the group."
+msgstr ""
+
+#: buddypress/groups/create.php:73
+msgid "This is a hidden group"
+msgstr ""
+
+#: buddypress/groups/create.php:75
+msgid "Only users who are invited can join the group."
+msgstr ""
+
+#: buddypress/groups/create.php:76
+msgid "This group will not be listed in the groups directory or search results."
+msgstr ""
+
+#: buddypress/groups/create.php:82
+msgid "Group Invitations"
+msgstr ""
+
+#: buddypress/groups/create.php:84
+msgid "Which members of this group are allowed to invite others?"
+msgstr ""
+
+#: buddypress/groups/create.php:89
+msgid "All group members"
+msgstr ""
+
+#: buddypress/groups/create.php:94
+msgid "Group admins and mods only"
+msgstr ""
+
+#: buddypress/groups/create.php:99
+msgid "Group admins only"
+msgstr ""
+
+#: buddypress/groups/create.php:105
+msgid "Group Forums"
+msgstr ""
+
+#: buddypress/groups/create.php:109
+msgid "Should this group have a forum?"
+msgstr ""
+
+#: buddypress/groups/create.php:112
+msgid "Enable discussion forum"
+msgstr ""
+
+#: buddypress/groups/create.php:116
+msgid ""
+"<strong>Attention Site Admin:</strong> Group forums require the <a "
+"href=\"%s\">correct setup and configuration</a> of a bbPress installation."
+msgstr ""
+
+#: buddypress/groups/create.php:142
+msgid ""
+"Upload an image to use as an avatar for this group. The image will be shown "
+"on the main group page, and in search results."
+msgstr ""
+
+#: buddypress/groups/create.php:146
+msgid "Upload Image"
+msgstr ""
+
+#: buddypress/groups/create.php:150
+msgid "To skip the avatar upload process, hit the \"Next Step\" button."
+msgstr ""
+
+#: buddypress/groups/create.php:157
+msgid "Crop Group Avatar"
+msgstr ""
+
+#: buddypress/groups/create.php:159
+msgid "Avatar to crop"
+msgstr ""
+
+#: buddypress/groups/create.php:162
+msgid "Avatar preview"
+msgstr ""
+
+#: buddypress/groups/create.php:165
+msgid "Crop Image"
+msgstr ""
+
+#: buddypress/groups/create.php:204
+#: buddypress/groups/single/invite-anyone.php:50
+msgid "Select people to invite from your friends list."
+msgstr ""
+
+#: buddypress/groups/create.php:222
+#: buddypress/groups/single/invite-anyone.php:70
+msgid "Remove Invite"
+msgstr ""
+
+#: buddypress/groups/create.php:239
+msgid ""
+"Once you have built up friend connections you will be able to invite others "
+"to your group."
+msgstr ""
+
+#: buddypress/groups/create.php:261
+msgid "Back to Previous Step"
+msgstr ""
+
+#: buddypress/groups/create.php:268
+msgid "Next Step"
+msgstr ""
+
+#: buddypress/groups/create.php:275
+msgid "Create Group and Continue"
+msgstr ""
+
+#: buddypress/groups/create.php:282
+msgid "Finish"
+msgstr ""
+
+#: buddypress/groups/groups-loop-unisearch.php:47
+#: buddypress/groups/groups-loop.php:48
+#: buddypress/groups/single/group-header.php:36
+msgid "active %s"
+msgstr ""
+
+#: buddypress/groups/groups-loop-unisearch.php:95
+#: buddypress/groups/groups-loop.php:96
+msgid "There were no groups found."
+msgstr ""
+
+#: buddypress/groups/single/activity.php:3 functions.php:624
+#. Translators: 1 is category, 2 is tag, 3 is the date and 4 is the author's
+#. name.
+msgid "RSS Feed"
+msgstr ""
+
+#: buddypress/groups/single/activity.php:3 functions.php:624
+msgid "RSS"
+msgstr ""
+
+#: buddypress/groups/single/activity.php:8
+msgid "Show:"
+msgstr ""
+
+#: buddypress/groups/single/activity.php:10
+msgid "Everything"
+msgstr ""
+
+#: buddypress/groups/single/activity.php:11
+msgid "Updates"
+msgstr ""
+
+#: buddypress/groups/single/activity.php:14
+msgid "Forum Topics"
+msgstr ""
+
+#: buddypress/groups/single/activity.php:15
+msgid "Forum Replies"
+msgstr ""
+
+#: buddypress/groups/single/activity.php:18
+msgid "Group Memberships"
+msgstr ""
+
+#: buddypress/groups/single/footer.php:26
+msgid "Group Admins"
+msgstr ""
+
+#: buddypress/groups/single/footer.php:44
+msgid "Hub Moderators"
+msgstr ""
+
+#: buddypress/groups/single/front-bak.php:35
+#: buddypress/groups/single/front.php:12 content-group_story.php:44
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: buddypress/groups/single/front-bak.php:36
+#: buddypress/groups/single/front.php:13 content-group_story.php:50
+#: content-narrative.php:47 content-page-notitle.php:15
+#: content-page-screamer.php:18 content.php:61
+msgid "Pages:"
+msgstr ""
+
+#: buddypress/groups/single/invite-anyone.php:18
+msgid "Want to invite someone to the group who is not yet a member of the site?"
+msgstr ""
+
+#: buddypress/groups/single/invite-anyone.php:18
+msgid "Send invitations by email."
+msgstr ""
+
+#: buddypress/groups/single/invite-anyone.php:26
+msgid "Search for members to invite:"
+msgstr ""
+
+#: buddypress/groups/single/invite-anyone.php:37
+msgid "Select members from the directory:"
+msgstr ""
+
+#: buddypress/groups/single/invite-anyone.php:89
+msgid "Send Invites"
+msgstr ""
+
+#: buddypress/groups/single/members.php:87
+msgid "This group has no members."
+msgstr ""
+
+#: buddypress/members/members-loop-unisearch.php:108
+#: buddypress/members/members-loop.php:108
+msgid "Sorry, no members were found."
+msgstr ""
+
+#: buddypress/members/register.php:13
+msgid "User registration is currently not allowed."
+msgstr ""
+
+#: buddypress/members/register.php:22
+msgid ""
+"Registering for this site is easy. Just fill in the fields below, and we'll "
+"get a new account set up for you in no time."
+msgstr ""
+
+#: buddypress/members/register.php:30
+msgid "Account Details"
+msgstr ""
+
+#: buddypress/members/register.php:32
+#: page-templates/logged-in-users-only.php:33
+msgid "Username"
+msgstr ""
+
+#: buddypress/members/register.php:32 buddypress/members/register.php:37
+#: buddypress/members/register.php:43 buddypress/members/register.php:47
+#: buddypress/members/register.php:76 buddypress/members/register.php:84
+#: buddypress/members/register.php:92 buddypress/members/register.php:102
+#: buddypress/members/register.php:113 buddypress/members/register.php:128
+#: buddypress/members/register.php:139 buddypress/members/register.php:214
+#: buddypress/members/register.php:223
+msgid "(required)"
+msgstr ""
+
+#: buddypress/members/register.php:37
+msgid "Email Address"
+msgstr ""
+
+#: buddypress/members/register.php:43
+msgid "Choose a Password"
+msgstr ""
+
+#: buddypress/members/register.php:47
+msgid "Confirm Password"
+msgstr ""
+
+#: buddypress/members/register.php:65
+msgid "Profile Details"
+msgstr ""
+
+#: buddypress/members/register.php:119
+msgid "Clear"
+msgstr ""
+
+#: buddypress/members/register.php:161 buddypress/members/register.php:176
+msgid ""
+"This field can be seen by: <span "
+"class=\"current-visibility-level\">%s</span>"
+msgstr ""
+
+#: buddypress/members/register.php:166
+msgid "Who can see this field?"
+msgstr ""
+
+#: buddypress/members/register.php:171
+msgid "Close"
+msgstr ""
+
+#: buddypress/members/register.php:208
+msgid "Blog Details"
+msgstr ""
+
+#: buddypress/members/register.php:210
+msgid "Yes, I'd like to create a new site"
+msgstr ""
+
+#: buddypress/members/register.php:214
+msgid "Blog URL"
+msgstr ""
+
+#: buddypress/members/register.php:223
+msgid "Site Title"
+msgstr ""
+
+#: buddypress/members/register.php:227
+msgid ""
+"I would like my site to appear in search engines, and in public listings "
+"around this network."
+msgstr ""
+
+#: buddypress/members/register.php:230
+msgid "Yes"
+msgstr ""
+
+#: buddypress/members/register.php:231
+msgid "No"
+msgstr ""
+
+#: buddypress/members/register.php:246
+msgid "Complete Sign Up"
+msgstr ""
+
+#: buddypress/members/register.php:261
+msgid ""
+"You have successfully created your account! To begin using this site you "
+"will need to activate your account via the email we have just sent to your "
+"address."
+msgstr ""
+
+#: buddypress/members/register.php:263
+msgid ""
+"You have successfully created your account! Please log in using the "
+"username and password you have just created."
+msgstr ""
+
+#: buddypress/members/single/album/comments.php:14
+msgid "Reply"
+msgstr ""
+
+#: buddypress/members/single/album/comments.php:19
+msgid "Mark as Favorite"
+msgstr ""
+
+#: buddypress/members/single/album/comments.php:19
+msgid "Favorite"
+msgstr ""
+
+#: buddypress/members/single/album/comments.php:21
+msgid "Remove Favorite"
+msgstr ""
+
+#: buddypress/members/single/album/comments.php:31
+msgid "In reply to"
+msgstr ""
+
+#: buddypress/members/single/album/comments.php:32
+msgid "View Thread / Permalink"
+msgstr ""
+
+#: buddypress/members/single/album/comments.php:32
+msgid "View"
+msgstr ""
+
+#: buddypress/members/single/album/comments.php:47
+msgid "Post"
+msgstr ""
+
+#: buddypress/members/single/album/comments.php:47
+msgid "or press esc to cancel."
+msgstr ""
+
+#: buddypress/members/single/album/comments.php:63
+msgid "Comments are disabled for this picture. %sEdit the picture%s to enable them."
+msgstr ""
+
+#: buddypress/members/single/album/pictures.php:20
+msgid "You don't have any photos yet. Why not upload some!"
+msgstr ""
+
+#: buddypress/members/single/album/pictures.php:20
+msgid "Either %s hasn't uploaded any pictures yet or they have restricted access"
+msgstr ""
+
+#: buddypress/members/single/album/single.php:27
+msgid "This url is not valid."
+msgstr ""
+
+#: buddypress/members/single/album/single.php:27
+msgid "Either this url is not valid or picture has restricted access."
+msgstr ""
+
+#: buddypress/members/single/friends/requests.php:37
+#: buddypress/members/single/groups/invites.php:25
+msgid "Accept"
+msgstr ""
+
+#: buddypress/members/single/friends/requests.php:38
+#: buddypress/members/single/groups/invites.php:26
+msgid "Reject"
+msgstr ""
+
+#: buddypress/members/single/friends/requests.php:68
+msgid "You have no pending friendship requests."
+msgstr ""
+
+#: buddypress/members/single/groups/invites.php:15
+msgid "1 member"
+msgid_plural "%d members"
+msgstr[0] ""
+msgstr[1] ""
+
+#: buddypress/members/single/groups/invites.php:39
+msgid "You have no outstanding group invites."
+msgstr ""
+
+#: buddypress/members/single/messages/notices-loop.php:36
+msgid "Sent:"
+msgstr ""
+
+#: buddypress/members/single/messages/notices-loop.php:43
+msgid "Delete Message"
+msgstr ""
+
+#: buddypress/members/single/messages/notices-loop.php:54
+msgid "Sorry, no notices were found."
+msgstr ""
+
+#: buddypress/members/single/notifications/feedback-no-notifications.php:7
+msgid "You have no unread notifications."
+msgstr ""
+
+#: buddypress/members/single/notifications/feedback-no-notifications.php:11
+msgid "This member has no unread notifications."
+msgstr ""
+
+#: buddypress/members/single/notifications/feedback-no-notifications.php:19
+msgid "You have no notifications."
+msgstr ""
+
+#: buddypress/members/single/notifications/feedback-no-notifications.php:23
+msgid "This member has no notifications."
+msgstr ""
+
+#: buddypress/members/single/notifications/notifications-loop.php:5
+msgid "Notification"
+msgstr ""
+
+#: buddypress/members/single/notifications/notifications-loop.php:6
+msgid "Date Received"
+msgstr ""
+
+#: buddypress/members/single/notifications/notifications-loop.php:7
+msgid "Actions"
+msgstr ""
+
+#: buddypress/members/single/profile/profile-wp.php:8
+msgid "%s's Profile"
+msgstr ""
+
+#: buddypress/members/single/profile/profile-wp.php:15
+msgid "Name"
+msgstr ""
+
+#: buddypress/members/single/profile/profile-wp.php:24
+msgid "About Me"
+msgstr ""
+
+#: buddypress/members/single/profile/profile-wp.php:33
+msgid "Website"
+msgstr ""
+
+#: buddypress/members/single/profile/profile-wp.php:42
+msgid "Jabber"
+msgstr ""
+
+#: buddypress/members/single/profile/profile-wp.php:51
+msgid "AOL Messenger"
+msgstr ""
+
+#: buddypress/members/single/profile/profile-wp.php:60
+msgid "Yahoo Messenger"
+msgstr ""
+
+#: category.php:21 tag.php:21
+msgid "%s"
+msgstr ""
+
+#: cc-simplicity-email-template.php:34
+#: working/cc-simplicity-email-template-bak.php:46
+msgid "Email sent on %s"
+msgstr ""
+
+#: comments.php:31
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:42
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:43
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:44
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:53
+msgid "Comments are closed."
+msgstr ""
+
+#: content-group_story.php:33 content-narrative.php:38 content.php:49
+msgid "Leave a reply"
+msgstr ""
+
+#: content-group_story.php:33 content-narrative.php:38 content.php:49
+msgid "1 Reply"
+msgstr ""
+
+#: content-group_story.php:33 content-narrative.php:38 content.php:49
+msgid "% Replies"
+msgstr ""
+
+#: content-group_story.php:69 content-page-notitle.php:18
+#: content-page-screamer.php:21 content-sa-policy-short.php:95
+#: content-sa_success_story-short.php:75 content-sa_success_story.php:80
+#: content-saresources-mini.php:104 content-saresources-short.php:96
+#: content-saresources.php:100 content.php:83
+msgid "Edit"
+msgstr ""
+
+#: content-group_story.php:76 content-narrative.php:81 content.php:90
+msgid "About %s"
+msgstr ""
+
+#: content-group_story.php:80 content-narrative.php:85 content.php:94
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: content-narrative.php:29
+msgid "Link to %s"
+msgstr ""
+
+#: content-narrative.php:46 content.php:60 functions.php:505
+#: page-templates/retired/page-ebw-old.php:15
+#: page-templates/retired/page-ncr-old.php:15
+#: page-templates/retired/template-grant-writing.php:25
+msgid "Read more"
+msgstr ""
+
+#: content.php:35
+msgid "&#8203;"
+msgstr ""
+
+#: functions.php:163
+msgid "Groups sidebar"
+msgstr ""
+
+#: functions.php:169
+msgid "Group page sub nav sidebar"
+msgstr ""
+
+#: functions.php:173
+msgid "Members sidebar"
+msgstr ""
+
+#: functions.php:179
+msgid "Members page sub nav sidebar"
+msgstr ""
+
+#: functions.php:183 functions.php:185
+msgid "Geo Search SA Policies Widget Area"
+msgstr ""
+
+#: functions.php:555 functions.php:558
+#. Translators: used between list items, there is a space after the comma.
+msgid " "
+msgstr ""
+
+#: functions.php:571
+msgid "View all posts by %s"
+msgstr ""
+
+#: header.php:52
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:110
+msgid "View My Profile"
+msgstr ""
+
+#: header.php:113
+msgid "My Groups"
+msgstr ""
+
+#: header.php:116
+msgid "My Maps &amp; Reports"
+msgstr ""
+
+#: header.php:120
+msgid "My Library"
+msgstr ""
+
+#: header.php:124
+msgid "Log Out"
+msgstr ""
+
+#: header.php:132
+msgid "Log in"
+msgstr ""
+
+#: header.php:135
+msgid "Username or email"
+msgstr ""
+
+#: header.php:138 page-templates/logged-in-users-only.php:36
+msgid "Password"
+msgstr ""
+
+#: header.php:141 page-templates/logged-in-users-only.php:39
+msgid "Remember Me"
+msgstr ""
+
+#: header.php:144 page-templates/logged-in-users-only.php:42
+msgid "Log In"
+msgstr ""
+
+#: header.php:150
+msgid "<a href=\"%s\" title=\"Create an account\">Register</a>"
+msgstr ""
+
+#: includes/SA_Policies.php:13
+msgid "All SA Policies"
+msgstr ""
+
+#: includes/SA_Policies.php:15
+msgid "Add new SA Policy"
+msgstr ""
+
+#: includes/SA_Policies.php:16
+msgid "Edit SA Policy"
+msgstr ""
+
+#: includes/SA_Policies.php:17
+msgid "New SA Policy"
+msgstr ""
+
+#: includes/SA_Policies.php:18
+msgid "View SA Policy"
+msgstr ""
+
+#: includes/SA_Policies.php:19
+msgid "Search in SA Policies"
+msgstr ""
+
+#: includes/SA_Policies.php:20
+msgid "No SA Policies found"
+msgstr ""
+
+#: includes/SA_Policies.php:21
+msgid "No SA Policies found in trash"
+msgstr ""
+
+#: includes/SA_Policies.php:50
+msgid "SA Policy"
+msgstr ""
+
+#: includes/SA_Policies.php:51
+msgid "Advocacy Targets"
+msgstr ""
+
+#: includes/SA_Policies.php:52
+msgid "Type"
+msgstr ""
+
+#: includes/SA_Policies.php:53
+msgid "Stage"
+msgstr ""
+
+#: includes/SA_Policies.php:54
+msgid "Date"
+msgstr ""
+
+#: includes/SA_Resources.php:13
+msgid "All SA Resources"
+msgstr ""
+
+#: includes/SA_Resources.php:15
+msgid "Add new SA Resource"
+msgstr ""
+
+#: includes/SA_Resources.php:16
+msgid "Edit SA Resource"
+msgstr ""
+
+#: includes/SA_Resources.php:17
+msgid "New SA Resource"
+msgstr ""
+
+#: includes/SA_Resources.php:18
+msgid "View SA Resource"
+msgstr ""
+
+#: includes/SA_Resources.php:19
+msgid "Search in SA Resources"
+msgstr ""
+
+#: includes/SA_Resources.php:20
+msgid "No SA Resources found"
+msgstr ""
+
+#: includes/SA_Resources.php:21
+msgid "No SA Resources found in trash"
+msgstr ""
+
+#: includes/site-search-functions.php:62
+msgid "Members Results"
+msgstr ""
+
+#: includes/site-search-functions.php:78
+msgid "Groups Results"
+msgstr ""
+
+#: includes/site-search-functions.php:81
+msgid "View All matched Groups"
+msgstr ""
+
+#: includes/site-search-functions.php:96
+msgid "Activity Stream Updates"
+msgstr ""
+
+#: includes/site-search-functions.php:99
+msgid "View all matched updates"
+msgstr ""
+
+#: includes/site-search-functions.php:117
+msgid "News &amp; Features Results"
+msgstr ""
+
+#: includes/site-search-functions.php:120
+msgid "View All matched Posts"
+msgstr ""
+
+#: includes/site-search-functions.php:133
+msgid "Blogs Search"
+msgstr ""
+
+#: includes/site-search-functions.php:135
+msgid "View All matched Blogs"
+msgstr ""
+
+#: includes/site-search-functions.php:148
+msgid "Forum Topics Search"
+msgstr ""
+
+#: includes/site-search-functions.php:150
+msgid "View All matched forum posts"
+msgstr ""
+
+#: includes/site-search-functions.php:164
+msgid "Forum Topic Results"
+msgstr ""
+
+#: includes/site-search-functions.php:171
+msgid "View all matched topics"
+msgstr ""
+
+#: includes/taxonomy-geography.php:10
+msgid "Search Geographies"
+msgstr ""
+
+#: includes/taxonomy-geography.php:11
+msgid "All Geographies"
+msgstr ""
+
+#: includes/taxonomy-geography.php:12
+msgid "Parent Geographies"
+msgstr ""
+
+#: includes/taxonomy-geography.php:13
+msgid "Parent Geography:"
+msgstr ""
+
+#: includes/taxonomy-geography.php:14
+msgid "Edit Geography"
+msgstr ""
+
+#: includes/taxonomy-geography.php:15
+msgid "Update Geography"
+msgstr ""
+
+#: includes/taxonomy-geography.php:16
+msgid "Add New Geography"
+msgstr ""
+
+#: includes/taxonomy-geography.php:17
+msgid "New Geography Name"
+msgstr ""
+
+#: includes/taxonomy-geography.php:18
+msgid "Geographies"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:10
+msgid "Search Resource Types"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:11
+msgid "All Resource Types"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:12
+msgid "Parent Resource Types"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:13
+msgid "Parent Resource Type:"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:14
+msgid "Edit Resource Type"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:15
+msgid "Update Resource Type"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:16
+msgid "Add New Resource Type"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:17
+msgid "New Resource Type Name"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:18
+msgid "Resource Types"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:50
+msgid "Search Resource Categories"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:51
+msgid "All Resource Categories"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:52
+msgid "Parent Resource Categories"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:53
+msgid "Parent Resource Category:"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:54
+msgid "Edit Resource Category"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:55
+msgid "Update Resource Category"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:56
+msgid "Add New Resource Category"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:57
+msgid "New Resource Category Name"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:58
+msgid "Resource Categories"
+msgstr ""
+
+#: page-templates/logged-in-users-only.php:42
+msgid "<a href=\"%s\" title=\"Create an account\" class=\"button\">Register</a>"
+msgstr ""
+
+#: search-loop.php:21
+msgid "Read more..."
+msgstr ""
+
+#: search-loop.php:32
+msgid "&larr; Previous Entries"
+msgstr ""
+
+#: search-loop.php:33
+msgid "Next Entries &rarr;"
+msgstr ""
+
+#: search-loop.php:40
+msgid "We are sorry, but we could not find anything for the search term '%s'"
+msgstr ""
+
+#: tree/index-compat.php:36 tree/index-old.php:37
+msgid "My Groups <span>%s</span>"
+msgstr ""
+
+#: tree/index-compat.php:52 tree/index-old.php:53
+msgid "Order By:"
+msgstr ""
+
+#: tree/index-compat.php:54 tree/index-old.php:55
+msgid "Last Active"
+msgstr ""
+
+#: tree/index-compat.php:55 tree/index-old.php:56
+msgid "Most Members"
+msgstr ""
+
+#: tree/index-compat.php:56 tree/index-old.php:57
+msgid "Newly Created"
+msgstr ""
+
+#: tree/index-compat.php:57 tree/index-old.php:58
+msgid "Alphabetical"
+msgstr ""
+
+#: working/ajax_login_testing.php:46
+msgid "Sending user info, please wait..."
+msgstr ""
+
+#: working/ajax_login_testing.php:71
+msgid "Wrong username or password."
+msgstr ""
+
+#: working/ajax_login_testing.php:73
+msgid "Login successful, redirecting..."
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Community Commons (Twenty Twelve)"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Dev!"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "David Cavins, WordPress and bbPress teams"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Time Series Test"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "WKKF Compass"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "WKKF Toolbox"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "CC Help - COGIS"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Subscription Matrix"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Full-width Page Template, No Page Title"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Full-width Page Template, Color Box Page Title"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Homegrown Help Template"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Logged-in Users Only"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Salud America Eloi"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Salud America"
+msgstr ""
+
+#: buddypress/members/register.php:161
+msgctxt "Change profile field visibility level"
+msgid "Change"
+msgstr ""
+
+#: includes/SA_Policies.php:11
+msgctxt "post type general name"
+msgid "SA Policies"
+msgstr ""
+
+#: includes/SA_Resources.php:11
+msgctxt "post type general name"
+msgid "SA Resources"
+msgstr ""
+
+#: includes/SA_Policies.php:12
+msgctxt "post type singular name"
+msgid "SA Policy"
+msgstr ""
+
+#: includes/SA_Resources.php:12
+msgctxt "post type singular name"
+msgid "SA Resource"
+msgstr ""
+
+#: includes/SA_Policies.php:14
+msgctxt "SA policies"
+msgid "Add SA Policy"
+msgstr ""
+
+#: includes/SA_Resources.php:14
+msgctxt "SA resources"
+msgid "Add SA Resource"
+msgstr ""
+
+#: includes/WKKF_scorecard.php:7 includes/WKKF_scorecard.php:18
+msgctxt "wkkf_scorecard"
+msgid "Scorecards"
+msgstr ""
+
+#: includes/WKKF_scorecard.php:8
+msgctxt "wkkf_scorecard"
+msgid "Scorecard"
+msgstr ""
+
+#: includes/WKKF_scorecard.php:9
+msgctxt "wkkf_scorecard"
+msgid "Add New"
+msgstr ""
+
+#: includes/WKKF_scorecard.php:10
+msgctxt "wkkf_scorecard"
+msgid "Add New Scorecard"
+msgstr ""
+
+#: includes/WKKF_scorecard.php:11
+msgctxt "wkkf_scorecard"
+msgid "Edit Scorecard"
+msgstr ""
+
+#: includes/WKKF_scorecard.php:12
+msgctxt "wkkf_scorecard"
+msgid "New Scorecard"
+msgstr ""
+
+#: includes/WKKF_scorecard.php:13
+msgctxt "wkkf_scorecard"
+msgid "View Scorecard"
+msgstr ""
+
+#: includes/WKKF_scorecard.php:14
+msgctxt "wkkf_scorecard"
+msgid "Search Scorecards"
+msgstr ""
+
+#: includes/WKKF_scorecard.php:15
+msgctxt "wkkf_scorecard"
+msgid "No scorecards found"
+msgstr ""
+
+#: includes/WKKF_scorecard.php:16
+msgctxt "wkkf_scorecard"
+msgid "No scorecards found in Trash"
+msgstr ""
+
+#: includes/WKKF_scorecard.php:17
+msgctxt "wkkf_scorecard"
+msgid "Parent Scorecard:"
+msgstr ""
+
+#: includes/cpt-group-stories.php:8 includes/cpt-group-stories.php:19
+msgctxt "group_story"
+msgid "Group Stories"
+msgstr ""
+
+#: includes/cpt-group-stories.php:9
+msgctxt "group_story"
+msgid "Group Story"
+msgstr ""
+
+#: includes/cpt-group-stories.php:10
+msgctxt "group_story"
+msgid "Add New"
+msgstr ""
+
+#: includes/cpt-group-stories.php:11
+msgctxt "group_story"
+msgid "Add New Group Story"
+msgstr ""
+
+#: includes/cpt-group-stories.php:12
+msgctxt "group_story"
+msgid "Edit Group Story"
+msgstr ""
+
+#: includes/cpt-group-stories.php:13
+msgctxt "group_story"
+msgid "New Group Story"
+msgstr ""
+
+#: includes/cpt-group-stories.php:14
+msgctxt "group_story"
+msgid "View Group Story"
+msgstr ""
+
+#: includes/cpt-group-stories.php:15
+msgctxt "group_story"
+msgid "Search Group Stories"
+msgstr ""
+
+#: includes/cpt-group-stories.php:16
+msgctxt "group_story"
+msgid "No group stories found"
+msgstr ""
+
+#: includes/cpt-group-stories.php:17
+msgctxt "group_story"
+msgid "No group stories found in Trash"
+msgstr ""
+
+#: includes/cpt-group-stories.php:18
+msgctxt "group_story"
+msgid "Parent Group Story:"
+msgstr ""
+
+#: includes/cpt-group-stories.php:50 includes/cpt-group-stories.php:64
+msgctxt "related_groups"
+msgid "Related Groups"
+msgstr ""
+
+#: includes/cpt-group-stories.php:51
+msgctxt "related_groups"
+msgid "Related Group"
+msgstr ""
+
+#: includes/cpt-group-stories.php:52
+msgctxt "related_groups"
+msgid "Search Related Groups"
+msgstr ""
+
+#: includes/cpt-group-stories.php:53
+msgctxt "related_groups"
+msgid "Popular Related Groups"
+msgstr ""
+
+#: includes/cpt-group-stories.php:54
+msgctxt "related_groups"
+msgid "All Related Groups"
+msgstr ""
+
+#: includes/cpt-group-stories.php:55
+msgctxt "related_groups"
+msgid "Parent Related Group"
+msgstr ""
+
+#: includes/cpt-group-stories.php:56
+msgctxt "related_groups"
+msgid "Parent Related Group:"
+msgstr ""
+
+#: includes/cpt-group-stories.php:57
+msgctxt "related_groups"
+msgid "Edit Related Group"
+msgstr ""
+
+#: includes/cpt-group-stories.php:58
+msgctxt "related_groups"
+msgid "Update Related Group"
+msgstr ""
+
+#: includes/cpt-group-stories.php:59
+msgctxt "related_groups"
+msgid "Add New Related Group"
+msgstr ""
+
+#: includes/cpt-group-stories.php:60
+msgctxt "related_groups"
+msgid "New Related Group"
+msgstr ""
+
+#: includes/cpt-group-stories.php:61
+msgctxt "related_groups"
+msgid "Separate related groups with commas"
+msgstr ""
+
+#: includes/cpt-group-stories.php:62
+msgctxt "related_groups"
+msgid "Add or remove related groups"
+msgstr ""
+
+#: includes/cpt-group-stories.php:63
+msgctxt "related_groups"
+msgid "Choose from the most used related groups"
+msgstr ""
+
+#: includes/cpt-sa-success-stories.php:6
+msgctxt "sa_success_story"
+msgid "Salud Heroes"
+msgstr ""
+
+#: includes/cpt-sa-success-stories.php:7
+msgctxt "sa_success_story"
+msgid "Salud Hero"
+msgstr ""
+
+#: includes/cpt-sa-success-stories.php:8
+msgctxt "sa_success_story"
+msgid "Add New"
+msgstr ""
+
+#: includes/cpt-sa-success-stories.php:9
+msgctxt "sa_success_story"
+msgid "Add New SA Success Story"
+msgstr ""
+
+#: includes/cpt-sa-success-stories.php:10
+msgctxt "sa_success_story"
+msgid "Edit SA Success Story"
+msgstr ""
+
+#: includes/cpt-sa-success-stories.php:11
+msgctxt "sa_success_story"
+msgid "New SA Success Story"
+msgstr ""
+
+#: includes/cpt-sa-success-stories.php:12
+msgctxt "sa_success_story"
+msgid "View SA Success Story"
+msgstr ""
+
+#: includes/cpt-sa-success-stories.php:13
+msgctxt "sa_success_story"
+msgid "Search SA Success Stories"
+msgstr ""
+
+#: includes/cpt-sa-success-stories.php:14
+msgctxt "sa_success_story"
+msgid "No sa success stories found"
+msgstr ""
+
+#: includes/cpt-sa-success-stories.php:15
+msgctxt "sa_success_story"
+msgid "No sa success stories found in Trash"
+msgstr ""
+
+#: includes/cpt-sa-success-stories.php:16
+msgctxt "sa_success_story"
+msgid "Parent SA Success Story:"
+msgstr ""
+
+#: includes/cpt-sa-success-stories.php:17
+msgctxt "sa_success_story"
+msgid "SA Success Stories"
+msgstr ""
+
+#: includes/cpt_data_vis_tools.php:10 includes/cpt_data_vis_tools.php:21
+msgctxt "data_vis_tool"
+msgid "Data Vis Tools"
+msgstr ""
+
+#: includes/cpt_data_vis_tools.php:11
+msgctxt "data_vis_tool"
+msgid "Data Vis Tool"
+msgstr ""
+
+#: includes/cpt_data_vis_tools.php:12
+msgctxt "data_vis_tool"
+msgid "Add New"
+msgstr ""
+
+#: includes/cpt_data_vis_tools.php:13
+msgctxt "data_vis_tool"
+msgid "Add New Data Vis Tool"
+msgstr ""
+
+#: includes/cpt_data_vis_tools.php:14
+msgctxt "data_vis_tool"
+msgid "Edit Data Vis Tool"
+msgstr ""
+
+#: includes/cpt_data_vis_tools.php:15
+msgctxt "data_vis_tool"
+msgid "New Data Vis Tool"
+msgstr ""
+
+#: includes/cpt_data_vis_tools.php:16
+msgctxt "data_vis_tool"
+msgid "View Data Vis Tool"
+msgstr ""
+
+#: includes/cpt_data_vis_tools.php:17
+msgctxt "data_vis_tool"
+msgid "Search Data Vis Tools"
+msgstr ""
+
+#: includes/cpt_data_vis_tools.php:18
+msgctxt "data_vis_tool"
+msgid "No data vis tools found"
+msgstr ""
+
+#: includes/cpt_data_vis_tools.php:19
+msgctxt "data_vis_tool"
+msgid "No data vis tools found in Trash"
+msgstr ""
+
+#: includes/cpt_data_vis_tools.php:20
+msgctxt "data_vis_tool"
+msgid "Parent Data Vis Tool:"
+msgstr ""
+
+#: includes/taxonomy-advocacytarget.php:7
+#: includes/taxonomy-advocacytarget.php:21
+msgctxt "sa_advocacy_targets"
+msgid "Advocacy Targets"
+msgstr ""
+
+#: includes/taxonomy-advocacytarget.php:9
+msgctxt "sa_advocacy_targets"
+msgid "Search Advocacy Targets"
+msgstr ""
+
+#: includes/taxonomy-advocacytarget.php:10
+msgctxt "sa_advocacy_targets"
+msgid "Popular Advocacy Targets"
+msgstr ""
+
+#: includes/taxonomy-advocacytarget.php:11
+msgctxt "sa_advocacy_targets"
+msgid "All Advocacy Targets"
+msgstr ""
+
+#: includes/taxonomy-advocacytarget.php:12
+msgctxt "sa_advocacy_targets"
+msgid "Parent Advocacy Target"
+msgstr ""
+
+#: includes/taxonomy-advocacytarget.php:13
+msgctxt "sa_advocacy_targets"
+msgid "Parent Advocacy Target:"
+msgstr ""
+
+#: includes/taxonomy-advocacytarget.php:14
+msgctxt "sa_advocacy_targets"
+msgid "Edit Advocacy Target"
+msgstr ""
+
+#: includes/taxonomy-advocacytarget.php:15
+msgctxt "sa_advocacy_targets"
+msgid "Update Advocacy Target"
+msgstr ""
+
+#: includes/taxonomy-advocacytarget.php:16
+msgctxt "sa_advocacy_targets"
+msgid "Add New Advocacy Target"
+msgstr ""
+
+#: includes/taxonomy-advocacytarget.php:17
+msgctxt "sa_advocacy_targets"
+msgid "New Advocacy Target"
+msgstr ""
+
+#: includes/taxonomy-advocacytarget.php:18
+msgctxt "sa_advocacy_targets"
+msgid "Separate advocacy targets with commas"
+msgstr ""
+
+#: includes/taxonomy-advocacytarget.php:19
+msgctxt "sa_advocacy_targets"
+msgid "Add or remove Advocacy Targets"
+msgstr ""
+
+#: includes/taxonomy-advocacytarget.php:20
+msgctxt "sa_advocacy_targets"
+msgid "Choose from most used Advocacy Targets"
+msgstr ""
+
+#: includes/taxonomy-advocacytarget.php:8
+msgctxt "sa_advocacy_target"
+msgid "Advocacy Target"
+msgstr ""
+
+#: includes/taxonomy-geography.php:8
+msgctxt "taxonomy general name"
+msgid "Geographies"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:8
+msgctxt "taxonomy general name"
+msgid "Resource Type"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:48
+msgctxt "taxonomy general name"
+msgid "Resource Category"
+msgstr ""
+
+#: includes/taxonomy-geography.php:9
+msgctxt "taxonomy singular name"
+msgid "Geography"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:9
+msgctxt "taxonomy singular name"
+msgid "Resource Type"
+msgstr ""
+
+#: includes/taxonomy-resourcecat.php:49
+msgctxt "taxonomy singular name"
+msgid "Resource Category"
+msgstr ""
+
+#: includes/taxonomy-sapolicytag.php:7 includes/taxonomy-sapolicytag.php:21
+msgctxt "sa_policy_tags"
+msgid "SA Tags"
+msgstr ""
+
+#: includes/taxonomy-sapolicytag.php:8
+msgctxt "sa_policy_tags"
+msgid "SA Tag"
+msgstr ""
+
+#: includes/taxonomy-sapolicytag.php:9
+msgctxt "sa_policy_tags"
+msgid "Search SA Tags"
+msgstr ""
+
+#: includes/taxonomy-sapolicytag.php:10
+msgctxt "sa_policy_tags"
+msgid "Popular SA Tags"
+msgstr ""
+
+#: includes/taxonomy-sapolicytag.php:11
+msgctxt "sa_policy_tags"
+msgid "All SA Tags"
+msgstr ""
+
+#: includes/taxonomy-sapolicytag.php:12
+msgctxt "sa_policy_tags"
+msgid "Parent SA Tag"
+msgstr ""
+
+#: includes/taxonomy-sapolicytag.php:13
+msgctxt "sa_policy_tags"
+msgid "Parent SA Tag:"
+msgstr ""
+
+#: includes/taxonomy-sapolicytag.php:14
+msgctxt "sa_policy_tags"
+msgid "Edit SA Tag"
+msgstr ""
+
+#: includes/taxonomy-sapolicytag.php:15
+msgctxt "sa_policy_tags"
+msgid "Update SA Tag"
+msgstr ""
+
+#: includes/taxonomy-sapolicytag.php:16
+msgctxt "sa_policy_tags"
+msgid "Add New SA Tag"
+msgstr ""
+
+#: includes/taxonomy-sapolicytag.php:17
+msgctxt "sa_policy_tags"
+msgid "New SA Tag"
+msgstr ""
+
+#: includes/taxonomy-sapolicytag.php:18
+msgctxt "sa_policy_tags"
+msgid "Separate SA tags with commas"
+msgstr ""
+
+#: includes/taxonomy-sapolicytag.php:19
+msgctxt "sa_policy_tags"
+msgid "Add or remove SA Tags"
+msgstr ""
+
+#: includes/taxonomy-sapolicytag.php:20
+msgctxt "sa_policy_tags"
+msgid "Choose from most used SA Tags"
+msgstr ""

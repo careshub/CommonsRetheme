@@ -13,12 +13,11 @@ get_header(); ?>
 						// sa_slider('main-page-slider'); 
 					} ?>
 			<div class="entry-content">
-				<div class="notice" style="border-left:4px solid red;background-color:#F3F3F3;padding: 1px 2em;">
-					<h4 style="color:black"><a href="http://www.thepetitionsite.com/565/370/193/save-the-ocelot/" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Take Action</span>&emsp;Get Sugary Drinks Out of Summer Camps!</a></h4>
-					<p>Summer is here, and that means camp for kids to make new friends and try new things—but it also potentially means being exposed to unhealthy sugary drinks. <a href="http://www.thepetitionsite.com/565/370/193/save-the-ocelot/" class="button">Sign the Petition</a></p>
+				<div class="notice" style="border-left:20px solid red;background-color:#F3F3F3;padding: 1px 2em;">
+					<h4 style="color:black"><a href="http://www.care2.com/go/z/21258369" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Take Action</span>&emsp;Get Sugary Drinks Out of Summer Camps!</a></h4>
+					<p>Summer is here, and that means camp for kids to make new friends and try new things—but it also potentially means being exposed to unhealthy sugary drinks. <a href="http://www.care2.com/go/z/21258369" target="_blank" class="button">Sign the Petition</a></p>
 
 				</div>
-
 				<h3 class="screamer sagreen">How can you fight Latino childhood obesity in your area?</h2>
 	
 				<?php sa_get_random_hero_video(); ?>
