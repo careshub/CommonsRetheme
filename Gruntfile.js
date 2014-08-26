@@ -11,7 +11,7 @@ module.exports = function(grunt) {
         watch: {
             js: {
                 files: '<%= jshint.all %>',
-                tasks: ['jshint', 'uglify']
+                tasks: ['uglify']
             },
             css: {
 				files: ['css/*.less'],
@@ -70,12 +70,13 @@ module.exports = function(grunt) {
         // javascript linting with jshint
         jshint: {
             options: {
-                jshintrc: '.jshintrc',
-                "force": true
+//                 jshintrc: '.jshintrc',
+//                 "force": true
             },
             all: [
                 'Gruntfile.js',
-                'js/**/*.js'
+                'js/src/*.js',
+                'js/libs/*.js',
             ]
         },
 

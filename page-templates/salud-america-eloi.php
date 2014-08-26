@@ -106,7 +106,61 @@ if (is_page('salud-americaresearch')) {
 } elseif (is_page('getting-started')) {
 
             if ( function_exists('SA_getting_started') ) { SA_getting_started(); }        
+} elseif (is_page('take-action-list')) {
+?>
+
+          <div>
+				<h3 class="screamer sagreen">We Need Your Help to Get Sugary Drinks Out of Summer Camps!</h2>
+	
+				<div class="video-container-group">
+                                    <div class="video-container" id="englishVid">
+                                        <p><iframe width="625" height="352" src="http://www.youtube.com/embed/bL6CIy9l43M?feature=oembed&amp;showinfo=0&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;rel=0&amp;autohide=1" frameborder="0" allowfullscreen=""></iframe><noscript>&lt;iframe width="625" height="352" src="http://www.youtube.com/embed/bL6CIy9l43M?feature=oembed&amp;#038;showinfo=0&amp;#038;rel=0&amp;#038;autohide=1&amp;#038;showinfo=0&amp;#038;rel=0&amp;#038;autohide=1" frameborder="0" allowfullscreen&gt;</noscript></p>
+                                    </div>
+                                    <div class="video-container" id="spanishVid" style="display: none;">
+                                        <p><iframe width="625" height="352" src="http://www.youtube.com/embed/MSddu5zYOZI?feature=oembed&amp;showinfo=0&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;rel=0&amp;autohide=1" frameborder="0" allowfullscreen=""></iframe><noscript>&lt;iframe width="625" height="352" src="http://www.youtube.com/embed/MSddu5zYOZI?feature=oembed&amp;#038;showinfo=0&amp;#038;rel=0&amp;#038;autohide=1&amp;#038;showinfo=0&amp;#038;rel=0&amp;#038;autohide=1" frameborder="0" allowfullscreen&gt;</noscript></p>
+                                    </div>
+                                    <figcaption>
+                                    <input type="button" value="English Version (video)" id="englishButton"><input type="button" value="Spanish Version (video)" id="spanishButton"><br>
+                                    </figcaption>
+                                </div>
+                                    
+				<p>Summer is here, and that means camp for kids to make new friends and try new things -but it also potentially means being exposed to unhealthy sugary drinks.</p>
+				 
+				<p>Will your child's camp give them healthy drinks, or sugary drinks, like "bug juice"?</p>
+                                
+                                <p>The American Camp Association (ACA), the country's leading camp resource and accreditation group, requires camps to take many steps to ensure the safety and well-being of young people. They also offer suggestions on how camps can help kids be active and eat healthy foods.</p>
+                
+                                <p>But ACA does NOT require camps to have a healthy beverage policy to gain accreditation.</p>
+                                
+                                <p>That means, for the more than 2,400 ACA-accredited camps nationwide, none are required to refrain from serving campers sugary sodas, juices, or flavored milk.</p>
+                                
+                                <p>Research shows Latino kids already consume more sugary drinks on average than their peers, so they have more to lose when camps recruit Latino families and then provide unhealthy sugary drinks during this critical out-of-school season. </p>
+
+                                <p>Tell the ACA they should take our children's health seriously and add a "no sugary drinks" rule to their camp accreditation standards.</p>
+                                
+                                <p>We don't want kids guzzling sugar this summer -we want them to be healthy and happy!</p>
+
+                                <a href="http://www.care2.com/go/z/21258369" class="button" target="_blank" title="Take Action Now!">Take Action Now!</a>
+            </div>
+<script>// <![CDATA[
+jQuery(document).ready(function($) {
+$('#spanishVid').hide();
+$( "#spanishButton" ).click(function() {
+$('#englishVid').hide();$('#spanishVid').show();
+});
+$( "#englishButton" ).click(function() {
+$('#englishVid').show();$('#spanishVid').hide();
+});
+});
+// ]]></script>
+
+<?php       
 } 
+
+
+
+
+ 
 
 // elseif (is_page('saresources-report')) {
 // 		echo "<h3 class='screamer sayellow'>Report Resources</h3>";
