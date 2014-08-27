@@ -140,7 +140,7 @@ if (is_page('salud-americaresearch')) {
                                 
                                 <p>We don't want kids guzzling sugar this summer -we want them to be healthy and happy!</p>
 
-                                <a href="http://www.care2.com/go/z/21258369" class="button" target="_blank" title="Take Action Now!">Take Action Now!</a>
+                                <a href="http://www.thepetitionsite.com/takeaction/702/787/135/?z00m=21258369" class="button" target="_blank" title="Take Action Now!">Take Action Now!</a>
             </div>
 <script>// <![CDATA[
 jQuery(document).ready(function($) {
