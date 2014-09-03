@@ -959,7 +959,7 @@ function stick_sa_to_the_top_of_the_directory(){
   ?>
     <ul class="item-list compact" id="groups-list-featured">
       <li id="featured-group-salud-america">
-        <h5>Featured Group</h5>
+        <h5>Featured Hub</h5>
         <div class="item-avatar">
           <a href="/salud-america/" title="Link to Salud America! space"><img width="50" height="50" class="avatar no-box" alt="avatar" src="/wp-content/themes/CommonsRetheme/img/salud_america/SA-logox50.png"></a>
         </div>
