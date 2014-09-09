@@ -29,12 +29,13 @@ get_header(); ?>
 .summary {
     float: left;
     margin:1%;
+	margin-bottom:2%;
     background-color:#f1f1f1;    
 }
     
 .sumsingle {
     width:47%;
-    min-height:280px;
+    min-height:320px;
     
 }
 
@@ -250,36 +251,55 @@ title3{
 }
 .subtopic-toggle {
 	margin-bottom:2px;
+	margin-right:5px;
 	font-size:10pt;
+	color:#ffffff;
+	padding:5px 10px 5px 10px;
+	background-color:#9c9b9b;
 }
+.subtopic-toggle:hover {
+	cursor:pointer;
+}
+.loadlink {
+	font-size:10pt;
+	color:#ffffff;
+	padding:5px 10px 5px 10px;
+	background-color:#9c9b9b;
+}
+.loadlink:hover {
+	cursor:pointer;
+}
+
+body .site {
+    box-shadow: 0px 0px 0px 
 </style>
 
 <script>
 jQuery(document).ready(function($) {
 	$("#map1").show();
-	$("#map1link").css('font-weight','bold');
+	
 	$("#map1link").click( function(e) {		
 		$("#map1").show();
 		$("#map2").hide();
 		$("#map3").hide();
-		$(this).css('font-weight','bold');
-		$(this).siblings('.loadlink').css('font-weight','normal');
+		$(this).css('background-color','#0081c6');
+		$(this).siblings('.loadlink').css('background-color','#9c9b9b');
 		e.preventDefault();
 	});
 	$("#map2link").click( function(e) {		
 		$("#map1").hide();
 		$("#map2").show();
 		$("#map3").hide();
-		$(this).css('font-weight','bold');
-		$(this).siblings('.loadlink').css('font-weight','normal');
+		$(this).css('background-color','#0081c6');
+		$(this).siblings('.loadlink').css('background-color','#9c9b9b');
 		e.preventDefault();
 	});
 	$("#map3link").click( function(e) {		
 		$("#map1").hide();
 		$("#map2").hide();
 		$("#map3").show();
-		$(this).css('font-weight','bold');
-		$(this).siblings('.loadlink').css('font-weight','normal');		
+		$(this).css('background-color','#0081c6');
+		$(this).siblings('.loadlink').css('background-color','#9c9b9b');		
 		e.preventDefault();
 	});	
 
@@ -289,18 +309,18 @@ jQuery(document).ready(function($) {
         e.preventDefault();
     });
     // Shows the correct subtopic div (text or chart version is independent)
-    $('a.subtopic-toggle').on('click', function(e){
+    $('div.subtopic-toggle').on('click', function(e){
         subtopic = $(this).attr('id');
         target = '#subtopic-' + subtopic;
         $(this).parents('.summary').find( '.subtopic' ).hide();
         $(this).parents('.summary').find( target ).show();
 		
-		$(this).siblings('.who').css('font-weight','normal');
-		$(this).siblings('.where').css('font-weight','normal');
-		$(this).siblings('.what').css('font-weight','normal');
-		$(this).siblings('.how').css('font-weight','normal');
-		$(this).siblings('.progress').css('font-weight','normal');
-		$(this).css('font-weight','bold');
+		$(this).siblings('.who').css('background-color','#9c9b9b');
+		$(this).siblings('.where').css('background-color','#9c9b9b');
+		$(this).siblings('.what').css('background-color','#9c9b9b');
+		$(this).siblings('.how').css('background-color','#9c9b9b');
+		$(this).siblings('.progress').css('background-color','#9c9b9b');
+		$(this).css('background-color','#0081c6');
         
 		e.preventDefault();
     });
@@ -379,9 +399,13 @@ if (is_page('wkkf-dashboard-mb')) {
 ?>
 
 <div id="overview">
-        <div style="margin-top:30px;margin-bottom:15px; margin-left:15px; font-size:24pt; text-align:center;font-family: 'Lato', sans-serif;color:#686565;">WKKF Education & Learning Dashboard</div>
-        <div id="who-section" class="summary sumsingle" data-topic="who" style="margin-top:20px; position: relative">
-		<div style="height:20px;font-size:16px;margin:8px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">WHO //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Population-Level Landscape</span></div>
+        <div style="margin-top:30px;margin-bottom:10px; margin-left:15px; font-size:24pt; text-align:center;font-family: 'Lato', sans-serif;color:#686565;">WKKF Education & Learning Dashboard</div>
+        
+		<div id="triangle" style="width:100%;text-align:center;position:relative;top:10px;right:12px;"><image src="http://dev.communitycommons.org/wp-content/uploads/2014/09/arrow.png" width="50px" /></div>
+		<div id="mainbanner" style="width:100%;color:#ffffff;font-size:10pt;background-color:#0081c6;padding:20px 40px 20px 40px;text-align:center;position:relative;right:40px;">In education, as in all other areas related to our mission, barriers to opportunities based on race or income often inhibit the success of children and their families. Efforts to eliminate these barriers are critical to ultimately help break the cycle of poverty.</div>
+		
+		<div id="who-section" class="summary sumsingle" data-topic="who" style="margin-top:20px; position: relative">
+		<div style="height:20px;font-size:16px;margin:16px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">WHO //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Population-Level Landscape</span></div>
                 
                 <div id="subtopic-demographics" class="subtopic">
                     <div class="demographics chart">
@@ -465,15 +489,15 @@ if (is_page('wkkf-dashboard-mb')) {
                 
 
               <div class="controls">
-                  <a id="demographics" class="subtopic-toggle who" href="#" style="position:absolute; bottom:2%; left:2%">Children</a>
-                  <a id="education" class="subtopic-toggle who" href="#" style="position:absolute; bottom:2%; left:20%">Family</a>
-                  <a id="economics" class="subtopic-toggle who" href="#" style="position:absolute; bottom:2%; left:36%">Community</a>
-                  <a id="health" class="subtopic-toggle who" href="#" style="position:absolute; bottom:2%; left:70%"></a>
+					<div id="demographics" class="subtopic-toggle who" style="position:absolute;background-color:#0081c6; bottom:2%; left:2%">Children</div>                  
+					<div id="education" class="subtopic-toggle who" style="position:absolute; bottom:2%; left:20%">Family</div>
+					<div id="economics" class="subtopic-toggle who" style="position:absolute; bottom:2%; left:35%">Community</div>
+					
               </div>
         <a href="/wkkf-dashboard-mb/who/" title="Click to expand" style="position:absolute; bottom:-1%; right:0%"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png" /></a>
         </div>
 	<div id="where-section" class="summary sumsingle" data-topic="where" style="border-color:#5E9732; margin-top:20px; position: relative">
-		<div style="height:20px;font-size:16px;margin:8px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">WHERE //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Geographic Context</span></div>
+		<div style="height:20px;font-size:16px;margin:16px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">WHERE //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Geographic Context</span></div>
               <div id="subtopic-demographics" class="subtopic">
                   <div id="mapdiv" class="demographics chart">
 
@@ -530,16 +554,16 @@ if (is_page('wkkf-dashboard-mb')) {
                 </div>   
               <div class="controls">
                          
-                  <a id="map1link" class="loadlink" href="3597" style="position:absolute; bottom:2%; left:2%; font-size:10pt;">Children in Poverty</a>
-                  <a id="map2link" class="loadlink" href="6872" style="position:absolute; bottom:2%; left:32%; font-size:10pt;">NAEYC Facilities</a>
-                  <a id="map3link" class="loadlink" href="4811" style="position:absolute; bottom:2%; left:57%; font-size:10pt;">200% Poverty</a>
+                  <div id="map1link" class="loadlink" href="3597" style="position:absolute;background-color:#0081c6; bottom:2%; left:2%; font-size:10pt;">Children in Poverty</div>
+                  <div id="map2link" class="loadlink" href="6872" style="position:absolute; bottom:2%; left:34%; font-size:10pt;">NAEYC Facilities</div>
+                  <div id="map3link" class="loadlink" href="4811" style="position:absolute; bottom:2%; left:62%; font-size:10pt;">200% Poverty</div>
                   
               </div>			  
         <a href="/wkkf-dashboard-mb/where/" title="Click to expand" style="position:absolute; bottom:-1%; right:0%"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png" /></a>
 	</div>
 	 
         <div id="why-section" class="summary sumsingle" data-topic="why" style="border-color:#0081c6; position: relative">
-                    <div style="height:20px;font-size:16px;margin:8px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">WHAT //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Overview of E&L Goals and Outcomes</span></div>
+                    <div style="height:20px;font-size:16px;margin:16px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">WHAT //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Overview of E&L Goals and Outcomes</span></div>
                  <div id="subtopic-goals" class="subtopic">
                     <div class="text-box">
                     <p>
@@ -564,15 +588,14 @@ if (is_page('wkkf-dashboard-mb')) {
                 </div>
    
              <div class="controls">       
-                <a id="goals" class="subtopic-toggle what" href="#" style="position:absolute; bottom:1%; left:2%">Goals</a>
-                <a id="strategies" class="subtopic-toggle what" href="#" style="position:absolute; bottom:1%; left:22%">Outcomes</a>     
+                <div id="goals" class="subtopic-toggle what" style="position:absolute; background-color:#0081c6; bottom:1%; left:2%">Goals</div>
+                <div id="strategies" class="subtopic-toggle what" style="position:absolute; bottom:1%; left:16%">Outcomes</div>     
              </div>       
             <a href="/wkkf-dashboard-mb/what/" title="Click to expand" style="position:absolute; bottom:-1%; right:0%"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png" /></a>
         </div>    
 
-    
     	<div id="how-section" class="summary sumsingle" data-topic="how" style="border-color:#008BB0; position: relative">
-		<div style="height:20px;font-size:16px;margin:8px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">HOW //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Programming Approaches</span></div>
+		<div style="height:20px;font-size:16px;margin:16px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">HOW //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Programming Approaches</span></div>
 		<div id="subtopic-grantmaking" class="subtopic">
                   <div class="grantmaking chart">
                         <div class="grant" style="min-width: 400px; height: 220px; margin-left:10px; float:left"></div>
@@ -597,14 +620,14 @@ if (is_page('wkkf-dashboard-mb')) {
                       Resource Deployment text
                   </div>
                 </div> 
-           <div class="controls">    
-                <a id="grantmaking" class="subtopic-toggle how" href="#" style="position:absolute; bottom:2%; left:2%">Change Strategy</a>
-                <a id="resource-deployment" class="subtopic-toggle how" href="#" style="position:absolute; bottom:2%; left:35%">Funding Strategy</a>
+           <div class="controls">   
+                <div id="grantmaking" class="subtopic-toggle how" href="#" style="position:absolute; background-color:#0081c6; bottom:2%; left:2%">Change Strategy</div>
+                <div id="resource-deployment" class="subtopic-toggle how" href="#" style="position:absolute; bottom:2%; left:31%">Funding Strategy</div>
            </div>         
            <a href="/wkkf-dashboard-mb/how/" title="Click to expand" style="position:absolute; bottom:-1%; right:0%"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png" /></a>
 	</div>
     <div id="what-section" class="summary sumdouble" data-topic="what" style="border-color:#7C3520; position: relative; height:100px">
-		<div style="height:20px;font-size:16px;margin:8px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">PROGRESS //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Indicator Baselines and Target Goals</span></div>
+		<div style="height:20px;font-size:16px;margin:16px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">PROGRESS //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Indicator Baselines and Target Goals</span></div>
                 <div id="subtopic-overall" class="subtopic"> 
                   <div class="overall chart">
                     <!--<div style="margin-left: 20px; float:left">
@@ -709,13 +732,11 @@ if (is_page('wkkf-dashboard-mb')) {
                     </div>
                 </div>  		
              <div class="controls">    
-				<a id="overall" class="subtopic-toggle progress" href="#" style="position:absolute; bottom:1%; left:2%">Progress</a>			 
-                <a id="implications" class="subtopic-toggle progress" href="#" style="position:absolute; bottom:1%; left:22%">Implications</a>      
+				<div id="overall" class="subtopic-toggle progress" style="position:absolute; background-color:#0081c6; bottom:2%; left:1%">Progress</div>			 
+                <div id="implications" class="subtopic-toggle progress" style="position:absolute; bottom:2%; left:10%">Implications</div>      
              </div> 		
 		
         </div>   
-
-
 
 </div>
 <?php 
