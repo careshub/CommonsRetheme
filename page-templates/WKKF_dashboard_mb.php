@@ -198,6 +198,7 @@ title3{
     height:120px;
     margin:0.5%;
     background-color:#e9e9e9;
+	padding:10px;
     border-style:null; 
     border-width:1px  
     }
@@ -256,9 +257,11 @@ title3{
 	color:#ffffff;
 	padding:5px 10px 5px 10px;
 	background-color:#9c9b9b;
+	
 }
 .subtopic-toggle:hover {
 	cursor:pointer;
+	background-color:#0081c6;
 }
 .loadlink {
 	font-size:10pt;
@@ -268,10 +271,35 @@ title3{
 }
 .loadlink:hover {
 	cursor:pointer;
+	background-color:#0081c6;
+}
+.expandbookmark {
+	margin-bottom:2px;
+	margin-right:5px;
+	font-size:9pt;
+	color:#ffffff;
+	padding:5px 10px 5px 10px;
+	background-color:#9c9b9b;
+	text-decoration:none;
+}
+.expandbookmark:hover {
+	color:#ffffff;
+	background-color:#0081c6;
+}
+.obcontainer {	
+	margin-top:15px;
+	float:left;
+	clear:both;
+	margin-right:10px;
+}
+.obtext {
+	margin-left:15px;
+	padding-top:0px;
+}
+body .site {
+    box-shadow: 0px 0px 0px; 
 }
 
-body .site {
-    box-shadow: 0px 0px 0px 
 </style>
 
 <script>
@@ -316,6 +344,11 @@ jQuery(document).ready(function($) {
         $(this).parents('.summary').find( target ).show();
 		
 		$(this).siblings('.who').css('background-color','#9c9b9b');
+		// $(this).siblings('.who').hover( function(){
+			// $(this).css('background-color', '#0081c6');
+		// },function() {
+			// $(this).css('background-color', '#9c9b9b');
+		// });
 		$(this).siblings('.where').css('background-color','#9c9b9b');
 		$(this).siblings('.what').css('background-color','#9c9b9b');
 		$(this).siblings('.how').css('background-color','#9c9b9b');
@@ -338,7 +371,10 @@ jQuery(document).ready(function($) {
         $('#overview').toggle();
         e.preventDefault();
     });
-    
+     $(".seemorehover").hover(
+          function(){this.src = this.src.replace("http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png","http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more2.png");},
+          function(){this.src = this.src.replace("http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more2.png","http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png");
+     });
 });
 
 
@@ -402,10 +438,10 @@ if (is_page('wkkf-dashboard-mb')) {
         <div style="margin-top:30px;margin-bottom:10px; margin-left:15px; font-size:24pt; text-align:center;font-family: 'Lato', sans-serif;color:#686565;">WKKF Education & Learning Dashboard</div>
         
 		<div id="triangle" style="width:100%;text-align:center;position:relative;top:10px;right:12px;"><image src="http://dev.communitycommons.org/wp-content/uploads/2014/09/arrow.png" width="50px" /></div>
-		<div id="mainbanner" style="width:100%;color:#ffffff;font-size:10pt;background-color:#0081c6;padding:20px 40px 20px 40px;text-align:center;position:relative;right:40px;">In education, as in all other areas related to our mission, barriers to opportunities based on race or income often inhibit the success of children and their families. Efforts to eliminate these barriers are critical to ultimately help break the cycle of poverty.</div>
+		<div id="mainbanner" style="width:100%;color:#ffffff;font-size:10pt;background-color:#0081c6;padding:20px 40px 20px 40px;text-align:center;position:relative;right:40px;">In the United States, a child's race and family income too often shape their educational success and life destiny. Efforts to eliminate these barriers are critical to ultimately help break the cycle of poverty.</div>
 		
 		<div id="who-section" class="summary sumsingle" data-topic="who" style="margin-top:20px; position: relative">
-		<div style="height:20px;font-size:16px;margin:16px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">WHO //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Population-Level Landscape</span></div>
+		<div style="height:30px;font-size:16px;margin:16px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">WHO //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Population-Level Landscape</span></div>
                 
                 <div id="subtopic-demographics" class="subtopic">
                     <div class="demographics chart">
@@ -419,9 +455,9 @@ if (is_page('wkkf-dashboard-mb')) {
                         </div>
                     </div>
                   <div class="demographics summary-text">
-                      <p>There are around <b>24 million</b> young children (<6 years old) in the U.S.</br></br>
-                          Child poverty is on the rise: from 43% in 2006 increased up to 49% in 2011, reaching <b>11.5 million children</b></br></br>
-                          These are their main characteristics:</p></br>  
+                      <p>There are around <b>24 million</b> young children (<6 years old) in the U.S.<br /><br />
+                          Child poverty is on the rise: from 43% in 2006 increased up to 49% in 2011, reaching <b>11.5 million children</b><br /><br />
+                          These are their main characteristics:</p><br />  
                       <ul style="font-size:12px">
                           <li style="font-size:12px">Race:
                               <ul>
@@ -429,7 +465,7 @@ if (is_page('wkkf-dashboard-mb')) {
                                   <li class="li2">American Indian: 70%</li>
                                   <li class="li2">Latino: 67%</li>
                               </ul>
-                          </li></br>
+                          </li><br />
                           <li style="font-size:12px">Parents & household:
                               <ul>
                                   <li class="li2">Non-employed parents: 88%</li>
@@ -489,15 +525,15 @@ if (is_page('wkkf-dashboard-mb')) {
                 
 
               <div class="controls">
-					<div id="demographics" class="subtopic-toggle who" style="position:absolute;background-color:#0081c6; bottom:2%; left:2%">Children</div>                  
-					<div id="education" class="subtopic-toggle who" style="position:absolute; bottom:2%; left:20%">Family</div>
-					<div id="economics" class="subtopic-toggle who" style="position:absolute; bottom:2%; left:35%">Community</div>
+					<div id="demographics" class="subtopic-toggle who" style="position:absolute;background-color:#0081c6; bottom:0%; left:2%">Children</div>                  
+					<div id="education" class="subtopic-toggle who" style="position:absolute; bottom:0%; left:20%">Family</div>
+					<div id="economics" class="subtopic-toggle who" style="position:absolute; bottom:0%; left:35%">Community</div>
 					
               </div>
-        <a href="/wkkf-dashboard-mb/who/" title="Click to expand" style="position:absolute; bottom:-1%; right:0%"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png" /></a>
+        <a href="/wkkf-dashboard-mb/who/" title="Click to expand" style="position:absolute; bottom:-1%; right:0%"><img class="seemorehover" src="http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png" /></a>
         </div>
 	<div id="where-section" class="summary sumsingle" data-topic="where" style="border-color:#5E9732; margin-top:20px; position: relative">
-		<div style="height:20px;font-size:16px;margin:16px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">WHERE //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Geographic Context</span></div>
+		<div style="height:30px;font-size:16px;margin:16px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">WHERE //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Geographic Context</span></div>
               <div id="subtopic-demographics" class="subtopic">
                   <div id="mapdiv" class="demographics chart">
 
@@ -507,15 +543,15 @@ if (is_page('wkkf-dashboard-mb')) {
 					  
                   </div>      
                   <div class="demographics summary-text">
-                      <p  style="font-size:13px">In the U.S. <b>29 million</b> people aged 25 or over don't hold a High School Diploma.</br></br>
-                          The following areas are characterized by displaying the highest rates of population without a High School Diploma, so they require special attention:</p></br>  
+                      <p  style="font-size:13px">In the U.S. <b>29 million</b> people aged 25 or over don't hold a High School Diploma.<br /><br />
+                          The following areas are characterized by displaying the highest rates of population without a High School Diploma, so they require special attention:</p><br />  
                       <ul style="font-size:12px">
                           <li style="font-size:12px">South:</li>
                               <ul>
                                   <li class="li2">New Orleans Parish, LA: 35%</li>
                                   <li class="li2">Memphis, TN: 32%</li>
                               </ul>
-                          </li></br>
+                          </li><br />
                           <li style="font-size:12px">Midwest:
                               <ul>
                                   <li class="li2">Kansas City, MO: 31%</li>
@@ -554,22 +590,22 @@ if (is_page('wkkf-dashboard-mb')) {
                 </div>   
               <div class="controls">
                          
-                  <div id="map1link" class="loadlink" href="3597" style="position:absolute;background-color:#0081c6; bottom:2%; left:2%; font-size:10pt;">Children in Poverty</div>
-                  <div id="map2link" class="loadlink" href="6872" style="position:absolute; bottom:2%; left:34%; font-size:10pt;">NAEYC Facilities</div>
-                  <div id="map3link" class="loadlink" href="4811" style="position:absolute; bottom:2%; left:62%; font-size:10pt;">200% Poverty</div>
+                  <div id="map1link" class="loadlink" href="3597" style="position:absolute;background-color:#0081c6; bottom:0%; left:2%; font-size:10pt;">Children in Poverty</div>
+                  <div id="map2link" class="loadlink" href="6872" style="position:absolute; bottom:0%; left:34%; font-size:10pt;">NAEYC Facilities</div>
+                  <div id="map3link" class="loadlink" href="4811" style="position:absolute; bottom:0%; left:62%; font-size:10pt;">200% Poverty</div>
                   
               </div>			  
-        <a href="/wkkf-dashboard-mb/where/" title="Click to expand" style="position:absolute; bottom:-1%; right:0%"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png" /></a>
+        <a href="/wkkf-dashboard-mb/where/" title="Click to expand" style="position:absolute; bottom:-1%; right:0%"><img class="seemorehover" src="http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png" /></a>
 	</div>
 	 
         <div id="why-section" class="summary sumsingle" data-topic="why" style="border-color:#0081c6; position: relative">
-                    <div style="height:20px;font-size:16px;margin:16px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">WHAT //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Overview of E&L Goals and Outcomes</span></div>
+                    <div style="height:30px;font-size:16px;margin:16px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">WHAT //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Overview of E&L Goals and Outcomes</span></div>
                  <div id="subtopic-goals" class="subtopic">
                     <div class="text-box">
-                    <p>
-                      <b>Goals:</b></br>
-						Education & Learning supports families and communities so that they create and strengthen the early education and learning environments that propel vulnerable children to be ready for school and achieve early school success. Specifically, the team aims to build and strengthen a comprehensive high quality 0-8 early care and education system where children are the priority and families are the co-creators.
-                        </br>
+                    <p style="margin-left:7px;">
+                      <b>Goals: </b><br />
+							The Education & Learning team partners with families and their communities to create and strengthen quality early childhood education that prepares underserved children to be ready for school and achieve early school success. 
+					  <br />
                     </p>
                     </div>
                  </div>
@@ -578,7 +614,7 @@ if (is_page('wkkf-dashboard-mb')) {
                         <div>
                             <div style="background-color:#0ba6c3; color:#ffffff; font-size:13px; text-align:left; float:left; margin-left:0px; padding:4px;margin-bottom:10px;"><b>Family Engagement</b>: We support community-based family engagement efforts that empower parents, caregivers and families as leaders in childrens development.</div>
 
-							<div style="background-color:#ffcc7c; color:#ffffff; font-size:13px; text-align:left; float:left; margin-left:0x; padding:4px;margin-bottom:10px;"><b>Effective Teaching</b>: We seek to improve the quality of both teaching and learning through leadership and professional development.</div>
+							<div style="background-color:#ffb755; color:#ffffff; font-size:13px; text-align:left; float:left; margin-left:0x; padding:4px;margin-bottom:10px;"><b>Effective Teaching</b>: We seek to improve the quality of both teaching and learning through leadership and professional development.</div>
 
 							<div style="background-color:#87af6c; color:#ffffff; font-size:13px; text-align:left; float:left; margin-left:0px; padding:4px;margin-bottom:10px;"><b>Aligning Systems</b>: We support aligning systems to increase collaboration and improve the effectiveness of everyone who works in early child development.</div>
 
@@ -588,14 +624,14 @@ if (is_page('wkkf-dashboard-mb')) {
                 </div>
    
              <div class="controls">       
-                <div id="goals" class="subtopic-toggle what" style="position:absolute; background-color:#0081c6; bottom:1%; left:2%">Goals</div>
-                <div id="strategies" class="subtopic-toggle what" style="position:absolute; bottom:1%; left:16%">Outcomes</div>     
+                <div id="goals" class="subtopic-toggle what" style="position:absolute; background-color:#0081c6; bottom:0%; left:2%">Goals</div>
+                <div id="strategies" class="subtopic-toggle what" style="position:absolute; bottom:0%; left:16%">Outcomes</div>     
              </div>       
-            <a href="/wkkf-dashboard-mb/what/" title="Click to expand" style="position:absolute; bottom:-1%; right:0%"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png" /></a>
+            <a href="/wkkf-dashboard-mb/what/" title="Click to expand" style="position:absolute; bottom:-1%; right:0%"><img class="seemorehover" src="http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png" /></a>
         </div>    
 
     	<div id="how-section" class="summary sumsingle" data-topic="how" style="border-color:#008BB0; position: relative">
-		<div style="height:20px;font-size:16px;margin:16px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">HOW //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Programming Approaches</span></div>
+		<div style="height:30px;font-size:16px;margin:16px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">HOW //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">E&L's Program Investments</span></div>
 		<div id="subtopic-grantmaking" class="subtopic">
                   <div class="grantmaking chart">
                         <div class="grant" style="min-width: 400px; height: 220px; margin-left:10px; float:left"></div>
@@ -621,15 +657,17 @@ if (is_page('wkkf-dashboard-mb')) {
                   </div>
                 </div> 
            <div class="controls">   
-                <div id="grantmaking" class="subtopic-toggle how" href="#" style="position:absolute; background-color:#0081c6; bottom:2%; left:2%">Change Strategy</div>
-                <div id="resource-deployment" class="subtopic-toggle how" href="#" style="position:absolute; bottom:2%; left:31%">Funding Strategy</div>
+                <div id="grantmaking" class="subtopic-toggle how" href="#" style="position:absolute; background-color:#0081c6; bottom:0%; left:2%">Change Strategy</div>
+                <div id="resource-deployment" class="subtopic-toggle how" href="#" style="position:absolute; bottom:0%; left:31%">Funding Strategy</div>
            </div>         
-           <a href="/wkkf-dashboard-mb/how/" title="Click to expand" style="position:absolute; bottom:-1%; right:0%"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png" /></a>
+           <a href="/wkkf-dashboard-mb/how/" title="Click to expand" style="position:absolute; bottom:-1%; right:0%"><img class="seemorehover" src="http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png" /></a>
 	</div>
     <div id="what-section" class="summary sumdouble" data-topic="what" style="border-color:#7C3520; position: relative; height:100px">
-		<div style="height:20px;font-size:16px;margin:16px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">PROGRESS //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Indicator Baselines and Target Goals</span></div>
-                <div id="subtopic-overall" class="subtopic"> 
+		<div style="height:30px;font-size:16px;margin:16px;border-bottom:solid 1px #d1cece;"><span style="color:#000000;font-weight:bold;">PROGRESS //</span><span style="color:#0081c6;margin-left:10px;font-family: 'Lato', sans-serif;">Indicator Baselines and Target Goals</span></div>
+
+				<div id="subtopic-overall" class="subtopic"> 
                   <div class="overall chart">
+				  
                     <!--<div style="margin-left: 20px; float:left">
                         <div>
                             <div class="fcititlesum">3rd grade reading proficiency</div>
@@ -645,11 +683,15 @@ if (is_page('wkkf-dashboard-mb')) {
                         </div>    
 
                     </div>-->
-                    <div style="margin-left: 0px; float:left;margin-top:45px;">
+                    <div style="margin-left: 0px; float:left;margin-top:15px;">
+						<p style="margin-left:15px;">
+						  <b>Key Condition Indicators:</b><br />
+						  <br />
+						</p>					
                         <div>
-                            <div class="fcititlesum" style="margin-left: 45px; width:250px">States adopting quality improvement system for 0-5 ECE programs</div>
-                            <div class="fcititlesum" style="margin-left: 45px; width:250px">States adopting standards-based quality teaching & learning practices for PK-3</div>
-                            <div class="fcititlesum" style="margin-left: 45px; width:250px">States having policies to increase vulnerable children's access to quality ECE programs</div>
+                            <div class="fcititlesum" style="margin-left: 45px; width:250px">States adopting a statewide quality improvement system for 0-5 ECE programs</div>
+                            <div class="fcititlesum" style="margin-left: 45px; width:250px">States adopting standards-based quality teaching & learning for PK-3 schools</div>
+                            <div class="fcititlesum" style="margin-left: 45px; width:250px">States with policies to increase underserved children's access to quality ECE programs</div>
                         </div>
                         <div>
                             <div class="fcibar5sum" style="width: 250px; height: 100px; margin-left: 35px; float:left"></div>
@@ -662,16 +704,16 @@ if (is_page('wkkf-dashboard-mb')) {
                   <div class="overall summary-text">
                       <div class="text-box" style="width:47%; height:230px;float: left;">
                             <p>
-                                OVERALL ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh.</br></br>Ut malesuada sollicitudin tincidunt. 
-                                Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.</br></br>
-                                </br>
+                                OVERALL ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh.<br /><br />Ut malesuada sollicitudin tincidunt. 
+                                Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.<br /><br />
+                                <br />
                             </p>
                       </div>
                       <div class="text-box" style="width:47%; height:230px; margin-left:15px;float: left">
                             <p>
-                                OVERALL ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh.</br></br>Ut malesuada sollicitudin tincidunt. 
-                                Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.</br></br>
-                                </br>
+                                OVERALL ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh.<br /><br />Ut malesuada sollicitudin tincidunt. 
+                                Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.<br /><br />
+                                <br />
                             </p>
                       </div>
                   </div>
@@ -683,16 +725,16 @@ if (is_page('wkkf-dashboard-mb')) {
                     <div class="outcomes summary-text">
                       <div class="text-box" style="width:47%; height:230px;float: left;">
                             <p>
-                                OUTCOMES ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh.</br></br>Ut malesuada sollicitudin tincidunt. 
-                                Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.</br></br>
-                                </br>
+                                OUTCOMES ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh.<br /><br />Ut malesuada sollicitudin tincidunt. 
+                                Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.<br /><br />
+                                <br />
                             </p>
                       </div>
                       <div class="text-box" style="width:47%; height:230px; margin-left:15px;float: left">
                             <p>
-                                OUTCOMES ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh.</br></br>Ut malesuada sollicitudin tincidunt. 
-                                Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.</br></br>
-                                </br>
+                                OUTCOMES ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh.<br /><br />Ut malesuada sollicitudin tincidunt. 
+                                Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.<br /><br />
+                                <br />
                             </p>
                       </div>
                     </div>
@@ -704,36 +746,36 @@ if (is_page('wkkf-dashboard-mb')) {
                     <div class="impact summary-text">
                       <div class="text-box" style="width:47%; height:230px;float: left;">
                             <p>
-                                IMPACT ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh.</br></br>Ut malesuada sollicitudin tincidunt. 
-                                Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.</br></br>
-                                </br>
+                                IMPACT ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh.<br /><br />Ut malesuada sollicitudin tincidunt. 
+                                Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.<br /><br />
+                                <br />
                             </p>
                       </div>
                       <div class="text-box" style="width:47%; height:230px; margin-left:15px;float: left">
                             <p>
-                                IMPACT ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh.</br></br>Ut malesuada sollicitudin tincidunt. 
-                                Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.</br></br>
-                                </br>
+                                IMPACT ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh.<br /><br />Ut malesuada sollicitudin tincidunt. 
+                                Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.<br /><br />
+                                <br />
                             </p>
                       </div>
                     </div>
                 </div> 
                     
-        <a href="/wkkf-dashboard-mb/progress/" title="Click to expand" style="position:absolute; bottom:-1%; right:0%"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png" /></a>
+        <a href="/wkkf-dashboard-mb/progress/" title="Click to expand" style="position:absolute; bottom:-1%; right:0%"><img class="seemorehover" src="http://dev.communitycommons.org/wp-content/uploads/2014/09/see_more.png" /></a>
                 <div id="subtopic-implications" class="subtopic hiddenbydefault">
                     <div class="text-box">
                     <p>
-                      <b>Implications</b></br>
-                        Research is clear that poverty is the single greatest threat to children's well-being. But effective public policies can make a difference. Investments in the most vulnerable children are also critical</br></br>
+                      <b>Implications: </b>&nbsp;&nbsp;(Below text is a placeholder. Implications are generated from Education and Learning team’s portfolio analysis and progress made towards various levels of target)<br /><br />
+                        Research is clear that poverty is the single greatest threat to children's well-being. But effective public policies can make a difference. Investments in the most vulnerable children are also critical<br /><br />
                         One key factor to ensure high-quality early care and learning is the quality of teaching. At the same time of increasing the credential/degree requirements of early childhood professionals,
                         there are also needs to be on-going support to existing teaching workforce in 0-8 learning settings.
-                        </br>
+                        <br />
                     </p>
                     </div>
                 </div>  		
              <div class="controls">    
-				<div id="overall" class="subtopic-toggle progress" style="position:absolute; background-color:#0081c6; bottom:2%; left:1%">Progress</div>			 
-                <div id="implications" class="subtopic-toggle progress" style="position:absolute; bottom:2%; left:10%">Implications</div>      
+				<div id="overall" class="subtopic-toggle progress" style="position:absolute; background-color:#0081c6; bottom:0%; left:1%">Progress</div>			 
+                <div id="implications" class="subtopic-toggle progress" style="position:absolute; bottom:0%; left:10%">Implications</div>      
              </div> 		
 		
         </div>   
@@ -757,9 +799,15 @@ if (is_page('where')) {
 		<div id="map3" class="summary sumsingle">
 					  <script src='http://maps.communitycommons.org/jscripts/mapWidget.js?ids=4811&vm=4811&w=450&h=240&l=0&bbox=-14582113.088652689,2804241.044125512,-7170778.826123968,6419406.733900247&maplink=new'></script>		
 			<p style="text-align:center;margin-top:10px;">Population at or below 200% Poverty</p>
-		</div>		
-
+		</div>
+		<div id="map4" class="summary sumsingle">
+					  <script src='http://maps.communitycommons.org/jscripts/mapWidget.js?w=450&h=240&ids=945,948,950,951&vm=945&l=0&bbox=-14582113.088652689,2804241.044125512,-7170778.826123968,6419406.733900247&maplink=new'></script>		
+			<p style="text-align:center;margin-top:10px;">Head Start Facilities</p>
+		</div>
+	
+		<div style="height:25px;padding-top:7px;"><span style="float:right;"><a href="/wkkf-dashboard-mb" class="button">Return to Dashboard</a></span></div><br /><br />
 </div>
+        
 <?php
 }
 if (is_page('who')) {
@@ -774,7 +822,8 @@ if (is_page('who')) {
         <div class="family_ex" style="width: 440px; height: 240px; margin-right: 40px;  float:right; margin-top: 20px"></div>
         <div class="attainment_ex" style="min-width: 400px; height: 240px; margin-left:25px; float:left; margin-top: 20px"></div> 
         <div class="language_ex" style="width: 400px; height: 240px; margin-right:40px; float:right; margin-top: 20px"></div>
-
+		
+		<div style="height:25px;padding-top:7px;"><span style="float:right;"><a href="/wkkf-dashboard-mb" class="button">Return to Dashboard</a></span></div><br /><br />
 </div>
 <?php 
 }
@@ -782,45 +831,54 @@ if (is_page('how')) {
 
 ?>
 <div id="how-expanded" data-topic="how" style="border-color:#008BB0; margin-top:40px; position: relative">
-        <div style="margin-left:10px;height:25px;font-size:18pt;padding-top:7px;text-align:left;"><b>HOW //</b><span style="color:#0081c6;margin-left:15px;font-family: 'Lato', sans-serif;">Programming Approaches</span><span style="float:right;"><a href="/wkkf-dashboard-mb" class="button">Return to Dashboard</a></span></div><br /><br />
-		<div style="margin-left:10px;"><a href="#ssi">Strategy-Specific Indicators</a> | <a href="#ssli">Strategy-Specific Leading Indicators</a> | <a href="#cs">Change Strategies</a> | <a href="#fs">Funding Strategies</a></div>
+        <div style="margin-left:10px;height:25px;font-size:18pt;padding-top:7px;text-align:left;"><b>HOW //</b><span style="color:#0081c6;margin-left:15px;font-family: 'Lato', sans-serif;">E&L's Program Investments</span><span style="float:right;"><a href="/wkkf-dashboard-mb" class="button">Return to Dashboard</a></span></div><br /><br />
+		<div style="margin-left:10px;"><a class="expandbookmark" href="#cs">Change Strategies</a> <a class="expandbookmark" href="#fs">Funding Strategies</a></div>
         <br />
-	<div style="margin-left: 10px ">
-		<a name="ssi"></a>
-		<div style="border-color:#0081c6; position: relative; text-align:left;margin-top:30px;"><title2 style="color:#0081c6">Strategy-Specific Indicators</title2></div> 
-	</div>		
-	<div style="margin-left: 10px ">
-		<a name="ssli"></a>
-		<div style="border-color:#0081c6; position: relative; text-align:left;margin-top:30px;"><title2 style="color:#0081c6">Strategy-Specific Leading Indicators</title2></div> 
-	</div>
+
 	<div style="margin-left: 10px ">
 		<a name="cs"></a>
 		<div style="border-color:#0081c6; position: relative; text-align:left;margin-top:30px;"><title2 style="color:#0081c6">Change Strategies</title2></div> 
+		<p style="margin-left:10px;margin-bottom:20px;">
+                            <div style="background-color:#0ba6c3; color:#ffffff; font-size:12pt; text-align:left; padding:10px;margin-bottom:10px;">Family Engagement</div>		
+								<div style="margin-left:10px; margin-bottom:15px; padding-top:10px">
+									<ul>
+										<li>Support family leadership development</li>
+										<li>Build institutional capacity for family-entered engagement structure, practices & policies</li>										
+									</ul>							
+								</div>
+							<div style="background-color:#ffb755; color:#ffffff; font-size:12pt; text-align:left; padding:10px;margin-bottom:10px;">Effective Teaching</div>		
+								<div style="margin-left:10px; margin-bottom:15px; padding-top:10px">
+									<ul>
+										<li>Support quality 0-8 teachers’ professional learning (pre-service and in-service)</li>
+										<li>Create quality 0-8 systems through aligning pre- and in-service training, accreditation standards & programs</li>										
+									</ul>								
+								</div>
+							<div style="background-color:#87af6c; color:#ffffff; font-size:12pt; text-align:left; padding:10px;margin-bottom:10px;">Aligning Systems</div>	
+								<div style="margin-left:10px; margin-bottom:15px; padding-top:10px">
+									<ul>
+										<li>Strengthen whole-child, whole-family support programs & system</li>
+										<li>Elevate early childhood education as a priority in the state or municipality</li>
+										<li>Advocate for an child-centered equitable national policy agenda</li>									
+									</ul>								
+								</div>	
+        </p>		
 	</div>
 	<div style="margin-left: 10px ">
 		<a name="fs"></a>
 		<div style="border-color:#0081c6; position: relative; text-align:left;margin-top:30px;"><title2 style="color:#0081c6">Funding Strategies</title2></div> 
 	</div>	
-	<br />
-	<br />
-	<br />
-	<br />
-		<p style="margin-left:10px;       line-height: 20px;">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh. Ut malesuada sollicitudin tincidunt. 
-            Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.</br>
-        </p>
+
+		<p style="margin-left:10px;margin-top:20px;line-height: 20px;">
+			The charts below are for illustrative purposes in demonstrating what is possible in visualizing our portfolio. Working further to extract meaningful data from Encompass, we can display additional charts and visualizations.
+		</p>
         <div class="budget1_ex" style="width: 450px; height: 300px; margin-left: 15px; margin-top:15px; float:left"></div>
         <div class="budget2_ex" style="width: 450px; height: 300px; margin-left: 5px; margin-top:15px; float:left"></div>
         <div style="width: 430px; height: 300px; margin-left: 10px; margin-top:40px; float:left;">
-            <p style="line-height: 20px;">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh. Ut malesuada sollicitudin tincidunt. 
-                Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.</br></br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh. Ut malesuada sollicitudin tincidunt. 
-                Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.</br>
-            </p>
+			<div style="font-size:14pt;margin-bottom:10px;text-align:center;">Placeholder Text</div><br />
+			<div style="text-align:left;margin-left:20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
         </div>
         <div class="budget3_ex" style="width: 450px; height: 300px; margin-left: 5px; margin-top:30px; float:left"></div>
-
+		<div style="height:25px;padding-top:7px;"><span style="float:right;"><a href="/wkkf-dashboard-mb" class="button">Return to Dashboard</a></span></div><br /><br />
 </div>
 <?php 
 }
@@ -833,74 +891,86 @@ if (is_page('what')) {
 
 		<p style="font-size:14pt;margin-bottom:15px;color:#0081c6;font-family: 'Lato', sans-serif;">Goals</p>
 
-		<p style="margin-left:10px;margin-bottom:20px;">
-						Education & Learning supports families and communities so that they create and strengthen the early education and learning environments that propel vulnerable children to be ready for school and achieve early school success. Specifically, the team aims to build and strengthen a comprehensive high quality 0-8 early care and education system where children are the priority and families are the co-creators.
-
+		<p style="margin-left:0px;margin-bottom:20px;">
+			The Education & Learning team partners with families and their communities to create and strengthen quality early childhood education that prepares underserved children to be ready for school and achieve early school success. 
 		</p>
 		<p style="font-size:14pt;margin-bottom:15px;color:#0081c6;font-family: 'Lato', sans-serif;">Outcomes</p>
+		<p>The team aims to build and strengthen a comprehensive high quality 0-8 early childhood education (ECE) system where children are the priority and families and the school leaders are the co-creators.</p>
 		<p style="margin-left:10px;margin-bottom:20px;">
                             <div style="background-color:#0ba6c3; color:#ffffff; font-size:12pt; text-align:left; padding:10px;margin-bottom:10px;">Family Engagement</div>		
 								<div style="margin-left:10px; margin-bottom:15px; padding-top:10px">
 									<ul>
-										<li>Support family leadership development</li>
-										<li>Build institutional capacity for family-entered engagement structure, practices & policies</li>
+										<li>State or organizational infrastructure to support "next" practices</li>
+										<li>State & national dedicated funding for high quality family engagement</li>
+										<li>Statewide leadership to champion family engagement at all levels</li>
 									</ul>							
 								</div>
-							<div style="background-color:#ffcc7c; color:#ffffff; font-size:12pt; text-align:left; padding:10px;margin-bottom:10px;">Effective Teaching</div>		
+							<div style="background-color:#ffb755; color:#ffffff; font-size:12pt; text-align:left; padding:10px;margin-bottom:10px;">Effective Teaching</div>		
 								<div style="margin-left:10px; margin-bottom:15px; padding-top:10px">
 									<ul>
-										<li>Support quality 0-8 teachers’ professional learning (in-service and pre-service)</li>
-										<li>Create quality 0-8 systems through aligning pre- and in-service training, accreditation standards & programs</li>
+										<li>Reformed & aligned 0-8 professional development system (content, delivery, funding, etc.)</li>
+										<li>Innovated 0-8 teacher preparation programs in higher education institutions</li>
+										<li>Enhanced 0-8 accreditation standards, programs, & systems</li>
 									</ul>								
 								</div>
 							<div style="background-color:#87af6c; color:#ffffff; font-size:12pt; text-align:left; padding:10px;margin-bottom:10px;">Aligning Systems</div>	
 								<div style="margin-left:10px; margin-bottom:15px; padding-top:10px">
 									<ul>
-										<li>Strengthen whole-child, whole-family support programs & system</li>
-										<li>Elevate early childhood education as a priority in the state</li>
-										<li>Disseminate child-centered equitable national policy agenda</li>
+										<li>More vulnerable children served by quality family-centered programs and services</li>
+										<li>Expanded ECE capacity to serve more children</li>
+										<li>Increased state budget for ECE access & quality</li>
+										<li>More foundations adopting WKKF policy framework</li>
 									</ul>								
 								</div>	
         </p>
-	<a href="#" class="toggle" style="position:absolute; bottom:2%; right:2%"><b style="color:#7f7f7f; font-size: 13px;">&larr; Minimize</b></a>
+        <div style="height:25px;padding-top:7px;"><span style="float:right;"><a href="/wkkf-dashboard-mb" class="button">Return to Dashboard</a></span></div><br /><br />	
 </div>
 <?php
 }
 ?>
 <div id="where-expanded" class="expanded-topic" data-topic="where" style="border-color:#5E9732; margin-top:40px; position: relative">
-        <h2 style="background-color:#5E9732; height:25px;  color:#ffffff; font-size:18px;padding-top:7px">Where</h2></br>
+        <h2 style="background-color:#5E9732; height:25px;  color:#ffffff; font-size:18px;padding-top:7px">Where</h2><br />
         <p style="margin-left:10px; line-height: 20px;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis libero enim, vel dapibus quam pretium non. Maecenas nec risus dapibus, lobortis nulla a, tempus nibh. Ut malesuada sollicitudin tincidunt. 
-            Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.</br>
+            Donec luctus sollicitudin ultrices. Donec ac augue sit amet sapien cursus luctus nec et arcu. Quisque eu aliquet metus, quis molestie lacus. Maecenas dui odio, venenatis ac tristique vitae, faucibus sit amet massa.<br />
         </p>
         <img style=" width:900px; height:442px; margin:1%; margin-left:20px; padding-top:50px" src="/wp-content/uploads/2014/03/WKKF_mapVPF_ex.png" />
-        <a class="info" href="#" style="position:absolute; bottom:1%; left:10%"><b style="color:#7f7f7f; font-size: 12px;">Demographics</b>
-        <a class="info" href="#" style="position:absolute; bottom:1%; left:30%"><b style="color:#7f7f7f; font-size: 12px;">Education</b>   
-        <a class="info" href="#" style="position:absolute; bottom:1%; left:50%"><b style="color:#7f7f7f; font-size: 12px;">Economics</b>   
-	<a class="info" href="#" style="position:absolute; bottom:1%; left:70%"><b style="color:#7f7f7f; font-size: 12px;">Health</b>
-	<a href="#" class="toggle" style="position:absolute; bottom:1%; right:2%"><b style="color:#7f7f7f; font-size: 13px;">&larr; Minimize</b></a>
+        <a class="info" href="#" style="position:absolute; bottom:1%; left:10%"><b style="color:#7f7f7f; font-size: 12px;">Demographics</b></a>
+        <a class="info" href="#" style="position:absolute; bottom:1%; left:30%"><b style="color:#7f7f7f; font-size: 12px;">Education</b></a>
+        <a class="info" href="#" style="position:absolute; bottom:1%; left:50%"><b style="color:#7f7f7f; font-size: 12px;">Economics</b></a>   
+	<a class="info" href="#" style="position:absolute; bottom:1%; left:70%"><b style="color:#7f7f7f; font-size: 12px;">Health</b></a>
+	
 </div>
 <?php 
 if (is_page('progress')) {
 ?>
-<div id="what-expanded" data-topic="what" style="border-color:#7C3520; margin-top:40px; position: relative">
+<div id="progress-expanded" data-topic="progress" style="border-color:#7C3520; margin-top:40px; position: relative;">
         <div style="height:25px;font-size:18pt;padding-top:7px;text-align:left;"><b>PROGRESS //</b><span style="color:#0081c6;margin-left:15px;font-family: 'Lato', sans-serif;">Indicator Baselines and Target Goals</span><span style="float:right;"><a href="/wkkf-dashboard-mb" class="button">Return to Dashboard</a></span></div><br /><br />
 	
         <div style="margin-bottom:25px;font-size:10pt;">
-		<a href="#kci">Key Condition Indicators</a> | <a href="#likc">Leading Indicators of the Key Conditions</a> | <a href="#ssi">Strategy-Specific Indicators</a> | <a href="#ssli">Strategy-Specific Leading Indicators</a> | <a href="#implications">Implications</a>
+		<a class="expandbookmark" href="#kci">Key Condition Indicators</a> <a class="expandbookmark" href="#likc">Leading Indicators of the Key Conditions</a> <a class="expandbookmark" href="#ssi">Strategy-Specific Indicators</a> <a class="expandbookmark" href="#ssli">Strategy-Specific Leading Indicators</a> <a class="expandbookmark" href="#implications">Implications</a>
 
 		</div>		
-        <p style="margin-left:10px; line-height: 20px;">
-            We want to partner with families, schools and communities in making a difference in young children's learning and development. To do so, we support 
-            community-based family engagement efforts that empower parents, caregivers and families as leaders in children's development, recognizing that this is a shared responsibility with schools and communities. </br></br>
-        </p>
-        <div style="margin-left:10px; line-height: 20px;">Strategy-specific outcomes:</br></br>
-            <ul style="margin-left:10px; line-height: 20px">
-                <li style="line-height: 20px">State or organizational infrastructure to support "next" practices</li>
-                <li style="line-height: 20px">State & national dedicated funding for principle-based family engagement</li>
-                <li style="line-height: 20px">Statewide leadership to champion principle-based family engagement</li>
-            </ul>    
-        </div>
+
+
+	<div style="margin-left: 10px ">
+		<a name="kci"></a>
+		<div class="title2box" style="border-color:#235937; position: relative; text-align:left;margin-top:30px;"><title2 style="color:#0081c6">Key Condition Indicators</title2></div> 
+	</div>
+
+	<div class="overall chart">
+                    <div style="margin-left: 0px; float:left;margin-top:5px;">
+                        <div>
+                            <div class="fcititlesum" style="margin-left: 45px; margin-bottom:10px; width:250px;">States adopting quality improvement system for 0-5 ECE programs</div>
+                            <div class="fcititlesum" style="margin-left: 45px; margin-bottom:10px; width:250px;">States adopting standards-based quality teaching & learning practices for PK-3</div>
+                            <div class="fcititlesum" style="margin-left: 45px; margin-bottom:10px; width:250px;">States having policies to increase vulnerable children's access to quality ECE programs</div>
+                        </div>
+                        <div>
+                            <div class="fcibar5sum" style="width: 250px; height: 100px; margin-left: 35px; float:left;background-color:#e9e9e9;"></div>
+                            <div class="fcibar6sum" style="width: 250px; height: 100px; margin-left: 45px; float:left;background-color:#e9e9e9;"></div>
+                            <div class="fcibar7sum" style="width: 250px; height: 100px; margin-left: 45px; float:left;background-color:#e9e9e9;"></div>
+                        </div>        
+                    </div>	
         <div style="padding-top:20px; padding-bottom:15px">
             <div>
                 <div style="float:left;margin:1%; padding-bottom:15px">    
@@ -910,100 +980,184 @@ if (is_page('progress')) {
             <div style="float:right; margin:1%; padding-bottom:15px">
                 <img style=" width:12px; height:12px; ; vertical-align:top;margin-right:8px;margin-left:8px; font-size:12px" src="/wp-content/uploads/2014/03/green_dot1.png"/>Above benchmark
                 <img style=" width:12px; height:12px; vertical-align:top;margin-right:8px;margin-left:8px; font-size:12px" src="/wp-content/uploads/2014/03/red_triangle.png" />Below benchmark</div> 
-            </div>
-        </div>
-	<div style="margin-left: 10px ">
-		<a name="kci"></a>
-		<div class="title2box" style="border-color:#235937; position: relative; text-align:left;margin-top:30px;"><title2 style="color:#0081c6">Key Condition Indicators</title2></div> 
+            </div>	
+        </div>						
 	</div>
 	<div style="margin-left: 10px ">
 	<a name="likc"></a>
-		<div class="title2box" style="border-color:#235937; position: relative; text-align:left;margin-top:30px;"><title2 style="color:#0081c6">Leading Indicators of the Key Conditions</title2></div> 
+		<div class="title2box" style="border-color:#235937; position: relative; text-align:left;margin-top:30px;margin-bottom:10px;"><title2 style="color:#0081c6">Leading Indicators of the Key Conditions</title2></div> 
+		<div style="clear:both;margin-left:5px;">The following leading indicators are reliant upon evaluation data in order to determine baseline, benchmark, and progress toward goals.</div><br />
+		<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"><strong># of programs (esp. federal-, state-funded programs) in top 2 tiers of QRIS system.</strong><br />Target: Increase of 10 or more over 3 years in targeted state(s).</div></div>
+		<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"><strong>State policies to support ECE funding (braided, blended, increase, ECE-specific), family-centered engagement programs in ECE, elementary principal prep standards adoption, teacher prep reform</strong><br />Target: At least 1 policy area over 5 years in targeted state(s)</div></div>
+		<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"><strong>State policies to incentivize alignment of: early learning leadership development (ED & principal), learning standards, (0-5 to K-12) professional development</strong><br />Target: At least 1 policy area over 5 years in targeted state(s)</div></div>
+		<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"><strong>Statewide school readiness system and data use</strong><br />Target: At least 1 state over 3 years</div></div>
+		<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"><strong>State ECE governance structure(s)</strong><br />Target: At least 1 state over 2 years</div></div>
+	
+	
+	
 	</div>        
-	<div id="titlerow1" style=" margin-left: 10px ">
+	<div id="titlerow1" style=" margin-left: 10px; clear:both; ">
 		<a name="ssi"></a>
 		<div class="title2box" style="border-color:#235937; position: relative; text-align:left;margin-top:30px;"><title2 style="color:#0081c6">Strategy-Specific Indicators</title2></div> 
 	</div>
+
     <div>     
         
-        <div class="fcititle" style="margin-left: 35px;margin-top:20px ">Programs reflecting principle-based family engagement</div>
-        <div class="fcititle" style="margin-left: 70px;margin-top:20px ">Creation fo principle-based family engagement policy agenda</div>
+        <div class="fcititle" style="margin-left: 35px;margin-top:20px ">Programs co-designed and jointly implemented with families</div>
+        <div class="fcititle" style="margin-left: 90px;margin-top:20px ">Educators becoming instructional leaders</div>
     </div>
 <div id="fcirow">
 
-        <div id="fci1" class="fcibox" data-type="bar" style="border-color:#7f7f7f; position: relative; margin-bottom:15px; margin-left: 25px ">
-          <div id="fcibar1" class="fci1 bar" style="width: 400px; height: 110px; margin-left: 5px ;margin-top: 5px; float:left"></div>
+        <div id="fci1" class="fcibox" data-type="bar" style="border-color:#7f7f7f; position: relative; margin-bottom:0px; margin-left: 25px;background-color:#ffffff; ">
+          <!--<div id="fcibar1" class="fci1 bar" style="width: 400px; height: 110px; margin-left: 5px ;margin-top: 5px; float:left"></div>
           <div id="fciline1" class="fci1 line" style="width: 400px; height: 110px; margin-left: 5px ;margin-top: 5px; float:left"></div>
           <img style=" width:12px; height:12px; margin:1%; position:absolute; bottom:2%; left:2%" src="/wp-content/uploads/2014/03/<?php if ($datafci1_ex>$benchfci1_ex){echo "green_dot1.png";} elseif($datafci1_ex<$benchfci1_ex){echo "red_triangle.png";}?>" />
           <a href="#" class="toggle" style="position:absolute; bottom:2%; right:8%"><img style=" width:70px; height:15px; margin:1%" src="/wp-content/uploads/2014/03/wkkf_linepct.png" /></a>
           <a class="info" href="#" style="position:absolute; bottom:2%; right:2%"><img style=" width:15px; height:15px; margin:1%" src="/wp-content/uploads/2014/03/wkkf_info.png" />
-              <span><b># of children who are ready for school in communities or states served</br></br>Source: </b>US Department of Education</br></br><b>Year: </b>2012</br></br><b>Description: </b>
+              <span><b># of children who are ready for school in communities or states served<br /><br />Source: </b>US Department of Education<br /><br /><b>Year: </b>2012<br /><br /><b>Description: </b>
               "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
               Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
               </span>
-          </a>
+          </a>-->
+		<img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/placeholderchart.jpg" width="100%" />  
         </div>
+		
 
     
-    <div id="fci2" class="fcibox" style="border-color:#7f7f7f; position: relative; margin-bottom:15px; margin-left: 70px ">
-      <div id="fcibar2" class="fci2 bar" style="width: 400px; height: 110px; margin-left: 5px ;margin-top: 5px; float:left"></div> 
+    <div id="fci2" class="fcibox" style="border-color:#7f7f7f; position: relative; margin-bottom:0px; margin-left: 70px;background-color:#ffffff; ">
+      <!--<div id="fcibar2" class="fci2 bar" style="width: 400px; height: 110px; margin-left: 5px ;margin-top: 5px; float:left"></div> 
       <div id="fciline2" class="fci2 line" style="width: 400px; height: 110px; margin-left: 5px ;margin-top: 5px; float:left"></div>  
       <img style=" width:12px; height:12px; margin:1%; position:absolute; bottom:2%; left:2%" src="/wp-content/uploads/2014/03/<?php if ($datafci2_ex>$benchfci2_ex){echo "green_dot1.png";} elseif($datafci2_ex<$benchfci2_ex){echo "red_triangle.png";}?>" />
       <a href="#" class="toggle" style="position:absolute; bottom:2%; right:8%"><img style=" width:70px; height:15px; margin:1%" src="/wp-content/uploads/2014/03/wkkf_linepct.png" /></a>
       <a class="info" href="#" style="position:absolute; bottom:2%; right:2%"><img style=" width:15px; height:15px; margin:1%" src="/wp-content/uploads/2014/03/wkkf_info.png" />
-           <span><b># of children who are reading-and-math proficient by third grade</br></br>Source: </b>US Department of Education</br></br><b>Year: </b>2012</br></br><b>Description: </b>
+           <span><b># of children who are reading-and-math proficient by third grade<br /><br />Source: </b>US Department of Education<br /><br /><b>Year: </b>2012<br /><br /><b>Description: </b>
            "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             </span>
-      </a>      
+      </a>  --> 
+		<img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/placeholderchart.jpg" width="100%" />	  
     </div>
-
+	<div style="padding-top:0px; padding-bottom:15px">
+		<div>
+			<div style="float:left;margin:1%; padding-bottom:15px">    
+			<img style=" width:30px; height:2px; vertical-align:middle;margin-right:8px;margin-left:8px; font-size:12px" src="/wp-content/uploads/2014/03/wkkf_blueline.png" />Baseline
+			<img style=" width:30px; height:2px;  vertical-align:middle;margin-right:8px;margin-left:8px; font-size:12px" src="/wp-content/uploads/2014/03/wkkf_redline.png" />Benchmark
+			<img style=" width:30px; height:2px;  vertical-align:middle;margin-right:8px;margin-left:8px; font-size:12px" src="/wp-content/uploads/2014/03/wkkf_greenline.png" />Goal</div>
+		<div style="float:right; margin:1%; padding-bottom:15px">
+			<img style=" width:12px; height:12px; ; vertical-align:top;margin-right:8px;margin-left:8px; font-size:12px" src="/wp-content/uploads/2014/03/green_dot1.png"/>Above benchmark
+			<img style=" width:12px; height:12px; vertical-align:top;margin-right:8px;margin-left:8px; font-size:12px" src="/wp-content/uploads/2014/03/red_triangle.png" />Below benchmark</div> 
+		</div>
+	</div>	
+	<div style="color:#0081c6;clear:both;margin-left: 10px;">The full set of strategy-specific indicators is shown below.</div><br /><br />
+	<div style="margin-left: 10px;width:100%;">
+		<div style="width:33%;float:left;">
+			<strong>Family Engagement</strong><br /><br />
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># of quality programs (in a state) co-designed and jointly implemented with families (3 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext">Creation of effective family engagement policy agenda (1 every 3 years)</div></div>			
+		</div>
+		<div style="width:33%;float:left;">
+			<strong>Effective Teaching</strong><br /><br />
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># of schools providing quality learning environment (8 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># of educators becoming instructional leaders (80 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># of partnerships to align pre- and in-service (2 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># of partnerships between childcare & K-3 schools (2 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext">Evidence of advancement of identified policy area(s), e.g. policy briefs, research agenda</div></div>			
+		</div>
+		<div style="width:33%;float:left;">
+			<strong>Aligning Systems</strong><br /><br />
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># of quality family centered programs and services (new or redesigned)(3 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># of mobilized networks of individual and groups (parents, policy makers, providers, business leaders, public) (3 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext">Creation of a policy framework</div></div>			
+		</div>		
+	</div>
 </div>
 	<div style="margin-left: 10px ">
 		<a name="ssli"></a>
 		<div class="title2box" style="border-color:#235937; position: relative; text-align:left;margin-top:30px;"><title2 style="color:#0081c6">Strategy-Specific Leading Indicators</title2></div> 
 	</div>
+
 <div style="margin-left: 35px">
-    <div class="title3box" style="border-color:#235937; position: relative;margin-top:20px"><title3>Communities with partnerships where families and schools share responsibility</title2></div>
-    <div class="title3box" style="border-color:#235937; position: relative; margin-left: 60px;margin-top:20px "><title3>States with statewide awareness of principle-based family engagement</title2></div>    
+    <div class="title3box" style="border-color:#235937; position: relative;margin-top:20px"><title3>States with formalized policy on family engagement</title2></div>
+    <div class="title3box" style="border-color:#235937; position: relative; margin-left: 90px;margin-top:20px "><title3>Educators trained by job type</title2></div>    
 </div>
 <div id="fcirow">
 
-        <div id="fci3" class="fcibox" data-type="bar" style="border-color:#7f7f7f; position: relative; margin-bottom:15px; margin-left: 25px ">
-          <div id="fcibar3" class="fci3 bar" style="width: 400px; height: 110px; margin-left: 5px ;margin-top: 5px; float:left"></div>
+        <div id="fci3" class="fcibox" data-type="bar" style="border-color:#7f7f7f; position: relative; margin-bottom:0px; margin-left: 25px; background-color:#ffffff; ">
+          <!--<div id="fcibar3" class="fci3 bar" style="width: 400px; height: 110px; margin-left: 5px ;margin-top: 5px; float:left"></div>
           <div id="fciline3" class="fci3 line" style="width: 400px; height: 110px; margin-left: 5px ;margin-top: 5px; float:left"></div>
           <img style=" width:12px; height:12px; margin:1%; position:absolute; bottom:2%; left:2%" src="/wp-content/uploads/2014/03/<?php if ($datafci3_ex>$benchfci3_ex){echo "green_dot1.png";} elseif($datafci3_ex<$benchfci3_ex){echo "red_triangle.png";}?>" />
           <a href="#" class="toggle" style="position:absolute; bottom:2%; right:8%"><img style=" width:70px; height:15px; margin:1%" src="/wp-content/uploads/2014/03/wkkf_linepct.png" /></a>
           <a class="info" href="#" style="position:absolute; bottom:2%; right:2%"><img style=" width:15px; height:15px; margin:1%" src="/wp-content/uploads/2014/03/wkkf_info.png" />
-              <span><b># of states implementing a statewide quality system for 0-5 early care and education (ECE) programs</br></br>Source: </b>Lorem ipsum dolor</br></br><b>Year: </b>2013</br></br><b>Description: </b>
+              <span><b># of states implementing a statewide quality system for 0-5 early care and education (ECE) programs<br /><br />Source: </b>Lorem ipsum dolor<br /><br /><b>Year: </b>2013<br /><br /><b>Description: </b>
               "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
               Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
               </span>
-          </a>
+          </a>-->
+		  <img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/placeholderchart.jpg" width="100%" />
         </div>
 
     
-    <div id="fci4" class="fcibox" style="border-color:#7f7f7f; position: relative; margin-bottom:15px; margin-left: 70px ">
-      <div id="fcibar4" class="fci4 bar" style="width: 400px; height: 110px; margin-left: 5px ;margin-top: 5px; float:left"></div> 
+    <div id="fci4" class="fcibox" style="border-color:#7f7f7f; position: relative; margin-bottom:0px; margin-left: 70px; background-color:#ffffff; ">
+      <!--<div id="fcibar4" class="fci4 bar" style="width: 400px; height: 110px; margin-left: 5px ;margin-top: 5px; float:left"></div> 
       <div id="fciline4" class="fci4 line" style="width: 400px; height: 110px; margin-left: 5px ;margin-top: 5px; float:left"></div>  
       <img style=" width:12px; height:12px; margin:1%; position:absolute; bottom:2%; left:2%" src="/wp-content/uploads/2014/03/<?php if ($datafci4_ex>$benchfci4_ex){echo "green_dot1.png";} elseif($datafci4_ex<$benchfci4_ex){echo "red_triangle.png";}?>" />
       <a href="#" class="toggle" style="position:absolute; bottom:2%; right:8%"><img style=" width:70px; height:15px; margin:1%" src="/wp-content/uploads/2014/03/wkkf_linepct.png" /></a>
       <a class="info" href="#" style="position:absolute; bottom:2%; right:2%"><img style=" width:15px; height:15px; margin:1%" src="/wp-content/uploads/2014/03/wkkf_info.png" />
-           <span><b># of states having & implementing early learning standardxs or developmental guidelines to support access and quality of early care and education programs</br></br>Source: </b>Lorem ipsum dolor</br></br><b>Year: </b>2012</br></br><b>Description: </b>
+           <span><b># of states having & implementing early learning standardxs or developmental guidelines to support access and quality of early care and education programs<br /><br />Source: </b>Lorem ipsum dolor<br /><br /><b>Year: </b>2012<br /><br /><b>Description: </b>
            "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             </span>
-      </a>      
+      </a>-->
+		<img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/placeholderchart.jpg" width="100%" />      
     </div>
-
+	<div style="padding-top:0px; padding-bottom:15px">
+		<div>
+			<div style="float:left;margin:1%; padding-bottom:15px">    
+			<img style=" width:30px; height:2px; vertical-align:middle;margin-right:8px;margin-left:8px; font-size:12px" src="/wp-content/uploads/2014/03/wkkf_blueline.png" />Baseline
+			<img style=" width:30px; height:2px;  vertical-align:middle;margin-right:8px;margin-left:8px; font-size:12px" src="/wp-content/uploads/2014/03/wkkf_redline.png" />Benchmark
+			<img style=" width:30px; height:2px;  vertical-align:middle;margin-right:8px;margin-left:8px; font-size:12px" src="/wp-content/uploads/2014/03/wkkf_greenline.png" />Goal</div>
+		<div style="float:right; margin:1%; padding-bottom:15px">
+			<img style=" width:12px; height:12px;vertical-align:top;margin-right:8px;margin-left:8px; font-size:12px" src="/wp-content/uploads/2014/03/green_dot1.png"/>Above benchmark
+			<img style=" width:12px; height:12px; vertical-align:top;margin-right:8px;margin-left:8px; font-size:12px" src="/wp-content/uploads/2014/03/red_triangle.png" />Below benchmark</div> 
+		</div>
+	</div>	
+	<div style="color:#0081c6;clear:both;margin-left: 10px;">The full set of strategy-specific indicators is shown below.</div><br /><br />
+	<div style="margin-left: 10px;width:100%;">
+		<div style="width:33%;float:left;">
+			<strong>Family Engagement</strong><br /><br />
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># of states with formalized policy of family engagement (1 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># of communities implementing parent and community engineered services (4 per year)</div></div>			
+		</div>
+		<div style="width:33%;float:left;">
+			<strong>Effective Teaching</strong><br /><br />
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># children benefited (1,500 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># educators trained by job type (100 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># school served (10 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># school districts served (3 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># families engaged (750 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># states engaged (1 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext">Identification of policy area(s) to address relevant issue/field (1 per year)</div></div>		
+		</div>
+		<div style="width:33%;float:left;">
+			<strong>Aligning Systems</strong><br /><br />
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># of communities where schools have family engagement embedded in their policies or practices (3 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># of state advocacy groups creating a child first agenda (1 per year)</div></div>
+			<div class="obcontainer"><img src="http://dev.communitycommons.org/wp-content/uploads/2014/09/orangeblock.jpg" style="float:left;" /><div class="obtext"># of national think tanks conducting ECE scan on policy opportunities and barriers (1 in year 1)</div></div>		
+		</div>		
+	</div>
 </div>
-<div style="margin-left: 10px ">
+<div style="margin-left: 10px;">
 	<a name="implications"></a>
-	<div class="title2box" style="border-color:#235937; position: relative; text-align:left;margin-top:30px;"><title2 style="color:#dea326">Implications</title2></div> 
-</div>
-
-
+	<div class="title2box" style="border-color:#235937; text-align:left;margin-top:30px;clear:both;"><title2 style="color:#0081c6">Implications</title2></div>
+	
+	<div style="margin-left: 5px;margin-top:15px;clear:both;">
+	(Below text is a placeholder. Implications are generated from Education and Learning team's portfolio analysis and progress made towards various levels of target)	<br /><br />
+	Research is clear that poverty is the single greatest threat to children's well-being. But effective public policies can make a difference. Investments in the most vulnerable children are also critical. <br /><br />
+	One key factor to ensure high-quality early care and learning is the quality of teaching. At the same time of increasing the credential/degree requirements of early childhood professionals, there are also needs to be on-going support to existing teaching workforce in 0-8 learning settings.<br /><br />	
+	</div>
+</div>	
 </div> 
+<div style="height:25px;padding-top:7px;clear:both;"><span style="float:right;"><a href="/wkkf-dashboard-mb" class="button">Return to Dashboard</a></span></div><br /><br />
 <?php
 }
 ?>
@@ -1204,29 +1358,7 @@ $(function () {
                 backgroundColor:'transparent',
                 plotBorderWidth: null,
                 plotShadow: false,
-            events: {
-            load: function () {
-                var label = this.renderer.label("English: <b>79.5%</b> Other: <b>20.5%</b>")
-                .css({
-                    width: '50px',
-                    fontSize: '9px',
 
-                })
-                .attr({
-                    
-                })
-                .add();
-                
-                label.align(Highcharts.extend(label.getBBox(), {
-                    align: 'right',
-                    x: 0, // offset
-                    floating: true,
-                    verticalAlign: 'top',
-                    y: 32 // offset
-                }), null, 'spacingBox');
-                
-            }
-			}, 
 		width:225
 	    },
         title: {
@@ -3584,7 +3716,7 @@ $(function () {
                     dataLabels: {
                         enabled: false
                     },
-                    color:'#f3cbae',
+                    color:'#ffb755',
                     pointWidth: 50
                 }
             },
@@ -3693,7 +3825,7 @@ $(function () {
                     dataLabels: {
                         enabled: false
                     },
-                    color:'#f3cbae',
+                    color:'#ffb755',
                     pointWidth: 50
                 }
             },
@@ -3906,7 +4038,7 @@ jQuery(function () {
             }, 
 
             xAxis: {
-                categories: ['Aligning Systems','Affective Teaching', 'Family Engagement', 'Emerging/Other', 'NA'],
+                categories: ['Family Engagement', 'Effective Teaching', 'Aligning Systems', 'Emerging/Other', 'NA'],
 
                 
                 title: {
@@ -3945,7 +4077,7 @@ jQuery(function () {
             enabled: false
              },
             series: [{
-                data: [{y:81713891, color:'#ffcc7c'}, {y:46278970, color:'#4f81ba'},{y:52217290, color:'#e86c85'},{y:2633849, color:'#95664c'},{y:4825500, color:'#919195'}]
+                data: [{y:52217290, color:'#e86c85'}, {y:46278970, color:'#4f81ba'},{y:81713891, color:'#ffcc7c'}, {y:2633849, color:'#95664c'},{y:4825500, color:'#919195'}]
             }]
         });
     });
