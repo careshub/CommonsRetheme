@@ -315,7 +315,10 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'full-width';
         $classes[] = 'chi-planning';
       }
-    if ( is_singular( 'bp-docs' ) ) {
+    if ( is_singular( 'bp_doc' ) ) {
+        $classes[] = 'full-width';
+      }
+    if ( is_post_type_archive( 'bp_doc' ) ) {
         $classes[] = 'full-width';
       }
 

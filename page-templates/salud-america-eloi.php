@@ -8,7 +8,7 @@ get_header(); ?>
 
 
 		<div id="content" role="main">
-			<div class="padder">
+			<div class="padder entry-content">
 <?php 
 if (is_page('salud-americaresearch')) { 
 				?>
@@ -114,52 +114,38 @@ if (is_page('salud-americaresearch')) {
           <div>
 				<h3 class="screamer sablue">Join new weekly #SaludTues Tweetchats!</h2>
 	
-
-                                    <img width="425" height="352" class="alignright" src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/saludtues2.jpg" alt="Photo of a clock showing the words Time for Change"/>
-
-                                    
-				<p><b>What is the #SaludTues Tweetchat?</b></p>
+				<h4>What is the #SaludTues Tweetchat?</h4>
 				 
-				<p>#SaludTues is a weekly Tweetchat about Latino health at 12p CST/1p EDT every Tuesday. The chat is directed and co-hosted by @SaludToday, the Latino health social media 
-                                campaign and Twitter handle for the team at the Institute for Health Promotion Research (IHPR) at The UT Health Science Center at San Antonio, which directs Salud America!. 
-                                Each chat has two co-hosts from partner organizations to ask and answer topical questions.</p>
+                <img width="425" height="352" class="alignright" src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/saludtues2.jpg" alt="Photo of a clock showing the words Time for Change"/>
+                <p>#SaludTues is a weekly Tweetchat about Latino health at 12p CST/1p EDT every Tuesday. The chat is directed and co-hosted by @SaludToday, the Latino health social media campaign and Twitter handle for the team at the Institute for Health Promotion Research (IHPR) at The UT Health Science Center at San Antonio, which directs Salud America!. Each chat has two co-hosts from partner organizations to ask and answer topical questions.</p>
 
-                                </br></br></br>
-                                <p><b>#SaludTues Tweetchat Schedule</b></p>
-                                <p><b>9/16/14: #SaludTues "How to Create a Culture of Health for Latino Families"</b></p>
-                                    <ul><li><a href="https://twitter.com/SaludToday" title="@SaludToday">@SaludToday</a>, 
-                                            <a href="https://twitter.com/AHA_Vida" title="@AHA_Vida">@AHA_Vida</a> and
-                                            <a href="https://twitter.com/RWJF_Live" title="@RWJF_Live">@RWJF_Live</a>
-                                    </li></ul>
+                <h4 style="clear:left;">#SaludTues Tweetchat Schedule</h4>
+                <ul class="no-bullets">
+	                <li><strong>9/23/14</strong>&emsp;#SaludTues "School's In: How to Promote Healthy Food for Latino Kids"</li>
 
-                                <p><b>9/23/14: #SaludTues "School's In: How to Promote Healthy Food for Latino Kids"</b></p>
-                                    <ul><li><a href="https://twitter.com/SaludToday" title="@SaludToday">@SaludToday</a></li></ul>
+	                <li><strong>9/30/14</strong>&emsp;#SaludTues "Why and How to Start a Garden in a Latino School/Community"</li>
 
-                                <p><b>9/30/14: #SaludTues "Why and How to Start a Garden in a Latino School/Community"</b></p>
-                                    <ul><li><a href="https://twitter.com/SaludToday" title="@SaludToday">@SaludToday</a></li></ul>
+	                <li><strong>10/7/14</strong>&emsp;#SaludTues "Latinas and Breast Cancer: Surviving and Thriving"</li>
 
-                                <p><b>10/7/14: #SaludTues "Latinas and Breast Cancer: Surviving and Thriving"</b></p>
-                                    <ul><li><a href="https://twitter.com/SaludToday" title="@SaludToday">@SaludToday</a></li></ul>
+	                <li><strong>10/14/14</strong>&emsp;#SaludTues "Latinos and HIV/AIDS: Problems + Solutions"</li>
 
-                                <p><b>10/14/14: #SaludTues "Latinos and HIV/AIDS: Problems + Solutions"</b></p>
-                                    <ul><li><a href="https://twitter.com/SaludToday" title="@SaludToday">@SaludToday</a></li></ul>
-
-                                <p><b>10/21/14: #SaludTues "Healthier Recipes for Latino Foods"</b></p>
-                                    <ul><li><a href="https://twitter.com/SaludToday" title="@SaludToday">@SaludToday</a></li></ul>
+	                <li><strong>10/21/14</strong>&emsp;#SaludTues "Healthier Recipes for Latino Foods"</li>
+                </ul>
 
 
-                                <p><b>How do I participate in a #SaludTues Tweetchat?</b></p>
+                <p><strong>How do I participate in a #SaludTues Tweetchat?</strong><br />
+				Anyone with a Twitter handle is welcome to join the chat. Just tag your Tweets with the hashtag #SaludTues to join and follow the conversation on Twitter.</p>
 
-				<p>Anyone with a Twitter handle is welcome to join the chat. Just tag your Tweets with the hashtag #SaludTues to join and follow the conversation on Twitter.</p>
+                <p><strong>How do I serve as a #SaludTues co-host?</strong><br />
+				Email us at <a href="mailto:saludamerica@uthscsa.edu" title="saludamerica@uthscsa.edu">saludamerica@uthscsa.edu</a> and share an idea for a chat.</p>
 
-                                <p><b>How do I serve as a #SaludTues co-host?</b></p>
+                <p><strong>What are topics for #SaludTues Tweetchats?</strong><br />
+				Any Latino health issue can be a topic for the SaludTues chat, from heart health, childhood obesity, nutrition and physical activity, access to health care, trending demographics, education, culture of health, etc.</p>
 
-				<p>Email us at <a href="mailto:saludamerica@uthscsa.edu" title="saludamerica@uthscsa.edu">saludamerica@uthscsa.edu</a> and share an idea for a chat.</p>
-
-                                <p><b>What are topics for #SaludTues Tweetchats?</b></p>
-
-				<p>Any Latino health issue can be a topic for the SaludTues chat, from heart health, childhood obesity, nutrition and physical activity, access to health care, trending demographics, education, culture of health, etc.</p>
-                                
+                <h4 style="clear:left;">#SaludTues Past Tweetchats</h4>
+                <ul class="no-bullets">
+	                <li><strong>9/16/14</strong>&emsp;#SaludTues "How to Create a Culture of Health for Latino Families", <a href="https://twitter.com/SaludToday" title="@SaludToday">@SaludToday</a>, <a href="https://twitter.com/AHA_Vida" title="@AHA_Vida">@AHA_Vida</a> and <a href="https://twitter.com/RWJF_Live" title="@RWJF_Live">@RWJF_Live</a></li>
+		        </ul>    
 
             </div>
  <?php   
