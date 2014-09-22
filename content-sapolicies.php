@@ -48,31 +48,6 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 
 //Progress meter
 	$progress = $custom_fields['sa_policystage'][0];
-		// switch ($progress) {
-	 //    case "emergence":
-	 //        $percentage = 25;
-	 //        $progress_label = 'in emergence';
-	 //        break;
-	 //    case "development":
-		// 	$percentage = 50;
-	 //        $progress_label = 'in development';
-	 //        break;
-	 //    case "enactment":
-		// 	$percentage = 75;
-	 //        $progress_label = 'enacted';
-	 //       	break;
-	 //    case "implementation":
-		// 	$percentage = 100;
-	 //        $progress_label = 'in implementation';
-	 //       	break;
-	 //    default:
-		//     $percentage = 0;
-	 //        $progress_label = 'in emergence';
-		// 	break;
-
-		// }
-	//echo $progress_label . " " . $percentage;
-
 ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'main-article' ); ?>>
@@ -90,12 +65,6 @@ $tags = get_the_terms( $post->ID, 'sa_policy_tags' );
 								salud_the_location();
 							}
 						?><span class="sa-policy-date">Posted <?php echo get_the_date(); ?>.</span></p>
-				<!-- <div class="meter-box clear">
-					<p>This change is <a href="/saresources/spectrum/" title="More information about policy development"><?php echo $progress_label; ?></a>.</p>
-					<div class="meter">
-						<span style="width: <?php echo $percentage; ?>%"></span>
-					</div>
-				</div> --> <!-- end .meter-box -->
 
 					<?php cc_the_policy_progress_tracker( $progress ); ?>
 				</div>	

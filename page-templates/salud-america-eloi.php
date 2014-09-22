@@ -1,6 +1,6 @@
 <?php
-/*
-Template Name: Salud America Eloi
+/**
+* Template Name: Salud America Eloi
 */
 
 get_header(); ?>
@@ -8,7 +8,7 @@ get_header(); ?>
 
 
 		<div id="content" role="main">
-			<div class="padder">
+			<div class="padder entry-content">
 <?php 
 if (is_page('salud-americaresearch')) { 
 				?>
@@ -105,24 +105,75 @@ if (is_page('salud-americaresearch')) {
 			*/
 } elseif (is_page('getting-started')) {
 
-            if ( function_exists('SA_getting_started') ) { SA_getting_started(); }        
+            if ( function_exists('SA_getting_started') ) { SA_getting_started(); }    
+
+
+} elseif (is_page('tweetchat')) {
+?>
+
+          <div>
+				<h3 class="screamer sablue">Join new weekly #SaludTues Tweetchats!</h2>
+	
+				<h4>What is the #SaludTues Tweetchat?</h4>
+				 
+                <img width="425" height="352" class="alignright" src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/saludtues2.jpg" alt="Photo of a clock showing the words Time for Change"/>
+                <p>#SaludTues is a weekly Tweetchat about Latino health at 12p CST/1p EDT every Tuesday. The chat is directed and co-hosted by @SaludToday, the Latino health social media campaign and Twitter handle for the team at the Institute for Health Promotion Research (IHPR) at The UT Health Science Center at San Antonio, which directs Salud America!. Each chat has two co-hosts from partner organizations to ask and answer topical questions.</p>
+
+                <h4 style="clear:left;">#SaludTues Tweetchat Schedule</h4>
+                <ul class="no-bullets">
+	                <li><strong>9/23/14</strong>&emsp;#SaludTues "School's In: How to Promote Healthy Food for Latino Kids"</li>
+
+	                <li><strong>9/30/14</strong>&emsp;#SaludTues "Why and How to Start a Garden in a Latino School/Community"</li>
+
+	                <li><strong>10/7/14</strong>&emsp;#SaludTues "Latinas and Breast Cancer: Surviving and Thriving"</li>
+
+	                <li><strong>10/14/14</strong>&emsp;#SaludTues "Latinos and HIV/AIDS: Problems + Solutions"</li>
+
+	                <li><strong>10/21/14</strong>&emsp;#SaludTues "Healthier Recipes for Latino Foods"</li>
+                </ul>
+
+
+                <p><strong>How do I participate in a #SaludTues Tweetchat?</strong><br />
+				Anyone with a Twitter handle is welcome to join the chat. Just tag your Tweets with the hashtag #SaludTues to join and follow the conversation on Twitter.</p>
+
+                <p><strong>How do I serve as a #SaludTues co-host?</strong><br />
+				Email us at <a href="mailto:saludamerica@uthscsa.edu" title="saludamerica@uthscsa.edu">saludamerica@uthscsa.edu</a> and share an idea for a chat.</p>
+
+                <p><strong>What are topics for #SaludTues Tweetchats?</strong><br />
+				Any Latino health issue can be a topic for the SaludTues chat, from heart health, childhood obesity, nutrition and physical activity, access to health care, trending demographics, education, culture of health, etc.</p>
+
+                <h4 style="clear:left;">#SaludTues Past Tweetchats</h4>
+                <ul class="no-bullets">
+	                <li><strong>9/16/14</strong>&emsp;#SaludTues "How to Create a Culture of Health for Latino Families", <a href="https://twitter.com/SaludToday" title="@SaludToday">@SaludToday</a>, <a href="https://twitter.com/AHA_Vida" title="@AHA_Vida">@AHA_Vida</a> and <a href="https://twitter.com/RWJF_Live" title="@RWJF_Live">@RWJF_Live</a></li>
+		        </ul>    
+
+            </div>
+ <?php   
 } elseif (is_page('take-action-list')) {
 ?>
 
           <div>
+				<h3 class="screamer sablue">Join new weekly #SaludTues Tweetchats!</h2>
+	
+
+                                    <img width="425" height="352" class="alignright" src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/saludtues2.jpg" alt="Photo of a clock showing the words Time for Change"/>
+
+                                    
+				<p><strong>What is the #SaludTues Tweetchat?</strong></p>
+				 
+				<p>#SaludTues is a weekly Tweetchat about Latino health at 12p CST/1p EDT every Tuesday. The chat is directed and co-hosted by @SaludToday, the Latino health social media 
+                                campaign and Twitter handle for the team at the Institute for Health Promotion Research (IHPR) at The UT Health Science Center at San Antonio, which directs Salud America!. 
+                                Each chat has two co-hosts from partner organizations to ask and answer topical questions.</p>
+                                <a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" class="button">Learn more</a>
+
+          </div>
+
+          <div>
 				<h3 class="screamer sagreen">We Need Your Help to Get Sugary Drinks Out of Summer Camps!</h2>
 	
-				<div class="video-container-group">
-                                    <div class="video-container" id="englishVid">
-                                        <p><iframe width="625" height="352" src="http://www.youtube.com/embed/bL6CIy9l43M?feature=oembed&amp;showinfo=0&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;rel=0&amp;autohide=1" frameborder="0" allowfullscreen=""></iframe><noscript>&lt;iframe width="625" height="352" src="http://www.youtube.com/embed/bL6CIy9l43M?feature=oembed&amp;#038;showinfo=0&amp;#038;rel=0&amp;#038;autohide=1&amp;#038;showinfo=0&amp;#038;rel=0&amp;#038;autohide=1" frameborder="0" allowfullscreen&gt;</noscript></p>
-                                    </div>
-                                    <div class="video-container" id="spanishVid" style="display: none;">
-                                        <p><iframe width="625" height="352" src="http://www.youtube.com/embed/MSddu5zYOZI?feature=oembed&amp;showinfo=0&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;rel=0&amp;autohide=1" frameborder="0" allowfullscreen=""></iframe><noscript>&lt;iframe width="625" height="352" src="http://www.youtube.com/embed/MSddu5zYOZI?feature=oembed&amp;#038;showinfo=0&amp;#038;rel=0&amp;#038;autohide=1&amp;#038;showinfo=0&amp;#038;rel=0&amp;#038;autohide=1" frameborder="0" allowfullscreen&gt;</noscript></p>
-                                    </div>
-                                    <figcaption>
-                                    <input type="button" value="English Version (video)" id="englishButton"><input type="button" value="Spanish Version (video)" id="spanishButton"><br>
-                                    </figcaption>
-                                </div>
+				
+                                    <img width="425" height="352" class="alignright" src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/KidsExploringWeb.jpg" alt="Photo of a clock showing the words Time for Change"/>
+                                
                                     
 				<p>Summer is here, and that means camp for kids to make new friends and try new things -but it also potentially means being exposed to unhealthy sugary drinks.</p>
 				 
@@ -140,19 +191,9 @@ if (is_page('salud-americaresearch')) {
                                 
                                 <p>We don't want kids guzzling sugar this summer -we want them to be healthy and happy!</p>
 
-                                <a href="http://www.care2.com/go/z/21258369" class="button" target="_blank" title="Take Action Now!">Take Action Now!</a>
+                                <a href="http://www.thepetitionsite.com/takeaction/702/787/135/?z00m=21258369" class="button" target="_blank" title="Take Action Now!">Take Action Now!</a>
             </div>
-<script>// <![CDATA[
-jQuery(document).ready(function($) {
-$('#spanishVid').hide();
-$( "#spanishButton" ).click(function() {
-$('#englishVid').hide();$('#spanishVid').show();
-});
-$( "#englishButton" ).click(function() {
-$('#englishVid').show();$('#spanishVid').hide();
-});
-});
-// ]]></script>
+
 
 <?php       
 } 

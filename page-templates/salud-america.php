@@ -1,6 +1,6 @@
 <?php
-/*
-Template Name: Salud America
+/**
+* Template Name: Salud America
 */
 get_header(); ?>
 <?php get_template_part('page-templates/wrapper-salud-top'); ?>
@@ -9,13 +9,11 @@ get_header(); ?>
 			<div class="padder">
 			<?php if (is_page('salud-america')) { ?>
 
-			<?php if ( function_exists('sa_slider') ) { 
-						// sa_slider('main-page-slider'); 
-					} ?>
 			<div class="entry-content">
-				<div class="notice" style="border-left:20px solid red;background-color:#F3F3F3;padding: 1px 2em;">
-					<h4 style="color:black"><a href="http://www.care2.com/go/z/21258369" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Take Action</span>&emsp;Get Sugary Drinks Out of Summer Camps!</a></h4>
-					<p>Summer is here, and that means camp for kids to make new friends and try new things—but it also potentially means being exposed to unhealthy sugary drinks. <a href="http://www.care2.com/go/z/21258369" target="_blank" class="button">Sign the Petition</a></p>
+				<div class="notice" style="border-left:20px solid red;background-color:#F3F3F3;padding: 1px 2em 1em;">
+					<h4 style="color:black"><a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Tweetchat 9/23:</span>&emsp;"School&rsquo;s In: How to Promote Healthy Food for Latino Kids"</a></h4>
+					<p>Join our weekly Tweetchat series on Latino health, #SaludTues at 12pm CST / 1pm ET every Tuesday</p>
+                    <a href="https://twitter.com/SaludToday" target="_blank" class="button" >Follow the conversation</a>&emsp;<a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" class="button">Learn more</a>
 
 				</div>
 				<h3 class="screamer sagreen">How can you fight Latino childhood obesity in your area?</h2>
