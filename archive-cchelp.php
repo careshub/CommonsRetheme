@@ -69,8 +69,8 @@ $group_posts = new WP_Query($args);
 										'color' => '#f9b715',
 										'text' => 'Uploading Local Data'
 										),										
-						'Groups' => array(
-										'slug' => 'groups-3',
+						'Hubs' => array(
+										'slug' => 'hubs-3',
 										'color' => '#df5827',
 										'text' => 'Hubs on the Commons'
 										),
