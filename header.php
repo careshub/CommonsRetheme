@@ -110,7 +110,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 									<a href="<?php echo bp_loggedin_user_domain() . 'profile'; ?>" title="View my profile"><?php _e( 'View My Profile', 'cctheme' ) ?></a>
 								</li>
 								<li>
-									<a href="<?php echo bp_loggedin_user_domain() . 'groups'; ?>" title="See my groups"><?php _e( 'My Groups', 'cctheme' ) ?></a>
+									<a href="<?php echo bp_loggedin_user_domain() . 'groups'; ?>" title="See my groups"><?php _e( 'My Hubs', 'cctheme' ) ?></a>
 								</li>
 								<li>
 									<a href="<?php echo bp_loggedin_user_domain() . 'maps-reports'; ?>" title="See my maps and reports"><?php _e( 'My Maps &amp; Reports', 'cctheme' ) ?></a>

@@ -86,7 +86,7 @@
 		<?php else: ?>
 
 			<div id="message" class="info">
-				<p><?php _e( 'This group has no Blog posts.', 'bcg' ); ?></p>
+				<p><?php _e( 'No narratives have been published yet.', 'bcg' ); ?></p>
 			</div>
 
 		<?php endif;
