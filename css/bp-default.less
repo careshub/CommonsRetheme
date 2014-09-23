@@ -318,39 +318,27 @@ div.dir-search input[type=text] {
 4 - Errors / Success Messages
 --------------------------------------------------------------*/
 #message {
-	margin: 0 0 15px;
+	margin: 10px 0;
+	background: lighten( @graylight, 8% );
+	padding: 10px;
+	clear: left;
 	p {
-		font-size: 12px;
+		.font-size(1);
 		display: block;
-		padding: 10px 15px;
-	}
-	&.info {
 		margin-bottom: 0;
 	}
-	&.error p {
-		background-color: @ccred;
-		border-color: darken(@ccred, 15%);
-		clear: left;
-		color: @white;
+	&.info {
+		// margin-bottom: 0;
+		border-left: 4px solid @ccyellow;
+	}
+	&.error {
+		border-left: 4px solid @ccred;
 	}
 	&.updated {
-		clear: both;
-		p {
-			background-color: @ccgreen;
-			border-color: darken(@ccgreen, 15%);
-			color: @white;
-		}
+		border-left: 4px solid @ccgreen;
 	}
 }
 
-.standard-form#signup_form .error {
-	background: @ccred;
-	.border-radius(3px);
-	color: #fff;
-	margin: 0 0 10px 0;
-	padding: 6px;
-	width: 90%;
-}
 div.accept,
 div.reject {
 	float: left;
@@ -363,7 +351,6 @@ ul.button-nav li {
 ul.button-nav li.current a {
 	font-weight: bold;
 }
-
 
 /*--------------------------------------------------------------
 5 - Forms
@@ -402,6 +389,53 @@ form#signup_form .field-visibility-settings {
 		    margin: 8px 0 5px;
 		    font-weight: normal;
 		}
+	}
+}
+
+// Message bubbles for AJAX validation
+.standard-form#signup_form {
+	.error, .info, .validated {
+		background: lighten( @graylight, 8% );
+		margin: 10px 0;
+		padding: 10px;
+		width: 88%;
+		.font-size(1);
+	}
+	.error {
+		border-left: 4px solid @ccred;
+	}
+	.info {
+		border-left: 4px solid @ccyellow;
+	}
+	.validated {
+		border-left: 4px solid @ccgreen;
+	}
+}
+
+// Password Strength Meter @since BuddyPress 2.1
+#buddypress #pass-strength-result {
+	border-left: 4px solid @graylight;
+	background-color: lighten( @graylight, 8% );
+	display: none;
+	margin: 5px 5px 5px 0;
+	padding: 10px;
+	// text-align: center;
+	width: 178px;
+	&.short { // "Very Weak"
+		border-left: 4px solid @ccred;
+		display: block;
+	}
+	&.error, &.bad { // "Weak"
+		border-left: 4px solid @ccyellow;
+		display: block;
+	}
+	&.good { // "Medium"
+		border-left: 4px solid @ccblue;
+		display: block;
+	}
+	&.strong { // Strong
+		border-left: 4px solid @ccgreen;
+		display: block;
 	}
 }
 
@@ -633,8 +667,7 @@ span.user-nicename {
 	font-size: 16px;
 	font-weight: bold;
 }
-span.activity,
-div#message p {
+span.activity {
 	border: 1px solid @ccyellow;
 	.border-radius(3px);
 	font-weight: normal;
