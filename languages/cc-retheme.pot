@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Community Commons (Twenty Twelve) 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/functions\n"
-"POT-Creation-Date: 2014-09-10 16:57:04+00:00\n"
+"POT-Creation-Date: 2014-09-23 20:51:53+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -61,7 +61,7 @@ msgstr ""
 msgid "% Comments &#187;"
 msgstr ""
 
-#: bcg/blog.php:54 buddypress/groups/single/narratives.php:89
+#: bcg/blog.php:54
 msgid "This group has no Blog posts."
 msgstr ""
 
@@ -106,75 +106,77 @@ msgstr ""
 msgid "My Profile"
 msgstr ""
 
-#: buddypress/groups/create.php:29
+#: buddypress/groups/create.php:29 buddypress/groups/single/admin.php:16
 msgid "Group Name (required)"
 msgstr ""
 
-#: buddypress/groups/create.php:34
+#: buddypress/groups/create.php:34 buddypress/groups/single/admin.php:19
 msgid "Group Description (required)"
 msgstr ""
 
-#: buddypress/groups/create.php:51
+#: buddypress/groups/create.php:51 buddypress/groups/single/admin.php:56
 msgid "Privacy Options"
 msgstr ""
 
-#: buddypress/groups/create.php:55
+#: buddypress/groups/create.php:55 buddypress/groups/single/admin.php:61
 msgid "This is a public group"
 msgstr ""
 
-#: buddypress/groups/create.php:57
+#: buddypress/groups/create.php:57 buddypress/groups/single/admin.php:63
 msgid "Any site member can join this group."
 msgstr ""
 
 #: buddypress/groups/create.php:58 buddypress/groups/create.php:67
+#: buddypress/groups/single/admin.php:64 buddypress/groups/single/admin.php:74
 msgid "This group will be listed in the groups directory and in search results."
 msgstr ""
 
-#: buddypress/groups/create.php:59
+#: buddypress/groups/create.php:59 buddypress/groups/single/admin.php:65
 msgid "Group content and activity will be visible to any site member."
 msgstr ""
 
-#: buddypress/groups/create.php:64
+#: buddypress/groups/create.php:64 buddypress/groups/single/admin.php:71
 msgid "This is a private group"
 msgstr ""
 
-#: buddypress/groups/create.php:66
+#: buddypress/groups/create.php:66 buddypress/groups/single/admin.php:73
 msgid "Only users who request membership and are accepted can join the group."
 msgstr ""
 
 #: buddypress/groups/create.php:68 buddypress/groups/create.php:77
+#: buddypress/groups/single/admin.php:75 buddypress/groups/single/admin.php:85
 msgid "Group content and activity will only be visible to members of the group."
 msgstr ""
 
-#: buddypress/groups/create.php:73
+#: buddypress/groups/create.php:73 buddypress/groups/single/admin.php:81
 msgid "This is a hidden group"
 msgstr ""
 
-#: buddypress/groups/create.php:75
+#: buddypress/groups/create.php:75 buddypress/groups/single/admin.php:83
 msgid "Only users who are invited can join the group."
 msgstr ""
 
-#: buddypress/groups/create.php:76
+#: buddypress/groups/create.php:76 buddypress/groups/single/admin.php:84
 msgid "This group will not be listed in the groups directory or search results."
 msgstr ""
 
-#: buddypress/groups/create.php:82
+#: buddypress/groups/create.php:82 buddypress/groups/single/admin.php:92
 msgid "Group Invitations"
 msgstr ""
 
-#: buddypress/groups/create.php:84
+#: buddypress/groups/create.php:84 buddypress/groups/single/admin.php:94
 msgid "Which members of this group are allowed to invite others?"
 msgstr ""
 
-#: buddypress/groups/create.php:89
+#: buddypress/groups/create.php:89 buddypress/groups/single/admin.php:99
 msgid "All group members"
 msgstr ""
 
-#: buddypress/groups/create.php:94
+#: buddypress/groups/create.php:94 buddypress/groups/single/admin.php:104
 msgid "Group admins and mods only"
 msgstr ""
 
-#: buddypress/groups/create.php:99
+#: buddypress/groups/create.php:99 buddypress/groups/single/admin.php:109
 msgid "Group admins only"
 msgstr ""
 
@@ -186,7 +188,7 @@ msgstr ""
 msgid "Should this group have a forum?"
 msgstr ""
 
-#: buddypress/groups/create.php:112
+#: buddypress/groups/create.php:112 buddypress/groups/single/admin.php:47
 msgid "Enable discussion forum"
 msgstr ""
 
@@ -196,33 +198,35 @@ msgid ""
 "href=\"%s\">correct setup and configuration</a> of a bbPress installation."
 msgstr ""
 
-#: buddypress/groups/create.php:142
+#: buddypress/groups/create.php:142 buddypress/groups/single/admin.php:127
 msgid ""
-"Upload an image to use as an avatar for this group. The image will be shown "
-"on the main group page, and in search results."
+"Upload an image to use as a profile photo for this group. The image will be "
+"shown on the main group page, and in search results."
 msgstr ""
 
-#: buddypress/groups/create.php:146
+#: buddypress/groups/create.php:146 buddypress/groups/single/admin.php:131
 msgid "Upload Image"
 msgstr ""
 
 #: buddypress/groups/create.php:150
-msgid "To skip the avatar upload process, hit the \"Next Step\" button."
+msgid ""
+"To skip the group profile photo upload process, hit the \"Next Step\" "
+"button."
 msgstr ""
 
 #: buddypress/groups/create.php:157
-msgid "Crop Group Avatar"
+msgid "Crop Group Profile Photo"
 msgstr ""
 
-#: buddypress/groups/create.php:159
-msgid "Avatar to crop"
+#: buddypress/groups/create.php:159 buddypress/groups/single/admin.php:151
+msgid "Profile photo to crop"
 msgstr ""
 
-#: buddypress/groups/create.php:162
-msgid "Avatar preview"
+#: buddypress/groups/create.php:162 buddypress/groups/single/admin.php:154
+msgid "Profile photo preview"
 msgstr ""
 
-#: buddypress/groups/create.php:165
+#: buddypress/groups/create.php:165 buddypress/groups/single/admin.php:157
 msgid "Crop Image"
 msgstr ""
 
@@ -269,13 +273,13 @@ msgstr ""
 msgid "There were no groups found."
 msgstr ""
 
-#: buddypress/groups/single/activity.php:3 functions.php:624
+#: buddypress/groups/single/activity.php:3 functions.php:626
 #. Translators: 1 is category, 2 is tag, 3 is the date and 4 is the author's
 #. name.
 msgid "RSS Feed"
 msgstr ""
 
-#: buddypress/groups/single/activity.php:3 functions.php:624
+#: buddypress/groups/single/activity.php:3 functions.php:626
 msgid "RSS"
 msgstr ""
 
@@ -284,23 +288,107 @@ msgid "Show:"
 msgstr ""
 
 #: buddypress/groups/single/activity.php:10
-msgid "Everything"
+msgid "&mdash; Everything &mdash;"
 msgstr ""
 
-#: buddypress/groups/single/activity.php:11
-msgid "Updates"
+#: buddypress/groups/single/admin.php:26
+msgid "Notify group members of these changes via email"
 msgstr ""
 
-#: buddypress/groups/single/activity.php:14
-msgid "Forum Topics"
+#: buddypress/groups/single/admin.php:32 buddypress/groups/single/admin.php:117
+msgid "Save Changes"
 msgstr ""
 
-#: buddypress/groups/single/activity.php:15
-msgid "Forum Replies"
+#: buddypress/groups/single/admin.php:137
+msgid ""
+"If you'd like to remove the existing group profile photo but not upload a "
+"new one, please use the delete group profile photo button."
 msgstr ""
 
-#: buddypress/groups/single/activity.php:18
-msgid "Group Memberships"
+#: buddypress/groups/single/admin.php:139
+msgid "Delete Group Profile Photo"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:149
+msgid "Crop Profile Photo"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:177
+msgid "Administrators"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:194
+#: buddypress/groups/single/admin.php:221
+msgid "Profile picture of %s"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:199
+#: buddypress/groups/single/admin.php:226
+msgid "Demote to Member"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:214
+msgid "Moderators"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:225
+#: buddypress/groups/single/admin.php:281
+msgid "Promote to Admin"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:240
+msgid "Members"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:269
+msgid "(banned)"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:275
+msgid "Unban this member"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:275
+msgid "Remove Ban"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:279
+msgid "Kick and ban this member"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:279
+msgid "Kick &amp; Ban"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:280
+msgid "Promote to Mod"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:285
+msgid "Remove this member"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:285
+msgid "Remove from group"
+msgstr ""
+
+#: buddypress/groups/single/admin.php:299
+#: buddypress/groups/single/members.php:87
+msgid "This group has no members."
+msgstr ""
+
+#: buddypress/groups/single/admin.php:333
+msgid ""
+"WARNING: Deleting this group will completely remove ALL content associated "
+"with it. There is no way back, please be careful with this option."
+msgstr ""
+
+#: buddypress/groups/single/admin.php:336
+msgid "I understand the consequences of deleting this group."
+msgstr ""
+
+#: buddypress/groups/single/admin.php:341
+msgid "Delete Group"
 msgstr ""
 
 #: buddypress/groups/single/footer.php:26
@@ -343,8 +431,8 @@ msgstr ""
 msgid "Send Invites"
 msgstr ""
 
-#: buddypress/groups/single/members.php:87
-msgid "This group has no members."
+#: buddypress/groups/single/narratives.php:89
+msgid "No narratives have been published yet."
 msgstr ""
 
 #: buddypress/members/members-loop-unisearch.php:108
@@ -372,12 +460,8 @@ msgid "Username"
 msgstr ""
 
 #: buddypress/members/register.php:32 buddypress/members/register.php:37
-#: buddypress/members/register.php:43 buddypress/members/register.php:47
-#: buddypress/members/register.php:76 buddypress/members/register.php:84
-#: buddypress/members/register.php:92 buddypress/members/register.php:102
-#: buddypress/members/register.php:113 buddypress/members/register.php:128
-#: buddypress/members/register.php:139 buddypress/members/register.php:214
-#: buddypress/members/register.php:223
+#: buddypress/members/register.php:43 buddypress/members/register.php:48
+#: buddypress/members/register.php:136 buddypress/members/register.php:145
 msgid "(required)"
 msgstr ""
 
@@ -389,74 +473,70 @@ msgstr ""
 msgid "Choose a Password"
 msgstr ""
 
-#: buddypress/members/register.php:47
+#: buddypress/members/register.php:48
 msgid "Confirm Password"
 msgstr ""
 
-#: buddypress/members/register.php:65
+#: buddypress/members/register.php:66
 msgid "Profile Details"
 msgstr ""
 
-#: buddypress/members/register.php:119
-msgid "Clear"
-msgstr ""
-
-#: buddypress/members/register.php:161 buddypress/members/register.php:176
+#: buddypress/members/register.php:83 buddypress/members/register.php:98
 msgid ""
 "This field can be seen by: <span "
 "class=\"current-visibility-level\">%s</span>"
 msgstr ""
 
-#: buddypress/members/register.php:166
+#: buddypress/members/register.php:88
 msgid "Who can see this field?"
 msgstr ""
 
-#: buddypress/members/register.php:171
+#: buddypress/members/register.php:93
 msgid "Close"
 msgstr ""
 
-#: buddypress/members/register.php:208
+#: buddypress/members/register.php:130
 msgid "Blog Details"
 msgstr ""
 
-#: buddypress/members/register.php:210
+#: buddypress/members/register.php:132
 msgid "Yes, I'd like to create a new site"
 msgstr ""
 
-#: buddypress/members/register.php:214
+#: buddypress/members/register.php:136
 msgid "Blog URL"
 msgstr ""
 
-#: buddypress/members/register.php:223
+#: buddypress/members/register.php:145
 msgid "Site Title"
 msgstr ""
 
-#: buddypress/members/register.php:227
+#: buddypress/members/register.php:149
 msgid ""
 "I would like my site to appear in search engines, and in public listings "
 "around this network."
 msgstr ""
 
-#: buddypress/members/register.php:230
+#: buddypress/members/register.php:152
 msgid "Yes"
 msgstr ""
 
-#: buddypress/members/register.php:231
+#: buddypress/members/register.php:153
 msgid "No"
 msgstr ""
 
-#: buddypress/members/register.php:246
+#: buddypress/members/register.php:168
 msgid "Complete Sign Up"
 msgstr ""
 
-#: buddypress/members/register.php:261
+#: buddypress/members/register.php:183
 msgid ""
 "You have successfully created your account! To begin using this site you "
 "will need to activate your account via the email we have just sent to your "
 "address."
 msgstr ""
 
-#: buddypress/members/register.php:263
+#: buddypress/members/register.php:185
 msgid ""
 "You have successfully created your account! Please log in using the "
 "username and password you have just created."
@@ -673,7 +753,7 @@ msgstr ""
 msgid "Link to %s"
 msgstr ""
 
-#: content-narrative.php:46 content.php:60 functions.php:505
+#: content-narrative.php:46 content.php:60 functions.php:507
 #: page-templates/retired/page-ebw-old.php:15
 #: page-templates/retired/page-ncr-old.php:15
 #: page-templates/retired/template-grant-writing.php:25
@@ -684,32 +764,32 @@ msgstr ""
 msgid "&#8203;"
 msgstr ""
 
-#: functions.php:163
+#: functions.php:162
 msgid "Groups sidebar"
 msgstr ""
 
-#: functions.php:169
+#: functions.php:168
 msgid "Group page sub nav sidebar"
 msgstr ""
 
-#: functions.php:173
+#: functions.php:172
 msgid "Members sidebar"
 msgstr ""
 
-#: functions.php:179
+#: functions.php:178
 msgid "Members page sub nav sidebar"
 msgstr ""
 
-#: functions.php:183 functions.php:185
+#: functions.php:182 functions.php:184
 msgid "Geo Search SA Policies Widget Area"
 msgstr ""
 
-#: functions.php:555 functions.php:558
+#: functions.php:557 functions.php:560
 #. Translators: used between list items, there is a space after the comma.
 msgid " "
 msgstr ""
 
-#: functions.php:571
+#: functions.php:573
 msgid "View all posts by %s"
 msgstr ""
 
@@ -722,7 +802,7 @@ msgid "View My Profile"
 msgstr ""
 
 #: header.php:113
-msgid "My Groups"
+msgid "My Hubs"
 msgstr ""
 
 #: header.php:116
@@ -1121,7 +1201,7 @@ msgstr ""
 msgid "Salud America"
 msgstr ""
 
-#: buddypress/members/register.php:161
+#: buddypress/members/register.php:83
 msgctxt "Change profile field visibility level"
 msgid "Change"
 msgstr ""

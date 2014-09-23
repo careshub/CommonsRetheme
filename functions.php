@@ -43,9 +43,8 @@ function cc_dequeue_parent_theme_scripts(){
   wp_deregister_script( 'twentytwelve-navigation' );
 
   //Dequeue bbPress styles if not on forum
-  if( function_exists( 'is_bbpress' ) ){
-    if ( !is_bbpress() && !bp_is_current_action( 'forum' )  )
-      wp_dequeue_style( 'bbp-default' );
+  if ( function_exists( 'is_bbpress' ) && ( ! is_bbpress() && ! bp_is_current_action( 'forum' ) ) ) {
+    wp_dequeue_style( 'bbp-default' );
 	}
 
   //Dequeue BuddyPress child theme style -- our styles are in our main style sheets
@@ -65,7 +64,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.36
+          0.37
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
@@ -77,7 +76,7 @@ function commons_ie_stylesheet_load(){
             'commons_ie_stylesheet',
             get_stylesheet_directory_uri() . '/style-ie.css',
             false,
-            0.36
+            0.37
         );
     wp_enqueue_style( 'commons_ie_stylesheet' );
     $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lt IE 9' );
