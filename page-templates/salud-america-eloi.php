@@ -121,8 +121,6 @@ if (is_page('salud-americaresearch')) {
 
                 <h4 style="clear:left;">#SaludTues Tweetchat Schedule</h4>
                 <ul class="no-bullets">
-	                <li><strong>9/23/14</strong>&emsp;#SaludTues "School's In: How to Promote Healthy Food for Latino Kids"</li>
-
 	                <li><strong>9/30/14</strong>&emsp;#SaludTues "Why and How to Start a Garden in a Latino School/Community"</li>
 
 	                <li><strong>10/7/14</strong>&emsp;#SaludTues "Latinas and Breast Cancer: Surviving and Thriving"</li>
@@ -145,6 +143,7 @@ if (is_page('salud-americaresearch')) {
                 <h4 style="clear:left;">#SaludTues Past Tweetchats</h4>
                 <ul class="no-bullets">
 	                <li><strong>9/16/14</strong>&emsp;#SaludTues "How to Create a Culture of Health for Latino Families", <a href="https://twitter.com/SaludToday" title="@SaludToday">@SaludToday</a>, <a href="https://twitter.com/AHA_Vida" title="@AHA_Vida">@AHA_Vida</a> and <a href="https://twitter.com/RWJF_Live" title="@RWJF_Live">@RWJF_Live</a></li>
+	                <li><strong>9/23/14</strong>&emsp;#SaludTues "School's In: How to Promote Healthy Food for Latino Kids"</li>
 		        </ul>    
 
             </div>
