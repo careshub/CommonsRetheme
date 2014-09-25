@@ -46,9 +46,11 @@
 
 	<div class="main-column">
 
+		<?php /* ?>
 		<div id="message" class="info">
 			<p><?php _e('Select people to invite from your friends list.', 'buddypress'); ?></p>
 		</div>
+		<?php */ ?>
 
 		<?php do_action( 'bp_before_group_send_invites_list' ) ?>
 
@@ -61,7 +63,7 @@
 				<li id="<?php bp_group_invite_item_id() ?>">
 					<?php bp_group_invite_user_avatar() ?>
 
-					<h4><?php bp_group_invite_user_link() ?></h4>
+					<span class="userlink"><?php bp_group_invite_user_link() ?></span>
 					<span class="activity"><?php bp_group_invite_user_last_active() ?></span>
 
 					<?php do_action( 'bp_group_send_invites_item' ) ?>

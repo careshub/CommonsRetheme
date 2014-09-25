@@ -778,7 +778,7 @@ hr {
 		}
 	}
 ul.item-list li .share-buttons-below li {
-				border-bottom: none;
+	border-bottom: none;
 }
 .bp-share-it-button-group {
 	float: left;
@@ -1805,6 +1805,31 @@ div.docs-info-header {
 			text-transform: capitalize;
 		}
 	}
+}
+
+// Invite Anyone overrides
+.invite-anyone .main-column, 
+.group-create .main-column, 
+body.invite-anyone div#content .main-column, 
+body.group-create div#content .main-column {
+    float: none;
+    // margin-bottom: 2em;
+    margin-left: 0;
+    width: 100%;
+}
+.invite-anyone .main-column .item-list li {
+	margin-left: 0;
+	.alert {
+		padding: 4px;
+		background-color: lighten(@graylight, 8%);
+		border-left: 2px solid @ccyellow;
+		color: @graydark;
+	}
+}
+
+.invite-anyone .left-menu, .group-create .left-menu {
+    width: 100%;
+    margin-bottom: 0;
 }
 
 //Entry meta tag styling, from Twenty Fourteen

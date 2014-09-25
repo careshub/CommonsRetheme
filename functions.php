@@ -64,7 +64,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.37
+          0.38
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
@@ -76,7 +76,7 @@ function commons_ie_stylesheet_load(){
             'commons_ie_stylesheet',
             get_stylesheet_directory_uri() . '/style-ie.css',
             false,
-            0.37
+            0.38
         );
     wp_enqueue_style( 'commons_ie_stylesheet' );
     $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lt IE 9' );
@@ -91,7 +91,7 @@ function parent_stylesheet_load(){
             '2012_parent_stylesheet',
             get_template_directory_uri() . '/style.css',
             false,
-            1.2
+            1.5
         );
     wp_enqueue_style( '2012_parent_stylesheet' );
 }
