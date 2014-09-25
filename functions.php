@@ -790,8 +790,8 @@ add_filter( 'body_class', 'hide_group_admin_tabs', 98 );
 /* Plugin-specific modifications
 *******************/
 //Add comment button to appear next to share button
-function cc_add_comment_button() {
-  if ( is_singular() && comments_open() ) {
+function cc_add_comment_button( $post_id = null ) {
+  if ( is_singular() && comments_open( $post_id ) ) {
     echo '<a href="#respond" class="button add-comment-link"><span class="comment-icon"></span>Comment</a>';
   }
 }
@@ -1045,3 +1045,13 @@ add_filter( 'invite_anyone_is_large_network', 'change_ia_large_network_value', 2
 function change_ia_large_network_value( $is_large, $count ) {
   return true;
 }
+
+// Utility filter to see what's attached to a filter:
+function cc_wp_show_hooked_filters(){
+  $hook_name = 'comments_open';
+  global $wp_filter;
+  echo '<pre class="filter-dump">';
+  var_dump( $wp_filter[$hook_name] );
+  echo '</pre>';
+}
+// add_action( 'wp_head', 'cc_wp_show_hooked_filters' );
