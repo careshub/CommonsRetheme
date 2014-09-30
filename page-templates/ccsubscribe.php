@@ -129,7 +129,7 @@ function cc_subscribe_matrix() {
 						&#x2713;
 					</td>
 					<td style="width:26%;">
-						Access Commons' Interactive Mapping System
+						Access Interactive Mapping
 					</td>				
 				</tr>
 				<tr style="border-bottom:solid 1px #dcdcdc;">
@@ -146,15 +146,15 @@ function cc_subscribe_matrix() {
 						&#x2713;
 					</td>
 					<td style="width:26%;">
-						Access Commons' Reporting System
+						Access Reporting System
 					</td>				
 				</tr>
 				<tr style="border-bottom:solid 1px #dcdcdc;">
 					<td style="width:18.25%;padding:10px;text-align:center;">
-					
+						&#x2713;
 					</td>
 					<td style="width:18.25%;padding:10px;text-align:center;">
-					
+						&#x2713;
 					</td>
 					<td style="width:18.25%;padding:10px;text-align:center;">
 						&#x2713;
@@ -163,15 +163,49 @@ function cc_subscribe_matrix() {
 						&#x2713;
 					</td>
 					<td style="width:26%;">
-						Branded Collaboration Space Home Page within a Template
+						Option to Join Hubs
+					</td>				
+				</tr>		
+				<tr style="border-bottom:solid 1px #dcdcdc;">
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						5 at a time
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						5 at a time
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						Umlimited
+					</td>
+					<td style="width:17.6%;padding:10px;text-align:center;">
+						Unlimited
+					</td>
+					<td style="width:26%;">
+						Save Maps and Reports
 					</td>				
 				</tr>
 				<tr style="border-bottom:solid 1px #dcdcdc;">
 					<td style="width:18.25%;padding:10px;text-align:center;">
-						
+						&#x2713;
 					</td>
 					<td style="width:18.25%;padding:10px;text-align:center;">
-					
+						&#x2713;
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:17.6%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:26%;">
+						Update Subscription Options
+					</td>				
+				</tr>		
+				<tr style="border-bottom:solid 1px #dcdcdc;">
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						&#x2713;
 					</td>
 					<td style="width:18.25%;padding:10px;text-align:center;">
 						&#x2713;
@@ -185,7 +219,7 @@ function cc_subscribe_matrix() {
 				</tr>
 				<tr style="border-bottom:solid 1px #dcdcdc;">
 					<td style="width:18.25%;padding:10px;text-align:center;">
-						
+					
 					</td>
 					<td style="width:18.25%;padding:10px;text-align:center;">
 					
@@ -197,9 +231,179 @@ function cc_subscribe_matrix() {
 						&#x2713;
 					</td>
 					<td style="width:26%;">
-						Discussion Forums
+						Self-Serve Upload of Local Data
+					</td>				
+				</tr>				
+				<tr style="border-bottom:solid 1px #dcdcdc;">
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:17.6%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:26%;">
+						Branded Home Page
+					</td>				
+				</tr>	
+				<tr style="border-bottom:solid 1px #dcdcdc;">
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:17.6%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:26%;">
+						Discussion Forum
+					</td>				
+				</tr>				
+				<tr style="border-bottom:solid 1px #dcdcdc;">
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:17.6%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:26%;">
+						Hub Access Privacy Options
+					</td>				
+				</tr>				
+				<tr style="border-bottom:solid 1px #dcdcdc;">
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:17.6%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:26%;">
+						Share Unlimited Maps and Reports with Hub Members
+					</td>				
+				</tr>				
+				<tr style="border-bottom:solid 1px #dcdcdc;">
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:17.6%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:26%;">
+						Content Library
+					</td>				
+				</tr>				
+				<tr style="border-bottom:solid 1px #dcdcdc;">
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:17.6%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:26%;">
+						Additional Customization of Hub Home Page
 					</td>				
 				</tr>		
+				<tr style="border-bottom:solid 1px #dcdcdc;">
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:17.6%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:26%;">
+						Access to Collaborative Storytelling Tools
+					</td>				
+				</tr>
+				<tr style="border-bottom:solid 1px #dcdcdc;">
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						5 at a time
+					</td>
+					<td style="width:17.6%;padding:10px;text-align:center;">
+						5 at a time
+					</td>
+					<td style="width:26%;">
+						Option to Create Hublets
+					</td>				
+				</tr>		
+				<tr style="border-bottom:solid 1px #dcdcdc;">
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:17.6%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:26%;">
+						Content Sharing Privacy Options
+					</td>				
+				</tr>
+				<tr style="border-bottom:solid 1px #dcdcdc;">
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+					
+					</td>
+					<td style="width:18.25%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:17.6%;padding:10px;text-align:center;">
+						&#x2713;
+					</td>
+					<td style="width:26%;">
+						Advanced Mapping Tools
+					</td>				
+				</tr>				
 				<tr style="border-bottom:solid 1px #dcdcdc;">
 					<td style="width:18.25%;padding:10px;text-align:center;">
 						<a href="http://www.communitycommons.org/register/"><input type="button" id="regButton" value="Register" /></a>
