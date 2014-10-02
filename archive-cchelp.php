@@ -408,7 +408,7 @@ $group_posts = new WP_Query($args);
 									if ( $allcount > 6 ) {
 										?>
 										<div style="width:795px;height:50px;">
-											<input type="button" value="View All" style="float:right;" onclick="javascript:viewAll('<?php echo $topicarray[$topic]['slug']; ?>','<?php echo $typevalue; ?>');">
+											<input type="button" value="View All" style="float:left;" onclick="javascript:viewAll('<?php echo $topicarray[$topic]['slug']; ?>','<?php echo $typevalue; ?>');">
 										</div>									
 										<?php	
 									}
