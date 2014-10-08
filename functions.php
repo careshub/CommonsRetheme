@@ -120,6 +120,26 @@ function cc_wp_admin_area_stylesheet_load(){
 }
 add_action( 'admin_print_styles', 'cc_wp_admin_area_stylesheet_load', 11 );
 
+// Add style sheet for the TinyMCE (wp_editor) window
+add_filter( 'mce_css', 'cc_add_wp_editor_styles', 17 );
+function cc_add_wp_editor_styles( $mce_css ) {
+  // On the front end, we'll need to include twentytwelve theme's editor styles, too
+  if ( ! is_admin() ) {
+    if ( ! empty( $mce_css ) )
+      $mce_css .= ',';
+
+    $mce_css .= get_template_directory_uri() . '/editor-style.css';
+  }
+
+  // Include our own. This is applied to the post editor and front end editors (for the group home page and group narrative)
+  if ( ! empty( $mce_css ) )
+    $mce_css .= ',';
+
+  $mce_css .= get_stylesheet_directory_uri() . '/css/tinymce-editor-styles.css';
+
+  return $mce_css;
+}
+
 // With WordPress 3.8 jqueryui-datepicker isn't reliably loaded
 function cc_load_datepicker_script() {
         wp_enqueue_script( 'jquery-ui-datepicker' );

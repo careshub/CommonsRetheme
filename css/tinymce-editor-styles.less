@@ -1,0 +1,257 @@
+@import "less-mixins";
+//Override twentytwelve a bit:
+html .mceContentBody {
+    max-width: 100%;
+}
+body {
+	color: @black;
+	font-family: "Open Sans", sans-serif;
+	.font-size(1);
+}
+a {
+	color: @ccblue;
+	&:visited {
+		color: darken( desaturate( @ccblue, 8% ), 5%);
+	}
+}
+h2 {
+	.font-size(1.5);
+}
+h3 {
+	.font-size(1.3);
+}
+h4 {
+	.font-size(1.1);
+}
+.screamer {
+	background-color: @ccblue;
+	margin-bottom: 1.4em;
+	// .font-size(1.1);
+	font-weight: 400;
+	color:@white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	line-height: 1.6;
+	// margin: 0.8em 1em;
+	padding: 0.3em 0.5em;
+	//Anchors can't be the normal color, so we'll use white, but let them have an underline to show they're an anchor
+	a {
+		color: white;
+		text-decoration: underline;
+	}
+	&.spacious {
+		padding: .6em 1.2em;
+	}	
+	&.saorange {
+		background-color: @saorange;
+	}
+	&.sapurple {
+		background-color: @sapurple;
+	}
+	&.sagreen {
+		background-color: @sagreen;
+	}
+	&.sayellow {
+		background-color: @sayellow;
+	}
+	&.sablue {
+		background-color: @sablue;
+	}
+	&.sapink {
+		background-color: @sapink;
+	}
+	&.background-ca4blue{
+		background-color: @ca4blue;
+	}
+	&.background-ca4red{
+		background-color: @ca4red;
+	}
+	&.background-ca4orange{
+		background-color: @ca4orange;
+	}
+	&.background-ca4gold{
+		background-color: @ca4gold;
+	}
+	&.ccgreen{
+		background-color: @ccgreen;
+	}
+	&.ccred{
+		background-color: @ccred;
+	}
+	&.ccyellow{
+		background-color: @ccyellow;
+	}
+}
+// Generalize quarter and third blocks -- from default.less
+.quarter-block {
+	margin-bottom: 2em;
+	padding-bottom: 2em;
+	border-bottom: 1px solid @graylight;
+}
+.third-block {
+	margin-bottom: 2em;
+	padding-bottom: 2em;
+	width:100%;
+	border-bottom: 1px solid @graylight;
+}
+.half-block {
+	margin-bottom: 2em;
+	padding-bottom: 2em;
+	width:100%;
+	&.compact {
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+	img {
+		// max-width:90%;
+	}
+}
+.sixth-block {
+	float: left;
+	margin-bottom: 2em;
+	padding-bottom: 2em;
+	width: 30%;
+	margin-right: 2%;
+	&:nth-child(4) {
+		clear:left;
+	}
+}
+// From 600.less
+.third-block {
+		// margin-bottom: 24px;
+		// margin-bottom: 1.7rem;
+		border-bottom: none;
+		margin-right: 2%;
+		margin-left: 2%;
+	    width: 30.5%;
+	    float: left;	
+	    img {
+	    	width:92%;
+	    }
+	    &:nth-of-type(3n+1) {
+			clear: left;
+			margin-left: 0;
+		}
+		&:nth-of-type(3n) {
+			margin-right: 0;
+		}
+	}
+.third-block.spans-2 {
+    width: 63.5%;
+}
+.third-block {
+	// margin-right: 2%;
+	// margin-left: 2%;
+ //    width: 21.9%;
+ //    &:nth-of-type(odd) {
+	// 	clear: none;
+	// 	margin-left: 2%;
+	// }
+	// &:nth-of-type(even) {
+	// 	margin-right: 2%;
+	// }
+ //    &:nth-of-type(4n+1) {
+	// 	clear: left;
+	// 	margin-left: 0;
+	// }
+	// &:nth-of-type(4n) {
+	// 	margin-right: 0;
+	// }
+ //    &.button { 
+	// 	margin-right: 1.8%;
+	// 	margin-left: 1.8%;
+	// 	width:19%; 
+	// }
+	&.screamer {
+		width: 28.5%;
+	}
+	&.table-cell {
+		display: table-cell;
+		margin-left: 0;
+		margin-right: 0;
+		border: 10px solid white;
+		width: 20%;
+		float: none;
+		&.vertical-centered {
+			vertical-align: middle;
+		}
+	}
+}
+.half-block {
+	border-bottom: none;
+	margin-right: 3%;
+	margin-left: 3%;
+    width: 45.9%;
+    float: left;
+	&:nth-of-type(odd) {
+		clear:left;
+		margin-left: 0;
+	}
+	&:nth-of-type(even) {
+		margin-right: 0;
+	}
+}
+// From 800.less
+.quarter-block {
+	border-bottom: none;
+	margin-right: 3%;
+	margin-left: 3%;
+    width: 45.9%;
+    float: left;
+    &:nth-of-type(odd) {
+		clear:left;
+		margin-left: 0;
+	}
+	&:nth-of-type(even) {
+		margin-right: 0;
+	}
+    img {
+    	// width:92%;
+    }
+    &.button { 
+    	margin-right: 1%;
+		margin-left: 1%;
+    	width:43.5%; 
+    }
+    &.screamer {
+    	width:43.5%; 
+    }
+}
+// From 1000.less
+.quarter-block {
+	margin-right: 2%;
+	margin-left: 2%;
+    width: 21.9%;
+    &:nth-of-type(odd) {
+		clear: none;
+		margin-left: 2%;
+	}
+	&:nth-of-type(even) {
+		margin-right: 2%;
+	}
+    &:nth-of-type(4n+1) {
+		clear: left;
+		margin-left: 0;
+	}
+	&:nth-of-type(4n) {
+		margin-right: 0;
+	}
+    &.button { 
+		margin-right: 1.8%;
+		margin-left: 1.8%;
+		width:19%; 
+	}
+	&.screamer {
+		width: 19.9%;
+	}
+	&.table-cell {
+		display: table-cell;
+		margin-left: 0;
+		margin-right: 0;
+		border: 10px solid white;
+		// width: 22%;
+		float: none;
+		&.vertical-centered {
+			vertical-align: middle;
+		}
+	}
+}
