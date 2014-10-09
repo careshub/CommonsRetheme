@@ -565,11 +565,37 @@ footer[role="contentinfo"] {
 
 /*Search page
 ***************/
-.search-result {
+.search-results {
 	margin: 0 0 4em;
-	.post {margin: 0 0 2em;}
+	article {margin: 0 0 2em;}
+	.entry-header {
+		margin-bottom: 14px;
+		margin-bottom: 1rem;
+		.post-type-flag {
+			display: inline-block;
+			margin-bottom: .4em;
+			margin-right: 1em;
+			padding: 4px;
+			background-color: @ccblue;
+			color: @white;
+			text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+			.font-size(1);
+		}
+		.entry-title {
+			margin-bottom: 0;
+		}
+	}
+	.entry-summary {
+		p {
+			margin-bottom: 14px;
+			margin-bottom: 1rem;
+		}
+	}
+	.entry-meta {
+		margin-top: 0;
+	}
 }
-.search-result div.pagination {margin-top: 0 !important;}
+.search-results div.pagination {margin-top: 0 !important;}
 .jump-menu {
 	a {
 	  border-right: 1px solid @graylight;

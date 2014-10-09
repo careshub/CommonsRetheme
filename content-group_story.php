@@ -25,6 +25,11 @@
 				   	</a>
 			   	<?php endif; ?>
 			<h1 class="entry-title">
+				<?php // If this is the search results, flag the post type
+				if ( is_search() ) {
+					cc_post_type_flag();
+				}
+				?>
 				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 			</h1>
 			<?php endif; // is_single() ?>
@@ -54,6 +59,7 @@
 		// if ( function_exists('bp_share_favorite_post_button') ) {
 		// 		bp_share_favorite_post_button( $post->ID );
 		// 	}
+		if ( is_single() ) :
 		if ( function_exists('cc_add_comment_button') ) { 
 					cc_add_comment_button(); 
 			}
@@ -62,7 +68,9 @@
 			}
 		if ( function_exists('bp_share_post_button') ) { 
 				bp_share_post_button(); 
-			} ?>
+			} 
+		endif; 
+		?>
 
 		<footer class="entry-meta">
 			<?php twentytwelve_entry_meta(); ?>

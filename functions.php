@@ -27,7 +27,9 @@ require_once('includes/cpt-group-stories.php');
 require_once('includes/WKKF_scorecard.php');
 
 //Site search functionality
-require_once('includes/site-search-functions.php');
+// require_once('includes/site-search-functions.php');
+// Reconsidered:
+require_once('includes/site-search-redux.php');
 
 
 /* Javascript library and style enqueues
@@ -573,6 +575,8 @@ add_filter('excerpt_length', 'salud_excerpt_length', 999);
  * @since Twenty Twelve 1.0
  */
 function twentytwelve_entry_meta() {
+  $is_search = is_search() ? true : false ;
+
   // Translators: used between list items, there is a space after the comma.
   $categories_list = get_the_category_list( __( ' ', 'twentytwelve' ) );
 
@@ -604,10 +608,10 @@ function twentytwelve_entry_meta() {
   // }
 
   $output = '';
-  if ( $categories_list ) {
+  if ( $categories_list && ! $is_search ) {
     $output .= 'Categories <span class="category-links">'. $categories_list . '</span> <br />';
   }
-  if ( $tag_list ) {
+  if ( $tag_list && ! $is_search ) {
     $output .= 'Tags <span class="tag-links">'. $tag_list . '</span> <br />';
   }
   if ( $date && $author ) {
