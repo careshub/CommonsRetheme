@@ -9,7 +9,7 @@ function cc_modify_search_query( $query ) {
 
 		// Limit post_types that are included in the main results loop
 		$query->set( 'post_type', array(
-	     'post', 'group_story', 'page', ''
+	     'post', 'group_story', 'page', 'bp_doc'
 		));
 
 		$towrite = PHP_EOL . 'pre_get_posts query: ' . print_r($query, TRUE);
@@ -29,8 +29,8 @@ function cc_post_type_flag(){
 		case 'group_story':
 			$retval = "Group Narrative";
 			break;
-		case 'post':
-			$retval = "Post";
+		case 'bp_doc':
+			$retval = "Library Item";
 			break;
 		default:
 			$retval = "Post";

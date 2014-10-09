@@ -208,7 +208,17 @@ register_sidebar( array(
 		'after_widget' => '</nav>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
-	) );        
+	) );
+
+register_sidebar( array(
+    'name' => __( 'Site Search Sidebar Widget Area', 'ccommons' ),
+    'id' => 'site_search',
+    'description' => __( 'Site Search Sidebar Widget Area', 'ccommons' ),
+    'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+    'after_widget' => '</nav>',
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
 }
 add_action( 'init', 'ccommons_widgets_init' );
 
