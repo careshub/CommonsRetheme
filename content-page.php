@@ -20,12 +20,28 @@
 					<h1 class="entry-title"><?php the_title(); ?></h1>
 				<?php endif; ?>
 		</header>
+		
+		<?php if ( is_search() ) : // Only display Excerpts for Search ?>
 
-		<div class="entry-content">
-			<?php the_content(); ?>
-			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
-		</div><!-- .entry-content -->
+			<div class="entry-summary">
+				<?php the_excerpt(); ?>
+			</div><!-- .entry-summary -->
+		
+		<?php else : ?>
+
+			<div class="entry-content">
+				<?php the_content(); ?>
+				<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
+			</div><!-- .entry-content -->
+
+		<?php endif; ?>	
+
 		<footer class="entry-meta">
+			<?php 
+			if ( is_search() ) {
+				twentytwelve_entry_meta();
+			}
+			?>
 			<?php edit_post_link( __( 'Edit', 'twentytwelve' ), '<span class="edit-link">', '</span>' ); ?>
 		</footer><!-- .entry-meta -->
 	</article><!-- #post -->
