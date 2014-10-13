@@ -1,4 +1,9 @@
 <?php
+/**
+* Modify the query on the search page to selectively include/exclude content
+*
+* @since 0.2
+*/
 add_filter( 'pre_get_posts', 'cc_modify_search_query' );
 function cc_modify_search_query( $query ) {
 
@@ -9,7 +14,7 @@ function cc_modify_search_query( $query ) {
 
 		// Limit post_types that are included in the main results loop
 		$query->set( 'post_type', array(
-	     'post', 'group_story', 'page', 'bp_doc'
+	     'post', 'group_story', 'page', 'bp_doc', 'sapolicies', 'saresources', 'sa_success_story'
 		));
 
 		$towrite = PHP_EOL . 'pre_get_posts query: ' . print_r($query, TRUE);
@@ -19,7 +24,11 @@ function cc_modify_search_query( $query ) {
 
 	return $query;
 }
-
+/**
+* Template tag that returns the text that should appear in the post type flag
+*
+* @since 0.2
+*/
 function cc_post_type_flag(){
 	$post_type = get_post_type();
 	switch ( $post_type ) {
@@ -31,6 +40,15 @@ function cc_post_type_flag(){
 			break;
 		case 'bp_doc':
 			$retval = "Library Item";
+			break;
+		case 'sapolicies':
+			$retval = "SA! Change";
+			break;
+		case 'saresources':
+			$retval = "SA! Resource";
+			break;
+		case 'sa_success_story':
+			$retval = "Salud Hero";
 			break;
 		default:
 			$retval = "Post";
