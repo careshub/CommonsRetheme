@@ -26,9 +26,7 @@ require_once('includes/cpt-group-stories.php');
 //Definition of the WKKF Scorecard Data Input custom post type
 require_once('includes/WKKF_scorecard.php');
 
-//Site search functionality
-// require_once('includes/site-search-functions.php');
-// Reconsidered:
+//Site search functionality, reconsidered:
 require_once('includes/site-search-redux.php');
 
 
