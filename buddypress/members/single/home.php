@@ -65,7 +65,7 @@
 
 	<?php do_action( 'bp_after_member_home_content' ); ?>
 
-	<?php if ( !bp_is_my_profile() ) : ?>
+	<?php if ( is_user_logged_in() && !bp_is_my_profile() ) : ?>
 	<footer id="single-member-footer" class="single-member-footer clear">
 		<span class="member-footer-header">Connect with this Commons member</span> 
 
