@@ -14,7 +14,7 @@ function cc_modify_search_query( $query ) {
 
 		// Limit post_types that are included in the main results loop
 		$query->set( 'post_type', array(
-	     'post', 'group_story', 'page', 'bp_doc', 'sapolicies', 'saresources', 'sa_success_story'
+	     'post', 'group_story', 'page', 'bp_doc', 'sapolicies', 'saresources', 'sa_success_story', 'cchelp'
 		));
 
 		$towrite = PHP_EOL . 'pre_get_posts query: ' . print_r($query, TRUE);
@@ -25,7 +25,7 @@ function cc_modify_search_query( $query ) {
 	return $query;
 }
 /**
-* Template tag that returns the text that should appear in the post type flag
+* Template tag that returns the html for the post type flag that appears before the post title
 *
 * @since 0.2
 */
@@ -40,6 +40,9 @@ function cc_post_type_flag(){
 			break;
 		case 'bp_doc':
 			$retval = "Library Item";
+			break;
+		case 'cchelp':
+			$retval = "FAQ";
 			break;
 		case 'sapolicies':
 			$retval = "SA! Change";
