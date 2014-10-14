@@ -11,11 +11,8 @@
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'clear' ); ?>>
 		<?php 
 		// If the post has no thumbnail, we need to do a few things differently.
-		if ( has_post_thumbnail()) {
-			$has_thumbnail = true;
-		} else {
-			$has_thumbnail = false;
-		}
+		$has_thumbnail = has_post_thumbnail() ? true : false;
+		$is_search = is_search() ? true : false ;
 		?>
 		<?php //if ( is_sticky() && is_home() && ! is_paged() ) : ?>
 		<!-- <div class="featured-post">
@@ -30,18 +27,22 @@
 				<h1 class="entry-title screamer <?php if ( ! $has_thumbnail ) echo 'no-thumbnail'; ?>"><?php the_title(); ?></h1>
 			<?php else : ?>
 				<?php 
-				//Don't add the category flag if we're in a category
-				if ( ! is_category() ) {
+				//Don't add the category flag if we're in a category or on the search results
+				if ( ! is_category() && ! is_search() ) {
 					echo '<span class="category-links visible-1000">' . get_the_category_list( __( '&#8203;', 'twentytwelve' ) ) . '</span>';
 				}
 				?>
-				<?php if ( $has_thumbnail ) : ?>
+				<?php if ( $has_thumbnail && ! $is_search ) : ?>
 				   	<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
 				   	<?php the_post_thumbnail('feature-large'); ?>
 				   	</a>
 			   	<?php endif; ?>
 			<h1 class="entry-title <?php if ( ! $has_thumbnail ) echo 'no-thumbnail'; ?>">
-				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+				<?php // If this is the search results, flag the post type
+				if ( $is_search ) {
+					cc_post_type_flag();
+				}
+				?><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 			</h1>
 			<?php endif; // is_single() ?>
 			<?php //if ( comments_open() ) : ?>
@@ -51,7 +52,7 @@
 			<?php //endif; // comments_open() ?>
 		</header><!-- .entry-header -->
 
-		<?php if ( is_search() ) : // Only display Excerpts for Search ?>
+		<?php if ( $is_search ) : // Only display Excerpts for Search ?>
 		<div class="entry-summary">
 			<?php the_excerpt(); ?>
 		</div><!-- .entry-summary -->

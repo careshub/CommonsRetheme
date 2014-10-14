@@ -26,8 +26,8 @@ require_once('includes/cpt-group-stories.php');
 //Definition of the WKKF Scorecard Data Input custom post type
 require_once('includes/WKKF_scorecard.php');
 
-//Site search functionality
-require_once('includes/site-search-functions.php');
+//Site search functionality, reconsidered:
+require_once('includes/site-search-redux.php');
 
 
 /* Javascript library and style enqueues
@@ -64,7 +64,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.38
+          0.40
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
@@ -76,7 +76,7 @@ function commons_ie_stylesheet_load(){
             'commons_ie_stylesheet',
             get_stylesheet_directory_uri() . '/style-ie.css',
             false,
-            0.38
+            0.40
         );
     wp_enqueue_style( 'commons_ie_stylesheet' );
     $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lt IE 9' );
@@ -206,7 +206,17 @@ register_sidebar( array(
 		'after_widget' => '</nav>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
-	) );        
+	) );
+
+register_sidebar( array(
+    'name' => __( 'Site Search Sidebar Widget Area', 'ccommons' ),
+    'id' => 'site_search',
+    'description' => __( 'Site Search Sidebar Widget Area', 'ccommons' ),
+    'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+    'after_widget' => '</nav>',
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
 }
 add_action( 'init', 'ccommons_widgets_init' );
 
@@ -573,6 +583,8 @@ add_filter('excerpt_length', 'salud_excerpt_length', 999);
  * @since Twenty Twelve 1.0
  */
 function twentytwelve_entry_meta() {
+  $is_search = is_search() ? true : false ;
+
   // Translators: used between list items, there is a space after the comma.
   $categories_list = get_the_category_list( __( ' ', 'twentytwelve' ) );
 
@@ -604,10 +616,10 @@ function twentytwelve_entry_meta() {
   // }
 
   $output = '';
-  if ( $categories_list ) {
+  if ( $categories_list && ! $is_search ) {
     $output .= 'Categories <span class="category-links">'. $categories_list . '</span> <br />';
   }
-  if ( $tag_list ) {
+  if ( $tag_list && ! $is_search ) {
     $output .= 'Tags <span class="tag-links">'. $tag_list . '</span> <br />';
   }
   if ( $date && $author ) {

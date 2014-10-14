@@ -58,12 +58,25 @@ img.img-border {
 .attachment-feature-large {
 	width: 100%;
 }
-.widget-title {
-	.font-size(1.2);
-	.supplemental {
-		.font-size(.9);
-		font-weight: normal;
-		text-transform: none;
+.widget-area .widget a {
+	color: @ccblue;
+}
+.widget {
+	.widget-title {
+		.font-size(1.2);
+		.supplemental {
+			.font-size(.9);
+			font-weight: normal;
+			text-transform: none;
+		}
+	}
+	.item-list .item {
+	    width: 70%;
+	}
+	.widget-error {
+		line-height: 1.8;
+		font-style: italic;
+		color: @graydark;
 	}
 }
 .entry-content th {
@@ -440,7 +453,7 @@ div.generic-button a:hover,
 				height: 32px;
 				width: 90%;
 				border: none;
-				padding: 0 3px 0 26px;
+				padding: 0 3px 0 32px;
 				margin: 0;
 				color: @black;
 				background-color: rgba( 255, 255, 255, 0.9 );
@@ -565,11 +578,52 @@ footer[role="contentinfo"] {
 
 /*Search page
 ***************/
-.search-result {
+.search {
 	margin: 0 0 4em;
-	.post {margin: 0 0 2em;}
+	.search-container {
+		margin-bottom: 2em;
+	}
+	article {
+		margin: 0 0 2em;
+	}
+	.entry-header {
+		margin-bottom: 14px;
+		margin-bottom: 1rem;
+		.post-type-flag {
+			display: inline-block;
+			margin-bottom: .4em;
+			margin-right: 1em;
+			padding: 4px 6px;
+			background-color: @ccblue;
+			color: @white;
+			text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+			.font-size(1);
+		}
+		.post-type-flag.sapolicies,
+		.post-type-flag.saresources,
+		.post-type-flag.sa_success_story, {
+			background-color: @saorange;
+		}
+		.entry-title {
+			margin-bottom: 0;
+		}
+	}
+	.entry-summary {
+		p {
+			margin-bottom: 14px;
+			margin-bottom: 1rem;
+		}
+	}
+	.entry-meta {
+		margin-top: 0;
+	}
+	.widget {
+		.item-options {
+			display: none;
+		}
+	}
 }
-.search-result div.pagination {margin-top: 0 !important;}
+.search-results div.pagination {margin-top: 0 !important;}
 .jump-menu {
 	a {
 	  border-right: 1px solid @graylight;
@@ -601,6 +655,36 @@ h5 {
     font-weight: 700;
     line-height: 2.18182;
     text-transform: uppercase;
+}
+
+/*--------------------------------------------------------------
+6.0 Accessibility - from underscores
+--------------------------------------------------------------*/
+/* Text meant only for screen readers */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+}
+
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-weight: 400;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar */
 }
 
 //Headers
@@ -1879,54 +1963,67 @@ body.group-create div#content .main-column {
 	}
 }
 //Category archive header
-body.category {
-	.archive-header {
-		background-color: @ccblue;
-		border-bottom: none;
-		padding-bottom: 0;
-		.archive-title {
-			.font-size(1.2);
-			color: @white;
-		    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-			padding-left: 4%;
-			margin: 0;
-		}
+.archive-header {
+	background-color: @ccblue;
+	border-bottom: none;
+	padding-bottom: 0;
+	.archive-title {
+		.font-size(1.2);
+		color: @white;
+	    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+		padding-left: 4%;
+		margin: 0;
 	}
 }
 //Tag archive header
-body.tag .archive-header .archive-title {
-	background-color: @ccblue;
-	// border-radius: 0 2px 2px 0;
-	color: @white;
-	display: inline-block;
-	font-size: 24px;
-	// font-weight: 700;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-	line-height: 1.2727272727;
-	margin: 2px 4px 2px 10px;
-	padding: 6px 14px;
-	position: relative;
-	// text-transform: uppercase;
-	&:before {
-		border-top: 22px solid transparent;
-		border-right: 16px solid @ccblue;
-		border-bottom: 22px solid transparent;
-		content: "";
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: -16px;
-		width: 0;
+body.tag .archive-header {
+	background-color: transparent;
+	margin-left: 8px;
+	.archive-title {
+		background-color: @ccblue;
+		// border-radius: 0 2px 2px 0;
+		color: @white;
+		display: inline-block;
+		font-size: 24px;
+		// font-weight: 700;
+	    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+		line-height: 1.2727272727;
+		margin: 2px 4px 2px 10px;
+		padding: 6px 14px;
+		position: relative;
+		// text-transform: uppercase;
+		&:before {
+			border-top: 22px solid transparent;
+			border-right: 16px solid @ccblue;
+			border-bottom: 22px solid transparent;
+			content: "";
+			height: 0;
+			position: absolute;
+			top: 0;
+			left: -16px;
+			width: 0;
+		}
+		&:after {
+			background-color: @white;
+			border-radius: 50%;
+			content: "";
+			height: 6px;
+			position: absolute;
+			top: 19px;
+			left: -6px;
+			width: 6px;
+		}
 	}
-	&:after {
-		background-color: @white;
-		border-radius: 50%;
-		content: "";
-		height: 6px;
-		position: absolute;
-		top: 19px;
-		left: -6px;
-		width: 6px;
+}
+//Search archive header
+body.search .archive-header {
+	margin-bottom: 2em;
+	.archive-title {
+		text-transform: none;
+		span {
+			font-weight: 400;
+			font-size: 75%;
+		}
 	}
 }
 
