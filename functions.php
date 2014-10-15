@@ -350,6 +350,11 @@ function cc_custom_body_class( $classes ) {
     if ( is_post_type_archive( 'bp_doc' ) ) {
         $classes[] = 'full-width';
       }
+      if ( is_page( 'new-front' ) ) {
+        $classes[] = 'full-width';
+        $classes[] = 'home';
+        $classes[] = 'home-page';
+      }
 
 
   return $classes;

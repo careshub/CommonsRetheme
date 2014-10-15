@@ -226,8 +226,20 @@ body.category {
 	}
 }
 //Front page
-body.home {
-	//Font size for blocks below top story
+body.home-page {
+	.site {
+		max-width: 1000px;
+		max-width: 71.428571429rem;
+		padding: 0;
+	}
+	.site-content {
+	    margin: 0;
+	    .content-container {
+	    	h4:first-of-type {
+	    		margin-top: 0;
+	    	}
+	    }
+	}
 	.quarter-block .entry-header .entry-title {
 		.font-size(1.6);
 	}

@@ -229,6 +229,41 @@ div.dir-search {
 	}
 }
 
+// Front page
+body.home-page {
+	.site {}
+	.site-content {
+	    .content-container {
+	    	h2:first-of-type {}
+	    	section {
+	    		header {
+		    		.banner-text {
+			    		h3 {
+			    			.font-size(6);
+			    		}
+			    	}
+			    }
+	    		.section-intro-inset {
+	    			display: block;
+	    			.font-size(1.1);
+	    			color: @white;
+	    			background-color: rgba(0, 142, 170, 0.85);
+	    			-webkit-filter: blur(72px);
+	    			margin-bottom: 0;
+	    			padding: 2% 4%;
+	    			a {
+	    				color: @white;
+	    			}
+	    		}
+	    		.section-intro-outset {
+	    			display: none
+	    		}
+			    .row {}
+	    	}
+	    }
+	}
+}
+
 // Plugin styling
 // bbPress styling overrides 
 #bbpress-forums {
