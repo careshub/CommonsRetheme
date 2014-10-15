@@ -227,6 +227,7 @@ body.category {
 }
 //Front page
 body.home-page {
+	// Changes allow content to flow to the edges of the "page"
 	.site {
 		max-width: 1000px;
 		max-width: 71.428571429rem;
@@ -235,8 +236,12 @@ body.home-page {
 	.site-content {
 	    margin: 0;
 	    .content-container {
-	    	h4:first-of-type {
-	    		margin-top: 0;
+	    	section {
+	    		.section-intro-inset {
+	    			padding: 2% 16.66%;
+	    			.font-size(1.2);
+	    			text-align: center;
+	    		}
 	    	}
 	    }
 	}

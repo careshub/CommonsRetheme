@@ -535,6 +535,12 @@ function cc_improved_trim_excerpt($text) {
 // remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 // add_filter('get_the_excerpt', 'cc_improved_trim_excerpt');
 
+// Apply the class "excerpt" to excerpts, which are wrapped in <p> automatically
+add_filter( 'the_excerpt', 'cc_add_class_to_excerpt' );
+add_filter( 'bp_get_group_description_excerpt', 'cc_add_class_to_excerpt' );
+function cc_add_class_to_excerpt( $excerpt ) {
+    return str_replace('<p', '<p class="excerpt"', $excerpt);
+}
 /**
  * Returns a "Continue Reading" link for excerpts
  */
