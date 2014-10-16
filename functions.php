@@ -344,12 +344,18 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'full-width';
         $classes[] = 'chi-planning';
       }
-    if ( is_singular( 'bp_doc' ) ) {
+    if ( is_singular( 'bp_doc' ) || is_post_type_archive( 'bp_doc' ) ) {
         $classes[] = 'full-width';
       }
-    if ( is_post_type_archive( 'bp_doc' ) ) {
-        $classes[] = 'full-width';
+    // Remove "full-width" from the main search page.
+    // 2012 adds it if the main sidebar is empty.
+    if ( is_search() && ! is_post_type_archive() ) {
+      $key_to_delete = array_search( 'full-width', $classes );
+      // Watch out for 0 being a valid return value!
+      if ( $key_to_delete !== false ){
+          unset( $classes[ $key_to_delete ] );
       }
+    }
 
 
   return $classes;
