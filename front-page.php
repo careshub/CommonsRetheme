@@ -17,7 +17,18 @@ get_header(); ?>
 			<section id="feature-stories" class="clear">
 				<?php $blog_url = get_permalink( get_option( 'page_for_posts' ) ); ?>
 				<header>
-					<div class="img-shadow"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/front-page/front-1.jpg" class="fitwidth wp-post-image"></div>
+					<div class="img-shadow">
+						<?php 
+						$img_url = get_stylesheet_directory_uri() . '/img/front-page/feature-stories';
+						$img_ext = '.jpg'; 
+						?>
+						<img src="<?php echo $img_url . '-320' . $img_ext; ?>"
+						     srcset="<?php echo $img_url . $img_ext; ?> 1000w,
+						            <?php echo $img_url . '-600' . $img_ext; ?> 600w,
+						            <?php echo $img_url . '-320' . $img_ext; ?>  320w"
+						     sizes="100vw"
+						     alt="A collection of images from our featured stories" class="fitwidth wp-post-image"/>
+					</div>
 					<div class="banner-text">
 						<h3 class="text-shadow-dark"><a href="<?php echo $blog_url; ?>">Get Inspired</a></h3>
 						<p class="section-intro-inset">Learn how others are working to create healthy and sustainable communities around the nation and the world by viewing and interacting with our <a href="<?php echo $blog_url; ?>">feature stories</a>.</p>
@@ -59,7 +70,7 @@ get_header(); ?>
 					<div class="img-shadow">
 						<?php 
 						$img_url = get_stylesheet_directory_uri() . '/img/front-page/explore-maps';
-						$img_ext = '.png'; 
+						$img_ext = '.jpg'; 
 						?>
 						<img src="<?php echo $img_url . '-320' . $img_ext; ?>"
 						     srcset="<?php echo $img_url . $img_ext; ?> 1000w,
@@ -113,15 +124,15 @@ get_header(); ?>
 				<header>
 					<div class="img-shadow">
 						<?php 
-						$img_url = get_stylesheet_directory_uri() . '/img/front-page/explore-maps';
-						$img_ext = '.png'; 
+						$img_url = get_stylesheet_directory_uri() . '/img/front-page/connect-members';
+						$img_ext = '.jpg'; 
 						?>
 						<img src="<?php echo $img_url . '-320' . $img_ext; ?>"
 						     srcset="<?php echo $img_url . $img_ext; ?> 1000w,
 						            <?php echo $img_url . '-600' . $img_ext; ?> 600w,
 						            <?php echo $img_url . '-320' . $img_ext; ?>  320w"
 						     sizes="100vw"
-						     alt="A map of the primary ethnic group by block group in the Los Angeles area" class="fitwidth wp-post-image"/>
+						     alt="A collection of our members' profile photos" class="fitwidth wp-post-image"/>
 					</div>
 					<div class="banner-text">
 						<h3 class="text-shadow-dark"><a href="<?php echo $groups_url; ?>">Connect</a></h3>
