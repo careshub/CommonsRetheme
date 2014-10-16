@@ -21,13 +21,11 @@ require_once('includes/taxonomy-sapolicytag.php');
 require_once('includes/cdc_dch_shortcode.php');
 //Shortcode for SA Policy Map Search
 require_once('includes/sa_policy_map_shortcode.php');
-//Definition of the group stories custom post type
-require_once('includes/cpt-group-stories.php');
 //Definition of the WKKF Scorecard Data Input custom post type
 require_once('includes/WKKF_scorecard.php');
 
-//Site search functionality
-require_once('includes/site-search-functions.php');
+//Site search functionality, reconsidered:
+require_once('includes/site-search-redux.php');
 
 
 /* Javascript library and style enqueues
@@ -43,9 +41,8 @@ function cc_dequeue_parent_theme_scripts(){
   wp_deregister_script( 'twentytwelve-navigation' );
 
   //Dequeue bbPress styles if not on forum
-  if( function_exists( 'is_bbpress' ) ){
-    if ( !is_bbpress() && !bp_is_current_action( 'forum' )  )
-      wp_dequeue_style( 'bbp-default' );
+  if ( function_exists( 'is_bbpress' ) && ( ! is_bbpress() && ! bp_is_current_action( 'forum' ) ) ) {
+    wp_dequeue_style( 'bbp-default' );
 	}
 
   //Dequeue BuddyPress child theme style -- our styles are in our main style sheets
@@ -65,7 +62,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.36
+          0.40
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
@@ -77,7 +74,7 @@ function commons_ie_stylesheet_load(){
             'commons_ie_stylesheet',
             get_stylesheet_directory_uri() . '/style-ie.css',
             false,
-            0.36
+            0.40
         );
     wp_enqueue_style( 'commons_ie_stylesheet' );
     $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lt IE 9' );
@@ -92,7 +89,7 @@ function parent_stylesheet_load(){
             '2012_parent_stylesheet',
             get_template_directory_uri() . '/style.css',
             false,
-            1.2
+            1.5
         );
     wp_enqueue_style( '2012_parent_stylesheet' );
 }
@@ -120,6 +117,26 @@ function cc_wp_admin_area_stylesheet_load(){
     wp_enqueue_style( 'cc_wp_admin_area_jquery_ui' );
 }
 add_action( 'admin_print_styles', 'cc_wp_admin_area_stylesheet_load', 11 );
+
+// Add style sheet for the TinyMCE (wp_editor) window
+add_filter( 'mce_css', 'cc_add_wp_editor_styles', 17 );
+function cc_add_wp_editor_styles( $mce_css ) {
+  // On the front end, we'll need to include twentytwelve theme's editor styles, too
+  if ( ! is_admin() ) {
+    if ( ! empty( $mce_css ) )
+      $mce_css .= ',';
+
+    $mce_css .= get_template_directory_uri() . '/editor-style.css';
+  }
+
+  // Include our own. This is applied to the post editor and front end editors (for the group home page and group narrative)
+  if ( ! empty( $mce_css ) )
+    $mce_css .= ',';
+
+  $mce_css .= get_stylesheet_directory_uri() . '/css/tinymce-editor-styles.css';
+
+  return $mce_css;
+}
 
 // With WordPress 3.8 jqueryui-datepicker isn't reliably loaded
 function cc_load_datepicker_script() {
@@ -187,7 +204,17 @@ register_sidebar( array(
 		'after_widget' => '</nav>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
-	) );        
+	) );
+
+register_sidebar( array(
+    'name' => __( 'Site Search Sidebar Widget Area', 'ccommons' ),
+    'id' => 'site_search',
+    'description' => __( 'Site Search Sidebar Widget Area', 'ccommons' ),
+    'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+    'after_widget' => '</nav>',
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
 }
 add_action( 'init', 'ccommons_widgets_init' );
 
@@ -315,12 +342,18 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'full-width';
         $classes[] = 'chi-planning';
       }
-    if ( is_singular( 'bp_doc' ) ) {
+    if ( is_singular( 'bp_doc' ) || is_post_type_archive( 'bp_doc' ) ) {
         $classes[] = 'full-width';
       }
-    if ( is_post_type_archive( 'bp_doc' ) ) {
-        $classes[] = 'full-width';
+    // Remove "full-width" from the main search page.
+    // 2012 adds it if the main sidebar is empty.
+    if ( is_search() && ! is_post_type_archive() ) {
+      $key_to_delete = array_search( 'full-width', $classes );
+      // Watch out for 0 being a valid return value!
+      if ( $key_to_delete !== false ){
+          unset( $classes[ $key_to_delete ] );
       }
+    }
 
 
   return $classes;
@@ -554,6 +587,8 @@ add_filter('excerpt_length', 'salud_excerpt_length', 999);
  * @since Twenty Twelve 1.0
  */
 function twentytwelve_entry_meta() {
+  $is_search = is_search() ? true : false ;
+
   // Translators: used between list items, there is a space after the comma.
   $categories_list = get_the_category_list( __( ' ', 'twentytwelve' ) );
 
@@ -585,10 +620,10 @@ function twentytwelve_entry_meta() {
   // }
 
   $output = '';
-  if ( $categories_list ) {
+  if ( $categories_list && ! $is_search ) {
     $output .= 'Categories <span class="category-links">'. $categories_list . '</span> <br />';
   }
-  if ( $tag_list ) {
+  if ( $tag_list && ! $is_search ) {
     $output .= 'Tags <span class="tag-links">'. $tag_list . '</span> <br />';
   }
   if ( $date && $author ) {
@@ -791,8 +826,8 @@ add_filter( 'body_class', 'hide_group_admin_tabs', 98 );
 /* Plugin-specific modifications
 *******************/
 //Add comment button to appear next to share button
-function cc_add_comment_button() {
-  if ( is_singular() && comments_open() ) {
+function cc_add_comment_button( $post_id = null ) {
+  if ( is_singular() && comments_open( $post_id ) ) {
     echo '<a href="#respond" class="button add-comment-link"><span class="comment-icon"></span>Comment</a>';
   }
 }
@@ -1046,3 +1081,13 @@ add_filter( 'invite_anyone_is_large_network', 'change_ia_large_network_value', 2
 function change_ia_large_network_value( $is_large, $count ) {
   return true;
 }
+
+// Utility filter to see what's attached to a filter:
+function cc_wp_show_hooked_filters(){
+  $hook_name = 'comments_open';
+  global $wp_filter;
+  echo '<pre class="filter-dump">';
+  var_dump( $wp_filter[$hook_name] );
+  echo '</pre>';
+}
+// add_action( 'wp_head', 'cc_wp_show_hooked_filters' );

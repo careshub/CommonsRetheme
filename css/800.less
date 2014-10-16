@@ -230,11 +230,11 @@
 }
 
 //even/odd row coloring
-.alt {
-	&:nth-child(odd) {
-		background-color: desaturate(lighten(@ccblue, 63%), 50%);
-	}
-}
+// .alt {
+// 	&:nth-child(odd) {
+// 		background-color: desaturate(lighten(@ccblue, 63%), 50%);
+// 	}
+// }
 
 // New magazine-style home page
 body.home-page {
@@ -341,13 +341,12 @@ body.home-page {
 	}
 }
 //Category archive header
-body.category {
-	.archive-header {
-		.archive-title {
-			.font-size(1.8);
-		}
+.archive-header {
+	.archive-title {
+		.font-size(1.8);
 	}
 }
+
 //Tag archive header
 body.tag .archive-header {
 	border-bottom: none;
@@ -426,6 +425,18 @@ body.tag .archive-header {
 		// border-bottom: 1px solid @graylight;
 		// line-height: 1.6;
 		// margin: 0.8em 1em;
+		}
+	}
+}
+
+/*Search page
+***************/
+.search-results {
+	.entry-header {
+		.post-type-flag {
+		}
+		.entry-title {
+			.font-size(1.2);
 		}
 	}
 }

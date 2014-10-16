@@ -14,6 +14,7 @@
 			<?php // _e( 'Featured post', 'twentytwelve' ); ?>
 		</div> -->
 		<?php //endif; ?>
+
 		<header class="entry-header">
 
 			<?php if ( ccgn_is_single_post() ) : ?>
@@ -31,8 +32,8 @@
 						&emsp;<span class="draft-narrative" style="font-size:0.8em;color:#ABABAB;font-style:italic;">Draft Narrative</span>
 					<?php endif; ?>
 				</h1> 
-
 			<?php endif; // is_single() ?>
+
 			<?php //if ( comments_open() ) : ?>
 				<!-- <div class="comments-link">
 					<?php comments_popup_link( '<span class="leave-reply">' . __( 'Leave a reply', 'twentytwelve' ) . '</span>', __( '1 Reply', 'twentytwelve' ), __( '% Replies', 'twentytwelve' ) ); ?>
@@ -58,7 +59,7 @@
 		// 		bp_share_favorite_post_button( $post->ID );
 		// 	}
 			if ( function_exists('cc_add_comment_button') ) { 
-						cc_add_comment_button(); 
+					cc_add_comment_button( get_the_ID() ); 
 				}
 			if ( function_exists('love_it_button') ) { 
 					love_it_button(); 

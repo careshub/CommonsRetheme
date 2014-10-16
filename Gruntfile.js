@@ -36,6 +36,7 @@ module.exports = function(grunt) {
 			files: {
 				"style.css": "css/style.less",
 				"style-ie.css": "css/ie.less",
+                "css/tinymce-editor-styles.css": "css/tinymce-editor-styles.less"
 			}
 		  }
 		},

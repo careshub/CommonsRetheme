@@ -69,10 +69,10 @@ $group_posts = new WP_Query($args);
 										'color' => '#f9b715',
 										'text' => 'Uploading Local Data'
 										),										
-						'Groups' => array(
-										'slug' => 'groups-3',
+						'Hubs' => array(
+										'slug' => 'hubs-3',
 										'color' => '#df5827',
-										'text' => 'Using the Collaboration Spaces'
+										'text' => 'Hubs on the Commons'
 										),
 						'Administrators' => array(
 										'slug' => 'administrators',
@@ -408,7 +408,7 @@ $group_posts = new WP_Query($args);
 									if ( $allcount > 6 ) {
 										?>
 										<div style="width:795px;height:50px;">
-											<input type="button" value="View All" style="float:right;" onclick="javascript:viewAll('<?php echo $topicarray[$topic]['slug']; ?>','<?php echo $typevalue; ?>');">
+											<input type="button" value="View All" style="float:left;" onclick="javascript:viewAll('<?php echo $topicarray[$topic]['slug']; ?>','<?php echo $typevalue; ?>');">
 										</div>									
 										<?php	
 									}
@@ -580,8 +580,8 @@ $group_posts = new WP_Query($args);
 			
 			
 			<div style="width:895px;">
-				<div id="guideGroups" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to the Collaboration Guidebook">
-					<span class="guidebook-text">Using the Collaboration Spaces</span>
+				<div id="guideGroups" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to Hubs on the Commons">
+					<span class="guidebook-text">Hubs on the Commons</span>
 				</div>
 				<div id="guideAdmin" class="guidebook" style="background-color:#008eaa;cursor:pointer;border:solid 2px #008eaa;" title="Go to the Administrator Guidebook">
 					<span class="guidebook-text">Being an Administrator</span>
@@ -647,7 +647,7 @@ $group_posts = new WP_Query($args);
 						window.location.href = '/cchelp/cc_help_topics/reports/';
 					});
 					$( "#guideGroups" ).click(function() {
-						window.location.href = '/cchelp/cc_help_topics/groups-3/';
+						window.location.href = '/cchelp/cc_help_topics/hubs-3/';
 					});
 					$( "#guideAdmin" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/administrators/';
