@@ -168,6 +168,8 @@ get_header(); ?>
 				</div>
 			</section>
 
+			<a href="<?php echo site_url( bp_get_signup_slug() ) ?>" class="call-to-action">Ready to get started? <br class="rwd-break-under-600" /><strong>Register now.</strong></a>
+
 		</div><!-- #content -->
 	</div><!-- #primary -->
 
