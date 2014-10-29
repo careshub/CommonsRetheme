@@ -282,12 +282,29 @@ function print_notifications_list( $notifications ){
   return $output;
 }
 
-function cc_replace_default_group_avatar( $avatar ) {
-  // The filter we're using ensures we'll only catch the group avatars
-  // Default looks like: <img src="/wp-content/plugins/buddypress/bp-core/images/mystery-man.jpg" alt="avatar" class="avatar" width="80" height="80">
-  return str_replace( 'plugins/buddypress/bp-core/images/mystery-man', 'themes/CommonsRetheme/img/cc-group-default-avatar', $avatar );
+function cc_no_gravatars_for_groups( $no_grav, $params ) {
+  if ( $params['object'] == 'group' )
+    $no_grav = true;
+
+  return $no_grav;
 }
-add_filter( 'bp_get_group_avatar', 'cc_replace_default_group_avatar' );
+// @TODO: Waiting on object parameter to be added to BuddyPress core.
+// https://buddypress.trac.wordpress.org/ticket/5958
+// add_filter( 'bp_core_fetch_avatar_no_grav', 'cc_no_gravatars_for_groups', 10, 2 );
+
+function cc_replace_default_avatar_group( $url, $params ){
+
+  if ( false !== strpos( $url, 'bp-core/images/mystery-man') ) {
+    if ( $params['type'] =='thumb' ) {
+      $url = get_stylesheet_directory_uri() . '/img/cc-group-default-avatar-50.jpg';
+    } else {
+      $url = get_stylesheet_directory_uri() . '/img/cc-group-default-avatar.jpg';
+    }
+  }
+
+  return $url;
+}
+add_filter( 'bp_core_default_avatar_group', 'cc_replace_default_avatar_group', 10, 2);
 
 /* Filters Nav Menu output by adding 'menu-item-{page slug}' to menu li classes
 ***********/
