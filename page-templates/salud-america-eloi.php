@@ -121,7 +121,6 @@ if (is_page('salud-americaresearch')) {
 
                 <h4 style="clear:left;">#SaludTues Tweetchat Schedule</h4>
                 <ul class="no-bullets">
-	                <li><strong>10/28/14</strong>&emsp;#SaludTues "Latino Minds: Improving Mental Health"</li>
 	                <li><strong>11/4/14</strong>&emsp;#SaludTues "How to Solve the Latino Doctor Shortage"</li>
 	                <li><strong>11/11/14</strong>&emsp;#SaludTues "How to Open Playgrounds in Latino Neighborhoods"</li>
                 </ul>
@@ -144,6 +143,7 @@ if (is_page('salud-americaresearch')) {
 					<li><strong>10/7/14</strong>&emsp;#SaludTues "Latinas and Breast Cancer: Surviving and Thriving"</li>
 					<li><strong>10/14/14</strong>&emsp;#SaludTues "Latinos and HIV/AIDS: Problems &amp; Solutions"</li>
 					<li><strong>10/21/14</strong>&emsp;#SaludTues "Healthier Recipes for Latino Foods"</li>
+					<li><strong>10/28/14</strong>&emsp;#SaludTues "Latino Minds: Improving Mental Health"</li>
 		        </ul>    
 
             </div>
