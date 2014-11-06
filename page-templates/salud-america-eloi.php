@@ -121,8 +121,19 @@ if (is_page('salud-americaresearch')) {
 
                 <h4 style="clear:left;">#SaludTues Tweetchat Schedule</h4>
                 <ul class="no-bullets">
-	                <li><strong>11/4/14</strong>&emsp;#SaludTues "How to Solve the Latino Doctor Shortage"</li>
-	                <li><strong>11/11/14</strong>&emsp;#SaludTues "How to Open Playgrounds in Latino Neighborhoods"</li>
+	                <li><strong>11/11/14</strong>&emsp;#SaludTues "How to Get More Green Space in Latino Neighborhoods"</li>
+					<li><strong>11/18/14</strong>&emsp;#SaludTues "What does Thanksgiving mean to Latinos?"</li>
+					<li><strong>11/25/14</strong>&emsp;No chat (holidays)</li>
+					<li><strong>12/2/14</strong>&emsp;#SaludTues "Latinos and Eating Disorders"</li>
+					<li><strong>12/9/14</strong>&emsp;#SaludTues "How to Get More Latinos Covered with Health Care"</li>
+					<li><strong>12/16/14</strong>&emsp;#SaludTues "Latinos & Heart Health"</li>
+					<li><strong>12/23/14</strong>&emsp;No chat (holidays)</li>
+					<li><strong>12/30/14</strong>&emsp;No chat (holidays)</li>
+					<li><strong>1/6/15</strong>&emsp;#SaludTues "New Year, New Meals: Healthy Latino Recipes to Try Tonight"</li>
+					<li><strong>1/13/15</strong>&emsp;#SaludTues "Latino Blood Donors: Get the Facts"</li>
+					<li><strong>1/20/15</strong>&emsp;#SaludTues "What All Latinos Should Know about Cervical Cancer"</li>
+					<li><strong>1/27/15</strong>&emsp;"Education + Health: Keys Ways to Empower the Latino Community"</li>
+					<li><strong>2/3/15</strong>&emsp;#SaludTues "Latinos in the U.S.: Latest Trends and Important Topics"</li>
                 </ul>
 
 
@@ -144,6 +155,7 @@ if (is_page('salud-americaresearch')) {
 					<li><strong>10/14/14</strong>&emsp;#SaludTues "Latinos and HIV/AIDS: Problems &amp; Solutions"</li>
 					<li><strong>10/21/14</strong>&emsp;#SaludTues "Healthier Recipes for Latino Foods"</li>
 					<li><strong>10/28/14</strong>&emsp;#SaludTues "Latino Minds: Improving Mental Health"</li>
+					<li><strong>11/4/14</strong>&emsp;#SaludTues "How to Solve the Latino Doctor Shortage"</li>
 		        </ul>    
 
             </div>

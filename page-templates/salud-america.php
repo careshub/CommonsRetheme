@@ -11,8 +11,8 @@ get_header(); ?>
 
 			<div class="entry-content">
 				<div class="notice" style="border-left:20px solid red;background-color:#F3F3F3;padding: 1px 2em 1em;">
-					<h4 style="color:black"><a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Tweetchat 11/4:</span>&emsp;"How to Solve the Latino Doctor Shortage"</a></h4>
-					<p>Join our weekly Tweetchat series on Latino health, #SaludTues at 12pm CT / 1pm ET every Tuesday</p>
+					<h4 style="color:black"><a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Tweetchat 11/11:</span>&emsp;"How to Get More Green Space in Latino Neighborhoods"</a></h4>
+					<p>Join our weekly Tweetchat series on Latino health, #SaludTues at 12pm CT/1pm ET every Tuesday</p>
                     <a href="https://twitter.com/SaludToday" target="_blank" class="button" >Follow the conversation</a>&emsp;<a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" class="button">Learn more</a>
 
 				</div>
