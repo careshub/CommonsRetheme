@@ -13,7 +13,7 @@ if ( class_exists( 'CC_Group_Pages' ) ) :
 	</div>
 
 	<?php if ( $ccgp_class->current_user_can_post() ) : ?>
-		<a href="<?php echo $ccgp_class->get_create_permalink(); ?>" class="alignright button">Create new page</a>
+		<a href="<?php echo $ccgp_class->get_create_permalink(); ?>" class="alignright button create-new-page">Create new page</a>
 	<?php endif; ?>
 
 	<?php
