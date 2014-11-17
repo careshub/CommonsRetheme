@@ -210,8 +210,10 @@ function cc_sa_video_contest() {
 									<div style="width:100%;text-align:center;"><input type="submit" id="submitVote" name="submitVote" value="Submit your Vote" style="font-size:18pt;" /></div>
 								</form>
 							</div>
-							
-							<h3>This contest is open to everyone (except Salud America! staff or grantees). The contest begins on Nov. 19, 2014, and ends at 11:59 p.m. CST on Dec. 10, 2014. To enter, individuals must first register with the Salud America! Growing Healthy Change <a href="http://www.communitycommons.org/salud-america/" target="_blank">website</a>, and then click to vote for their favorite video among four potential choices. Each registered user may cast only one vote. Casting a vote enters the registered user into a drawing for a T-shirt and jump rope package. The drawing’s winner will be notified by Dec. 17, 2014, via email.  The winner must contact us directly at <a href="mailto:saludamerica@uthscsa.edu?subject=SA Video Contest">saludamerica@uthscsa.edu</a> to claim their prize package. Entry into drawing is subject to all applicable laws and regulations.</h3>
+							<div style="width:100%;text-align:center;margin-bottom:20px;"><a id="togglerules" style="text-decoration:underline;cursor:pointer;">See contest rules</a></div>
+							<div id="rules">
+							<p>This contest is open to everyone (except Salud America! staff or grantees). The contest begins on Nov. 19, 2014, and ends at 11:59 p.m. CST on Dec. 10, 2014. To enter, individuals must first register with the Salud America! Growing Healthy Change <a href="http://www.communitycommons.org/salud-america/" target="_blank">website</a>, and then click to vote for their favorite video among four potential choices. Each registered user may cast only one vote. Casting a vote enters the registered user into a drawing for a T-shirt and jump rope package. The drawing’s winner will be notified by Dec. 17, 2014, via email.  The winner must contact us directly at <a href="mailto:saludamerica@uthscsa.edu?subject=SA Video Contest">saludamerica@uthscsa.edu</a> to claim their prize package. Entry into drawing is subject to all applicable laws and regulations.</p>
+							</div>
 				<?php
 						
 						/* Restore original Post Data */
@@ -224,8 +226,12 @@ function cc_sa_video_contest() {
 
 		<script type="text/javascript">
 			jQuery( document ).ready(function($) {	
-				
-			
+				$("#rules").hide();
+				$( "#togglerules" ).click(function() {
+					$( "#rules" ).slideToggle( "slow", function() {
+						// Animation complete.
+					});
+				});
 				$(".sa_vid_cb").click(function() {
 					selectedBox = this.id;
 					$(".sa_vid_cb").each(function() {
