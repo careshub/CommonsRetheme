@@ -225,7 +225,6 @@ function cc_sa_video_contest() {
 
 
 		<script type="text/javascript">
-			_kmq.push(['trackClick', 'submitVote', 'SA Video Vote Clicked']);
 		
 			jQuery( document ).ready(function($) {	
 				$("#rules").hide();
