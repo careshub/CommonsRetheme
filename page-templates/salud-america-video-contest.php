@@ -150,11 +150,12 @@ function cc_sa_video_contest() {
 							'post_title' => $uid . "_SA_Video_Vote",
 							'post_content' => $vidtitle,
 							'post_status' => 'publish',
-							'post_type' => 'sa_video_vote'
+							'post_type' => 'sa_video_vote',
+							'post_author' => $uid,
 						);
 						$newpostid = wp_insert_post( $arr );
-						add_post_meta( $newpostid, 'vote_video_id', $_POST['sa_vid_vote'], true );
-						
+						add_post_meta( $newpostid, 'sa_vote_video_id', $_POST['sa_vid_vote'], true );
+						do_action( 'after_sa_video_vote', $current_user );
 					?>
 						<script type="text/javascript">
 							jQuery( document ).ready(function($) {
