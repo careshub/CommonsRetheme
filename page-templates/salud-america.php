@@ -11,11 +11,10 @@ get_header(); ?>
 
 			<div class="entry-content">
 				<div class="notice" style="border-left:8px solid red;background-color:#F3F3F3;padding: 1px 2em 1em;">
-					<h4 style="color:black;margin-bottom:.5em;"><a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Tweetchat 11/18:</span>&emsp;"What does Thanksgiving mean to Latinos?"</a></h4>
-                    <a href="https://twitter.com/SaludToday" target="_blank" class="button" >Follow the conversation</a>&emsp;<a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" class="button">Learn more</a>
-					<h4 style="color:black; margin-top: 1em;margin-bottom:.5em;"><a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Vote and win a prize: </span>&emsp;Vote for Best New #SaludHeroes Video; Enter to Win T-Shirt, Jump Rope</a></h4>
+					<h4 style="color:black;margin-bottom:.5em;"><a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Vote and win a prize: </span>&emsp;Vote for Best New #SaludHeroes Video; Enter to Win T-Shirt, Jump Rope</a></h4>
                     <a href="<?php echo home_url( 'salud-america-video-contest' ); ?>" class="button">Vote now</a>
-
+                    <h4 style="color:black;margin-top: 1em;margin-bottom:.5em;"><a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Tweetchat 12/2:</span>&emsp;&ldquo;Latinos and Eating Disorders&rdquo;</a></h4>
+                    <a href="https://twitter.com/SaludToday" target="_blank" class="button" >Follow the conversation</a>&emsp;<a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" class="button">Learn more</a>
 				</div>
 				<h3 class="screamer sagreen">How can you fight Latino childhood obesity in your area?</h2>
 	
