@@ -43,7 +43,7 @@ get_header(); ?>
 						</ul>
 					</div>
 					<div class="half-block choose-tool">
-						<h2><a href="http://assessment.communitycommons.org/CHNA/"><span class="report"></span>Build a Report</a></h2>
+						<h2><a href="http://assessment.communitycommons.org/CHNA/SelectArea.aspx?reporttype=libraryCHNA"><span class="report"></span>Build a Report</a></h2>
 						<ul>
 							<li>
 								<h4><a href="http://assessment.communitycommons.org/CHNA/">Community Health Needs Assessment</a></h4>
