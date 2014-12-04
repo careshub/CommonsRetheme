@@ -6,15 +6,28 @@
  * @subpackage Twenty_Twelve
  * @since Twenty Twelve 1.0
  */
+// If the post has no thumbnail, we need to do a few things differently.
+$has_thumbnail = has_post_thumbnail() ? true : false;
+$is_search = is_search();
+$is_category = is_category();
+// is_home() is true on the blog page, but not on the home page with a static home page.
+// is_front_page() is true on the static home page.
+$is_blog = is_home();
+$is_sticky = is_sticky();
+$is_first_post = ( $wp_query->current_post == 0 && ! is_paged() ) ? true : false ;
+
+$post_class = 'clear';
+if ( ! $has_thumbnail ) {
+	$post_class = $post_class . ' no-thumbnail';
+}
+if ( ! $is_sticky && ! $is_first_post ) {
+	$post_class = $post_class . ' compact';
+} else {
+	$post_class = $post_class . ' sticky';
+}
 ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class( 'clear' ); ?>>
-		<?php
-		// If the post has no thumbnail, we need to do a few things differently.
-		$has_thumbnail = has_post_thumbnail() ? true : false;
-		$is_search = is_search() ? true : false;
-		$is_category = is_category() ? true : false;
-		?>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( $post_class ); ?>>
 		<?php //if ( is_sticky() && is_home() && ! is_paged() ) : ?>
 		<!-- <div class="featured-post">
 			<?php // _e( 'Featured post', 'twentytwelve' ); ?>
@@ -22,22 +35,27 @@
 		<?php //endif; ?>
 		<header class="entry-header clear">
 			<?php if ( is_single() ) : ?>
-				<?php if ( $has_thumbnail ) :
-					the_post_thumbnail('feature-large');
-					endif; ?>
+				<?php if ( $has_thumbnail ) {
+					the_post_thumbnail( 'feature-large' );
+					} ?>
 				<h1 class="entry-title screamer <?php if ( ! $has_thumbnail ) echo 'no-thumbnail'; ?>"><?php the_title(); ?></h1>
 			<?php else : ?>
-				<?php
-				//Don't add the category flag if we're in a category or on the search results
-				if ( ! $is_category && ! $is_search ) {
-					echo '<span class="category-links visible-1000">' . get_the_category_list( __( '&#8203;', 'twentytwelve' ) ) . '</span>';
-				}
-				?>
-				<?php if ( $has_thumbnail && ! $is_search ) : ?>
+				<?php if ( $has_thumbnail && ! $is_search ) :
+					$thumbnail_size = $is_sticky ? 'feature-large' : 'feature-front-sub';
+					if ( $is_first_post ) {
+						$thumbnail_size = 'feature-large';
+					}
+					?>
 				   	<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
-				   	<?php the_post_thumbnail('feature-large'); ?>
+				   	<?php the_post_thumbnail( $thumbnail_size ); ?>
 				   	</a>
 			   	<?php endif; ?>
+		   	<?php
+			//Don't add the category flag if we're in a category or on the search results
+			if ( ! $is_category && ! $is_search ) {
+				echo '<p class="category-links">' . get_the_category_list( __( '&#8203;', 'twentytwelve' ) ) . '</p>';
+			}
+			?>
 			<h1 class="entry-title <?php if ( ! $has_thumbnail ) echo 'no-thumbnail'; ?>">
 				<?php // If this is the search results, flag the post type
 				if ( $is_search ) {
@@ -53,7 +71,7 @@
 			<?php //endif; // comments_open() ?>
 		</header><!-- .entry-header -->
 
-		<?php if ( $is_search || $is_category ) : // Display excerpts for search and category top story. ?>
+		<?php if ( $is_search || $is_category || $is_blog ) : // Display excerpts for search and category top story. ?>
 		<div class="entry-summary">
 			<?php the_excerpt(); ?>
 		</div><!-- .entry-summary -->

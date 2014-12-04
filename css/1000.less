@@ -89,58 +89,41 @@ body.blog, body.category, body.tag, body.single-post {
 				border-bottom: none;
 				border-top: 3px solid @ccblue;
 				.drop-shadow(0, 1px, 3px, 0, 0.25);
-				.entry-header {
-					margin-left: -28px;
-					margin-left: -2rem;
-					margin-right: -28px;
-					margin-right: -2rem;
-					margin-bottom: 0;
-
-					.category-links {
-						// display: block;
-						// margin-left: -28px;
-						// margin-left: -2rem;
-						// margin-bottom: 1.2em;
-						position: absolute;
-						a {
-							// display: inline-block;
-							// color: @white;
-							// background-color: @ccblue;
-							.font-size(1);
-							// line-height: 2;
-							// text-transform: uppercase;
-							padding: 0 1em;
+				.entry-meta {
+				}
+				&.sticky {
+					// Sticky articles get large images
+					.entry-header {
+						margin-left: -28px;
+						margin-left: -2rem;
+						margin-right: -28px;
+						margin-right: -2rem;
+						.entry-title {
+							margin-left: 28px;
+							margin-left: 2rem;
+							margin-right: 28px;
+							margin-right: 2rem;
+							margin-top: 0;
 						}
-						// &+.entry-title {
-						// 	margin-top: 2em;
-						// }
-					}
-					img {
-						box-shadow: none;
-						border-radius: 0;
-					}
-					.entry-title {
-						margin-left: 28px;
-						margin-left: 2rem;
-						margin-right: 28px;
-						margin-right: 2rem;
-						margin-top: 0;
-						&.no-thumbnail {
-							// margin-top: 42px;
-							// margin-top: 3rem;
+						.category-links {
+				 			margin: 0 28px 5.6px;
+				 			margin: 0 2rem .4rem;
+							a {
+								// display: inline-block;
+								// color: @white;
+								// background-color: @ccblue;
+								.font-size(1);
+								// line-height: 2;
+								// text-transform: uppercase;
+								// padding: 0 1em;
+							}
 						}
 					}
 				}
-				.entry-meta {
-					// background-color: lighten( @graylight, 4% );
-					// margin: 0 -2em -2em;
-					// padding: .5em 2em 2em;
-					// .category-links {
-					// 	margin-left: 0;
-					// 	a {
-					// 		padding
-					// 	}
-					// }
+				&.compact {
+					.entry-header {
+						margin-top: 2em;
+					}
 				}
 			}
 		}
@@ -196,7 +179,7 @@ body.single-post {
 			article {
 				margin-bottom: 2em;
 				.entry-header {
-					margin: 0 -28px;
+					margin: 0 -28px 2em;
 					h1 {
 						padding-left: 28px;
 					}

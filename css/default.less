@@ -95,16 +95,23 @@ img.img-border {
 	 	.entry-header {
 	 		.category-links {
 	 			// display: block;
-	 			margin-bottom: 1.2em;
+	 			margin-bottom: .6em;
 	 			a {
 	 				display: inline-block;
-	 				color: @white;
-	 			    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-	 				background-color: @ccblue;
-	 				.font-size(.9);
-	 				line-height: 2;
-	 				text-transform: uppercase;
-	 				padding: 0 0.8em;
+	 				margin-right: 1em;
+	 				font-weight: 700;
+	 				color: @graymid;
+	 			 //    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	 				// background-color: @ccblue;
+	 				.font-size(1);
+	 				transition: color .3s ease ;
+
+	 				// line-height: 2;
+	 				// text-transform: uppercase;
+	 				// padding: 0 0.8em;
+	 				&:hover {
+	 					color: @ccblue;
+	 				}
 	 			}
 	 		}
 	 		img {
@@ -112,7 +119,18 @@ img.img-border {
 	 		}
 	 		.entry-title {
 				margin-top: 0;
+				margin-bottom: 0;
 	 		}
+	 	}
+ 		&.no-thumbnail {
+ 			.entry-header {
+	 			margin-top: 2em;
+	 		}
+ 		}
+	 	.entry-summary {
+			p {
+		 		color: lighten( @graydark, 10 );
+		 	}
 	 	}
 	 	.entry-meta {
 	 		line-height: 2.2;
@@ -219,7 +237,7 @@ img.img-border {
  	}
  }
  // Add a stroke to the first article below the break on category pages
- body.category, body.blog {
+ body.category {
  	article.compact {
 	 	&:first-of-type {
 		 	border-top: 2px solid @ccblue;
@@ -751,10 +769,12 @@ h5 {
 		font-weight: normal;
 	}
 }
-.entry-header .datestamp{
+.entry-header {
+	.datestamp {
 	font-style: italic;
 	clear: left;
 	margin-bottom: 0;
+	}
 }
 .site-content .screamer {
 	background-color: @ccblue;
