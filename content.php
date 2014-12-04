@@ -9,10 +9,11 @@
 ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'clear' ); ?>>
-		<?php 
+		<?php
 		// If the post has no thumbnail, we need to do a few things differently.
 		$has_thumbnail = has_post_thumbnail() ? true : false;
-		$is_search = is_search() ? true : false ;
+		$is_search = is_search() ? true : false;
+		$is_category = is_category() ? true : false;
 		?>
 		<?php //if ( is_sticky() && is_home() && ! is_paged() ) : ?>
 		<!-- <div class="featured-post">
@@ -21,14 +22,14 @@
 		<?php //endif; ?>
 		<header class="entry-header clear">
 			<?php if ( is_single() ) : ?>
-				<?php if ( $has_thumbnail ) : 
+				<?php if ( $has_thumbnail ) :
 					the_post_thumbnail('feature-large');
 					endif; ?>
 				<h1 class="entry-title screamer <?php if ( ! $has_thumbnail ) echo 'no-thumbnail'; ?>"><?php the_title(); ?></h1>
 			<?php else : ?>
-				<?php 
+				<?php
 				//Don't add the category flag if we're in a category or on the search results
-				if ( ! is_category() && ! is_search() ) {
+				if ( ! $is_category && ! $is_search ) {
 					echo '<span class="category-links visible-1000">' . get_the_category_list( __( '&#8203;', 'twentytwelve' ) ) . '</span>';
 				}
 				?>
@@ -52,7 +53,7 @@
 			<?php //endif; // comments_open() ?>
 		</header><!-- .entry-header -->
 
-		<?php if ( $is_search ) : // Only display Excerpts for Search ?>
+		<?php if ( $is_search || $is_category ) : // Display excerpts for search and category top story. ?>
 		<div class="entry-summary">
 			<?php the_excerpt(); ?>
 		</div><!-- .entry-summary -->
@@ -61,20 +62,20 @@
 			<?php the_content( __( 'Read more', 'twentytwelve' ) ); ?>
 			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
-		<?php endif; ?>	
+		<?php endif; ?>
 		<?php
 		// if ( function_exists('bp_share_favorite_post_button') ) {
 		// 		bp_share_favorite_post_button( $post->ID );
 		// 	}
 		if ( is_single() ) :
-			if ( function_exists('cc_add_comment_button') ) { 
-						cc_add_comment_button(); 
+			if ( function_exists('cc_add_comment_button') ) {
+						cc_add_comment_button();
 				}
-			if ( function_exists('love_it_button') ) { 
-					love_it_button(); 
+			if ( function_exists('love_it_button') ) {
+					love_it_button();
 				}
-			if ( function_exists('bp_share_post_button') ) { 
-					bp_share_post_button(); 
+			if ( function_exists('bp_share_post_button') ) {
+					bp_share_post_button();
 				}
 		endif; // is single()
 		// if ( is_single() ) :

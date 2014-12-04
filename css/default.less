@@ -133,6 +133,9 @@ img.img-border {
  		&.compact {
 			margin-bottom: 24px;
 			margin-bottom: 1.71429rem;
+			p {
+		 		color: lighten( @graydark, 10 );
+		 	}
 		}
 		&.ultra-compact {
 			margin-bottom: 0;
@@ -210,11 +213,27 @@ img.img-border {
 		}
 	}
 }
- .blog, .archive{
+ .blog, .archive {
  	article {
 	 	border-bottom: 2px solid @ccblue;
  	}
  }
+ // Add a stroke to the first article below the break on category pages
+ body.category, body.blog {
+ 	article.compact {
+	 	&:first-of-type {
+		 	border-top: 2px solid @ccblue;
+			padding-top: 24px;
+		    padding-top: 1.71429rem;
+	 	}
+	 	.entry-title {
+	 		padding-left: 1.8em;
+	 		position: relative;
+	 		// margin-left: 0; // Need more selector juice for this.
+	 	}
+	}
+ }
+
 
 .comment-awaiting-moderation {
 	margin: 10px 0;
@@ -566,6 +585,7 @@ div.generic-button a:hover,
 }
 .widget-area {
 	margin: 0;
+	width: 100%;
 	// margin: 1.714285714rem 0;
 }
 //override top stroke
@@ -691,6 +711,15 @@ h5 {
 .site-content {
 	h1, h2, h3, h4, h5, h6 {
 		margin: 1em 0;
+		/* Don't hyphenate words in titles. */
+		-ms-word-break: keep-all;
+	    word-break: keep-all;
+		/* Non standard for webkit */
+	    word-break: keep-all;
+		-webkit-hyphens: none;
+		-moz-hyphens: none;
+	    -ms-hyphens: none;
+	    hyphens: none;
 	}
 	#screamer {
 		background-color: @ccblue;
@@ -1145,6 +1174,9 @@ body.home-page {
 	padding-bottom: 2em;
 	width:100%;
 	border-bottom: 1px solid @graylight;
+    img {
+		width:100%;
+	}
 }
 .half-block {
 	margin-bottom: 2em;
@@ -1170,13 +1202,13 @@ body.home-page {
 }
 .quarter-block, .third-block, .half-block {
 	.related-posts li {
-		    	margin-bottom: 1em;
-				a {
-		    	display: block;
-		    	line-height: 1.4;
-		    	text-align: left;
-			    }
-		    }
+    	margin-bottom: 1em;
+		a {
+    	display: block;
+    	line-height: 1.4;
+    	text-align: left;
+	    }
+    }
 }
 .card {
 	position: relative;
@@ -1198,6 +1230,25 @@ body.home-page {
 	z-index: 17;
 	padding: 2%;
 	background-color: @ccblue;
+	&.ccgreen {
+		background-color: @ccgreen;
+	}
+	&.ccred {
+		background-color: @ccred;
+	}
+}
+.title-ribbon {
+	position: absolute;
+	left: 0;
+	top: 0;
+	// z-index: 17;
+	padding: 1%;
+	background-color: @ccblue;
+	// margin-right:.4em;
+	// margin-bottom: 0;
+	.icon {
+		display: block;
+	}
 	&.ccgreen {
 		background-color: @ccgreen;
 	}

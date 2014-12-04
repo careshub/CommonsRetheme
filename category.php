@@ -47,10 +47,10 @@ $term_name = ( $term ) ? $term->name : '';
 					get_template_part( 'content', get_post_format() );
 				// Add an action we can use to inject groups, maps, etc.
 					?>
-					<div class="content-row clear">
+					<div class="content-row clear flex600">
 						<?php do_action( 'channel_page_after_featured_story', $term_id, $term_name ); ?>
 					</div>
-					<div class="content-row clear"> <!-- Begins the article compact list -->
+					<div class="content-row clear "> <!-- Begins the article compact list -->
 					<?php
 					$injected_block = true;
 				} else {
