@@ -11,23 +11,25 @@ get_header(); ?>
 
 			<div class="entry-content">
 				<div class="notice" style="border-left:8px solid red;background-color:#F3F3F3;padding: 1px 2em 1em;">
+					<?php /* ?>
 					<h4 style="color:black;margin-bottom:.5em;"><a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Vote and win a prize: </span>&emsp;Vote for Best New #SaludHeroes Video; Enter to Win T-Shirt, Jump Rope</a></h4>
                     <a href="<?php echo home_url( 'salud-america-video-contest' ); ?>" class="button">Vote now</a>
-                    <h4 style="color:black;margin-top: 1em;margin-bottom:.5em;"><a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Tweetchat 12/9:</span>&emsp;&ldquo;How to Get More Latinos Covered with Health Care&rdquo;</a></h4>
+                    <?php */ ?>
+                    <h4 style="color:black;margin-top: 1em;margin-bottom:.5em;"><a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Tweetchat 12/16:</span>&emsp;&ldquo;Latinos &amp; Heart Health&rdquo;</a></h4>
                     <a href="https://twitter.com/SaludToday" target="_blank" class="button" >Follow the conversation</a>&emsp;<a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" class="button">Learn more</a>
 				</div>
 				<h3 class="screamer sagreen">How can you fight Latino childhood obesity in your area?</h2>
-	
+
 				<?php sa_get_random_hero_video(); ?>
 
-				<p class="intro-text" style="font-size:1.2em;">Obesity threatens the health of Latino kids.</p> 
-                                    
+				<p class="intro-text" style="font-size:1.2em;">Obesity threatens the health of Latino kids.</p>
+
 				<p><strong>Growing Healthy Change</strong> brings you healthy changes happening in your community right now, and shows how to start your own change.</p>
-				 
+
 				<p>Find new policies, stories, and research to reduce Latino childhood obesity&mdash;like unlocking playgrounds after school&mdash;in your city, school, county, state, and nation.</p>
-                                
+
                 <p>Learn from our Salud Heroes how you can make a change, too.</p>
-                
+
                 <p>Get started!</p>
 
 				<div class="find-changes">
@@ -35,8 +37,8 @@ get_header(); ?>
 
 						<div style="margin-bottom:1.6em;">
 							<h4 style="margin-top:0;">By Keyword</h4>
-							<?php if ( function_exists('sa_searchpolicies') ) { 
-                        	sa_searchpolicies('/search-results'); 
+							<?php if ( function_exists('sa_searchpolicies') ) {
+                        	sa_searchpolicies('/search-results');
                         } ?>
 						</div>
 
@@ -44,13 +46,13 @@ get_header(); ?>
 
 						<div class="half-block">
 							<h4 style="margin-top:0;">By Topic</h4>
-							<?php 
+							<?php
 							$advocacy_targets = get_terms('sa_advocacy_targets');
 							foreach ($advocacy_targets as $target) {
 								?>
-								<div class="column1of3 mini-text"><a href="<?php cc_the_cpt_tax_intersection_link( 'sapolicies', 'sa_advocacy_targets', $target->slug ) ?>" title="<?php echo $target->description; ?>"><span class="<?php echo $target->slug; ?>x90"></span><br /><?php echo $target->name; ?></a></div>						
+								<div class="column1of3 mini-text"><a href="<?php cc_the_cpt_tax_intersection_link( 'sapolicies', 'sa_advocacy_targets', $target->slug ) ?>" title="<?php echo $target->description; ?>"><span class="<?php echo $target->slug; ?>x90"></span><br /><?php echo $target->name; ?></a></div>
 							<?php } //end foreach ?>
-							
+
 						</div>
 
 						<div class="half-block">
@@ -92,10 +94,10 @@ get_header(); ?>
 								?>
 									<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
 
-									<?php 
-									if ( has_post_thumbnail()) { 
+									<?php
+									if ( has_post_thumbnail()) {
 										//Use the post thumbnail if it exists
-										the_post_thumbnail('feature-front-sub'); 
+										the_post_thumbnail('feature-front-sub');
 										echo '<br />';
 									} else {
 										//Otherwise, use some stand-in images by advocacy target
@@ -122,7 +124,7 @@ get_header(); ?>
 												if ( false !== $key_to_delete ) {
 												    unset( $possible_targets[$key_to_delete] );
 												}
-											
+
 										endif; //check for empty terms
 
 										echo '<img src="' . get_stylesheet_directory_uri() . '/img/salud_america/advocacy_targets/' . $advo_target . 'x300.jpg" > ';
@@ -142,7 +144,7 @@ get_header(); ?>
 
 				<!-- <h3 class="screamer sablue">2. Learn from Success Stories</h3> -->
 				<!-- <div class="learn-from-success-stories">
-					
+
 				</div> -->
 
 				<h3 class="screamer sapurple">2. Learn to Create Change</h3>
@@ -157,7 +159,7 @@ get_header(); ?>
 							);
 						$ssquery = new WP_Query( $args );
 						while ( $ssquery->have_posts() ) {
-							
+
 							$ssquery->the_post();
 							global $post;
 							setup_postdata( $post );
@@ -166,11 +168,11 @@ get_header(); ?>
 							?>
 								<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
 
-								<?php 
-								if ( has_post_thumbnail()) { 
-									the_post_thumbnail('feature-front-sub'); 
+								<?php
+								if ( has_post_thumbnail()) {
+									the_post_thumbnail('feature-front-sub');
 									echo '<br />';
-									} 
+									}
 
 								the_title();
 								?>
@@ -197,7 +199,7 @@ get_header(); ?>
 	                    	<a href="/saresources/" class="button" title="Learn about healthy change.">Learn more</a></p>
 					</div>
 				</div>
-				
+
 				<h3 class="screamer sablue">3. Be a Salud Hero</h3>
 
 				<div class="row">
@@ -211,41 +213,41 @@ get_header(); ?>
 					</div>
 
 					<div class="half-block" style="margin-top:0;">
-			
+
 	                    <iframe width="450" height="250" src="//www.youtube.com/embed/8I4T08MONBA?rel=0;showinfo=0;controls=0" frameborder="0" allowfullscreen></iframe>
 	                         	</div>
 				</div>
 			</div>
 
 			<?php } elseif ( is_page('search-results') ) {
-				
+
 				if ( $_POST['requested_content'] == 'saresources' ) {
 
 					echo '<h3 class="screamer sablue">Searching for Resources</h3>';
 
-					if ( function_exists('sa_searchresources') ) { 
-                        	sa_searchresources('/search-results'); 
+					if ( function_exists('sa_searchresources') ) {
+                        	sa_searchresources('/search-results');
                         }
 
 			        $filter_args = array(
 								 'post_type' => 'saresources',
 								 's' => $_POST['saps'],
-								 'post__in' => $post_ids3,								 
+								 'post__in' => $post_ids3,
 								 );
 			        //var_dump($filter_args);
 			        $query2 = new WP_Query($filter_args);
-					
+
 					//***********Mike added commented this section because saresource results were showing twice**************
-			        // if($query2->have_posts()) { 
+			        // if($query2->have_posts()) {
 			      		// echo '<div class="taxonomy-policies">';
-			        	// while($query2->have_posts()) : 
+			        	// while($query2->have_posts()) :
 	                        // $query2->the_post();
-	                        // get_template_part( 'content', 'saresources-short' ); 
+	                        // get_template_part( 'content', 'saresources-short' );
 	                    // endwhile;
 	                    // echo '<div>';
 
-			        // } else { 
-	                    // echo "No Results - Search criteria too specific";	
+			        // } else {
+	                    // echo "No Results - Search criteria too specific";
 	                // }
 					//********************************************************************************************************
 
@@ -254,39 +256,39 @@ get_header(); ?>
 
 				echo '<h3 class="screamer sablue">Searching for Changes</h3>';
 
-				if ( function_exists('sa_searchpolicies') ) { 
-                    	sa_searchpolicies('/search-results'); 
+				if ( function_exists('sa_searchpolicies') ) {
+                    	sa_searchpolicies('/search-results');
                     }
 
 //				$filter_args = array(
 //					 'post_type' => 'sapolicies',
 //					 's' => $_POST['saps'],
-//					 'post__in' => $post_ids3,					 
+//					 'post__in' => $post_ids3,
 //					 'meta_query' => array(
 //										array(
 //											'key' => 'sa_policystage',
 //											'value' => $chk2
 //											 )
 //					 					 )
-//					 
+//
 //					 );
 //                    //var_dump($filter_args);
 //                    $query2 = new WP_Query($filter_args);
 //                    if($query2->have_posts()) {
 //                    	echo '<div class="taxonomy-policies">';
-// 
-//                        while($query2->have_posts()) : 
+//
+//                        while($query2->have_posts()) :
 //                            $query2->the_post();
-//                            get_template_part( 'content', 'sa-policy-short' ); 
+//                            get_template_part( 'content', 'sa-policy-short' );
 //                        endwhile;
 //                        echo '<div>';
 //
-//                    
-//                    } else { 
-//                        echo "No Results - Search criteria too specific";	
+//
+//                    } else {
+//                        echo "No Results - Search criteria too specific";
 //                    }
                 }
-			                                  
+
 
 			} elseif (is_page('sapolicies')) {
 				//Moved functionality to policies archive
@@ -296,18 +298,18 @@ get_header(); ?>
                                  <div class="policy-search">
   					<!--<form id="sa-policy-search" class="standard-form" method="get" action="/search-results">-->
   					<h3 class="screamer sagreen">Search for Changes by Keyword</h3>
-                                        <?php if ( function_exists('sa_searchpolicies') ) { 
-                                                sa_searchpolicies('/search-results'); 
+                                        <?php if ( function_exists('sa_searchpolicies') ) {
+                                                sa_searchpolicies('/search-results');
                                                 } ?>
-  				</div><?php 
+  				</div><?php
 
                 if ( function_exists('sa_location_search') ) {
 	                 	sa_location_search();
 	                } ?>
-                                        
+
 				<div class="browse-topics">
 					<h3 class="screamer sablue">Browse Changes by Topic</h3>
-					<?php 
+					<?php
 						$args = array(
 							'taxonomy' => 'sa_advocacy_targets'
 						);
@@ -315,11 +317,11 @@ get_header(); ?>
 						$all_cats = array();
 						foreach ($categories as $cat) {
 							$all_cats[] = $cat->slug;
-						} 
+						}
 						echo '<div class="row clear">';
 						$i=0;
 
-						foreach ($all_cats as $cat_slug) { 
+						foreach ($all_cats as $cat_slug) {
 							//Loop through each advocacy target
 							$cat_object = get_term_by('slug', $cat_slug, 'sa_advocacy_targets');
 							// print_r($cat_object);
@@ -334,14 +336,14 @@ get_header(); ?>
 							</a>
 							<p><?php echo $section_description; ?></p>
 						</div>
-						<?php 
+						<?php
 						if ( $i%2 == 0 ) {
 							echo '</div>
 							<div class="row clear">';
 
 					}
 
-						} // End advocacy target loop 
+						} // End advocacy target loop
 						echo '</div>';
 						 ?>
 
@@ -350,19 +352,19 @@ get_header(); ?>
 <?php */
 			}  elseif (is_page('sa-policy-map-search')) {
 				sa_location_search();
-			
+
 			}  elseif (is_child(150)) {
 
 				//This section is being replaced by the taxonomy pages. See archive-sapolicies-sa_advocacy_targets.php.
-                           
+
 				//The number above is the id of the parent page, is 11911 on the dev server.
 				//It's 150 on DC's local install
 				/***
-				 
+
                             if ( function_exists('SA_topics') ) {
-                            	SA_topics();} 
+                            	SA_topics();}
                             	?>
-                                        	-                            
+                                        	-
 	                                        <div class="policy-search-home">
 							<h3>Search for Changes in Progress on This Topic</h3>
 							<?php sa_searchpolicies(); ?>
@@ -406,17 +408,17 @@ get_header(); ?>
                                 $page_slug = get_post( $post )->post_name;
 
 				$args = array(
-					'post_type' => 'sapolicies', 
+					'post_type' => 'sapolicies',
 					'paged' => $paged,
                                         'showposts' => '5',
 					'sa_advocacy_targets' => $page_slug,
 				);
 
 				$list_of_policies = new WP_Query( $args ); ?>
-                                        
-                                <!-- NEED FIX TO PULL THE RIGHT CONTENT-->        
-                                
-                                <div>        
+
+                                <!-- NEED FIX TO PULL THE RIGHT CONTENT-->
+
+                                <div>
 				<div style="width:60%" class="half-block"><h3>Latest Changes: </h3>
 
 				<?php
@@ -425,10 +427,10 @@ get_header(); ?>
 					get_template_part( 'content', 'sa-policy-short' );
 					// comments_template( '', true );
 				endwhile; // end of the loop.
-				
+
 				// Add comment form to these subpages.
 				wp_reset_query();
-				
+
                                 ?>
                                 </div>
                                 <div style="width:25%" class="half-block">
@@ -437,31 +439,31 @@ get_header(); ?>
                                 <div style="padding-left:15px"><a href="/salud-america/share-your-own-stories/">Add a change</a> in your area!<br/><br/><a href="/salud-america/share-your-own-stories/"></div>
                                     <img class=" wp-image-12449 aligncenter" alt="Health" src="/wp-content/uploads/2013/08/images.jpg" width="120" height="120" /></a>
                                 <br/>
-                                </div> 
-                                  <br/>    
+                                </div>
+                                  <br/>
                                 <div style="background-color:rgb(240,240,240);border-width: 3px; border-style: solid;border-color: lightgrey;">
                                 <h3 style='text-align:center; padding-top:0px'>Success Story</h3>
                                 <div style="padding-left:15px;padding-right:5px">
                                     <?php
-                                        $cat_object = get_term_by('slug', $cat_slug, 'sa_advocacy_targets');    
-                                    
+                                        $cat_object = get_term_by('slug', $cat_slug, 'sa_advocacy_targets');
+
                                         $success = array(
-					'post_type' => 'saresources', 
+					'post_type' => 'saresources',
 					'sa_resource_cat' => 'success-stories',
                                         'paged' => $paged,
                                         'showposts' => '1',
 					'sa_advocacy_targets' => $page_slug,
                                          );
-                                        
-                                        
+
+
                                      $feat_success = new WP_Query( $success );
                                      while ( $feat_success->have_posts() ): $feat_success->the_post();
                                      $success[] = $post->ID;
                                      //Use the template with the featured image thumbnail.
                                      ?><h2 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></h2>
-                                     <?php 
+                                     <?php
                                             if ( has_post_thumbnail() ) {
-						the_post_thumbnail('feature-front-sub'); 
+						the_post_thumbnail('feature-front-sub');
 						}?></a><?php
                                      endwhile
                                          ?><br/><br/>
@@ -474,10 +476,10 @@ get_header(); ?>
                                  <h3 style='text-align:center; padding-top:0px'>Resources</h3>
                                  <div style="padding-left:15px;padding-right:5px">
                                     <?php
-                                        $cat_object = get_term_by('slug', $cat_slug, 'sa_advocacy_targets');    
-                                    
+                                        $cat_object = get_term_by('slug', $cat_slug, 'sa_advocacy_targets');
+
                                         $resources = array(
-					'post_type' => 'saresources', 
+					'post_type' => 'saresources',
                                         'post__not_in' => $success,
                                         'paged' => $paged,
                                         'showposts' => '1',
@@ -487,19 +489,19 @@ get_header(); ?>
                                      while ( $feat_resource->have_posts() ): $feat_resource->the_post();
                                      //Use the template with the featured image thumbnail.
                                      ?><h2 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></h2>
-                                     <?php 
+                                     <?php
                                             if ( has_post_thumbnail() ) {
-						the_post_thumbnail('feature-front-sub'); 
+						the_post_thumbnail('feature-front-sub');
 						}?></a><?php
                                      endwhile
                                          ?><br/><br/>
                                                         <a href="/salud-america/saresourcespage/">See more</a>
                                    <br/><br/>
-                                 </div>   
+                                 </div>
                                 </div>
-                                
+
                                 </div>
-                                </div>    
+                                </div>
                                 <?php
                                 comments_template( '', true );
              */
@@ -509,10 +511,10 @@ get_header(); ?>
 				while ( have_posts() ) : the_post();
 					get_template_part( 'content', 'page-notitle' );
 					comments_template( '', true );
-				endwhile; // end of the loop. 
+				endwhile; // end of the loop.
 
 			}
-			
+
 			?>
 
 
