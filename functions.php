@@ -1128,3 +1128,13 @@ function cc_wp_show_hooked_filters(){
   echo '</pre>';
 }
 // add_action( 'wp_head', 'cc_wp_show_hooked_filters' );
+
+// DISABLE CERTAIN FIELDS
+
+function enqueue_gf_odh_chc() {
+	wp_register_script( 'gf-disable', get_stylesheet_directory_uri().'/js/gravity-forms-odh-chc.js">', array('jquery'), '1.0', true  );
+	wp_enqueue_script('gf-disable');
+	
+}
+
+add_action( 'wp_enqueue_scripts', 'enqueue_gf_odh_chc' );
