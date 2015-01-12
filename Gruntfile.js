@@ -15,16 +15,16 @@ module.exports = function(grunt) {
             },
             css: {
 				files: ['css/*.less'],
-                tasks: ['less:cleancss']
+                tasks: ['less:cleancss', 'autoprefixer']
             },
-            images: {
-                files: ['img/**/*.{png,jpg,gif}'],
-                tasks: ['imagemin']
-            },
-            livereload: {
-                options: { livereload: true },
-                files: ['style.css', 'js/*.js', 'img/**/*.{png,jpg,jpeg,gif,webp,svg}']
-            }
+            // images: {
+            //     files: ['img/**/*.{png,jpg,gif}'],
+            //     tasks: ['imagemin']
+            // },
+            // livereload: {
+            //     options: { livereload: true },
+            //     files: ['style.css', 'js/*.js', 'img/**/*.{png,jpg,jpeg,gif,webp,svg}']
+            // }
         },
 
 		less: {
@@ -51,22 +51,23 @@ module.exports = function(grunt) {
                 expand: true,
                 flatten: true,
                 src: '*.css',
-//                 dest: ''
+                dest: '' //replaces source files
             },
         },
 
         // css minify
-        cssmin: {
-            options: {
-                keepSpecialComments: 1
-            },
-            minify: {
-                expand: true,
-                cwd: 'assets/styles/build',
-                src: ['*.css', '!*.min.css'],
-                ext: '.css'
-            }
-        },
+        // Using less:cleancss to do this.
+        // cssmin: {
+        //     options: {
+        //         keepSpecialComments: 1
+        //     },
+        //     minify: {
+        //         expand: true,
+        //         cwd: 'assets/styles/build',
+        //         src: ['*.css', '!*.min.css'],
+        //         ext: '.css'
+        //     }
+        // },
 
         // javascript linting with jshint
         jshint: {

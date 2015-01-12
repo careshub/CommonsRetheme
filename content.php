@@ -16,14 +16,18 @@ $is_blog = is_home();
 $is_sticky = is_sticky();
 $is_first_post = ( $wp_query->current_post == 0 && ! is_paged() ) ? true : false ;
 
+// Set post class
 $post_class = 'clear';
 if ( ! $has_thumbnail ) {
-	$post_class = $post_class . ' no-thumbnail';
+	$post_class .= ' no-thumbnail';
 }
-if ( ! $is_sticky && ! $is_first_post ) {
-	$post_class = $post_class . ' compact';
+if ( $is_sticky ) {
+	$post_class .= ' sticky';
+}
+if ( $is_first_post ) {
+	$post_class .= ' first-article';
 } else {
-	$post_class = $post_class . ' sticky';
+	$post_class .= ' compact';
 }
 ?>
 
