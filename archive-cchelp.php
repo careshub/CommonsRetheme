@@ -591,15 +591,19 @@ $group_posts = new WP_Query($args);
 				</div>				
 			</div>	
 			
+			<div style="width:895px;">
+				<div id="guideGroups" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to Hubs on the Commons">
+					<span class="guidebook-text">Hubs on the Commons</span>
+				</div>			
+			</div>
+			
 			<?php 
 			if ($bp_user_role == 'administrator') {
 			?>			
 			
 			
 			<div style="width:895px;">
-				<div id="guideGroups" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to Hubs on the Commons">
-					<span class="guidebook-text">Hubs on the Commons</span>
-				</div>
+
 				<div id="guideAdmin" class="guidebook" style="background-color:#008eaa;cursor:pointer;border:solid 2px #008eaa;" title="Go to the Administrator Guidebook">
 					<span class="guidebook-text">Being an Administrator</span>
 				</div>
