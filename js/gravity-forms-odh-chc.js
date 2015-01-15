@@ -3,6 +3,7 @@ jQuery(document).ready(function($){
 	$( ".gf_ohio_question" ).css( "min-width", "300px" );	
 	$( ".gf_ohio_entrybox" ).css( "min-width", "300px" );	
 		
+	//Section I	
 	var arrSec1 = new Array();
 	for (var i=1; i < 23; i++) {
 		arrSec1.push(i);	
@@ -49,6 +50,89 @@ jQuery(document).ready(function($){
 			$("li.sec1_eventQ4_T input.small").val(col4_tot);
 			$("li.sec1_eventAll_T input.small").val(col5_tot);	
 	}
+	
+	//Section II
+	var arrSec2 = new Array();
+	for (var j=1; j < 75; j++) {
+		arrSec2.push(j);	
+	}	
+	
+	$.each( arrSec2, function( j, val2 ) {	
+		if( !$("li.sec2_" + val2 + " input.small").val() ) {
+			$("li.sec2_" + val2 + " input.small").val(0);
+		}
+		if ( !$("li.sec2_" + val2 + "_T input.small").val() ) {
+			var ttl2 = parseInt($("li.sec2_" + val2 + "_1 input.small").val()) + parseInt($("li.sec2_" + val2 + "_2 input.small").val()) + parseInt($("li.sec2_" + val2 + "_3 input.small").val()) + parseInt($("li.sec2_" + val2 + "_4 input.small").val());
+			$("li.sec2_" + val2 + "_T input.small").val(ttl2);		
+		}
 		
+		$("li.sec2_" + val2 + " input.small").blur(function() {
+			var ttl2 = parseInt($("li.sec2_" + val2 + "_1 input.small").val()) + parseInt($("li.sec2_" + val2 + "_2 input.small").val()) + parseInt($("li.sec2_" + val2 + "_3 input.small").val()) + parseInt($("li.sec2_" + val2 + "_4 input.small").val());
+			$("li.sec2_" + val2 + "_T input.small").val(ttl2);		
+		
+
+		});
+		
+	});	
+	
+	//Section III
+	var arrSec3 = new Array();
+	for (var h=1; h < 75; h++) {
+		arrSec3.push(h);	
+	}	
+	
+	$.each( arrSec3, function( h, val3 ) {	
+		if( !$("li.sec3_" + val3 + " input.small").val() ) {
+			$("li.sec3_" + val3 + " input.small").val(0);
+		}
+		if ( !$("li.sec3_" + val3 + "_T input.small").val() ) {
+			var ttl3 = parseInt($("li.sec3_" + val3 + "_1 input.small").val()) + parseInt($("li.sec3_" + val3 + "_2 input.small").val()) + parseInt($("li.sec3_" + val3 + "_3 input.small").val()) + parseInt($("li.sec3_" + val3 + "_4 input.small").val());
+			$("li.sec3_" + val3 + "_T input.small").val(ttl3);		
+		}		
+		$("li.sec3_" + val3 + " input.small").blur(function() {
+			var ttl3 = parseInt($("li.sec3_" + val3 + "_1 input.small").val()) + parseInt($("li.sec3_" + val3 + "_2 input.small").val()) + parseInt($("li.sec3_" + val3 + "_3 input.small").val()) + parseInt($("li.sec3_" + val3 + "_4 input.small").val());
+			$("li.sec3_" + val3 + "_T input.small").val(ttl3);		
+		});		
+	});		
+	
+	//Section IV
+	var arrSec4 = new Array();
+	for (var m=1; m < 75; m++) {
+		arrSec4.push(m);	
+	}	
+	
+	$.each( arrSec4, function( m, val4 ) {	
+		if( !$("li.sec4_" + val4 + " input.small").val() ) {
+			$("li.sec4_" + val4 + " input.small").val(0);
+		}
+		if ( !$("li.sec4_" + val4 + "_T input.small").val() ) {
+			var ttl4 = parseInt($("li.sec4_" + val4 + "_1 input.small").val()) + parseInt($("li.sec4_" + val4 + "_2 input.small").val()) + parseInt($("li.sec4_" + val4 + "_3 input.small").val()) + parseInt($("li.sec4_" + val4 + "_4 input.small").val());
+			$("li.sec4_" + val4 + "_T input.small").val(ttl4);		
+		}		
+		$("li.sec4_" + val4 + " input.small").blur(function() {
+			var ttl4 = parseInt($("li.sec4_" + val4 + "_1 input.small").val()) + parseInt($("li.sec4_" + val4 + "_2 input.small").val()) + parseInt($("li.sec4_" + val4 + "_3 input.small").val()) + parseInt($("li.sec4_" + val4 + "_4 input.small").val());
+			$("li.sec4_" + val4 + "_T input.small").val(ttl4);		
+		});		
+	});	
+	
+	//Section V
+	var arrSec5 = new Array();
+	for (var p=1; p < 75; p++) {
+		arrSec5.push(p);	
+	}	
+	
+	$.each( arrSec5, function( p, val5 ) {	
+		if( !$("li.sec5_" + val5 + " input.small").val() ) {
+			$("li.sec5_" + val5 + " input.small").val(0);
+		}
+		if ( !$("li.sec5_" + val5 + "_T input.small").val() ) {
+			var ttl5 = parseInt($("li.sec5_" + val5 + "_1 input.small").val()) + parseInt($("li.sec5_" + val5 + "_2 input.small").val()) + parseInt($("li.sec5_" + val5 + "_3 input.small").val()) + parseInt($("li.sec5_" + val5 + "_4 input.small").val());
+			$("li.sec5_" + val5 + "_T input.small").val(ttl5);		
+		}		
+		$("li.sec5_" + val5 + " input.small").blur(function() {
+			var ttl5 = parseInt($("li.sec5_" + val5 + "_1 input.small").val()) + parseInt($("li.sec5_" + val5 + "_2 input.small").val()) + parseInt($("li.sec5_" + val5 + "_3 input.small").val()) + parseInt($("li.sec5_" + val5 + "_4 input.small").val());
+			$("li.sec5_" + val5 + "_T input.small").val(ttl5);		
+		});		
+	});			
 
 });
