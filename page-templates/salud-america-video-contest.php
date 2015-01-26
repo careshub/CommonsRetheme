@@ -4,26 +4,24 @@ Template Name: Salud America Video Contest
 */
 
 get_header(); 
-
-
 ?>
 
-	<div id="primary" class="site-content" style="width:100%;">
-		<div id="content" role="main">
-			<div class="entry-content">
-			<?php 
-			cc_sa_video_contest();
+<div id="primary" class="site-content" style="width:100%;">
+	<div id="content" role="main">
+		<div class="entry-content">
+		<?php 
+		cc_sa_video_contest();
+		
+		while ( have_posts() ) : the_post(); ?>
 			
-			while ( have_posts() ) : the_post(); ?>
-				
-				
-			<?php endwhile; // end of the loop. ?>
-			</div>
-		</div><!-- #content -->
-	</div><!-- #primary -->
-
+			
+		<?php endwhile; // end of the loop. ?>
+		</div>
+	</div><!-- #content -->
+</div><!-- #primary -->
 
 <?php get_footer(); ?>
+
 <?php
 function cc_sa_video_contest() {
 ?>
@@ -36,12 +34,13 @@ function cc_sa_video_contest() {
 		  -webkit-transform: scale(1.5);
 		}	
 	</style>
-	
-	<h3 class="screamer saorange">Vote for Best Video + Enter to Win a Free Salud America! T-shirt!</h3>
 
 	<div id="voting_booth">
 		<?php
 			//user must be registered with CC to vote
+			
+		if ( is_page('salud-america-video-contest') ) {
+			
 			if ( is_user_logged_in() ) {	 
 				$current_user = wp_get_current_user();
 				$uid = $current_user->ID;
@@ -102,7 +101,7 @@ function cc_sa_video_contest() {
 					</script>
 					<?php				
 				}					
-				
+                        
 				
 			} else {
 		?>		
@@ -134,17 +133,17 @@ function cc_sa_video_contest() {
 					if ( isset ( $_POST['sa_vid_vote'] ) ){
 						$vidtitle = "";
 						if ( $_POST['sa_vid_vote'] == 1 ) {
-							$vidtitle = 'A no-soda resolution in Texas';	
+							$vidtitle = 'Mud Run for Kids';	
 						} elseif ( $_POST['sa_vid_vote'] == 2 ) {
-							$vidtitle = 'Water on every desk for students in Cutler-Orosi, California';
+							$vidtitle = 'P.E. + Recess + Class Exercise = Activity Trifecta';
 						} elseif ( $_POST['sa_vid_vote'] == 3 ) {
-							$vidtitle = 'School swaps out sugary drinks in Fairfax, Virginia';
+							$vidtitle = 'Taking a "Brain Break" in Class';
 						} elseif ( $_POST['sa_vid_vote'] == 4 ) {
-							$vidtitle = 'Grocery Stores tag healthy foods in California';
+							$vidtitle = 'Calling on "P.E. Specialists"';
 						} elseif ( $_POST['sa_vid_vote'] == 5 ) {
-							$vidtitle = 'Fresh marketing at Latino corner store in Watsonville, California';
+							$vidtitle = 'Free Wheels for Kids';
 						} elseif ( $_POST['sa_vid_vote'] == 6 ) {						
-							$vidtitle = 'L.A. corner store gets marketing makeover inside and out';
+							$vidtitle = 'Biking to and from School';
 						}						
 						$arr = array(
 							'post_title' => $uid . "_SA_Video_Vote",
@@ -165,105 +164,151 @@ function cc_sa_video_contest() {
 						</script>						
 					<?php
 					}								
-				}
-			
-				?>		
-							<div id="ballot">
-							<h3>Below are six new Salud Hero videos.  Vote for your favorite by Dec. 10—and be entered into a drawing for a free Salud America! T-shirt and jump rope.</h3>
-							
-								<form id="sa_vid_contest_form" class="standard-form" method="post" action="">
-									<div class="row">		
-										<div class="half-block" style="text-align:center;">
-											A no-soda resolution in Texas<br /><br />											
-											<iframe width="400" height="250" src="//www.youtube.com/embed/bq_vtBpio30" frameborder="0" allowfullscreen></iframe><br />
-											<input id="cb1" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="1"> Vote
-										</div>
-										<div class="half-block" style="text-align:center;">
-											Water on every desk for students in Cutler-Orosi, California<br /><br />
-											<iframe width="400" height="250" src="//www.youtube.com/embed/CWdhjBDRS_s" frameborder="0" allowfullscreen></iframe><br />
-											<input id="cb2" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="2"> Vote
-										</div>			
-									</div>
-									<div class="row">	
-										<div class="half-block" style="text-align:center;">
-											School swaps out sugary drinks in Fairfax, Virginia<br /><br />
-											<iframe width="400" height="250" src="//www.youtube.com/embed/xLcjApFPKx8" frameborder="0" allowfullscreen></iframe><br />
-											<input id="cb3" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="3"> Vote
-										</div>										
-										<div class="half-block" style="text-align:center;">
-											Grocery Stores tag healthy foods in California<br /><br />
-											<iframe width="400" height="250" src="//www.youtube.com/embed/o6ZvBEKDv2c" frameborder="0" allowfullscreen></iframe><br />
-											<input id="cb4" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="4"> Vote
-										</div>			
-									</div>		
-									<div class="row">
-										<div class="half-block" style="text-align:center;">
-											Fresh marketing at Latino corner store in Watsonville, California<br /><br />
-											<iframe width="400" height="250" src="//www.youtube.com/embed/C8NnL9iTqd4" frameborder="0" allowfullscreen></iframe><br />
-											<input id="cb5" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="5"> Vote
-										</div>
-										<div class="half-block" style="text-align:center;">
-											L.A. corner store gets marketing makeover inside and out<br /><br />
-											<iframe width="400" height="250" src="//www.youtube.com/embed/XB9HoKRdcdo" frameborder="0" allowfullscreen></iframe><br />
-											<input id="cb6" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="6"> Vote
-										</div>										
-									</div>
-									<div style="width:100%;text-align:center;"><input type="submit" id="submitVote" name="submitVote" value="Submit your Vote" style="font-size:18pt;" /></div>
-								</form>
-							</div>
-							<div style="width:100%;text-align:center;margin-bottom:20px;"><a id="togglerules" style="text-decoration:underline;cursor:pointer;">See contest rules</a></div>
-							<div id="rules">
-							<p>This contest is open to everyone (except Salud America! staff or grantees). The contest begins on Nov. 19, 2014, and ends at 11:59 p.m. CST on Dec. 10, 2014. To enter, individuals must first register with the Salud America! Growing Healthy Change <a href="http://www.communitycommons.org/salud-america/" target="_blank">website</a>, and then click to vote for their favorite video among four potential choices. Each registered user may cast only one vote. Casting a vote enters the registered user into a drawing for a T-shirt and jump rope package. The drawing’s winner will be notified by Dec. 17, 2014, via email.  The winner must contact us directly at <a href="mailto:saludamerica@uthscsa.edu?subject=SA Video Contest">saludamerica@uthscsa.edu</a> to claim their prize package. Entry into drawing is subject to all applicable laws and regulations.</p>
-							</div>
-				<?php
-						
-						/* Restore original Post Data */
-						wp_reset_postdata();
-					
+				} 
 
-		?>
+				?>	
+        <h3 class="screamer saorange">Vote for Best Video + Enter to Win a Free Salud America! T-shirt!</h3>
+		<div id="ballot">
+			<p>Healthy kids need to move it, move it.</p>
+			<p>That's why <em>Salud America!</em> is presenting six new #Salud Heroes who helped five Latino kids more physical activity.</p>
+
+			<h3>Vote for your favorite play-promoting #SaludHeroes by Jan. 27, 2015, and be entered into a random drawing to win a free T-shirt and jump rope!</h3>
+							
+			<form id="sa_vid_contest_form" class="standard-form" method="post" action="">
+				<div class="row">		
+					<div class="half-block" style="text-align:center;">
+						Mud Run for Kids<br /><br />											
+						<iframe width="400" height="250" src="//www.youtube.com/embed/lmobfBUBVgc" frameborder="0" allowfullscreen></iframe><br />
+						<input id="cb1" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="1"> Vote
+					</div>
+					<div class="half-block" style="text-align:center;">
+						P.E. + Recess + Class Exercise = Activity Trifecta<br /><br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/PnnfjCorEsI" frameborder="0" allowfullscreen></iframe><br />
+						<input id="cb2" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="2"> Vote
+					</div>			
+				</div>
+				<div class="row">	
+					<div class="half-block" style="text-align:center;">
+						Taking a "Brain Break" in Class<br /><br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/7vO1cjPshxo" frameborder="0" allowfullscreen></iframe><br />
+						<input id="cb3" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="3"> Vote
+					</div>										
+					<div class="half-block" style="text-align:center;">
+						Calling on "P.E. Specialists"<br /><br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/o9upXLS7YN8" frameborder="0" allowfullscreen></iframe><br />
+						<input id="cb4" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="4"> Vote
+					</div>			
+				</div>		
+				<div class="row">
+					<div class="half-block" style="text-align:center;">
+						Free Wheels for Kids<br /><br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/DCcT87o0kCI" frameborder="0" allowfullscreen></iframe><br />
+						<input id="cb5" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="5"> Vote
+					</div>
+					<div class="half-block" style="text-align:center;">
+						Biking to and from School<br /><br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/ji_0Qqp7ibU" frameborder="0" allowfullscreen></iframe><br />
+						<input id="cb6" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="6"> Vote
+					</div>										
+				</div>
+				<div style="width:100%;text-align:center;"><input type="submit" id="submitVote" name="submitVote" value="Submit your Vote" style="font-size:18pt;" /></div>
+			</form>
+		</div> <!-- end #ballot -->
+		<p class="aligncenter"><a id="togglerules" style="text-decoration:underline;cursor:pointer;">See contest rules</a></p>
+
+		<div id="rules">
+			<p>This contest is open to everyone (except Salud America! staff or grantees). The contest begins on Jan. 13, 2015, and ends at 11:59 p.m. CST on Jan. 27, 2015. To enter, individuals must first register with the Salud America! Growing Healthy Change <a href="http://www.communitycommons.org/salud-america/" target="_blank">website</a>, and then click to vote for their favorite video among four potential choices. Each registered user may cast only one vote. Casting a vote enters the registered user into a drawing for a T-shirt and jump rope package. The drawing&rsquo;s winner will be notified by Dec. 17, 2014, via email.  The winner must contact us directly at <a href="mailto:saludamerica@uthscsa.edu?subject=SA Video Contest">saludamerica@uthscsa.edu</a> to claim their prize package. Entry into drawing is subject to all applicable laws and regulations.</p>
+		</div>
+        <div style=";margin-bottom:20px;"><h3>Past contests</h3></div>
+        <ul class="no-bullets">
+        	<li><strong><a href="/salud-america-video-contest-dec14">December 2014:</strong></a> Winner - "Grocery stores tag healthy foods in California"</li>
+        </ul>
+				<?php
+	} // end if ( is_page('salud-america-video-contest') )
+			
+	if (is_page('salud-america-video-contest-dec14')) {
+     ?>
+        <h3 class="screamer saorange">Video contest December 2014</h3>
+        <div class="row">
+	        <div  style="text-align:center;background-color:#cc3366;padding-top:5px;padding-bottom:1px">
+		        <h3 style="color:#fff">WINNER!</h3>
+	        </div>		
+			<div  style="text-align:center;border-style:solid;border-width:10px;border-color:#cc3366;margin-bottom:20px">
+				<br />Grocery Stores tag healthy foods in California<br /><br />											
+				<iframe width="520" height="325" src="//www.youtube.com/embed/o6ZvBEKDv2c" frameborder="0" allowfullscreen></iframe><br />
+			</div>
+		</div>
+	    <div style="text-align:left;background-color:#008eaa;"> 
+		    <h3 style="color:#fff; margin-left:10px">Watch all the videos in the contest</h3>
+	    </div> 
+
+	    <div class="row">
+            <div class="half-block" style="text-align:center;">
+				Water on every desk for students in Cutler-Orosi, California<br />
+				<iframe width="400" height="250" src="//www.youtube.com/embed/CWdhjBDRS_s" frameborder="0" allowfullscreen></iframe>
+            </div>	
+            <div class="half-block" style="text-align:center;">
+				L.A. corner store gets marketing makeover inside and out<br />
+				<iframe width="400" height="250" src="//www.youtube.com/embed/XB9HoKRdcdo" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="half-block" style="text-align:center;">
+        		Fresh marketing at Latino corner store in Watsonville, California<br />
+				<iframe width="400" height="250" src="//www.youtube.com/embed/C8NnL9iTqd4" frameborder="0" allowfullscreen></iframe>
+	        </div>
+	        <div class="half-block" style="text-align:center;">
+				A no-soda resolution in Texas<br />											
+				<iframe width="400" height="250" src="//www.youtube.com/embed/bq_vtBpio30" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="row">
+			<div class="half-block" style="text-align:center;">
+				School swaps out sugary drinks in Fairfax, Virginia<br />
+				<iframe width="400" height="250" src="//www.youtube.com/embed/xLcjApFPKx8" frameborder="0" allowfullscreen></iframe><br />
+			</div>											
+        </div>                               
+	<?php
+	} // End if (is_page('salud-america-video-contest-dec14'))											
+	/* Restore original Post Data */
+	wp_reset_postdata();
+	?>
 	</div>
 
-
-		<script type="text/javascript">
-		
-			jQuery( document ).ready(function($) {	
-				$("#rules").hide();
-				$( "#togglerules" ).click(function() {
-					$( "#rules" ).slideToggle( "slow", function() {
-						// Animation complete.
-					});
+	<script type="text/javascript">
+		jQuery( document ).ready(function($) {	
+			$("#rules").hide();
+			$( "#togglerules" ).click(function() {
+				$( "#rules" ).slideToggle( "slow", function() {
+					// Animation complete.
 				});
-				$(".sa_vid_cb").click(function() {
-					selectedBox = this.id;
-					$(".sa_vid_cb").each(function() {
-						if ( this.id == selectedBox )
-						{
-							this.checked = true;
-						}
-						else
-						{
-							this.checked = false;
-						};        
-					});
-				}); 
-				$( "#submitVote" ).click(function() {
-					var atLeastOneIsChecked = $('input[name="sa_vid_vote"]:checked').length > 0;
-					if (atLeastOneIsChecked == false) {
-						alert("In order to vote, you must check one of the boxes under a video.");
-						return false;
-					} else {
-						alert("Thank you! Your vote has been recorded and your name entered into the drawing for a free Salud America! T-shirt and jump rope!");
-						
-					}					
-				});	
+			});
+			$(".sa_vid_cb").click(function() {
+				selectedBox = this.id;
+				$(".sa_vid_cb").each(function() {
+					if ( this.id == selectedBox )
+					{
+						this.checked = true;
+					}
+					else
+					{
+						this.checked = false;
+					};        
+				});
+			}); 
+			$( "#submitVote" ).click(function() {
+				var atLeastOneIsChecked = $('input[name="sa_vid_vote"]:checked').length > 0;
+				if (atLeastOneIsChecked == false) {
+					alert("In order to vote, you must check one of the boxes under a video.");
+					return false;
+				} else {
+					alert("Thank you! Your vote has been recorded and your name entered into the drawing for a free Salud America! T-shirt and jump rope!");
+					
+				}					
+			});	
 
-			});			
-
-
-		</script>
-
-
-	
+		});			
+	</script>
 <?php
-}
+} // End function cc_sa_video_contest()
