@@ -37,7 +37,7 @@ if ( $is_first_post ) {
 			<?php // _e( 'Featured post', 'twentytwelve' ); ?>
 		</div> -->
 		<?php //endif; ?>
-		<header class="entry-header clear">
+		<header class="entry-header<?php if ( $is_first_post ) { echo " clear"; } ?>">
 			<?php if ( is_single() ) : ?>
 				<?php if ( $has_thumbnail ) {
 					the_post_thumbnail( 'feature-large' );
@@ -45,10 +45,10 @@ if ( $is_first_post ) {
 				<h1 class="entry-title screamer <?php if ( ! $has_thumbnail ) echo 'no-thumbnail'; ?>"><?php the_title(); ?></h1>
 			<?php else : ?>
 				<?php if ( $has_thumbnail && ! $is_search ) :
-					$thumbnail_size = $is_sticky ? 'feature-large' : 'feature-front-sub';
-					if ( $is_first_post ) {
-						$thumbnail_size = 'feature-large';
-					}
+					$thumbnail_size = $is_first_post ? 'feature-large' : 'feature-front-sub';
+					// if ( $is_first_post ) {
+					// 	$thumbnail_size = 'feature-large';
+					// }
 					?>
 				   	<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
 				   	<?php the_post_thumbnail( $thumbnail_size ); ?>

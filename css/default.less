@@ -58,26 +58,71 @@ img.img-border {
 .attachment-feature-large {
 	width: 100%;
 }
-.widget-area .widget a {
-	color: @ccblue;
-}
-.widget {
-	.widget-title {
-		.font-size(1.2);
-		.supplemental {
-			.font-size(.9);
-			font-weight: normal;
-			text-transform: none;
+// Widgets
+.widget-area {
+	.widget {
+		a, a:visited {
+			color: @ccblue;
+		}
+		.widget-title, h3 {
+			margin-bottom: 5.6px;
+			margin-bottom: 0.4rem;
+			.font-size(1.2);
+			line-height: 1.4;
+			hyphens: manual;
+			.supplemental {
+				.font-size(.9);
+				font-weight: normal;
+				text-transform: none;
+			}
+		}
+		.item-list {
+		    margin-top: 0;
+			.item {
+			    width: 70%;
+			}
+		}
+		.widget-error {
+			line-height: 1.8;
+			font-style: italic;
+			color: @graydark;
 		}
 	}
-	.item-list .item {
-	    width: 70%;
+	// Category navigation, used on blog, channel pages
+	.widget_categories {
+		li {
+			// display: inline-block;
+			// margin-right: 8.4px;
+			// margin-right: .6rem;
+		}
+		a {
+			display: inline-block;
+			color: @white;
+			background-color: lighten(desaturate(@ccblue, 30%), 18%);
+			.border-radius(12px);
+			.font-size(.9);
+			line-height: 1.8;
+			padding: 0 0.8em;
+			margin-bottom: 8.4px;
+			margin-bottom: .6rem;
+			transition: background-color .3s ease;
+			&:hover {
+				color: @white;
+				background-color: @ccblue;
+			}
+			&:visited {
+				color: @white;
+			}
+		}
 	}
-	.widget-error {
-		line-height: 1.8;
-		font-style: italic;
-		color: @graydark;
+	// Make sure the blog button link has some mass 
+	a[href="/blog"] {
+		font-weight: 700;
 	}
+	.widget_tag_cloud {
+		line-height: 1.2;
+	}
+
 }
 .entry-content th {
     color: #636363;
@@ -90,32 +135,20 @@ img.img-border {
 // layout basics
 .site-content {
 	article {
-	 	// border-bottom: 2px solid @ccblue;
-	 	// border-top: 2px solid @ccblue;
 	 	.entry-header {
 	 		.category-links {
-	 			// display: block;
 	 			margin-bottom: .6em;
 	 			a {
 	 				display: inline-block;
 	 				margin-right: 1em;
 	 				font-weight: 700;
 	 				color: @graymid;
-	 			 //    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-	 				// background-color: @ccblue;
 	 				.font-size(1);
-	 				transition: color .3s ease ;
-
-	 				// line-height: 2;
-	 				// text-transform: uppercase;
-	 				// padding: 0 0.8em;
+	 				transition: color .3s ease;
 	 				&:hover {
 	 					color: @ccblue;
 	 				}
 	 			}
-	 		}
-	 		img {
-	 			// margin-top: 2em;
 	 		}
 	 		.entry-title {
 				margin-top: 0;
@@ -135,16 +168,24 @@ img.img-border {
 	 	.entry-meta {
 	 		line-height: 2.2;
 	 		.category-links {
-	 			// display: block;
-	 			// margin-bottom: 1em;
 	 			a {
 	 				display: inline-block;
-	 				color: @white;
-	 				background-color: @ccblue;
-	 				.border-radius(12px);
-	 				.font-size(.9);
-	 				line-height: 1.8;
-	 				padding: 0 0.8em;
+					color: @white;
+					background-color: lighten(desaturate(@ccblue, 30%), 18%);
+					.border-radius(12px);
+					.font-size(.9);
+					line-height: 1.8;
+					padding: 0 0.8em;
+					margin-bottom: 8.4px;
+					margin-bottom: .6rem;
+					transition: background-color .3s ease;
+					&:hover {
+						color: @white;
+						background-color: @ccblue;
+					}
+					&:visited {
+						color: @white;
+					}
 	 			}
 	 		}
 	 	}
@@ -296,6 +337,9 @@ div.generic-button a,
 	text-decoration: none;
 	line-height: 1.6;
 	display: inline-block;
+}
+a.button.spacious {
+	padding: 8px 12px;
 }
 ul.button-nav li a {padding: 4px 10px;}
 button:hover,
