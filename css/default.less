@@ -58,26 +58,71 @@ img.img-border {
 .attachment-feature-large {
 	width: 100%;
 }
-.widget-area .widget a {
-	color: @ccblue;
-}
-.widget {
-	.widget-title {
-		.font-size(1.2);
-		.supplemental {
-			.font-size(.9);
-			font-weight: normal;
-			text-transform: none;
+// Widgets
+.widget-area {
+	.widget {
+		a, a:visited {
+			color: @ccblue;
+		}
+		.widget-title, h3 {
+			margin-bottom: 5.6px;
+			margin-bottom: 0.4rem;
+			.font-size(1.2);
+			line-height: 1.4;
+			hyphens: manual;
+			.supplemental {
+				.font-size(.9);
+				font-weight: normal;
+				text-transform: none;
+			}
+		}
+		.item-list {
+		    margin-top: 0;
+			.item {
+			    width: 70%;
+			}
+		}
+		.widget-error {
+			line-height: 1.8;
+			font-style: italic;
+			color: @graydark;
 		}
 	}
-	.item-list .item {
-	    width: 70%;
+	// Category navigation, used on blog, channel pages
+	.widget_categories {
+		li {
+			// display: inline-block;
+			// margin-right: 8.4px;
+			// margin-right: .6rem;
+		}
+		a {
+			display: inline-block;
+			color: @white;
+			background-color: lighten(desaturate(@ccblue, 30%), 18%);
+			.border-radius(12px);
+			.font-size(.9);
+			line-height: 1.8;
+			padding: 0 0.8em;
+			margin-bottom: 8.4px;
+			margin-bottom: .6rem;
+			transition: background-color .3s ease;
+			&:hover {
+				color: @white;
+				background-color: @ccblue;
+			}
+			&:visited {
+				color: @white;
+			}
+		}
 	}
-	.widget-error {
-		line-height: 1.8;
-		font-style: italic;
-		color: @graydark;
+	// Make sure the blog button link has some mass 
+	a[href="/blog"] {
+		font-weight: 700;
 	}
+	.widget_tag_cloud {
+		line-height: 1.2;
+	}
+
 }
 .entry-content th {
     color: #636363;
@@ -90,49 +135,66 @@ img.img-border {
 // layout basics
 .site-content {
 	article {
-	 	// border-bottom: 2px solid @ccblue;
-	 	// border-top: 2px solid @ccblue;
 	 	.entry-header {
 	 		.category-links {
-	 			// display: block;
-	 			margin-bottom: 1.2em;
+	 			margin-bottom: .6em;
 	 			a {
 	 				display: inline-block;
-	 				color: @white;
-	 			    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-	 				background-color: @ccblue;
-	 				.font-size(.9);
-	 				line-height: 2;
-	 				text-transform: uppercase;
-	 				padding: 0 0.8em;
+	 				margin-right: 1em;
+	 				font-weight: 700;
+	 				color: @graymid;
+	 				.font-size(1);
+	 				transition: color .3s ease;
+	 				&:hover {
+	 					color: @ccblue;
+	 				}
 	 			}
-	 		}
-	 		img {
-	 			// margin-top: 2em;
 	 		}
 	 		.entry-title {
 				margin-top: 0;
+				margin-bottom: 0;
 	 		}
+	 	}
+ 		&.no-thumbnail {
+ 			.entry-header {
+	 			margin-top: 2em;
+	 		}
+ 		}
+	 	.entry-summary {
+			p {
+		 		color: lighten( @graydark, 10 );
+		 	}
 	 	}
 	 	.entry-meta {
 	 		line-height: 2.2;
 	 		.category-links {
-	 			// display: block;
-	 			// margin-bottom: 1em;
 	 			a {
 	 				display: inline-block;
-	 				color: @white;
-	 				background-color: @ccblue;
-	 				.border-radius(12px);
-	 				.font-size(.9);
-	 				line-height: 1.8;
-	 				padding: 0 0.8em;
+					color: @white;
+					background-color: lighten(desaturate(@ccblue, 30%), 18%);
+					.border-radius(12px);
+					.font-size(.9);
+					line-height: 1.8;
+					padding: 0 0.8em;
+					margin-bottom: 8.4px;
+					margin-bottom: .6rem;
+					transition: background-color .3s ease;
+					&:hover {
+						color: @white;
+						background-color: @ccblue;
+					}
+					&:visited {
+						color: @white;
+					}
 	 			}
 	 		}
 	 	}
  		&.compact {
-			margin-bottom: 24px;
-			margin-bottom: 1.71429rem;
+			// margin-bottom: 24px;
+			// margin-bottom: 1.71429rem;
+			p {
+		 		color: lighten( @graydark, 10 );
+		 	}
 		}
 		&.ultra-compact {
 			margin-bottom: 0;
@@ -142,7 +204,6 @@ img.img-border {
 			border-bottom: none;
 		}
 	}
-
 
 	.entry-content {
 		// Post attachments -- used in Salud area
@@ -210,11 +271,44 @@ img.img-border {
 		}
 	}
 }
- .blog, .archive{
+ .blog, .archive {
  	article {
 	 	border-bottom: 2px solid @ccblue;
  	}
  }
+ // In archive views, regularize the spacing below a post
+ body.blog, body.category, body.tag {
+ 	article {
+ 		margin-bottom: 42px;
+ 		margin-bottom: 3rem;
+ 	}
+ 	// Containers for featured maps/reports on category pages
+ 	.site-content .half-block {
+ 		padding-bottom: 14px;
+ 		padding-bottom: 1rem;
+ 		margin-bottom: 42px;
+ 		margin-bottom: 3rem;
+ 	}
+
+ }
+ // Add a stroke to the first article below the break on category pages
+ body.category {
+ 	article.compact {
+	 	// &:first-of-type {
+		 // 	border-top: 2px solid @ccblue;
+			// padding-top: 24px;
+		 //    padding-top: 1.71429rem;
+	 	// }
+	 	.entry-title {
+	 		// padding-left: 1.8em;
+	 		// position: relative;
+	 	}
+	}
+	.cc-map-widget{
+		padding: 0;
+	}
+ }
+
 
 .comment-awaiting-moderation {
 	margin: 10px 0;
@@ -242,6 +336,9 @@ div.generic-button a,
 	text-decoration: none;
 	line-height: 1.6;
 	display: inline-block;
+}
+a.button.spacious {
+	padding: 8px 12px;
 }
 ul.button-nav li a {padding: 4px 10px;}
 button:hover,
@@ -566,6 +663,7 @@ div.generic-button a:hover,
 }
 .widget-area {
 	margin: 0;
+	width: 100%;
 	// margin: 1.714285714rem 0;
 }
 //override top stroke
@@ -691,6 +789,15 @@ h5 {
 .site-content {
 	h1, h2, h3, h4, h5, h6 {
 		margin: 1em 0;
+		/* Don't hyphenate words in titles. */
+		-ms-word-break: keep-all;
+	    word-break: keep-all;
+		/* Non standard for webkit */
+	    word-break: keep-all;
+		-webkit-hyphens: none;
+		-moz-hyphens: none;
+	    -ms-hyphens: none;
+	    hyphens: none;
 	}
 	#screamer {
 		background-color: @ccblue;
@@ -722,10 +829,12 @@ h5 {
 		font-weight: normal;
 	}
 }
-.entry-header .datestamp{
+.entry-header {
+	.datestamp {
 	font-style: italic;
 	clear: left;
 	margin-bottom: 0;
+	}
 }
 .site-content .screamer {
 	background-color: @ccblue;
@@ -897,7 +1006,7 @@ ul.item-list li .share-buttons-below li {
 /**
 * Sprites, icons (general)
 */
-.facebookx60, .searchx18, .userx18, .userx21, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24, .linkedinx24, .emailx24, .collaborationx24, .mapx24, .reportx24, .collaborationx40, .mapx40, .reportx40, .linkedinx60, .gplusx60, .comment-icon, .love-it-icon-loved, .love-it-icon, .share-icon, .linkx24 {
+.facebookx60, .searchx18, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24, .userx18, .userx21, .linkedinx24, .emailx24, .collaboratex24, .mapx24, .reportx24, .collaboratex40, .mapx40, .reportx40, .linkedinx60, .gplusx60, .share-icon, .comment-icon, .love-it-icon-loved, .love-it-icon, .linkx24, .mapx40-white, .mapx24-white, .collaboratex40-white, .collaboratex24-white, .reportx40-white, .reportx24-white {
 	background-image: url(img/sprites.png);
 	background-repeat: no-repeat;
 }
@@ -1044,6 +1153,41 @@ ul.item-list li .share-buttons-below li {
 	width: 24px;
 	height: 24px;
 }
+.mapx40-white{
+	background-position: -150px 0;
+	width: 40px;
+	height: 40px;
+}
+
+.mapx24-white{
+	background-position: -150px -50px ;
+	width: 24px;
+	height: 24px;
+}
+
+.collaboratex40-white{
+	background-position: -150px -85px ;
+	width: 40px;
+	height: 40px;
+}
+
+.collaboratex24-white{
+	background-position: -150px -135px ;
+	width: 24px;
+	height: 24px;
+}
+
+.reportx40-white{
+	background-position: -150px -175px ;
+	width: 40px;
+	height: 40px;
+}
+
+.reportx24-white{
+	background-position: -150px -235px ;
+	width: 24px;
+	height: 24px;
+}
 
 
 .visible-mini {
@@ -1114,6 +1258,9 @@ body.home-page {
 		margin-bottom: 0;
 		padding-bottom: 0;
 	}
+    img {
+		width: 100%;
+	}
 }
 .half-block {
 	margin-bottom: 2em;
@@ -1124,7 +1271,7 @@ body.home-page {
 		padding-bottom: 0;
 	}
 	img {
-		// max-width:90%;
+		width: 100%;
 	}
 }
 .sixth-block {
@@ -1139,13 +1286,59 @@ body.home-page {
 }
 .quarter-block, .third-block, .half-block {
 	.related-posts li {
-		    	margin-bottom: 1em;
-				a {
-		    	display: block;
-		    	line-height: 1.4;
-		    	text-align: left;
-			    }
-		    }
+    	margin-bottom: 1em;
+		a {
+    	display: block;
+    	line-height: 1.4;
+    	text-align: left;
+	    }
+    }
+}
+.card {
+	position: relative;
+	background-color: @white;
+	.drop-shadow();
+	border-top: 3px solid @ccblue;
+	.entry-content{
+		margin: 1em;
+		.entry-title a {
+			text-decoration: none;
+			font-weight: 400;
+		}
+	}
+}
+.corner-ribbon {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 17;
+	padding: 2%;
+	background-color: @ccblue;
+	&.ccgreen {
+		background-color: @ccgreen;
+	}
+	&.ccred {
+		background-color: @ccred;
+	}
+}
+.title-ribbon {
+	position: absolute;
+	left: 0;
+	top: 0;
+	// z-index: 17;
+	padding: 1%;
+	background-color: @ccblue;
+	// margin-right:.4em;
+	// margin-bottom: 0;
+	.icon {
+		display: block;
+	}
+	&.ccgreen {
+		background-color: @ccgreen;
+	}
+	&.ccred {
+		background-color: @ccred;
+	}
 }
 // Columns
 .column1of3 {

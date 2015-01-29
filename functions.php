@@ -207,9 +207,36 @@ register_sidebar( array(
 	) );
 
 register_sidebar( array(
-    'name' => __( 'Site Search Sidebar Widget Area', 'ccommons' ),
+    'name' => __( 'Site Search Sidebar', 'ccommons' ),
     'id' => 'site_search',
     'description' => __( 'Site Search Sidebar Widget Area', 'ccommons' ),
+    'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+    'after_widget' => '</nav>',
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
+register_sidebar( array(
+    'name' => __( 'Blog Sidebar', 'ccommons' ),
+    'id' => 'blog_sidebar',
+    'description' => __( 'Displayed on the main blog page', 'ccommons' ),
+    'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+    'after_widget' => '</nav>',
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
+register_sidebar( array(
+    'name' => __( 'Category Archive Sidebar', 'ccommons' ),
+    'id' => 'category_sidebar',
+    'description' => __( 'Displayed on the Channel (category) archive page', 'ccommons' ),
+    'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+    'after_widget' => '</nav>',
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
+register_sidebar( array(
+    'name' => __( 'Tag Archive Sidebar', 'ccommons' ),
+    'id' => 'tag_sidebar',
+    'description' => __( 'Displayed on the Tag archive page', 'ccommons' ),
     'before_widget' => '<nav id="%1$s" class="widget %2$s">',
     'after_widget' => '</nav>',
     'before_title' => '<h3 class="widget-title">',
@@ -232,7 +259,7 @@ if ( function_exists( 'register_nav_menus' ) ) {
 }
 
 /*
-* Template/theming fucntionality
+* Template/theming functionality
 ******************************************/
 //Add new image sizes for front page
 if ( function_exists( 'add_image_size' ) ) {
@@ -240,6 +267,19 @@ if ( function_exists( 'add_image_size' ) ) {
   add_image_size( 'feature-large', '682', '350', true ); // hard cropped
   add_image_size( 'feature-front-sub', '300', '200', true ); // hard cropped
 }
+
+/**
+ * Displays navigation to next/previous pages when applicable.
+ * Overrides TwentyTwelve function of the same name
+ *
+ * @since CommonsRetheme 0.3
+ */
+function cc_buttonize_posts_nav_links( $attr ) {
+  $attr .= 'class="button"';
+  return $attr;
+}
+add_filter( 'next_posts_link_attributes', 'cc_buttonize_posts_nav_links' );
+add_filter( 'previous_posts_link_attributes', 'cc_buttonize_posts_nav_links' );
 
 // Used to create the "alert" bubble in the CC header nav bar
 function notifications_counter() {
@@ -594,6 +634,15 @@ function salud_excerpt_length($length) {
 }
 add_filter('excerpt_length', 'salud_excerpt_length', 999);
 
+function category_page_excerpt_length( $length ) {
+  if ( is_category() ) {
+    $length = 20;
+  }
+
+   return $length;
+}
+add_filter('excerpt_length', 'category_page_excerpt_length', 12);
+
 /**
  * Set up post entry meta.
  *
@@ -604,13 +653,22 @@ add_filter('excerpt_length', 'salud_excerpt_length', 999);
  * @since Twenty Twelve 1.0
  */
 function twentytwelve_entry_meta() {
-  $is_search = is_search() ? true : false ;
+  $is_single = is_singular(); // We're looking at a single post, page or attachment
+  $is_search = is_search();
+  $is_blog = is_home(); // True only at /blog
+  $is_category = is_category(); // True on category archive pages
+  $is_tag = is_tag(); // True on tag archive pages
 
   // Translators: used between list items, there is a space after the comma.
-  $categories_list = get_the_category_list( __( ' ', 'twentytwelve' ) );
+  // Only build this on single items
+  if ( $is_single ) {
+    $categories_list = get_the_category_list( __( ' ', 'twentytwelve' ) );
+  }
 
   // Translators: used between list items, there is a space after the comma.
-  $tag_list = get_the_tag_list( '', __( ' ', 'twentytwelve' ) );
+  if ( $is_single ) {
+    $tag_list = get_the_tag_list( '', __( ' ', 'twentytwelve' ) );
+  }
 
   $date = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a>',
     esc_url( get_permalink() ),
@@ -637,10 +695,10 @@ function twentytwelve_entry_meta() {
   // }
 
   $output = '';
-  if ( $categories_list && ! $is_search ) {
+  if ( $categories_list ) {
     $output .= 'Categories <span class="category-links">'. $categories_list . '</span> <br />';
   }
-  if ( $tag_list && ! $is_search ) {
+  if ( $tag_list ) {
     $output .= 'Tags <span class="tag-links">'. $tag_list . '</span> <br />';
   }
   if ( $date && $author ) {
@@ -1128,6 +1186,3 @@ function cc_wp_show_hooked_filters(){
   echo '</pre>';
 }
 // add_action( 'wp_head', 'cc_wp_show_hooked_filters' );
-
-// DISABLE CERTAIN FIELDS
-
