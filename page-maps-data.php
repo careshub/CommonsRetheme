@@ -43,7 +43,7 @@ get_header(); ?>
 						</ul>
 					</div>
 					<div class="half-block choose-tool">
-						<h2><a href="http://assessment.communitycommons.org/CHNA/"><span class="report"></span>Build a Report</a></h2>
+						<h2><a href="http://assessment.communitycommons.org/CHNA/SelectArea.aspx?reporttype=libraryCHNA"><span class="report"></span>Build a Report</a></h2>
 						<ul>
 							<li>
 								<h4><a href="http://assessment.communitycommons.org/CHNA/">Community Health Needs Assessment</a></h4>
@@ -61,9 +61,9 @@ get_header(); ?>
 								<p>Browse and create data reports covering health, education, economic and other factors.</p>
 							</li>
 							<li>
-								<h4><a href="/chi-planning">Target Intervention Area Tool</a></h4>
+								<h4><a href="http://assessment.communitycommons.org/footprint/targetarea.aspx">Target Intervention Area Tool</a></h4>
 								<!-- <a href="http://assessment.communitycommons.org/DataReport/" class="button">Start a report</a> -->
-								<p>Generate a demographic report and prioritize areas for a community health improvement planning process.</p>
+								<p>Generate a demographic report and prioritize areas for a community health improvement planning process. <br /><a href="/chi-planning">Learn more about using these tools to strengthen community health planning.</a></p>
 							</li>
 
 						</ul>

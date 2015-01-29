@@ -45,6 +45,7 @@ $terms = get_the_terms( $post->ID, 'sa_advocacy_targets' );
 				<h3 class="entry-title"><span class="<?php echo $first_advo_target; ?>x60"></span><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
 			</header>
 			<div class="entry-content">
+				<?php // @TODO: Don't use the excerpt directly. ?>
 				<?php the_excerpt(); ?>
 			</div>
 			

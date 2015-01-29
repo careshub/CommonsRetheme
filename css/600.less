@@ -19,6 +19,16 @@
 .entry-header .entry-title, .archive-header .archive-title {
 	.font-size(1.6);
 }
+// Compact article display for blog/category pages.
+article.compact {
+	img {
+		float: right;
+		margin-left: 1em;
+	}
+	h1, h2 {
+		clear: none;
+	}
+}
 //Category archive header
 .archive-header {
 	.archive-title {
@@ -29,7 +39,7 @@
 // ul.item-list {
 // }
 
-// ul.item-list li { 
+// ul.item-list li {
 // }
 // ul.item-list div.item-avatar {
 // }
@@ -154,6 +164,14 @@ div.dir-search {
 		}
 	}
 }
+// Block layouts
+.flex600 {
+	display: flex;
+	flex-direciton: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+}
 .third-block {
 		// margin-bottom: 24px;
 		// margin-bottom: 1.7rem;
@@ -161,16 +179,15 @@ div.dir-search {
 		margin-right: 2%;
 		margin-left: 2%;
 	    width: 30.5%;
-	    float: left;	
-	    img {
-	    	width:92%;
-	    }
+	    float: left;
 	    &:nth-of-type(3n+1) {
 			clear: left;
 			margin-left: 0;
 		}
 		&:nth-of-type(3n) {
 			margin-right: 0;
+		}
+		&.flex {
 		}
 	}
 .third-block.spans-2 {
@@ -194,25 +211,25 @@ div.dir-search {
 	// &:nth-of-type(4n) {
 	// 	margin-right: 0;
 	// }
- //    &.button { 
+ //    &.button {
 	// 	margin-right: 1.8%;
 	// 	margin-left: 1.8%;
-	// 	width:19%; 
+	// 	width:19%;
 	// }
 	&.screamer {
 		width: 28.5%;
 	}
-	&.table-cell {
-		display: table-cell;
-		margin-left: 0;
-		margin-right: 0;
-		border: 10px solid white;
-		width: 20%;
-		float: none;
-		&.vertical-centered {
-			vertical-align: middle;
-		}
-	}
+	// &.table-cell {
+	// 	display: table-cell;
+	// 	margin-left: 0;
+	// 	margin-right: 0;
+	// 	border: 10px solid white;
+	// 	width: 20%;
+	// 	float: none;
+	// 	&.vertical-centered {
+	// 		vertical-align: middle;
+	// 	}
+	// }
 }
 .half-block {
 	border-bottom: none;
@@ -230,7 +247,7 @@ div.dir-search {
 }
 
 // Plugin styling
-// bbPress styling overrides 
+// bbPress styling overrides
 #bbpress-forums {
 	.bbp-template-notice.info {
 		p {
@@ -246,7 +263,7 @@ div.dir-search {
 		.bbp-topic-title {
 			.font-size(.9);
 		}
-		.bbp-topic-voice-count, 
+		.bbp-topic-voice-count,
 		.bbp-topic-reply-count {
 			.font-size(.9);
 			line-height: 3;

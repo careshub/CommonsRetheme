@@ -29,7 +29,7 @@ require_once('includes/site-search-redux.php');
 
 
 /* Javascript library and style enqueues
-*  
+*
 *********************************/
 // First, let's dequeue unneeded scripts and styles
 add_action( 'wp_enqueue_scripts', 'cc_dequeue_parent_theme_scripts', 91 );
@@ -78,7 +78,7 @@ function commons_ie_stylesheet_load(){
         );
     wp_enqueue_style( 'commons_ie_stylesheet' );
     $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lt IE 9' );
-    // wp_register_script('modernizr', get_stylesheet_directory_uri().'/includes/modernizr.custom.91496.js">', false, '0.1' );  
+    // wp_register_script('modernizr', get_stylesheet_directory_uri().'/includes/modernizr.custom.91496.js">', false, '0.1' );
     // wp_enqueue_script('localScroll');
     // $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lt IE 9' );
 }
@@ -97,8 +97,8 @@ function parent_stylesheet_load(){
 // I'm joining the various scripts into one via CodeKit.
 add_action( 'wp_enqueue_scripts', 'cc_common_js_load', 14 );
 function cc_common_js_load(){
-  wp_register_script('cc-common-scripts', get_stylesheet_directory_uri().'/js/commons.min.js">', array('jquery'), '1.0', true  ); 
-  wp_enqueue_script('cc-common-scripts'); 
+  wp_register_script('cc-common-scripts', get_stylesheet_directory_uri().'/js/commons.min.js">', array('jquery'), '1.0', true  );
+  wp_enqueue_script('cc-common-scripts');
 }
 
 // Add needed scripts and styles, WP admin pages
@@ -207,9 +207,36 @@ register_sidebar( array(
 	) );
 
 register_sidebar( array(
-    'name' => __( 'Site Search Sidebar Widget Area', 'ccommons' ),
+    'name' => __( 'Site Search Sidebar', 'ccommons' ),
     'id' => 'site_search',
     'description' => __( 'Site Search Sidebar Widget Area', 'ccommons' ),
+    'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+    'after_widget' => '</nav>',
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
+register_sidebar( array(
+    'name' => __( 'Blog Sidebar', 'ccommons' ),
+    'id' => 'blog_sidebar',
+    'description' => __( 'Displayed on the main blog page', 'ccommons' ),
+    'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+    'after_widget' => '</nav>',
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
+register_sidebar( array(
+    'name' => __( 'Category Archive Sidebar', 'ccommons' ),
+    'id' => 'category_sidebar',
+    'description' => __( 'Displayed on the Channel (category) archive page', 'ccommons' ),
+    'before_widget' => '<nav id="%1$s" class="widget %2$s">',
+    'after_widget' => '</nav>',
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
+register_sidebar( array(
+    'name' => __( 'Tag Archive Sidebar', 'ccommons' ),
+    'id' => 'tag_sidebar',
+    'description' => __( 'Displayed on the Tag archive page', 'ccommons' ),
     'before_widget' => '<nav id="%1$s" class="widget %2$s">',
     'after_widget' => '</nav>',
     'before_title' => '<h3 class="widget-title">',
@@ -219,12 +246,12 @@ register_sidebar( array(
 add_action( 'init', 'ccommons_widgets_init' );
 
 if ( function_exists( 'register_nav_menus' ) ) {
-  register_nav_menus( 
-    array( 
+  register_nav_menus(
+    array(
       'footer-nav' => 'Footer Navigation',
       'salud-nav' => 'Salud America section navigation',
       'help-area' => 'Help Area'
-      ) 
+      )
     );
 
   // register_nav_menu( 'footer-nav', 'Footer Navigation' );
@@ -232,14 +259,27 @@ if ( function_exists( 'register_nav_menus' ) ) {
 }
 
 /*
-* Template/theming fucntionality
+* Template/theming functionality
 ******************************************/
 //Add new image sizes for front page
-if ( function_exists( 'add_image_size' ) ) { 
+if ( function_exists( 'add_image_size' ) ) {
   add_image_size( 'feature-front', '576', '600', false ); //not hard cropped, resized proportionally
   add_image_size( 'feature-large', '682', '350', true ); // hard cropped
   add_image_size( 'feature-front-sub', '300', '200', true ); // hard cropped
 }
+
+/**
+ * Displays navigation to next/previous pages when applicable.
+ * Overrides TwentyTwelve function of the same name
+ *
+ * @since CommonsRetheme 0.3
+ */
+function cc_buttonize_posts_nav_links( $attr ) {
+  $attr .= 'class="button"';
+  return $attr;
+}
+add_filter( 'next_posts_link_attributes', 'cc_buttonize_posts_nav_links' );
+add_filter( 'previous_posts_link_attributes', 'cc_buttonize_posts_nav_links' );
 
 // Used to create the "alert" bubble in the CC header nav bar
 function notifications_counter() {
@@ -253,7 +293,7 @@ function notifications_counter() {
   $notifications = bp_notifications_get_notifications_for_user( bp_loggedin_user_id(), 'object' );
   $count = ! empty( $notifications ) ? count( $notifications ) : 0;
   $alert_class = (int) $count > 0 ? 'pending-count alert' : 'count no-alert';
-  $output = '<li class="menupop bp-notifications separator">' 
+  $output = '<li class="menupop bp-notifications separator">'
          . '<a href="' . trailingslashit( bp_loggedin_user_domain() . bp_get_notifications_slug() ) . '"><span class="'. $alert_class . '">' . $count . '</span></a>';
   $output .= '<h5>Notifications:</h5>';
   $output .= print_notifications_list( $notifications );
@@ -266,7 +306,7 @@ function notifications_counter() {
 
 function print_notifications_list( $notifications ){
     $output = '<div class="pop-sub-wrapper"><ul class="bp-notification-list">';
-        
+
   if ( ! empty( $notifications ) ) {
     foreach ( (array) $notifications as $notification ) {
       $output .= '<li id="cc-notification-' . $notification->id . '">';
@@ -282,12 +322,29 @@ function print_notifications_list( $notifications ){
   return $output;
 }
 
-function cc_replace_default_group_avatar( $avatar ) {
-  // The filter we're using ensures we'll only catch the group avatars
-  // Default looks like: <img src="/wp-content/plugins/buddypress/bp-core/images/mystery-man.jpg" alt="avatar" class="avatar" width="80" height="80">
-  return str_replace( 'plugins/buddypress/bp-core/images/mystery-man', 'themes/CommonsRetheme/img/cc-group-default-avatar', $avatar );
+function cc_no_gravatars_for_groups( $no_grav, $params ) {
+  if ( $params['object'] == 'group' )
+    $no_grav = true;
+
+  return $no_grav;
 }
-add_filter( 'bp_get_group_avatar', 'cc_replace_default_group_avatar' );
+// @TODO: Waiting on object parameter to be added to BuddyPress core.
+// https://buddypress.trac.wordpress.org/ticket/5958
+// add_filter( 'bp_core_fetch_avatar_no_grav', 'cc_no_gravatars_for_groups', 10, 2 );
+
+function cc_replace_default_avatar_group( $url, $params ){
+
+  if ( false !== strpos( $url, 'bp-core/images/mystery-man') ) {
+    if ( $params['type'] =='thumb' ) {
+      $url = get_stylesheet_directory_uri() . '/img/cc-group-default-avatar-50.jpg';
+    } else {
+      $url = get_stylesheet_directory_uri() . '/img/cc-group-default-avatar.jpg';
+    }
+  }
+
+  return $url;
+}
+add_filter( 'bp_core_default_avatar_group', 'cc_replace_default_avatar_group', 10, 2);
 
 /* Filters Nav Menu output by adding 'menu-item-{page slug}' to menu li classes
 ***********/
@@ -308,7 +365,7 @@ add_filter('wp_nav_menu', 'add_slug_class_to_menu_item');
 /* Filter <body> classes -- e.g. add "buddypress" if BuddyPress is active
 ***************/
 function cc_custom_body_class( $classes ) {
- 
+
     // if ( function_exists( 'bp_is_blog_page' ) && !bp_is_blog_page() ) {
     //     // $classes[] = 'buddypress';
     //   }
@@ -391,7 +448,7 @@ function cc_group_visibility_class() {
     return $visibility_class;
   }
 
-/* Login screen changes - adds CC logo and link 
+/* Login screen changes - adds CC logo and link
 ***************/
 function cc_custom_login_logo() {
     echo "
@@ -424,7 +481,7 @@ add_action('bp_init','bpdev_remove_bp_pre_user_login_action');
 function bpdev_remove_bp_pre_user_login_action(){
  remove_action( 'pre_user_login', 'bp_core_strip_username_spaces' );
 }
- 
+
 //add a filter to invalidate a username with spaces
 add_filter('validate_username','bpdev_restrict_space_in_username',10,2);
 function bpdev_restrict_space_in_username($valid,$user_name){
@@ -498,16 +555,16 @@ function list_attachments_content_filter( $content ) {
 
 //Function to test whether a page is the child of a specific page
 //Used in the Salud America topical guides section
-function is_child($page_id_or_slug) { 
-    global $post; 
+function is_child($page_id_or_slug) {
+    global $post;
     if(!is_int($page_id_or_slug)) {
         $page = get_page_by_path($page_id_or_slug);
         $page_id_or_slug = $page->ID;
-    } 
+    }
     if(is_page() && $post->post_parent == $page_id_or_slug ) {
             return true;
-    } else { 
-            return false; 
+    } else {
+            return false;
     }
 }
 
@@ -568,7 +625,7 @@ add_filter( 'get_the_excerpt', 'twentyeleven_custom_excerpt_more' );//Modify "Re
 
 function salud_excerpt_length($length) {
   if ( is_page_template( 'page-templates/salud-america-eloi.php' )
-        || is_singular( 'sapolicies' ) 
+        || is_singular( 'sapolicies' )
         || is_page( 'salud-america' ) ) {
     return 20;
   } else {
@@ -576,6 +633,15 @@ function salud_excerpt_length($length) {
   }
 }
 add_filter('excerpt_length', 'salud_excerpt_length', 999);
+
+function category_page_excerpt_length( $length ) {
+  if ( is_category() ) {
+    $length = 20;
+  }
+
+   return $length;
+}
+add_filter('excerpt_length', 'category_page_excerpt_length', 12);
 
 /**
  * Set up post entry meta.
@@ -587,13 +653,22 @@ add_filter('excerpt_length', 'salud_excerpt_length', 999);
  * @since Twenty Twelve 1.0
  */
 function twentytwelve_entry_meta() {
-  $is_search = is_search() ? true : false ;
+  $is_single = is_singular(); // We're looking at a single post, page or attachment
+  $is_search = is_search();
+  $is_blog = is_home(); // True only at /blog
+  $is_category = is_category(); // True on category archive pages
+  $is_tag = is_tag(); // True on tag archive pages
 
   // Translators: used between list items, there is a space after the comma.
-  $categories_list = get_the_category_list( __( ' ', 'twentytwelve' ) );
+  // Only build this on single items
+  if ( $is_single ) {
+    $categories_list = get_the_category_list( __( ' ', 'twentytwelve' ) );
+  }
 
   // Translators: used between list items, there is a space after the comma.
-  $tag_list = get_the_tag_list( '', __( ' ', 'twentytwelve' ) );
+  if ( $is_single ) {
+    $tag_list = get_the_tag_list( '', __( ' ', 'twentytwelve' ) );
+  }
 
   $date = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a>',
     esc_url( get_permalink() ),
@@ -620,10 +695,10 @@ function twentytwelve_entry_meta() {
   // }
 
   $output = '';
-  if ( $categories_list && ! $is_search ) {
+  if ( $categories_list ) {
     $output .= 'Categories <span class="category-links">'. $categories_list . '</span> <br />';
   }
-  if ( $tag_list && ! $is_search ) {
+  if ( $tag_list ) {
     $output .= 'Tags <span class="tag-links">'. $tag_list . '</span> <br />';
   }
   if ( $date && $author ) {
@@ -662,7 +737,7 @@ function cc_group_rss_feed_link() {
       <a href="<?php bp_group_activity_feed_link(); ?>" title="<?php _e( 'RSS Feed', 'buddypress' ); ?>" class="button"><?php _e( 'RSS', 'buddypress' ); ?></a>
     </div>
 
-    <?php do_action( 'bp_group_activity_syndication_options' ); 
+    <?php do_action( 'bp_group_activity_syndication_options' );
   endif;
 }
 
@@ -694,12 +769,12 @@ function cc_get_taxonomy_images($category, $taxonomy){
 
   //Put them all together for the Taxonomy Images plugin
   $combined_term_args = array(
-    'term_args' => array( 
-                'slug' => $category, 
+    'term_args' => array(
+                'slug' => $category,
             ),
     'taxonomy' => $taxonomy
   );
-        
+
   $tax_images = apply_filters( 'taxonomy-images-get-terms', '', $combined_term_args );
   if ($tax_images) {
    return wp_get_attachment_image( $tax_images[0]->image_id, 'full' );
@@ -711,7 +786,7 @@ add_action('restrict_manage_posts', 'cc_cpt_restrict_manage_posts');
 function cc_cpt_restrict_manage_posts() {
     global $typenow;
 
-    $args = array('public'=>true, '_builtin'=>false); 
+    $args = array('public'=>true, '_builtin'=>false);
     $post_types = get_post_types($args);
 
     if(in_array($typenow, $post_types)) {
@@ -720,9 +795,9 @@ function cc_cpt_restrict_manage_posts() {
         foreach ($filters as $tax_slug) {
             $tax_obj = get_taxonomy($tax_slug);
             if ($tax_obj->public) {
-            
+
               $term = get_term_by('slug', $_GET[$tax_obj->query_var], $tax_slug);
-            
+
               wp_dropdown_categories(array(
                   'show_option_all' => __('Show All '.$tax_obj->label ),
                   'taxonomy' => $tax_slug,
@@ -763,7 +838,7 @@ class DropdownSlugWalker extends Walker_CategoryDropdown {
 // If the user isn't a site admin, limit the media items shown in the upload dialog and the media library to items the user uploaded.
 // From code originally by @t31os
 add_action('pre_get_posts','users_own_attachments');
-function users_own_attachments( $wp_query_obj ) 
+function users_own_attachments( $wp_query_obj )
 {
     global $current_user, $pagenow;
 
@@ -781,12 +856,12 @@ function users_own_attachments( $wp_query_obj )
 }
 
 function ellipsis($text, $max=100, $append='&hellip;') {
-    if (strlen($text) <= $max) 
+    if (strlen($text) <= $max)
       return $text;
 
     $out = substr($text,0,$max);
 
-    if (strpos($text,' ') === FALSE) 
+    if (strpos($text,' ') === FALSE)
       return $out.$append;
 
     return preg_replace('/\w+$/','',$out).$append;
@@ -834,11 +909,11 @@ function cc_add_comment_button( $post_id = null ) {
 
 /*
  * Create a url to a taxonomy term within a CPT
- * 
+ *
  * @param string $post_type
  * @param string $taxonomy
  * @param string $term
- * 
+ *
  * @return string of the url || false
  */
 function cc_get_the_cpt_tax_intersection_link( $post_type = false, $taxonomy = false, $term = false ){
@@ -856,13 +931,13 @@ function cc_get_the_cpt_tax_intersection_link( $post_type = false, $taxonomy = f
   //Make sure the taxonomy requested is actually related to the CPT
   if ( !in_array( $taxonomy, $cpt_object->taxonomies ) )
     return false;
-       
+
   return home_url( $cpt_slug . '/' . $taxonomy . '/' . $term );
 }
 
   /*
    * Call cc_get_the_cpt_tax_intersection_link and echo the result
-   * 
+   *
    */
   function cc_the_cpt_tax_intersection_link( $post_type = false, $taxonomy = false, $term = false ){
     echo cc_get_the_cpt_tax_intersection_link( $post_type, $taxonomy, $term );
@@ -873,8 +948,8 @@ function cc_get_the_cpt_tax_intersection_link( $post_type = false, $taxonomy = f
 // More advanced uses WordPress capabilities to show content to admins only, etc.
 // From Justin Tadlock: http://justintadlock.com/archives/2009/05/09/using-shortcodes-to-show-members-only-content
 
-// Show contained to logged in only. Use in page or post content. 
-// Takes the form: [loggedin message=''] content... [/loggedin] 
+// Show contained to logged in only. Use in page or post content.
+// Takes the form: [loggedin message=''] content... [/loggedin]
 // "Message" attribute is optional. Will fall back to default. Specify message='' for no message.
 add_shortcode( 'loggedin', 'cc_member_check_shortcode' );
 function cc_member_check_shortcode( $atts, $content = null ) {
@@ -883,22 +958,22 @@ function cc_member_check_shortcode( $atts, $content = null ) {
 
   if ( is_user_logged_in() && !is_null( $content ) && !is_feed() )
     return do_shortcode( $content );
-  
+
   return $message;
 }
 
-// Show contained to visitors only. Use in page or post content. 
+// Show contained to visitors only. Use in page or post content.
 // Takes the form: [visitor] content... [/visitor]
 // Not necessary as an else with [loggedin], the other shortcode's else provides a message and a login link.
 add_shortcode( 'visitor', 'visitor_check_shortcode' );
 function visitor_check_shortcode( $atts, $content = null ) {
    if ( ( !is_user_logged_in() && !is_null( $content ) ) || is_feed() )
     return do_shortcode( $content );
-  
+
   return '';
 }
 
-// Show contained to users with specific capabilities only. Use in page or post content. 
+// Show contained to users with specific capabilities only. Use in page or post content.
 // Takes the form: [access capability="switch_themes"] content... [/access]
 add_shortcode( 'access', 'access_check_shortcode' );
 
@@ -912,7 +987,7 @@ function access_check_shortcode( $attr, $content = null ) {
   return '';
 }
 
-// Show contained to users that are members of a group only. Use in group environment without an id (assumes current group) or with an id elsewhere. 
+// Show contained to users that are members of a group only. Use in group environment without an id (assumes current group) or with an id elsewhere.
 // Takes the form: [group_member group_id="3"] content... [/group_member]
 add_shortcode( 'group_member', 'group_member_check_shortcode' );
 
@@ -924,6 +999,29 @@ function group_member_check_shortcode( $attr, $content = null ) {
 
   if ( ( ( $group_id && groups_is_user_member( get_current_user_id(), $group_id ) ) ||current_user_can( 'activate_plugins' ) ) && !is_null( $content ) && !is_feed() )
     return $content;
+
+  return '';
+}
+
+// Show contained to users that are NOT members of a specific group. Use in group environment without an id (assumes current group) or with an id elsewhere.
+// Takes the form: [not_group_member group_id="3"] content... [/not_group_member]
+add_shortcode( 'not_group_member', 'not_group_member_check_shortcode' );
+
+function not_group_member_check_shortcode( $attr, $content = null ) {
+
+  extract( shortcode_atts( array( 'group_id' => 0, 'logged_in' => 'required' ), $attr ) );
+  // If no group id was specified, try to get the current group's id
+  $group_id = ( $group_id ) ? $group_id : bp_get_current_group_id();
+
+  // If the shortcode requires the user to be logged in, and he's not, return nothing.
+  $user_id = get_current_user_id();
+  if ( $logged_in != 'not_required' && ! $user_id ) {
+    return '';
+  }
+
+  if ( ( ( $group_id && ! groups_is_user_member( $user_id, $group_id ) ) ||current_user_can( 'activate_plugins' ) ) && ! is_null( $content ) && ! is_feed() ) {
+    return $content;
+  }
 
   return '';
 }
@@ -966,20 +1064,20 @@ function cdcdch_users() {
     return;
 
   if ( is_page('cdc_dch1') ) {
-        $form_id = 2;        
+        $form_id = 2;
         $cdcusers = RGFormsModel::get_leads($form_id, '5', 'ASC');
     global $current_user;
     $count = 0;
     // loop through all the returned results
-        foreach ($cdcusers as $cdcuser) {                
+        foreach ($cdcusers as $cdcuser) {
         if ($current_user->display_name == $cdcuser['5'])
         {
           $count = $count + 1;
-        }            
+        }
         }
      if ($count > 0) {
         wp_redirect( 'http://assessment.communitycommons.org/Footprint/Default.aspx?t=DCH' );
-        exit();    
+        exit();
      } else {
        return "";
      }
@@ -987,17 +1085,15 @@ function cdcdch_users() {
 }
 add_action( 'template_redirect', 'cdcdch_users' );
 
-/* Salud America related stuff 
+/* Salud America related stuff
 ********************************/
 // Salud America isn't a group, but they need to play one on TV. So we're manually adding them to the top of the directory list.
-add_action( 'bp_before_groups_loop', 'stick_sa_to_the_top_of_the_directory' );
-function stick_sa_to_the_top_of_the_directory(){
-  
+add_action( 'cc_add_to_featured_hubs', 'stick_sa_to_the_top_of_the_directory' );
+function stick_sa_to_the_top_of_the_directory( $shown_hubs ){
+
   if ( is_page( 'groups' ) || ( bp_is_user_groups() && get_user_meta( bp_displayed_user_id(), 'salud_interest_group', true) ) ) :
   ?>
-    <ul class="item-list compact" id="groups-list-featured">
       <li id="featured-group-salud-america">
-        <h5>Featured Hub</h5>
         <div class="item-avatar">
           <a href="/salud-america/" title="Link to Salud America! space"><img width="50" height="50" class="avatar no-box" alt="avatar" src="/wp-content/themes/CommonsRetheme/img/salud_america/SA-logox50.png"></a>
         </div>
@@ -1006,11 +1102,10 @@ function stick_sa_to_the_top_of_the_directory(){
           <div class="item-title"><a href="/salud-america/" title="Link to Salud America! space">Salud America!</a></div>
           <div class="item-desc">
             <p>Working together to end Latino childhood obesity.</p>
-          </div>   
+          </div>
         </div>
         <div class="clear"></div>
       </li>
-    </ul>
   <?php
   endif;
 }
@@ -1029,7 +1124,7 @@ function salud_get_taxonomy_images($category, $taxonomy){
     $section_title_cats[] = $cat_object->name;
   }
   $section_title = implode(" &amp; ", $section_title_cats);
-  
+
   $output .= '<div class="sa-resource-header-icon"><span>' . $section_title . '</span>';
   $output .= cc_get_taxonomy_images($cat_array[0], $taxonomy);
   $output .= '</div>';
@@ -1042,7 +1137,7 @@ function salud_get_taxonomy_images($category, $taxonomy){
 function bp_dump() {
     // global $bp;
     $bp = buddypress();
- 
+
     foreach ( (array)$bp as $key => $value ) {
         echo '<pre>';
         echo '<strong>' . $key . ': </strong><br />';

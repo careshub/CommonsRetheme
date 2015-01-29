@@ -6,26 +6,25 @@
 get_header(); ?>
 <?php get_template_part('page-templates/wrapper-salud-top'); ?>
 
-
-		<div id="content" role="main">
-			<div class="padder entry-content">
+	<div id="content" role="main">
+		<div class="padder entry-content">
 <?php 
-if (is_page('salud-americaresearch')) { 
+if ( is_page('salud-americaresearch') ) { 
 				?>
-   				<div class="policy-search">
-					<form id="sa-policy-search" class="standard-form" method="get" action="/">
-					<h3>Search for Research</h3>
-					<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Search for Research." name="sa-policy">
-					<input class="sa-policy-search-button" type="submit" value="Search">
-					</form>
-				</div>     
-                
-				<?php //Display the page content before making the custom loop
-				while ( have_posts() ) : the_post();
-					get_template_part( 'content', 'page-notitle' );
-					comments_template( '', true );              
-				endwhile; // end of the loop. 
-				?>
+			<div class="policy-search">
+				<form id="sa-policy-search" class="standard-form" method="get" action="/">
+				<h3>Search for Research</h3>
+				<input id="sa-policy-search-text" class="sa-policy-input" type="text" maxlength="150" value="" placeholder="Search for Research." name="sa-policy">
+				<input class="sa-policy-search-button" type="submit" value="Search">
+				</form>
+			</div>     
+            
+			<?php //Display the page content before making the custom loop
+			while ( have_posts() ) : the_post();
+				get_template_part( 'content', 'page-notitle' );
+				comments_template( '', true );              
+			endwhile; // end of the loop. 
+			?>
           <h3>Latest Research Added</h3>
           <?php
           wp_reset_postdata();
@@ -48,180 +47,11 @@ if (is_page('salud-americaresearch')) {
 					//comments_template( '', true );
         endwhile; // end of the loop.              
                         
-} elseif (is_page('saresourcespage')) {
-	//Moved this functionality to resources archive page
-  /****** 
-  echo '<div class="entry-content">
-        <h3 class="screamer sablue">Want to find resources to help make change in your area?</h2>';
-
-         //Display the page content before making the custom loop
-          while ( have_posts() ) : the_post();
-            get_template_part( 'content', 'page-notitle' );
-            // comments_template( '', true );              
-          endwhile; // end of the loop. 
-          ?>
-   				<div class="policy-search">
-  					<!--<form id="sa-policy-search" class="standard-form" method="post" action="/">-->
-<h3 class="screamer sayellow">Search for Resources by Keyword</h3>
-                <?php if ( function_exists('sa_searchresources') ) { 
-                  sa_searchresources('/search-results'); 
-                } ?>
-          </div>
-<h3 class="screamer sapurple">Browse Resources by Topic</h3>
-						<div>
-							
-							<?php 
-							$advocacy_targets = get_terms('sa_advocacy_targets');
-							foreach ($advocacy_targets as $target) {
-								?>
-								<div class="sixth-block mini-text"><a href="<?php cc_the_cpt_tax_intersection_link( 'saresources', 'sa_advocacy_targets', $target->slug ) ?>"><span class="<?php echo $target->slug; ?>x90"></span><br /><?php echo $target->name; ?></a></div>						
-							<?php } //end foreach ?>
-							
-						</div>
-
-        <?php
-
-        //Specify the saresourcecat slugs we want to show here 
-        // If specifying more than one category, make them a comma-separated list               
-        $resource_cats = array(
-                            'report',
-                            'toolkit',
-                            'webinar-2'
-                          );
-        ?>
-
-        <div class="row">
-          <h3 class="screamer sagreen">Browse Resources by Type</h3>
-          <?php saresources_get_featured_blocks($resource_cats);?>
-        </div>
-
-        <!-- Begin secondary loop for most recently added resources -->
-        <div class="row taxonomy-policies">
-          <h3 class="screamer sapink">Latest Resources Added</h3>
-          <?php saresources_get_related_resources($resource_cats);?>
-        </div>
-      </div> <!-- end .entry-content -->
-			<?php
-			*/
-} elseif (is_page('getting-started')) {
+} elseif ( is_page('getting-started') ) {
 
             if ( function_exists('SA_getting_started') ) { SA_getting_started(); }    
 
-
-} elseif (is_page('tweetchat')) {
-?>
-
-          <div>
-				<h3 class="screamer sablue">Join new weekly #SaludTues Tweetchats!</h2>
-	
-				<h4>What is the #SaludTues Tweetchat?</h4>
-				 
-                <img width="425" height="352" class="alignright" src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/saludtues2.jpg" alt="Photo of a clock showing the words Time for Change"/>
-                <p>#SaludTues is a weekly Tweetchat about Latino health at 12p CST/1p EDT every Tuesday. The chat is directed and co-hosted by @SaludToday, the Latino health social media campaign and Twitter handle for the team at the Institute for Health Promotion Research (IHPR) at The UT Health Science Center at San Antonio, which directs Salud America!. Each chat has two co-hosts from partner organizations to ask and answer topical questions.</p>
-
-                <h4 style="clear:left;">#SaludTues Tweetchat Schedule</h4>
-                <ul class="no-bullets">
-	                <li><strong>10/21/14</strong>&emsp;#SaludTues "Healthier Recipes for Latino Foods"</li>
-                </ul>
-
-
-                <p><strong>How do I participate in a #SaludTues Tweetchat?</strong><br />
-				Anyone with a Twitter handle is welcome to join the chat. Just tag your Tweets with the hashtag #SaludTues to join and follow the conversation on Twitter.</p>
-
-                <p><strong>How do I serve as a #SaludTues co-host?</strong><br />
-				Email us at <a href="mailto:saludamerica@uthscsa.edu" title="saludamerica@uthscsa.edu">saludamerica@uthscsa.edu</a> and share an idea for a chat.</p>
-
-                <p><strong>What are topics for #SaludTues Tweetchats?</strong><br />
-				Any Latino health issue can be a topic for the SaludTues chat, from heart health, childhood obesity, nutrition and physical activity, access to health care, trending demographics, education, culture of health, etc.</p>
-
-                <h4 style="clear:left;">#SaludTues Past Tweetchats</h4>
-                <ul class="no-bullets">
-	                <li><strong>9/16/14</strong>&emsp;#SaludTues "How to Create a Culture of Health for Latino Families", <a href="https://twitter.com/SaludToday" title="@SaludToday">@SaludToday</a>, <a href="https://twitter.com/AHA_Vida" title="@AHA_Vida">@AHA_Vida</a> and <a href="https://twitter.com/RWJF_Live" title="@RWJF_Live">@RWJF_Live</a></li>
-	                <li><strong>9/23/14</strong>&emsp;#SaludTues "School's In: How to Promote Healthy Food for Latino Kids"</li>
-	                <li><strong>9/30/14</strong>&emsp;#SaludTues "Why and How to Start a Garden in a Latino School/Community"</li>
-					<li><strong>10/7/14</strong>&emsp;#SaludTues "Latinas and Breast Cancer: Surviving and Thriving"</li>
-					<li><strong>10/14/14</strong>&emsp;#SaludTues "Latinos and HIV/AIDS: Problems &amp; Solutions"</li>
-		        </ul>    
-
-            </div>
- <?php   
-} elseif (is_page('take-action-list')) {
-?>
-
-          <div>
-				<h3 class="screamer sablue">Join new weekly #SaludTues Tweetchats!</h2>
-	
-
-                                    <img width="425" height="352" class="alignright" src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/saludtues2.jpg" alt="Photo of a clock showing the words Time for Change"/>
-
-                                    
-				<p><strong>What is the #SaludTues Tweetchat?</strong></p>
-				 
-				<p>#SaludTues is a weekly Tweetchat about Latino health at 12p CST/1p EDT every Tuesday. The chat is directed and co-hosted by @SaludToday, the Latino health social media 
-                                campaign and Twitter handle for the team at the Institute for Health Promotion Research (IHPR) at The UT Health Science Center at San Antonio, which directs Salud America!. 
-                                Each chat has two co-hosts from partner organizations to ask and answer topical questions.</p>
-                                <a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" class="button">Learn more</a>
-
-          </div>
-
-          <div>
-				<h3 class="screamer sagreen">We Need Your Help to Get Sugary Drinks Out of Summer Camps!</h2>
-	
-				
-                                    <img width="425" height="352" class="alignright" src="<?php echo get_stylesheet_directory_uri(); ?>/img/salud_america/KidsExploringWeb.jpg" alt="Photo of a clock showing the words Time for Change"/>
-                                
-                                    
-				<p>Summer is here, and that means camp for kids to make new friends and try new things -but it also potentially means being exposed to unhealthy sugary drinks.</p>
-				 
-				<p>Will your child's camp give them healthy drinks, or sugary drinks, like "bug juice"?</p>
-                                
-                                <p>The American Camp Association (ACA), the country's leading camp resource and accreditation group, requires camps to take many steps to ensure the safety and well-being of young people. They also offer suggestions on how camps can help kids be active and eat healthy foods.</p>
-                
-                                <p>But ACA does NOT require camps to have a healthy beverage policy to gain accreditation.</p>
-                                
-                                <p>That means, for the more than 2,400 ACA-accredited camps nationwide, none are required to refrain from serving campers sugary sodas, juices, or flavored milk.</p>
-                                
-                                <p>Research shows Latino kids already consume more sugary drinks on average than their peers, so they have more to lose when camps recruit Latino families and then provide unhealthy sugary drinks during this critical out-of-school season. </p>
-
-                                <p>Tell the ACA they should take our children's health seriously and add a "no sugary drinks" rule to their camp accreditation standards.</p>
-                                
-                                <p>We don't want kids guzzling sugar this summer -we want them to be healthy and happy!</p>
-
-                                <a href="http://www.thepetitionsite.com/takeaction/702/787/135/?z00m=21258369" class="button" target="_blank" title="Take Action Now!">Take Action Now!</a>
-            </div>
-
-
-<?php       
-} 
-
-
-
-
- 
-
-// elseif (is_page('saresources-report')) {
-// 		echo "<h3 class='screamer sayellow'>Report Resources</h3>";
-// 		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('report');	
-// 				} {
-//                                 get_template_part( 'content', 'saresources-short' );
-//                                 comments_template( '', true );}
-
-//                 }
-// elseif (is_page('saresources-toolkit')) {
-// 		echo "<h3 class='screamer sagreen'>Toolkit Resources</h3>";
-// 		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('toolkit'); } 
-
-
-// }
-// elseif (is_page('saresources-webinar')) {
-// 		echo "<h3 class='screamer sapurple'>Webinar Resources</h3>";
-// 		if ( function_exists('saresources_by_cat') ) { saresources_by_cat('webinar-2'); } 
-
-
-// }
-elseif ( is_page('whats-new') ) {
-  
-    
+} elseif ( is_page('whats-new') ) {  
     ?>
       <p class="intro-text" style="font-size:1.2em;padding-top:10px">More than 39 percent of Latino children ages 2-19 are overweight or obese.</p> 
                                     
@@ -347,7 +177,7 @@ elseif ( is_page('whats-new') ) {
                                                               
 	<?php
                                                        
-} elseif (is_page('learn-to-make-change')) {
+} elseif ( is_page('learn-to-make-change') ) {
 
 				//First, display the content of the page before making the custom loop.
 				while ( have_posts() ) : the_post();
@@ -448,7 +278,6 @@ $term = get_term_by ('slug', $tag, 'sa_advocacy_targets');
 
 $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
 
-
 		$filter_args = array(
 					 'post_type' => 'saresources',
                                          'sa_resource_cat'=> 'success-stories',
@@ -465,10 +294,6 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
 			  echo "No Results - Search criteria too specific";	
 		   endif;					
                     
-
-
-
-
 } elseif ( is_page('what-is-change') ) {   
         echo '<div class="entry-content">
         <h3 class="screamer sablue">What is Change?</h2>';
@@ -558,44 +383,12 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
          </div>                              
 
 <?php 
-} elseif ( is_page('browse-change') ) {
-// Moved this functionality to the policies archive page - DC
-
-// $tag = $_GET['tag'];
-
-// $term = get_term_by ('slug', $tag, 'sa_policy_tags');
-
-// $policies =  get_objects_in_term ($term ->term_id, 'sa_policy_tags');
-
-
-// 		$filter_args = array(
-// 					 'post_type' => 'sapolicies',
-// 					 'post__in' => $policies,
-// );
-//                     $query2 = new WP_Query($filter_args);
-// 		    if($query2->have_posts()) : 
-// 			  while($query2->have_posts()) : 
-// 					$query2->the_post();
-// 					get_template_part( 'content', 'sa-policy-short' ); 
-
-// 			  endwhile;
-// 		   else: 
-// 			  echo "No Results - Search criteria too specific";	
-// 		   endif;					
-                    
-
-
-
-          
 } else {
-
-				while ( have_posts() ) : the_post();
-					get_template_part( 'content', 'page-notitle' );
-					comments_template( '', true );
-				endwhile; // end of the loop. 
-
-			}
-      ?>
+	while ( have_posts() ) : the_post();
+		get_template_part( 'content', 'page-notitle' );
+		comments_template( '', true );
+	endwhile; // end of the loop. 
+} ?>
 
 	</div><!-- .padder -->
 
@@ -603,10 +396,3 @@ $stories =  get_objects_in_term ($term ->term_id, 'sa_advocacy_targets');
     
 <?php get_template_part('page-templates/wrapper-salud-bottom'); ?>
 <?php get_footer(); ?>
-
-        
-
-
-        
-
-

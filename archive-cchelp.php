@@ -423,6 +423,7 @@ $group_posts = new WP_Query($args);
 			echo "<br /><br />";
 			$COGIScount = 0;
 			$PRIMEcount = 0;
+			$CAPcount = 0;
 			foreach ($group_posts->posts as $post) :
 				$term_list = wp_get_post_terms( $post->ID, 'cc_help_groups');		
 				foreach ($term_list as $term) {
@@ -533,7 +534,20 @@ $group_posts = new WP_Query($args);
 							 <div class='post-content'><?php echo $post->post_content; ?></div> 
 						 <?php
 						}
-					}		
+					} else if ($term->slug == "ccgroup-association-614") {
+						if ($CAPcount == 0) {
+						?>
+						<div class="clear" id="screamer" style="background-color: #008eaa;width:800px;">
+							<h1><span style="color: #ffffff;">Community Action Partnership Support</span></h1>
+						</div>	
+						<?php 
+						}
+						?>
+						<h1><?php echo get_the_title($post->ID); ?></h1>
+						<div class='post-content'><?php echo $post->post_content; ?></div> 
+						<?php
+						$CAPcount = $CAPcount + 1;
+					}			
 				}
 			endforeach;
 			wp_reset_postdata();	
@@ -572,7 +586,16 @@ $group_posts = new WP_Query($args);
 				<div id="guideData" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to the Data Guidebook">
 					<span class="guidebook-text">Commons Data</span>
 				</div>
+				<div id="guideWebinars" class="guidebook" style="background-color:#008eaa;cursor:pointer;border:solid 2px #008eaa;" title="Go to Archived Webinars">
+					<span class="guidebook-text">Archived Webinars</span>
+				</div>				
 			</div>	
+			
+			<div style="width:895px;">
+				<div id="guideGroups" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to Hubs on the Commons">
+					<span class="guidebook-text">Hubs on the Commons</span>
+				</div>			
+			</div>
 			
 			<?php 
 			if ($bp_user_role == 'administrator') {
@@ -580,9 +603,7 @@ $group_posts = new WP_Query($args);
 			
 			
 			<div style="width:895px;">
-				<div id="guideGroups" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to Hubs on the Commons">
-					<span class="guidebook-text">Hubs on the Commons</span>
-				</div>
+
 				<div id="guideAdmin" class="guidebook" style="background-color:#008eaa;cursor:pointer;border:solid 2px #008eaa;" title="Go to the Administrator Guidebook">
 					<span class="guidebook-text">Being an Administrator</span>
 				</div>
@@ -655,6 +676,9 @@ $group_posts = new WP_Query($args);
 					$( "#guideCHI" ).click(function() {
 						window.location.href = '/cchelp/cc_help_topics/chi-grant-planning/';
 					});
+					$( "#guideWebinars" ).click(function() {
+						window.location.href = '/archived-webinars/';
+					});						
 				});
 			</script>					
 
