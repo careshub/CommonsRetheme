@@ -1,4 +1,4 @@
- <?php
+<?php
 /**
  * The template for the topically-oriented maps and data tool overview.
  *
