@@ -219,9 +219,10 @@ function cc_sa_video_contest() {
 		<div id="rules">
 			<p>This contest is open to everyone (except Salud America! staff or grantees). The contest begins on Jan. 13, 2015, and ends at 11:59 p.m. CST on Jan. 27, 2015. To enter, individuals must first register with the Salud America! Growing Healthy Change <a href="http://www.communitycommons.org/salud-america/" target="_blank">website</a>, and then click to vote for their favorite video among four potential choices. Each registered user may cast only one vote. Casting a vote enters the registered user into a drawing for a T-shirt and jump rope package. The drawing&rsquo;s winner will be notified by Dec. 17, 2014, via email.  The winner must contact us directly at <a href="mailto:saludamerica@uthscsa.edu?subject=SA Video Contest">saludamerica@uthscsa.edu</a> to claim their prize package. Entry into drawing is subject to all applicable laws and regulations.</p>
 		</div>
-        <div style=";margin-bottom:20px;"><h3>Past contests</h3></div>
+        <div style="margin-bottom:20px;"><h3>Past contests</h3></div>
         <ul class="no-bullets">
-        	<li><strong><a href="/salud-america-video-contest-dec14">December 2014:</strong></a> Winner - "Grocery stores tag healthy foods in California"</li>
+        	<li><strong><a href="/salud-america-video-contest-dec14">December 2014:</strong></a> Winner - &ldquo;Grocery stores tag healthy foods in California&rdquo;</li>
+            <li><strong><a href="/salud-america-video-contest-jan15">January 2015:</strong></a> Winner - &ldquo;Biking to and from School&rdquo;</li>
         </ul>
 				<?php
 	} // end if ( is_page('salud-america-video-contest') )
@@ -270,7 +271,54 @@ function cc_sa_video_contest() {
 			</div>											
         </div>                               
 	<?php
-	} // End if (is_page('salud-america-video-contest-dec14'))											
+	} // End if (is_page('salud-america-video-contest-dec14'))
+
+	if (is_page('salud-america-video-contest-jan15')) {
+     ?>
+        <h3 class="screamer saorange">Video contest January 2015</h3>
+        <div class="row">
+	        <div  style="text-align:center;background-color:#cc3366;padding-top:5px;padding-bottom:1px">
+		        <h3 style="color:#fff">WINNER!</h3>
+	        </div>		
+			<div  style="text-align:center;border-style:solid;border-width:10px;border-color:#cc3366;margin-bottom:20px">
+				<br />Biking to and from School<br /><br />											
+				<iframe width="520" height="325" src="//www.youtube.com/embed/ji_0Qqp7ibU" frameborder="0" allowfullscreen></iframe><br />
+			</div>
+		</div>
+	    <div style="text-align:left;background-color:#008eaa;"> 
+		    <h3 style="color:#fff; margin-left:10px">Watch all the videos in the contest</h3>
+	    </div> 
+
+	    <div class="row">
+            <div class="half-block" style="text-align:center;">
+				Mud Run for Kids<br />
+				<iframe width="400" height="250" src="//www.youtube.com/embed/lmobfBUBVgc" frameborder="0" allowfullscreen></iframe>
+            </div>	
+            <div class="half-block" style="text-align:center;">
+				P.E. + Recess + Class Exercise = Activity Trifecta<br />
+				<iframe width="400" height="250" src="//www.youtube.com/embed/PnnfjCorEsI" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="half-block" style="text-align:center;">
+                                Taking a "Brain Break" in Class<br />
+				<iframe width="400" height="250" src="//www.youtube.com/embed/7vO1cjPshxo" frameborder="0" allowfullscreen></iframe>
+	        </div>
+	        <div class="half-block" style="text-align:center;">
+				Calling on "P.E. Specialists"<br />
+				<iframe width="400" height="250" src="//www.youtube.com/embed/o9upXLS7YN8" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="row">
+			<div class="half-block" style="text-align:center;">
+				Free Wheels for Kids<br /><br />
+				<iframe width="400" height="250" src="//www.youtube.com/embed/DCcT87o0kCI" frameborder="0" allowfullscreen></iframe><br />
+			</div>											
+        </div>                               
+	<?php
+	} // End if (is_page('salud-america-video-contest-jan15'))
+												
 	/* Restore original Post Data */
 	wp_reset_postdata();
 	?>
