@@ -37,7 +37,7 @@
 	}
 	// Set widths for column blocks, since our normal widths assume some nth-of-type selectors
 	.half-block {
-		width: 42.9%;
+		width: 40.9%;
 	}
 	.third-block {
 		width: 28.9%;
@@ -51,13 +51,18 @@
 	}
 }
 // Styles for main nav bar search input
-.ie7 #cc-primary-search {
-	margin-top: 0;
-	#cc-navbar-search .cc-nav-input {
-		margin-top: 1px;
-		width: 150px;
-		line-height: 32px;
-		background-color: @white;
+.ie7 {
+	#cc-primary-search {
+		margin-top: 0;
+		#cc-navbar-search .cc-nav-input {
+			margin-top: 1px;
+			width: 150px;
+			line-height: 32px;
+			background-color: @white;
+		}
+	}
+	.content-row {
+		clear: both;
 	}
 }
 .ie8 #cc-primary-search #cc-navbar-search .cc-nav-input {
