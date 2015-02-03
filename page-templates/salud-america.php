@@ -15,7 +15,7 @@ get_header(); ?>
 					<h4 style="color:black;margin-bottom:.5em;"><a href="<?php echo home_url( 'salud-america-video-contest' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Vote and win a prize: </span>&emsp;Vote for Best New #SaludHeroes Video; Enter to Win T-Shirt, Jump Rope</a></h4>
                     <a href="<?php echo home_url( 'salud-america-video-contest' ); ?>" class="button">Vote now</a>
                     <?php */ ?>
-                    <h4 style="color:black;margin-top: 1em;margin-bottom:.5em;"><a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Tweetchat 2/3:</span>&emsp;&ldquo;Family Dinner: Why it Matters &amp; What to Make&rdquo;</a></h4>
+                    <h4 style="color:black;margin-top: 1em;margin-bottom:.5em;"><a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Tweetchat 2/10:</span>&emsp;&ldquo;Why Should Latinos #GetCovered Today&rdquo;</a></h4>
                     <a href="https://twitter.com/SaludToday" target="_blank" class="button" >Follow the conversation</a>&emsp;<a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" class="button">Learn more</a>
 				</div>
 				<h3 class="screamer sagreen">How can you fight Latino childhood obesity in your area?</h2>
