@@ -124,6 +124,23 @@ img.img-border {
 	.widget_tag_cloud {
 		line-height: 1.2;
 	}
+	// Category navigation, used on blog, channel pages
+	.widget_recent_entries {
+		li {
+			border-bottom: 1px solid @graylight;
+			padding: .4em 0;
+			a {
+				// font-weight: 700;
+				text-decoration: none;
+				.font-size(1);
+				line-height: 1.2;
+				hyphens: manual;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
 
 }
 .entry-content th {
@@ -294,7 +311,9 @@ img.img-border {
  	#nav-below {
  		margin-bottom: 1em;
  		padding-bottom: 2px;
- 		margin-left: -2em;
+ 	}
+ 	.map-widget-data {
+ 		display: none;
  	}
  }
  // Add a stroke to the first article below the break on category pages

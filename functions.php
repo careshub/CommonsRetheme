@@ -62,7 +62,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.45
+          0.47
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
@@ -74,7 +74,7 @@ function commons_ie_stylesheet_load(){
             'commons_ie_stylesheet',
             get_stylesheet_directory_uri() . '/style-ie.css',
             false,
-            0.45
+            0.47
         );
     wp_enqueue_style( 'commons_ie_stylesheet' );
     $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lt IE 9' );
@@ -278,8 +278,8 @@ function cc_buttonize_posts_nav_links( $attr ) {
   $attr .= 'class="button"';
   return $attr;
 }
-add_filter( 'next_posts_link_attributes', 'cc_buttonize_posts_nav_links' );
-add_filter( 'previous_posts_link_attributes', 'cc_buttonize_posts_nav_links' );
+// add_filter( 'next_posts_link_attributes', 'cc_buttonize_posts_nav_links' );
+// add_filter( 'previous_posts_link_attributes', 'cc_buttonize_posts_nav_links' );
 
 // Used to create the "alert" bubble in the CC header nav bar
 function notifications_counter() {
