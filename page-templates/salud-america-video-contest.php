@@ -169,45 +169,43 @@ function cc_sa_video_contest() {
 				?>	
         <h3 class="screamer saorange">Vote for Best Video + Enter to Win a Free Salud America! T-shirt!</h3>
 		<div id="ballot">
-			<p>Healthy kids need to move it, move it.</p>
-			<p>That's why <em>Salud America!</em> is presenting six new #Salud Heroes who helped five Latino kids more physical activity.</p>
-
-			<h3>Vote for your favorite play-promoting #SaludHeroes by Jan. 27, 2015, and be entered into a random drawing to win a free T-shirt and jump rope!</h3>
+			<p>Bye, bye, junk food!</p>
+			<h3>WATCH and VOTE for your favorite "#SaludHeroes of healthy food" by Feb. 25, 2015, and be entered into a random drawing to WIN a free T-shirt and jump rope!</h3><br /><br />
 							
 			<form id="sa_vid_contest_form" class="standard-form" method="post" action="">
 				<div class="row">		
 					<div class="half-block" style="text-align:center;">
-						Mud Run for Kids<br /><br />											
-						<iframe width="400" height="250" src="//www.youtube.com/embed/lmobfBUBVgc" frameborder="0" allowfullscreen></iframe><br />
+						No More "Chemical" School Food<br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/S4sntStTmFQ" frameborder="0" allowfullscreen></iframe><br />
 						<input id="cb1" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="1"> Vote
 					</div>
 					<div class="half-block" style="text-align:center;">
-						P.E. + Recess + Class Exercise = Activity Trifecta<br /><br />
-						<iframe width="400" height="250" src="//www.youtube.com/embed/PnnfjCorEsI" frameborder="0" allowfullscreen></iframe><br />
+						Youth for Better Restaurants<br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/0GzVSAVjJWE" frameborder="0" allowfullscreen></iframe><br />
 						<input id="cb2" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="2"> Vote
 					</div>			
 				</div>
 				<div class="row">	
 					<div class="half-block" style="text-align:center;">
-						Taking a "Brain Break" in Class<br /><br />
-						<iframe width="400" height="250" src="//www.youtube.com/embed/7vO1cjPshxo" frameborder="0" allowfullscreen></iframe><br />
+						Bye, Bye, Chocolate Milk<br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/vap9gpzi3iE" frameborder="0" allowfullscreen></iframe><br />
 						<input id="cb3" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="3"> Vote
 					</div>										
 					<div class="half-block" style="text-align:center;">
-						Calling on "P.E. Specialists"<br /><br />
-						<iframe width="400" height="250" src="//www.youtube.com/embed/o9upXLS7YN8" frameborder="0" allowfullscreen></iframe><br />
+						Kickin' Nutrition<br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/F5BOjCmr0rQ" frameborder="0" allowfullscreen></iframe><br />
 						<input id="cb4" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="4"> Vote
 					</div>			
 				</div>		
 				<div class="row">
 					<div class="half-block" style="text-align:center;">
-						Free Wheels for Kids<br /><br />
-						<iframe width="400" height="250" src="//www.youtube.com/embed/DCcT87o0kCI" frameborder="0" allowfullscreen></iframe><br />
+						Meatless Mondays<br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/gNivYPfdbFA" frameborder="0" allowfullscreen></iframe><br />
 						<input id="cb5" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="5"> Vote
 					</div>
 					<div class="half-block" style="text-align:center;">
-						Biking to and from School<br /><br />
-						<iframe width="400" height="250" src="//www.youtube.com/embed/ji_0Qqp7ibU" frameborder="0" allowfullscreen></iframe><br />
+						Vending Machines of Health<br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/Cobq6OYSl9w" frameborder="0" allowfullscreen></iframe><br />
 						<input id="cb6" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="6"> Vote
 					</div>										
 				</div>
@@ -217,7 +215,7 @@ function cc_sa_video_contest() {
 		<p class="aligncenter"><a id="togglerules" style="text-decoration:underline;cursor:pointer;">See contest rules</a></p>
 
 		<div id="rules">
-			<p>This contest is open to everyone (except Salud America! staff or grantees). The contest begins on Jan. 13, 2015, and ends at 11:59 p.m. CST on Jan. 27, 2015. To enter, individuals must first register with the Salud America! Growing Healthy Change <a href="http://www.communitycommons.org/salud-america/" target="_blank">website</a>, and then click to vote for their favorite video among four potential choices. Each registered user may cast only one vote. Casting a vote enters the registered user into a drawing for a T-shirt and jump rope package. The drawing&rsquo;s winner will be notified by Dec. 17, 2014, via email.  The winner must contact us directly at <a href="mailto:saludamerica@uthscsa.edu?subject=SA Video Contest">saludamerica@uthscsa.edu</a> to claim their prize package. Entry into drawing is subject to all applicable laws and regulations.</p>
+			<p>This contest is open to everyone (except Salud America! staff or grantees). The contest begins on Feb. 13, 2015, and ends at 11:59 p.m. CST on Feb. 25, 2015. To enter, individuals must first register with the Salud America! Growing Healthy Change <a href="http://www.communitycommons.org/salud-america/" target="_blank">website</a>, and then click to vote for their favorite video among four potential choices. Each registered user may cast only one vote. Casting a vote enters the registered user into a drawing for a T-shirt and jump rope package. The drawing&rsquo;s winner will be notified by Feb. 27, 2015, via email.  The winner must contact us directly at <a href="mailto:saludamerica@uthscsa.edu?subject=SA Video Contest">saludamerica@uthscsa.edu</a> to claim their prize package. Entry into drawing is subject to all applicable laws and regulations.</p>
 		</div>
         <div style="margin-bottom:20px;"><h3>Past contests</h3></div>
         <ul class="no-bullets">
