@@ -346,21 +346,30 @@ function cc_replace_default_avatar_group( $url, $params ){
 }
 add_filter( 'bp_core_default_avatar_group', 'cc_replace_default_avatar_group', 10, 2);
 
-/* Filters Nav Menu output by adding 'menu-item-{page slug}' to menu li classes
-***********/
-function add_slug_class_to_menu_item($output){
-	$ps = get_option('permalink_structure');
-	if(!empty($ps)){
-		$idstr = preg_match_all('/<li id="menu-item-(\d+)/', $output, $matches);
-		foreach($matches[1] as $mid){
-			$id = get_post_meta($mid, '_menu_item_object_id', true);
-			$slug = basename(get_permalink($id));
-			$output = preg_replace('/menu-item-'.$mid.'">/', 'menu-item-'.$mid.' menu-item-'.$slug.'">', $output, 1);
-		}
-	}
-	return $output;
+/**
+ * Add descriptive class names to nav menu list items.
+ *
+ * @since    0.31
+ */
+function add_slug_class_to_menu_item_li( $classes, $item ){
+  $new_class = '';
+
+  // If the target of the nav item is a page, use the page's slug--we care more about the target page than the nav_menu_item's attributes.
+  if ( $item->object == 'page') {
+    $new_class = 'menu-item-' . basename( $item->url );
+  } else {
+    // Otherwise, use the slug of the the menu item.
+    $new_class = 'menu-item-' . $item->post_name;
+  }
+
+  // Only add the new class if it isn't a duplicate.
+  if ( ! in_array( $new_class, (array) $classes ) ) {
+    $classes[] = $new_class;
+  }
+
+  return $classes;
 }
-add_filter('wp_nav_menu', 'add_slug_class_to_menu_item');
+add_filter('nav_menu_css_class', 'add_slug_class_to_menu_item_li', 17, 2);
 
 /* Filter <body> classes -- e.g. add "buddypress" if BuddyPress is active
 ***************/
