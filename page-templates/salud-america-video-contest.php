@@ -133,17 +133,17 @@ function cc_sa_video_contest() {
 					if ( isset ( $_POST['sa_vid_vote'] ) ){
 						$vidtitle = "";
 						if ( $_POST['sa_vid_vote'] == 1 ) {
-							$vidtitle = 'Mud Run for Kids';	
+							$vidtitle = 'No More \"Chemical\" School Food';	
 						} elseif ( $_POST['sa_vid_vote'] == 2 ) {
-							$vidtitle = 'P.E. + Recess + Class Exercise = Activity Trifecta';
+							$vidtitle = 'Youth for Better Restaurants';
 						} elseif ( $_POST['sa_vid_vote'] == 3 ) {
-							$vidtitle = 'Taking a "Brain Break" in Class';
+							$vidtitle = 'Bye, Bye, Chocolate Milk';
 						} elseif ( $_POST['sa_vid_vote'] == 4 ) {
-							$vidtitle = 'Calling on "P.E. Specialists"';
+							$vidtitle = 'Kickin\' Nutrition';
 						} elseif ( $_POST['sa_vid_vote'] == 5 ) {
-							$vidtitle = 'Free Wheels for Kids';
+							$vidtitle = 'Teens Advertise the Good Stuff';
 						} elseif ( $_POST['sa_vid_vote'] == 6 ) {						
-							$vidtitle = 'Biking to and from School';
+							$vidtitle = 'Vending Machines of Health';
 						}						
 						$arr = array(
 							'post_title' => $uid . "_SA_Video_Vote",
@@ -199,8 +199,8 @@ function cc_sa_video_contest() {
 				</div>		
 				<div class="row">
 					<div class="half-block" style="text-align:center;">
-						Meatless Mondays<br />
-						<iframe width="400" height="250" src="//www.youtube.com/embed/gNivYPfdbFA" frameborder="0" allowfullscreen></iframe><br />
+						Teens Advertise the Good Stuff<br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/KT-2AQ8Gcvw" frameborder="0" allowfullscreen></iframe><br />
 						<input id="cb5" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="5"> Vote
 					</div>
 					<div class="half-block" style="text-align:center;">
