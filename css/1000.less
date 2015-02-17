@@ -193,8 +193,11 @@ body.single-post {
 				margin-bottom: 2em;
 				.entry-header {
 					margin: 0 -28px 2em;
-					h1 {
-						padding-left: 28px;
+					.entry-title {
+						// padding-left: 28px;
+						&.no-thumbnail {
+							margin-top: 1em;
+						}
 					}
 					.category-links {
 						a {

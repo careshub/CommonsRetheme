@@ -42,7 +42,7 @@ if ( $is_first_post ) {
 				<?php if ( $has_thumbnail ) {
 					the_post_thumbnail( 'feature-large' );
 					} ?>
-				<h1 class="entry-title screamer <?php if ( ! $has_thumbnail ) echo 'no-thumbnail'; ?>"><?php the_title(); ?></h1>
+				<h1 class="entry-title <?php if ( ! $has_thumbnail ) echo 'no-thumbnail'; ?>"><?php the_title(); ?></h1>
 			<?php else : ?>
 				<?php if ( $has_thumbnail && ! $is_search ) :
 					$thumbnail_size = $is_first_post ? 'feature-large' : 'feature-front-sub';
