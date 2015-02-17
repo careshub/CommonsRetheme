@@ -60,11 +60,13 @@ get_header(); ?>
 								<!-- <a href="http://assessment.communitycommons.org/DataReport/" class="button">Start a report</a> -->
 								<p>Browse and create data reports covering health, education, economic and other factors.</p>
 							</li>
+							<?php /* ?>
 							<li>
 								<h4><a href="http://assessment.communitycommons.org/footprint/targetarea.aspx">Target Intervention Area Tool</a></h4>
 								<!-- <a href="http://assessment.communitycommons.org/DataReport/" class="button">Start a report</a> -->
 								<p>Generate a demographic report and prioritize areas for a community health improvement planning process. <br /><a href="/chi-planning">Learn more about using these tools to strengthen community health planning.</a></p>
 							</li>
+							<?php */ ?>
 
 						</ul>
 					</div>
