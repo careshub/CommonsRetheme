@@ -22,7 +22,7 @@
 	<?php do_action( 'groups_custom_group_fields_editable' ); ?>
 
 	<p>
-		<label for="group-notifiy-members">
+		<label for="group-notify-members">
 			<input type="checkbox" name="group-notify-members" value="1" /> <?php _e( 'Notify group members of these changes via email', 'buddypress' ); ?>
 		</label>
 	</p>
@@ -176,15 +176,6 @@
 	<div class="bp-widget">
 		<h4><?php _e( 'Administrators', 'buddypress' ); ?></h4>
 
-		<?php 
-		$towrite = PHP_EOL . 'group_id: ' .print_r( bp_get_group_id(), TRUE );
-		$towrite .= PHP_EOL . 'admin_ids: ' . print_r(bp_group_admin_ids(), TRUE);
-		$fp = fopen('group_admin_check.txt', 'a');
-		fwrite($fp, $towrite);
-		fclose($fp);
-
-		?>
-
 		<?php if ( bp_has_members( '&include='. bp_group_admin_ids() ) ) : ?>
 
 		<ul id="admins-list" class="item-list single-line">
@@ -239,7 +230,7 @@
 	<div class="bp-widget">
 		<h4><?php _e("Members", "buddypress"); ?></h4>
 
-		<?php if ( bp_group_has_members( 'per_page=15&exclude_banned=false' ) ) : ?>
+		<?php if ( bp_group_has_members( 'per_page=15&exclude_banned=0' ) ) : ?>
 
 			<?php if ( bp_group_member_needs_pagination() ) : ?>
 

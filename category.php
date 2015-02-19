@@ -48,6 +48,7 @@ $term_name = ( $term ) ? $term->name : '';
 					?>
 					<div class="content-row clear flex600">
 						<?php do_action( 'channel_page_after_featured_story', $term_id, $term_name ); ?>
+						<div class="clear alignnone"></div>
 					</div>
 					<div class="content-row clear "> <!-- Begins the article compact list -->
 					<?php

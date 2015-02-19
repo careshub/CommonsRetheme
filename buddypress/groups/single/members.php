@@ -1,4 +1,4 @@
-<?php if ( bp_group_has_members( 'exclude_admins_mods=0' ) ) : ?>
+<?php if ( bp_group_has_members( bp_ajax_querystring( 'group_members' ) ) ) : ?>
 
 	<?php do_action( 'bp_before_group_members_content' ); ?>
 
@@ -63,7 +63,7 @@
 
 	<?php do_action( 'bp_after_group_members_list' ); ?>
 
-	<div id="pag-bottom" class="pagination no-ajax">
+	<div id="pag-bottom" class="pagination">
 
 		<div class="pag-count" id="member-count-bottom">
 
@@ -84,7 +84,7 @@
 <?php else: ?>
 
 	<div id="message" class="info">
-		<p><?php _e( 'This group has no members.', 'buddypress' ); ?></p>
+		<p><?php _e( 'No members were found.', 'buddypress' ); ?></p>
 	</div>
 
 <?php endif; ?>

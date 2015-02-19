@@ -133,6 +133,19 @@ body.blog, body.category, body.tag, body.single-post {
 			.drop-shadow(0, 1px, 3px, 0, 0.25);
 		}
 	}
+	#nav-below {
+ 		margin-left: -2em;
+ 		a {
+ 			background-color: #eee;
+		    display: inline-block;
+		    padding: 0.4em 1em;
+		    transition: all .2s;
+		    &:hover {
+		    	color: @white;
+		    	background-color: @ccblue;
+		    }
+ 		}
+ 	}
 }
 body.category {
 	.site {
@@ -180,8 +193,11 @@ body.single-post {
 				margin-bottom: 2em;
 				.entry-header {
 					margin: 0 -28px 2em;
-					h1 {
-						padding-left: 28px;
+					.entry-title {
+						// padding-left: 28px;
+						&.no-thumbnail {
+							margin-top: 1em;
+						}
 					}
 					.category-links {
 						a {
@@ -200,6 +216,11 @@ body.single-post {
 					background-color: #EEE;
 					padding: .4em 1em;
 					// border: 1px solid @graymid;
+					transition: all .2s;
+					 &:hover {
+				    	color: @white;
+				    	background-color: @ccblue;
+				    }
 				}
 			}
 		}

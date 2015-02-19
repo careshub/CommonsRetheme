@@ -118,9 +118,28 @@ img.img-border {
 	// Make sure the blog button link has some mass 
 	a[href="/blog"] {
 		font-weight: 700;
+		font-size: 14px;
+		font-size: 1rem;
 	}
 	.widget_tag_cloud {
 		line-height: 1.2;
+	}
+	// Category navigation, used on blog, channel pages
+	.widget_recent_entries {
+		li {
+			border-bottom: 1px solid @graylight;
+			padding: .4em 0;
+			a {
+				// font-weight: 700;
+				text-decoration: none;
+				.font-size(1);
+				line-height: 1.2;
+				hyphens: manual;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
 	}
 
 }
@@ -289,7 +308,13 @@ img.img-border {
  		margin-bottom: 42px;
  		margin-bottom: 3rem;
  	}
-
+ 	#nav-below {
+ 		margin-bottom: 1em;
+ 		padding-bottom: 2px;
+ 	}
+ 	.map-widget-data {
+ 		display: none;
+ 	}
  }
  // Add a stroke to the first article below the break on category pages
  body.category {
@@ -327,7 +352,7 @@ ul.button-nav li a,
 div.generic-button a,
 .comment-reply-link {
 	.gradient( @white, #ededed );
-	border: 1px solid #ccc;
+	border: 1px solid @graymid;
 	.border-radius(3px);
 	color: @ccblue;
 	.font-size(.9);
@@ -336,6 +361,9 @@ div.generic-button a,
 	text-decoration: none;
 	line-height: 1.6;
 	display: inline-block;
+	// box-shadow: 0px 1px 0px @ccblue;
+	// margin-bottom: 1px;
+	transition: all .1s;
 }
 a.button.spacious {
 	padding: 8px 12px;
@@ -352,7 +380,7 @@ ul.button-nav li.current a,
 div.generic-button a:hover,
 .comment-reply-link:hover {
 	.gradient( @white, #e0e0e0 );
-	border: 1px solid #bbb;
+	border: 1px solid lighten(desaturate(@ccblue, 30%), 18%);
 	color: #555;
 	outline: none;
 	text-decoration: none;
@@ -1271,7 +1299,7 @@ body.home-page {
 		padding-bottom: 0;
 	}
 	img {
-		width: 100%;
+		max-width: 100%;
 	}
 }
 .sixth-block {

@@ -1,4 +1,4 @@
- <?php
+<?php
 /**
  * The template for the topically-oriented maps and data tool overview.
  *
@@ -21,6 +21,7 @@ get_header(); ?>
 					<div class="half-block choose-tool">
 						<h2><a href="http://maps.communitycommons.org"><span class="map"></span>Make a Map</a></h2>
 						<ul>
+							<?php /* ?>
 							<li>
 								<h4><a href="http://maps.communitycommons.org">Map Room</a></h4>
 								<!-- <a href="http://maps.communitycommons.org" class="button">Try the new tool</a> -->
@@ -31,6 +32,7 @@ get_header(); ?>
 								<!-- <a href="http://initiatives.communitycommons.org/tool/CC/Default.aspx?url=../maps/default.aspx" class="button">Start a map</a> -->
 								<p>Create a map in the original Commons mapping environment.</p>
 							</li>
+							<?php */ ?>
 							<li>
 								<h4><a href="http://maps.communitycommons.org/gallery.aspx">Map Gallery</a></h4>
 								<!-- <a href="http://maps.communitycommons.org/gallery.aspx" class="button">Visit gallery</a> -->
@@ -55,6 +57,7 @@ get_header(); ?>
 								<!-- <a href="http://assessment.communitycommons.org/Footprint/" class="button">Start a report</a> -->
 								<p>Find areas in your community with low educational attainment and high poverty.</p>
 							</li>
+							<?php /* ?>
 							<li>
 								<h4><a href="http://assessment.communitycommons.org/DataReport/">Topic-based Reports</a></h4>
 								<!-- <a href="http://assessment.communitycommons.org/DataReport/" class="button">Start a report</a> -->
@@ -65,6 +68,7 @@ get_header(); ?>
 								<!-- <a href="http://assessment.communitycommons.org/DataReport/" class="button">Start a report</a> -->
 								<p>Generate a demographic report and prioritize areas for a community health improvement planning process. <br /><a href="/chi-planning">Learn more about using these tools to strengthen community health planning.</a></p>
 							</li>
+							<?php */ ?>
 
 						</ul>
 					</div>
@@ -85,8 +89,8 @@ get_header(); ?>
 		?>
 
 		<ul id="jumplinks" class="clear">
-			<h2>Choose a tool by topic</h2>
-			<h3>Scroll to a topic:</h3>
+			<h2>Choose a tool by channel</h2>
+			<h3>Scroll to a channel:</h3>
 			<?php
 			foreach ($all_cats as $cat_slug) {
 				$cat_object = get_term_by('slug', $cat_slug, 'data_vis_tool_categories');
