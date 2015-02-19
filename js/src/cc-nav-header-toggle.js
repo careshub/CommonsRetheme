@@ -1,23 +1,23 @@
 jQuery(document).ready(function() {
 	function showLogin() {
-		jQuery("#login-item").addClass('toggled');
-		jQuery("#login-item .pop-sub-wrapper").addClass('toggled');
-		jQuery("#sidebar-user-login").focus();
+		// jQuery("#login-item").addClass('toggled');
+		// jQuery("#login-item .pop-sub-wrapper").addClass('toggled');
+		// jQuery("#sidebar-user-login").focus();
 
 	}
 	function hideLogin() {
 	// if both username and pw are empty, let the box close onMouseOut
-		if ( (jQuery('#sidebar-user-login').val() === '') && (jQuery('#sidebar-user-pass').val() === '') ) {
-				jQuery("#login-item").removeClass('toggled');
-				jQuery("#login-item .pop-sub-wrapper").removeClass('toggled');
-				jQuery("#sidebar-user-login").blur();
+		// if ( (jQuery('#sidebar-user-login').val() === '') && (jQuery('#sidebar-user-pass').val() === '') ) {
+				// jQuery("#login-item").removeClass('toggled');
+				// jQuery("#login-item .pop-sub-wrapper").removeClass('toggled');
+				// jQuery("#sidebar-user-login").blur();
 
-		}
+		// }
 
 	}
 
 	jQuery('#menu-toggler').click(function(){
-		jQuery(".nav-container").toggleClass('toggled');
+		jQuery(".nav-container").toggleClass('open');
 			return false;
 	});
 
@@ -28,13 +28,13 @@ jQuery(document).ready(function() {
 		out: hideLogin // function = onMouseOut callback (REQUIRED)    
 	};
 
-	jQuery("#login-item").hoverIntent( config );
+	// jQuery("#login-item").hoverIntent( config );
 
 	//JS to close login form via cancel button
 	jQuery('#cancel-login').click(function(){
-		jQuery("#login-item").removeClass('toggled');
-		jQuery("#login-item .pop-sub-wrapper").removeClass('toggled');
-			return false;
+		// jQuery("#login-item").removeClass('toggled');
+		// jQuery("#login-item .pop-sub-wrapper").removeClass('toggled');
+			// return false;
 	});
 
 

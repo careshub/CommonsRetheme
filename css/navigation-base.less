@@ -1,0 +1,487 @@
+// Useful colors
+@highlighted-color: lighten(@black, 15%);
+@nav-color: lighten(@black, 5%);
+
+// From Adobe's Accessible Mega Menu
+/*
+Copyright © 2013 Adobe Systems Incorporated.
+
+Licensed under the Apache License, Version 2.0 (the “License”);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+.accessible-megamenu {
+    position: relative;
+    display:block;
+    box-sizing: border-box;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 3.077em;
+    // color: #454545;
+    // background-color: #dfe2e2;
+    border-color: #b3b3b3;
+    border-color: rgba(0, 0, 0, 0.3);
+    border-style: solid;
+    border-width: 0 1px 1px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+// .accessible-megamenu h2,
+// .accessible-megamenu h3,
+// .accessible-megamenu h4 {
+//     font-size: 1em;
+//     display: inline;
+//     margin: 0;
+//     padding: 0;
+//     line-height: inherit;
+// }
+
+.accessible-megamenu .accessible-megamenu-top-nav-item {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    list-style: none;
+    margin: 0;
+    float: left;
+    clear: left;
+    width: 100%;
+    border-bottom: 1px solid lighten(@black, 30%);
+    a {
+        position: relative;
+        display: block;
+        line-height: 3em;
+        height: 3em;
+        padding: 0 1em;
+        z-index: inherit;
+    }
+    // a[aria-haspopup] {
+    //     &:hover, 
+    //     &:focus, 
+    //     &.open {
+    //         z-index: 1002;
+    //     }
+    // }
+}
+
+.accessible-megamenu :focus {
+    outline:  2px solid rgba(34, 95, 215, 0.3);
+}
+
+// .accessible-megamenu .accessible-megamenu-top-nav-item:first-child a[aria-haspopup] {
+//     // border-bottom-left-radius: 3px;
+// }
+
+// .accessible-megamenu .accessible-megamenu-top-nav-item:first-child a[aria-haspopup].open {
+//     // border-bottom-left-radius: 0px;
+//     // border-left: 1px solid #b3b3b3;
+//     // border-left-color: rgba(0,0,0,0.3);
+//     // left: -1px;
+//     // margin-right: -1px;
+// }
+
+.accessible-megamenu .accessible-megamenu-panel {
+    position: absolute;
+    display: block;
+    // left: -1px; // May need at desktop size
+    width: 100%;
+    //color: #454545;
+    margin: 0;
+    // padding: 0 0.769em 0.769em;
+    line-height: normal;
+    // background-color: @highlighted-color;    
+    cursor: default;
+    // box-shadow: 0 4px 6px -2px rgba(0,0,0,.5), inset 1px 1px 0 #fff;
+    visibility: hidden;
+    top: -9999em;
+    max-height: 0px;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 250ms ease, max-height 500ms ease, visibility 0s linear, top 0s linear;
+    // border: 1px solid #b3b3b3;
+    // border-color: rgba(0,0,0,0.3);
+    // border-top-right-radius: 3px;
+    // border-bottom-right-radius: 3px;
+    // border-bottom-left-radius: 3px;
+    .sub-nav-group {
+        .menu-item a {
+            padding-left: 2em;
+        }
+    }
+}
+
+.accessible-megamenu .accessible-megamenu-panel.open {
+    position: relative; // Will need to be absolute for large screen sizes
+    visibility: visible;
+    top: 0;
+    max-height: 600px;
+    opacity: 1;
+    z-index: 1001;
+    transition: opacity 250ms ease, max-height 500ms ease, visibility 0s linear, top 0s linear;
+}
+
+// .accessible-megamenu .accessible-megamenu-panel a {
+//     display: inline-block;
+//     font-size: .92em;
+//     line-height: 1.2em;
+//     text-decoration: none;
+//     color: #225FD7;
+//     font-weight: bold;
+//     text-decoration: none;
+//     margin-bottom: 0.5em;
+// }
+
+// .accessible-megamenu .accessible-megamenu-panel.cols-4 {
+//     width: 878px;
+// }
+
+// .accessible-megamenu .accessible-megamenu-panel.cols-4 > ol > li {
+//     width: 22%;
+// }
+
+// .accessible-megamenu .accessible-megamenu-panel.cols-4b {
+//     width: 878px;
+//     left: -6.462em;
+//     border-top-left-radius: 3px;
+// }
+
+// .accessible-megamenu .accessible-megamenu-panel.cols-4b > ol > li {
+//     width: 22%;
+// }
+
+// .accessible-megamenu .accessible-megamenu-panel.cols-3 {
+//     width: 724px;
+// }
+
+// .accessible-megamenu .accessible-megamenu-panel.cols-3 > ol > li {
+//     width: 30%;
+// }
+
+.accessible-megamenu .accessible-megamenu-panel.cols-1 {
+    width: 100%;
+}
+
+// .accessible-megamenu .accessible-megamenu-panel.cols-1 > ol > li {
+//     width: auto;
+// }
+
+// .accessible-megamenu .accessible-megamenu-panel ol {
+//     display: block;
+//     list-style: none;
+//     margin: 0;
+//     padding: 0;
+// }
+
+// .accessible-megamenu .accessible-megamenu-panel ol > li {
+//     position: relative;
+//     list-style: none;
+//     margin: 0;
+//     padding: 0;
+// }
+
+// .accessible-megamenu .accessible-megamenu-panel > ol > li {
+//     float: left;
+//     display: block;
+//     margin-right: 1em;
+//     margin-bottom: 1em;
+//     padding-left: 1em;
+//     border-left: 1px solid rgba(0,0,0, 0.3);
+//     box-shadow: inset 1px 0 0 #fff;
+// }
+
+// .accessible-megamenu .accessible-megamenu-panel > ol > li:first-of-type {
+//     padding-left: 0;
+//     border-left: none;
+//     box-shadow: none;
+// }
+
+// .accessible-megamenu .accessible-megamenu-panel > p {
+//     color: #454545;
+//     font-size: 1.2em;
+//     line-height: 1.1em;
+// }
+
+// .accessible-megamenu .accessible-megamenu-panel > ol > li > h3 > a {
+//     font-weight: bold;
+//     color: #454545;
+//     font-size: 1.2em;
+//     margin-bottom: 6px;
+//     padding-top: .4em;
+//     padding-bottom: 0;
+//     line-height: 1.1em;
+// }
+
+// .accessible-megamenu .accessible-megamenu-panel ol ol > li > a {
+//     width: auto;
+//     text-indent: -2.333em;
+//     padding-left: 2.333em;
+// }
+
+.accessible-megamenu .accessible-megamenu-panel a:hover,
+.accessible-megamenu .accessible-megamenu-panel a:focus {
+    // color: #225FD7;
+    text-decoration: underline;   
+}
+
+// .accessible-megamenu .accessible-megamenu-panel > ol > li > h3 > a:hover,
+// .accessible-megamenu .accessible-megamenu-panel > ol > li > h3 > a:focus {
+//     // color: #333;
+// }
+
+// .accessible-megamenu .accessible-megamenu-panel hr {
+//     border-width: 1px 0px;
+//     border-style: solid;
+//     border-top-color: rgba(0,0,0, 0.3);
+//     border-bottom-color: #fff;
+// }
+
+// Specific to the primary nav
+// Small sizes designed first.
+.primary-navigation {
+     background-color: @nav-color;
+    // The nav container is positioned off-screen until requested
+    // This wraps the accessible menu
+    .nav-container {
+        background-color: @nav-color;
+        margin-top: 1em;
+        clear: left;
+        // position: absolute;
+        display: block;
+        // visibility: hidden; //megamenu ignores invisible items
+        top: -9999em;
+        max-height: 0px;
+        overflow: hidden;
+        opacity: 0;
+        transition: opacity 250ms ease, max-height 500ms ease, top 0s linear, overflow 0s linear;
+        &.open {
+            // visibility: visible;
+            top: 1em;
+            // overflow: visible;
+            // position: relative;
+            max-height: 1600px;
+            opacity: 1;
+            z-index: 1001;
+            transition: opacity 0s ease, max-height 0s ease, top 0s linear, overflow 0s linear;
+        }
+        .nav {
+            height: auto;
+            overflow: visible;
+        }
+        // Applied to top-nav-items and sub-nav-group items
+        .menu-item a {
+            display: block;
+            color: @white;
+            line-height: 3em;
+            height: 3em;
+            text-decoration: none;
+            &:hover,
+            &:focus,
+            &.open {
+                background: @highlighted-color;
+                text-decoration: underline;
+            }
+        }
+    } // end .nav-container
+
+    // Specific navigation items
+    .brand {
+        float: left;
+        margin: 5px 0 0 7px;
+        a { //home menu item
+            display: block;
+            background: url(img/cc_logomark-30x30.png) no-repeat left center;
+            .font-size(1);
+            font-weight: 700;
+            padding-left: 40px;
+            color: @white;
+            line-height: 2.4;
+            text-transform: uppercase;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        #cc-primary-search {
+            // display:inline-block;
+            // margin-top: 1em;
+            // margin-left: 1em;
+            #cc-navbar-search {
+                // height: 32px;
+                // padding: 0 2px; 
+            }
+        }
+    }
+
+   .bp-notifications {
+        float: none;
+        clear: both;
+        li {
+            margin-left: 12px;
+            &.no-notices {
+                width: 95%;
+                line-height: 2;
+                padding-left: 2%;
+            }
+        }
+        span {
+            display: none;
+            float: left;
+            line-height: 1.8;
+            background-color: @graymid;
+            .border-radius(12px);
+            color: @black;
+            padding: 0 8px;
+            margin: 8px;
+            width: auto;
+            &.alert {
+                background-color: lighten(@ccblue,8) ;
+                color: @white;
+                }
+        }
+        h5 {
+            color:lighten(@graydark,25%);
+            margin-left: 12px;
+            margin-top: 6px;
+
+        }
+        a{
+            padding: 0;
+            line-height: 2;
+        }
+    } // end bp-notifications
+
+    // Search
+    // Search is weird. At small sizes, just show the search box.
+    .expanding-search {
+        padding: 1em 0;
+        .primary-search-toggler {
+            display: none;
+        }
+        .accessible-megamenu-panel {
+            position: relative; // Will need to be absolute for large screen sizes
+            visibility: visible;
+            margin-left: 0.4em;
+            top: 0;
+            max-height: 600px;
+            opacity: 1;
+            z-index: 1001;
+        }
+        .cc-nav-input {
+            height: 36px;
+            width: 96%;
+            // border: none;
+            padding: 0 3px 0 36px;
+            // margin: 0;
+            color: @black;
+            // background-color: rgba( 255, 255, 255, 0.9 );
+            background-position: -95px -266px;
+            // outline: none;
+            cursor: pointer;
+            box-sizing: border-box;
+            &:focus {
+                color: @graydark;
+                cursor: text;
+                .inner-glow();
+            }
+        }
+        .cc-navbar-search-button {
+            display: none;
+        }
+    } // end search
+    
+    // Login form
+    .menu-item-login {
+        .accessible-megamenu-panel {
+            margin: 1em;
+            label {
+                margin: 0 0 1em;
+                color: @white;
+            }
+            input[type=text], input[type=password] {
+                padding: 4px;
+                width: 88%;
+            }
+            #login-item #cancel-login {
+                // float: right;
+                display: none;
+            }
+        }
+    }
+
+    // Default for top-nav-items
+    .accessible-megamenu-top-nav-item {
+        & > a {
+            border-left: solid 6px @nav-color;
+        }
+        &.current-menu-item > a, &.current-menu-parent > a {
+            font-weight: 700;
+            background-color: @highlighted-color;
+            border-left: solid 6px @highlighted-color;
+        }
+    }
+    .menu-item-members { //Members nav link
+        & > a {
+            border-left: solid 6px @ccyellow;
+        }
+        &.current-menu-item > a, &.current-menu-parent > a {
+            background-color: @ccyellow;
+            border-left: solid 6px @ccyellow;
+        }
+    }
+    .menu-item-groups { //Groups nav link
+        & > a {
+            border-left: solid 6px @ccred;
+        }
+        &.current-menu-item > a, &.current-menu-parent > a {
+            background-color: @ccred;
+            border-left: solid 6px @ccred;
+        }
+    }
+    .menu-item-maps-data { //Maps & Data nav link
+        & > a {
+            border-left: solid 6px @ccblue;
+        }
+        &.current-menu-item > a, &.current-menu-parent > a {
+            background-color: @ccblue;
+            border-left: solid 6px @ccblue;
+        }
+    }
+    .menu-item-channels { // Channels nav link
+        & > a {
+            border-left: solid 6px @ccgreen;
+        }
+        &.current-menu-item > a, &.current-menu-parent > a {
+            background-color: @ccgreen;
+            border-left: solid 6px @ccgreen;
+        }
+    }
+    // We'll want to indicate that some items contain subnav lists
+    .menu-item-has-children > a:after {
+        content: "";
+        width: 0;
+        height: 0;
+        position: absolute;
+        right: 24px;
+        top: 45%;
+        border-top: 6px solid @white;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+    }
+    .menu-toggler {
+        display: inline-block;
+        float: right;
+        line-height: 26px;
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+} // End primary-navigation

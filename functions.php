@@ -27,6 +27,9 @@ require_once('includes/WKKF_scorecard.php');
 //Site search functionality, reconsidered:
 require_once('includes/site-search-redux.php');
 
+//Custom Nav Walker to improve accessibility of navigation menus
+require_once('includes/class-cc-accessibility-nav-walker.php');
+
 
 /* Javascript library and style enqueues
 *
@@ -248,6 +251,7 @@ add_action( 'init', 'ccommons_widgets_init' );
 if ( function_exists( 'register_nav_menus' ) ) {
   register_nav_menus(
     array(
+      'main-nav-secondary' => 'Primary Navigation-secondary area',
       'footer-nav' => 'Footer Navigation',
       'salud-nav' => 'Salud America section navigation',
       'help-area' => 'Help Area'
@@ -1195,3 +1199,14 @@ function cc_wp_show_hooked_filters(){
   echo '</pre>';
 }
 // add_action( 'wp_head', 'cc_wp_show_hooked_filters' );
+
+// add_filter( 'wp_nav_menu_objects', 'cc_add_roles_nav_menu_items', 16, 2 );
+function cc_add_roles_nav_menu_items( $items, $args ){
+  $towrite = PHP_EOL . 'navmenu items' . print_r( $items, TRUE );
+  $towrite .= PHP_EOL . 'navmenu args' . print_r( $args, TRUE );
+  $fp = fopen('nav_menu.txt', 'a');
+  fwrite($fp, $towrite);
+  fclose($fp);
+
+  return $items;
+}
