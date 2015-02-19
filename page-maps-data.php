@@ -26,11 +26,13 @@ get_header(); ?>
 								<!-- <a href="http://maps.communitycommons.org" class="button">Try the new tool</a> -->
                                 <p>Visit the newly redesigned maproom. Create a map. Save it. Share it!</p>
 							</li>
+							<?php /* ?>
 							<li>
 								<h4><a href="http://initiatives.communitycommons.org/tool/CC/Default.aspx?url=../maps/default.aspx">Map Room Classic</a></h4>
 								<!-- <a href="http://initiatives.communitycommons.org/tool/CC/Default.aspx?url=../maps/default.aspx" class="button">Start a map</a> -->
 								<p>Create a map in the original Commons mapping environment.</p>
 							</li>
+							<?php */ ?>
 							<li>
 								<h4><a href="http://maps.communitycommons.org/gallery.aspx">Map Gallery</a></h4>
 								<!-- <a href="http://maps.communitycommons.org/gallery.aspx" class="button">Visit gallery</a> -->
