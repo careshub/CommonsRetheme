@@ -21,12 +21,12 @@ get_header(); ?>
 					<div class="half-block choose-tool">
 						<h2><a href="http://maps.communitycommons.org"><span class="map"></span>Make a Map</a></h2>
 						<ul>
+							<?php /* ?>
 							<li>
 								<h4><a href="http://maps.communitycommons.org">Map Room</a></h4>
 								<!-- <a href="http://maps.communitycommons.org" class="button">Try the new tool</a> -->
                                 <p>Visit the newly redesigned maproom. Create a map. Save it. Share it!</p>
 							</li>
-							<?php /* ?>
 							<li>
 								<h4><a href="http://initiatives.communitycommons.org/tool/CC/Default.aspx?url=../maps/default.aspx">Map Room Classic</a></h4>
 								<!-- <a href="http://initiatives.communitycommons.org/tool/CC/Default.aspx?url=../maps/default.aspx" class="button">Start a map</a> -->
@@ -57,12 +57,12 @@ get_header(); ?>
 								<!-- <a href="http://assessment.communitycommons.org/Footprint/" class="button">Start a report</a> -->
 								<p>Find areas in your community with low educational attainment and high poverty.</p>
 							</li>
+							<?php /* ?>
 							<li>
 								<h4><a href="http://assessment.communitycommons.org/DataReport/">Topic-based Reports</a></h4>
 								<!-- <a href="http://assessment.communitycommons.org/DataReport/" class="button">Start a report</a> -->
 								<p>Browse and create data reports covering health, education, economic and other factors.</p>
 							</li>
-							<?php /* ?>
 							<li>
 								<h4><a href="http://assessment.communitycommons.org/footprint/targetarea.aspx">Target Intervention Area Tool</a></h4>
 								<!-- <a href="http://assessment.communitycommons.org/DataReport/" class="button">Start a report</a> -->
@@ -89,8 +89,8 @@ get_header(); ?>
 		?>
 
 		<ul id="jumplinks" class="clear">
-			<h2>Choose a tool by topic</h2>
-			<h3>Scroll to a topic:</h3>
+			<h2>Choose a tool by channel</h2>
+			<h3>Scroll to a channel:</h3>
 			<?php
 			foreach ($all_cats as $cat_slug) {
 				$cat_object = get_term_by('slug', $cat_slug, 'data_vis_tool_categories');
