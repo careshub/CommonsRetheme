@@ -162,7 +162,8 @@ limitations under the License.
         var uuid = 0,
             keydownTimeoutDuration = 1000,
             keydownSearchString = "",
-            isTouch = typeof window.hasOwnProperty === "function" && !!window.hasOwnProperty("ontouchstart"),
+            // isTouch = typeof window.hasOwnProperty === "function" && !!window.hasOwnProperty("ontouchstart"),
+            altTouch = true == ("ontouchstart" in window || window.DocumentTouch && document instanceof DocumentTouch),
             _getPlugin,
             _addUniqueId,
             _togglePanel,
@@ -301,7 +302,7 @@ limitations under the License.
                         event.preventDefault();
                         event.stopPropagation();
                         this.justFocused = false;
-                    } else if (isTouch) {
+                    } else if (altTouch) {
                         event.preventDefault();
                         event.stopPropagation();
                         _togglePanel.call(this, event, target.hasClass(this.settings.openClass));
@@ -745,7 +746,7 @@ limitations under the License.
                     .on("mouseout.accessible-megamenu", $.proxy(_mouseOutHandler, this))
                     .on("mousedown.accessible-megamenu", $.proxy(_mouseDownHandler, this));
 
-                if (isTouch) {
+                if (altTouch) {
                     menu.on("touchstart.accessible-megamenu",  $.proxy(_clickHandler, this));
                 }
 
@@ -754,6 +755,8 @@ limitations under the License.
                 if ($(document.activeElement).closest(menu).length) {
                   $(document.activeElement).trigger("focusin.accessible-megamenu");
                 }
+
+                // alert( 'isTouch is: ' + isTouch  + ' | altTouch is: ' + altTouch);
             },
 
             /**

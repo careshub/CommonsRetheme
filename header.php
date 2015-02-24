@@ -56,9 +56,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			</div>
 			<nav class="nav-container">
 				<ul id="menu-primary-nav" class="nav accessible-menu">
-					<li id="cc-primary-search" class="expanding-search alignright">
-						<a href="#" class="primary-search-toggler">Search</a>
-						<div class="sub-nav cols-1">
+					<li id="cc-primary-search" class="expanding-search alignright menu-item menu-item-level-0">
+						<a href="#" class="primary-search-toggler"><span class="searchx18"></span><span class="screen-reader-text">Search</span></a>
+						<div class="sub-nav">
 							<form id="cc-navbar-search" method="get" action="<?php echo home_url('/'); ?>">
 								<input id="cc-navbar-search-text" class="cc-nav-input searchx18" type="search" maxlength="150" value="" name="s" placeholder="Search">
 								<input class="cc-navbar-search-button" type="submit" value="Search">
@@ -87,51 +87,55 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					wp_nav_menu( $args );
 					?>				
 					<!-- <div id="menu-secondary-user-nav" class="secondary">					 -->
-						<?php if (is_user_logged_in()) { //show user info if logged in ?>
-							<li>
-								<a href="<?php echo bp_core_get_userlink( bp_loggedin_user_id(), $no_anchor = false, $just_link = true ); ?>" class="user-home-link" title="My user home">
-									<span class="userx21"></span>
+						<?php if ( $current_user_id = get_current_user_id() ) { //show user info if logged in ?>
+							<li class="user-home-link alignright menu-item menu-item-level-0 menu-item-user menu-item-has-children">
+								<a href="<?php echo bp_core_get_userlink( bp_loggedin_user_id(), $no_anchor = false, $just_link = true ); ?>" class="" title="My user profile">
+									<!-- <span class="userx21"></span> -->
+									<span class="username"><?php bp_loggedin_user_username(); ?></span>
+									<?php bp_loggedin_user_avatar('width=32&height=32'); ?>
 								</a>
 								<?php /* ?>
 								<span class="visible-mini">
 								<?php echo bp_core_get_userlink( bp_loggedin_user_id() ); ?>
 								</span>
 								<?php */ ?>
-								<div class="sub-nav user-quicklinks">
-									<a href="<?php echo bp_loggedin_user_domain(); ?>" title="View my profile" class="avatar">
+								<div class="sub-nav">
+									<!-- <a href="<?php echo bp_loggedin_user_domain(); ?>" title="View my profile" class="avatar">
 										<?php bp_loggedin_user_avatar('width=48&height=48'); ?>
-									</a>
+									</a> -->
 									<ul class="sub-nav-group">
 										<?php /* ?>
 										<li class="visible-maxi">
 											<?php echo bp_core_get_userlink( bp_loggedin_user_id() ); ?>
 										</li>
 										<?php */ ?>
-										<li>
+										<li class="menu-item">
 											<a href="<?php echo bp_loggedin_user_domain() . 'profile'; ?>" title="View my profile"><?php _e( 'View My Profile', 'cctheme' ) ?></a>
 										</li>
-										<li>
+										<li class="menu-item">
 											<a href="<?php echo bp_loggedin_user_domain() . 'groups'; ?>" title="See my groups"><?php _e( 'My Hubs', 'cctheme' ) ?></a>
 										</li>
-										<li>
+										<li class="menu-item">
 											<a href="<?php echo bp_loggedin_user_domain() . 'maps-reports'; ?>" title="See my maps and reports"><?php _e( 'My Maps &amp; Reports', 'cctheme' ) ?></a>
 										</li>
 										<?php if ( class_exists( 'BP_Docs' )  ): // Only show this if bp-docs is active ?>
-											<li>
+											<li class="menu-item">
 												<a href="<?php echo bp_loggedin_user_domain() . 'docs'; ?>" title="View my library"><?php _e( 'My Library', 'cctheme' ) ?></a>
 											</li>
 										<?php endif; // class_exists( 'BP_Docs' ) ?>
-										<li>
+										<li class="menu-item">
 											<a href="<?php echo wp_logout_url( home_url() ); ?>" title="Log out"><?php _e( 'Log Out', 'buddypress' ) ?></a>
 										</li>
 									</ul>
 								</div>
 							</li>
+						<?php notifications_counter(); ?>
+
 		        			<?php //bp_loggedin_user_avatar('width=24&height=24');  
 		        		} else { //show login and register links if not logged in ?>
-			        		<li id="login-item" class="alignright  menu-item menu-item-object-page page_item menu-item-has-children menu-item-login">
+			        		<li id="login-item" class="alignright menu-item menu-item-object-page page_item menu-item-level-0 menu-item-has-children menu-item-login">
 				        		<a class="login-link" href="<?php echo wp_login_url( ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?></a>
-			        			<div class="sub-nav cols-1">
+			        			<div class="sub-nav menu-item-login-panel">
 			        				<form name="login-form" id="sidebar-login-form" class="standard-form" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
 										<label><?php _e( 'Username or email', 'buddypress' ) ?><br />
 										<input type="text" name="log" id="sidebar-user-login" class="input" value="<?php if ( isset( $user_login) ) echo esc_attr(stripslashes($user_login)); ?>" tabindex="97" /></label>
@@ -142,16 +146,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 										<p class="forgetmenot"><label><input name="rememberme" type="checkbox" id="sidebar-rememberme" value="forever" tabindex="99" /> <?php _e( 'Remember Me', 'buddypress' ) ?></label></p>
 
 										<?php do_action( 'bp_sidebar_login_form' ) ?>
-										<input type="submit" name="wp-submit" id="sidebar-wp-submit" value="<?php _e( 'Log In', 'buddypress' ); ?>" tabindex="100" /> &nbsp;&nbsp;&nbsp;&nbsp; <button id="cancel-login">Cancel</button>
+										<input type="submit" name="wp-submit" id="sidebar-wp-submit" value="<?php _e( 'Log In', 'buddypress' ); ?>" tabindex="100" /> <!-- &nbsp;&nbsp;&nbsp;&nbsp; <button id="cancel-login">Cancel</button> -->
 										<input type="hidden" name="redirect_to" value="<?php echo ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ?>" />
 									</form>
 			        			</div>
 			        		</li>
-			        		<li class="alignright menu-item menu-item-object-page page_item menu-item-register<?php if ( bp_is_register_page() ){ echo " current-menu-item  current_page_item"; } ?>">
+			        		<li class="alignright menu-item menu-item-object-page page_item menu-item-level-0 menu-item-register<?php if ( bp_is_register_page() ){ echo " current-menu-item  current_page_item"; } ?>">
 			        			<?php printf( __( '<a href="%s" title="Create an account">Register</a>', 'buddypress' ), site_url( bp_get_signup_slug() ) ) ?>
 			        		</li>
 		        		<?php } ?>
-						<?php notifications_counter(); ?>
 						
 						<?php // Use this nav for "Support" and similar 
 						$args = array(

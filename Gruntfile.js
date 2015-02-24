@@ -34,6 +34,7 @@ module.exports = function(grunt) {
 		  cleancss: {
 			options: {
 			  // paths: ["css"],
+			  strictMath: true,
 			  cleancss: true,
 			},
 			files: {
