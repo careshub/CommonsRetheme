@@ -151,9 +151,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 									</form>
 			        			</div>
 			        		</li>
-			        		<li class="alignright menu-item menu-item-object-page page_item menu-item-level-0 menu-item-register<?php if ( bp_is_register_page() ){ echo " current-menu-item  current_page_item"; } ?>">
-			        			<?php printf( __( '<a href="%s" title="Create an account">Register</a>', 'buddypress' ), site_url( bp_get_signup_slug() ) ) ?>
-			        		</li>
+			        		<?php if ( get_option( 'users_can_register' ) ) : ?>
+				        		<li class="alignright menu-item menu-item-object-page page_item menu-item-level-0 menu-item-register<?php if ( bp_is_register_page() ){ echo " current-menu-item  current_page_item"; } ?>">
+				        			<?php printf( __( '<a href="%s" title="Create an account">Register</a>', 'buddypress' ), site_url( bp_get_signup_slug() ) ) ?>
+				        		</li>
+				        	<?php endif; // registration is allowed check?>
 		        		<?php } ?>
 						
 						<?php // Use this nav for "Support" and similar 
