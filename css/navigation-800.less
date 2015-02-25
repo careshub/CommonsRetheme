@@ -134,12 +134,17 @@
         }
     }
     // We'll want to indicate that some items contain subnav lists
-    .menu-item-has-children > a {
-        padding-right: 26px;
-        &:after {
-            right: 6px;
+    .menu-item-has-children {
+        & > a {
+            padding-right: 26px;
+            &:after {
+                right: 6px;
+            }
         }
-    } 
+        &.current-menu-item > a:after {
+            top: 38%;
+        }
+    }
     // User profile menu
     .menu-item-user {
         .username {
