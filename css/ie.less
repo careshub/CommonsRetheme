@@ -20,12 +20,13 @@
 @import "sa-1000";
 @import "1000";
 
+@import "navigation-base";
+@import "navigation-400";
+@import "navigation-800";
+
 //IE fixes
 
 .ie8, .ie7 {
-	.primary-navigation .secondary .bp-notifications .bp-notification-list {
-		margin-top:12px;
-	}
 	input[type="password"] {
 	    font-family: Arial;
 	}
@@ -52,26 +53,27 @@
 }
 // Styles for main nav bar search input
 .ie7 {
-	#cc-primary-search {
-		margin-top: 0;
-		#cc-navbar-search .cc-nav-input {
-			margin-top: 1px;
-			width: 150px;
-			line-height: 32px;
-			background-color: @white;
+	.screen-reader-text {
+		top: -9999em;
+	}
+	.primary-search-toggler > .searchx18 {
+		margin-top: 10px;
+	}
+	.primary-navigation {
+		.nav-container .expanding-search .cc-nav-input {
+			width: 84%;
+		}
+		.accessible-menu .sub-nav .sub-nav-group a {
+		    height: 1.4em;
+		    color: #FFFFFF !important;
+		    z-index: 1010;
 		}
 	}
 	.content-row {
 		clear: both;
 	}
 }
-.ie8 #cc-primary-search #cc-navbar-search .cc-nav-input {
-	background-color: @black;
-	line-height: 32px;
-	&:focus {
-		background-color: @white;
-	}
-}
+
 //hasLayout hack for IE7
 body.home-page #primary #top-story { height:1%; }
 //TODO: overrides for half-block, etc.

@@ -107,7 +107,7 @@
     .menu-item-level-0 { // This is where .accessible-megamenu-top-nav-item is applied
         clear: none;
         float: left;
-        width: inherit;
+        width: auto;
         border-bottom: none;
         & > a {
             border-left: none;
@@ -142,8 +142,11 @@
                 right: 6px;
             }
         }
-        &.current-menu-item > a:after {
-            top: 38%;
+        &.current-menu-item,
+        &.current-menu-parent {
+            & > a:after {
+                top: 38%;
+            }
         }
     }
     // User profile menu
@@ -151,6 +154,7 @@
         .username {
             clip: rect(1px, 1px, 1px, 1px);
             position: absolute !important;
+            top: -9999em;
         }
     }
     .menu-item-members { //Members nav link
@@ -202,6 +206,7 @@
         .notifications-label {
             clip: rect(1px, 1px, 1px, 1px);
             position: absolute !important;
+            top: -9999em;
         }
         .notifications-count {
             margin: 0;
