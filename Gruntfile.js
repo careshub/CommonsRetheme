@@ -7,9 +7,9 @@ module.exports = function(grunt) {
     grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
-        // watch for changes and trigger sass, jshint, uglify and livereload
+        // watch for changes and trigger less, jshint, uglify and livereload
         watch: {
-            options: { 
+            options: {
                 livereload: true,
             },
             js: {
@@ -20,14 +20,6 @@ module.exports = function(grunt) {
 				files: ['css/*.less'],
                 tasks: ['less:cleancss', 'autoprefixer']
             },
-            // images: {
-            //     files: ['img/**/*.{png,jpg,gif}'],
-            //     tasks: ['imagemin']
-            // },
-            // livereload: {
-            //     options: { livereload: true },
-            //     files: ['style.css', 'js/*.js', 'img/**/*.{png,jpg,jpeg,gif,webp,svg}']
-            // }
         },
 
 		less: {
@@ -40,11 +32,13 @@ module.exports = function(grunt) {
 			files: {
 				"style.css": "css/style.less",
 				"style-ie.css": "css/ie.less",
-                "css/tinymce-editor-styles.css": "css/tinymce-editor-styles.less"
+                "css/tinymce-editor-styles.css": "css/tinymce-editor-styles.less",
+                "css/navigation.css": "css/navigation.less",
+                "css/navigation-ie.css": "css/navigation-ie.less",
 			}
 		  }
 		},
-		
+
         // autoprefixer
         autoprefixer: {
             options: {
@@ -59,25 +53,11 @@ module.exports = function(grunt) {
             },
         },
 
-        // css minify
-        // Using less:cleancss to do this.
-        // cssmin: {
-        //     options: {
-        //         keepSpecialComments: 1
-        //     },
-        //     minify: {
-        //         expand: true,
-        //         cwd: 'assets/styles/build',
-        //         src: ['*.css', '!*.min.css'],
-        //         ext: '.css'
-        //     }
-        // },
-
         // javascript linting with jshint
         jshint: {
             options: {
-//                 jshintrc: '.jshintrc',
-//                 "force": true
+                // jshintrc: '.jshintrc',
+                // "force": true
             },
             all: [
                 'Gruntfile.js',
@@ -91,14 +71,17 @@ module.exports = function(grunt) {
 			options: {
 				banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
 						'<%= grunt.template.today("yyyy-mm-dd") %> */'
-			}, 
+			},
 			common: {
 				files: {
 					'js/commons.min.js': [
-					'js/src/*.js',
-					'js/libs/*.js',
-					
-					]
+    					'js/src/*.js',
+    					'js/libs/*.js',
+					],
+                    'js/cc-navigation.min.js': [
+                        'js/libs/jquery-accessibleMegaMenu.js',
+                        'js/libs/launcher-accessibleMegaMenu.js',
+                    ]
 				}
 			}
         },
@@ -164,12 +147,9 @@ module.exports = function(grunt) {
 
     });
 
-
-
     // Register tasks
-	// Typical run, cleans up css and js 
+	// Typical run, cleans up css and js
     grunt.registerTask('default', ['less:cleancss', 'autoprefixer', 'uglify:common', 'watch']);
     // Before releasing a build, do above plus minimize all images
 	grunt.registerTask('build', ['less:cleancss', 'autoprefixer', 'uglify:common', 'imagemin', 'checktextdomain', 'makepot']);
-
 };
