@@ -1,0 +1,25 @@
+@import "less-mixins";
+
+@import "navigation-base";
+@import "navigation-400";
+@import "navigation-800";
+
+// IE fixes for main nav bar
+.ie7 {
+    .screen-reader-text {
+        top: -9999em;
+    }
+    .primary-search-toggler > .searchx18 {
+        margin-top: 10px;
+    }
+    .primary-navigation {
+        .nav-container .expanding-search .cc-nav-input {
+            width: 84%;
+        }
+        .accessible-menu .sub-nav .sub-nav-group a {
+            height: 1.4em;
+            color: #FFFFFF !important;
+            z-index: 1010;
+        }
+    }
+}

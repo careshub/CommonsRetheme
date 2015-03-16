@@ -1,0 +1,216 @@
+@highlighted-color: lighten(@black, 15%);
+@nav-color: lighten(@black, 5%);
+/* Main navigation
+*******************/
+.primary-navigation {
+    .brand {
+        margin-top: 6px;
+        a { //home menu item
+            line-height: 2.4;
+        }
+    }
+    .nav-container {
+        float: left;
+        clear: none;
+        visibility: visible;
+        top: 0;
+        margin-top: 0;
+        overflow: visible;
+        // position: relative;
+        width: 74%;
+        width: calc(100% - 272px);
+        max-height: 1600px;
+        opacity: 1;
+        z-index: 1001;
+        transition: opacity 0s ease, max-height 0s ease, visibility 0s linear 0s, top 0s linear 0s;
+        .expanding-search {
+            padding: 0;
+            .primary-search-toggler {
+                display: block;
+            }
+            .searchx18 {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .sub-nav {
+                position: absolute;
+                display: block;
+                // left: -1px; // May need at desktop size
+                width: 100%;
+                //color: #454545;
+                // margin: 0;
+                padding: 1em;
+                line-height: normal;
+                // background-color: @highlighted-color;
+                cursor: default;
+                // box-shadow: 0 4px 6px -2px rgba(0,0,0,.5), inset 1px 1px 0 #fff;
+                visibility: hidden;
+                top: -9999em;
+                max-height: 0px;
+                overflow: hidden;
+                opacity: 0;
+                transition: opacity 250ms ease, max-height 500ms ease, visibility 0s linear, top 0s linear;
+                &.open {
+                    position: absolute; // Will need to be absolute for large screen sizes
+                    visibility: visible;
+                    top: 3.4em;
+                    background-color: @highlighted-color;
+                    width: 250px;
+                    max-height: 600px;
+                    opacity: 1;
+                    z-index: 1001;
+                    transition: opacity 250ms ease, max-height 500ms ease, visibility 0s linear, top 0s linear;
+                }
+            }
+            .cc-nav-input {
+                width: 100%;
+            }
+            .cc-navbar-search-button {
+            }
+        } // end search
+    }
+    .accessible-menu { // this is where .accessible-megamenu is applied
+        .sub-nav { // This is where .accessible-megamenu-panel is applied
+            width: 12em;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+            &.open {
+                position: absolute;
+                top: 3.4em;
+                background-color: @highlighted-color;
+            }
+            .sub-nav-group {
+                a {
+                    padding: 0.4em 1em;
+                }
+            }
+            &.menu-item-notifications-panel {
+                width: 22em;
+            }
+            &.menu-item-login-panel {
+                width: 18em;
+            }
+        }
+    }
+    .menu-toggler {
+        display: none;
+    }
+    .menu-item-login .sub-nav {
+        padding: 1em;
+        input[type=text], input[type=password] {
+            padding: 2.5%;
+            width: 95%;
+        }
+    }
+
+    // Default for top-nav-items
+    .menu-item-level-0 { // This is where .accessible-megamenu-top-nav-item is applied
+        clear: none;
+        float: left;
+        width: auto;
+        border-bottom: none;
+        & > a {
+            border-left: none;
+            border-top: solid 6px @nav-color;
+            &:hover,
+            &.open {
+                border-top-color: @ccyellow;
+            }
+        }
+        &.current-menu-item > a, &.current-menu-parent > a {
+            border-left: none;
+            border-top: solid 6px @ccyellow;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+            margin-bottom: -8px;
+            padding-bottom: 8px;
+        }
+        &.alignright {
+            float: right;
+            .accessible-megamenu-panel {
+                right: 0;
+                &.open {
+                }
+            }
+        }
+    }
+    // We'll want to indicate that some items contain subnav lists
+    .menu-item-has-children {
+        & > a {
+            padding-right: 26px;
+            &:after {
+                right: 6px;
+            }
+        }
+        &.current-menu-item,
+        &.current-menu-parent {
+            & > a:after {
+                top: 38%;
+            }
+        }
+    }
+    // User profile menu
+    .menu-item-user {
+        .username {
+            clip: rect(1px, 1px, 1px, 1px);
+            position: absolute !important;
+            top: -9999em;
+        }
+    }
+    .menu-item-members { //Members nav link
+        & > a {
+            border-left: none;
+            border-top: solid 6px @ccyellow;
+        }
+        &.current-menu-item > a, &.current-menu-parent > a {
+            background-color: @ccyellow;
+            border-left: none;
+            border-top: solid 6px @ccyellow;
+        }
+    }
+    .menu-item-groups { //Groups nav link
+        & > a {
+            border-left: none;
+            border-top: solid 6px @ccred;
+        }
+        &.current-menu-item > a, &.current-menu-parent > a {
+            background-color: @ccred;
+            border-left: none;
+            border-top: solid 6px @ccred;
+        }
+    }
+    .menu-item-maps-data { //Maps & Data nav link
+        & > a {
+            border-left: none;
+            border-top: solid 6px @ccblue;
+        }
+        &.current-menu-item > a, &.current-menu-parent > a {
+            background-color: @ccblue;
+            border-left: none;
+            border-top: solid 6px @ccblue;
+        }
+    }
+    .menu-item-channels,
+    .menu-item-blog { // Channels nav link
+        & > a {
+            border-left: none;
+            border-top: solid 6px @ccgreen;
+        }
+        &.current-menu-item > a, &.current-menu-parent > a {
+            background-color: @ccgreen;
+            border-left: none;
+            border-top: solid 6px @ccgreen;
+        }
+    }
+    .menu-item-notifications {
+        .notifications-label {
+            clip: rect(1px, 1px, 1px, 1px);
+            position: absolute !important;
+            top: -9999em;
+        }
+        .notifications-count {
+            margin: 0;
+        }
+    }
+
+}

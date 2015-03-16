@@ -74,46 +74,38 @@ get_header(); ?>
 					</div>
                 </div>
 
-                <?php wp_reset_query(); ?>		
-
         <?php 
 		$args = array(
 			'taxonomy' => 'data_vis_tool_categories'
 		);
-		$categories = get_categories($args);
-		$all_cats = array();
-		foreach ($categories as $cat) {
-			$all_cats[] = $cat->slug;
-		} 
-		//Build a local scroll-powered nav
+		$categories = get_categories( $args );
+		//Build a local-scroll-powered nav
 		?>
-
 		<ul id="jumplinks" class="clear">
 			<h2>Choose a tool by channel</h2>
 			<h3>Scroll to a channel:</h3>
 			<?php
-			foreach ($all_cats as $cat_slug) {
-				$cat_object = get_term_by('slug', $cat_slug, 'data_vis_tool_categories');
-				// print_r($cat_object);
-				$section_title = $cat_object->name;
-				?>
+			foreach ( $categories as $cat ) : ?>
 				<li>
-					<a href="#data-vis-tool-group-<?php echo $cat_slug; ?>" title="Scroll to <?php echo $section_title; ?> section" class="horizontal-list"><?php echo $section_title; ?></a>
+					<a href="#<?php echo $cat->slug; ?>" title="Scroll to <?php echo $cat->name; ?> section" class="horizontal-list"><?php echo $cat->name; ?></a>
 				</li>
-				<?php
-			}		
+			<?php
+			endforeach;		
 			?>
 		</ul>
 		<?php
-		foreach ($all_cats as $cat_slug) {
-			if ( function_exists('ccdvt_get_tools') )
-				ccdvt_get_tools($cat_slug);
+		if ( function_exists( 'ccdvt_get_tools' ) ) {
+			ccdvt_get_tools();
+		} else {
+			echo 'no function!';
 		}
 		
 		?>
 		<?php //comments_template(); ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
+
+    <?php wp_reset_query(); ?>		
 
 <?php //get_sidebar(); ?>
 <?php get_footer(); ?>
