@@ -84,7 +84,7 @@ function cc_sa_video_contest() {
 
 						<br /><br />
 						<form id="sa_signup_form" class="standard-form" method="post" action="">
-						  <img src="http://dev.communitycommons.org/wp-content/themes/CommonsRetheme/img/salud_america/SA-logox50.png" style="vertical-align:middle;" />&nbsp;&nbsp;
+						  <img src="/wp-content/themes/CommonsRetheme/img/salud_america/SA-logox50.png" style="vertical-align:middle;" />&nbsp;&nbsp;
 						  <strong>Join the Group: <em>Salud America!</em> Growing Healthy Change</strong><br /><br />
 						  <input type="checkbox" name="salud_interest_group" id="salud_interest_group" value="agreed" checked="checked" /> Yes, I&rsquo;m interested in work by Salud America! to reduce Latino childhood obesity.<br />
 						  <input type="checkbox" name="salud_newsletter" id="salud_newsletter" value="agreed" checked="checked" /> I would like to receive email updates on this topic.
@@ -105,7 +105,7 @@ function cc_sa_video_contest() {
 
 			} else {
 		?>
-				<div style="width:100%;text-align:center;margin-bottom:20px;background-color:#FAFAD2;padding:20px 0 20px 0;">To vote, you must <a href='/wp-login.php?redirect_to=http%3A%2F%2Fdev.communitycommons.org%2Fsalud-america-video-contest%2F'>log in</a>. If you are new and would like to join us, please <a href='/register/?salud-america=1'>click here to register</a>.</div>
+				<div style="width:100%;text-align:center;margin-bottom:20px;background-color:#FAFAD2;padding:20px 0 20px 0;">To vote, you must <a href='<?php echo wp_login_url( site_url( '/salud-america-video-contest/' ) ); ?>'>log in</a>. If you are new and would like to join us, please <a href='/register/?salud-america=1'>click here to register</a>.</div>
 				<script type="text/javascript">
 					jQuery( document ).ready(function($) {
 						$("#submitVote").hide();
@@ -402,5 +402,7 @@ if (is_page('salud-america-video-contest-feb15')) {
 
 		});
 	</script>
+<?php
+} // End function cc_sa_video_contest()script>
 <?php
 } // End function cc_sa_video_contest()
