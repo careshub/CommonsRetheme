@@ -75,12 +75,12 @@ module.exports = function(grunt) {
 			common: {
 				files: {
 					'js/commons.min.js': [
-    					'js/src/*.js',
     					'js/libs/*.js',
+                        'js/src/*.js',
 					],
                     'js/cc-navigation.min.js': [
                         'js/libs/jquery-accessibleMegaMenu.js',
-                        'js/libs/launcher-accessibleMegaMenu.js',
+                        'js/src/launcher-accessibleMegaMenu.js',
                     ]
 				}
 			}

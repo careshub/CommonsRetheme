@@ -20,9 +20,16 @@ if (jQuery) {
     (function ($) {
         "use strict";
         $(document).ready(function () {
+
+            // Handle clicks on the "menu" button toggle.
+            $('#menu-toggler').click(function(){
+                $(".nav-container").toggleClass('open');
+                return false;
+            });
+
             // initialize the megamenu
             $('.primary-navigation nav').accessibleMegaMenu();
-            
+
             // hack so that the megamenu doesn't show flash of css animation after the page loads.
             setTimeout(function () {
                 $('body').removeClass('init');
