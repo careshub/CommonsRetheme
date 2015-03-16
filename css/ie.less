@@ -6,7 +6,7 @@
 @import "bp-default";
 @import "default";
 
-@import "400"; 
+@import "400";
 
 @import "sa-600";
 @import "600";
@@ -15,17 +15,16 @@
 
 @import "sa-800";
 @import "bp-800";
-@import "800"; 
+@import "800";
 
 @import "sa-1000";
 @import "1000";
 
+@import "navigation-ie";
+
 //IE fixes
 
 .ie8, .ie7 {
-	.primary-navigation .secondary .bp-notifications .bp-notification-list {
-		margin-top:12px;
-	}
 	input[type="password"] {
 	    font-family: Arial;
 	}
@@ -52,26 +51,10 @@
 }
 // Styles for main nav bar search input
 .ie7 {
-	#cc-primary-search {
-		margin-top: 0;
-		#cc-navbar-search .cc-nav-input {
-			margin-top: 1px;
-			width: 150px;
-			line-height: 32px;
-			background-color: @white;
-		}
-	}
 	.content-row {
 		clear: both;
 	}
 }
-.ie8 #cc-primary-search #cc-navbar-search .cc-nav-input {
-	background-color: @black;
-	line-height: 32px;
-	&:focus {
-		background-color: @white;
-	}
-}
+
 //hasLayout hack for IE7
 body.home-page #primary #top-story { height:1%; }
-//TODO: overrides for half-block, etc.

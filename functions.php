@@ -27,6 +27,9 @@ require_once('includes/WKKF_scorecard.php');
 //Site search functionality, reconsidered:
 require_once('includes/site-search-redux.php');
 
+//Custom Nav Walker to improve accessibility of navigation menus
+require_once('includes/class-cc-accessibility-nav-walker.php');
+
 
 /* Javascript library and style enqueues
 *
@@ -62,7 +65,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.47
+          0.48
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
@@ -74,7 +77,7 @@ function commons_ie_stylesheet_load(){
             'commons_ie_stylesheet',
             get_stylesheet_directory_uri() . '/style-ie.css',
             false,
-            0.47
+            0.48
         );
     wp_enqueue_style( 'commons_ie_stylesheet' );
     $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lt IE 9' );
@@ -97,7 +100,7 @@ function parent_stylesheet_load(){
 // I'm joining the various scripts into one via CodeKit.
 add_action( 'wp_enqueue_scripts', 'cc_common_js_load', 14 );
 function cc_common_js_load(){
-  wp_register_script('cc-common-scripts', get_stylesheet_directory_uri().'/js/commons.min.js">', array('jquery'), '1.0', true  );
+  wp_register_script('cc-common-scripts', get_stylesheet_directory_uri().'/js/commons.min.js">', array('jquery'), '1.1', true  );
   wp_enqueue_script('cc-common-scripts');
 }
 
@@ -248,6 +251,7 @@ add_action( 'init', 'ccommons_widgets_init' );
 if ( function_exists( 'register_nav_menus' ) ) {
   register_nav_menus(
     array(
+      'main-nav-secondary' => 'Primary Navigation-secondary area',
       'footer-nav' => 'Footer Navigation',
       'salud-nav' => 'Salud America section navigation',
       'help-area' => 'Help Area'
@@ -283,39 +287,34 @@ function cc_buttonize_posts_nav_links( $attr ) {
 
 // Used to create the "alert" bubble in the CC header nav bar
 function notifications_counter() {
-  if (function_exists('bp_is_active')) {
-  global $bp;
+  if ( function_exists( 'bp_is_active' ) ) {
+    global $bp;
 
-  //Do nothing if the user isn't logged in
-  if ( !is_user_logged_in() )
-    return ;
+    $notifications = bp_notifications_get_notifications_for_user( bp_loggedin_user_id(), 'object' );
+    $count = ! empty( $notifications ) ? count( $notifications ) : 0;
+    $alert_class = (int) $count > 0 ? ' alert' : '';
+    $output = '<li class="menu-item-notifications alignright menu-item menu-item-level-0 menu-item-has-children">'
+           . '<a href="' . trailingslashit( bp_loggedin_user_domain() . bp_get_notifications_slug() ) . '"><span class="notifications-label">Notifications</span> <span class="notifications-count'. $alert_class . '">' . $count . '</span></a>';
+    $output .= print_notifications_list( $notifications );
+    $output .='</li>';
 
-  $notifications = bp_notifications_get_notifications_for_user( bp_loggedin_user_id(), 'object' );
-  $count = ! empty( $notifications ) ? count( $notifications ) : 0;
-  $alert_class = (int) $count > 0 ? 'pending-count alert' : 'count no-alert';
-  $output = '<li class="menupop bp-notifications separator">'
-         . '<a href="' . trailingslashit( bp_loggedin_user_domain() . bp_get_notifications_slug() ) . '"><span class="'. $alert_class . '">' . $count . '</span></a>';
-  $output .= '<h5>Notifications:</h5>';
-  $output .= print_notifications_list( $notifications );
-  $output .='</li>';
-
-  echo $output;
+    echo $output;
   }
 
 }
 
 function print_notifications_list( $notifications ){
-    $output = '<div class="pop-sub-wrapper"><ul class="bp-notification-list">';
+  $output = '<div class="sub-nav menu-item-notifications-panel">';
+  // $output .= '<h5>Notifications:</h5>';
+  $output .= '<ul class="bp-notification-list sub-nav-group">';
 
   if ( ! empty( $notifications ) ) {
     foreach ( (array) $notifications as $notification ) {
-      $output .= '<li id="cc-notification-' . $notification->id . '">';
+      $output .= '<li id="cc-notification-' . $notification->id . '" class="menu-item">';
       $output .= '<a href="' . $notification->href . '">' . $notification->content . '</a></li>';
     }
   } else {
-
-  $output .= '<li class="no-notices">No new notifications.</li>';
-
+    $output .= '<li class="no-notices menu-item">No new notifications.</li>';
   }
 
   $output .= '</ul></div>';
@@ -1195,3 +1194,24 @@ function cc_wp_show_hooked_filters(){
   echo '</pre>';
 }
 // add_action( 'wp_head', 'cc_wp_show_hooked_filters' );
+
+// add_filter( 'wp_nav_menu_objects', 'cc_add_roles_nav_menu_items', 16, 2 );
+function cc_add_roles_nav_menu_items( $items, $args ){
+  $towrite = PHP_EOL . 'navmenu items' . print_r( $items, TRUE );
+  $towrite .= PHP_EOL . 'navmenu args' . print_r( $args, TRUE );
+  $fp = fopen('nav_menu.txt', 'a');
+  fwrite($fp, $towrite);
+  fclose($fp);
+
+  return $items;
+}
+add_filter( 'nav_menu_css_class', 'cc_filter_nav_items_classes', 23, 4 );
+function cc_filter_nav_items_classes( $classes, $item, $args, $depth ) {
+  if ( $args->theme_location == 'main-nav-secondary' && $depth == 0 ) {
+    $classes[] = 'alignright';
+  }
+  if ( isset( $depth ) ) {
+    $classes[] = 'menu-item-level-' . $depth;
+  }
+  return $classes;
+}

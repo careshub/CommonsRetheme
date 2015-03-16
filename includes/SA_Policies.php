@@ -469,23 +469,6 @@ jQuery(document).ready(function(){
       //On page load, update the inputs that are enabled
         refresh_sa_policy_enable_geog_inputs();
 
-      //If a geography has been selected, but not copied over to #final_geog, do it.
-      //TODO: Why are we using final_geog again?
-        // if ( ( jQuery('#sa_finalgeog').val() == '' ) && ( jQuery('#sa_selectedgeog').val() !== '' )  ) {
-        //   jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog").val());
-        // }
-
-      //Refresh lat/longs on page load if any are empty
-      // var emptyCoords = jQuery('#geography_coords input').filter(function() { return this.value == ""; });
-
-      //emptyCoords will return an object of objects if it finds any empty inputs
-      // if (emptyCoords.length > 0) {
-      //     //This function will only run if #sa_finalgeog isn't empty
-      //     // get_sa_geog_lat_lon();
-      // } else {
-      //   // console.log('No need to run the function');
-      // }
-
       //On change, refresh the option list and option list visibility
       //The page load setup is handled via php, so the js only has to handle the updates
         jQuery('#sa_geog_select').live( 'change', function() {           
@@ -496,12 +479,6 @@ jQuery(document).ready(function(){
         jQuery('#sa_state').live( 'change', function() {           
             refresh_sa_policy_geographies();          
           });
-
-        // jQuery("#sa_selectedgeog").live( 'change', function() {
-        //     jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog").val());
-        //     // get_sa_geog_lat_lon();
-        //    });
-
 });
 
 function refresh_sa_policy_enable_geog_inputs() {
@@ -560,9 +537,6 @@ function refresh_sa_policy_geographies() {
                           if ( response != -1 ) {
                             //If we got a response, update the geography select.
                            jQuery("#sa_selectedgeog").html(response);
-                           //set finalgeo and lat/lon, in case the desired option is the first option... otherwise 'change' will never fire :)
-                           // jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog option:first").val());
-                            // get_sa_geog_lat_lon();
                           }
                         }
                       );
@@ -571,63 +545,6 @@ function refresh_sa_policy_geographies() {
              break;
            }             
  }
-
-// function get_sa_geog_lat_lon(){
-//     if (jQuery("#sa_finalgeog").val() !== '') {  
-//       //  alert(jQuery("#sa_finalgeog").val());
-
-//       var dataString2 = 'finalgeog=' + jQuery("#sa_finalgeog").val() + '&geog=' + jQuery("#sa_geog").val() + '&state=' + jQuery("#sa_state").val();
-//       console.log(dataString2);
-//       //TODO: Make this a typical WP ajax request
-//        jQuery.ajax
-//        ({
-//          type: "POST",               
-//          url: "/wp-content/themes/CommonsRetheme/ajax/getlatlong.php",
-//          data: dataString2,
-//          cache: false,               
-//          error: function() {
-//            alert("I can't calculate the lat & long.");
-//          },
-//          success: function(p)
-//          {       
-//            // console.log(p);
-//            // jQuery("#sa_latlongs").html(p);
-//            var coord = jQuery.parseJSON(p);
-//             jQuery("#sa_latitude").val(coord.latitude);
-//             jQuery("#sa_longitude").val(coord.longitude);
-//       			jQuery("#sa_nelat").val(coord.nelat);
-//       			jQuery("#sa_nelng").val(coord.nelng);
-//       			jQuery("#sa_swlat").val(coord.swlat);
-//       			jQuery("#sa_swlng").val(coord.swlng);
-//          } 
-//        });
-
-//        //Getting the geographies list via WP AJAX request
-//        //  var data = {
-//        //    action: 'get_geography_lat_lon',
-//        //    // post_attachment_to_delete: <?php echo $post->ID; ?>,
-//        //    finalgeog: jQuery("#sa_finalgeog").val(),
-//        //    geog: jQuery("#sa_geog").val(),
-//        //    state: jQuery("#sa_state").val(), 
-//        //    security: '<?php echo wp_create_nonce( 'get_geography_lat_lon' ); ?>'
-//        //  };
-//        // // since WP 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
-//        //  jQuery.post(
-//        //        ajaxurl, 
-//        //        data, 
-//        //        function(response) {
-//        //          // console.log(response)
-//        //          if ( response != -1 ) {
-//        //            //If we got a response, update the geography select.
-//        //           jQuery("#sa_selectedgeog").html(response);
-//        //           //set finalgeo and lat/lon, in case the desired option is the first option... otherwise 'change' will never fire :)
-//        //           jQuery("#sa_finalgeog").val(jQuery("#sa_selectedgeog option:first").val());
-//        //            get_sa_geog_lat_lon();
-//        //          }
-//        //        }
-//        //      );
-//    }
-// }
 
 </script>
 
