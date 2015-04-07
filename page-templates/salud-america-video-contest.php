@@ -133,17 +133,17 @@ function cc_sa_video_contest() {
 					if ( isset ( $_POST['sa_vid_vote'] ) ){
 						$vidtitle = "";
 						if ( $_POST['sa_vid_vote'] == 1 ) {
-							$vidtitle = 'Run, Chicago, Run';
+							$vidtitle = 'Sweeter than Soda';
 						} elseif ( $_POST['sa_vid_vote'] == 2 ) {
-							$vidtitle = 'Moms Heart Parks';
+							$vidtitle = 'A Salad Rap';
 						} elseif ( $_POST['sa_vid_vote'] == 3 ) {
-							$vidtitle = 'Stickball in NYC';
+							$vidtitle = 'A Healthy Bite on the Bus';
 						} elseif ( $_POST['sa_vid_vote'] == 4 ) {
-							$vidtitle = 'Into the Woods (on a Safe Trail)';
+							$vidtitle = 'High Schools vs. Sugary Drinks';
 						} elseif ( $_POST['sa_vid_vote'] == 5 ) {
-							$vidtitle = 'A Corridor to Health';
+							$vidtitle = 'Dangling a Carrot';
 						} elseif ( $_POST['sa_vid_vote'] == 6 ) {
-							$vidtitle = 'Walk at School';
+							$vidtitle = 'Turning Fish into Fresh Fruit';
 						}
 						$arr = array(
 							'post_title' => $uid . "_SA_Video_Vote",
@@ -167,45 +167,45 @@ function cc_sa_video_contest() {
 				}
 
 				?>
-        <h3 class="screamer saorange">Vote for Best Video + Enter to Win a Free T-shirt and Jump Rope!</h3>
+        <h3 class="screamer saorange">Vote for Best Video of Healthy Food + Enter to Win a Prize!</h3>
 		<div id="ballot">
-			<p>Latino kids need safe, easy-to-get-to places to play</p>
-			<h3>WATCH and VOTE for your favorite "#SaludHeroes of Active Spaces" (who helped give kids new places to play) by March 25, 2015, and be entered into a random drawing to WIN a free Salud America! T-shirt and jump rope!</h3><br /><br />
+			<p>Latino kids need healthy food options at school and in the community.</p>
+			<h3>WATCH and VOTE for your favorite "#SaludHeroes of Healthy Food" (who helped give kids more nutritious foods and drinks) by April 29, 2015, and be entered into a random drawing to WIN a free Salud America! T-shirt and jump rope!</h3><br /><br />
 
 			<form id="sa_vid_contest_form" class="standard-form" method="post" action="">
 				<div class="row">
 					<div class="half-block" style="text-align:center;">
-						Run, Chicago, Run<br />
-						<iframe width="400" height="250" src="//www.youtube.com/embed/URBpLBDUJEQ" frameborder="0" allowfullscreen></iframe><br />
+						Sweeter than Soda<br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/G_mb4Tq4A9c" frameborder="0" allowfullscreen></iframe><br />
 						<input id="cb1" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="1"> Vote
 					</div>
 					<div class="half-block" style="text-align:center;">
-						Moms Heart Parks<br />
-						<iframe width="400" height="250" src="//www.youtube.com/embed/1qrAEDRvEoo" frameborder="0" allowfullscreen></iframe><br />
+						A Salad Rap<br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/u8X46R2-a8k" frameborder="0" allowfullscreen></iframe><br />
 						<input id="cb2" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="2"> Vote
 					</div>
 				</div>
 				<div class="row">
 					<div class="half-block" style="text-align:center;">
-						Stickball in NYC<br />
-						<iframe width="400" height="250" src="//www.youtube.com/embed/iCBXZu4tGOg" frameborder="0" allowfullscreen></iframe><br />
+						A Healthy Bite on the Bus<br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/tu1M29ofXf0" frameborder="0" allowfullscreen></iframe><br />
 						<input id="cb3" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="3"> Vote
 					</div>
 					<div class="half-block" style="text-align:center;">
-						Into the Woods (on a Safe Trail)<br />
-						<iframe width="400" height="250" src="//www.youtube.com/embed/PQ79uc2BBpE" frameborder="0" allowfullscreen></iframe><br />
+						High Schools vs. Sugary Drinks<br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/JqHGUrTnSSI" frameborder="0" allowfullscreen></iframe><br />
 						<input id="cb4" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="4"> Vote
 					</div>
 				</div>
 				<div class="row">
 					<div class="half-block" style="text-align:center;">
-						A Corridor to Health<br />
-						<iframe width="400" height="250" src="//www.youtube.com/embed/N-3xaJJkTmA" frameborder="0" allowfullscreen></iframe><br />
+						Dangling a Carrot<br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/TreI3VES8xg" frameborder="0" allowfullscreen></iframe><br />
 						<input id="cb5" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="5"> Vote
 					</div>
 					<div class="half-block" style="text-align:center;">
-						Walk at School<br />
-						<iframe width="400" height="250" src="//www.youtube.com/embed/luwie_w9slw" frameborder="0" allowfullscreen></iframe><br />
+						Turning Fish into Fresh Fruit<br />
+						<iframe width="400" height="250" src="//www.youtube.com/embed/YXmyDv4-WIM" frameborder="0" allowfullscreen></iframe><br />
 						<input id="cb6" type="checkbox" class="sa_vid_cb" name="sa_vid_vote" value="6"> Vote
 					</div>
 				</div>
@@ -215,13 +215,14 @@ function cc_sa_video_contest() {
 		<p class="aligncenter"><a id="togglerules" style="text-decoration:underline;cursor:pointer;">See contest rules</a></p>
 
 		<div id="rules">
-			<p>This contest is open to everyone (except Salud America! staff or grantees). The contest begins on March 11, 2015, and ends at 11:59 p.m. CST on March 25, 2015. To enter, individuals must first register with the Salud America! Growing Healthy Change <a href="http://www.communitycommons.org/salud-america/" target="_blank">website</a>, and then click to vote for their favorite video among four potential choices. Each registered user may cast only one vote. Casting a vote enters the registered user into a drawing for a T-shirt and jump rope package. The drawing&rsquo;s winner will be notified by April 8, 2015, via email.  The winner must contact us directly at <a href="mailto:saludamerica@uthscsa.edu?subject=SA Video Contest">saludamerica@uthscsa.edu</a> to claim their prize package. Entry into drawing is subject to all applicable laws and regulations.</p>
+			<p>This contest is open to everyone (except Salud America! staff or grantees). The contest begins on April 8, 2015, and ends at 11:59 p.m. CST on April 29, 2015. To enter, individuals must first register with the Salud America! Growing Healthy Change <a href="http://www.communitycommons.org/salud-america/" target="_blank">website</a>, and then click to vote for their favorite video among four potential choices. Each registered user may cast only one vote. Casting a vote enters the registered user into a drawing for a T-shirt and jump rope package. The drawing&rsquo;s winner will be notified by May 6, 2015, via email.  The winner must contact us directly at <a href="mailto:saludamerica@uthscsa.edu?subject=SA Video Contest">saludamerica@uthscsa.edu</a> to claim their prize package. Entry into drawing is subject to all applicable laws and regulations.</p>
 		</div>
         <div style="margin-bottom:20px;"><h3>Past contests</h3></div>
         <ul class="no-bullets">
             <li><strong><a href="/salud-america-video-contest-dec14">December 2014:</strong></a> Winner - &ldquo;Grocery stores tag healthy foods in California&rdquo;</li>
             <li><strong><a href="/salud-america-video-contest-jan15">January 2015:</strong></a> Winner - &ldquo;Biking to and from School&rdquo;</li>
             <li><strong><a href="/salud-america-video-contest-feb15">February 2015:</strong></a> Winner - &ldquo;Teens Help Advertise the Good Stuff at Corner Stores&rdquo;</li>
+            <li><strong><a href="/salud-america-video-contest-mar15">March 2015:</strong></a> Winner - &ldquo;Run, Chicago, Run&rdquo;</li>
         </ul>
 				<?php
 	} // end if ( is_page('salud-america-video-contest') )
@@ -362,6 +363,51 @@ if (is_page('salud-america-video-contest-feb15')) {
         </div>
 	<?php
 	} // End if (is_page('salud-america-video-contest-feb15'))
+if (is_page('salud-america-video-contest-mar15')) {
+     ?>
+        <h3 class="screamer saorange">Video contest March 2015</h3>
+        <div class="row">
+	        <div  style="text-align:center;background-color:#cc3366;padding-top:5px;padding-bottom:1px">
+		        <h3 style="color:#fff">WINNER!</h3>
+	        </div>
+			<div  style="text-align:center;border-style:solid;border-width:10px;border-color:#cc3366;margin-bottom:20px">
+				<br />Run, Chicago, Run<br /><br />
+				<iframe width="520" height="325" src="//www.youtube.com/embed/PRob4aJKM8A" frameborder="0" allowfullscreen></iframe><br />
+			</div>
+		</div>
+	    <div style="text-align:left;background-color:#008eaa;">
+		    <h3 style="color:#fff; margin-left:10px">Watch all the videos in the contest</h3>
+	    </div>
+
+	    <div class="row">
+            <div class="half-block" style="text-align:center;">
+				Moms Heart Parks<br />
+				<iframe width="400" height="250" src="//www.youtube.com/embed/1qrAEDRvEoo" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="half-block" style="text-align:center;">
+				Stickball in NYC<br />
+				<iframe width="400" height="250" src="//www.youtube.com/embed/iCBXZu4tGOg" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="half-block" style="text-align:center;">
+                                Into the Woods (on a Safa Trail)<br />
+			<iframe width="400" height="250" src="//www.youtube.com/embed/PQ79uc2BBpE" frameborder="0" allowfullscreen></iframe>
+	        </div>
+	        <div class="half-block" style="text-align:center;">
+				A Corridor to Health<br />
+				<iframe width="400" height="250" src="//www.youtube.com/embed/N-3xaJJkTmA" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="row">
+			<div class="half-block" style="text-align:center;">
+				Walk at School<br /><br />
+				<iframe width="400" height="250" src="//www.youtube.com/embed/luwie_w9slw" frameborder="0" allowfullscreen></iframe><br />
+			</div>
+        </div>
+	<?php
+	} // End if (is_page('salud-america-video-contest-mar15'))
 
 	/* Restore original Post Data */
 	wp_reset_postdata();
@@ -402,7 +448,5 @@ if (is_page('salud-america-video-contest-feb15')) {
 
 		});
 	</script>
-<?php
-} // End function cc_sa_video_contest()script>
 <?php
 } // End function cc_sa_video_contest()
