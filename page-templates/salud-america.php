@@ -11,18 +11,18 @@ get_header(); ?>
 
 			<div class="entry-content">
 				<div class="notice" style="border-left:8px solid red;background-color:#F3F3F3;padding: 1px 2em 1em;">
+					<h4 style="color:black"><a href="http://www.care2.com/go/z/22646564" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Take Action</span>&emsp;Tell Taco Bell: Quit Pushing Sugary Drinks</a></h4>
+					<?php /* ?><p>Summer is here, and that means camp for kids to make new friends and try new things—but it also potentially means being exposed to unhealthy sugary drinks.</p><?php */?>
+					<a href="http://www.thepetitionsite.com/121/243/178/" target="_blank" class="button">Sign the Petition</a>
+
 					<h4 style="color:black;margin-bottom:.5em;"><a href="<?php echo home_url( 'salud-america-video-contest' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Vote &amp; Win: </span>&ensp;Pick Your Fave #SaludHeroes of Healthy Food &amp; Win a Prize!</a></h4>
                     <a href="<?php echo home_url( 'salud-america-video-contest' ); ?>" class="button">Vote now</a>
-					<?php /* ?>
-					<h4 style="color:black"><a href="http://www.care2.com/go/z/22646564" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Take Action</span>&emsp;Tell Kellogg: Stop Marketing High-Sugar Recipes to Latino Families</a></h4>
-					<?php /* ?><p>Summer is here, and that means camp for kids to make new friends and try new things—but it also potentially means being exposed to unhealthy sugary drinks.</p><?php */?>
-					<?php /* ?>
-					<a href="http://www.care2.com/go/z/22646564" target="_blank" class="button">Sign the Petition</a>
-					<?php */ ?>
 
-                    <h4 style="color:black;margin-top: 1em;margin-bottom:.5em;"><a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Tweetchat 4/7:</span>&ensp;&ldquo;Apps that Empower Healthy Lifestyles for Latinos&rdquo;</a></h4>
-                    <a href="https://twitter.com/SaludToday" target="_blank" class="button" >Follow the conversation</a>&emsp;<a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" class="button">Learn more</a>
+
+                    <h4 style="color:black;margin-top: 1em;margin-bottom:.5em;"><a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" style="text-decoration:none;color:black"><span class="uppercase" style="text-transform:uppercase; color: red;">Tweetchat 4/14:</span>&ensp;&ldquo;Latinos and Alcohol Awareness&rdquo;</a></h4>
+                    <a href="https://twitter.com/SaludToday" target="_blank" class="button" >Follow the conversation</a>&emsp;<a href="<?php echo home_url( 'salud-america/tweetchat' ); ?>" class="button">Chat Schedule</a>
 				</div>
+
 				<h3 class="screamer sagreen">How can you fight Latino childhood obesity in your area?</h2>
 
 				<?php sa_get_random_hero_video(); ?>
