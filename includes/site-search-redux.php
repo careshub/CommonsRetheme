@@ -17,10 +17,10 @@ function cc_modify_search_query( $query ) {
 	     'post', 'group_story', 'page', 'bp_doc', 'sapolicies', 'saresources', 'sa_success_story', 'cchelp'
 		));
 
-		$towrite = PHP_EOL . 'pre_get_posts query: ' . print_r($query, TRUE);
-		$fp = fopen('what_the_search.txt', 'a');
-		fwrite($fp, $towrite);
-		fclose($fp);
+		// $towrite = PHP_EOL . 'pre_get_posts query: ' . print_r($query, TRUE);
+		// $fp = fopen('what_the_search.txt', 'a');
+		// fwrite($fp, $towrite);
+		// fclose($fp);
 
 	return $query;
 }

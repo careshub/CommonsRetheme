@@ -3183,8 +3183,8 @@ body.home-page #primary .quarter-block h3 {
 .clear-none {
   clear: none;
 }
-/* Plugin css style dequeueing: 
-*  So we can dequeue some small css files reducing http requests. 
+/* Plugin css style dequeueing:
+*  So we can dequeue some small css files reducing http requests.
 *  Does require manual updates.(!)
 */
 .taxonomy-images-the-terms {
@@ -4133,10 +4133,10 @@ ul.item-list div.action {
   padding-bottom: 21%;
 }
 #content .video-container-group {
-  float: right;
+  float:/* right;
   width: 45%;
   margin-left: 5%;
-  margin-bottom: 1.7em;
+  margi*/n-bottom: 1.7em;
 }
 #content .video-container-group .video-container {
   width: 100%;

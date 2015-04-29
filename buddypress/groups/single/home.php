@@ -24,7 +24,7 @@
 
 	<div id="item-body">
 
-		<?php //do_action( 'bp_before_group_body' );
+		<?php do_action( 'bp_before_group_body' );
 
 		/**
 		 * Does this next bit look familiar? If not, go check out WordPress's

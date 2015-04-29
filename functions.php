@@ -5,18 +5,6 @@ if ( ! function_exists( 'bp_is_active' ) ) {
   return;
 }
 //include code from include folder
-//Definition of the Salud America policy custom post type
-require_once('includes/SA_Policies.php');
-require_once('includes/taxonomy-advocacytarget.php');
-//Definition of the geographies custom taxonomy
-require_once('includes/taxonomy-geography.php');
-//Definition of the Salud America Resources custom post type
-require_once('includes/SA_Resources.php');
-require_once('includes/cpt-sa-success-stories.php');
-//Definition of the Salud America Resources custom taxonomy
-require_once('includes/taxonomy-resourcecat.php');
-//Definition of the Salud America policy tag custom taxonomy
-require_once('includes/taxonomy-sapolicytag.php');
 //Shortcode for CDC_DCH Group Home
 require_once('includes/cdc_dch_shortcode.php');
 //Shortcode for SA Policy Map Search
@@ -863,16 +851,22 @@ function users_own_attachments( $wp_query_obj )
     return;
 }
 
-function ellipsis($text, $max=100, $append='&hellip;') {
-    if (strlen($text) <= $max)
-      return $text;
+function ellipsis( $text, $max=100, $append='&hellip;' ) {
+  return cc_ellipsis( $text, $max, $append );
+}
 
-    $out = substr($text,0,$max);
+function cc_ellipsis( $text, $max=100, $append='&hellip;' ) {
+  // First, strip shortcodes, images and such
+  $text = strip_tags( strip_shortcodes($text) );
+  if ( strlen( $text ) <= $max )
+    return $text;
 
-    if (strpos($text,' ') === FALSE)
-      return $out.$append;
+  $out = substr( $text, 0, $max );
 
-    return preg_replace('/\w+$/','',$out).$append;
+  if ( strpos( $text, ' ' ) === FALSE )
+    return $out . $append;
+
+  return preg_replace( '/\w+$/','', $out ) . $append;
 }
 
 //Remove some group creation steps if the user isn't a superadmin
@@ -1092,53 +1086,6 @@ function cdcdch_users() {
   }
 }
 add_action( 'template_redirect', 'cdcdch_users' );
-
-/* Salud America related stuff
-********************************/
-// Salud America isn't a group, but they need to play one on TV. So we're manually adding them to the top of the directory list.
-add_action( 'cc_add_to_featured_hubs', 'stick_sa_to_the_top_of_the_directory' );
-function stick_sa_to_the_top_of_the_directory( $shown_hubs ){
-
-  if ( is_page( 'groups' ) || ( bp_is_user_groups() && get_user_meta( bp_displayed_user_id(), 'salud_interest_group', true) ) ) :
-  ?>
-      <li id="featured-group-salud-america">
-        <div class="item-avatar">
-          <a href="/salud-america/" title="Link to Salud America! space"><img width="50" height="50" class="avatar no-box" alt="avatar" src="/wp-content/themes/CommonsRetheme/img/salud_america/SA-logox50.png"></a>
-        </div>
-
-        <div class="item">
-          <div class="item-title"><a href="/salud-america/" title="Link to Salud America! space">Salud America!</a></div>
-          <div class="item-desc">
-            <p>Working together to end Latino childhood obesity.</p>
-          </div>
-        </div>
-        <div class="clear"></div>
-      </li>
-  <?php
-  endif;
-}
-
-/*
-// Get taxonomy images for Salud
-// Accepts category name and which taxonomy
-// Uses cc_get_taxonomy_images()
-// returns <div><img><h2> string, must be echoed
-*/
-function salud_get_taxonomy_images($category, $taxonomy){
-  // Build the section header
-  $cat_array = explode(",", $category);
-  foreach ($cat_array as $single_cat) {
-    $cat_object = get_term_by('slug', $single_cat, $taxonomy);
-    $section_title_cats[] = $cat_object->name;
-  }
-  $section_title = implode(" &amp; ", $section_title_cats);
-
-  $output .= '<div class="sa-resource-header-icon"><span>' . $section_title . '</span>';
-  $output .= cc_get_taxonomy_images($cat_array[0], $taxonomy);
-  $output .= '</div>';
-
-  return $output;
-}
 
 /* Helper functions
 ***********************/
