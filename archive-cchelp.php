@@ -74,16 +74,16 @@ $group_posts = new WP_Query($args);
 										'color' => '#df5827',
 										'text' => 'Hubs on the Commons'
 										),
-						'Administrators' => array(
-										'slug' => 'administrators',
-										'color' => '#008eaa',
-										'text' => 'Being an Administrator'
-										),
-						'Target Intervention Area Tool' => array(
-										'slug' => 'chi-grant-planning',
-										'color' => '#879c3c',
-										'text' => 'Target Intervention Area Tool'
-										)
+						// 'Administrators' => array(
+										// 'slug' => 'administrators',
+										// 'color' => '#008eaa',
+										// 'text' => 'Being an Administrator'
+										// ),
+						// 'Target Intervention Area Tool' => array(
+										// 'slug' => 'chi-grant-planning',
+										// 'color' => '#879c3c',
+										// 'text' => 'Target Intervention Area Tool'
+										// )
 						);
 		$typearray = array(
 						'Videos' => 'videos',
@@ -580,22 +580,19 @@ $group_posts = new WP_Query($args);
 			</div>
 			
 			<div style="width:895px;">
-				<div id="guideCHI" class="guidebook" style="background-color:#879c3c;cursor:pointer;border:solid 2px #879c3c;" title="Go to the CHI and Grant Planning Guidebook">
-					<span class="guidebook-text">Target Intervention Area Tool</span>
-				</div>
+
 				<div id="guideData" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to the Data Guidebook">
 					<span class="guidebook-text">Commons Data</span>
 				</div>
 				<div id="guideWebinars" class="guidebook" style="background-color:#008eaa;cursor:pointer;border:solid 2px #008eaa;" title="Go to Archived Webinars">
 					<span class="guidebook-text">Archived Webinars</span>
+				</div>		
+				<div id="guideGroups" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to Hubs on the Commons">
+					<span class="guidebook-text">Hubs on the Commons</span>
 				</div>				
 			</div>	
 			
-			<div style="width:895px;">
-				<div id="guideGroups" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to Hubs on the Commons">
-					<span class="guidebook-text">Hubs on the Commons</span>
-				</div>			
-			</div>
+
 			
 			<?php 
 			if ($bp_user_role == 'administrator') {
@@ -604,9 +601,7 @@ $group_posts = new WP_Query($args);
 			
 			<div style="width:895px;">
 
-				<div id="guideAdmin" class="guidebook" style="background-color:#008eaa;cursor:pointer;border:solid 2px #008eaa;" title="Go to the Administrator Guidebook">
-					<span class="guidebook-text">Being an Administrator</span>
-				</div>
+
 				<div id="guideUploadingData" class="guidebook" style="background-color:#f9b715;cursor:pointer;border:solid 2px #f9b715;" title="Go to the Data Guidebook">
 					<span class="guidebook-text">Uploading Local Data</span>
 				</div>
