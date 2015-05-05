@@ -69,7 +69,7 @@ function cc_ohio_county_results() {
 			"Washington County"
 		);
 		
-		$newurl = '/Examples/oh-county-new-xls.php';
+		$newurl = '/PHPExcel/Examples/oh-county-new-xls.php';
 ?>
 	<form id="form1" name="form1" method="post" action="">
 		<strong>Select County:</strong><br /><br />
@@ -226,7 +226,7 @@ function cc_ohio_county_results() {
 			</div>
 			</div>
 			
-			<input type="button" onclick="printContent('printdiv')" value="Print Report" />&nbsp;&nbsp;&nbsp;<input id="form2_submit" type="submit" value="Export to Excel" style="display:none;" />
+			<input type="button" onclick="printContent('printdiv')" value="Print Report" />&nbsp;&nbsp;&nbsp;<input id="form2_submit" type="submit" value="Export to Excel" />
 			</form>
 <?php		
 	} 
