@@ -302,7 +302,7 @@ function print_notifications_list( $notifications ){
       $output .= '<a href="' . $notification->href . '">' . $notification->content . '</a></li>';
     }
   } else {
-    $output .= '<li class="no-notices menu-item">No new notifications.</li>';
+    $output .= '<li class="no-notices menu-item"><a href="' . trailingslashit( bp_loggedin_user_domain() . bp_get_notifications_slug() ) . '">No new notifications.</a></li>';
   }
 
   $output .= '</ul></div>';
