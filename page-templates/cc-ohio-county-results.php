@@ -200,8 +200,14 @@ function cc_ohio_county_results() {
 											$fieldlbl = $field['label'] . ":";
 										}
 										//echo $field['type'] . "<br />";
-										echo "<span style='margin-left: 20px;'>" . $fieldlbl . $lead[ $field['id'] ] . "</span><br />";										
-										$countyform = $countyform . $fieldlbl . $lead[ $field['id'] ] . "|";
+										
+										$reslt = $lead[ $field['id'] ];
+										if (empty($reslt)) {
+											$reslt = 0;
+										}
+										
+										echo "<span style='margin-left: 20px;'>" . $fieldlbl . $reslt . "</span><br />";										
+										$countyform = $countyform . $fieldlbl . $reslt . "|";
 									}
 								}
 							}						
