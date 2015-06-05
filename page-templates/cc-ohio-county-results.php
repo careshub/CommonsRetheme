@@ -125,7 +125,8 @@ function cc_ohio_county_results() {
 		if(!empty($_POST['chk_group'])) {
 
 			$keysarray = $_POST['chk_group'];
-
+			$keycount = 0;
+			$noentries;
 			foreach ($keysarray as $k) {
 			
 				$startform = GFFormsModel::get_form_meta( $k ); 
@@ -147,6 +148,13 @@ function cc_ohio_county_results() {
 				$entries = GFAPI::get_entries( $k, $search_criteria );
 				//print_r($search_criteria);
 				//var_dump($entries);
+				
+				if (empty($entries)) {
+					//echo "NO ENTRIES";
+					$noentries = $noentries . $keycount . "|";
+				}
+				$keycount = $keycount + 1;
+				
 				$entry = $entries[0];
 				foreach ($entry as $entrykey => $entryval) {
 					$entryid = 0;
@@ -213,6 +221,7 @@ function cc_ohio_county_results() {
 							}						
 						
 					}
+					
 				}
 				
 				
@@ -220,6 +229,41 @@ function cc_ohio_county_results() {
 				echo "<br /><br />";
 			}
 			
+			//var_dump($titles);
+			if (!empty($noentries)) {
+				//var_dump($titles);
+				$noentries = substr_replace($noentries ,"", -1);
+				
+				if (strpos($noentries,'|') !== false) {
+					$noearr = explode("|", $noentries);
+					foreach ($noearr as $noe) {
+						$titlecount = 0;
+						//var_dump($titles);
+						$titlearr = explode("|", $titles);
+						foreach ($titlearr as $ti) {						
+							if ($titlecount == floatval($noentries)) {
+								$titles = str_replace($ti . "|", "", $titles);
+							}
+							$titlecount = $titlecount + 1;
+						}						
+						
+					}					
+				} else {
+					$titlecount = 0;
+					//var_dump($titles);
+					$titlearr = explode("|", $titles);
+					foreach ($titlearr as $ti) {						
+						if ($titlecount == floatval($noentries)) {
+							$titles = str_replace($ti . "|", "", $titles);
+						}
+						$titlecount = $titlecount + 1;
+					}
+					//unset($titles[floatval($noentries)]);
+				}
+				
+			}
+			
+			//var_dump($titles);
 			//var_dump($countyform);
 			//echo "<div style='display:none;'>County Form<input type='hidden' name='countyform' value='" . $countyform . "/></div>";
 		}
