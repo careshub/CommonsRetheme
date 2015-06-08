@@ -82,7 +82,7 @@ $group_posts = new WP_Query($args);
 						);
 		$typearray = array(
 						'Videos' => 'videos',
-						'How-to Exercises' => 'how-to-exercises',
+						'Resources' => 'how-to-exercises',
 						'FAQs' => 'faqs',						
 						'Webinars' => 'webinars'
 						);
@@ -229,7 +229,8 @@ $group_posts = new WP_Query($args);
 					if (isset($_GET["type"])) {					
 						
 								$args = array( 
-								'post_type' => 'cchelp',	
+								'post_type' => 'cchelp',
+								'posts_per_page' => -1,								
 								'tax_query' => array(
 										'relation' => 'AND',
 										array(
