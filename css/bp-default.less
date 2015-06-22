@@ -378,22 +378,6 @@ ul.button-nav li.current a {
 	width: 100%;
 	margin-bottom: 3em;
 }
-form#signup_form .field-visibility-settings {
-	display: none;
-	fieldset {
-		margin-top: 1em;
-		ul {
-			list-style-type: none;
-			li {
-				margin-left: 1em;
-			}
-		}
-		label {
-		    margin: 8px 0 5px;
-		    font-weight: normal;
-		}
-	}
-}
 
 // Message bubbles for AJAX validation
 .standard-form#signup_form {
@@ -1188,15 +1172,6 @@ form.dir-form div.dir-search {
 	//margin: 0 0 25px 0;
 }
 
-//BuddyPress signup and profile pages
-.buddypress .site-content .page {
-	.field-visibility-settings-notoggle, .field-visibility-settings-toggle, .standard-form .description {
-	.font-size(.9);
-	color:@graydark;
-	font-style: italic;
-	margin: 0.2em 0 0;
-	}
-}
 //GROUPS
 .buddypress {
 	article {
@@ -1309,4 +1284,54 @@ form.dir-form div.dir-search {
 .site-administrator.group-admin .item-list-tabs li > a[href$="/admin/forum/"],
 .site-administrator.group-admin .item-list-tabs li > a[href$="/admin/pages/"] {
 	display: block;
+}
+
+// Extended profile form settings
+.profile  {
+	.button-nav {
+		list-style-type: none;
+	}
+	.editfield {
+		// The label might be nested or not.
+		& > div > label:first-of-type,
+		& > label:first-of-type {
+			// The first label is the edit field's title.
+			.font-size(1.2);
+		}
+	}
+	.radio {
+		list-style-type: none;
+		li {
+			margin-left: .5em;
+			margin-bottom: 0;
+			padding-bottom: 0;
+			label {
+				margin: 0;
+			}
+		}
+	}
+}
+.buddypress .field-visibility-settings-toggle,
+.buddypress .field-visibility-settings-notoggle,
+.field-visibility-settings {
+	.font-size(.9);
+	color: lighten( @graydark, 10% );
+	padding-left: .6em;
+	margin: .6em 0;
+	border-left: 2px solid lighten( @graymid, 10% );
+}
+.buddypress .field-visibility-settings {
+	display: none;
+	.radio {
+		list-style-type: none;
+		margin-bottom: 0;
+		li {
+			margin-left: .5em;
+			margin-bottom: 0;
+			padding-bottom: 0;
+			label {
+				margin: 0;
+			}
+		}
+	}
 }
