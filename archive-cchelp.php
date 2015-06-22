@@ -550,17 +550,12 @@ $group_posts = new WP_Query($args);
 
 			//Get current logged-in user's BuddyPress role
 			$uid = bp_loggedin_user_id();
-			$bp_user_role = cchelp_get_user_role($uid);			
+			$bp_user_role = cchelp_get_user_role($uid);	
+			
 			?>	
 				
 			<br /><br />
-			<?php 
-			if ($bp_user_role == 'administrator') {
-			?>			
-				
-			<?php
-			}
-			?>
+
 				
 			<br /><span id="publictools"><h1>Guidebooks</h1></span><br />
 			<div style="width:895px;">
@@ -590,7 +585,9 @@ $group_posts = new WP_Query($args);
 
 			
 			<?php 
-			if ($bp_user_role == 'administrator') {
+			//var_dump($bp_user_role);
+			if ($bp_user_role > 0) {
+			
 			?>			
 			
 			
@@ -891,12 +888,18 @@ function cchelp_get_user_role($user_id){
     if ( !isset( $wp_roles ) ){
         $wp_roles = new WP_Roles();
     }
+	$admincount=0;
     foreach ( $wp_roles->role_names as $role => $name ) {
-        if ( array_key_exists( $role, $capabilities ) ) {
-            return $role;
-        }
+		if ($name == "Administrator") {
+			$admincount = $admincount + 1;
+		} 
+		
+        // if ( array_key_exists( $role, $capabilities ) ) {
+            // return $role;
+        // }
     }
-    return false;
+    //return false;
+	return $admincount;
 }
 
 	?>
