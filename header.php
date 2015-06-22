@@ -50,7 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<div id="site-navigation" class="primary-navigation clear" role="navigation">
 		<button class="menu-toggler button" id="menu-toggler">Menu</button>
 		<a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentytwelve' ); ?>"><?php _e( 'Skip to content', 'twentytwelve' ); ?></a>
-			
+
 			<div class="brand">
 				<a href="/" title="Home" >Community Commons</a>
 			</div>
@@ -65,12 +65,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							</form>
 						</div>
 					</li>
-					<?php //wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); 
+					<?php //wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) );
 					$args = array(
 						'theme_location'  => 'primary',
-						'menu'            => '', 
-						'container'       => 'false', 
-						// 'container_class' => 'nav-container', 
+						'menu'            => '',
+						'container'       => 'false',
+						// 'container_class' => 'nav-container',
 						// 'container_id'    => '',
 						'menu_class' 	  => 'nav accessible-menu',
 						// 'menu_id'         => 'menu-{menu slug}[-{increment}]',
@@ -85,7 +85,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 						'walker'          => new CC_Accessibility_Nav_Walker()
 						);
 					wp_nav_menu( $args );
-					?>				
+					?>
 					<!-- <div id="menu-secondary-user-nav" class="secondary">					 -->
 						<?php if ( $current_user_id = get_current_user_id() ) { //show user info if logged in ?>
 							<li class="user-home-link alignright menu-item menu-item-level-0 menu-item-user menu-item-has-children">
@@ -115,9 +115,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 										<li class="menu-item">
 											<a href="<?php echo bp_loggedin_user_domain() . 'groups'; ?>" title="See my groups"><?php _e( 'My Hubs', 'cctheme' ) ?></a>
 										</li>
-										<li class="menu-item">
-											<a href="<?php echo bp_loggedin_user_domain() . 'maps-reports'; ?>" title="See my maps and reports"><?php _e( 'My Maps &amp; Reports', 'cctheme' ) ?></a>
-										</li>
 										<?php if ( class_exists( 'BP_Docs' )  ): // Only show this if bp-docs is active ?>
 											<li class="menu-item">
 												<a href="<?php echo bp_loggedin_user_domain() . 'docs'; ?>" title="View my library"><?php _e( 'My Library', 'cctheme' ) ?></a>
@@ -131,7 +128,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							</li>
 						<?php notifications_counter(); ?>
 
-		        			<?php //bp_loggedin_user_avatar('width=24&height=24');  
+		        			<?php //bp_loggedin_user_avatar('width=24&height=24');
 		        		} else { //show login and register links if not logged in ?>
 			        		<li id="login-item" class="alignright menu-item menu-item-object-page page_item menu-item-level-0 menu-item-has-children menu-item-login">
 				        		<a class="login-link" href="<?php echo wp_login_url( ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ); ?>" title="Log in"><?php _e( 'Log in', 'buddypress' ) ?></a>
@@ -157,13 +154,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				        		</li>
 				        	<?php endif; // registration is allowed check?>
 		        		<?php } ?>
-						
-						<?php // Use this nav for "Support" and similar 
+
+						<?php // Use this nav for "Support" and similar
 						$args = array(
 							'theme_location'  => 'main-nav-secondary',
-							'menu'            => '', 
-							'container'       => 'false', 
-							// 'container_class' => 'nav-container', 
+							'menu'            => '',
+							'container'       => 'false',
+							// 'container_class' => 'nav-container',
 							// 'container_id'    => '',
 							'menu_class' 	  => 'nav accessible-menu',
 							// 'menu_id'         => 'menu-{menu slug}[-{increment}]',
@@ -178,7 +175,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							'walker'          => new CC_Accessibility_Nav_Walker()
 							);
 						wp_nav_menu( $args );
-						?>	
+						?>
 					<!-- </div> -->
 				</ul>
 			</nav><!-- End nav-container -->
