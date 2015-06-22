@@ -1,5 +1,110 @@
 @highlighted-color: lighten(@black, 15%);
 @nav-color: lighten(@black, 5%);
+// Generic version of the nav menu
+.accessible-menu { // this is where .accessible-megamenu is applied
+    .sub-nav { // This is where .accessible-megamenu-panel is applied
+        width: 14em;
+        border-radius: 4px;
+        border: 2px solid @graylight;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+        overflow: visible;
+        &.open {
+            position: absolute;
+            top: 3em;
+            background-color: @white;
+        }
+        .sub-nav-group {
+            a {
+                padding: 0.4em 1em;
+            }
+        }
+        &.menu-item-notifications-panel {
+            width: 22em;
+        }
+        &.menu-item-login-panel {
+            width: 18em;
+        }
+        // Add a pointer triangle, since these objects are not related by color.
+        &:after,
+        &:before {
+            bottom: 100%;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+        &:after {
+            border-color: rgba(255, 255, 255, 0);
+            border-bottom-color: #FFF;
+            border-width: 12px;
+            margin-left: -12px;
+        }
+        &:before {
+            border-color: rgba(204, 204, 204, 0);
+            border-bottom-color: #CCC;
+            border-width: 15px;
+            margin-left: -15px;
+        }
+    }
+
+}
+.menu-toggler {
+    display: none;
+}
+.menu-item-login .sub-nav {
+    padding: 1em;
+    input[type=text], input[type=password] {
+        padding: 2.5%;
+        width: 95%;
+    }
+}
+
+// Default for top-nav-items
+.menu-item-level-0 { // This is where .accessible-megamenu-top-nav-item is applied
+    clear: none;
+    float: left;
+    width: auto;
+    // border-bottom: none;
+    & > a {
+        // border-left: none;
+        // border-top: 0;
+    }
+    &.current-menu-item > a, &.current-menu-parent > a {
+        // border-left: none;
+        // border-top: solid 6px @ccyellow;
+        // border-radius: 0 0 4px 4px;
+        // box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+        // margin-bottom: -8px;
+        // padding-bottom: 8px;
+    }
+    &.alignright {
+        float: right;
+        .accessible-megamenu-panel {
+            right: 0;
+            &.open {
+            }
+        }
+    }
+}
+// We'll want to indicate that some items contain subnav lists
+.menu-item-has-children {
+    & > a {
+        padding-right: 26px;
+        &:after {
+            right: 6px;
+        }
+    }
+    &.current-menu-item,
+    &.current-menu-parent {
+        & > a:after {
+            top: 38%;
+        }
+    }
+}
+
 /* Main navigation
 *******************/
 .primary-navigation {
@@ -61,6 +166,19 @@
                     z-index: 1001;
                     transition: opacity 250ms ease, max-height 500ms ease, visibility 0s linear, top 0s linear;
                 }
+                // Remove the generic pointer triangle.
+                // &:after,
+                // &:before {
+                //     border: 0;
+                // }
+                // &:after {
+                //     border: 0;
+                //     margin-left: -12px;
+                // }
+                // &:before {
+                //     border: 0;
+                //     margin-left: -15px;
+                // }
             }
             .cc-nav-input {
                 width: 100%;
@@ -72,6 +190,7 @@
     .accessible-menu { // this is where .accessible-megamenu is applied
         .sub-nav { // This is where .accessible-megamenu-panel is applied
             width: 12em;
+            border: 0;
             border-radius: 0 0 4px 4px;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
             &.open {
