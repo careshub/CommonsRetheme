@@ -783,7 +783,7 @@ ul.item-list li .share-buttons-below li {
 /**
 * Sprites, icons (general)
 */
-.facebookx60, .searchx18, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24, .userx18, .userx21, .linkedinx24, .emailx24, .collaboratex24, .mapx24, .reportx24, .collaboratex40, .mapx40, .reportx40, .linkedinx60, .gplusx60, .share-icon, .comment-icon, .love-it-icon-loved, .love-it-icon, .linkx24, .mapx40-white, .mapx24-white, .collaboratex40-white, .collaboratex24-white, .reportx40-white, .reportx24-white {
+.facebookx60, .searchx18, .twitterx60, .facebookx24, .facebookx30, .gplusx30, .twitterx30, .gplusx24, .twitterx24, .userx18, .userx21, .linkedinx24, .emailx24, .collaborationx24, .mapx24, .reportx24, .collaboratex40, .mapx40, .reportx40, .linkedinx60, .gplusx60, .share-icon, .comment-icon, .love-it-icon-loved, .love-it-icon, .linkx24, .mapx40-white, .mapx24-white, .collaboratex40-white, .collaborationx24-white, .reportx40-white, .reportx24-white {
 	background-image: url(img/sprites.png);
 	background-repeat: no-repeat;
 }
@@ -1649,10 +1649,11 @@ div.docs-info-header {
 #buddypress {
 	.doc-tabs ul li {
 		margin-bottom: 0;
+		padding-bottom: 0;
 	}
 	#bp-docs-all-docs {
 		// margin-bottom: 1em;
-		overflow: auto;
+		// overflow: auto;
 		li {
 			display: inline-block;
 			margin: 10px 10px 0 0;
@@ -1665,12 +1666,14 @@ div.docs-info-header {
 			}
 		}
 		#bp-create-doc-button {
-			margin-top: 10px;
+			// margin-top: 10px;
 		}
 	}
 	#bp-create-doc-button {
 		margin-right: 0;
 		margin-bottom: 1em;
+		padding-top: 0.4em;
+		padding-bottom: 0.4em;
 		font-weight: normal;
 		.font-size(1);
 	}

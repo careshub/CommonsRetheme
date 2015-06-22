@@ -654,6 +654,8 @@ function twentytwelve_entry_meta() {
   $is_blog = is_home(); // True only at /blog
   $is_category = is_category(); // True on category archive pages
   $is_tag = is_tag(); // True on tag archive pages
+  $categories_list = '';
+  $tag_list = '';
 
   // Translators: used between list items, there is a space after the comma.
   // Only build this on single items
