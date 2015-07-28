@@ -765,40 +765,24 @@ function cchelp_search() {
 			<div>
 				<br /><br />
 				<h3>Search Support</h3>
-				<form action="#searchresults" method="POST" name="cchelpsearch">			 
-								<input type="text" id="cchelpterms" name="cchelpterms" style="width:350px;" placeholder="Enter keywords"/>			 
-								<input type="hidden" name="cc_post_type" value="post" /> <!-- // hidden 'your_custom_post_type' value -->			 
-								<input type="submit" alt="Search" value="Search" />			 
+				
+				<form action="#searchresults" method="post" name="cchelpsearch">			 
+								<input id="s" class="text" type="text" name="s" value="" />			 
+								<input type="hidden" name="post_type" value="cchelp" /> <!-- // hidden 'your_custom_post_type' value -->			 
+								<input class="submit button" type="submit" name="submit" value="Search" />			 
 				</form>
 			</div>
 			<div id="searchresults">
 			<?php
 			if (isset($_POST['cchelpterms'])) {
-				$args2 = array( 
-				'post_type' => 'cchelp', 				
-				's' => $_POST['cchelpterms'] 
-				);
-				$loop2 = new WP_Query( $args2 );
-				while ( $loop2->have_posts() ) : $loop2->the_post();
-				$helpterms = get_the_terms(get_the_ID(), 'cc_help_types');
-				if( $helpterms && ! is_wp_error( $helpterms ) )
-				{
-					foreach( $helpterms as $ht )
-					{
-						$helptype = $ht->name;
-					}
-				}
-			?>
-					<div class="entry-content">
-					<header class="entry-header clear">
-						<h4 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'CommonsRetheme' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?><?php echo " [" . $helptype . "]"; ?></a></h4>
-						
-						<?php the_excerpt(); ?>
-					</header>
-					</div>
-				
-			<?php
-				endwhile;
+				if ( have_posts() ) : 
+					/* Start the Loop */
+					while ( have_posts() ) : the_post();
+						get_template_part( 'content', get_post_format() );
+					endwhile;
+				 else : 
+					get_template_part( 'content', 'none' );
+				 endif; 
 			}	
 			?>
 			</div>
