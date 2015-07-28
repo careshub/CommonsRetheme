@@ -16,7 +16,7 @@ get_header(); ?>
 				<h1 class="screamer spacious clear"><?php echo apply_filters( 'the_title', get_the_content(), get_the_ID() ); ?></h1>
 
 				<?php //get_template_part( 'content', 'page' ); ?>
-				
+
 				<div class="content-row alignnone">
 					<div class="half-block choose-tool">
 						<h2><a href="http://maps.communitycommons.org"><span class="map"></span>Make a Map</a></h2>
@@ -74,7 +74,7 @@ get_header(); ?>
 					</div>
                 </div>
 
-        <?php 
+        <?php
 		$args = array(
 			'taxonomy' => 'data_vis_tool_categories'
 		);
@@ -90,7 +90,7 @@ get_header(); ?>
 					<a href="#<?php echo $cat->slug; ?>" title="Scroll to <?php echo $cat->name; ?> section" class="horizontal-list"><?php echo $cat->name; ?></a>
 				</li>
 			<?php
-			endforeach;		
+			endforeach;
 			?>
 		</ul>
 		<?php
@@ -99,13 +99,13 @@ get_header(); ?>
 		} else {
 			echo 'no function!';
 		}
-		
+
 		?>
 		<?php //comments_template(); ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 
-    <?php wp_reset_query(); ?>		
+    <?php wp_reset_query(); ?>
 
 <?php //get_sidebar(); ?>
 <?php get_footer(); ?>
