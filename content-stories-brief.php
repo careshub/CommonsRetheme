@@ -7,6 +7,7 @@
  * @since Commons Retheme 1
  */
 global $layout_location;
+$featured_image = '';
 
 if ( has_post_thumbnail() ) {
  	if ($layout_location == 'primary') {
@@ -15,8 +16,8 @@ if ( has_post_thumbnail() ) {
 		$featured_image = get_the_post_thumbnail( $post->ID, 'feature-front-sub');
 	}
  }
-if ( ($layout_location == 'primary') || ($layout_location == 'secondary') ) { 
-?> 
+if ( ($layout_location == 'primary') || ($layout_location == 'secondary') ) {
+?>
 	<header class="entry-header">
 		<?php if ($featured_image) { ?>
 		<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark" class="front<?php echo $layout_location ?>"><?php echo $featured_image; ?></a>
