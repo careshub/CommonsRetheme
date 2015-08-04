@@ -23,7 +23,8 @@ $do_not_duplicate = array();
 	 	array(
 	 	//'post__not_in' => $do_not_duplicate,
 	 	'tag' => 'top-feature',
-	 	'posts_per_page' => 1
+	 	'posts_per_page' => 1,
+		'post_type' => 'post'
 	 	)
  	);
 	if ( $top_query ) : 
@@ -71,9 +72,9 @@ $do_not_duplicate = array();
 
 //We'll also need a list of all posts with the guest-blog or data tag, so we don't include them in block 1 or 2 
 	// NOTE: 'fields' => 'ids' means WP_Query only returns the post ids, for efficiency.
-	$guest_blog_posts = new WP_Query( array( 'tag' => 'guest-blog', 'fields' => 'ids' ) );
+	$guest_blog_posts = new WP_Query( array( 'tag' => 'guest-blog', 'fields' => 'ids', 'post_type' => 'post' ) );
 	$guest_blog_array = $guest_blog_posts->posts;
-	$third_block_posts = new WP_Query( array( 'tag' => 'data', 'fields' => 'ids' ) );
+	$third_block_posts = new WP_Query( array( 'tag' => 'data', 'fields' => 'ids', 'post_type' => 'post' ) );
 	$third_block_array = $third_block_posts->posts;
 
 for ($i = 1; $i <= 4; $i++) {
@@ -122,31 +123,35 @@ for ($i = 1; $i <= 4; $i++) {
 			 	'post__in' => $sticky_no_dupes,
 			 	// 'category_name' => 'features',
 				'ignore_sticky_posts' => 1,
-			 	'posts_per_page' => 1
-			 	);			
+			 	'posts_per_page' => 1,
+			 	'post_type' => 'post'
+			 	);
 		break;
 		case 3:
 			$args = array(
 			 	'post__in' => $sticky_no_dupes,
 			 	'tag' => 'data',
 				'ignore_sticky_posts' => 1,
-			 	'posts_per_page' => 1
-			 	);			
+			 	'posts_per_page' => 1,
+			 	'post_type' => 'post'
+			 	);
 			break;
 		case 4:
 			$args = array(
 			 	'post__in' => $sticky_no_dupes,
 			 	'tag' => 'guest-blog',
 				'ignore_sticky_posts' => 1,
-			 	'posts_per_page' => 1
-			 	);			
+			 	'posts_per_page' => 1,
+			 	'post_type' => 'post'
+			 	);
 			break;
 		default:
 			$args = array(
 			 	'post__in' => $sticky_single,
 				'ignore_sticky_posts' => 1,
-			 	'posts_per_page' => 1
-			 	);			
+			 	'posts_per_page' => 1,
+			 	'post_type' => 'post'
+			 	);
 		 	break;
 	}
 	// echo "<br />args: ";
@@ -220,23 +225,26 @@ for ($i = 1; $i <= 4; $i++) {
 				 	'tag__in' => $post_tags,
 				 	// 'category_name' => 'features',
 				 	'ignore_sticky_posts' => 1,
-				 	'posts_per_page' => 2
-				 	);		 	
+				 	'posts_per_page' => 2,
+				 	'post_type' => 'post'
+				 	);
 			break;
 		case 3:
 			$args = array(
 				 	'post__not_in' => $do_not_duplicate,
 				 	'tag' => 'data',
 				 	'ignore_sticky_posts' => 1,
-				 	'posts_per_page' => 2
-				 	);		 	
+				 	'posts_per_page' => 2,
+				 	'post_type' => 'post'
+				 	);
 			break;
 		case 4:
 			$args = array(
 				 	'post__not_in' => $do_not_duplicate,
 					'tag' => 'guest-blog',
 				 	'ignore_sticky_posts' => 1,
-				 	'posts_per_page' => 2
+				 	'posts_per_page' => 2,
+				 	'post_type' => 'post'
 				 	);
 			break;
 		default:
@@ -244,8 +252,9 @@ for ($i = 1; $i <= 4; $i++) {
 				 	'post__not_in' => $do_not_duplicate,
 				 	'tag__in' => $post_tags,
 				 	'ignore_sticky_posts' => 1,
-				 	'posts_per_page' => 2
-				 	);		 	
+				 	'posts_per_page' => 2,
+				 	'post_type' => 'post'
+				 	);
 			break;
 	}
 		
