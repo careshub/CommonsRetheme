@@ -19,7 +19,7 @@ get_header(); ?>
 $do_not_duplicate = array();
 
  //First, get the post set to be supersticky
-	$top_query = new WP_Query( 
+	$top_query = new WP_Query(
 	 	array(
 	 	//'post__not_in' => $do_not_duplicate,
 	 	'tag' => 'top-feature',
@@ -27,14 +27,14 @@ $do_not_duplicate = array();
 		'post_type' => 'post'
 	 	)
  	);
-	if ( $top_query ) : 
+	if ( $top_query ) :
 		while ( $top_query->have_posts() ) : $top_query->the_post();
 			$layout_location = 'primary';
 			?>
 		<div id="top-story" class="clear">
 			<?php
 			get_template_part( 'content', 'stories-brief' );
-			
+
 			// Find out which tags this post has, for making the related query
 			 $tags = get_the_tags();
 			 $post_tags = array();
@@ -44,7 +44,7 @@ $do_not_duplicate = array();
 						$post_tags[]=$tag->term_id;
 					}
 				}
-			
+
 			// Add the id of the post we're displaying to an array to exclude from all subsequent queries
 		    $do_not_duplicate[] = $post->ID;
 			// echo "<br /> Don't Duplicate:";
@@ -58,7 +58,7 @@ $do_not_duplicate = array();
 		    <h4 class="clear-none"><a href="/blog/" title="Article archive" class="button">Browse all Commons articles.</a></h4>
 		</div> <!-- end #top-story -->
 
-		<?php endwhile; 
+		<?php endwhile;
 		wp_reset_postdata(); ?>
 		<?php endif; //ends if ( $top_query ) ?>
 
@@ -70,7 +70,7 @@ $do_not_duplicate = array();
 	// echo "<br /> Sticky array: ";
 	// print_r($sticky);
 
-//We'll also need a list of all posts with the guest-blog or data tag, so we don't include them in block 1 or 2 
+//We'll also need a list of all posts with the guest-blog or data tag, so we don't include them in block 1 or 2
 	// NOTE: 'fields' => 'ids' means WP_Query only returns the post ids, for efficiency.
 	$guest_blog_posts = new WP_Query( array( 'tag' => 'guest-blog', 'fields' => 'ids', 'post_type' => 'post' ) );
 	$guest_blog_array = $guest_blog_posts->posts;
@@ -81,44 +81,44 @@ for ($i = 1; $i <= 4; $i++) {
 	// echo 'iteration number: ' . $i ;
 	// echo "<br /> Do-not-duplicate array: ";
 	// print_r($do_not_duplicate);
-	
+
 	// Modify the array of sticky posts, depending on which loop we're in.
 	switch ($i) {
 		case 1:
-		case 2:			
+		case 2:
 			//Remove guest blog and data posts from the first two blocks.
-			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate, $guest_blog_array, $third_block_array);			
+			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate, $guest_blog_array, $third_block_array);
 		break;
 		case 3:
 			// Probably don't want guest blog articles to show up in column three, even if they're tagged data
-			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate, $guest_blog_array);			
+			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate, $guest_blog_array);
 			break;
 		case 4:
 			// Remove duplicates from the guest blog block
-			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate);			
+			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate);
 			break;
 		default:
 			//Remove guest blog and data posts from the first two blocks.
-			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate, $guest_blog_array, $third_block_array);			
+			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate, $guest_blog_array, $third_block_array);
 		 	break;
 	}
-	
+
 	// Sort the stickies with the newest ones at the top
 	rsort( $sticky_no_dupes );
 	// echo "<br /> Sticky-no-dupes array: ";
 	// print_r($sticky_no_dupes);
-	
+
 	//Grab only the most recent post in the array
 	$sticky_single = array_slice( $sticky_no_dupes, 0, 1 );
 	// echo "<br /> Sticky-single array: ";
 	// print_r($sticky_single);
-	
+
 	// Set query, 1st & 2nd loops should be headed by recent sticky posts, but not from the guest blog or data groups, also only from the category 'features'.
 	// Third block should be the data group
 	// Fourth block should be guest blogs
 	switch ($i) {
 		case 1:
-		case 2:			
+		case 2:
 			$args = array(
 			 	'post__in' => $sticky_no_dupes,
 			 	// 'category_name' => 'features',
@@ -156,9 +156,9 @@ for ($i = 1; $i <= 4; $i++) {
 	}
 	// echo "<br />args: ";
 	// print_r($args);
-	$main_query = new WP_Query( $args );	
-	
-	if ( $main_query ) : 
+	$main_query = new WP_Query( $args );
+
+	if ( $main_query ) :
 		while ( $main_query->have_posts() ) : $main_query->the_post();
 			$layout_location = 'secondary';
 			if ( $i%4 == 1 ) {
@@ -168,7 +168,7 @@ for ($i = 1; $i <= 4; $i++) {
 		<div id="story-block-<?php echo $i; ?>" class="quarter-block" class="clear">
 			<?php
 			get_template_part( 'content', 'stories-brief' );
-			
+
 			// Find out which tags this post has, for making the related query
 			 $tags = get_the_tags();
 			 if (!is_array($tags)) {
@@ -181,7 +181,7 @@ for ($i = 1; $i <= 4; $i++) {
 						$post_tags[]=$tag->term_id;
 					}
 				}
-			
+
 			// Testing:
 
 
@@ -195,11 +195,11 @@ for ($i = 1; $i <= 4; $i++) {
 			// echo '<br />';
 
 		    //$related_tag = $post->tag ?>
-		<?php endwhile; 
+		<?php endwhile;
 		// echo '<br/>$postcategories: ';
 		// print_r($postcategories) ;
 		wp_reset_postdata(); ?>
-	
+
 <?php
 // Then, get posts related to the main story
 	global $post; // required
@@ -213,7 +213,7 @@ for ($i = 1; $i <= 4; $i++) {
 	// print_r($guest_blog_array);
 	// echo '<br>Merged exclude array: ';
 	// print_r($exclude_dupes_guests_data);
-	
+
 	// Third block should be the data group
 	// Fourth block should be guest blogs
 	switch ($i) {
@@ -257,10 +257,10 @@ for ($i = 1; $i <= 4; $i++) {
 				 	);
 			break;
 	}
-		
+
 	$related_query = get_posts($args);
 
-	
+
 	?>
 			<h3>Related posts</h3>
 			<ul class="related-posts">
@@ -269,7 +269,7 @@ for ($i = 1; $i <= 4; $i++) {
 					$layout_location = 'related';
 
 					get_template_part( 'content', 'stories-brief' );
-					
+
 					$do_not_duplicate[] = $post->ID;
 
 				endforeach; //ends top-related posts loop
@@ -277,7 +277,7 @@ for ($i = 1; $i <= 4; $i++) {
 			</ul> <!-- End .related_posts -->
 		</div> <!-- End .quarter-block -->
 
-  <?php 
+  <?php
   if ( $i%4 == 0 ) {
 		echo '</div> <!-- End .content-row -->';
 	}
