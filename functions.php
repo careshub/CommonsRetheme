@@ -817,14 +817,15 @@ function cc_cpt_restrict_manage_posts() {
 //Dropdown filter class.  Used with wp_dropdown_categories() to cause the resulting dropdown to use term slugs instead of ids.
 class DropdownSlugWalker extends Walker_CategoryDropdown {
 
-    function start_el(&$output, $category, $depth, $args) {
+    function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
         $pad = str_repeat('&nbsp;', $depth * 3);
 
         $cat_name = apply_filters('list_cats', $category->name, $category);
         $output .= "\t<option class=\"level-$depth\" value=\"".$category->slug."\"";
 
-        if($category->term_id == $args['selected'])
+        if( $category->term_id == $args['selected'] ) {
             $output .= ' selected="selected"';
+          }
 
         $output .= '>';
         $output .= $pad.$cat_name;
