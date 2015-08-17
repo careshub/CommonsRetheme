@@ -22,11 +22,14 @@ require_once('includes/class-cc-accessibility-nav-walker.php');
 /* Javascript library and style enqueues
 *
 *********************************/
-// First, let's dequeue unneeded scripts and styles
+// First, let's dequeue unneeded scripts and styles (so we can put them back in on a different hook).
 add_action( 'wp_enqueue_scripts', 'cc_dequeue_parent_theme_scripts', 91 );
 function cc_dequeue_parent_theme_scripts(){
   wp_dequeue_style( 'twentytwelve-style' );
   wp_deregister_style( 'twentytwelve-style' );
+
+  wp_dequeue_style( 'twentytwelve-ie' );
+  wp_deregister_style( 'twentytwelve-ie' );
 
   wp_dequeue_script( 'twentytwelve-navigation' );
   wp_deregister_script( 'twentytwelve-navigation' );
@@ -76,6 +79,8 @@ function commons_ie_stylesheet_load(){
 
 add_action( 'wp_print_styles', 'parent_stylesheet_load', 1 );
 function parent_stylesheet_load(){
+    global $wp_styles;
+
     wp_register_style(
             '2012_parent_stylesheet',
             get_template_directory_uri() . '/style.css',
@@ -83,6 +88,15 @@ function parent_stylesheet_load(){
             1.5
         );
     wp_enqueue_style( '2012_parent_stylesheet' );
+    wp_register_style(
+            '2012_parent_stylesheet-ie',
+            get_template_directory_uri() . '/style.css',
+            false,
+            1.5
+        );
+    // Loads the Internet Explorer specific stylesheet.
+    wp_enqueue_style( '2012_parent_stylesheet-ie', get_template_directory_uri() . '/css/ie.css', array( '2012_parent_stylesheet' ), '20121010' );
+    $wp_styles->add_data( '2012_parent_stylesheet-ie', 'conditional', 'lt IE 9' );
 }
 
 // I'm joining the various scripts into one via CodeKit.
