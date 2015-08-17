@@ -11,20 +11,20 @@
  */
 ?>
 	</div><!-- #main .wrapper -->
-	
+
 </div><!-- #page -->
 
 <footer id="colophon" role="contentinfo">
 	<div class="page-width">
-			
+
 		<div class="site-info">
 		<div class="alignleft" style="margin-bottom:1em;">
-			<?php //Add footer navigation menu 
+			<?php //Add footer navigation menu
 				$args = array(
 					'theme_location' => 'footer-nav',
-					//'menu'            => '', 
-					//'container'       => 'div', 
-					'container_class' => 'footer-nav', 
+					//'menu'            => '',
+					//'container'       => 'div',
+					'container_class' => 'footer-nav',
 					//'container_id'    => '',
 					//'menu_class' 	=> 'footer-nav',
 					//'menu_id'         => 'menu-{menu slug}[-{increment}]',
@@ -70,12 +70,12 @@
 <script type="text/javascript">
 	jQuery(function() {
 		 jQuery('a[href^="https://ip3.zendesk.com"]').click(function(e) {
-		 	if (typeof Zenbox.show == 'function') { 
+		 	if (typeof Zenbox.show == 'function') {
 	  			Zenbox.show();
 	  			//If Zenbox.show isn't defined the link will still work, so only prevent the click if Zenbox.show is defined.
 	  			e.preventDefault();
 			}
-			});					
+			});
 		});
 </script>
 <script type="text/javascript">
