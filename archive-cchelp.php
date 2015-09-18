@@ -574,8 +574,8 @@ $group_posts = new WP_Query($args);
 				<div id="guideData" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to the Data Guidebook">
 					<span class="guidebook-text">Commons Data</span>
 				</div>
-				<div id="guideWebinars" class="guidebook" style="background-color:#008eaa;cursor:pointer;border:solid 2px #008eaa;" title="Go to Archived Webinars">
-					<span class="guidebook-text">Archived Webinars</span>
+				<div id="guideWebinars" class="guidebook" style="background-color:#008eaa;cursor:pointer;border:solid 2px #008eaa;" title="Go to Webinars">
+					<span class="guidebook-text">Webinars</span>
 				</div>	
 				<div id="guideGroups" class="guidebook" style="background-color:#df5827;cursor:pointer;border:solid 2px #df5827;" title="Go to Hubs on the Commons">
 					<span class="guidebook-text">Hubs on the Commons</span>
