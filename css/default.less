@@ -461,21 +461,6 @@ footer[role="contentinfo"] {
 	.entry-header {
 		margin-bottom: 14px;
 		margin-bottom: 1rem;
-		.post-type-flag {
-			display: inline-block;
-			margin-bottom: .4em;
-			margin-right: 1em;
-			padding: 4px 6px;
-			background-color: @ccblue;
-			color: @white;
-			text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-			.font-size(1);
-		}
-		.post-type-flag.sapolicies,
-		.post-type-flag.saresources,
-		.post-type-flag.sa_success_story, {
-			background-color: @saorange;
-		}
 		.entry-title {
 			margin-bottom: 0;
 		}
@@ -572,6 +557,12 @@ h5 {
 		-moz-hyphens: none;
 	    -ms-hyphens: none;
 	    hyphens: none;
+	    &.no-top-margin {
+	    	margin-top: 0;
+	    }
+	    &.no-bottom-margin {
+	    	margin-bottom: 0;
+	    }
 	}
 	#screamer {
 		background-color: @ccblue;
@@ -602,13 +593,21 @@ h5 {
 		line-height: 1.2;
 		font-weight: normal;
 	}
-}
-.entry-header {
 	.datestamp {
-	font-style: italic;
-	clear: left;
-	margin-bottom: 0;
+		font-style: italic;
+		clear: left;
+		margin-bottom: 0;
 	}
+}
+.post-type-flag {
+	display: inline-block;
+	margin-bottom: .4em;
+	margin-right: 1em;
+	padding: 4px 6px;
+	background-color: @ccblue;
+	color: @white;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	.font-size(1);
 }
 .site-content .screamer {
 	background-color: @ccblue;
@@ -1481,9 +1480,9 @@ body.home-page {
 }
 
 #item-body article {
-	margin-bottom: 2em;
-	padding-bottom: 2em;
-	border-bottom: 1px solid @graylight;
+	// margin-bottom: 2em;
+	// padding-bottom: 2em;
+	// border-bottom: 1px solid @graylight;
 }
 
 //Videos
@@ -1920,4 +1919,9 @@ body.search .archive-header {
 //Fix for ESRI mapping environment slider
 .esriLargeSliderVertical {
   width: auto;
+}
+
+// All-purpose styles for affecting one presentation element
+.background-light-gray {
+	background-color: lighten( @graylight, 7%);
 }
