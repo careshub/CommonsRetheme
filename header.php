@@ -15,7 +15,10 @@
 <!--[if IE 8]>
 <html class="ie ie8" <?php language_attributes(); ?>>
 <![endif]-->
-<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<!--[if IE 9]>
+<html class="ie ie9" <?php language_attributes(); ?>>
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8) | !(IE 9) ]><!-->
 <html <?php language_attributes(); ?>>
 <!--<![endif]-->
 <head>
@@ -28,7 +31,7 @@
 <link rel="icon" href="<?php echo get_stylesheet_directory_uri(); ?>/img/favicon.ico" type="image/x-icon" />
 
 <?php wp_head(); ?>
-<!--[if lt IE 9]>
+<!--[if lte IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <link rel='stylesheet' id='twentytwelve-ie-css'  href='<?php echo get_template_directory_uri(); ?>/css/ie.css?ver=20121010' type='text/css' media='all' />
 <link rel='stylesheet' id='commons_ie_stylesheet-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/style-ie.css?ver=0.32' type='text/css' media='all' />
