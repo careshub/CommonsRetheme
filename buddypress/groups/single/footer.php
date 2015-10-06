@@ -4,14 +4,14 @@
 		<span class="group-type"><?php bp_group_type();?></span><span class="group-tree">
 		<?php
 		if ( function_exists('bp_group_hierarchy_get_breadcrumbs') )  {
-			echo 'Hub Tree: </em>'; 
-			echo bp_group_hierarchy_get_breadcrumbs('&ensp;&gt;&ensp;', false); 
+			echo 'Hub Tree: </em>';
+			echo bp_group_hierarchy_get_breadcrumbs('&ensp;&gt;&ensp;', false);
 		}
-	?></span></div> 
+	?></span></div>
 
 	<div id="item-meta">
-		
-		<!-- <p class="group-breadcrumbs"><em>Group Tree:</em> <?php //if (function_exists('bp_group_hierarchy_get_breadcrumbs'))  { echo bp_group_hierarchy_get_breadcrumbs('&ensp;&gt;&ensp;', false); } ?></p> -->
+
+		<?php do_action( 'cc_before_group_description', bp_get_current_group_id() ); ?>
 
 		<div class="group-description">
 			<?php bp_group_description(); ?>
@@ -32,7 +32,7 @@
 
 			</div>
 
-			<?php 
+			<?php
 			if ( bp_group_has_moderators() ) : ?>
 
 				<div class="half-block compact">
