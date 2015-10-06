@@ -5,6 +5,9 @@
   margin: 0;
   padding: 0;
 }
+.Grid * {
+  box-sizing: border-box;
+}
 
 .Grid-cell {
   flex: 1;
@@ -20,6 +23,15 @@
 
 .Grid--bottom {
   align-items: flex-end;
+}
+
+.Grid--fill-height {
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Grid--nowrap {
+  flex-wrap: nowrap;
 }
 
 .Grid--center {
@@ -70,6 +82,10 @@
   padding: 0.8em 1em 0px;
 }
 
+.Grid-cell > .Grid-cell-100pc {
+  width: 100%;
+}
+
 @media (min-width:24em) {
   .small-Grid--fit > .Grid-cell {
     flex: 1;
@@ -104,6 +120,14 @@
   .med-Grid--1of4 > .Grid-cell {
     flex: 0 0 25%;
   }
+  // Allow the quarter blocks to stack 2-up.
+  // this is hinky, the math doesn't work out.
+  .large-Grid--1of4 > .Grid-cell {
+    flex: 0 0 50%;
+  }
+  .large-Grid--1of4 > .Grid-cell img {
+    width: 100%;
+  }
 }
 
 @media (min-width:48em) {
@@ -121,6 +145,7 @@
   }
   .large-Grid--1of4 > .Grid-cell {
     flex: 0 0 25%;
+    // flex: 1 1 0; // this is "fit," so something's wrong.. this way requires a container every four objects.
   }
 }
 
@@ -221,9 +246,25 @@
   .Grid-cell {
     display: block;
     float: left;
-    clear: left;
-    width: 98%;
-    margin: 0 0 1em;
+    // clear: left;
+    width: 30%;
+    margin: 0 0 1em 1em;
+  }
 
+  // These should act like quarter blocks.
+  .large-Grid--1of4 {
+    .Grid-cell {
+      margin-right: 2%;
+      margin-left: 2%;
+      width: 20.9%;
+    }
+  }
+
+  // These should stack.
+  .Grid--fill-height {
+    .Grid-cell {
+      width: 100%;
+      clear: left;
+    }
   }
 }
