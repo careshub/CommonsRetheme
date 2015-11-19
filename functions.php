@@ -736,7 +736,7 @@ function ray_remove_mention_nav() {
 global $bp;
 bp_core_remove_subnav_item( $bp->activity->slug, 'mentions' );
 }
-add_action( 'bp_setup_nav', 'ray_remove_mention_nav', 15 );
+// add_action( 'bp_setup_nav', 'ray_remove_mention_nav', 15 );
 
 add_action( 'after_setup_theme', 'cc_bp_support_theme_setup', 11 );
 function cc_bp_support_theme_setup() {
