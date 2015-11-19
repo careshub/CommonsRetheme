@@ -388,6 +388,10 @@ function cc_custom_body_class( $classes ) {
         $classes[] = 'full-width';
       }
 
+    if ( is_page_template( 'page-templates/chi-journey.php' ) ) {
+      $classes[] = 'full-width';
+    }
+
     if ( is_page( 'maps-data' ) ) {
         $classes[] = 'full-width';
         $classes[] = 'maps-data';
