@@ -1,5 +1,16 @@
 <?php
+/**
+ * BuddyPress - Groups Header
+ *
+ * @package BuddyPress
+ * @subpackage bp-legacy
+ */
 
+/**
+ * Fires before the display of a group's header.
+ *
+ * @since 1.2.0
+ */
 do_action( 'bp_before_group_header' );
 
 ?>
@@ -25,7 +36,7 @@ do_action( 'bp_before_group_header' );
 
 
 	<div class="noms clear">
-		<h2>	
+		<h2>
 			<div id="item-header-avatar">
 				<?php bp_group_avatar( 'width=80&height=80' ) ?>
 			</div>
@@ -35,7 +46,7 @@ do_action( 'bp_before_group_header' );
 	<!-- <span class="highlight clear"><?php bp_group_type(); ?></span>  -->
 	<!-- <span class="activity clear"><?php printf( __( 'active %s', 'buddypress' ), bp_get_group_last_active() ); ?></span> -->
 
-	<?php //do_action( 'bp_before_group_header_meta' ); ?>
+	<?php do_action( 'bp_before_group_header_meta' ); ?>
 
 	<!-- <div id="item-meta"> -->
 		<?php /* ?>
