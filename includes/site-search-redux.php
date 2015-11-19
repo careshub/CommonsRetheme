@@ -53,6 +53,12 @@ function cc_post_type_flag(){
 		case 'sa_success_story':
 			$retval = "Salud Hero";
 			break;
+		case 'sa_take_action':
+			$retval = "SA! Take Action";
+			break;
+		case 'sa_video_contest':
+			$retval = "SA! Video Contest";
+			break;
 		default:
 			$retval = "Post";
 			break;
