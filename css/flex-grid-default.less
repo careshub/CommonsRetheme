@@ -67,15 +67,18 @@
 }
 
 .Grid--1of2 > .Grid-cell {
-  flex: 0 0 50%;
+  flex: 0 0 auto;
+  width: 50%;
 }
 
 .Grid--1of3 > .Grid-cell {
-  flex: 0 0 33.3333%;
+  flex: 0 0 auto;
+  width: 33.32%
 }
 
 .Grid--1of4 > .Grid-cell {
-  flex: 0 0 25%;
+  flex: 0 0 auto;
+  width: 25%;
 }
 .Grid-cell > .inset-contents {
   // width: 100%;
@@ -94,13 +97,16 @@
     flex: 0 0 100%;
   }
   .small-Grid--1of2 > .Grid-cell {
-    flex: 0 0 50%;
+    flex: 0 0 auto;
+    width: 50%;
   }
   .small-Grid--1of3 > .Grid-cell {
-    flex: 0 0 33.3333%;
+    flex: 0 0 auto;
+    width: 33.32%;
   }
   .small-Grid--1of4 > .Grid-cell {
-    flex: 0 0 25%;
+    flex: 0 0 auto;
+    width: 25%;
   }
 }
 
@@ -112,18 +118,22 @@
     flex: 0 0 100%;
   }
   .med-Grid--1of2 > .Grid-cell {
-    flex: 0 0 50%;
+    flex: 0 0 auto;
+    width: 50%;
   }
   .med-Grid--1of3 > .Grid-cell {
-    flex: 0 0 33.3333%;
+    flex: 0 0 auto;
+    width: 33.32%;
   }
   .med-Grid--1of4 > .Grid-cell {
-    flex: 0 0 25%;
+    flex: 0 0 auto;
+    width: 25%;
   }
   // Allow the quarter blocks to stack 2-up.
   // this is hinky, the math doesn't work out.
   .large-Grid--1of4 > .Grid-cell {
-    flex: 0 0 50%;
+    flex: 0 0 auto;
+    width: 50%;
   }
   .large-Grid--1of4 > .Grid-cell img {
     width: 100%;
@@ -138,14 +148,19 @@
     flex: 0 0 100%;
   }
   .large-Grid--1of2 > .Grid-cell {
-    flex: 0 0 50%;
+    flex: 0 0 auto;
+    width: 50%;
   }
   .large-Grid--1of3 > .Grid-cell {
-    flex: 0 0 33.3333%;
+    flex: 0 0 auto;
+    width: 33.32%; // For IE 10 & 11 compatibility.
   }
   .large-Grid--1of4 > .Grid-cell {
-    flex: 0 0 25%;
-    // flex: 1 1 0; // this is "fit," so something's wrong.. this way requires a container every four objects.
+    // There's a bug in IE 10 and 11 that causes the flex-basis to calculate in a content-box world.
+    // See https://github.com/philipwalton/flexbugs#7-flex-basis-doesnt-account-for-box-sizingborder-box
+    // flex: 0 0 25%; <-- This is the "normal" flexbox approach
+    flex: 0 0 auto; // This plus the explicit width works with IE 10 & 11.
+    width: 25%;
   }
 }
 
