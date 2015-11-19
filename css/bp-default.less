@@ -360,7 +360,7 @@ ul.button-nav li.current a {
 .form-allowed-tags,
 #commentform input[type=text],
 #commentform textarea {
-	width: 90%;
+	// width: 90%;
 }
 .standard-form .submit {
 	clear: both;
@@ -572,9 +572,10 @@ table {
 table thead tr {
 	background: #eaeaea;
 }
-table#message-threads {
-	margin: 0 -19px;
-	width: auto;
+// The Private Messages component
+table#messages-notices {
+	// margin: 0 -19px;
+	// width: auto;
 }
 table.profile-fields {
 	margin-bottom: 20px;
@@ -1154,15 +1155,34 @@ div.activity-comments form {
 	}
 
 /* Standard Input Forms */
+form.standard-form .editfield {
+	margin: 35px 0 5px 0;
+	.description {
+		margin-bottom: 0;
+	}
+}
 
 form.standard-form label, form.standard-form span.label {
 	display: block;
-	margin: 35px 0 5px 0;
+	font-weight: bold;
 }
+
+	// Normalize the spacing on the labels assoc with each option.
 	form.standard-form div.checkbox label,
 	form.standard-form div.radio label {
 		font-weight: normal;
 		margin: 5px 0 0 0;
+	}
+	// Add padding around checkbox and radio groups
+	form.standard-form div.checkbox {
+		label:nth-of-type(1) {
+			font-weight: bold;
+		}
+	}
+	form.standard-form div.radio {
+		> label {
+			font-weight: bold;
+		}
 	}
 
 	form.standard-form textarea {

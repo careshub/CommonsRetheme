@@ -2,3 +2,6 @@
 #wpbody select {
     width: 100%;
 }
+.postbox-container input[type="text"] {
+	width: 100%;
+}
