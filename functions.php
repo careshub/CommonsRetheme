@@ -740,12 +740,10 @@ bp_core_remove_subnav_item( $bp->activity->slug, 'mentions' );
 
 add_action( 'after_setup_theme', 'cc_bp_support_theme_setup', 11 );
 function cc_bp_support_theme_setup() {
-
     // Group buttons
     if ( bp_is_active( 'groups' ) ) {
       add_action( 'bp_group_header_actions',     'cc_group_rss_feed_link' );
     }
-
 }
 function cc_group_rss_feed_link() {
   if ( bp_is_group_home() || bp_is_group_activity() ) : ?>
@@ -1136,11 +1134,17 @@ function change_ia_large_network_value( $is_large, $count ) {
 function cc_wp_show_hooked_filters(){
   $hook_name = 'comments_open';
   global $wp_filter;
-  echo '<pre class="filter-dump">';
-  var_dump( $wp_filter[$hook_name] );
-  echo '</pre>';
+  // echo '<pre class="filter-dump">';
+  // var_dump( $wp_filter[$hook_name] );
+  // echo '</pre>';
+
+    $towrite = PHP_EOL . 'wp_query_obj' . print_r( $wp_filter['pre_get_posts'], TRUE );
+    $fp = fopen('wp_query_monitor.txt', 'a');
+    fwrite($fp, $towrite);
+    fclose($fp);
 }
 // add_action( 'wp_head', 'cc_wp_show_hooked_filters' );
+// add_action( 'admin_head', 'cc_wp_show_hooked_filters' );
 
 // add_filter( 'wp_nav_menu_objects', 'cc_add_roles_nav_menu_items', 16, 2 );
 function cc_add_roles_nav_menu_items( $items, $args ){
