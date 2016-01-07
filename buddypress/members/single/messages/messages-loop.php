@@ -131,6 +131,15 @@ do_action( 'bp_before_member_messages_loop' ); ?>
 							<?php endif; ?>
 							 |
 							<a class="delete" href="<?php bp_message_thread_delete_link(); ?>"><?php _e( 'Delete', 'buddypress' ); ?></a>
+
+							<?php
+
+							/**
+							 * Fires after the action links in the header of a single message.
+							 *
+							 * @since 2.5.0
+							 */
+							do_action( 'bp_messages_loop_after_action_links' ); ?>
 						</td>
 					</tr>
 

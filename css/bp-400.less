@@ -1,0 +1,47 @@
+/*--------------------------------------------------------------
+10 - Pagination
+--------------------------------------------------------------*/
+div.pagination .pagination-links {
+	float: right;
+}
+div.dir-search {
+	float: right;
+    margin: -2em 1em 1em 0;
+}
+.directory .entry-header {
+	margin-bottom: 0;
+	display: inline-block;
+}
+
+// Item-list-tabs is used for object navs (members, groups) and also for subnavs, so we've got a few special cases
+.buddypress .item-list-tabs {
+	ul {
+		li {
+			&.last{
+				float: right;
+			}
+		}
+	}
+}
+
+.buddypress .item-list {
+	.action {
+		// float: left;
+		clear: none;
+		width: inherit;
+		a {
+		}
+	}
+}
+.directory.groups,
+.mygroups {
+	.item-list {
+		li {
+			// padding: 0.6em 0px;
+		}
+		.avatar {
+			width: 80px;
+			height: 80px;
+		}
+	}
+}

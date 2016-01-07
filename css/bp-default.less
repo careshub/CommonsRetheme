@@ -644,10 +644,12 @@ table.notification-settings .no {
 	margin: 20px 0;
 }
 span.activity {
+	color: #888;
 	display: inline-block;
-	font-size: 11px;
-	opacity: 0.8;
-	padding: 6px 6px;
+	.font-size(.8);
+	margin-top: -2px;
+	// opacity: 0.8;
+	// padding: 6px 6px;
 }
 span.user-nicename {
 	color: #777;
@@ -656,12 +658,12 @@ span.user-nicename {
 	font-weight: bold;
 }
 span.activity {
-	border: 1px solid @ccyellow;
-	.border-radius(3px);
-	font-weight: normal;
-	margin-top: 8px;
-	text-decoration: none;
-	background: lighten(@ccyellow, 26%);
+	// border: 1px solid @ccyellow;
+	// .border-radius(3px);
+	// font-weight: normal;
+	// margin-top: 8px;
+	// text-decoration: none;
+	// background: lighten(@ccyellow, 26%);
 	// background-image: -webkit-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
 	// background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255, 255, 255, .5)), color-stop(100%,rgba(255, 255, 255, 0))); /* Chrome,Safari4+ */
 	// background-image: -moz-linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
@@ -678,17 +680,17 @@ ul.single-line li {
     margin-bottom: 1em;
 }
 // Item-list-tabs is used for object navs (members, groups) and also for subnavs, so we've got a few special cases
-.item-list-tabs {
-	margin-bottom: .4em;
+.buddypress .item-list-tabs {
+	// margin-bottom: .4em;
 	padding-bottom: .4em;
 	border-bottom: 1px solid @graylight;
 	ul {
-		margin: 0;
+		margin: .5em 0;
 		width: 100%;
 		li {
 			display: inline-block;
 			list-style-type: none;
-			margin: 10px 10px 0 0;
+			margin: .2em .4em .2em 0;
 			padding-bottom: 0;
 			a {
 				display: block; //increases tap target sizes
@@ -724,7 +726,7 @@ ul.single-line li {
 			    }
 			}
 			&.last{
-				float: right;
+				// float: right;
 				margin-top: 8px;
 				select {
 					max-width: 175px;
@@ -752,7 +754,7 @@ ul.single-line li {
 	// padding-bottom: 1em;
 	// border-bottom: 1px solid @graylight;
 	li {
-		margin: 0 .8em .2em 0;
+		// margin: 0 .8em .2em 0;
 		a {
 			.border-radius(0);
 			background: none;
@@ -843,28 +845,36 @@ div#message-thread div.message-options {
 10 - Pagination
 --------------------------------------------------------------*/
 div.pagination {
-	//background: @graylight;
+	background: lighten( @graylight, 5 );
 	border: none;
-	color: lighten(@graydark,12);
-	//font-size: 11px;
-	height: 19px;
-	//margin: -20px -19px 0px -19px;
-	padding: 6px 0;
+	color: lighten( @graydark, 12 );
+	padding: 6px;
 	position: relative;
 	.font-size(.9);
 	font-style: italic;
+}
+// Apply the "clear" style to pagination.
+/* Clearing floats */
+.pagination:after {
+	clear: both;
+}
+.pagination:before,
+.pagination:after {
+	display: table;
+	content: "";
 }
 #pag-top {
 	border-bottom: 1px solid @graylight;
 }
 #pag-bottom {
-	//border-top: 1px solid @graylight;
+	border-top: 1px solid @graylight;
+	border-bottom: 1px solid @graylight;
 }
 div.pagination .pag-count {
 	float: left;
 }
 div.pagination .pagination-links {
-	float: right;
+	float: left;
 }
 div.pagination .pagination-links span,
 div.pagination .pagination-links a {
@@ -875,7 +885,7 @@ div.pagination .pagination-links a:hover {
 	font-weight: bold;
 }
 div#pag-bottom {
-	margin-top: -1px;
+	// margin-top: -1px;
 }
 #nav-above {
 	display: none;
@@ -884,11 +894,18 @@ div#pag-bottom {
 	display: block;
 }
 
-/***
- * Object Lists (groups/members/forums/blogs)
+/**
+ * Activity streams, more general lists.
  */
+// .item-list li .avatar {
+//     float: left;
+//     margin-right: 1em;
+// }
 
-.item-list {
+/**
+ * Directories (groups/members/forums/blogs)
+ */
+.buddypress .item-list {
 	margin: 20px 0;
 	padding: 0;
 	list-style: none;
@@ -901,15 +918,15 @@ div#pag-bottom {
 	}
 	li {
 		border-bottom: 1px solid @graylight;
-		padding: 0.4em 0;
+		padding: 0.6em 0;
+		margin-bottom: 0;
 		position: relative;
 		overflow: auto;
 		clear: left;
 		margin-left: 0;
-		// .activity-avatar {
-		// 	float: left;
-		// 	margin-right: 1em;
-		// }
+		&:last-child {
+			border-bottom: none;
+		}
 		.avatar {
 			float: left;
 			margin-right: 1em;
@@ -920,7 +937,7 @@ div#pag-bottom {
 			margin: 0 0 0.6em 0;
 			// width: 100%;
 			// clear:none;
-			float: none;
+			// float: none;
 			line-height: 1.4;
 		}
 		.item-title span {
@@ -934,6 +951,9 @@ div#pag-bottom {
 			margin-top: 10px;
 			// width: 75%;
 			float: none;
+			p:last-child {
+				margin-bottom: .5em
+			}
 		}
 		.meta {
 			color: #888;
@@ -954,16 +974,10 @@ div#pag-bottom {
 				font-weight: normal;
 			}
 		}
-		.activity {
-			display: none;
-		}
 	}
 	&.activity-list li {
-		// padding-bottom: 0;
-		// margin-left: 0;
 	}
 	.item {
-		float: left;
 		width: 100%;
 		.item-meta {
 			.activity {
@@ -972,18 +986,12 @@ div#pag-bottom {
 		}
 	}
 	.action {
-		// position: absolute;
-		// top: 0;
-		// right: 15px;
-		float: left;
-		clear: left;
-		text-align: left;
-		width: 100%;
-		margin-top: 1em;
-		// clear: right;
+		// float: left;
+		// clear: left;
+		// text-align: left;
+		// width: 100%;
+		margin-top: .5em;
 		a {
-			// float: left;
-			// display: inline;
 		}
 	}
 	.subitem {
@@ -993,6 +1001,16 @@ div#pag-bottom {
 			margin-left: .5em;
 		}
 	}
+}
+.directory.groups,
+.mygroups {
+	.item-list .avatar {
+		width: 50px;
+		height: 50px;
+	}
+}
+.group-members .item-list {
+
 }
 
 // Make sure that the directory lists don't show a disc

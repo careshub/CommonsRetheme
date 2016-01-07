@@ -12,7 +12,7 @@
 
 	<?php do_action( 'bp_members_directory_member_sub_types' ); ?>
 
-	<?php 
+	<?php
 
 	/**
 	 * Fires before the display of the group members content.
@@ -50,14 +50,35 @@
 
 		<?php while ( bp_group_members() ) : bp_group_the_member(); ?>
 
-			<li>
-				
+			<li <?php bp_member_class(); ?>>
+				<div class="item-avatar">
+					<a href="<?php bp_group_member_domain(); ?>"><?php bp_group_member_avatar_thumb(); ?></a>
+				</div>
+
 				<div class="item">
-					<a href="<?php bp_group_member_domain(); ?>">
-						<?php bp_group_member_avatar_thumb(); ?>
-					</a>
-					<div class="item-title"><?php bp_group_member_link(); ?></div>
-					<span class="activity"><?php bp_group_member_joined_since(); ?></span>
+						<div class="item-title"><?php bp_group_member_link(); ?></div>
+						<span class="activity"><?php bp_group_member_joined_since(); ?></span>
+
+					<?php
+
+					/**
+					 * Fires inside the display of a directory member item.
+					 *
+					 * @since 1.1.0
+					 */
+					do_action( 'bp_directory_members_item' ); ?>
+
+					<?php
+					 /***
+					  * If you want to show specific profile fields here you can,
+					  * but it'll add an extra query for each member in the loop
+					  * (only one regardless of the number of fields you show):
+					  *
+					  * bp_member_profile_data( 'field=the field name' );
+					  */
+					?>
+				</div>
+
 
 				<?php
 
@@ -68,24 +89,25 @@
 				 */
 				do_action( 'bp_group_members_list_item' ); ?>
 
-				<?php if ( bp_is_active( 'friends' ) ) : ?>
+				<div class="action">
 
-					<div class="action">
+					<?php
+					if ( bp_is_active( 'friends' ) ) {
+						bp_add_friend_button( bp_get_group_member_id(), bp_get_group_member_is_friend() );
+						}
+					?>
 
-						<?php bp_add_friend_button( bp_get_group_member_id(), bp_get_group_member_is_friend() ); ?>
+					<?php
 
-						<?php
+					/**
+					 * Fires inside the action section of an individual group member listing item.
+					 *
+					 * @since 1.1.0
+					 */
+					do_action( 'bp_group_members_list_item_action' ); ?>
 
-						/**
-						 * Fires inside the action section of an individual group member listing item.
-						 *
-						 * @since 1.1.0
-						 */
-						do_action( 'bp_group_members_list_item_action' ); ?>
+				</div>
 
-					</div>
-
-				<?php endif; ?>
 			</li>
 
 		<?php endwhile; ?>

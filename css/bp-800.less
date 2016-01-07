@@ -50,9 +50,6 @@
 		}
 	}
 }
-div.dir-search {
-    margin-top: -3.8em;
-}
 /***
  * Content Object Headers
  */
@@ -81,26 +78,20 @@ div#item-header {
 	}
 }
 
-.item-list {
-	.item {
-		width: 75%;
-	}
-	.action {
-		width: 20%;
-		float: right;
-		clear: right;
-	}
-	&#groups-list {
-		.item {
-		}
-		.action {
-			float: left;
-			clear: left;
-			width: 80%;
-			margin-left: 95px;
-		}
+// Directory lists, activity streams
+.buddypress .item-list {
+	li {
+		padding: 1em 0;
 	}
 }
+.directory.groups,
+.mygroups {
+	.item-list .avatar {
+		width: 100px;
+		height: 100px;
+	}
+}
+
 //Registration page
 .standard-form #basic-details-section,
 .standard-form #blog-details-section,
@@ -119,3 +110,30 @@ div#item-header {
 	float: right;
 	clear: right;
 }
+
+// From 1000.less
+// .item-list {
+// 	.item {
+// 		width: 75%;
+// 		.item-title, .item-desc {
+// 			// float: left;
+// 			// width: 76%;
+// 		}
+// 	}
+// 	.action {
+// 		// float: right;
+// 		width: 20%;
+// 		// margin-left: 0;
+// 	}
+// 	&#groups-list {
+// 		.item {
+// 			width: 65%;
+// 		}
+// 		.action {
+// 			width: 20%;
+// 			float: right;
+// 			clear: right;
+// 			margin-left: 0;
+// 		}
+// 	}
+// }
