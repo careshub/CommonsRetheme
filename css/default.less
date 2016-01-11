@@ -93,6 +93,12 @@ img.img-border {
 			font-style: italic;
 			color: @graydark;
 		}
+		/* Clearing floats/containing content */
+		&:after {
+			clear: both;
+			display: table;
+			content: "";
+		}
 	}
 	// Category navigation, used on blog, channel pages
 	.widget_categories {
