@@ -56,7 +56,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.52
+          0.53
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
@@ -68,7 +68,7 @@ function commons_ie_stylesheet_load(){
             'commons_ie_stylesheet',
             get_stylesheet_directory_uri() . '/style-ie.css',
             false,
-            0.52
+            0.53
         );
     wp_enqueue_style( 'commons_ie_stylesheet' );
     $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lte IE 9' );
@@ -322,30 +322,6 @@ function print_notifications_list( $notifications ){
   $output .= '</ul></div>';
   return $output;
 }
-
-function cc_no_gravatars_for_groups( $no_grav, $params ) {
-  if ( $params['object'] == 'group' )
-    $no_grav = true;
-
-  return $no_grav;
-}
-// @TODO: Waiting on object parameter to be added to BuddyPress core.
-// https://buddypress.trac.wordpress.org/ticket/5958
-// add_filter( 'bp_core_fetch_avatar_no_grav', 'cc_no_gravatars_for_groups', 10, 2 );
-
-function cc_replace_default_avatar_group( $url, $params ){
-
-  if ( false !== strpos( $url, 'bp-core/images/mystery-man') ) {
-    if ( $params['type'] =='thumb' ) {
-      $url = get_stylesheet_directory_uri() . '/img/cc-group-default-avatar-50.jpg';
-    } else {
-      $url = get_stylesheet_directory_uri() . '/img/cc-group-default-avatar.jpg';
-    }
-  }
-
-  return $url;
-}
-add_filter( 'bp_core_default_avatar_group', 'cc_replace_default_avatar_group', 10, 2);
 
 /**
  * Add descriptive class names to nav menu list items.
