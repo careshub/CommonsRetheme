@@ -57,6 +57,11 @@ get_header(); ?>
 								<!-- <a href="http://assessment.communitycommons.org/Footprint/" class="button">Start a report</a> -->
 								<p>Find areas in your community with low educational attainment and high poverty.</p>
 							</li>
+							<li>
+								<h4><a href="http://maps.communitycommons.org/footprint/?project=LOFT">Location Opportunity Footprint</a></h4>
+								<!-- <a href="http://assessment.communitycommons.org/Footprint/" class="button">Start a report</a> -->
+								<p>Find areas of opportunity in your community. Map housing and transportation costs, school proficiency and availability of jobs.</p>
+							</li>
 							<?php /* ?>
 							<li>
 								<h4><a href="http://assessment.communitycommons.org/DataReport/">Topic-based Reports</a></h4>
