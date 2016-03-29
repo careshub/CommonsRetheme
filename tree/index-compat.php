@@ -6,14 +6,14 @@
 	<form action="" method="post" id="groups-directory-form" class="dir-form">
 
 		<?php /* ?><h3><?php bp_group_hierarchy_group_tree_name(); ?>
-			<?php if ( is_user_logged_in() && bp_user_can_create_groups() ) : ?> 
+			<?php if ( is_user_logged_in() && bp_user_can_create_groups() ) : ?>
 				&nbsp;<a class="button" href="<?php echo trailingslashit( bp_get_root_domain() . '/' . bp_get_groups_root_slug() . '/create' ); ?>">
 			<?php _e( 'Create a Group', 'buddypress' ); ?></a>
-			
-			<?php elseif ( is_user_logged_in() ):?> 
-			
+
+			<?php elseif ( is_user_logged_in() ):?>
+
 			<!-- &nbsp;<a class="button" id="request_group_button" href="/request-a-group/">Request a Group</a> -->
-			
+
 			<?php endif; ?>
 		</h3><?php */ ?>
 
@@ -33,7 +33,7 @@
 
 				<?php if ( is_user_logged_in() && bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ) : ?>
 
-					<li id="groups-personal"><a href="<?php echo trailingslashit( bp_loggedin_user_domain() . bp_get_groups_root_slug() . '/my-groups' ); ?>"><?php printf( __( 'My Groups <span>%s</span>', 'buddypress' ), bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
+					<li id="groups-personal"><a href="<?php echo trailingslashit( bp_loggedin_user_domain() . bp_get_groups_root_slug() . '/my-groups' ); ?>"><?php printf( __( 'My Hubs <span>%s</span>', 'buddypress' ), bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
 
 				<?php endif; ?>
 
@@ -41,7 +41,7 @@
 
 			</ul>
 		</div><!-- .item-list-tabs -->
-		
+
 		<div class="item-list-tabs" id="subnav" role="navigation">
 			<ul>
 
