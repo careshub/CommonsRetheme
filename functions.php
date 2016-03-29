@@ -4,9 +4,6 @@ if ( ! function_exists( 'bp_is_active' ) ) {
   switch_theme( WP_DEFAULT_THEME, WP_DEFAULT_THEME );
   return;
 }
-//include code from include folder
-//Shortcode for CDC_DCH Group Home
-require_once('includes/cdc_dch_shortcode.php');
 //Shortcode for SA Policy Map Search
 require_once('includes/sa_policy_map_shortcode.php');
 //Definition of the WKKF Scorecard Data Input custom post type
@@ -1025,41 +1022,6 @@ function ccsubscribe_populate_name($value){
   $displayname = $current_user->display_name;
     return $displayname;
 }
-
-/* Group-specific modifications
-/* Center for Disease Control -- CDC
-***********************/
-add_filter("gform_field_value_uuid", "cdc_gf_uuid");
-function cdc_gf_uuid($value) {
-  $uuid = md5(uniqid(mt_rand(), true));
-    return $uuid;
-}
-
-function cdcdch_users() {
-  if ( ! class_exists('RGFormsModel') )
-    return;
-
-  if ( is_page('cdc_dch1') ) {
-        $form_id = 2;
-        $cdcusers = RGFormsModel::get_leads($form_id, '5', 'ASC');
-    global $current_user;
-    $count = 0;
-    // loop through all the returned results
-        foreach ($cdcusers as $cdcuser) {
-        if ($current_user->display_name == $cdcuser['5'])
-        {
-          $count = $count + 1;
-        }
-        }
-     if ($count > 0) {
-        wp_redirect( 'http://assessment.communitycommons.org/Footprint/Default.aspx?t=DCH' );
-        exit();
-     } else {
-       return "";
-     }
-  }
-}
-add_action( 'template_redirect', 'cdcdch_users' );
 
 /* Helper functions
 ***********************/
