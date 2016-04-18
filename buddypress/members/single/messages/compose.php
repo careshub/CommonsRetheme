@@ -7,6 +7,47 @@
  */
 
 ?>
+
+<?php
+
+$check_recips = current_user_can( 'edit_sapoliciess' ) ? false : true;
+
+if ( $check_recips ) {
+	// Check to make sure that the user isn't going nuts, here.
+	$user_id = bp_displayed_user_id();
+	$args = array(
+		'user_id'      => $user_id,
+		'box'          => 'sentbox',
+	);
+	$threads = BP_Messages_Thread::get_current_threads_for_user( $args );
+
+	// Count total recipients.
+	$recipients = array();
+	foreach ( $threads['threads'] as $thread ) {
+		// We only want to count messages sent in the last 24 hours.
+		// If this is older, we skip it.
+		if ( ( strtotime( $thread->last_message_date ) - strtotime( '-1 days' ) ) < 0 ) {
+			continue;
+		}
+		foreach ( $thread->recipients as $recipient ) {
+			$recipients[] = $recipient->user_id;
+		}
+	}
+	// remove dupes.
+	$recipients = array_unique( $recipients );
+	// remove sender.
+	$recipients = array_diff( $recipients, array( $user_id ) );
+}
+
+if ( $check_recips && ( $threads['total'] > 4 || count( $recipients ) > 4 ) ) :
+	?>
+	<div id="message" class="error">
+		<p>Hi there. We&rsquo;ve set a limit on how many messages a member can send in a day, and you&rsquo;ve hit it for today. Congrats! But you&rsquo;ll have to wait until tomorrow to send any more.</p>
+	</div>
+	<?php
+else :
+?>
+
 <form action="<?php bp_messages_form_action('compose' ); ?>" method="post" id="send_message_form" class="standard-form" enctype="multipart/form-data">
 
 	<?php
@@ -57,4 +98,6 @@
 <script type="text/javascript">
 	document.getElementById("send-to-input").focus();
 </script>
+
+<?php endif; ?>
 
