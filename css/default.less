@@ -333,8 +333,22 @@ img.img-border {
 	.cc-map-widget{
 		padding: 0;
 	}
- }
+}
 
+// Front page-specific login layout
+.front-page-login-form {
+	label {
+		margin-bottom: 1em;
+		color: @graydark;
+		input {
+			margin-top: .4em;
+		}
+		.full-width-input {
+			width: 90%;
+			width: ~"calc(100% - 1em)";
+		}
+	}
+}
 
 .comment-awaiting-moderation {
 	margin: 10px 0;
@@ -1489,42 +1503,21 @@ body.home-page {
 }
 
 //Videos
-.video-container {
-	position: relative;
-	// Value with YT chrome
-	// padding-bottom: 56.25%;
-	// Value without YT chrome
-	padding-bottom: 48%;
-	padding-top: 30px;
-	height: 0;
-	overflow: hidden;
-	margin-bottom: 2em;
-}
 #content .video-container-group {
 	margin-bottom: 1.7em;
-	h4 {
-		margin-top:0;
-		margin-bottom: .5em;
-	}
-	.video-container {
-		// width: 100%;
-		// padding-bottom: 80%;
-		margin-bottom: .5em;
-	}
-	figcaption {
-		.font-size(.85);
-		font-style: italic;
-	}
 }
-
-.video-container iframe,
-.video-container object,
-.video-container embed {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+#content .video-container-group h4 {
+	margin-top:0;
+	margin-bottom: .5em;
+}
+#content .video-container-group .video-container {
+	// width: 100%;
+	// padding-bottom: 80%;
+	margin-bottom: .5em;
+}
+#content .video-container-group figcaption {
+	.font-size(.85);
+	font-style: italic;
 }
 
 // Plugin Overrides

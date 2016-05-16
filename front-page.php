@@ -14,6 +14,38 @@ get_header(); ?>
 		<div id="content" role="main">
 			<h1 class="screamer spacious clear"><?php echo get_bloginfo( 'description', 'display' );  ?></h1>
 
+			<?php
+			// If the user isn't logged in, show them a login form.
+			if ( ! is_user_logged_in() ) : ?>
+
+				<div class="content-row clear front-page-login-explainer">
+					<div class="third-block compact front-page-login-form">
+						<h3 class="screamer ccgreen">Log in</h3>
+        				<form name="login-form" id="front-page-login-form" class="standard-form" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
+							<label><?php _e( 'Username or email', 'buddypress' ) ?><br />
+							<input type="text" name="log" id="front-page-user-login" class="full-width-input input" value="" tabindex="" /></label>
+
+							<label><?php _e( 'Password', 'buddypress' ) ?><br />
+							<input type="password" name="pwd" id="front-page-user-pass" class="full-width-input input" value="" tabindex="" /></label>
+
+							<input type="submit" name="wp-submit" id="front-page-wp-submit" value="<?php _e( 'Log In', 'buddypress' ); ?>" tabindex="100" /> <!-- &nbsp;&nbsp;&nbsp;&nbsp; <button id="cancel-login">Cancel</button> -->
+							<input type="hidden" name="redirect_to" value="<?php echo ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ?>" />
+						</form>
+						<?php if ( get_option( 'users_can_register' ) ) : ?>
+							<hr />
+			        		<p>Or <a href="<?php echo site_url( bp_get_signup_slug() ); ?>" title="Create an account"><strong>Register</strong> for an account</a> and start learning how to make positive change in your community today.</p>
+			        	<?php endif; // registration is allowed check?>
+					</div>
+					<div class="third-block spans-2 compact">
+						<h3 class="screamer ccyellow" >What is Community Commons?</h3>
+							<?php
+								echo wp_oembed_get( 'https://vimeo.com/124966922' );
+							?>
+					</div>
+				</div>
+				<h2 class="screamer">Top stories from Community Commons</h2>
+			<?php
+			endif; ?>
 <?php
 //Set up an array to contain the id of posts we've already used.
 $do_not_duplicate = array();
