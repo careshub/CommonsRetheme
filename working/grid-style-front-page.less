@@ -1,0 +1,38 @@
+// default
+// Front page styles
+.post-grid-container {
+	.story {
+		.entry-header {
+			margin-bottom: 0;
+			img {
+				display: block;
+				margin-bottom: 0;
+			}
+		}
+		.entry-title {
+			margin-top: 0;
+			margin-bottom: .4em;
+			background-color: @ccgreen;
+		}
+	}
+}
+
+
+// breakpoint 400
+// Front page styles
+.post-grid-container {
+	.story {
+		.entry-header {
+			position: relative;
+			margin-bottom: .4em;
+		}
+		.entry-title {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background-color: fade( @ccgreen, 90% );
+			margin-bottom: 0;
+		}
+	}
+}

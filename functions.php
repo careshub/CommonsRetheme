@@ -52,7 +52,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.6
+          0.61
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
@@ -64,7 +64,7 @@ function commons_ie_stylesheet_load(){
             'commons_ie_stylesheet',
             get_stylesheet_directory_uri() . '/style-ie.css',
             false,
-            0.6
+            0.61
         );
     wp_enqueue_style( 'commons_ie_stylesheet' );
     $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lte IE 9' );
@@ -397,7 +397,9 @@ function cc_custom_body_class( $classes ) {
           unset( $classes[ $key_to_delete ] );
       }
     }
-
+    if ( is_front_page() ) {
+      $classes[] = 'full-width';
+    }
 
   return $classes;
 }
@@ -639,7 +641,7 @@ add_filter('excerpt_length', 'category_page_excerpt_length', 12);
  * @since Twenty Twelve 1.0
  */
 function twentytwelve_entry_meta() {
-  $is_single = is_singular(); // We're looking at a single post, page or attachment
+  $is_single = is_singular() && ! is_front_page(); // We're looking at a single post, page or attachment
   $is_search = is_search();
   $is_blog = is_home(); // True only at /blog
   $is_category = is_category(); // True on category archive pages
@@ -1102,4 +1104,26 @@ function cc_filter_nav_items_classes( $classes, $item, $args, $depth ) {
     $classes[] = 'menu-item-level-' . $depth;
   }
   return $classes;
+}
+
+
+/*
+ * Get the post ID for the "Welcome"/"Here's What You Can Do on CC" post.
+ */
+function get_cc_welcome_post_id(){
+    $location = get_site_url();
+    switch ( $location ) {
+        case 'http://commonsdev.local':
+            $post_id = 20790;
+            break;
+        case 'http://staging.communitycommons.org':
+            $post_id = 34829;
+            break;
+        case 'http://www.communitycommons.org':
+        case 'http://abydos.cares.missouri.edu':
+        default:
+            $post_id = 39315;
+            break;
+    }
+    return $post_id;
 }

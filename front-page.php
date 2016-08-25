@@ -18,309 +18,151 @@ get_header(); ?>
 			// If the user isn't logged in, show them a login form.
 			if ( ! is_user_logged_in() ) : ?>
 
-				<div class="content-row clear front-page-login-explainer">
-					<div class="third-block compact front-page-login-form">
-						<h3 class="screamer ccgreen">Log in</h3>
-        				<form name="login-form" id="front-page-login-form" class="standard-form" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
-							<label><?php _e( 'Username or email', 'buddypress' ) ?><br />
-							<input type="text" name="log" id="front-page-user-login" class="full-width-input input" value="" tabindex="" /></label>
+				<div class="content-row clear front-page-login-explainer Grid Grid--guttersXl Grid--full large-Grid--1of3">
+					<div class="front-page-login-form  Grid-cell u-1of3">
+						<div class="Grid-cell-liner">
+							<h3 class="screamer ccgreen">Log in</h3>
+							<div class="inset-contents">
+								<form name="login-form" id="front-page-login-form" class="standard-form" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
+									<label><?php _e( 'Username or email', 'buddypress' ) ?><br />
+									<input type="text" name="log" id="front-page-user-login" class="full-width-input input" value="" tabindex="" /></label>
 
-							<label><?php _e( 'Password', 'buddypress' ) ?><br />
-							<input type="password" name="pwd" id="front-page-user-pass" class="full-width-input input" value="" tabindex="" /></label>
+									<label><?php _e( 'Password', 'buddypress' ) ?><br />
+									<input type="password" name="pwd" id="front-page-user-pass" class="full-width-input input" value="" tabindex="" /></label>
 
-							<input type="submit" name="wp-submit" id="front-page-wp-submit" value="<?php _e( 'Log In', 'buddypress' ); ?>" tabindex="100" /> <!-- &nbsp;&nbsp;&nbsp;&nbsp; <button id="cancel-login">Cancel</button> -->
-							<input type="hidden" name="redirect_to" value="<?php echo ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ?>" />
-						</form>
-						<?php if ( get_option( 'users_can_register' ) ) : ?>
-							<hr />
-			        		<p>Or <a href="<?php echo site_url( bp_get_signup_slug() ); ?>" title="Create an account"><strong>Register</strong> for an account</a> and start learning how to make positive change in your community today.</p>
-			        	<?php endif; // registration is allowed check?>
+									<input type="submit" name="wp-submit" id="front-page-wp-submit" value="<?php _e( 'Log In', 'buddypress' ); ?>" tabindex="100" /> <!-- &nbsp;&nbsp;&nbsp;&nbsp; <button id="cancel-login">Cancel</button> -->
+									<input type="hidden" name="redirect_to" value="<?php echo ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ?>" />
+								</form>
+								<?php if ( get_option( 'users_can_register' ) ) : ?>
+									<hr />
+									<p>Or <a href="<?php echo site_url( bp_get_signup_slug() ); ?>" title="Create an account"><strong>Register</strong> for an account</a> and start learning how to make positive change in your community today.</p>
+								<?php endif; // registration is allowed check?>
+							</div>
+						</div>
 					</div>
-					<div class="third-block spans-2 compact">
-						<h3 class="screamer ccyellow" >What is Community Commons?</h3>
-							<?php
-								echo wp_oembed_get( 'https://vimeo.com/124966922' );
-							?>
+					<div class="Grid-cell u-2of3">
+						<div class="Grid-cell-liner">
+							<h3 class="screamer ccyellow" >What is Community Commons?</h3>
+							<!-- <div class="inset-contents"> -->
+								<?php
+									echo wp_oembed_get( 'https://vimeo.com/124966922' );
+								?>
+							<!-- </div> -->
+						</div>
 					</div>
 				</div>
+
 				<h2 class="screamer">Top stories from Community Commons</h2>
+
 			<?php
 			endif; ?>
-<?php
-//Set up an array to contain the id of posts we've already used.
-$do_not_duplicate = array();
 
- //First, get the post set to be supersticky
-	$top_query = new WP_Query(
-	 	array(
-	 	//'post__not_in' => $do_not_duplicate,
-	 	'tag' => 'top-feature',
-	 	'posts_per_page' => 1,
-		'post_type' => 'post'
-	 	)
- 	);
-	if ( $top_query ) :
-		while ( $top_query->have_posts() ) : $top_query->the_post();
-			$layout_location = 'primary';
-			?>
-		<div id="top-story" class="clear">
 			<?php
-			get_template_part( 'content', 'stories-brief' );
+			// Let's get the most recent posts, and make sure to include the "welcome" post.
+			$latest_posts_args = array(
+				'post_type' => 'post',
+				'post__not_in' => array( get_cc_welcome_post_id() ),
+			);
+			$latest_posts = new WP_Query( $latest_posts_args );
+			$welcome_post = new WP_Query( array( 'p' => get_cc_welcome_post_id() ) );
 
-			// Find out which tags this post has, for making the related query
-			 $tags = get_the_tags();
-			 $post_tags = array();
-				foreach ($tags as $tag) {
-					//We don't want to find related posts from the "top" catogory, so we'll just get the other category ids.
-					if ( $tag->name !== 'top-feature' ) {
-						$post_tags[]=$tag->term_id;
-					}
-				}
-
-			// Add the id of the post we're displaying to an array to exclude from all subsequent queries
-		    $do_not_duplicate[] = $post->ID;
-			// echo "<br /> Don't Duplicate:";
-			// print_r($do_not_duplicate);
-			// echo '<br />';
-			// echo 'category id: ';
-			// print_r( $postcategories );
-			// echo '<br />';
-
-		    //$related_tag = $post->tag ?>
-		    <h4 class="clear-none"><a href="/blog/" title="Article archive" class="button">Browse all Commons articles.</a></h4>
-		</div> <!-- end #top-story -->
-
-		<?php endwhile;
-		wp_reset_postdata(); ?>
-		<?php endif; //ends if ( $top_query ) ?>
-
-<?php
-// Now, we're going to iterate through a few loops to find recent and related content
-
-//First, get a list of sticky posts, we'll use this several times, so we'll keep it outside the for loop
-	$sticky = get_option( 'sticky_posts' );
-	// echo "<br /> Sticky array: ";
-	// print_r($sticky);
-
-//We'll also need a list of all posts with the guest-blog or data tag, so we don't include them in block 1 or 2
-	// NOTE: 'fields' => 'ids' means WP_Query only returns the post ids, for efficiency.
-	$guest_blog_posts = new WP_Query( array( 'tag' => 'guest-blog', 'fields' => 'ids', 'post_type' => 'post' ) );
-	$guest_blog_array = $guest_blog_posts->posts;
-	$third_block_posts = new WP_Query( array( 'tag' => 'data', 'fields' => 'ids', 'post_type' => 'post' ) );
-	$third_block_array = $third_block_posts->posts;
-
-for ($i = 1; $i <= 4; $i++) {
-	// echo 'iteration number: ' . $i ;
-	// echo "<br /> Do-not-duplicate array: ";
-	// print_r($do_not_duplicate);
-
-	// Modify the array of sticky posts, depending on which loop we're in.
-	switch ($i) {
-		case 1:
-		case 2:
-			//Remove guest blog and data posts from the first two blocks.
-			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate, $guest_blog_array, $third_block_array);
-		break;
-		case 3:
-			// Probably don't want guest blog articles to show up in column three, even if they're tagged data
-			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate, $guest_blog_array);
-			break;
-		case 4:
-			// Remove duplicates from the guest blog block
-			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate);
-			break;
-		default:
-			//Remove guest blog and data posts from the first two blocks.
-			$sticky_no_dupes = array_diff($sticky, $do_not_duplicate, $guest_blog_array, $third_block_array);
-		 	break;
-	}
-
-	// Sort the stickies with the newest ones at the top
-	rsort( $sticky_no_dupes );
-	// echo "<br /> Sticky-no-dupes array: ";
-	// print_r($sticky_no_dupes);
-
-	//Grab only the most recent post in the array
-	$sticky_single = array_slice( $sticky_no_dupes, 0, 1 );
-	// echo "<br /> Sticky-single array: ";
-	// print_r($sticky_single);
-
-	// Set query, 1st & 2nd loops should be headed by recent sticky posts, but not from the guest blog or data groups, also only from the category 'features'.
-	// Third block should be the data group
-	// Fourth block should be guest blogs
-	switch ($i) {
-		case 1:
-		case 2:
-			$args = array(
-			 	'post__in' => $sticky_no_dupes,
-			 	// 'category_name' => 'features',
-				'ignore_sticky_posts' => 1,
-			 	'posts_per_page' => 1,
-			 	'post_type' => 'post'
-			 	);
-		break;
-		case 3:
-			$args = array(
-			 	'post__in' => $sticky_no_dupes,
-			 	'tag' => 'data',
-				'ignore_sticky_posts' => 1,
-			 	'posts_per_page' => 1,
-			 	'post_type' => 'post'
-			 	);
-			break;
-		case 4:
-			$args = array(
-			 	'post__in' => $sticky_no_dupes,
-			 	'tag' => 'guest-blog',
-				'ignore_sticky_posts' => 1,
-			 	'posts_per_page' => 1,
-			 	'post_type' => 'post'
-			 	);
-			break;
-		default:
-			$args = array(
-			 	'post__in' => $sticky_single,
-				'ignore_sticky_posts' => 1,
-			 	'posts_per_page' => 1,
-			 	'post_type' => 'post'
-			 	);
-		 	break;
-	}
-	// echo "<br />args: ";
-	// print_r($args);
-	$main_query = new WP_Query( $args );
-
-	if ( $main_query ) :
-		while ( $main_query->have_posts() ) : $main_query->the_post();
-			$layout_location = 'secondary';
-			if ( $i%4 == 1 ) {
-				echo '<div class="content-row">';
+			if ( ! empty( $welcome_post->posts ) ) {
+				/*
+				 * We trim this down because "sticky" posts don't count against the hard total.
+				 * Let's keep the first 6, then add our welcome post for #7.
+				 */
+				$latest_posts->posts = array_slice( $latest_posts->posts, 0, 6 );
+				$latest_posts->posts = array_merge( $latest_posts->posts, $welcome_post->posts );
+			} else {
+				/*
+				 * Keep the first 7.
+				 */
+				$latest_posts->posts = array_slice( $latest_posts->posts, 0, 7 );
 			}
+			// Since we've modified the posts array, we have to update the number of found posts.
+			$latest_posts->post_count = count( $latest_posts->posts );
+			// echo '<pre>'; var_dump( count( $latest_posts->posts ) ); var_dump( $latest_posts->post_count ); echo '</pre>';
 			?>
-		<div id="story-block-<?php echo $i; ?>" class="quarter-block" class="clear">
-			<?php
-			get_template_part( 'content', 'stories-brief' );
 
-			// Find out which tags this post has, for making the related query
-			 $tags = get_the_tags();
-			 if (!is_array($tags)) {
-			 	$tags = array($tags);
-			 }
-			 $post_tags = array();
-				foreach ($tags as $tag) {
-					//We don't want to find related posts from the "top" catogory, so we'll just get the other category ids.
-					if ( $tag->name !== 'top-feature' ) {
-						$post_tags[]=$tag->term_id;
+			<?php if ( $latest_posts->have_posts() ) : ?>
+
+				<?php /* Start the Loop */ ?>
+				<?php while ( $latest_posts->have_posts() ) : $latest_posts->the_post();
+					// If the post has no thumbnail, we need to do a few things differently.
+					$has_thumbnail = has_post_thumbnail() ? true : false;
+					// is_home() is true on the blog page, but not on the home page with a static home page.
+					// is_front_page() is true on the static home page.
+					$is_sticky = is_sticky();
+					$is_first_post = ( $latest_posts->current_post == 0 ) ? true : false ;
+
+					// Set post class
+					$post_class = 'clear';
+					if ( ! $has_thumbnail ) {
+						$post_class .= ' no-thumbnail';
 					}
-				}
+					if ( $is_sticky ) {
+						$post_class .= ' sticky';
+					}
+					if ( $is_first_post ) {
+						$post_class .= ' first-article';
+					} else {
+						$post_class .= ' compact';
+					}
+					?>
 
-			// Testing:
+					<article id="post-<?php the_ID(); ?>" <?php post_class( $post_class ); ?>>
+						<?php //if ( is_sticky() && is_home() && ! is_paged() ) : ?>
+						<!-- <div class="featured-post">
+							<?php // _e( 'Featured post', 'twentytwelve' ); ?>
+						</div> -->
+						<?php //endif; ?>
+						<header class="entry-header<?php if ( $is_first_post ) { echo " clear"; } ?>">
+								<?php if ( $has_thumbnail ) :
+									$thumbnail_size = $is_first_post ? 'post_thumbnail' : 'feature-large';
+									?>
+									<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
+									<?php the_post_thumbnail( $thumbnail_size ); ?>
+									</a>
+								<?php
+								endif;
+							?>
+							<p class="category-links"><?php echo get_the_category_list( __( '&#8203;', 'twentytwelve' ) ); ?></p>
+							<h1 class="entry-title <?php if ( ! $has_thumbnail ) echo 'no-thumbnail'; ?>">
+								<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+							</h1>
+						</header><!-- .entry-header -->
 
+						<div class="entry-summary">
+							<?php the_excerpt(); ?>
+						</div><!-- .entry-summary -->
 
-			// Add the id of the post we're displaying to an array to exclude from all subsequent queries
-		    $do_not_duplicate[] = $post->ID;
-			// echo "<br /> Don't Duplicate:";
-			// print_r($do_not_duplicate);
-			// echo '<br />';
-			// echo 'tag ids: ';
-			// print_r( $post_tags );
-			// echo '<br />';
+						<footer class="entry-meta">
+							<?php twentytwelve_entry_meta(); ?>
+							<?php edit_post_link( __( 'Edit', 'twentytwelve' ), '<span class="edit-link">', '</span>' ); ?>
+							<?php if ( is_singular() && get_the_author_meta( 'description' ) && is_multi_author() ) : // If a user has filled out their description and this is a multi-author blog, show a bio on their entries. ?>
+								<div class="author-info">
+									<div class="author-avatar">
+										<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'twentytwelve_author_bio_avatar_size', 68 ) ); ?>
+									</div><!-- .author-avatar -->
+									<div class="author-description">
+										<h2><?php printf( __( 'About %s', 'twentytwelve' ), get_the_author() ); ?></h2>
+										<p><?php the_author_meta( 'description' ); ?></p>
+										<div class="author-link">
+											<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
+												<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', 'twentytwelve' ), get_the_author() ); ?>
+											</a>
+										</div><!-- .author-link	-->
+									</div><!-- .author-description -->
+								</div><!-- .author-info -->
+							<?php endif; ?>
+						</footer><!-- .entry-meta -->
+					</article><!-- #post -->
+				<?php endwhile; ?>
 
-		    //$related_tag = $post->tag ?>
-		<?php endwhile;
-		// echo '<br/>$postcategories: ';
-		// print_r($postcategories) ;
-		wp_reset_postdata(); ?>
+			<?php endif; ?>
 
-<?php
-// Then, get posts related to the main story
-	global $post; // required
-	// Set query, 1st & 2nd loops should be headed by recent sticky posts and exclude guest-blogs and data, so we'll need to add those posts to the post__not_in array.
-	// $exclude_dupes_guests_data = array_merge($do_not_duplicate, $third_block_array, $guest_blog_array);
-	// echo '<br>$do_not_duplicate: ';
-	// print_r($do_not_duplicate);
-	// echo '<br>$third_block_array: ';
-	// print_r($third_block_array);
-	// echo '<br>$guest_blog_array: ';
-	// print_r($guest_blog_array);
-	// echo '<br>Merged exclude array: ';
-	// print_r($exclude_dupes_guests_data);
-
-	// Third block should be the data group
-	// Fourth block should be guest blogs
-	switch ($i) {
-		case 1:
-		case 2:
-			$exclude_dupes_guests_data = array_merge($do_not_duplicate, $third_block_array, $guest_blog_array);
-			$args = array(
-				 	'post__not_in' => $exclude_dupes_guests_data,
-				 	'tag__in' => $post_tags,
-				 	// 'category_name' => 'features',
-				 	'ignore_sticky_posts' => 1,
-				 	'posts_per_page' => 2,
-				 	'post_type' => 'post'
-				 	);
-			break;
-		case 3:
-			$args = array(
-				 	'post__not_in' => $do_not_duplicate,
-				 	'tag' => 'data',
-				 	'ignore_sticky_posts' => 1,
-				 	'posts_per_page' => 2,
-				 	'post_type' => 'post'
-				 	);
-			break;
-		case 4:
-			$args = array(
-				 	'post__not_in' => $do_not_duplicate,
-					'tag' => 'guest-blog',
-				 	'ignore_sticky_posts' => 1,
-				 	'posts_per_page' => 2,
-				 	'post_type' => 'post'
-				 	);
-			break;
-		default:
-			$args = array(
-				 	'post__not_in' => $do_not_duplicate,
-				 	'tag__in' => $post_tags,
-				 	'ignore_sticky_posts' => 1,
-				 	'posts_per_page' => 2,
-				 	'post_type' => 'post'
-				 	);
-			break;
-	}
-
-	$related_query = get_posts($args);
-
-
-	?>
-			<h3>Related posts</h3>
-			<ul class="related-posts">
-				<?php
-				foreach($related_query as $post) : setup_postdata($post);
-					$layout_location = 'related';
-
-					get_template_part( 'content', 'stories-brief' );
-
-					$do_not_duplicate[] = $post->ID;
-
-				endforeach; //ends top-related posts loop
-				?>
-			</ul> <!-- End .related_posts -->
-		</div> <!-- End .quarter-block -->
-
-  <?php
-  if ( $i%4 == 0 ) {
-		echo '</div> <!-- End .content-row -->';
-	}
-	endif; //ends if ( main_query )
-
-} //ends for loop iteration
-
-
-  ?>
-
-  		</div><!-- #content -->
+			<h4 class="screamer spacious load-more"><a href="/blog">Browse all Commons articles.</a></h4>
+		</div><!-- #content -->
 	</div><!-- #primary -->
 
 <?php //get_sidebar(); ?>

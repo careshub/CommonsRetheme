@@ -1,6 +1,10 @@
 //alternative layout for blog page
 //.blog is listing, .single-post is single view
-body.blog, body.category, body.tag, body.single-post {
+body.blog,
+body.category,
+body.tag,
+body.single-post,
+body.home-page {
 	.site {
 		box-shadow: none;
 		background-color: transparent;
@@ -71,6 +75,29 @@ body.blog, body.category, body.tag, body.single-post {
 		    }
  		}
  	}
+}
+body.home-page {
+	.front-page-login-explainer {
+		.Grid-cell-liner {
+			background-color: @white;
+			// border-top: 3px solid @ccblue;
+			.drop-shadow(0, 1px, 3px, 0, 0.25);
+			height: 100%;
+			h3 {
+				margin-top: 0;
+			}
+		}
+		.video-container {
+			margin-bottom: 0;
+		}
+	}
+	.site {
+		.site-content {
+			article {
+				margin-left: 0;
+			}
+		}
+	}
 }
 body.category {
 	.site {
