@@ -118,7 +118,7 @@ get_header(); ?>
 						<?php //endif; ?>
 						<header class="entry-header<?php if ( $is_first_post ) { echo " clear"; } ?>">
 								<?php if ( $has_thumbnail ) :
-									$thumbnail_size = $is_first_post ? 'post_thumbnail' : 'feature-large';
+									$thumbnail_size = $is_first_post ? 'post_thumbnail' : 'feature-465x288';
 									?>
 									<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
 									<?php the_post_thumbnail( $thumbnail_size ); ?>
