@@ -291,13 +291,18 @@ img.img-border {
 		}
 	}
 }
- .blog, .archive {
+.blog,
+.archive,
+.home-page {
  	article {
 	 	border-bottom: 2px solid @ccblue;
  	}
  }
- // In archive views, regularize the spacing below a post
- body.blog, body.category, body.tag {
+// In archive views, regularize the spacing below a post
+body.blog,
+body.category,
+body.tag,
+body.home-page {
  	article {
  		margin-bottom: 42px;
  		margin-bottom: 3rem;
@@ -347,6 +352,11 @@ img.img-border {
 			width: 90%;
 			width: ~"calc(100% - 1em)";
 		}
+	}
+}
+.front-page-login-explainer {
+	.video-container .video-poster-placeholder {
+		width: 100%;
 	}
 }
 
@@ -997,42 +1007,6 @@ ul.item-list li .share-buttons-below li {
 	text-align: center;
 }
 
-// New magazine-style home page
-body.home-page {
-	#primary {
-		width: 100%;
-		// margin-top: 36px; use in 700.less
-		// margin-top: 2.6rem;
-		img { 
-			margin-bottom: 8px;
-			margin-bottom: .6rem;
-		}
-		ul {
-			clear: both;
-			li {
-				line-height: 2.4;
-			}
-		}
-		#top-story {
-			// background-color: #FAB;
-			margin-bottom: 2em;
-			padding-bottom: 2em;
-			border-bottom: 1px solid @graylight;
-			h2 {
-				// .font-size(1.4);
-			}
-			.button {
-					// margin-bottom: 1.4em;
-			}
-		}
-		.quarter-block {
-			h3 {
-				color: lighten(@graydark, 15);
-				// font-weight: 400;
-			}
-		}
-	}
-}
 // Generalize quarter and third blocks
 .quarter-block {
 	margin-bottom: 2em;
