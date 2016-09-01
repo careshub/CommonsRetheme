@@ -1783,3 +1783,24 @@ body.search .archive-header {
 .background-light-gray {
 	background-color: lighten( @graylight, 7%);
 }
+// Used to make the ever-popular big colored box.
+.has-background-color {
+	background-color: @ccblue;
+	color:@white;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	a {
+		color: white;
+		text-decoration: underline;
+		&:visited {
+			color: white;
+		}
+	}
+	h1, h2, h3, h4, h5, h6 {
+		color: @white;
+	}
+}
+.inset-contents {
+	// width: 100%;
+	height: 100%;
+	padding: 0.8em 1em 0px;
+}
