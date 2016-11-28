@@ -1,9 +1,9 @@
-<?php 
+<?php
 add_action( 'init', 'register_wkkf_scorecard' );
 
 function register_wkkf_scorecard() {
 
-    $labels = array( 
+    $labels = array(
         'name' => _x( 'Scorecards', 'wkkf_scorecard' ),
         'singular_name' => _x( 'Scorecard', 'wkkf_scorecard' ),
         'add_new' => _x( 'Add New', 'wkkf_scorecard' ),
@@ -18,17 +18,17 @@ function register_wkkf_scorecard() {
         'menu_name' => _x( 'Scorecards', 'wkkf_scorecard' ),
     );
 
-    $args = array( 
+    $args = array(
         'labels' => $labels,
         'hierarchical' => false,
         'description' => 'Data input for WKKF Scorecard',
         'supports' => array( 'title', 'editor', 'thumbnail' ),
-        
+
         'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,
-        
-        
+
+
         'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
@@ -78,14 +78,14 @@ function wkkf_definitions_metabox()
 			<strong>WKKF Priority Place:</strong>
 		</td>
 		<td>
-		
+
 			<select id="wkkf_pplace" name="wkkf_pplace">
-				<option selected disabled value="<?php echo (isset($wkkf_pplace) ? $wkkf_pplace : ''); ?>"><?php echo (isset($wkkf_pplace) ? $wkkf_pplace : '---Select Priority Place---'); ?></option>				
+				<option selected disabled value="<?php echo (isset($wkkf_pplace) ? $wkkf_pplace : ''); ?>"><?php echo (isset($wkkf_pplace) ? $wkkf_pplace : '---Select Priority Place---'); ?></option>
 				<option value="Michigan">Michigan</option>
 				<option value="Mississippi">Mississippi</option>
 				<option value="New Mexico">New Mexico</option>
 				<option value="Louisiana">Louisiana</option>
-				<option value="Haiti">Haiti</option>	
+				<option value="Haiti">Haiti</option>
 				<option value="Mexico">Mexico</option>
 			</select>
 		</td>
@@ -95,26 +95,26 @@ function wkkf_definitions_metabox()
 		<td>
 			<strong>Baseline year:</strong>
 		</td>
-		<td><select name="baselineyear1" id="baselineyear1"></select></td>	
-		
+		<td><select name="baselineyear1" id="baselineyear1"></select></td>
+
 	</tr>
 	<tr>
 		<td>
 			<strong>Goal year:</strong>
-		</td>			
-		<td><select name="goalyear1" id="goalyear1"></select></td>	
+		</td>
+		<td><select name="goalyear1" id="goalyear1"></select></td>
 	</tr>
 </table>
 <table id="outcomeTable" cellpadding="5px" style="background-color:#ebebeb;border:solid 1px #dcdcdc;border-collapse:collapse;">
 	<thead style="background-color:#dcdcdc;">
 	  <tr>
 		<th align="left" style="vertical-align:top;">Child Outcome</th>
-		<th align="left" style="vertical-align:top;">Baseline <div id="byear"></div></th>	
-		<th align="left">	
+		<th align="left" style="vertical-align:top;">Baseline <div id="byear"></div></th>
+		<th align="left">
 			<strong>Benchmarks by year</strong>
-			<select id="selBenchYear" name="selBenchYear"></select>			
+			<select id="selBenchYear" name="selBenchYear"></select>
 		</th>
-		<th align="left" style="vertical-align:top;">Goal <div id="gyear"></div></th>		
+		<th align="left" style="vertical-align:top;">Goal <div id="gyear"></div></th>
 		<th align="left" style="vertical-align:top;">Measurement Method</th>
 		<th></th>
 	  </tr>
@@ -123,13 +123,13 @@ function wkkf_definitions_metabox()
 	<tbody>
 	  <tr id="oRow_1" class="mb">
 		<td><input name="outcome1" id="outcome1" type="text" size="85" placeholder="Child Outcome 1" value="<?php echo $outcome1; ?>" /></td>
-		<td><input name="baseline1" id="baseline1" type="text" size="10" class="positive-integer" placeholder="Baseline 1" /></td>	
+		<td><input name="baseline1" id="baseline1" type="text" size="10" class="positive-integer" placeholder="Baseline 1" /></td>
 		<td>
 			<div id="benchmarks1">
 
 			</div>
 		</td>
-		<td><input name="goal1" id="goal1" type="text" size="10" class="positive-integer" placeholder="Goal 1" /></td>		
+		<td><input name="goal1" id="goal1" type="text" size="10" class="positive-integer" placeholder="Goal 1" /></td>
 		<td>
 			<select name="measurement1" id="measurement1">
 				<option value="" selected disabled>---Select---</option>
@@ -147,71 +147,71 @@ function wkkf_definitions_metabox()
 	var currYear = new Date().getFullYear();
 
 	for (i = currYear + 27; i > 1990; i--)
-	{    
+	{
 		jQuery('#goalyear1').append(jQuery('<option />').val(i).html(i));
 	}
 	for (j = currYear; j > 1990; j--)
-	{    
+	{
 		jQuery('#baselineyear1').append(jQuery('<option />').val(j).html(j));
 	}
 
 	var benchstr = '<div id="bench1_' + jQuery('#baselineyear1').val() + '"><table><tr><td><input type="text" name="bench1Q1" id="bench1Q1" placeholder="Qtr 1" class="positive-integer" size="5" /></td><td><input type="text" name="bench1Q2" id="bench1Q2" placeholder="Qtr 2" class="positive-integer" size="5" /></td><td><input type="text" name="bench1Q3" id="bench1Q3" placeholder="Qtr 3" class="positive-integer" size="5" /></td><td><input type="text" name="bench1Q4" id="bench1Q4" placeholder="Qtr 4" class="positive-integer" size="5" /></td></tr></table></div>';
-	jQuery("#benchmarks1").html(benchstr);	
-	
-	
+	jQuery("#benchmarks1").html(benchstr);
+
+
 	function addRow() {
-		var lastrowID = jQuery('.mb:last').attr('id');		
-		var lastrowNum = lastrowID.split('_')[1];		
+		var lastrowID = jQuery('.mb:last').attr('id');
+		var lastrowNum = lastrowID.split('_')[1];
 		var newrowNum = parseInt(lastrowNum) + 1;
 
-		
+
 		jQuery('#outcomeTable > tbody:last').append('<tr id="oRow_' + newrowNum + '" class="mb"><td><input name="outcome' + newrowNum + '" id="outcome' + newrowNum + '" type="text" size="85" placeholder="Child Outcome ' + newrowNum + '" /></td><td><input name="baseline' + newrowNum + '" id="baseline' + newrowNum + '" type="text" size="10" placeholder="Baseline ' + newrowNum + '" class="positive-integer" /></td><td><div id="benchmarks' + newrowNum + '"></div></td><td><input name="goal' + newrowNum + '" id="goal' + newrowNum + '" placeholder="Goal ' + newrowNum + '" type="text" size="10" class="positive-integer" /></td><td><select name="measurement' + newrowNum + '" id="measurement' + newrowNum + '"><option value="" selected disabled>---Select---</option><option value="Percent">Percent (%)</option><option value="Number">Number</option></select></td><td><input type="button" value="Remove" onclick="removeRow(' + newrowNum + ')" /></td></tr>');
 		jQuery('#outcomeTable_A > tbody:last').append('<tr id="oRow_' + newrowNum + '_A" class="mb_A"><td><div style="font-weight:bold;" id="outcome' + newrowNum + '_A"></div></td><td align="left"><div id="baseline' + newrowNum + '_A"></div></td><td><input type="text" name="wkkf_C' + newrowNum + '" size="5" class="positive-integer" value="<?php echo $wkkf_C1; ?>" /><div style="display:inline-block;" id="measurement' + newrowNum + '_A"></div></td><td><div id="benchmarks' + newrowNum + '_A"></div></td><td align="left"><div id="goal' + newrowNum + '_A"></div></td></tr>');
-			
-		
-			
-		jQuery('.benchtemp_A').empty();	
+
+
+
+		jQuery('.benchtemp_A').empty();
 
 		var bm1 = jQuery('#benchmarks1').html();
 		var bm1_A = jQuery('#benchmarks1_A_template').html();
 		var bmnext = bm1.replace("bench1", "bench" + newrowNum, "g");
 		var bmnext_A = bm1_A.replace("bench1", "bench" + newrowNum, "g");
-		
-		
+
+
 		jQuery('#benchmarks' + newrowNum).html(bmnext);
 		jQuery('#benchmarks' + newrowNum + '_A').html(bmnext_A);
-	
-	
-	
-		jQuery('#outcome' + newrowNum).blur(function() {			
+
+
+
+		jQuery('#outcome' + newrowNum).blur(function() {
 			jQuery('#outcome' + newrowNum + '_A').html(jQuery('#outcome' + newrowNum).val());
 		});
 		jQuery('#baseline' + newrowNum).blur(function() {
 			jQuery('#baseline' + newrowNum + '_A').html(jQuery('#baseline' + newrowNum).val());
 		});
-		
-		jQuery('#bench' + newrowNum + 'Q1_' + jQuery('#selBenchYear').val()).blur(function() {			
-			jQuery('#bench' + newrowNum + 'Q1_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + newrowNum + 'Q1_' + jQuery('#selBenchYear').val()).val());	
+
+		jQuery('#bench' + newrowNum + 'Q1_' + jQuery('#selBenchYear').val()).blur(function() {
+			jQuery('#bench' + newrowNum + 'Q1_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + newrowNum + 'Q1_' + jQuery('#selBenchYear').val()).val());
 		});
 		jQuery('#bench' + newrowNum + 'Q2_' + jQuery('#selBenchYear').val()).blur(function() {
-			jQuery('#bench' + newrowNum + 'Q2_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + newrowNum + 'Q2_' + jQuery('#selBenchYear').val()).val());	
+			jQuery('#bench' + newrowNum + 'Q2_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + newrowNum + 'Q2_' + jQuery('#selBenchYear').val()).val());
 		});
 		jQuery('#bench' + newrowNum + 'Q3_' + jQuery('#selBenchYear').val()).blur(function() {
-			jQuery('#bench' + newrowNum + 'Q3_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + newrowNum + 'Q3_' + jQuery('#selBenchYear').val()).val());	
+			jQuery('#bench' + newrowNum + 'Q3_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + newrowNum + 'Q3_' + jQuery('#selBenchYear').val()).val());
 		});
 		jQuery('#bench' + newrowNum + 'Q4_' + jQuery('#selBenchYear').val()).blur(function() {
-			jQuery('#bench' + newrowNum + 'Q4_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + newrowNum + 'Q4_' + jQuery('#selBenchYear').val()).val());	
-		});		
-		
-		
-		
+			jQuery('#bench' + newrowNum + 'Q4_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + newrowNum + 'Q4_' + jQuery('#selBenchYear').val()).val());
+		});
+
+
+
 		jQuery('#goal' + newrowNum).blur(function() {
 			jQuery('#goal' + newrowNum + '_A').html(jQuery('#goal' + newrowNum).val());
-		});	
+		});
 		jQuery('#measurement' + newrowNum).change(function() {
 			if (jQuery('#measurement' + newrowNum).val() != "Number") {
 				jQuery('#baseline' + newrowNum + '_A').html(jQuery('#baseline' + newrowNum).val() + '%');
-				jQuery('#goal' + newrowNum + '_A').html(jQuery('#goal' + newrowNum).val() + '%');	
+				jQuery('#goal' + newrowNum + '_A').html(jQuery('#goal' + newrowNum).val() + '%');
 				jQuery('#measurement' + newrowNum + '_A').html('%');
 			} else {
 				jQuery('#baseline' + newrowNum + '_A').html(jQuery('#baseline' + newrowNum).val());
@@ -255,15 +255,15 @@ function wkkf_childoutcomes_metabox()
 				</th>
 				<th align="left" style="width:150px;vertical-align:top;">
 					<strong>Current Year (<?php echo date('Y'); ?>)</strong>
-				</th>		
+				</th>
 				<th align="left">
 					<strong>Benchmarks by year</strong>
 					<select id="selBenchYear_A" name="selBenchYear_A"></select>
 					<table width="100%"><tr><td><strong>Qtr 1</strong></td><td><strong>Qtr 2</strong></td><td><strong>Qtr 3</strong></td><td><strong>Qtr 4</strong></td></tr></table>
 				</th>
-				<th align="left" style="width:150px;vertical-align:top;">	
+				<th align="left" style="width:150px;vertical-align:top;">
 					<strong>Goal <div id="gyear_A"></div></strong>
-				</th>			
+				</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -276,14 +276,14 @@ function wkkf_childoutcomes_metabox()
 				</td>
 				<td align="left">
 					<input type="text" name="wkkf_C1" size="5" class="positive-integer" value="<?php echo $wkkf_C1; ?>"><div style="display:inline-block;" id="measurement1_A" /></div>
-				</td>	
+				</td>
 				<td align="left">
 					<div id="benchmarks1_A"></div>
 				</td>
 				<td align="left">
 					<div id="goal1_A"></div>
-				</td>			
-			</tr>		
+				</td>
+			</tr>
 		</tbody>
 	</table>
 </div>
@@ -307,7 +307,7 @@ jQuery( document ).ready(function() {
 		jQuery("#byear").html("(" + jQuery( "#baselineyear1" ).val() + ")");
 		jQuery("#byear_A").html("(" + jQuery( "#baselineyear1" ).val() + ")");
 	  	var goalyr = parseInt(jQuery( "#goalyear1" ).val());
-		var baseyr = parseInt(jQuery( "#baselineyear1" ).val());	
+		var baseyr = parseInt(jQuery( "#baselineyear1" ).val());
 		jQuery('#selBenchYear')
 		    .find('option')
 			.remove()
@@ -319,20 +319,20 @@ jQuery( document ).ready(function() {
 			.end()
 			;
 		for (i = baseyr; i < goalyr; i++)
-		{    			
+		{
 			jQuery('#selBenchYear').append(jQuery('<option />').val(i).html(i));
 			jQuery('#selBenchYear_A').append(jQuery('<option />').val(i).html(i));
 			if (i == baseyr) {
 				benchyearStr = benchyearStr + '<div id="bench1_' + i + '" class="' + i + ' benchmark"><table><tr><td><input type="text" name="bench1Q1_' + i + '" id="bench1Q1_' + i + '" placeholder="Qtr 1, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q2_' + i + '" id="bench1Q2_' + i + '" placeholder="Qtr 2, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q3_' + i + '" id="bench1Q3_' + i + '" placeholder="Qtr 3, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q4_' + i + '" id="bench1Q4_' + i + '" placeholder="Qtr 4, ' + i + '" class="positive-integer" size="10" /></td></tr></table></div>';
 				benchyearStr_A = benchyearStr_A + '<div id="bench1_' + i + '_A" class="' + i + ' benchmark_A"><table width="100%"><tr><td><div id="bench1Q1_' + i + '_A"></div></td><td><div id="bench1Q2_' + i + '_A"></div></td><td><div id="bench1Q3_' + i + '_A"></div></td><td><div id="bench1Q4_' + i + '_A"></div></td></tr></table></div>';
-				
+
 			} else {
-				benchyearStr = benchyearStr + '<div id="bench1_' + i + '"  class="' + i + ' benchmark" style="display:none;"><table><tr><td><input type="text" name="bench1Q1_' + i + '" id="bench1Q1_' + i + '" placeholder="Qtr 1, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q2_' + i + '" id="bench1Q2_' + i + '" placeholder="Qtr 2, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q3_' + i + '" id="bench1Q3_' + i + '" placeholder="Qtr 3, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q4_' + i + '" id="bench1Q4_' + i + '" placeholder="Qtr 4, ' + i + '" class="positive-integer" size="10" /></td></tr></table></div>';		
+				benchyearStr = benchyearStr + '<div id="bench1_' + i + '"  class="' + i + ' benchmark" style="display:none;"><table><tr><td><input type="text" name="bench1Q1_' + i + '" id="bench1Q1_' + i + '" placeholder="Qtr 1, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q2_' + i + '" id="bench1Q2_' + i + '" placeholder="Qtr 2, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q3_' + i + '" id="bench1Q3_' + i + '" placeholder="Qtr 3, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q4_' + i + '" id="bench1Q4_' + i + '" placeholder="Qtr 4, ' + i + '" class="positive-integer" size="10" /></td></tr></table></div>';
 				benchyearStr_A = benchyearStr_A + '<div id="bench1_' + i + '_A"  class="' + i + ' benchmark_A" style="display:none;"><table width="100%"><tr><td><div id="bench1Q1_' + i + '_A"></div></td><td><div id="bench1Q2_' + i + '_A"></div></td><td><div id="bench1Q3_' + i + '_A"></div></td><td><div id="bench1Q4_' + i + '_A"></div></td></tr></table></div>';
-				
-			}		
+
+			}
 		}
-		jQuery('#benchmarks1').html(benchyearStr);		
+		jQuery('#benchmarks1').html(benchyearStr);
 		jQuery('#benchmarks1_A').html(benchyearStr_A);
 	});
 
@@ -340,7 +340,7 @@ jQuery( document ).ready(function() {
 		jQuery("#gyear").html("(" + jQuery( "#goalyear1" ).val() + ")");
 		jQuery("#gyear_A").html("(" + jQuery( "#goalyear1" ).val() + ")");
 	  	var goalyr = parseInt(jQuery( "#goalyear1" ).val());
-		var baseyr = parseInt(jQuery( "#baselineyear1" ).val());	
+		var baseyr = parseInt(jQuery( "#baselineyear1" ).val());
 		jQuery('#selBenchYear')
 		    .find('option')
 			.remove()
@@ -350,28 +350,28 @@ jQuery( document ).ready(function() {
 		    .find('option')
 			.remove()
 			.end()
-			;		
+			;
 		var benchyearStr = "";
 		var benchyearStr_A = "";
 		for (i = baseyr; i < goalyr; i++)
-		{    
+		{
 			jQuery('#selBenchYear').append(jQuery('<option />').val(i).html(i));
 			jQuery('#selBenchYear_A').append(jQuery('<option />').val(i).html(i));
 			if (i == baseyr) {
 				benchyearStr = benchyearStr + '<div id="bench1_' + i + '" class="' + i + ' benchmark"><table><tr><td><input type="text" name="bench1Q1_' + i + '" id="bench1Q1_' + i + '" placeholder="Qtr 1, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q2_' + i + '" id="bench1Q2_' + i + '" placeholder="Qtr 2, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q3_' + i + '" id="bench1Q3_' + i + '" placeholder="Qtr 3, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q4_' + i + '" id="bench1Q4_' + i + '" placeholder="Qtr 4, ' + i + '" class="positive-integer" size="10" /></td></tr></table></div>';
 				benchyearStr_A = benchyearStr_A + '<div id="bench1_' + i + '_A" class="' + i + ' benchmark_A"><table width="100%"><tr><td><div id="bench1Q1_' + i + '_A"></div></td><td><div id="bench1Q2_' + i + '_A"></div></td><td><div id="bench1Q3_' + i + '_A"></div></td><td><div id="bench1Q4_' + i + '_A"></div></td></tr></table></div>';
 			} else {
-				benchyearStr = benchyearStr + '<div id="bench1_' + i + '"  class="' + i + ' benchmark" style="display:none;"><table><tr><td><input type="text" name="bench1Q1_' + i + '" id="bench1Q1_' + i + '" placeholder="Qtr 1, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q2_' + i + '" id="bench1Q2_' + i + '" placeholder="Qtr 2, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q3_' + i + '" id="bench1Q3_' + i + '" placeholder="Qtr 3, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q4_' + i + '" id="bench1Q4_' + i + '" placeholder="Qtr 4, ' + i + '" class="positive-integer" size="10" /></td></tr></table></div>';		
+				benchyearStr = benchyearStr + '<div id="bench1_' + i + '"  class="' + i + ' benchmark" style="display:none;"><table><tr><td><input type="text" name="bench1Q1_' + i + '" id="bench1Q1_' + i + '" placeholder="Qtr 1, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q2_' + i + '" id="bench1Q2_' + i + '" placeholder="Qtr 2, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q3_' + i + '" id="bench1Q3_' + i + '" placeholder="Qtr 3, ' + i + '" class="positive-integer" size="10" /></td><td><input type="text" name="bench1Q4_' + i + '" id="bench1Q4_' + i + '" placeholder="Qtr 4, ' + i + '" class="positive-integer" size="10" /></td></tr></table></div>';
 				benchyearStr_A = benchyearStr_A + '<div id="bench1_' + i + '_A"  class="' + i + ' benchmark_A" style="display:none;"><table width="100%"><tr><td><div id="bench1Q1_' + i + '_A"></div></td><td><div id="bench1Q2_' + i + '_A"></div></td><td><div id="bench1Q3_' + i + '_A"></div></td><td><div id="bench1Q4_' + i + '_A"></div></td></tr></table></div>';
-			
+
 			}
 		}
 		jQuery('#benchmarks1').html(benchyearStr);
 		jQuery('#benchmarks1_A').html(benchyearStr_A);
 	});
-	
 
-	
+
+
 	jQuery('#outcome1').blur(function() {
 		jQuery('#outcome1_A').html(jQuery('#outcome1').val());
 	});
@@ -380,92 +380,92 @@ jQuery( document ).ready(function() {
 	});
 	jQuery('#goal1').blur(function() {
 		jQuery('#goal1_A').html(jQuery('#goal1').val());
-	});	
+	});
 	jQuery('#measurement1').change(function() {
 		if (jQuery('#measurement1').val() != "Number") {
 			jQuery('#baseline1_A').html(jQuery('#baseline1').val() + '%');
-			jQuery('#goal1_A').html(jQuery('#goal1').val() + '%');	
+			jQuery('#goal1_A').html(jQuery('#goal1').val() + '%');
 			jQuery('#measurement1_A').html('%');
 		} else {
 			jQuery('#baseline1_A').html(jQuery('#baseline1').val());
 			jQuery('#goal1_A').html(jQuery('#goal1').val());
 			jQuery('#measurement1_A').html('');
 		}
-	});		
-	
+	});
+
 	jQuery("#goalyear1").trigger("change");
-	
+
 	jQuery('#selBenchYear').change(function() {
-		var lastrowID = jQuery('.mb:last').attr('id');		
+		var lastrowID = jQuery('.mb:last').attr('id');
 		var lastrowNum = lastrowID.charAt(lastrowID.length-1);
 
 		var idStr="";
 		for (i = 1; i <= lastrowNum; i++) {
-			idStr = idStr + "#benchmarks" + i + ","; 
-			
-			jQuery('#bench' + i + 'Q1_' + jQuery('#selBenchYear').val()).blur(function() {	
+			idStr = idStr + "#benchmarks" + i + ",";
+
+			jQuery('#bench' + i + 'Q1_' + jQuery('#selBenchYear').val()).blur(function() {
 				var bb = i-1;
-				jQuery('#bench' + bb + 'Q1_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + bb + 'Q1_' + jQuery('#selBenchYear').val()) .val());					
+				jQuery('#bench' + bb + 'Q1_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + bb + 'Q1_' + jQuery('#selBenchYear').val()) .val());
 			});
 			jQuery('#bench' + i + 'Q2_' + jQuery('#selBenchYear').val()).blur(function() {
 				var bb = i-1;
-				jQuery('#bench' + bb + 'Q2_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + bb + 'Q2_' + jQuery('#selBenchYear').val()) .val());	
+				jQuery('#bench' + bb + 'Q2_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + bb + 'Q2_' + jQuery('#selBenchYear').val()) .val());
 			});
 			jQuery('#bench' + i + 'Q3_' + jQuery('#selBenchYear').val()).blur(function() {
 				var bb = i-1;
-				jQuery('#bench' + bb + 'Q3_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + bb + 'Q3_' + jQuery('#selBenchYear').val()) .val());	
+				jQuery('#bench' + bb + 'Q3_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + bb + 'Q3_' + jQuery('#selBenchYear').val()) .val());
 			});
 			jQuery('#bench' + i + 'Q4_' + jQuery('#selBenchYear').val()).blur(function() {
 				var bb = i-1;
-				jQuery('#bench' + bb + 'Q4_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + bb + 'Q4_' + jQuery('#selBenchYear').val()) .val());	
-			});				
+				jQuery('#bench' + bb + 'Q4_' + jQuery('#selBenchYear').val() + "_A").html(jQuery('#bench' + bb + 'Q4_' + jQuery('#selBenchYear').val()) .val());
+			});
 		}
 		idStr = idStr.slice(0, -1)
-	
+
 		jQuery(idStr).hide();
 		//Display benchmarks for selected year
-		jQuery( "." + jQuery('#selBenchYear').val() + ".benchmark").css( "display", "block" );		
+		jQuery( "." + jQuery('#selBenchYear').val() + ".benchmark").css( "display", "block" );
 		//Hide benchmarks for years not selected
 		jQuery(".benchmark").not("." + jQuery('#selBenchYear').val()).css("display", "none");
 		jQuery(idStr).fadeIn();
-		
-		
 
-		
+
+
+
 	});
-	
+
 	jQuery('#selBenchYear_A').change(function() {
-	
-		var lastrowID_A = jQuery('.mb:last').attr('id');		
-		
+
+		var lastrowID_A = jQuery('.mb:last').attr('id');
+
 		var lastrowNum_A = lastrowID_A.charAt(lastrowID_A.length-1);
 
 		var idStr_A="";
 		for (p = 1; p <= lastrowNum_A; p++) {
-			idStr_A = idStr_A + "#benchmarks" + p + "_A,"; 
+			idStr_A = idStr_A + "#benchmarks" + p + "_A,";
 		}
 		idStr_A = idStr_A.slice(0, -1)
-	
+
 		jQuery(idStr_A).hide();
 		//Display benchmarks for selected year
-		jQuery( "." + jQuery('#selBenchYear_A').val() + ".benchmark_A").css( "display", "block" );		
+		jQuery( "." + jQuery('#selBenchYear_A').val() + ".benchmark_A").css( "display", "block" );
 		//Hide benchmarks for years not selected
 		jQuery(".benchmark_A").not("." + jQuery('#selBenchYear_A').val()).css("display", "none");
 		jQuery(idStr_A).fadeIn();
-	});	
-	
-	jQuery('#bench1Q1_' + jQuery('#selBenchYear').val() ).blur(function() {		
-		
+	});
+
+	jQuery('#bench1Q1_' + jQuery('#selBenchYear').val() ).blur(function() {
+
 		jQuery('#bench1Q1_' + jQuery('#selBenchYear').val() + '_A').html(jQuery('#bench1Q1_' + jQuery('#selBenchYear').val() ).val());
 		//alert(jQuery('#bench1Q1_' + jQuery('#selBenchYear').val() ).val());
 	});
-	jQuery('#bench1Q2_' + jQuery('#selBenchYear').val() ).blur(function() {		
+	jQuery('#bench1Q2_' + jQuery('#selBenchYear').val() ).blur(function() {
 		jQuery('#bench1Q2_' + jQuery('#selBenchYear').val() + '_A').html(jQuery('#bench1Q2_' + jQuery('#selBenchYear').val() ).val());
 	});
-	jQuery('#bench1Q3_' + jQuery('#selBenchYear').val() ).blur(function() {		
+	jQuery('#bench1Q3_' + jQuery('#selBenchYear').val() ).blur(function() {
 		jQuery('#bench1Q3_' + jQuery('#selBenchYear').val() + '_A').html(jQuery('#bench1Q3_' + jQuery('#selBenchYear').val() ).val());
 	});
-	jQuery('#bench1Q4_' + jQuery('#selBenchYear').val() ).blur(function() {		
+	jQuery('#bench1Q4_' + jQuery('#selBenchYear').val() ).blur(function() {
 		jQuery('#bench1Q4_' + jQuery('#selBenchYear').val() + '_A').html(jQuery('#bench1Q4_' + jQuery('#selBenchYear').val() ).val());
 	});
 });
@@ -476,7 +476,7 @@ jQuery( document ).ready(function() {
 function wkkf_continuum_metabox() {
     global $post;
     $custom = get_post_custom($post->ID);
-	
+
     $GPstage1 = $custom["GPstage1"][0];
 	$GPprogress1 = $custom["GPprogress1"][0];
 	$GPbaseline1 = $custom["GPbaseline1"][0];
@@ -501,7 +501,7 @@ function wkkf_continuum_metabox() {
     $SPstage3 = $custom["SPstage3"][0];
 	$SPprogress3 = $custom["SPprogress3"][0];
 	$SPbaseline3 = $custom["SPbaseline3"][0];
-    $SPgoal3 = $custom["SPgoal3"][0];	
+    $SPgoal3 = $custom["SPgoal3"][0];
 
 ?>
 <div>
@@ -513,7 +513,7 @@ function wkkf_continuum_metabox() {
 			</td>
 			<td align="center">
 				<strong>Stage</strong>
-			</td>				
+			</td>
 			<td align="center">
 				<strong>Progress</strong>
 			</td>
@@ -523,8 +523,8 @@ function wkkf_continuum_metabox() {
 			</td>
 			<td align="center">
 				<strong>Goal</strong>
-			</td>		
-		</tr>	
+			</td>
+		</tr>
 		<tr>
 			<td>
 				Healthy School Food
@@ -546,14 +546,14 @@ function wkkf_continuum_metabox() {
 					<option value="Some progress">Some progress</option>
 					<option value="Mostly complete">Mostly complete</option>
 					<option value="Stage completed">Stage completed</option>
-				</select>	
+				</select>
 			</td>
 			<td align="center">
 				<input type="text" id="GPbaseline1" placeholder="Stage (XX%)" />
 			</td>
 			<td align="center">
 				<input type="text" id="GPgoal1" placeholder="Stage (XX%)" />
-			</td>			
+			</td>
 		</tr>
 		<tr>
 			<td>
@@ -567,7 +567,7 @@ function wkkf_continuum_metabox() {
 					<option value="Mobilization">Mobilization</option>
 					<option value="Implementation">Implementation</option>
 					<option value="Transform">Transform</option>
-				</select>			
+				</select>
 			</td>
 			<td align="center">
 				<select name="GPprogress2" id="GPprogress2">
@@ -576,7 +576,7 @@ function wkkf_continuum_metabox() {
 					<option value="Some progress">Some progress</option>
 					<option value="Mostly complete">Mostly complete</option>
 					<option value="Stage completed">Stage completed</option>
-				</select>				
+				</select>
 			</td>
 
 			<td align="center">
@@ -585,7 +585,7 @@ function wkkf_continuum_metabox() {
 			<td align="center">
 				<input type="text" id="GPgoal2" placeholder="Stage (XX%)" />
 			</td>
-		
+
 		</tr>
 		<tr>
 			<td>
@@ -599,7 +599,7 @@ function wkkf_continuum_metabox() {
 					<option value="Mobilization">Mobilization</option>
 					<option value="Implementation">Implementation</option>
 					<option value="Transform">Transform</option>
-				</select>			
+				</select>
 			</td>
 			<td align="center">
 				<select name="GPprogress3" id="GPprogress3">
@@ -608,7 +608,7 @@ function wkkf_continuum_metabox() {
 					<option value="Some progress">Some progress</option>
 					<option value="Mostly complete">Mostly complete</option>
 					<option value="Stage completed">Stage completed</option>
-				</select>					
+				</select>
 			</td>
 			<td align="center">
 				<input type="text" id="GPbaseline3" placeholder="Stage (XX%)" />
@@ -616,8 +616,8 @@ function wkkf_continuum_metabox() {
 			<td align="center">
 				<input type="text" id="GPgoal3" placeholder="Stage (XX%)" />
 			</td>
-		
-		</tr>		
+
+		</tr>
 	</table>
 </div>
 <div style="margin-top:25px;">
@@ -629,7 +629,7 @@ function wkkf_continuum_metabox() {
 			</td>
 			<td align="center">
 				<strong>Stage</strong>
-			</td>				
+			</td>
 			<td align="center">
 				<strong>Progress</strong>
 			</td>
@@ -639,8 +639,8 @@ function wkkf_continuum_metabox() {
 			</td>
 			<td align="center">
 				<strong>Goal</strong>
-			</td>		
-		</tr>	
+			</td>
+		</tr>
 		<tr>
 			<td>
 				Healthy School Food
@@ -662,14 +662,14 @@ function wkkf_continuum_metabox() {
 					<option value="Some progress">Some progress</option>
 					<option value="Mostly complete">Mostly complete</option>
 					<option value="Stage completed">Stage completed</option>
-				</select>	
+				</select>
 			</td>
 			<td align="center">
 				<input type="text" id="SPbaseline1" placeholder="Stage (XX%)" />
 			</td>
 			<td align="center">
 				<input type="text" id="SPgoal1" placeholder="Stage (XX%)" />
-			</td>			
+			</td>
 		</tr>
 		<tr>
 			<td>
@@ -683,7 +683,7 @@ function wkkf_continuum_metabox() {
 					<option value="Mobilization">Mobilization</option>
 					<option value="Implementation">Implementation</option>
 					<option value="Transform">Transform</option>
-				</select>			
+				</select>
 			</td>
 			<td align="center">
 				<select name="SPprogress2" id="SPprogress2">
@@ -692,7 +692,7 @@ function wkkf_continuum_metabox() {
 					<option value="Some progress">Some progress</option>
 					<option value="Mostly complete">Mostly complete</option>
 					<option value="Stage completed">Stage completed</option>
-				</select>				
+				</select>
 			</td>
 
 			<td align="center">
@@ -701,7 +701,7 @@ function wkkf_continuum_metabox() {
 			<td align="center">
 				<input type="text" id="SPgoal2" placeholder="Stage (XX%)" />
 			</td>
-		
+
 		</tr>
 		<tr>
 			<td>
@@ -715,7 +715,7 @@ function wkkf_continuum_metabox() {
 					<option value="Mobilization">Mobilization</option>
 					<option value="Implementation">Implementation</option>
 					<option value="Transform">Transform</option>
-				</select>			
+				</select>
 			</td>
 			<td align="center">
 				<select name="SPprogress3" id="SPprogress3">
@@ -724,7 +724,7 @@ function wkkf_continuum_metabox() {
 					<option value="Some progress">Some progress</option>
 					<option value="Mostly complete">Mostly complete</option>
 					<option value="Stage completed">Stage completed</option>
-				</select>					
+				</select>
 			</td>
 			<td align="center">
 				<input type="text" id="SPbaseline3" placeholder="Stage (XX%)" />
@@ -732,10 +732,10 @@ function wkkf_continuum_metabox() {
 			<td align="center">
 				<input type="text" id="SPgoal3" placeholder="Stage (XX%)" />
 			</td>
-		
-		</tr>		
+
+		</tr>
 	</table>
-</div>	
+</div>
 <?php
 }
 
@@ -754,7 +754,7 @@ function wkkf_investments_metabox() {
 		</tr>
 		<tr>
 			<td>
-				<strong>3.</strong> - Upload .CSV file here: <input type="file" id="csvupload" accept="text/csv" />			
+				<strong>3.</strong> - Upload .CSV file here: <input type="file" id="csvupload" accept="text/csv" />
 			</td>
 		</tr>
 	</table>
@@ -762,14 +762,14 @@ function wkkf_investments_metabox() {
 }
 
 add_action( 'save_post', 'wkkfscorecard_save' );
-function wkkfscorecard_save() { 
- 
+function wkkfscorecard_save() {
+
    global $post;
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
       return;
 
-    if ($post->post_type == 'wkkf_scorecard') {
-	
+    if ( isset( $post->post_type ) && $post->post_type == 'wkkf_scorecard') {
+
 		wkkfscorecard_save_event_field("wkkf_pplace");
 		wkkfscorecard_save_event_field("baselineyear1");
 		wkkfscorecard_save_event_field("goalyear1");
@@ -781,8 +781,8 @@ function wkkfscorecard_save() {
 		wkkfscorecard_save_event_field("bench1Q4");
 		wkkfscorecard_save_event_field("goal1");
 		wkkfscorecard_save_event_field("measurement1");
-	
-	   
+
+
 	   wkkfscorecard_save_event_field("GPstage1");
 	   wkkfscorecard_save_event_field("GPprogress1");
 	   wkkfscorecard_save_event_field("GPbaseline1");
@@ -806,8 +806,8 @@ function wkkfscorecard_save() {
 	   wkkfscorecard_save_event_field("SPstage3");
 	   wkkfscorecard_save_event_field("SPprogress3");
 	   wkkfscorecard_save_event_field("SPbaseline3");
-	   wkkfscorecard_save_event_field("SPgoal3");	   
-	   
+	   wkkfscorecard_save_event_field("SPgoal3");
+
     }
 }
 
