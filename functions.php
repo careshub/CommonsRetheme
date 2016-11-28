@@ -52,7 +52,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.62
+          0.63
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
@@ -64,7 +64,7 @@ function commons_ie_stylesheet_load(){
             'commons_ie_stylesheet',
             get_stylesheet_directory_uri() . '/style-ie.css',
             false,
-            0.62
+            0.63
         );
     wp_enqueue_style( 'commons_ie_stylesheet' );
     $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lte IE 9' );
@@ -436,31 +436,6 @@ function cc_group_visibility_class() {
     }
     return $visibility_class;
   }
-
-/* Login screen changes - adds CC logo and link
-***************/
-function cc_custom_login_logo() {
-    echo "
-    <style>
-    body.login #login h1 a {
-        background: url('".get_stylesheet_directory_uri()."/img/ccommons-logo-login.png') no-repeat scroll center top transparent !important;
-        height: 90px;
-        width: 323px;
-    }
-    </style>
-    ";
-}
-add_action('login_head', 'cc_custom_login_logo');
-
-function change_wp_login_url() {
-    return get_bloginfo('url');  // OR ECHO YOUR OWN URL
-}
-function change_wp_login_title() {
-    return get_option('blogname'); // OR ECHO YOUR OWN ALT TEXT
-}
-add_filter('login_headerurl', 'change_wp_login_url');
-add_filter('login_headertitle', 'change_wp_login_title');
-
 
 /**
  * Registration - BuddyPress replaces the space with '-' , but the user doesn't know
