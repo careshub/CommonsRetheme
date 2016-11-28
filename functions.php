@@ -783,17 +783,19 @@ function cc_cpt_restrict_manage_posts() {
 
         foreach ($filters as $tax_slug) {
             $tax_obj = get_taxonomy($tax_slug);
-            if ($tax_obj->public) {
+            if ( ! empty( $tax_obj->public ) ) {
 
-              $term = get_term_by('slug', $_GET[$tax_obj->query_var], $tax_slug);
-
+              $term = false;
+              if ( isset( $_GET[$tax_obj->query_var] ) ) {
+                $term = get_term_by('slug', $_GET[$tax_obj->query_var], $tax_slug);
+              }
               wp_dropdown_categories(array(
                   'show_option_all' => __('Show All '.$tax_obj->label ),
                   'taxonomy' => $tax_slug,
                   'name' => $tax_obj->name,
                   'orderby' => 'term_order',
-                  'selected' => $term->term_id,
-                  'hierarchical' => $tax_obj->hierarchical,
+                  'selected' => isset( $term->term_id ) ? $term->term_id : null,
+                  'hierarchical' => ! empty( $tax_obj->hierarchical ),
                   'show_count' => false,
                   // 'hide_empty' => true,
                   'hide_empty' => false,
@@ -1054,8 +1056,7 @@ function get_ID_by_slug($page_slug) {
 // Provide the user's login name for use by Google Tag Manager
 add_action( 'wp_header', 'cc_user_login_name_for_gtm', 77 );
 function cc_user_login_name_for_gtm() {
-  global $current_user;
-  get_currentuserinfo();
+  $current_user = wp_get_current_user();
   $user_login = !empty( $current_user->user_login ) ? $current_user->user_login : 'not logged in';
   ?>
   <script type="text/javascript">
