@@ -3,9 +3,9 @@
 	<div class="group-visibility clear <?php cc_group_visibility_class(); ?>">
 		<span class="group-type"><?php bp_group_type();?></span><span class="group-tree">
 		<?php
-		if ( function_exists('bp_group_hierarchy_get_breadcrumbs') )  {
+		if ( function_exists( 'hgbp_group_permalink_breadcrumbs' ) )  {
 			echo 'Hub Tree: </em>';
-			echo bp_group_hierarchy_get_breadcrumbs('&ensp;&gt;&ensp;', false);
+			hgbp_group_permalink_breadcrumbs( false, '&ensp;&gt;&ensp;' );
 		}
 	?></span></div>
 

@@ -153,5 +153,4 @@
 	<?php bp_get_template_part( 'groups/single/footer'); ?>
 
 	<?php endwhile; endif; ?>
-
 </div><!-- #buddypress -->
