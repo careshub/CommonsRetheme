@@ -63,26 +63,26 @@ body.home-page {
 	border-bottom: none;
 	margin-right: 3%;
 	margin-left: 3%;
-    width: 45.9%;
-    float: left;
-    &:nth-of-type(odd) {
+	width: 45.9%;
+	float: left;
+	&:nth-of-type(odd) {
 		clear:left;
 		margin-left: 0;
 	}
 	&:nth-of-type(even) {
 		margin-right: 0;
 	}
-    img {
-    	// width:92%;
-    }
-    &.button {
-    	margin-right: 1%;
+	img {
+		// width:92%;
+	}
+	&.button {
+		margin-right: 1%;
 		margin-left: 1%;
-    	width:43.5%;
-    }
-    &.screamer {
-    	width:43.5%;
-    }
+		width:43.5%;
+	}
+	&.screamer {
+		width:43.5%;
+	}
 }
 .widget-area {
 	margin-top: 2em;
@@ -220,6 +220,35 @@ body.tag .archive-header {
 		}
 		.bbp-reply-content {
 			.font-size(1);
+		}
+	}
+}
+
+// Styles for progress tracker
+ol.progtrckr {
+	margin: 0;
+	margin-bottom: 1em;
+	padding: 0;
+	list-style-type: none;
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	li {
+		text-align: center;
+		flex: 1;
+		margin-bottom: 0;
+		&:before {
+			bottom: -13px;
+			float: right;
+			margin-right: 0;
+		}
+		&.progtrckr-done {
+			border-bottom: 4px solid yellowgreen;
+		}
+		&.progtrckr-todo {
+			border-bottom: 4px solid silver;
 		}
 	}
 }

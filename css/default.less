@@ -1854,3 +1854,44 @@ body.search .archive-header {
 	height: 100%;
 	padding: 0.8em 1em 0px;
 }
+
+// Styles for progress tracker
+ol.progtrckr {
+	margin: 0;
+	margin-bottom: 1em;
+	padding: 0;
+	list-style-type: none;
+	li {
+		margin-left: 0;
+		margin-bottom: .5em;
+		&:before {
+			position: relative;
+			float: left;
+			line-height: 24px;
+			border-radius: 20px;
+			text-align: center;
+			margin-right: .6em;
+		}
+		&.progtrckr-done {
+			color: black;
+			&:before {
+				content: "\2713";
+				color: white;
+				height: 24px;
+				width: 24px;
+				background-color: yellowgreen;
+				border: none;
+			}
+		}
+		&.progtrckr-todo {
+			color: silver;
+			&:before {
+				content: " ";
+				height: 18px;
+				width: 18px;
+				border: 3px solid silver;
+				background-color: white;
+			}
+		}
+	}
+}
