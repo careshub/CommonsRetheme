@@ -40,7 +40,7 @@
 
 <body <?php body_class('js'); ?>>
 
-<?php if ( get_site_url() == 'http://www.communitycommons.org' ) : ?>
+<?php if ( get_site_url( null, '', 'http' ) == 'http://www.communitycommons.org' ) : ?>
 	<!-- Google Tag Manager -->
 	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TJLJ5R"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

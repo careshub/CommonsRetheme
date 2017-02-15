@@ -1088,14 +1088,12 @@ function cc_filter_nav_items_classes( $classes, $item, $args, $depth ) {
  * Get the post ID for the "Welcome"/"Here's What You Can Do on CC" post.
  */
 function get_cc_welcome_post_id(){
-    $location = get_site_url();
+    $location = get_site_url(  null, '', 'http' );
     switch ( $location ) {
         case 'http://commonsdev.local':
             $post_id = 20790;
             break;
         case 'http://staging.communitycommons.org':
-            $post_id = 34829;
-            break;
         case 'http://www.communitycommons.org':
         case 'http://abydos.cares.missouri.edu':
         default:
