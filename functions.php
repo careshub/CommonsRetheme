@@ -52,7 +52,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.64
+          0.65
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
@@ -64,7 +64,7 @@ function commons_ie_stylesheet_load(){
             'commons_ie_stylesheet',
             get_stylesheet_directory_uri() . '/style-ie.css',
             false,
-            0.64
+            0.65
         );
     wp_enqueue_style( 'commons_ie_stylesheet' );
     $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lte IE 9' );
@@ -98,7 +98,7 @@ function parent_stylesheet_load(){
 // I'm joining the various scripts into one via CodeKit.
 add_action( 'wp_enqueue_scripts', 'cc_common_js_load', 14 );
 function cc_common_js_load(){
-  wp_register_script('cc-common-scripts', get_stylesheet_directory_uri().'/js/commons.min.js">', array('jquery'), '1.1', true  );
+  wp_register_script('cc-common-scripts', get_stylesheet_directory_uri().'/js/commons.min.js">', array('jquery'), '.64', true  );
   wp_enqueue_script('cc-common-scripts');
 }
 

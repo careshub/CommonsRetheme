@@ -724,19 +724,6 @@ hr {
 	}
 }
 
-//Toggling
-.toggleable {
-	.toggle-switch {
-		margin-bottom: 0;
-	}
-	&.toggle-closed > .toggle-content {
-		display: none;
-	}
-	&.toggle-open > .toggle-content {
-		display: block;
-	}
-}
-
 //Sharing buttons
 .bp-share-it-container {
 	display: inline-block;
@@ -1931,4 +1918,58 @@ ol.progtrckr {
 		white-space: nowrap;
 		z-index:999;
 	}
+// Styles for content toggles
+//Toggling
+// toggleable is the old class name.
+.toggleable {
+	.toggle-switch {
+		margin-bottom: 0;
+	}
+	&.toggle-closed > .toggle-content {
+		display: none;
+	}
+	&.toggle-open > .toggle-content {
+		display: block;
+	}
+}
+
+// toggle-container is the new, avoids collisions, class name.
+.toggle-container {
+	&.toggle-closed > .toggle-content {
+		display: none;
+	}
+	&.toggle-open > .toggle-content {
+		display: block;
+		animation: appearance .5s 1 ease-in-out;
+	}
+}
+
+.arrow {
+	display: inline-block;
+	vertical-align: middle;
+}
+.arrow-down {
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+
+	border-top: 8px solid silver;
+	margin-right: .3em;
+
+}
+.arrow-right {
+	width: 0;
+	height: 0;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+
+	border-left: 8px solid silver;
+	margin-right: .9em;
+
+}
+.toggle-content.border-left {
+	margin-left: 1.5em;
+	padding-left: .8em;
+	border-left: 1px solid silver;
 }
