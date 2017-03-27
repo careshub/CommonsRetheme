@@ -354,7 +354,17 @@ body.home-page {
 		}
 	}
 }
-.forgot-password {
+.login-form-password-label {
+	max-height: 300px;
+	opacity: 1;
+	transition: opacity 1s 0s, max-height .5s 0s;
+	&.using-sso {
+		max-height: 0;
+		opacity: 0;
+	}
+}
+.forgot-password,
+.log-in-with-sso {
 	margin-top: 1em;
     display: inline-block;
 }

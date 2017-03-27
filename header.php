@@ -140,18 +140,21 @@
 			        			<div class="sub-nav menu-item-login-panel">
 			        				<form name="login-form" id="sidebar-login-form" class="standard-form" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
 										<label><?php _e( 'Username or email', 'buddypress' ) ?><br />
-										<input type="text" name="log" id="sidebar-user-login" class="input" value="<?php if ( isset( $user_login) ) echo esc_attr(stripslashes($user_login)); ?>" tabindex="97" /></label>
+										<input type="text" name="log" id="sidebar-user-login" class="input" value="" tabindex="97" /></label>
 
-										<label><?php _e( 'Password', 'buddypress' ) ?><br />
+										<label class="login-form-password-label"><?php _e( 'Password', 'buddypress' ) ?><br />
 										<input type="password" name="pwd" id="sidebar-user-pass" class="input" value="" tabindex="98" /></label>
 
+										<?php /* ?>
 										<p class="forgetmenot"><label><input name="rememberme" type="checkbox" id="sidebar-rememberme" value="forever" tabindex="99" /> <?php _e( 'Remember Me', 'buddypress' ) ?></label></p>
+										<?php */ ?>
 
 										<?php do_action( 'bp_sidebar_login_form' ) ?>
 										<input type="submit" name="wp-submit" id="sidebar-wp-submit" value="<?php _e( 'Log In', 'buddypress' ); ?>" tabindex="100" /> <!-- &nbsp;&nbsp;&nbsp;&nbsp; <button id="cancel-login">Cancel</button> -->
 										<input type="hidden" name="redirect_to" value="<?php echo ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ?>" />
 									</form>
 									<a href="<?php echo wp_lostpassword_url( ( is_ssl() ? 'https://' : 'http://' ) .  $_SERVER["HTTP_HOST"] . $_SERVER['REQUEST_URI'] ); ?>" class="forgot-password">Forgot your password or username?</a>
+									<?php do_action( 'cares_after_login_form' ); ?>
 			        			</div>
 			        		</li>
 			        		<?php if ( get_option( 'users_can_register' ) ) : ?>

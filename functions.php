@@ -14,6 +14,10 @@ require_once('includes/site-search-redux.php');
 //Custom Nav Walker to improve accessibility of navigation menus
 require_once('includes/class-cc-accessibility-nav-walker.php');
 
+// Set theme version here and in style.less.
+function commons_retheme_get_version() {
+  return '1.0.0';
+}
 
 /* Javascript library and style enqueues
 *
@@ -52,7 +56,7 @@ function custom_childtheme_stylesheet_load(){
           'commons_retheme_stylesheet',
           get_stylesheet_uri(),
           false,
-          0.65
+          commons_retheme_get_version()
       );
   wp_enqueue_style( 'commons_retheme_stylesheet' );
 }
@@ -64,7 +68,7 @@ function commons_ie_stylesheet_load(){
             'commons_ie_stylesheet',
             get_stylesheet_directory_uri() . '/style-ie.css',
             false,
-            0.65
+            commons_retheme_get_version()
         );
     wp_enqueue_style( 'commons_ie_stylesheet' );
     $wp_styles->add_data( 'commons_ie_stylesheet', 'conditional', 'lte IE 9' );
@@ -98,7 +102,13 @@ function parent_stylesheet_load(){
 // I'm joining the various scripts into one via CodeKit.
 add_action( 'wp_enqueue_scripts', 'cc_common_js_load', 14 );
 function cc_common_js_load(){
-  wp_register_script('cc-common-scripts', get_stylesheet_directory_uri().'/js/commons.min.js">', array('jquery'), '.64', true  );
+  wp_register_script(
+    'cc-common-scripts',
+    get_stylesheet_directory_uri().'/js/commons.min.js">',
+    array('jquery'),
+    commons_retheme_get_version(),
+    true
+  );
   wp_enqueue_script('cc-common-scripts');
 }
 
@@ -107,7 +117,8 @@ function cc_wp_admin_area_stylesheet_load(){
     wp_register_style(
             'cc_wp_admin_area_stylesheet',
             get_stylesheet_directory_uri() . '/css/wp-admin-area-customization.css',
-            false
+            false,
+            commons_retheme_get_version()
         );
     wp_enqueue_style( 'cc_wp_admin_area_stylesheet' );
     wp_register_style(
