@@ -9,8 +9,7 @@ function cc_modify_search_query( $query ) {
 
 	// Target the site search
 	// BP-Docs is very similar but is a post_type_archive
-	if ( ! ( $query->is_main_query() && is_search() && ! is_post_type_archive() ) )
-		return;
+	if ( $query->is_main_query() && ! is_admin() && is_search() && ! is_post_type_archive() ) {
 
 		// Limit post_types that are included in the main results loop
 		$query->set( 'post_type', array(
@@ -21,6 +20,7 @@ function cc_modify_search_query( $query ) {
 		// $fp = fopen('what_the_search.txt', 'a');
 		// fwrite($fp, $towrite);
 		// fclose($fp);
+	}
 
 	return $query;
 }
