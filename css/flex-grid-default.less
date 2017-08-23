@@ -122,6 +122,29 @@
 		flex: 0 0 auto;
 		width: 75%;
 	}
+	// Alternate version allows for some flex.
+	// Choose the break point by specifying the small, medium, large
+	// Then only specify some cell sizes, rest can be auto.
+	.small-Grid > .Grid-cell.u-1of3 {
+		flex: 0 0 auto;
+		width: 33.3%;
+	}
+	.small-Grid > .Grid-cell.u-2of3 {
+		flex: 0 0 auto;
+		width: 66.6%;
+	}
+	.small-Grid > .Grid-cell.u-1of4 {
+		flex: 0 0 auto;
+		width: 25%;
+	}
+	.small-Grid > .Grid-cell.u-2of4 {
+		flex: 0 0 auto;
+		width: 50%;
+	}
+	.small-Grid > .Grid-cell.u-3of4 {
+		flex: 0 0 auto;
+		width: 75%;
+	}
 }
 
 @media (min-width:36em) {
@@ -155,6 +178,30 @@
 		flex: 0 0 auto;
 		width: 75%;
 	}
+	// Alternate version allows for some flex.
+	// Choose the break point by specifying the small, medium, large
+	// Then only specify some cell sizes, rest can be auto.
+	.med-Grid > .Grid-cell.u-1of3 {
+		flex: 0 0 auto;
+		width: 33.3%;
+	}
+	.med-Grid > .Grid-cell.u-2of3 {
+		flex: 0 0 auto;
+		width: 66.6%;
+	}
+	.med-Grid > .Grid-cell.u-1of4 {
+		flex: 0 0 auto;
+		width: 25%;
+	}
+	.med-Grid > .Grid-cell.u-2of4 {
+		flex: 0 0 auto;
+		width: 50%;
+	}
+	.med-Grid > .Grid-cell.u-3of4 {
+		flex: 0 0 auto;
+		width: 75%;
+	}
+
 	// Allow the quarter blocks to stack 2-up.
 	// this is hinky, the math doesn't work out.
 	.large-Grid--1of4 > .Grid-cell {
@@ -164,6 +211,12 @@
 	.large-Grid--1of4 > .Grid-cell img {
 		width: 100%;
 	}
+	// Alt version
+	.large-Grid > .Grid-cell.u-1of4 {
+		flex: 0 0 auto;
+		width: 50%;
+	}
+
 }
 
 @media (min-width:48em) {
@@ -197,6 +250,30 @@
 		width: 50%;
 	}
 	.large-Grid--1of4 > .Grid-cell.u-3of4 {
+		flex: 0 0 auto;
+		width: 75%;
+	}
+
+	// Alternate version allows for some flex.
+	// Choose the break point by specifying the small, medium, large
+	// Then only specify some cell sizes, rest can be auto.
+	.large-Grid > .Grid-cell.u-1of3 {
+		flex: 0 0 auto;
+		width: 33.3%;
+	}
+	.large-Grid > .Grid-cell.u-2of3 {
+		flex: 0 0 auto;
+		width: 66.6%;
+	}
+	.large-Grid > .Grid-cell.u-1of4 {
+		flex: 0 0 auto;
+		width: 25%;
+	}
+	.large-Grid > .Grid-cell.u-2of4 {
+		flex: 0 0 auto;
+		width: 50%;
+	}
+	.large-Grid > .Grid-cell.u-3of4 {
 		flex: 0 0 auto;
 		width: 75%;
 	}
