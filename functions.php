@@ -16,7 +16,7 @@ require_once('includes/class-cc-accessibility-nav-walker.php');
 
 // Set theme version here and in style.less.
 function commons_retheme_get_version() {
-	return '1.0.0';
+	return '1.0.2';
 }
 
 /* Javascript library and style enqueues
