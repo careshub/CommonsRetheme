@@ -42,15 +42,15 @@ if (jQuery) {
 		// Open and close the content container on click.
 		$( "#page" ).on( "click", ".toggle-trigger", function(e) {
 			e.preventDefault();
-			var toggleable = $( this ).parents( ".toggle-container" ),
+			var toggleable = $( this ).closest( ".toggle-container" ),
 				was_expanded   = toggleable.hasClass( "toggle-open" );
 
 			if ( was_expanded ) {
 				toggleable.removeClass( "toggle-open" ).addClass( "toggle-closed" );
-				$( this ).siblings( ".arrow" ).removeClass( "arrow-down" ).addClass( "arrow-right" );
+				toggleable.find( ".arrow" ).removeClass( "arrow-down" ).addClass( "arrow-right" );
 			} else {
 				toggleable.removeClass( "toggle-closed" ).addClass( "toggle-open" );
-				$( this ).siblings( ".arrow" ).removeClass( "arrow-right" ).addClass( "arrow-down" );
+				toggleable.find( ".arrow" ).removeClass( "arrow-right" ).addClass( "arrow-down" );
 			}
 
 			$( this ).attr(	"aria-expanded", ! was_expanded );
